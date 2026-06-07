@@ -1,0 +1,3831 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>设备/码号查询区高保真原型</title>
+  <style>
+    :root {
+      --blue: #2f8ff0;
+      --blue-strong: #1f7be2;
+      --blue-soft: #ecf5ff;
+      --green: #18a058;
+      --orange: #f59e0b;
+      --red: #e5484d;
+      --ink: #1f2937;
+      --muted: #6b7280;
+      --subtle: #9aa4b2;
+      --line: #d8dee8;
+      --line-soft: #e8edf5;
+      --panel: #ffffff;
+      --page: #f4f7fb;
+      --shadow: 0 8px 24px rgba(31, 41, 55, 0.06);
+      --radius: 8px;
+      --control-h: 40px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #f7f8fb;
+      min-width: 320px;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .app-shell {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 290px minmax(0, 1fr);
+      grid-template-rows: 78px minmax(0, 1fr);
+    }
+
+    .platform-header {
+      grid-column: 1 / -1;
+      height: 78px;
+      background: linear-gradient(105deg, #1976ef 0%, #1491e0 46%, #05b6a8 100%);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.16) inset;
+      z-index: 30;
+    }
+
+    .platform-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 27px;
+      line-height: 1;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    .watch-logo {
+      width: 30px;
+      height: 36px;
+      border: 2px solid rgba(255, 255, 255, 0.96);
+      border-radius: 11px;
+      position: relative;
+      display: grid;
+      place-items: center;
+      font-size: 8px;
+      font-weight: 700;
+    }
+
+    .watch-logo::before,
+    .watch-logo::after {
+      content: "";
+      position: absolute;
+      left: 6px;
+      right: 6px;
+      height: 3px;
+      border-radius: 3px;
+      background: rgba(255, 255, 255, 0.94);
+    }
+
+    .watch-logo::before {
+      top: -6px;
+    }
+
+    .watch-logo::after {
+      bottom: -6px;
+    }
+
+    .side {
+      grid-column: 1;
+      grid-row: 2;
+      background: #fff;
+      color: #30343b;
+      border-right: 1px solid #e5e9f0;
+      padding: 13px 0 22px;
+      overflow: auto;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      height: 78px;
+      padding: 0 26px 0 24px;
+      color: #30343b;
+      font-size: 20px;
+      font-weight: 500;
+      background: #fff;
+      border-radius: 0;
+      margin-bottom: 0;
+      letter-spacing: 0;
+    }
+
+    .nav-icon {
+      width: 22px;
+      height: 22px;
+      color: currentColor;
+      flex: 0 0 auto;
+    }
+
+    .nav-label {
+      flex: 1 1 auto;
+    }
+
+    .nav-caret {
+      width: 13px;
+      height: 13px;
+      color: #8c96a3;
+      flex: 0 0 auto;
+      transition: transform 0.18s ease;
+    }
+
+    .nav-toggle {
+      width: 34px;
+      height: 34px;
+      margin-right: -10px;
+      border: 0;
+      background: transparent;
+      color: #8c96a3;
+      display: grid;
+      place-items: center;
+      padding: 0;
+      cursor: pointer;
+    }
+
+    .nav-toggle:hover {
+      color: #1686ff;
+    }
+
+    .nav-item.collapsed .nav-caret {
+      transform: rotate(-90deg);
+    }
+
+    .sub-menu {
+      padding: 0 0 8px 68px;
+      margin-top: -10px;
+    }
+
+    .sub-menu.collapsed {
+      display: none;
+    }
+
+    .sub-item {
+      height: 38px;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      border: 0;
+      background: transparent;
+      color: #606976;
+      font-size: 16px;
+      font-weight: 500;
+      position: relative;
+      padding: 0;
+      text-align: left;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .sub-item:hover {
+      color: #1686ff;
+    }
+
+    .sub-item.active {
+      color: #1686ff;
+    }
+
+    .sub-item.active::before {
+      content: "";
+      position: absolute;
+      left: -18px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    .main {
+      grid-column: 2;
+      grid-row: 2;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      background: #f7f8fb;
+      overflow: hidden;
+    }
+
+    .topbar {
+      height: 70px;
+      background: #fff;
+      border-bottom: 1px solid #dbe1ea;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .tab-left {
+      display: flex;
+      align-items: stretch;
+      min-width: 0;
+      height: 100%;
+    }
+
+    .menu-toggle {
+      width: 60px;
+      height: 100%;
+      border: 0;
+      border-right: 1px solid #dbe1ea;
+      background: #fff;
+      color: #24282f;
+      display: grid;
+      place-items: center;
+      padding: 0;
+    }
+
+    .menu-toggle svg {
+      width: 25px;
+      height: 25px;
+    }
+
+    .tabs {
+      display: flex;
+      align-items: flex-end;
+      min-width: 0;
+      height: 100%;
+    }
+
+    .tab {
+      height: 64px;
+      min-width: 92px;
+      padding: 0 12px;
+      border: 1px solid #d7dde7;
+      border-bottom-color: #dbe1ea;
+      border-left: 0;
+      background: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      color: #30343b;
+      font-size: 18px;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      transform: translateY(1px);
+      white-space: nowrap;
+    }
+
+    .tab.active {
+      color: #2b8dff;
+      border-bottom-color: #fff;
+      position: relative;
+      z-index: 2;
+    }
+
+    .tab.is-hidden {
+      display: none;
+    }
+
+    .tab-link {
+      border: 0;
+      background: transparent;
+      color: inherit;
+      font: inherit;
+      font-weight: inherit;
+      padding: 0;
+      cursor: pointer;
+    }
+
+    .tab-close {
+      border: 0;
+      background: transparent;
+      color: currentColor;
+      opacity: 0.76;
+      font-size: 18px;
+      line-height: 1;
+      padding: 0;
+      cursor: pointer;
+    }
+
+    .top-actions {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      padding: 0;
+      color: rgba(255, 255, 255, 0.96);
+      font-size: 18px;
+      white-space: nowrap;
+    }
+
+    .user {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: auto;
+      height: auto;
+      border-radius: 0;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.96);
+      font-weight: 500;
+    }
+
+    .user-icon {
+      width: 22px;
+      height: 22px;
+      color: #fff;
+    }
+
+    .more-icon {
+      width: 20px;
+      height: 20px;
+      color: #fff;
+    }
+
+    .platform-header .user .nav-caret {
+      color: rgba(255, 255, 255, 0.88);
+    }
+
+    .content {
+      flex: 1 1 auto;
+      padding: 28px 28px 28px;
+      overflow: auto;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    .page-title {
+      display: none;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+
+    .page-title h1 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 30px;
+      letter-spacing: 0;
+    }
+
+    .page-title p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line-soft);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .query-panel {
+      padding: 16px;
+      margin-bottom: 14px;
+    }
+
+    .utility-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .utility-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .data-hint {
+      color: var(--muted);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .btn {
+      height: var(--control-h);
+      border: 1px solid transparent;
+      border-radius: 6px;
+      padding: 0 15px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: #fff;
+      background: var(--blue);
+      font-weight: 600;
+      white-space: nowrap;
+      min-width: 92px;
+      transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .btn:hover {
+      background: var(--blue-strong);
+      box-shadow: 0 6px 14px rgba(47, 143, 240, 0.22);
+    }
+
+    .btn.secondary {
+      background: #fff;
+      color: #3f4a5b;
+      border-color: var(--line);
+      font-weight: 500;
+    }
+
+    .btn.secondary:hover {
+      color: var(--blue);
+      border-color: #acd2fb;
+      background: #f8fbff;
+      box-shadow: none;
+    }
+
+    .btn.ghost {
+      min-width: auto;
+      background: transparent;
+      color: var(--blue);
+      padding: 0 6px;
+      border-color: transparent;
+      font-weight: 500;
+    }
+
+    .btn.ghost:hover {
+      background: transparent;
+      color: var(--blue-strong);
+      box-shadow: none;
+    }
+
+    .btn:disabled {
+      opacity: 0.68;
+      cursor: wait;
+      box-shadow: none;
+    }
+
+    .icon {
+      width: 17px;
+      height: 17px;
+      display: inline-block;
+      flex: 0 0 auto;
+    }
+
+    .spin {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      border-top-color: #fff;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .filter-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .field {
+      position: relative;
+      flex: 0 1 calc((100% - 30px) / 4);
+      width: calc((100% - 30px) / 4);
+      max-width: calc((100% - 30px) / 4);
+      min-width: 200px;
+    }
+
+    .field.wide {
+      flex-basis: calc((100% - 30px) / 4);
+      width: calc((100% - 30px) / 4);
+      max-width: calc((100% - 30px) / 4);
+    }
+
+    .control {
+      width: 100%;
+      height: var(--control-h);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fff;
+      color: var(--ink);
+      padding: 0 36px 0 12px;
+      outline: none;
+      transition: border-color 0.16s ease, box-shadow 0.16s ease;
+    }
+
+    .control::placeholder {
+      color: #b8c1cf;
+    }
+
+    .control:focus,
+    .select-trigger.open {
+      border-color: #80baf5;
+      box-shadow: 0 0 0 3px rgba(47, 143, 240, 0.12);
+    }
+
+    .select-trigger.has-value {
+      color: var(--ink);
+      padding-right: 64px;
+    }
+
+    .field-icon {
+      color: #bcc6d4;
+    }
+
+    .field-icon {
+      position: absolute;
+      right: 12px;
+      top: 11px;
+      width: 18px;
+      height: 18px;
+      pointer-events: none;
+    }
+
+    .select-clear,
+    .query-clear {
+      position: absolute;
+      z-index: 3;
+      width: 19px;
+      height: 19px;
+      border: 0;
+      border-radius: 50%;
+      padding: 0;
+      display: grid;
+      place-items: center;
+      background: transparent;
+      color: #9aa4b2;
+      font-size: 17px;
+      line-height: 1;
+    }
+
+    .select-clear {
+      top: 11px;
+      right: 34px;
+    }
+
+    .query-clear {
+      top: 11px;
+      right: 32px;
+      display: none;
+    }
+
+    .select-clear:hover,
+    .query-clear:hover {
+      color: var(--blue-strong);
+      background: var(--blue-soft);
+    }
+
+    .clearable-query.has-value .control {
+      padding-right: 58px;
+    }
+
+    .clearable-query.has-value .query-clear {
+      display: grid;
+    }
+
+    .select-menu {
+      position: absolute;
+      z-index: 50;
+      top: calc(100% + 5px);
+      left: 0;
+      right: 0;
+      min-width: 100%;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      box-shadow: 0 14px 30px rgba(31, 41, 55, 0.14);
+      padding: 8px;
+      display: none;
+    }
+
+    .select-menu.open {
+      display: block;
+    }
+
+    .select-options {
+      max-height: 192px;
+      overflow: auto;
+      padding-right: 2px;
+    }
+
+    .option {
+      height: 32px;
+      padding: 0 9px;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      color: #344054;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .option:hover,
+    .option.active {
+      background: var(--blue-soft);
+      color: var(--blue-strong);
+    }
+
+    .option.empty {
+      color: var(--subtle);
+      cursor: default;
+    }
+
+    .form-actions {
+      flex: 0 0 100%;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-start;
+      align-items: center;
+      padding-top: 2px;
+    }
+
+    .chevron {
+      transition: transform 0.18s ease;
+    }
+
+    .chevron.up {
+      transform: rotate(180deg);
+    }
+
+    .rule-strip {
+      margin-top: 12px;
+      padding: 10px 12px;
+      background: #f8fbff;
+      border: 1px dashed #cfe2fb;
+      color: #5d6b7c;
+      border-radius: 6px;
+      font-size: 13px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 18px;
+    }
+
+    .rule-strip span {
+      white-space: nowrap;
+    }
+
+    .batch-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      padding-top: 14px;
+      margin-top: 14px;
+      border-top: 1px solid var(--line-soft);
+    }
+
+    .batch-actions .btn.secondary {
+      min-width: 92px;
+    }
+
+    .business-tabs {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      margin-bottom: 14px;
+      border-bottom: 1px solid var(--line-soft);
+      background: #fff;
+      border-radius: 8px 8px 0 0;
+      overflow: hidden;
+    }
+
+    .business-tab {
+      height: 46px;
+      border: 0;
+      border-right: 1px solid var(--line-soft);
+      background: #fff;
+      color: #4b5563;
+      padding: 0 22px;
+      font-weight: 600;
+      position: relative;
+    }
+
+    .business-tab.active {
+      color: var(--blue-strong);
+      background: #f8fbff;
+    }
+
+    .business-tab.active::after {
+      content: "";
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 0;
+      height: 3px;
+      border-radius: 3px 3px 0 0;
+      background: var(--blue);
+    }
+
+    .business-tab.is-hidden {
+      display: none;
+    }
+
+    .content.detail-mode .business-tabs {
+      display: none;
+    }
+
+    .content.writable-mode .business-tabs {
+      display: none;
+    }
+
+    .page-view {
+      display: none;
+      flex: 1 1 auto;
+      min-height: 0;
+      flex-direction: column;
+    }
+
+    .page-view.active {
+      display: flex;
+    }
+
+    .range-field {
+      flex: 0 0 430px;
+      width: 430px;
+      max-width: 430px;
+      min-width: 430px;
+      display: grid;
+      grid-template-columns: 1fr 32px 1fr;
+      align-items: center;
+      gap: 0;
+    }
+
+    .range-field .control:first-child {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    .range-field .control:last-child {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    .writable-date-range {
+      flex: 0 1 calc((100% - 30px) / 4);
+      width: calc((100% - 30px) / 4);
+      max-width: calc((100% - 30px) / 4);
+      min-width: 260px;
+      position: relative;
+    }
+
+    .date-range-trigger {
+      width: 100%;
+      height: var(--control-h);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fff;
+      color: var(--ink);
+      padding: 0 11px 0 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-align: left;
+      outline: none;
+    }
+
+    .date-range-trigger.open,
+    .date-range-trigger:focus {
+      border-color: #80baf5;
+      box-shadow: 0 0 0 3px rgba(47, 143, 240, 0.12);
+    }
+
+    .date-range-display {
+      min-width: 0;
+      flex: 1 1 auto;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 13px;
+    }
+
+    .date-range-placeholder {
+      color: #b8c1cf;
+    }
+
+    .date-range-separator {
+      color: #667085;
+      flex: 0 0 auto;
+    }
+
+    .date-range-icon {
+      width: 18px;
+      height: 18px;
+      flex: 0 0 auto;
+      color: #bcc6d4;
+    }
+
+    .date-range-menu {
+      position: absolute;
+      z-index: 55;
+      top: calc(100% + 5px);
+      left: 0;
+      width: min(382px, calc(100vw - 56px));
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: #fff;
+      box-shadow: 0 14px 30px rgba(31, 41, 55, 0.14);
+      display: none;
+    }
+
+    .date-range-menu.open {
+      display: block;
+      animation: pickerSlide 0.16s ease-out;
+    }
+
+    @keyframes pickerSlide {
+      from {
+        opacity: 0;
+        transform: translateY(-5px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .date-range-pickers {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .date-range-picker-label {
+      display: block;
+      margin-bottom: 7px;
+      color: #667085;
+      font-size: 13px;
+    }
+
+    .date-picker-control {
+      width: 100%;
+      height: 36px;
+      padding: 0 8px;
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+      font-size: 13px;
+      outline: none;
+    }
+
+    .date-picker-control:focus {
+      border-color: #80baf5;
+      box-shadow: 0 0 0 3px rgba(47, 143, 240, 0.12);
+    }
+
+    .date-range-error {
+      display: none;
+      margin-top: 9px;
+      color: var(--red);
+      font-size: 12px;
+    }
+
+    .date-range-error.show {
+      display: block;
+    }
+
+    .date-range-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      padding-top: 12px;
+    }
+
+    .date-range-actions .btn {
+      min-width: 66px;
+      height: 32px;
+      padding: 0 12px;
+      font-size: 13px;
+    }
+
+    .range-separator {
+      height: var(--control-h);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      place-items: center;
+      color: #4b5563;
+      background: #fff;
+      font-weight: 600;
+    }
+
+    .link-text {
+      border: 0;
+      background: transparent;
+      color: var(--blue-strong);
+      padding: 0;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .link-text:hover,
+    .link-text:focus {
+      color: #0f5fbf;
+      text-decoration: underline;
+      outline: none;
+    }
+
+    .danger-link {
+      border: 0;
+      background: transparent;
+      color: var(--red);
+      padding: 0;
+      font-weight: 600;
+    }
+
+    .danger-link:hover,
+    .danger-link:focus {
+      color: #c62828;
+      text-decoration: underline;
+      outline: none;
+    }
+
+    .modal-query {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: flex-start;
+      padding-bottom: 14px;
+      margin-bottom: 14px;
+      border-bottom: 1px solid var(--line-soft);
+    }
+
+    .modal-query .field {
+      flex: 0 0 220px;
+      width: 220px;
+      min-width: 220px;
+      max-width: 220px;
+    }
+
+    .modal-query-actions {
+      flex: 0 0 100%;
+      display: flex;
+      gap: 10px;
+      justify-content: flex-start;
+    }
+
+    .check-table {
+      width: 100%;
+      min-width: 620px;
+    }
+
+    .table-panel {
+      overflow: hidden;
+      flex: 1 1 auto;
+      min-height: 360px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .table-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line-soft);
+    }
+
+    .table-title {
+      font-weight: 700;
+      font-size: 15px;
+    }
+
+    .applied {
+      color: var(--muted);
+      font-size: 13px;
+      text-align: right;
+    }
+
+    .recycle-tip {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      color: #4b5563;
+      font-size: 13px;
+      line-height: 20px;
+    }
+
+    .recycle-tip-icon {
+      width: 18px;
+      height: 18px;
+      margin-top: 1px;
+      flex: 0 0 18px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--blue);
+      color: #fff;
+    }
+
+    .recycle-tip-icon svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    .writable-status-tabs {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line-soft);
+      background: #fff;
+      overflow-x: auto;
+    }
+
+    .writable-status-tab {
+      height: 34px;
+      padding: 0 16px;
+      border: 1px solid transparent;
+      border-radius: 18px;
+      background: #f3f6fb;
+      color: #4b5563;
+      font-size: 13px;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .writable-status-tab:hover {
+      background: #edf5ff;
+      color: var(--blue-strong);
+    }
+
+    .writable-status-tab.active {
+      border-color: #bfdbfe;
+      background: var(--blue-soft);
+      color: var(--blue-strong);
+      font-weight: 600;
+    }
+
+    .table-scroll {
+      overflow: auto;
+      width: 100%;
+      flex: 1 1 auto;
+      min-height: 0;
+    }
+
+    table {
+      width: 100%;
+      min-width: 1680px;
+      border-collapse: separate;
+      border-spacing: 0;
+      background: #fff;
+    }
+
+    .writable-table {
+      min-width: 3620px;
+    }
+
+    th,
+    td {
+      height: 48px;
+      padding: 0 14px;
+      border-bottom: 1px solid var(--line-soft);
+      text-align: left;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    th {
+      background: #f8fafd;
+      color: #5f6b7a;
+      font-weight: 600;
+    }
+
+    td {
+      color: #2f3a4a;
+    }
+
+    .select-col {
+      position: sticky;
+      left: 0;
+      z-index: 5;
+      width: 52px;
+      min-width: 52px;
+      max-width: 52px;
+      text-align: center;
+      background: #fff;
+      box-shadow: 8px 0 14px -14px rgba(31, 41, 55, 0.5);
+    }
+
+    th.select-col {
+      z-index: 7;
+      background: #f8fafd;
+    }
+
+    .sticky-col {
+      position: sticky;
+      left: 52px;
+      z-index: 4;
+      min-width: 190px;
+      max-width: 220px;
+      background: #fff;
+      box-shadow: 8px 0 14px -12px rgba(31, 41, 55, 0.5);
+    }
+
+    th.sticky-col {
+      z-index: 6;
+      background: #f8fafd;
+    }
+
+    .operation-col {
+      position: sticky;
+      right: 0;
+      z-index: 4;
+      min-width: 82px;
+      width: 82px;
+      background: #fff;
+      box-shadow: -8px 0 14px -12px rgba(31, 41, 55, 0.5);
+    }
+
+    th.operation-col {
+      z-index: 6;
+      background: #f8fafd;
+    }
+
+    .iccid-link {
+      border: 0;
+      background: transparent;
+      padding: 0;
+      color: var(--blue-strong);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .iccid-link:hover {
+      text-decoration: underline;
+    }
+
+    .status-text {
+      font-weight: 600;
+    }
+
+    .status-positive {
+      color: #0f7b47;
+    }
+
+    .status-negative {
+      color: #d92d20;
+    }
+
+    .status-neutral {
+      color: #2f3a4a;
+    }
+
+    .write-pending {
+      color: #b86e00;
+    }
+
+    .write-power {
+      color: #7c3aed;
+    }
+
+    .write-apply-failed {
+      color: #c2410c;
+    }
+
+    .write-processing {
+      color: #1677ff;
+    }
+
+    .write-failed {
+      color: #d92d20;
+    }
+
+    .write-success {
+      color: #0f7b47;
+    }
+
+    .row-check {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--blue);
+      cursor: pointer;
+      vertical-align: middle;
+    }
+
+    tr.selected td,
+    tr.selected .sticky-col,
+    tr.selected .select-col {
+      background: #f4f9ff;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      padding: 0 8px;
+      border-radius: 12px;
+      font-size: 12px;
+      border: 1px solid transparent;
+    }
+
+    .badge.green {
+      color: #0f7b47;
+      background: #e9f8f0;
+      border-color: #bce8cd;
+    }
+
+    .badge.blue {
+      color: #1f66c2;
+      background: #edf5ff;
+      border-color: #c8dfff;
+    }
+
+    .badge.orange {
+      color: #a15c00;
+      background: #fff7e6;
+      border-color: #ffe0a6;
+    }
+
+    .badge.red {
+      color: #b42318;
+      background: #fff1f1;
+      border-color: #ffd1d1;
+    }
+
+    .pager {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-top: auto;
+      padding: 12px 16px;
+      border-top: 1px solid var(--line-soft);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .sim-detail-panel {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .sim-detail-head {
+      height: 58px;
+      padding: 0 20px;
+      border-bottom: 1px solid var(--line-soft);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .sim-detail-head h2 {
+      margin: 0;
+      font-size: 17px;
+      color: #253041;
+    }
+
+    .sim-detail-grid {
+      padding: 24px 24px 14px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(180px, 1fr));
+      gap: 0;
+    }
+
+    .sim-detail-item {
+      min-height: 68px;
+      padding: 0 16px 18px 0;
+    }
+
+    .sim-detail-label {
+      display: block;
+      margin-bottom: 8px;
+      color: #7b8492;
+      font-size: 13px;
+    }
+
+    .sim-detail-value {
+      color: #273142;
+      font-size: 14px;
+      line-height: 20px;
+    }
+
+    .page-btn {
+      min-width: 32px;
+      height: 32px;
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      background: #fff;
+      color: #4b5563;
+    }
+
+    .page-btn.active {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: #fff;
+    }
+
+    .toast {
+      position: fixed;
+      top: 72px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-14px);
+      background: #172033;
+      color: #fff;
+      border-radius: 7px;
+      box-shadow: 0 16px 34px rgba(23, 32, 51, 0.18);
+      padding: 11px 14px;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.18s ease, transform 0.18s ease;
+      z-index: 100;
+      font-size: 14px;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .modal-mask {
+      position: fixed;
+      inset: 0;
+      background: rgba(17, 24, 39, 0.42);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      z-index: 90;
+    }
+
+    .modal-mask.open {
+      display: flex;
+    }
+
+    .modal {
+      width: min(720px, 100%);
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 28px 70px rgba(15, 23, 42, 0.24);
+      overflow: hidden;
+    }
+
+    .modal-head,
+    .modal-foot {
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .modal-head {
+      border-bottom: 1px solid var(--line-soft);
+    }
+
+    .modal-head h2 {
+      margin: 0;
+      font-size: 17px;
+      letter-spacing: 0;
+    }
+
+    .close {
+      width: 32px;
+      height: 32px;
+      border-radius: 5px;
+      border: 1px solid transparent;
+      background: transparent;
+      color: #6b7280;
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    .close:hover {
+      background: #f3f6fb;
+      color: #111827;
+    }
+
+    .modal-body {
+      padding: 18px;
+    }
+
+    .batch-modal {
+      width: min(620px, 100%);
+    }
+
+    .confirm-modal {
+      width: min(430px, 100%);
+    }
+
+    .confirm-message {
+      padding: 16px 4px;
+      color: #344054;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .modal-form {
+      display: grid;
+      gap: 16px;
+    }
+
+    .modal-form-row {
+      display: grid;
+      grid-template-columns: 96px minmax(0, 1fr);
+      gap: 12px;
+      align-items: start;
+    }
+
+    .modal-label {
+      min-height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      color: #4b5563;
+      font-size: 14px;
+    }
+
+    .required {
+      color: var(--red);
+      margin-right: 2px;
+    }
+
+    .batch-select,
+    .batch-textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      background: #fff;
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.16s ease, box-shadow 0.16s ease;
+    }
+
+    .batch-select {
+      height: 36px;
+      padding: 0 10px;
+    }
+
+    .batch-textarea {
+      height: 76px;
+      resize: none;
+      padding: 9px 10px;
+    }
+
+    .batch-select:focus,
+    .batch-textarea:focus {
+      border-color: #80baf5;
+      box-shadow: 0 0 0 3px rgba(47, 143, 240, 0.12);
+    }
+
+    .file-line {
+      min-height: 36px;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .file-btn {
+      height: 36px;
+      border: 1px solid var(--blue);
+      border-radius: 5px;
+      padding: 0 16px;
+      background: var(--blue);
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .template-link {
+      position: relative;
+      border: 0;
+      background: transparent;
+      color: var(--blue);
+      padding: 0 4px;
+      height: 36px;
+      font-weight: 600;
+    }
+
+    .template-badge {
+      position: absolute;
+      top: -5px;
+      right: -10px;
+      min-width: 13px;
+      height: 13px;
+      padding: 0 3px;
+      border-radius: 2px;
+      background: #f4e400;
+      color: #111827;
+      font-size: 10px;
+      line-height: 13px;
+      text-align: center;
+    }
+
+    .file-name {
+      color: #4b5563;
+      font-size: 13px;
+    }
+
+    .file-help {
+      margin-top: 8px;
+      color: #5f6b7a;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .radio-group {
+      min-height: 36px;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    .radio-option {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #344054;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .radio-option input {
+      width: 14px;
+      height: 14px;
+      accent-color: var(--blue);
+    }
+
+    .mode-fields.is-hidden {
+      display: none;
+    }
+
+    .validation-result {
+      display: none;
+      margin-left: 108px;
+      padding: 12px 14px;
+      border-radius: 6px;
+      border: 1px solid #cfe2fb;
+      background: #f7fbff;
+      color: #344054;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .validation-result.show {
+      display: block;
+    }
+
+    .validation-result strong {
+      color: var(--blue-strong);
+      font-size: 16px;
+      margin: 0 3px;
+    }
+
+    .sync-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .sync-card {
+      border: 1px solid var(--line-soft);
+      border-radius: 7px;
+      padding: 14px;
+      background: #fbfdff;
+      min-height: 124px;
+    }
+
+    .sync-card strong {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 7px;
+    }
+
+    .sync-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .upload-box {
+      margin-top: 14px;
+      border: 1px dashed #adc9e8;
+      background: #f7fbff;
+      border-radius: 7px;
+      height: 112px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      color: #667085;
+      font-size: 13px;
+    }
+
+    .sync-result {
+      margin-top: 14px;
+      border: 1px solid var(--line-soft);
+      border-radius: 7px;
+      overflow: hidden;
+    }
+
+    .sync-result-row {
+      display: grid;
+      grid-template-columns: 130px 1fr 150px;
+      gap: 12px;
+      padding: 10px 12px;
+      border-top: 1px solid var(--line-soft);
+      font-size: 13px;
+      align-items: center;
+    }
+
+    .sync-result-row:first-child {
+      border-top: 0;
+      background: #f8fafd;
+      color: #5f6b7a;
+      font-weight: 600;
+    }
+
+    .modal-foot {
+      border-top: 1px solid var(--line-soft);
+      justify-content: flex-end;
+    }
+
+    @media (max-width: 980px) {
+      .app-shell {
+        grid-template-columns: 1fr;
+        grid-template-rows: 68px minmax(0, 1fr);
+      }
+
+      .platform-header {
+        height: 68px;
+        padding: 0 18px;
+      }
+
+      .platform-brand {
+        font-size: 22px;
+      }
+
+      .side {
+        display: none;
+      }
+
+      .main {
+        grid-column: 1;
+        grid-row: 2;
+      }
+
+      .content {
+        padding: 16px;
+      }
+
+      .topbar {
+        padding: 0;
+      }
+
+      .top-actions {
+        padding-right: 0;
+        gap: 14px;
+      }
+
+      .tabs {
+        overflow: auto;
+        max-width: calc(100vw - 210px);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .platform-brand {
+        font-size: 18px;
+      }
+
+      .watch-logo {
+        width: 26px;
+        height: 31px;
+      }
+
+      .tab {
+        min-width: 84px;
+        font-size: 15px;
+      }
+
+      .top-actions {
+        padding-right: 0;
+      }
+
+      .top-actions .more-icon {
+        display: none;
+      }
+
+      .page-title {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .query-panel {
+        padding: 12px;
+      }
+
+      .utility-row {
+        align-items: flex-start;
+      }
+
+      .data-hint {
+        white-space: normal;
+      }
+
+      .field,
+      .field.wide,
+      .range-field {
+        flex-basis: 100%;
+        width: 100%;
+        max-width: none;
+        min-width: 0;
+      }
+
+      .btn {
+        min-width: 88px;
+      }
+
+      .sync-grid,
+      .sync-result-row {
+        grid-template-columns: 1fr;
+      }
+
+      .modal-form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .modal-label {
+        justify-content: flex-start;
+      }
+
+      .validation-result {
+        margin-left: 0;
+      }
+
+      .pager {
+        justify-content: flex-end;
+        overflow: auto;
+      }
+
+      .sim-detail-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="platform-header" aria-label="平台顶部">
+      <div class="platform-brand">
+        <span class="watch-logo">00:00</span>
+        <span>儿童手表运营平台</span>
+      </div>
+      <div class="top-actions">
+        <svg class="more-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 5.2h.01M12 12h.01M12 18.8h.01" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/>
+        </svg>
+        <div class="user">
+          <svg class="user-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM4 21a8 8 0 0 1 16 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8"/>
+          </svg>
+          <span>lifan</span>
+          <svg class="nav-caret" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m8 10 4 4 4-4" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+    </header>
+
+    <aside class="side" aria-label="后台导航">
+      <div class="nav-item" id="esimNavItem">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3h8l2 2v16H7V3ZM10 8h4M10 12h4M10 16h2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="nav-label">ESIM管理</span>
+        <button class="nav-toggle" id="esimMenuToggle" type="button" aria-label="展开或收起ESIM管理菜单" aria-expanded="true">
+          <svg class="nav-caret" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m8 10 4 4 4-4" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+      <div class="sub-menu" id="esimSubMenu" aria-label="ESIM管理二级菜单">
+        <button class="sub-item" id="writableSubItem" type="button" data-page="writablePage">可写码号管理</button>
+        <button class="sub-item active" id="recycleSubItem" type="button" data-page="recyclePage">码号回收池</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="tab-left">
+          <button class="menu-toggle" type="button" aria-label="折叠菜单">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 6h13M4 12h13M4 18h13M20 7l-3 3 3 3" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="tabs" aria-label="页面标签">
+            <div class="tab" id="homeCrumbTab">
+              <button class="tab-link" type="button" data-crumb="home">首页</button>
+              <button class="tab-close" type="button" data-close-crumb="home" aria-label="关闭首页面包屑">×</button>
+            </div>
+            <div class="tab" id="esimCrumbTab">
+              <button class="tab-link" type="button" data-crumb="esim">ESIM管理</button>
+              <button class="tab-close" type="button" data-close-crumb="esim" aria-label="关闭ESIM管理面包屑">×</button>
+            </div>
+            <div class="tab active" id="mainCrumbTab">
+              <button class="tab-link" id="mainCrumbLink" type="button" data-crumb="main">码号回收池</button>
+              <button class="tab-close" id="mainCrumbClose" type="button" data-close-crumb="main" aria-label="关闭码号回收池面包屑">×</button>
+            </div>
+            <div class="tab is-hidden" id="detailCrumbTab">
+              <button class="tab-link" id="detailCrumbLink" type="button" data-crumb="detail">码号清洗详情</button>
+              <button class="tab-close" id="closeDetailCrumb" type="button" data-close-crumb="detail" aria-label="关闭详情面包屑">×</button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section class="content" id="pageContent">
+        <div class="page-title">
+          <div>
+            <h1>设备/码号信息查询</h1>
+            <p>支持商户、卡信息、设备、运营、状态及时间范围等多条件组合筛选</p>
+          </div>
+          <div class="data-hint">默认展开全部条件，条件变更后不自动查询</div>
+        </div>
+
+        <div class="business-tabs" aria-label="业务页签">
+          <button class="business-tab active" type="button" data-page="recyclePage">码号回收池</button>
+          <button class="business-tab" type="button" data-page="recordPage">码号清洗/恢复记录</button>
+        </div>
+
+        <div class="page-view" id="writablePage">
+          <section class="panel query-panel" aria-label="可写码号查询区域">
+            <div class="filter-wrap" id="writableFilterWrap"></div>
+
+            <div class="batch-actions" aria-label="可写码号操作">
+              <button class="btn" id="writableBatchBtn" type="button">可写码号增加/移出</button>
+              <button class="btn" id="freezeStatusBtn" type="button">修改冻结状态</button>
+              <button class="btn secondary" id="writableExportBtn" type="button">导出</button>
+            </div>
+          </section>
+
+          <section class="panel table-panel" aria-label="可写码号列表">
+            <div class="writable-status-tabs" id="writableStatusTabs" aria-label="写卡状态筛选"></div>
+            <div class="table-scroll">
+              <table class="writable-table">
+                <thead>
+                  <tr id="writableTableHeader"></tr>
+                </thead>
+                <tbody id="writableTableBody"></tbody>
+              </table>
+            </div>
+            <div class="pager" id="writablePager" aria-label="可写码号分页"></div>
+          </section>
+        </div>
+
+        <div class="page-view active" id="recyclePage">
+          <section class="panel query-panel" aria-label="查询区域">
+            <div class="filter-wrap" id="filterWrap"></div>
+
+            <div class="batch-actions" aria-label="批量操作">
+              <button class="btn" id="batchOpBtn" type="button">批量操作</button>
+              <button class="btn" id="cleanBtn" type="button">码号清洗</button>
+              <button class="btn" id="recoverBtn" type="button">码号恢复</button>
+              <button class="btn secondary" id="dataSyncBtn" type="button">数据同步</button>
+              <button class="btn secondary" id="exportBtn" type="button">导出</button>
+            </div>
+          </section>
+
+          <section class="panel table-panel" aria-label="查询结果">
+            <div class="table-head">
+              <div class="recycle-tip">
+                <span class="recycle-tip-icon" aria-hidden="true">
+                  <svg viewBox="0 0 12 12" fill="none">
+                    <path d="M6 2.4v4.1M6 9v.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                  </svg>
+                </span>
+                <span>通过退费、资费转移后，无可用套餐的ESIM卡对应的码号，或者返厂后的ESIM卡对应的码号，自动进入“码号回收池”。</span>
+              </div>
+            </div>
+            <div class="table-scroll">
+              <table>
+                <thead>
+                  <tr id="tableHeader"></tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+              </table>
+            </div>
+            <div class="pager" aria-label="分页">
+              <span>共 328 条</span>
+              <button class="page-btn" type="button">‹</button>
+              <button class="page-btn active" type="button">1</button>
+              <button class="page-btn" type="button">2</button>
+              <button class="page-btn" type="button">3</button>
+              <button class="page-btn" type="button">...</button>
+              <button class="page-btn" type="button">17</button>
+              <button class="page-btn" type="button">›</button>
+            </div>
+          </section>
+        </div>
+
+        <div class="page-view" id="recordPage">
+          <section class="panel query-panel" aria-label="码号清洗恢复记录查询">
+            <div class="filter-wrap">
+              <div class="field clearable-query">
+                <select class="control" id="recordActionType" aria-label="操作类型">
+                  <option value="">操作类型</option>
+                  <option value="码号清洗">码号清洗</option>
+                  <option value="码号恢复">码号恢复</option>
+                </select>
+                <button class="query-clear" type="button" data-clear-control="recordActionType" aria-label="清除操作类型">×</button>
+              </div>
+              <div class="field">
+                <input class="control" id="recordBatchNo" type="text" placeholder="批次号" />
+              </div>
+              <div class="form-actions">
+                <button class="btn" id="recordSearchBtn" type="button">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="m21 21-4.3-4.3M11 19a8 8 0 1 1 0-16 8 8 0 0 1 0 16Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  搜索
+                </button>
+                <button class="btn secondary" id="recordResetBtn" type="button">重置</button>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel table-panel" aria-label="码号清洗恢复记录列表">
+            <div class="table-scroll">
+              <table style="min-width: 1180px;">
+                <thead>
+                  <tr>
+                    <th>批次号</th>
+                    <th>操作类型</th>
+                    <th>处理总数</th>
+                    <th>成功数</th>
+                    <th>失败数</th>
+                    <th>备注</th>
+                    <th>操作时间</th>
+                    <th>操作人</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><button class="link-text batch-link" type="button" data-batch="BATCH20260519001" data-type="码号清洗">BATCH20260519001</button></td>
+                    <td>码号清洗</td>
+                    <td><button class="link-text total-link" type="button" data-batch="BATCH20260519001">120</button></td>
+                    <td>116</td>
+                    <td>4</td>
+                    <td>退费回收码号批量清洗</td>
+                    <td>2026-05-19 09:20:18</td>
+                    <td>lifan</td>
+                  </tr>
+                  <tr>
+                    <td><button class="link-text batch-link" type="button" data-batch="BATCH20260518007" data-type="码号恢复">BATCH20260518007</button></td>
+                    <td>码号恢复</td>
+                    <td><button class="link-text total-link" type="button" data-batch="BATCH20260518007">86</button></td>
+                    <td>82</td>
+                    <td>4</td>
+                    <td>清洗完成码号恢复入库</td>
+                    <td>2026-05-18 16:42:09</td>
+                    <td>zhangsan</td>
+                  </tr>
+                  <tr>
+                    <td><button class="link-text batch-link" type="button" data-batch="BATCH20260517012" data-type="码号清洗">BATCH20260517012</button></td>
+                    <td>码号清洗</td>
+                    <td><button class="link-text total-link" type="button" data-batch="BATCH20260517012">42</button></td>
+                    <td>42</td>
+                    <td>0</td>
+                    <td>设备返厂回收码号清洗</td>
+                    <td>2026-05-17 11:08:33</td>
+                    <td>admin</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="pager" aria-label="分页">
+              <span>共 24 条</span>
+              <button class="page-btn" type="button">‹</button>
+              <button class="page-btn active" type="button">1</button>
+              <button class="page-btn" type="button">2</button>
+              <button class="page-btn" type="button">›</button>
+            </div>
+          </section>
+        </div>
+
+        <div class="page-view" id="batchDetailPage">
+          <section class="panel query-panel" aria-label="批次ICCID明细查询">
+            <div class="filter-wrap">
+              <div class="field">
+                <input class="control" id="detailIccid" type="text" placeholder="ICCID" />
+              </div>
+              <div class="field clearable-query">
+                <input class="control" id="detailMerchant" type="text" list="detailMerchantOptions" placeholder="商户" />
+                <button class="query-clear" type="button" data-clear-control="detailMerchant" aria-label="清除商户">×</button>
+                <datalist id="detailMerchantOptions">
+                  <option value="华东物联商户"></option>
+                  <option value="车载设备商户"></option>
+                  <option value="北区能源商户"></option>
+                  <option value="渠道直营商户"></option>
+                </datalist>
+              </div>
+              <div class="field clearable-query">
+                <input class="control" id="detailRecycleType" type="text" list="detailRecycleOptions" placeholder="回收方式" />
+                <button class="query-clear" type="button" data-clear-control="detailRecycleType" aria-label="清除回收方式">×</button>
+                <datalist id="detailRecycleOptions">
+                  <option value="退费"></option>
+                  <option value="资费转移"></option>
+                  <option value="设备返厂"></option>
+                </datalist>
+              </div>
+              <div class="form-actions">
+                <button class="btn" id="detailSearchBtn" type="button">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="m21 21-4.3-4.3M11 19a8 8 0 1 1 0-16 8 8 0 0 1 0 16Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  搜索
+                </button>
+                <button class="btn secondary" id="detailResetBtn" type="button">重置</button>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel table-panel" aria-label="批次ICCID明细列表">
+            <div class="table-scroll">
+              <table>
+                <thead>
+                  <tr id="batchDetailHeader"></tr>
+                </thead>
+                <tbody id="batchDetailBody"></tbody>
+              </table>
+            </div>
+            <div class="pager" aria-label="分页">
+              <span>共 120 条</span>
+              <button class="page-btn" type="button">‹</button>
+              <button class="page-btn active" type="button">1</button>
+              <button class="page-btn" type="button">2</button>
+              <button class="page-btn" type="button">3</button>
+              <button class="page-btn" type="button">›</button>
+            </div>
+          </section>
+        </div>
+
+        <div class="page-view" id="simDetailPage">
+          <section class="panel sim-detail-panel" aria-label="SIM卡详情">
+            <div class="sim-detail-head">
+              <h2>SIM卡详情</h2>
+              <button class="btn secondary" id="backSimDetailBtn" type="button">返回</button>
+            </div>
+            <div class="sim-detail-grid" id="simDetailGrid"></div>
+          </section>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <div class="modal-mask" id="batchModal" role="dialog" aria-modal="true" aria-labelledby="batchTitle">
+    <div class="modal batch-modal">
+      <div class="modal-head">
+        <h2 id="batchTitle">批量操作</h2>
+        <button class="close" id="closeBatchModal" type="button" aria-label="关闭">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-form">
+          <div class="modal-form-row">
+            <label class="modal-label" for="batchActionType"><span class="required">*</span>操作类型</label>
+            <select class="batch-select" id="batchActionType">
+              <option value="批量码号清洗">批量码号清洗</option>
+              <option value="批量码号恢复">批量码号恢复</option>
+            </select>
+          </div>
+
+          <div class="modal-form-row">
+            <label class="modal-label"><span class="required">*</span>选择文件</label>
+            <div>
+              <div class="file-line">
+                <button class="file-btn" id="chooseFileBtn" type="button">选取文件</button>
+                <button class="template-link" id="downloadTplBtn" type="button">下载模板<span class="template-badge">1</span></button>
+                <span class="file-name" id="batchFileName">未选择文件</span>
+              </div>
+              <input id="batchFileInput" type="file" accept=".xls,.xlsx" hidden />
+              <div class="file-help">支持文件格式：.XLS、.XLSX表格格式，单次导入文件上限为10MB</div>
+            </div>
+          </div>
+
+          <div class="modal-form-row">
+            <label class="modal-label" for="batchRemark">备注</label>
+            <input class="batch-select" id="batchRemark" type="text" placeholder="请输入备注" />
+          </div>
+
+          <div class="validation-result" id="validationResult">
+            <div>校验上传ICCID数量：<strong id="totalIccidCount">0</strong> 条</div>
+            <div>ICCID校验成功数量：<strong id="successIccidCount">0</strong> 条</div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button class="btn secondary" id="cancelBatchBtn" type="button">取消</button>
+        <button class="btn" id="validateBatchBtn" type="button">确定</button>
+        <button class="btn" id="executeBatchBtn" type="button" style="display:none;">确定执行</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-mask" id="actionRemarkModal" role="dialog" aria-modal="true" aria-labelledby="actionRemarkTitle">
+    <div class="modal batch-modal">
+      <div class="modal-head">
+        <h2 id="actionRemarkTitle">填写备注</h2>
+        <button class="close" id="closeActionRemarkModal" type="button" aria-label="关闭">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-form">
+          <div class="modal-form-row">
+            <label class="modal-label" for="actionRemarkText">备注</label>
+            <textarea class="batch-textarea" id="actionRemarkText" placeholder="请输入备注"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button class="btn secondary" id="cancelActionRemarkBtn" type="button">取消</button>
+        <button class="btn" id="confirmActionRemarkBtn" type="button">确定</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-mask" id="freezeStatusModal" role="dialog" aria-modal="true" aria-labelledby="freezeStatusTitle">
+    <div class="modal batch-modal">
+      <div class="modal-head">
+        <h2 id="freezeStatusTitle">修改冻结状态</h2>
+        <button class="close" id="closeFreezeStatusModal" type="button" aria-label="关闭">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-form">
+          <div class="modal-form-row">
+            <label class="modal-label"><span class="required">*</span>操作模式</label>
+            <div class="radio-group" id="freezeModeGroup">
+              <label class="radio-option">
+                <input type="radio" name="freezeMode" value="file" checked />
+                文件导入
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="freezeMode" value="manual" />
+                手动录入
+              </label>
+            </div>
+          </div>
+
+          <div class="mode-fields" id="freezeFileModeFields">
+            <div class="modal-form-row">
+              <label class="modal-label"><span class="required">*</span>选择文件</label>
+              <div>
+                <div class="file-line">
+                  <button class="file-btn" id="chooseFreezeFileBtn" type="button">选取文件</button>
+                  <button class="template-link" id="downloadFreezeTplBtn" type="button">下载模版</button>
+                  <span class="file-name" id="freezeFileName">未选择文件</span>
+                </div>
+                <input id="freezeFileInput" type="file" accept=".xls,.xlsx" hidden />
+                <div class="file-help">支持文件格式：.XLS、XLSX表格格式 ，单次导入文件上限为10MB</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mode-fields is-hidden" id="freezeManualModeFields">
+            <div class="modal-form-row">
+              <label class="modal-label" for="freezeIccidInput"><span class="required">*</span>ICCID</label>
+              <input class="batch-select" id="freezeIccidInput" type="text" placeholder="支持多个ICCID用逗号隔开" />
+            </div>
+          </div>
+
+          <div class="modal-form-row">
+            <label class="modal-label"><span class="required">*</span>冻结状态</label>
+            <div class="radio-group">
+              <label class="radio-option">
+                <input type="radio" name="freezeTargetStatus" value="已冻结" />
+                已冻结
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="freezeTargetStatus" value="未冻结" />
+                未冻结
+              </label>
+            </div>
+          </div>
+
+          <div class="modal-form-row">
+            <label class="modal-label" for="freezeRemarkInput">备注</label>
+            <input class="batch-select" id="freezeRemarkInput" type="text" placeholder="请输入备注" />
+          </div>
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button class="btn secondary" id="cancelFreezeStatusBtn" type="button">取消</button>
+        <button class="btn" id="confirmFreezeStatusBtn" type="button">确认</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-mask" id="writableRemoveModal" role="dialog" aria-modal="true" aria-labelledby="writableRemoveTitle">
+    <div class="modal confirm-modal">
+      <div class="modal-head">
+        <h2 id="writableRemoveTitle">提示</h2>
+        <button class="close" id="closeWritableRemoveModal" type="button" aria-label="关闭">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="confirm-message">确定移出此可写码号吗？</div>
+      </div>
+      <div class="modal-foot">
+        <button class="btn secondary" id="cancelWritableRemoveBtn" type="button">取消</button>
+        <button class="btn" id="confirmWritableRemoveBtn" type="button">确定</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-mask" id="checkRecordModal" role="dialog" aria-modal="true" aria-labelledby="checkRecordTitle">
+    <div class="modal">
+      <div class="modal-head">
+        <h2 id="checkRecordTitle">检查记录</h2>
+        <button class="close" id="closeCheckRecordModal" type="button" aria-label="关闭">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-query" aria-label="检查记录查询">
+          <div class="field">
+            <input class="control" id="checkIccid" type="text" placeholder="ICCID" />
+          </div>
+          <div class="field clearable-query">
+            <select class="control" id="checkStatus" aria-label="状态">
+              <option value="">状态</option>
+              <option value="成功">成功</option>
+              <option value="失败">失败</option>
+            </select>
+            <button class="query-clear" type="button" data-clear-control="checkStatus" aria-label="清除状态">×</button>
+          </div>
+          <div class="modal-query-actions">
+            <button class="btn" id="checkSearchBtn" type="button">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="m21 21-4.3-4.3M11 19a8 8 0 1 1 0-16 8 8 0 0 1 0 16Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              搜索
+            </button>
+            <button class="btn secondary" id="checkExportBtn" type="button">导出</button>
+          </div>
+        </div>
+        <div class="table-scroll">
+          <table class="check-table">
+            <thead>
+              <tr>
+                <th>ICCID</th>
+                <th>状态</th>
+                <th>失败原因</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><button class="iccid-link" type="button" data-iccid="8986044219231000123">8986044219231000123</button></td>
+                <td><span class="status-text status-positive">成功</span></td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td><button class="iccid-link" type="button" data-iccid="8986012311223300456">8986012311223300456</button></td>
+                <td><span class="status-text status-negative">失败</span></td>
+                <td>ICCID不存在或不在回收池</td>
+              </tr>
+              <tr>
+                <td><button class="iccid-link" type="button" data-iccid="8986112321009876543">8986112321009876543</button></td>
+                <td><span class="status-text status-positive">成功</span></td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td><button class="iccid-link" type="button" data-iccid="8986027710098823001">8986027710098823001</button></td>
+                <td><span class="status-text status-negative">失败</span></td>
+                <td>码号状态不满足本次操作条件</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button class="btn secondary" id="cancelCheckRecordBtn" type="button">关闭</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const writableFields = [
+      { key: "merchantName", label: "商户名称", type: "select", basic: true, options: ["华东物联商户", "车载设备商户", "北区能源商户", "渠道直营商户"] },
+      { key: "iccidMsisdn", label: "ICCID/MSISDN", type: "input", basic: true },
+      { key: "imei", label: "IMEI", type: "input", basic: true },
+      { key: "solutionProvider", label: "方案商名称", type: "input", basic: true },
+      { key: "supplier", label: "供应商", type: "select", basic: true, options: ["中移物联", "联通智联", "天喻信息"] },
+      { key: "realNameStatus", label: "实名认证状态", type: "select", basic: true, options: ["未实名认证", "实名认证中", "已通过实名认证", "未通过实名认证"] },
+      { key: "freezeStatus", label: "冻结状态", type: "select", basic: true, options: ["未冻结", "已冻结"] },
+      { key: "bindStatus", label: "绑定状态", type: "select", basic: true, options: ["未绑定", "已绑定"] },
+      { key: "boxNo", label: "箱号", type: "input", basic: true },
+      { key: "imsiEmpty", label: "IMSI是否为空", type: "select", options: ["是", "否"] },
+      { key: "deviceModel", label: "设备型号", type: "select", options: ["KIDS-W3", "KIDS-W5", "ESIM-T10"] },
+      { key: "deviceType", label: "设备类型", type: "select", options: ["内置卡", "外插卡"] },
+      { key: "agent", label: "代理商", type: "select", options: ["华东渠道代理", "华南直营代理", "北区合作代理"] },
+      { key: "packageExpireStatus", label: "套餐过期状态", type: "select", options: ["已过期", "未过期"] },
+      { key: "cardStatus", label: "卡状态", type: "select", options: ["已激活", "激活失败", "已停机", "停机失败"] },
+      { key: "cardGroup", label: "卡组名称", type: "select", options: ["儿童手表基础卡组", "智能终端流量卡组", "直营渠道卡组"] },
+      { key: "lockFlag", label: "锁卡状态", type: "select", options: ["锁卡", "未锁卡"] },
+      { key: "rechargeCount", label: "充值次数", type: "input" },
+      { key: "writeStatus", label: "写卡状态", type: "select", options: ["待写卡", "待开机上电", "申请失败", "写卡中", "写卡失败", "写卡成功"] },
+      { key: "allocated", label: "是否分配", type: "select", options: ["是", "否"] },
+      { key: "bindTime", label: "绑定时间", type: "daterange" }
+    ];
+
+    const writableStatusOrder = ["待写卡", "待开机上电", "申请失败", "写卡中", "写卡失败", "写卡成功", "全部"];
+    const writableStatusTotals = {
+      "待写卡": 72,
+      "待开机上电": 41,
+      "申请失败": 9,
+      "写卡中": 26,
+      "写卡失败": 7,
+      "写卡成功": 113
+    };
+
+    const writableTableColumns = [
+      { key: "iccid", label: "ICCID" },
+      { key: "writeStatus", label: "写卡状态", status: true },
+      { key: "allocated", label: "是否分配" },
+      { key: "msisdn", label: "MSISDN" },
+      { key: "imei", label: "IMEI" },
+      { key: "cardStatus", label: "卡状态" },
+      { key: "serviceMonths", label: "服务有效月份" },
+      { key: "lockStatus", label: "锁卡状态" },
+      { key: "freezeStatus", label: "冻结状态" },
+      { key: "merchant", label: "商户" },
+      { key: "agent", label: "代理商" },
+      { key: "solutionProvider", label: "方案商" },
+      { key: "supplier", label: "SIM卡供应商" },
+      { key: "operator", label: "运营商" },
+      { key: "cardGroup", label: "卡组名称" },
+      { key: "deviceModel", label: "设备型号" },
+      { key: "integrationType", label: "SIM卡集成方式" },
+      { key: "importTime", label: "导入时间" },
+      { key: "bindStatus", label: "绑定状态" },
+      { key: "bindTime", label: "绑定时间" },
+      { key: "realNameStatus", label: "实名认证状态" },
+      { key: "realNameTime", label: "实名认证时间" },
+      { key: "serviceDate", label: "服务有效日期" },
+      { key: "rechargeCount", label: "充值次数" },
+      { key: "rechargeType", label: "充值类型" },
+      { key: "boxNo", label: "箱号" },
+      { key: "action", label: "操作", fixedRight: true }
+    ];
+
+    let writableRows = [
+      {
+        iccid: "8986044219231000841",
+        writeStatus: "写卡成功",
+        allocated: "是",
+        msisdn: "106482913001",
+        imei: "861234050001842",
+        cardStatus: "已激活",
+        serviceMonths: "12",
+        lockStatus: "未锁卡",
+        freezeStatus: "未冻结",
+        merchant: "华东物联商户",
+        agent: "华东渠道代理",
+        solutionProvider: "儿童终端方案商",
+        supplier: "中移物联",
+        operator: "中国移动",
+        cardGroup: "儿童手表基础卡组",
+        deviceModel: "KIDS-W5",
+        integrationType: "内置卡",
+        importTime: "2026-05-18 09:36:20",
+        bindStatus: "已绑定",
+        bindTime: "2026-05-18 14:08:12",
+        realNameStatus: "已通过实名认证",
+        realNameTime: "2026-05-18 15:11:06",
+        serviceDate: "2026-05-18 至 2027-05-17",
+        rechargeCount: "1",
+        rechargeType: "首充",
+        boxNo: "BOX20260518001"
+      },
+      {
+        iccid: "8986044219231000842",
+        writeStatus: "待写卡",
+        allocated: "否",
+        msisdn: "-",
+        imei: "-",
+        cardStatus: "-",
+        serviceMonths: "24",
+        lockStatus: "未锁卡",
+        freezeStatus: "未冻结",
+        merchant: "车载设备商户",
+        agent: "华南直营代理",
+        solutionProvider: "智慧出行方案商",
+        supplier: "联通智联",
+        operator: "中国联通",
+        cardGroup: "智能终端流量卡组",
+        deviceModel: "ESIM-T10",
+        integrationType: "外插卡",
+        importTime: "2026-05-17 16:20:44",
+        bindStatus: "未绑定",
+        bindTime: "-",
+        realNameStatus: "未实名认证",
+        realNameTime: "-",
+        serviceDate: "2026-06-01 至 2028-05-31",
+        rechargeCount: "0",
+        rechargeType: "-",
+        boxNo: "BOX20260517006"
+      },
+      {
+        iccid: "8986044219231000843",
+        writeStatus: "写卡中",
+        allocated: "是",
+        msisdn: "106482913003",
+        imei: "861234050001856",
+        cardStatus: "已激活",
+        serviceMonths: "12",
+        lockStatus: "锁卡",
+        freezeStatus: "已冻结",
+        merchant: "北区能源商户",
+        agent: "北区合作代理",
+        solutionProvider: "穿戴设备方案商",
+        supplier: "天喻信息",
+        operator: "中国移动",
+        cardGroup: "直营渠道卡组",
+        deviceModel: "KIDS-W3",
+        integrationType: "内置卡",
+        importTime: "2026-05-16 10:04:58",
+        bindStatus: "已绑定",
+        bindTime: "2026-05-16 13:22:10",
+        realNameStatus: "实名认证中",
+        realNameTime: "-",
+        serviceDate: "2026-05-16 至 2027-05-15",
+        rechargeCount: "2",
+        rechargeType: "续费",
+        boxNo: "BOX20260516003"
+      },
+      {
+        iccid: "8986044219231000844",
+        writeStatus: "写卡失败",
+        allocated: "否",
+        msisdn: "-",
+        imei: "861234050001867",
+        cardStatus: "激活失败",
+        serviceMonths: "6",
+        lockStatus: "未锁卡",
+        freezeStatus: "已冻结",
+        merchant: "渠道直营商户",
+        agent: "华南直营代理",
+        solutionProvider: "儿童终端方案商",
+        supplier: "中移物联",
+        operator: "中国移动",
+        cardGroup: "儿童手表基础卡组",
+        deviceModel: "KIDS-W5",
+        integrationType: "内置卡",
+        importTime: "2026-05-15 17:40:31",
+        bindStatus: "未绑定",
+        bindTime: "-",
+        realNameStatus: "未通过实名认证",
+        realNameTime: "2026-05-15 18:05:24",
+        serviceDate: "2026-05-15 至 2026-11-14",
+        rechargeCount: "0",
+        rechargeType: "-",
+        boxNo: "BOX20260515009"
+      }
+    ];
+
+    const writableState = {
+      expanded: true,
+      values: {},
+      pendingRemoveIccid: "",
+      activeStatus: "待写卡",
+      dateRangeOpen: false,
+      draftBindStart: "",
+      draftBindEnd: "",
+      dateRangeError: ""
+    };
+
+    const fields = [
+      { key: "iccid", label: "ICCID", type: "input", basic: true, fuzzy: true },
+      { key: "merchant", label: "商户", type: "select", basic: true, fuzzy: true, options: ["华东物联商户", "车载设备商户", "北区能源商户", "渠道直营商户"] },
+      { key: "recycleType", label: "回收方式", type: "select", basic: true, options: ["退费", "资费转移", "设备返厂"] },
+      { key: "recoverStatus", label: "码号恢复状态", type: "select", basic: true, options: ["已恢复", "未恢复"] },
+      { key: "cleanStatus", label: "码号清洗状态", type: "select", basic: true, options: ["已清洗", "未清洗"] }
+    ];
+
+    const tableColumns = [
+      { key: "iccid", label: "ICCID", sticky: true, link: true },
+      { key: "merchant", label: "商户" },
+      { key: "recycleType", label: "回收方式" },
+      { key: "cleanStatus", label: "码号清洗状态" },
+      { key: "recoverStatus", label: "码号恢复状态" },
+      { key: "cleanOperator", label: "码号清洗操作人" },
+      { key: "cleanTime", label: "码号清洗操作时间" },
+      { key: "recoverOperator", label: "码号恢复操作人" },
+      { key: "recoverTime", label: "码号恢复操作时间" },
+      { key: "createdAt", label: "创建时间" },
+      { key: "createdBy", label: "创建人" }
+    ];
+
+    const rows = [
+      {
+        iccid: "8986044219231000123",
+        merchant: "华东物联商户",
+        recycleType: ["退费", "orange"],
+        cleanStatus: ["未清洗", "orange"],
+        remark: "退费回收待处理",
+        recoverStatus: ["未恢复", "orange"],
+        cleanOperator: "-",
+        cleanTime: "-",
+        recoverOperator: "-",
+        recoverTime: "-",
+        createdAt: "2026-05-12 10:24:18",
+        createdBy: "system",
+        updatedAt: "-",
+        familyNo: ["是", "green"]
+      },
+      {
+        iccid: "8986012311223300456",
+        merchant: "车载设备商户",
+        recycleType: ["资费转移", "blue"],
+        cleanStatus: ["已清洗", "green"],
+        remark: "资费转移回收，已完成清洗",
+        recoverStatus: ["未恢复", "orange"],
+        cleanOperator: "zhangsan",
+        cleanTime: "2026-05-11 09:18:36",
+        recoverOperator: "-",
+        recoverTime: "-",
+        createdAt: "2026-05-10 15:09:02",
+        createdBy: "lifan",
+        updatedAt: "2026-05-11 09:18:36",
+        familyNo: ["否", "blue"]
+      },
+      {
+        iccid: "8986112321009876543",
+        merchant: "北区能源商户",
+        recycleType: ["设备返厂", "orange"],
+        cleanStatus: ["未清洗", "orange"],
+        remark: "设备返厂检测回收",
+        recoverStatus: ["未恢复", "orange"],
+        cleanOperator: "-",
+        cleanTime: "-",
+        recoverOperator: "-",
+        recoverTime: "-",
+        createdAt: "2026-05-08 11:45:08",
+        createdBy: "wangwu",
+        updatedAt: "-",
+        familyNo: ["是", "green"]
+      },
+      {
+        iccid: "8986027710098823001",
+        merchant: "渠道直营商户",
+        recycleType: ["退费", "orange"],
+        cleanStatus: ["已清洗", "green"],
+        remark: "已恢复入库",
+        recoverStatus: ["已恢复", "green"],
+        cleanOperator: "lisi",
+        cleanTime: "2026-05-12 15:30:06",
+        recoverOperator: "zhaoliu",
+        recoverTime: "2026-05-13 17:44:20",
+        createdAt: "2026-05-01 08:18:33",
+        createdBy: "admin",
+        updatedAt: "2026-05-13 17:44:20",
+        familyNo: ["否", "blue"]
+      }
+    ];
+
+    const state = {
+      expanded: true,
+      values: {},
+      selectedIds: new Set(),
+      selectedAllFiltered: false,
+      pendingAction: null,
+      pendingRows: []
+    };
+
+    const filterWrap = document.getElementById("filterWrap");
+    const writableFilterWrap = document.getElementById("writableFilterWrap");
+    const toast = document.getElementById("toast");
+
+    function iconChevron() {
+      return '<svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    }
+
+    function iconCalendar() {
+      return '<svg class="field-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    }
+
+    function renderWritableFilters() {
+      writableFilterWrap.innerHTML = "";
+      const visibleFields = writableState.expanded
+        ? writableFields
+        : writableFields.filter((field) => field.basic);
+
+      visibleFields.forEach((field) => {
+        const el = document.createElement("div");
+        el.dataset.key = field.key;
+
+        if (field.type === "daterange") {
+          const start = writableState.values.bindStart || "";
+          const end = writableState.values.bindEnd || "";
+          el.className = "field writable-date-range";
+          el.innerHTML = `
+            <button class="date-range-trigger ${writableState.dateRangeOpen ? "open" : ""}" id="writableDateRangeTrigger" type="button" aria-haspopup="dialog" aria-expanded="${writableState.dateRangeOpen}">
+              <span class="date-range-display">
+                <span class="${start ? "" : "date-range-placeholder"}">${start || "绑定开始时间"}</span>
+                <span class="date-range-separator">至</span>
+                <span class="${end ? "" : "date-range-placeholder"}">${end || "绑定结束时间"}</span>
+              </span>
+              <svg class="date-range-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="date-range-menu ${writableState.dateRangeOpen ? "open" : ""}" role="dialog" aria-label="绑定时间选择">
+              <div class="date-range-pickers">
+                <label>
+                  <span class="date-range-picker-label">开始日期</span>
+                  <input class="date-picker-control" id="writableBindStartPicker" type="date" value="${writableState.draftBindStart}" aria-label="选择绑定开始日期" />
+                </label>
+                <label>
+                  <span class="date-range-picker-label">结束日期</span>
+                  <input class="date-picker-control" id="writableBindEndPicker" type="date" value="${writableState.draftBindEnd}" min="${writableState.draftBindStart}" aria-label="选择绑定结束日期" />
+                </label>
+              </div>
+              <div class="date-range-error ${writableState.dateRangeError ? "show" : ""}" id="writableDateRangeError">${writableState.dateRangeError}</div>
+              <div class="date-range-actions">
+                <button class="btn secondary" id="clearWritableDateRangeBtn" type="button">清空</button>
+                <button class="btn" id="applyWritableDateRangeBtn" type="button">确定</button>
+              </div>
+            </div>
+          `;
+        } else {
+          el.className = "field";
+          if (field.type === "select") {
+            const value = writableState.values[field.key] || "";
+            el.innerHTML = `
+              <input class="control select-trigger ${value ? "has-value" : ""}" data-key="${field.key}" type="text" placeholder="${field.label}" value="${value}" autocomplete="off" />
+              ${value ? `<button class="select-clear" type="button" data-key="${field.key}" aria-label="清除${field.label}">×</button>` : ""}
+              ${iconChevron().replace('class="icon"', 'class="field-icon"')}
+              <div class="select-menu" data-menu="${field.key}">
+                <div class="select-options"></div>
+              </div>
+            `;
+            writableFilterWrap.appendChild(el);
+            renderWritableOptions(el, field, "");
+            return;
+          }
+          el.innerHTML = `
+            <input class="control" data-key="${field.key}" type="text" inputmode="${field.key === "rechargeCount" ? "numeric" : "text"}" placeholder="${field.label}" value="${writableState.values[field.key] || ""}" />
+          `;
+        }
+        writableFilterWrap.appendChild(el);
+      });
+
+      const actions = document.createElement("div");
+      actions.className = "form-actions";
+      actions.innerHTML = `
+        <button class="btn" id="writableSearchBtn" type="button">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="m21 21-4.3-4.3M11 19a8 8 0 1 1 0-16 8 8 0 0 1 0 16Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          搜索
+        </button>
+        <button class="btn secondary" id="writableResetBtn" type="button">重置</button>
+        <button class="btn ghost" id="writableToggleBtn" type="button">
+          <svg class="icon chevron ${writableState.expanded ? "up" : ""}" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          ${writableState.expanded ? "收起" : "展开"}
+        </button>
+      `;
+      writableFilterWrap.appendChild(actions);
+      bindWritableFilterEvents();
+    }
+
+    function openWritableDateRange() {
+      writableState.dateRangeOpen = true;
+      writableState.draftBindStart = writableState.values.bindStart || "";
+      writableState.draftBindEnd = writableState.values.bindEnd || "";
+      writableState.dateRangeError = "";
+      renderWritableFilters();
+    }
+
+    function closeWritableDateRange() {
+      if (!writableState.dateRangeOpen) return;
+      writableState.dateRangeOpen = false;
+      writableState.dateRangeError = "";
+      renderWritableFilters();
+    }
+
+    function updateWritableDateRangeDraft() {
+      writableState.draftBindStart = document.getElementById("writableBindStartPicker").value;
+      writableState.draftBindEnd = document.getElementById("writableBindEndPicker").value;
+      const error = document.getElementById("writableDateRangeError");
+      const invalid = writableState.draftBindStart && writableState.draftBindEnd
+        && writableState.draftBindStart > writableState.draftBindEnd;
+      writableState.dateRangeError = invalid ? "绑定开始日期不能晚于绑定结束日期" : "";
+      error.textContent = writableState.dateRangeError;
+      error.classList.toggle("show", Boolean(writableState.dateRangeError));
+      document.getElementById("writableBindEndPicker").min = writableState.draftBindStart;
+    }
+
+    function applyWritableDateRange() {
+      updateWritableDateRangeDraft();
+      if (writableState.dateRangeError) return;
+      writableState.values.bindStart = writableState.draftBindStart;
+      writableState.values.bindEnd = writableState.draftBindEnd;
+      writableState.dateRangeOpen = false;
+      renderWritableFilters();
+    }
+
+    function clearWritableDateRange() {
+      writableState.values.bindStart = "";
+      writableState.values.bindEnd = "";
+      writableState.draftBindStart = "";
+      writableState.draftBindEnd = "";
+      writableState.dateRangeError = "";
+      writableState.dateRangeOpen = false;
+      renderWritableFilters();
+    }
+
+    function renderWritableOptions(fieldEl, field, keyword) {
+      const optionsEl = fieldEl.querySelector(".select-options");
+      const selected = writableState.values[field.key] || "";
+      const options = field.options.filter((option) => option.includes(keyword.trim()));
+      optionsEl.innerHTML = options.length ? "" : '<div class="option empty">暂无匹配数据</div>';
+      options.forEach((option) => {
+        const node = document.createElement("div");
+        node.className = "option" + (selected === option ? " active" : "");
+        node.textContent = option;
+        node.dataset.value = option;
+        optionsEl.appendChild(node);
+      });
+    }
+
+    function bindWritableFilterEvents() {
+      writableFilterWrap.querySelectorAll(".control").forEach((input) => {
+        input.addEventListener("input", () => {
+          writableState.values[input.dataset.key] = input.value;
+        });
+        input.addEventListener("blur", () => {
+          if (input.type !== "date") input.value = input.value.trim();
+          writableState.values[input.dataset.key] = input.value;
+        });
+        input.addEventListener("keydown", (event) => {
+          if (event.key === "Enter") searchWritableNumbers();
+        });
+      });
+
+      writableFilterWrap.querySelectorAll(".select-trigger").forEach((trigger) => {
+        const openMenu = () => {
+          closeWritableMenus(trigger.dataset.key);
+          const field = writableFields.find((item) => item.key === trigger.dataset.key);
+          renderWritableOptions(trigger.closest(".field"), field, trigger.value);
+          trigger.classList.add("open");
+          writableFilterWrap.querySelector(`[data-menu="${trigger.dataset.key}"]`).classList.add("open");
+        };
+        trigger.addEventListener("click", (event) => {
+          event.stopPropagation();
+          openMenu();
+        });
+        trigger.addEventListener("focus", openMenu);
+        trigger.addEventListener("input", openMenu);
+      });
+
+      writableFilterWrap.querySelectorAll(".select-options").forEach((optionsEl) => {
+        optionsEl.addEventListener("click", (event) => {
+          const option = event.target.closest(".option");
+          if (!option || option.classList.contains("empty")) return;
+          writableState.values[optionsEl.closest(".field").dataset.key] = option.dataset.value;
+          renderWritableFilters();
+        });
+      });
+
+      writableFilterWrap.querySelectorAll(".select-clear").forEach((button) => {
+        button.addEventListener("click", (event) => {
+          event.stopPropagation();
+          writableState.values[button.dataset.key] = "";
+          closeWritableMenus();
+          renderWritableFilters();
+        });
+      });
+
+      const dateRangeTrigger = document.getElementById("writableDateRangeTrigger");
+      if (dateRangeTrigger) {
+        dateRangeTrigger.addEventListener("click", (event) => {
+          event.stopPropagation();
+          closeWritableMenus();
+          if (writableState.dateRangeOpen) closeWritableDateRange();
+          else openWritableDateRange();
+        });
+      }
+      const dateRangeMenu = writableFilterWrap.querySelector(".date-range-menu");
+      if (dateRangeMenu && writableState.dateRangeOpen) {
+        dateRangeMenu.addEventListener("click", (event) => event.stopPropagation());
+        document.getElementById("writableBindStartPicker").addEventListener("change", updateWritableDateRangeDraft);
+        document.getElementById("writableBindEndPicker").addEventListener("change", updateWritableDateRangeDraft);
+        document.getElementById("clearWritableDateRangeBtn").addEventListener("click", clearWritableDateRange);
+        document.getElementById("applyWritableDateRangeBtn").addEventListener("click", applyWritableDateRange);
+      }
+
+      document.getElementById("writableSearchBtn").addEventListener("click", searchWritableNumbers);
+      document.getElementById("writableResetBtn").addEventListener("click", resetWritableFilters);
+      document.getElementById("writableToggleBtn").addEventListener("click", () => {
+        writableState.expanded = !writableState.expanded;
+        renderWritableFilters();
+      });
+    }
+
+    function closeWritableMenus(exceptKey) {
+      writableFilterWrap.querySelectorAll(".select-menu").forEach((menu) => {
+        if (menu.dataset.menu !== exceptKey) menu.classList.remove("open");
+      });
+      writableFilterWrap.querySelectorAll(".select-trigger").forEach((trigger) => {
+        if (trigger.dataset.key !== exceptKey) trigger.classList.remove("open");
+      });
+    }
+
+    function searchWritableNumbers() {
+      const start = writableState.values.bindStart || "";
+      const end = writableState.values.bindEnd || "";
+      if (start && end && start > end) {
+        showToast("绑定开始日期不能大于结束日期", "error");
+        return;
+      }
+      const activeCount = writableFields.filter((field) => (
+        field.type === "daterange"
+          ? start || end
+          : writableState.values[field.key]
+      )).length;
+      showToast(activeCount ? "可写码号列表已按查询条件刷新" : "已查询全部可写码号", "success");
+      renderWritableFilters();
+    }
+
+    function resetWritableFilters() {
+      writableState.values = {};
+      writableState.dateRangeOpen = false;
+      writableState.draftBindStart = "";
+      writableState.draftBindEnd = "";
+      writableState.dateRangeError = "";
+      renderWritableFilters();
+      showToast("可写码号查询条件已清空", "info");
+    }
+
+    function renderIccidLink(value) {
+      return `<button class="iccid-link" type="button" data-iccid="${value}" title="查看SIM卡详情">${value}</button>`;
+    }
+
+    function renderWritableValue(value, column) {
+      if (column.key === "action") {
+        return `<button class="danger-link writable-remove-btn" type="button" data-iccid="${value}">移出</button>`;
+      }
+      if (column.key === "iccid") return renderIccidLink(value);
+      if (column.key !== "writeStatus") return value || "-";
+      const statusClasses = {
+        "待写卡": "write-pending",
+        "待开机上电": "write-power",
+        "申请失败": "write-apply-failed",
+        "写卡中": "write-processing",
+        "写卡失败": "write-failed",
+        "写卡成功": "write-success"
+      };
+      return `<span class="status-text ${statusClasses[value] || ""}">${value || "-"}</span>`;
+    }
+
+    function writableStatusTotal(status) {
+      if (status !== "全部") return writableStatusTotals[status] || 0;
+      return Object.values(writableStatusTotals).reduce((total, count) => total + count, 0);
+    }
+
+    function renderWritableStatusTabs() {
+      const statusTabs = document.getElementById("writableStatusTabs");
+      statusTabs.innerHTML = writableStatusOrder.map((status) => `
+        <button
+          class="writable-status-tab ${writableState.activeStatus === status ? "active" : ""}"
+          type="button"
+          data-write-status="${status}"
+          aria-pressed="${writableState.activeStatus === status}"
+        >${status}（${writableStatusTotal(status)}）</button>
+      `).join("");
+      statusTabs.querySelectorAll(".writable-status-tab").forEach((tab) => {
+        tab.addEventListener("click", () => {
+          writableState.activeStatus = tab.dataset.writeStatus;
+          renderWritableStatusTabs();
+          renderWritableTable();
+          renderWritablePager();
+        });
+      });
+    }
+
+    function renderWritablePager() {
+      const total = writableStatusTotal(writableState.activeStatus);
+      const pageCount = Math.max(Math.ceil(total / 20), 1);
+      const pageLabels = pageCount > 4 ? ["1", "2", "3", "...", String(pageCount)] : Array.from({ length: pageCount }, (_, index) => String(index + 1));
+      document.getElementById("writablePager").innerHTML = `
+        <span>共 ${total} 条</span>
+        <button class="page-btn" type="button">‹</button>
+        ${pageLabels.map((page, index) => `<button class="page-btn ${index === 0 ? "active" : ""}" type="button">${page}</button>`).join("")}
+        <button class="page-btn" type="button">›</button>
+      `;
+    }
+
+    function renderWritableTable() {
+      const header = document.getElementById("writableTableHeader");
+      const body = document.getElementById("writableTableBody");
+      const visibleRows = writableState.activeStatus === "全部"
+        ? writableRows
+        : writableRows.filter((row) => row.writeStatus === writableState.activeStatus);
+      header.innerHTML = writableTableColumns.map((column) => `
+        <th class="${column.fixedRight ? "operation-col" : ""}">${column.label}</th>
+      `).join("");
+      body.innerHTML = visibleRows.length
+        ? visibleRows.map((row) => `
+            <tr>
+              ${writableTableColumns.map((column) => `
+                <td class="${column.fixedRight ? "operation-col" : ""}">${renderWritableValue(column.key === "action" ? row.iccid : row[column.key], column)}</td>
+              `).join("")}
+            </tr>
+          `).join("")
+        : `<tr><td colspan="${writableTableColumns.length}" style="text-align:center;color:#6b7280;">暂无数据</td></tr>`;
+      body.querySelectorAll(".writable-remove-btn").forEach((button) => {
+        button.addEventListener("click", () => openWritableRemoveModal(button.dataset.iccid));
+      });
+    }
+
+    function openWritableRemoveModal(iccid) {
+      writableState.pendingRemoveIccid = iccid;
+      document.getElementById("writableRemoveModal").classList.add("open");
+    }
+
+    function closeWritableRemoveModal() {
+      writableState.pendingRemoveIccid = "";
+      document.getElementById("writableRemoveModal").classList.remove("open");
+    }
+
+    function confirmWritableRemove() {
+      const iccid = writableState.pendingRemoveIccid;
+      if (!iccid) return;
+      const removedRow = writableRows.find((row) => row.iccid === iccid);
+      writableRows = writableRows.filter((row) => row.iccid !== iccid);
+      if (removedRow && writableStatusTotals[removedRow.writeStatus] > 0) {
+        writableStatusTotals[removedRow.writeStatus] -= 1;
+      }
+      closeWritableRemoveModal();
+      renderWritableStatusTabs();
+      renderWritableTable();
+      renderWritablePager();
+      showToast("已移出此可写码号", "success");
+    }
+
+    function getFreezeMode() {
+      const selectedMode = document.querySelector('input[name="freezeMode"]:checked');
+      return selectedMode ? selectedMode.value : "file";
+    }
+
+    function syncFreezeModeFields() {
+      const isFileMode = getFreezeMode() === "file";
+      document.getElementById("freezeFileModeFields").classList.toggle("is-hidden", !isFileMode);
+      document.getElementById("freezeManualModeFields").classList.toggle("is-hidden", isFileMode);
+    }
+
+    function resetFreezeStatusModal() {
+      document.querySelector('input[name="freezeMode"][value="file"]').checked = true;
+      document.getElementById("freezeFileInput").value = "";
+      document.getElementById("freezeFileName").textContent = "未选择文件";
+      document.getElementById("freezeIccidInput").value = "";
+      document.querySelectorAll('input[name="freezeTargetStatus"]').forEach((input) => {
+        input.checked = false;
+      });
+      document.getElementById("freezeRemarkInput").value = "";
+      syncFreezeModeFields();
+    }
+
+    function openFreezeStatusModal() {
+      resetFreezeStatusModal();
+      document.getElementById("freezeStatusModal").classList.add("open");
+    }
+
+    function closeFreezeStatusModal() {
+      document.getElementById("freezeStatusModal").classList.remove("open");
+    }
+
+    function confirmFreezeStatusChange() {
+      const mode = getFreezeMode();
+      const targetStatus = document.querySelector('input[name="freezeTargetStatus"]:checked');
+      if (mode === "file") {
+        const file = document.getElementById("freezeFileInput").files[0];
+        if (!file) {
+          showToast("请先选取文件", "error");
+          return;
+        }
+        const ext = file.name.split(".").pop().toLowerCase();
+        if (!["xls", "xlsx"].includes(ext)) {
+          showToast("仅支持上传 XLS、XLSX 表格文件", "error");
+          return;
+        }
+        if (file.size > 10 * 1024 * 1024) {
+          showToast("单次导入文件上限为10MB", "error");
+          return;
+        }
+        if (!targetStatus) {
+          showToast("请选择冻结状态", "error");
+          return;
+        }
+      } else {
+        const iccid = document.getElementById("freezeIccidInput").value.trim();
+        if (!iccid) {
+          showToast("请输入ICCID", "error");
+          return;
+        }
+        if (!targetStatus) {
+          showToast("请选择冻结状态", "error");
+          return;
+        }
+      }
+      closeFreezeStatusModal();
+      showToast("冻结状态修改任务已提交", "success");
+    }
+
+    function renderFilters() {
+      filterWrap.innerHTML = "";
+      const visibleFields = state.expanded ? fields : fields.filter((field) => field.basic);
+
+      visibleFields.forEach((field) => {
+        const el = document.createElement("div");
+        el.className = "field" + (field.wide ? " wide" : "");
+        el.dataset.key = field.key;
+
+        if (field.type === "select") {
+          const value = state.values[field.key] || "";
+          el.innerHTML = `
+            <input class="control select-trigger ${value ? "has-value" : ""}" data-key="${field.key}" type="text" placeholder="${field.label}" value="${value}" autocomplete="off" />
+            ${value ? `<button class="select-clear" type="button" data-key="${field.key}" aria-label="清除${field.label}">×</button>` : ""}
+            ${iconChevron().replace('class="icon"', 'class="field-icon"')}
+            <div class="select-menu" data-menu="${field.key}">
+              <div class="select-options"></div>
+            </div>
+          `;
+          filterWrap.appendChild(el);
+          renderOptions(el, field, "");
+        } else {
+          const typePlaceholder = field.type === "time" ? `${field.label} yyyy-MM-dd HH:mm:ss` : field.label;
+          el.innerHTML = `
+            <input class="control" data-key="${field.key}" type="text" inputmode="${field.key === "rechargeCount" ? "numeric" : "text"}" placeholder="${typePlaceholder}" value="${state.values[field.key] || ""}" />
+            ${field.type === "time" ? iconCalendar() : ""}
+          `;
+          filterWrap.appendChild(el);
+        }
+      });
+
+      const actions = document.createElement("div");
+      actions.className = "form-actions";
+      actions.innerHTML = `
+        <button class="btn" id="searchBtn" type="button">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="m21 21-4.3-4.3M11 19a8 8 0 1 1 0-16 8 8 0 0 1 0 16Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          搜索
+        </button>
+        <button class="btn secondary" id="resetBtn" type="button">重置</button>
+      `;
+      filterWrap.appendChild(actions);
+
+      bindFilterEvents();
+    }
+
+    function renderOptions(fieldEl, field, keyword) {
+      const optionsEl = fieldEl.querySelector(".select-options");
+      const selected = state.values[field.key] || "";
+      const filtered = field.options.filter((item) => item.includes(keyword.trim()));
+      optionsEl.innerHTML = filtered.length ? "" : '<div class="option empty">暂无匹配数据</div>';
+      filtered.forEach((option) => {
+        const node = document.createElement("div");
+        node.className = "option" + (selected === option ? " active" : "");
+        node.textContent = option;
+        node.dataset.value = option;
+        optionsEl.appendChild(node);
+      });
+    }
+
+    function bindFilterEvents() {
+      filterWrap.querySelectorAll(".control").forEach((input) => {
+        input.addEventListener("input", () => {
+          state.values[input.dataset.key] = input.value;
+        });
+        input.addEventListener("blur", () => {
+          const next = input.value.trim();
+          input.value = next;
+          state.values[input.dataset.key] = next;
+        });
+        input.addEventListener("keydown", (event) => {
+          if (event.key === "Enter") search();
+        });
+      });
+
+      filterWrap.querySelectorAll(".select-trigger").forEach((trigger) => {
+        trigger.addEventListener("click", (event) => {
+          event.stopPropagation();
+          closeMenus(trigger.dataset.key);
+          const menu = filterWrap.querySelector(`[data-menu="${trigger.dataset.key}"]`);
+          const field = fields.find((item) => item.key === trigger.dataset.key);
+          renderOptions(trigger.closest(".field"), field, trigger.value);
+          trigger.classList.add("open");
+          menu.classList.add("open");
+        });
+        trigger.addEventListener("focus", () => {
+          closeMenus(trigger.dataset.key);
+          const menu = filterWrap.querySelector(`[data-menu="${trigger.dataset.key}"]`);
+          const field = fields.find((item) => item.key === trigger.dataset.key);
+          renderOptions(trigger.closest(".field"), field, trigger.value);
+          trigger.classList.add("open");
+          menu.classList.add("open");
+        });
+        trigger.addEventListener("input", () => {
+          state.values[trigger.dataset.key] = trigger.value;
+          const menu = filterWrap.querySelector(`[data-menu="${trigger.dataset.key}"]`);
+          const field = fields.find((item) => item.key === trigger.dataset.key);
+          renderOptions(trigger.closest(".field"), field, trigger.value);
+          trigger.classList.add("open");
+          menu.classList.add("open");
+        });
+      });
+
+      filterWrap.querySelectorAll(".select-options").forEach((optionsEl) => {
+        optionsEl.addEventListener("click", (event) => {
+          const option = event.target.closest(".option");
+          if (!option || option.classList.contains("empty")) return;
+          const fieldEl = optionsEl.closest(".field");
+          state.values[fieldEl.dataset.key] = option.dataset.value;
+          renderFilters();
+        });
+      });
+
+      filterWrap.querySelectorAll(".select-clear").forEach((button) => {
+        button.addEventListener("click", (event) => {
+          event.stopPropagation();
+          state.values[button.dataset.key] = "";
+          closeMenus();
+          renderFilters();
+        });
+      });
+
+      document.getElementById("searchBtn").addEventListener("click", search);
+      document.getElementById("resetBtn").addEventListener("click", reset);
+    }
+
+    function closeMenus(exceptKey) {
+      filterWrap.querySelectorAll(".select-menu").forEach((menu) => {
+        if (menu.dataset.menu !== exceptKey) menu.classList.remove("open");
+      });
+      filterWrap.querySelectorAll(".select-trigger").forEach((trigger) => {
+        if (trigger.dataset.key !== exceptKey) trigger.classList.remove("open");
+      });
+    }
+
+    function syncQueryClearControl(controlId) {
+      const control = document.getElementById(controlId);
+      if (!control) return;
+      const field = control.closest(".clearable-query");
+      if (field) field.classList.toggle("has-value", Boolean(control.value.trim()));
+    }
+
+    function bindQueryClearControl(controlId) {
+      const control = document.getElementById(controlId);
+      if (!control) return;
+      const clearButton = control.closest(".clearable-query").querySelector(".query-clear");
+      control.addEventListener("input", () => syncQueryClearControl(controlId));
+      control.addEventListener("change", () => syncQueryClearControl(controlId));
+      clearButton.addEventListener("click", (event) => {
+        event.stopPropagation();
+        control.value = "";
+        syncQueryClearControl(controlId);
+        control.focus();
+      });
+      syncQueryClearControl(controlId);
+    }
+
+    function parseTime(value) {
+      if (!value) return null;
+      const normalized = value.replace(" ", "T");
+      const date = new Date(normalized);
+      return Number.isNaN(date.getTime()) ? null : date;
+    }
+
+    function checkRange(startKey, endKey, label) {
+      const start = parseTime((state.values[startKey] || "").trim());
+      const end = parseTime((state.values[endKey] || "").trim());
+      if (start && end && start > end) {
+        showToast(`${label}开始时间不能大于结束时间`, "error");
+        return false;
+      }
+      return true;
+    }
+
+    function search() {
+      Object.keys(state.values).forEach((key) => {
+        if (typeof state.values[key] === "string") state.values[key] = state.values[key].trim();
+      });
+      if (!checkRange("bindStart", "bindEnd", "绑定时间")) return;
+      if (!checkRange("expireStart", "expireEnd", "服务到期")) return;
+
+      const active = fields
+        .filter((field) => state.values[field.key])
+        .map((field) => `${field.label}: ${state.values[field.key]}`);
+      state.selectedIds.clear();
+      state.selectedAllFiltered = false;
+      showToast(active.length ? "查询完成，列表数据已刷新" : "已查询全部数据", "success");
+      renderFilters();
+      renderTable();
+    }
+
+    function reset() {
+      state.values = {};
+      state.selectedIds.clear();
+      state.selectedAllFiltered = false;
+      renderFilters();
+      renderTable();
+      showToast("已清空查询条件，不自动触发查询", "info");
+    }
+
+    function showToast(message, type) {
+      const color = type === "error" ? "#e5484d" : type === "success" ? "#18a058" : "#2f8ff0";
+      toast.innerHTML = `<span style="width:8px;height:8px;border-radius:50%;background:${color};display:inline-block"></span><span>${message}</span>`;
+      toast.classList.add("show");
+      clearTimeout(showToast.timer);
+      showToast.timer = setTimeout(() => toast.classList.remove("show"), 2400);
+    }
+
+    function renderCellValue(value, column) {
+      if (column.link) {
+        return renderIccidLink(value);
+      }
+      if (Array.isArray(value)) {
+        const text = value[0];
+        if (column.key === "recycleType") return text;
+        const statusClass = ["已清洗", "已恢复", "成功"].includes(text)
+          ? "status-positive"
+          : ["未清洗", "未恢复", "失败"].includes(text)
+            ? "status-negative"
+            : "status-neutral";
+        return `<span class="status-text ${statusClass}">${text}</span>`;
+      }
+      return value || "-";
+    }
+
+    function statusText(value) {
+      return Array.isArray(value) ? value[0] : value;
+    }
+
+    function selectedRows() {
+      return rows.filter((row) => state.selectedIds.has(row.iccid));
+    }
+
+    function renderTable() {
+      const tableHeader = document.getElementById("tableHeader");
+      const tableBody = document.getElementById("tableBody");
+      const allVisibleSelected = rows.length > 0 && rows.every((row) => state.selectedIds.has(row.iccid));
+      tableHeader.innerHTML = `
+        <th class="select-col">
+          <input class="row-check" id="selectAllFiltered" type="checkbox" aria-label="全选当前筛选条件下所有数据" ${allVisibleSelected ? "checked" : ""} />
+        </th>
+      ` + tableColumns.map((column) => `
+        <th class="${column.sticky ? "sticky-col" : ""}">${column.label}</th>
+      `).join("");
+      tableBody.innerHTML = rows.map((row) => `
+        <tr class="${state.selectedIds.has(row.iccid) ? "selected" : ""}">
+          <td class="select-col">
+            <input class="row-check row-selector" type="checkbox" data-iccid="${row.iccid}" aria-label="选择 ${row.iccid}" ${state.selectedIds.has(row.iccid) ? "checked" : ""} />
+          </td>
+          ${tableColumns.map((column) => `
+            <td class="${column.sticky ? "sticky-col" : ""}">${renderCellValue(row[column.key], column)}</td>
+          `).join("")}
+        </tr>
+      `).join("");
+
+      const selectAll = document.getElementById("selectAllFiltered");
+      selectAll.indeterminate = state.selectedIds.size > 0 && !allVisibleSelected;
+      selectAll.addEventListener("change", () => {
+        if (selectAll.checked) {
+          rows.forEach((row) => state.selectedIds.add(row.iccid));
+          state.selectedAllFiltered = true;
+          showToast("已全选当前筛选条件下所有查询到的数据", "success");
+        } else {
+          state.selectedIds.clear();
+          state.selectedAllFiltered = false;
+          showToast("已取消全选", "info");
+        }
+        renderTable();
+      });
+
+      tableBody.querySelectorAll(".row-selector").forEach((checkbox) => {
+        checkbox.addEventListener("change", () => {
+          if (checkbox.checked) {
+            state.selectedIds.add(checkbox.dataset.iccid);
+          } else {
+            state.selectedIds.delete(checkbox.dataset.iccid);
+          }
+          state.selectedAllFiltered = rows.length > 0 && rows.every((row) => state.selectedIds.has(row.iccid));
+          renderTable();
+        });
+      });
+
+    }
+
+    function renderBatchDetail(batchNo) {
+      const header = document.getElementById("batchDetailHeader");
+      const body = document.getElementById("batchDetailBody");
+      header.innerHTML = tableColumns.map((column) => `<th>${column.label}</th>`).join("");
+      body.innerHTML = rows.map((row) => `
+        <tr>
+          ${tableColumns.map((column) => `<td>${renderCellValue(row[column.key], column)}</td>`).join("")}
+        </tr>
+      `).join("");
+    }
+
+    function handleClean() {
+      const chosen = selectedRows();
+      if (!chosen.length) {
+        showToast("请先选择需要清洗的码号", "error");
+        return;
+      }
+      const invalid = chosen.filter((row) => statusText(row.cleanStatus) !== "未清洗");
+      if (invalid.length) {
+        showToast("码号清洗仅支持未清洗的码号，请调整选择", "error");
+        return;
+      }
+      openActionRemarkModal("clean", chosen);
+    }
+
+    function handleRecover() {
+      const chosen = selectedRows();
+      if (!chosen.length) {
+        showToast("请先选择需要恢复的码号", "error");
+        return;
+      }
+      const invalid = chosen.filter((row) => (
+        statusText(row.cleanStatus) !== "已清洗" ||
+        statusText(row.familyNo) !== "否" ||
+        statusText(row.recoverStatus) !== "未恢复"
+      ));
+      if (invalid.length) {
+        showToast("码号恢复仅支持已清洗、未绑定亲情号、未恢复的ICCID", "error");
+        return;
+      }
+      openActionRemarkModal("recover", chosen);
+    }
+
+    function openActionRemarkModal(action, rowsToProcess) {
+      state.pendingAction = action;
+      state.pendingRows = rowsToProcess;
+      document.getElementById("actionRemarkTitle").textContent = action === "clean" ? "码号清洗备注" : "码号恢复备注";
+      document.getElementById("actionRemarkText").value = "";
+      document.getElementById("actionRemarkModal").classList.add("open");
+    }
+
+    function closeActionRemarkModal() {
+      state.pendingAction = null;
+      state.pendingRows = [];
+      document.getElementById("actionRemarkModal").classList.remove("open");
+    }
+
+    function executeActionWithRemark() {
+      const chosen = state.pendingRows || [];
+      if (!state.pendingAction || !chosen.length) {
+        closeActionRemarkModal();
+        return;
+      }
+      const remark = document.getElementById("actionRemarkText").value.trim();
+      const now = "2026-05-19 10:50:00";
+      if (state.pendingAction === "clean") {
+        chosen.forEach((row) => {
+          row.cleanStatus = ["已清洗", "green"];
+          row.cleanOperator = "lifan";
+          row.cleanTime = now;
+          row.updatedAt = now;
+          if (remark) row.remark = remark;
+        });
+      } else {
+        chosen.forEach((row) => {
+          row.recoverStatus = ["已恢复", "green"];
+          row.recoverOperator = "lifan";
+          row.recoverTime = now;
+          row.updatedAt = now;
+          if (remark) row.remark = remark;
+        });
+      }
+      const actionName = state.pendingAction === "clean" ? "码号清洗" : "码号恢复";
+      closeActionRemarkModal();
+      renderTable();
+      showToast(`已提交 ${chosen.length} 条${actionName}任务`, "success");
+    }
+
+    function resetBatchModal() {
+      document.getElementById("batchActionType").value = "批量码号清洗";
+      document.getElementById("batchRemark").value = "";
+      document.getElementById("batchFileInput").value = "";
+      document.getElementById("batchFileName").textContent = "未选择文件";
+      document.getElementById("validationResult").classList.remove("show");
+      document.getElementById("totalIccidCount").textContent = "0";
+      document.getElementById("successIccidCount").textContent = "0";
+      document.getElementById("validateBatchBtn").style.display = "inline-flex";
+      document.getElementById("executeBatchBtn").style.display = "none";
+    }
+
+    function closeBatchModal() {
+      document.getElementById("batchModal").classList.remove("open");
+    }
+
+    function openBatchModal() {
+      resetBatchModal();
+      document.getElementById("batchModal").classList.add("open");
+    }
+
+    function validateBatchUpload() {
+      const uploadedCount = state.selectedIds.size ? state.selectedIds.size : 120;
+      const actionType = document.getElementById("batchActionType").value;
+      const successCount = actionType === "批量码号清洗"
+        ? Math.max(uploadedCount - 2, 0)
+        : Math.max(uploadedCount - 4, 0);
+      document.getElementById("totalIccidCount").textContent = String(uploadedCount);
+      document.getElementById("successIccidCount").textContent = String(successCount);
+      document.getElementById("validationResult").classList.add("show");
+      document.getElementById("validateBatchBtn").style.display = "none";
+      document.getElementById("executeBatchBtn").style.display = "inline-flex";
+      showToast("ICCID文件校验完成", "success");
+    }
+
+    function executeBatchUpload() {
+      const actionType = document.getElementById("batchActionType").value;
+      const successCount = document.getElementById("successIccidCount").textContent;
+      closeBatchModal();
+      showToast(`${actionType}已提交，成功校验 ${successCount} 条ICCID`, "success");
+    }
+
+    function setSidebarSelected(pageId) {
+      document.getElementById("esimNavItem").classList.remove("active");
+      const inRecycleModule = pageId === "recyclePage" || pageId === "recordPage";
+      document.getElementById("recycleSubItem").classList.toggle("active", inRecycleModule);
+      document.getElementById("writableSubItem").classList.toggle("active", pageId === "writablePage");
+    }
+
+    function setEsimMenuExpanded(expanded) {
+      document.getElementById("esimNavItem").classList.toggle("collapsed", !expanded);
+      document.getElementById("esimSubMenu").classList.toggle("collapsed", !expanded);
+      document.getElementById("esimMenuToggle").setAttribute("aria-expanded", String(expanded));
+    }
+
+    const crumbTabMap = {
+      home: "homeCrumbTab",
+      esim: "esimCrumbTab",
+      main: "mainCrumbTab",
+      detail: "detailCrumbTab"
+    };
+    let mainCrumbPage = "recyclePage";
+    let detailCrumbPage = "batchDetailPage";
+    let detailReturnPage = "recyclePage";
+    let detailReturnTitle = "码号清洗详情";
+
+    function setMainCrumbPage(pageId) {
+      const inWritablePage = pageId === "writablePage";
+      mainCrumbPage = inWritablePage ? "writablePage" : "recyclePage";
+      document.getElementById("mainCrumbLink").textContent = inWritablePage ? "可写码号管理" : "码号回收池";
+      document.getElementById("mainCrumbClose").setAttribute(
+        "aria-label",
+        inWritablePage ? "关闭可写码号管理面包屑" : "关闭码号回收池面包屑"
+      );
+    }
+
+    function setTopCrumbActive(target) {
+      document.querySelectorAll(".tabs .tab").forEach((tab) => tab.classList.remove("active"));
+      const activeTab = document.getElementById(crumbTabMap[target] || crumbTabMap.main);
+      if (activeTab && !activeTab.classList.contains("is-hidden")) activeTab.classList.add("active");
+    }
+
+    function activateAvailableCrumb() {
+      const activeDetail = document.getElementById("batchDetailPage").classList.contains("active");
+      const preferred = activeDetail ? ["detail", "main", "esim", "home"] : ["main", "esim", "home"];
+      const next = preferred.find((key) => {
+        const tab = document.getElementById(crumbTabMap[key]);
+        return tab && !tab.classList.contains("is-hidden");
+      });
+      if (next) setTopCrumbActive(next);
+    }
+
+    function showDetailCrumb(actionType) {
+      const title = actionType === "码号恢复" ? "码号恢复详情" : "码号清洗详情";
+      detailCrumbPage = "batchDetailPage";
+      document.getElementById("detailCrumbLink").textContent = title;
+      document.getElementById("detailCrumbTab").classList.remove("is-hidden");
+    }
+
+    function closeDetailCrumb() {
+      if (document.getElementById("simDetailPage").classList.contains("active")) {
+        returnFromSimDetail();
+        return;
+      }
+      const detailPageActive = document.getElementById("batchDetailPage").classList.contains("active");
+      document.getElementById("detailCrumbTab").classList.add("is-hidden");
+      if (detailPageActive) {
+        switchBusinessPage("recordPage");
+      } else {
+        setTopCrumbActive("main");
+      }
+    }
+
+    function closeStaticCrumb(target) {
+      const tab = document.getElementById(crumbTabMap[target]);
+      if (!tab) return;
+      const wasActive = tab.classList.contains("active");
+      tab.classList.add("is-hidden");
+      tab.classList.remove("active");
+      if (wasActive) activateAvailableCrumb();
+    }
+
+    function handleCrumbClick(target) {
+      if (target === "main") {
+        switchBusinessPage(mainCrumbPage);
+        return;
+      }
+      if (target === "detail") {
+        if (!document.getElementById("detailCrumbTab").classList.contains("is-hidden")) {
+          showPageOnly(detailCrumbPage);
+        }
+        return;
+      }
+      if (target === "esim") {
+        setTopCrumbActive("esim");
+        setSidebarSelected(null);
+        showToast("已点击 ESIM管理 面包屑，当前原型未配置独立页面", "info");
+        return;
+      }
+      setTopCrumbActive("home");
+      setSidebarSelected(null);
+      showToast("已点击 首页 面包屑，当前原型未配置独立页面", "info");
+    }
+
+    function switchBusinessPage(pageId) {
+      document.getElementById("pageContent").classList.remove("detail-mode");
+      document.getElementById("pageContent").classList.toggle("writable-mode", pageId === "writablePage");
+      setSidebarSelected(pageId);
+      setMainCrumbPage(pageId);
+      setTopCrumbActive("main");
+      document.querySelectorAll(".business-tab").forEach((tab) => {
+        tab.classList.toggle("active", tab.dataset.page === pageId);
+      });
+      document.querySelectorAll(".page-view").forEach((page) => {
+        page.classList.toggle("active", page.id === pageId);
+      });
+    }
+
+    function showPageOnly(pageId) {
+      document.getElementById("pageContent").classList.add("detail-mode");
+      document.getElementById("pageContent").classList.remove("writable-mode");
+      setSidebarSelected(null);
+      setTopCrumbActive(pageId === "batchDetailPage" || pageId === "simDetailPage" ? "detail" : "main");
+      document.querySelectorAll(".business-tab").forEach((tab) => {
+        tab.classList.remove("active");
+      });
+      document.querySelectorAll(".page-view").forEach((page) => {
+        page.classList.toggle("active", page.id === pageId);
+      });
+    }
+
+    function closeCheckRecordModal() {
+      document.getElementById("checkRecordModal").classList.remove("open");
+    }
+
+    function openCheckRecordModal(batchNo) {
+      document.getElementById("checkRecordTitle").textContent = `检查记录 - ${batchNo}`;
+      document.getElementById("checkRecordModal").classList.add("open");
+    }
+
+    function openBatchDetailPage(batchNo, actionType) {
+      showDetailCrumb(actionType);
+      renderBatchDetail(batchNo);
+      showPageOnly("batchDetailPage");
+    }
+
+    function simDetailValue(value) {
+      if (Array.isArray(value)) return value[0];
+      return value || "-";
+    }
+
+    function renderSimDetail(iccid) {
+      const sim = writableRows.find((row) => row.iccid === iccid)
+        || rows.find((row) => row.iccid === iccid)
+        || { iccid };
+      const details = [
+        ["ICCID", sim.iccid],
+        ["MSISDN", sim.msisdn],
+        ["IMEI", sim.imei],
+        ["商户", sim.merchant],
+        ["SIM卡供应商", sim.supplier],
+        ["运营商", sim.operator],
+        ["卡状态", sim.cardStatus],
+        ["写卡状态", sim.writeStatus],
+        ["锁卡状态", sim.lockStatus],
+        ["冻结状态", sim.freezeStatus],
+        ["绑定状态", sim.bindStatus],
+        ["设备型号", sim.deviceModel],
+        ["服务有效日期", sim.serviceDate],
+        ["导入时间", sim.importTime || sim.createdAt]
+      ];
+      document.getElementById("simDetailGrid").innerHTML = details.map(([label, value]) => `
+        <div class="sim-detail-item">
+          <span class="sim-detail-label">${label}</span>
+          <span class="sim-detail-value">${simDetailValue(value)}</span>
+        </div>
+      `).join("");
+    }
+
+    function openSimDetailPage(iccid) {
+      const currentPage = document.querySelector(".page-view.active");
+      if (currentPage && currentPage.id !== "simDetailPage") {
+        detailReturnPage = currentPage.id;
+        detailReturnTitle = document.getElementById("detailCrumbLink").textContent;
+      }
+      closeCheckRecordModal();
+      detailCrumbPage = "simDetailPage";
+      document.getElementById("detailCrumbLink").textContent = "SIM卡详情";
+      document.getElementById("detailCrumbTab").classList.remove("is-hidden");
+      renderSimDetail(iccid);
+      showPageOnly("simDetailPage");
+    }
+
+    function returnFromSimDetail() {
+      if (detailReturnPage === "batchDetailPage") {
+        detailCrumbPage = "batchDetailPage";
+        document.getElementById("detailCrumbLink").textContent = detailReturnTitle;
+        showPageOnly("batchDetailPage");
+        return;
+      }
+      document.getElementById("detailCrumbTab").classList.add("is-hidden");
+      switchBusinessPage(detailReturnPage);
+    }
+
+    document.addEventListener("click", (event) => {
+      const iccidLink = event.target.closest(".iccid-link");
+      if (iccidLink) {
+        openSimDetailPage(iccidLink.dataset.iccid);
+      }
+      closeMenus();
+      closeWritableMenus();
+      closeWritableDateRange();
+    });
+
+    document.querySelectorAll(".business-tab").forEach((tab) => {
+      tab.addEventListener("click", () => switchBusinessPage(tab.dataset.page));
+    });
+    document.querySelectorAll(".sub-item[data-page]").forEach((item) => {
+      item.addEventListener("click", () => switchBusinessPage(item.dataset.page));
+    });
+    document.getElementById("esimMenuToggle").addEventListener("click", () => {
+      const expanded = document.getElementById("esimMenuToggle").getAttribute("aria-expanded") === "true";
+      setEsimMenuExpanded(!expanded);
+    });
+    document.querySelector(".tabs").addEventListener("click", (event) => {
+      const closeButton = event.target.closest("[data-close-crumb]");
+      if (closeButton) {
+        const target = closeButton.dataset.closeCrumb;
+        if (target === "detail") closeDetailCrumb();
+        else closeStaticCrumb(target);
+        return;
+      }
+      const crumbButton = event.target.closest("[data-crumb]");
+      if (crumbButton) handleCrumbClick(crumbButton.dataset.crumb);
+    });
+    document.getElementById("batchOpBtn").addEventListener("click", openBatchModal);
+    document.getElementById("cleanBtn").addEventListener("click", handleClean);
+    document.getElementById("recoverBtn").addEventListener("click", handleRecover);
+    document.getElementById("dataSyncBtn").addEventListener("click", () => {
+      showToast("数据同步任务已提交，稍后刷新列表状态", "success");
+    });
+    document.getElementById("writableBatchBtn").addEventListener("click", () => {
+      showToast("请选择增加或移出方式后继续操作", "info");
+    });
+    document.getElementById("freezeStatusBtn").addEventListener("click", openFreezeStatusModal);
+    document.getElementById("writableExportBtn").addEventListener("click", () => {
+      showToast("已按当前查询条件导出可写码号", "success");
+    });
+    document.getElementById("closeFreezeStatusModal").addEventListener("click", closeFreezeStatusModal);
+    document.getElementById("cancelFreezeStatusBtn").addEventListener("click", closeFreezeStatusModal);
+    document.getElementById("confirmFreezeStatusBtn").addEventListener("click", confirmFreezeStatusChange);
+    document.querySelectorAll('input[name="freezeMode"]').forEach((input) => {
+      input.addEventListener("change", syncFreezeModeFields);
+    });
+    document.getElementById("chooseFreezeFileBtn").addEventListener("click", () => {
+      document.getElementById("freezeFileInput").click();
+    });
+    document.getElementById("freezeFileInput").addEventListener("change", (event) => {
+      const file = event.target.files[0];
+      document.getElementById("freezeFileName").textContent = file ? file.name : "未选择文件";
+    });
+    document.getElementById("downloadFreezeTplBtn").addEventListener("click", () => {
+      showToast("已下载冻结状态修改模版", "success");
+    });
+    document.getElementById("freezeStatusModal").addEventListener("click", (event) => {
+      if (event.target.id === "freezeStatusModal") closeFreezeStatusModal();
+    });
+    document.getElementById("closeWritableRemoveModal").addEventListener("click", closeWritableRemoveModal);
+    document.getElementById("cancelWritableRemoveBtn").addEventListener("click", closeWritableRemoveModal);
+    document.getElementById("confirmWritableRemoveBtn").addEventListener("click", confirmWritableRemove);
+    document.getElementById("writableRemoveModal").addEventListener("click", (event) => {
+      if (event.target.id === "writableRemoveModal") closeWritableRemoveModal();
+    });
+    document.getElementById("backSimDetailBtn").addEventListener("click", returnFromSimDetail);
+    document.getElementById("closeBatchModal").addEventListener("click", closeBatchModal);
+    document.getElementById("cancelBatchBtn").addEventListener("click", closeBatchModal);
+    document.getElementById("validateBatchBtn").addEventListener("click", validateBatchUpload);
+    document.getElementById("executeBatchBtn").addEventListener("click", executeBatchUpload);
+    document.getElementById("closeActionRemarkModal").addEventListener("click", closeActionRemarkModal);
+    document.getElementById("cancelActionRemarkBtn").addEventListener("click", closeActionRemarkModal);
+    document.getElementById("confirmActionRemarkBtn").addEventListener("click", executeActionWithRemark);
+    document.getElementById("chooseFileBtn").addEventListener("click", () => {
+      document.getElementById("batchFileInput").click();
+    });
+    document.getElementById("batchFileInput").addEventListener("change", (event) => {
+      const file = event.target.files[0];
+      document.getElementById("batchFileName").textContent = file ? file.name : "未选择文件";
+    });
+    document.getElementById("downloadTplBtn").addEventListener("click", () => {
+      showToast("已下载批量操作模板", "success");
+    });
+    document.getElementById("batchModal").addEventListener("click", (event) => {
+      if (event.target.id === "batchModal") closeBatchModal();
+    });
+    document.getElementById("actionRemarkModal").addEventListener("click", (event) => {
+      if (event.target.id === "actionRemarkModal") closeActionRemarkModal();
+    });
+    document.querySelectorAll(".batch-link").forEach((link) => {
+      link.addEventListener("click", () => openBatchDetailPage(link.dataset.batch, link.dataset.type));
+    });
+    document.querySelectorAll(".total-link").forEach((link) => {
+      link.addEventListener("click", () => openCheckRecordModal(link.dataset.batch));
+    });
+    document.getElementById("recordSearchBtn").addEventListener("click", () => {
+      showToast("码号清洗/恢复记录已按查询条件刷新", "success");
+    });
+    document.getElementById("recordResetBtn").addEventListener("click", () => {
+      document.getElementById("recordActionType").value = "";
+      document.getElementById("recordBatchNo").value = "";
+      syncQueryClearControl("recordActionType");
+      showToast("记录查询条件已清空", "info");
+    });
+    document.getElementById("detailSearchBtn").addEventListener("click", () => {
+      showToast("批次ICCID明细已按查询条件刷新", "success");
+    });
+    document.getElementById("detailResetBtn").addEventListener("click", () => {
+      document.getElementById("detailIccid").value = "";
+      document.getElementById("detailMerchant").value = "";
+      document.getElementById("detailRecycleType").value = "";
+      syncQueryClearControl("detailMerchant");
+      syncQueryClearControl("detailRecycleType");
+      showToast("批次明细查询条件已清空", "info");
+    });
+    document.getElementById("closeCheckRecordModal").addEventListener("click", closeCheckRecordModal);
+    document.getElementById("cancelCheckRecordBtn").addEventListener("click", closeCheckRecordModal);
+    document.getElementById("checkSearchBtn").addEventListener("click", () => {
+      showToast("检查记录已刷新", "success");
+    });
+    document.getElementById("checkExportBtn").addEventListener("click", () => {
+      showToast("检查记录已导出", "success");
+    });
+    document.getElementById("checkRecordModal").addEventListener("click", (event) => {
+      if (event.target.id === "checkRecordModal") closeCheckRecordModal();
+    });
+
+    document.getElementById("exportBtn").addEventListener("click", () => {
+      const btn = document.getElementById("exportBtn");
+      const original = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = '<span class="spin"></span><span>导出中</span>';
+      setTimeout(() => {
+        btn.disabled = false;
+        btn.innerHTML = original;
+        showToast("已按当前查询条件导出 Excel 文件", "success");
+      }, 1300);
+    });
+
+    ["recordActionType", "detailMerchant", "detailRecycleType", "checkStatus"].forEach(bindQueryClearControl);
+    renderWritableFilters();
+    renderWritableStatusTabs();
+    renderWritableTable();
+    renderWritablePager();
+    renderFilters();
+    renderTable();
+    renderBatchDetail("BATCH20260519001");
+  </script>
+</body>
+</html>
