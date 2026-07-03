@@ -1987,12 +1987,56 @@
     }
 
     .risk-strategy-table {
-      min-width: 1320px;
+      min-width: 1685px;
+    }
+
+    .risk-strategy-content {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 325px;
+      max-width: 525px;
+      color: #4b5563;
+      line-height: 1.5;
+      white-space: normal;
+    }
+
+    .risk-strategy-content-line {
+      position: relative;
+      display: block;
+      padding-left: 12px;
+    }
+
+    .risk-strategy-content-line::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #1687e8;
+    }
+
+    .risk-strategy-content-numbered {
+      position: relative;
+      display: block;
+      padding-left: 20px;
+    }
+
+    .risk-strategy-content-numbered::before {
+      content: attr(data-index) "、";
+      position: absolute;
+      left: 0;
+      color: #1687e8;
+      font-weight: 600;
     }
 
     .risk-strategy-table .operation-col {
       width: 250px;
       min-width: 250px;
+    }
+
+    .risk-strategy-table th:nth-child(4),
+    .risk-strategy-table td:nth-child(4) {
+      width: 260px;
+      min-width: 260px;
     }
 
     .risk-trigger-log-table {
@@ -2028,6 +2072,34 @@
       align-items: center;
       gap: 6px;
       min-width: 0;
+    }
+
+    .risk-trigger-reason-list {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      min-width: 260px;
+      max-width: 420px;
+      line-height: 1.5;
+      white-space: normal;
+    }
+
+    .risk-trigger-reason-item {
+      position: relative;
+      display: block;
+      padding-left: 13px;
+    }
+
+    .risk-trigger-reason-item::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.72em;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #e11d2f;
+      transform: translateY(-50%);
     }
 
     .risk-log-empty {
@@ -3149,19 +3221,116 @@
       transform: translateX(-50%) translateY(0);
     }
 
-    .risk-monitor-scope-tip {
+    .risk-control-status-tip {
       position: relative;
       display: inline-flex;
       align-items: center;
-      max-width: 240px;
+      min-height: 22px;
+      color: #d92d20;
+      font-weight: 600;
+      cursor: default;
+    }
+
+    .risk-control-status-popup {
+      position: absolute;
+      left: 50%;
+      top: calc(100% + 9px);
+      transform: translateX(-50%) translateY(4px);
+      width: 340px;
+      max-width: 420px;
+      padding: 12px 14px;
+      border-radius: 6px;
+      background: #172033;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 1.6;
+      box-shadow: 0 10px 24px rgba(23, 32, 51, 0.18);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.16s ease, transform 0.16s ease;
+      z-index: 48;
+      white-space: normal;
+    }
+
+    .risk-control-status-popup::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 100%;
+      transform: translateX(-50%);
+      border: 6px solid transparent;
+      border-bottom-color: #172033;
+    }
+
+    .risk-control-status-tip:hover .risk-control-status-popup,
+    .risk-control-status-tip:focus-within .risk-control-status-popup {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .risk-control-reason-group + .risk-control-reason-group {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.14);
+    }
+
+    .risk-control-reason-type {
+      display: block;
+      margin-bottom: 5px;
+      color: #9bd0ff;
+      font-weight: 600;
+    }
+
+    .risk-control-reason-intro {
+      display: block;
+      margin-bottom: 5px;
+      color: rgba(255, 255, 255, 0.92);
+    }
+
+    .risk-control-reason-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding-left: 13px;
+    }
+
+    .risk-control-reason-item {
+      position: relative;
+      display: block;
+    }
+
+    .risk-control-reason-item::before {
+      content: "";
+      position: absolute;
+      left: -12px;
+      top: 0.72em;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #ff7b7b;
+      transform: translateY(-50%);
+    }
+
+    .risk-monitor-scope-tip {
+      position: relative;
+      display: inline-block;
+      width: 260px;
+      max-width: 260px;
       color: #4c5666;
       cursor: default;
     }
 
     .risk-monitor-scope-text {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+      display: grid;
+      gap: 4px;
+      width: 260px;
+      line-height: 1.5;
+      white-space: normal;
+    }
+
+    .risk-monitor-scope-item {
+      display: block;
     }
 
     .risk-monitor-scope-popup {
@@ -4605,17 +4774,17 @@
                     <div class="risk-rule-box">
                       <div class="risk-rule-item">
                         <div class="risk-rule-lead">
-                          <span>在</span>
+                          <span>在充值后</span>
                           <input class="risk-rule-inline-input" id="riskControlHours" type="text" inputmode="numeric" aria-label="风险防控时间" />
                           <span>小时内，若未满足以下配置条件，则触发“风险管理停机”机制，自动变更为“风险管理停机状态”。</span>
                         </div>
                         <div class="risk-rule-conditions">
                           <label class="risk-rule-condition">
-                            <input type="checkbox" checked />
+                            <input id="riskRealNameCondition" type="checkbox" checked />
                             <span>完成实名，实名状态变更为“已实名”；</span>
                           </label>
                           <label class="risk-rule-condition">
-                            <input type="checkbox" checked />
+                            <input id="riskCardStatusCondition" type="checkbox" checked />
                             <span>卡状态变更为“已激活”；</span>
                           </label>
                           <label class="risk-rule-condition">
@@ -4649,15 +4818,15 @@
                           </div>
                         </div>
                         <div class="risk-rule-radio-setting">
-                          <div class="risk-rule-setting-title">SIM卡解除“风险管理停机”状态后，再次触发“风险管理停机策略”，是否变更为“风险管理停机状态”？</div>
+                          <div class="risk-rule-setting-title">SIM卡解除“风险管理停机”状态后，再次触发“风险管理停机策略”，是否触发风险管理停机状态？</div>
                           <div class="risk-radio-group">
                             <label class="risk-radio">
-                              <input type="radio" name="riskStopRetriggerAction" value="不变更状态为风险管理停机" checked />
-                              不变更状态为“风险管理停机”
+                              <input type="radio" name="riskStopRetriggerAction" value="不触发风险管理停机" checked />
+                              不触发风险管理停机
                             </label>
                             <label class="risk-radio">
-                              <input type="radio" name="riskStopRetriggerAction" value="变更状态为风险管理停机" />
-                              变更状态为“风险管理停机”
+                              <input type="radio" name="riskStopRetriggerAction" value="触发风险管理停机" />
+                              触发风险管理停机
                             </label>
                           </div>
                         </div>
@@ -6149,6 +6318,7 @@
     const riskStrategyTableColumns = [
       { key: "strategyName", label: "策略名称" },
       { key: "strategyType", label: "策略类型" },
+      { key: "strategyContent", label: "风险防控策略内容" },
       { key: "riskMonitorScope", label: "风险防控范围" },
       { key: "creator", label: "创建人" },
       { key: "createdAt", label: "创建时间" },
@@ -6170,6 +6340,7 @@
         updatedAt: "2026-06-15 14:36:22",
         enabledAt: "2026-06-10 09:20:16",
         enabledStatus: "开启",
+        limitCount: "2",
         remark: "限制亲情号被重复添加"
       },
       {
@@ -6183,6 +6354,7 @@
         updatedAt: "2026-06-13 10:18:33",
         enabledAt: "2026-06-08 15:42:09",
         enabledStatus: "开启",
+        limitCount: "3",
         remark: "限制手机号绑定手表卡数量"
       },
       {
@@ -6196,6 +6368,15 @@
         updatedAt: "2026-06-11 17:28:50",
         enabledAt: "-",
         enabledStatus: "关闭",
+        riskControlHours: "24",
+        riskRealNameCondition: true,
+        riskCardStatusCondition: true,
+        riskFamilyCondition: true,
+        riskFamilyNumberCount: "1",
+        riskVoiceCondition: true,
+        riskVoiceUsageCount: "1",
+        riskMatchedRuleMonitorAction: "停止监控",
+        riskStopRetriggerAction: "不触发风险管理停机",
         remark: "监控首次充值后的风险行为"
       }
     ];
@@ -7404,7 +7585,7 @@
       { key: "agent", label: "代理商", type: "select", options: ["华东渠道代理", "华南直营代理", "北区合作代理"] },
       { key: "packageExpired", label: "套餐过期状态", type: "select", options: ["已过期", "未过期"] },
       { key: "cardStatus", label: "卡状态", type: "select", options: ["已激活", "激活失败", "已停机", "停机失败"] },
-      { key: "riskStopStatus", label: "风险管理停机状态", type: "select", options: ["开启", "关闭"] },
+      { key: "riskControlStatus", label: "风险防控触发状态", type: "select", options: ["已触发", "未触发"] },
       { key: "cardGroup", label: "卡组名称", type: "select", options: ["儿童手表基础卡组", "智能终端流量卡组", "直营渠道卡组"] },
       { key: "lockFlag", label: "锁卡标志", type: "select", options: ["锁卡", "未锁卡"] },
       { key: "topUpCount", label: "充值次数", type: "input" },
@@ -7417,7 +7598,7 @@
       { key: "msisdn", label: "MSISDN" },
       { key: "imei", label: "IMEI" },
       { key: "cardStatus", label: "卡状态" },
-      { key: "riskStopStatus", label: "风险管理停机状态" },
+      { key: "riskControlStatus", label: "风险防控触发状态" },
       { key: "serviceMonths", label: "服务有效月份" },
       { key: "lockStatus", label: "锁卡标志" },
       { key: "merchant", label: "商户" },
@@ -7506,6 +7687,13 @@
         imei: "861234050001842",
         cardStatus: "已激活",
         riskStopStatus: "关闭",
+        riskControlStatus: "已触发",
+        riskControlReasons: [
+          {
+            strategyType: "亲情号数量限制策略",
+            contents: ["限制数量：2"]
+          }
+        ],
         serviceMonths: "12",
         lockStatus: "未锁卡",
         freezeStatus: "未冻结",
@@ -7545,6 +7733,8 @@
         imei: "-",
         cardStatus: "-",
         riskStopStatus: "关闭",
+        riskControlStatus: "未触发",
+        riskControlReasons: [],
         serviceMonths: "24",
         lockStatus: "未锁卡",
         freezeStatus: "未冻结",
@@ -7584,6 +7774,22 @@
         imei: "861234050001856",
         cardStatus: "已激活",
         riskStopStatus: "开启",
+        riskControlStatus: "已触发",
+        riskControlReasons: [
+          {
+            strategyType: "风险管理停机策略",
+            riskControlHours: "24",
+            contents: [
+              "完成实名，实名状态变更为“已实名”",
+              "绑定亲情号数量≥1",
+              "产生语音用量≥1分钟"
+            ]
+          },
+          {
+            strategyType: "绑定数量限制策略",
+            contents: ["限制数量：2"]
+          }
+        ],
         serviceMonths: "12",
         lockStatus: "锁卡",
         freezeStatus: "已冻结",
@@ -7623,6 +7829,8 @@
         imei: "861234050001867",
         cardStatus: "激活失败",
         riskStopStatus: "关闭",
+        riskControlStatus: "未触发",
+        riskControlReasons: [],
         serviceMonths: "6",
         lockStatus: "未锁卡",
         freezeStatus: "已冻结",
@@ -8780,13 +8988,19 @@
         ? row.merchants.filter(Boolean)
         : [];
       if (!merchants.length) return "/";
-      const text = merchants.length > 3
-        ? `${merchants.slice(0, 3).join("、")}...`
-        : merchants.join("、");
-      if (merchants.length <= 3) return escapeHtml(text);
+      const visibleMerchants = merchants.slice(0, 3);
+      const visibleHtml = visibleMerchants
+        .map((merchant, index) => {
+          const suffix = merchants.length > 3 && index === visibleMerchants.length - 1 ? "..." : "";
+          return `<span class="risk-monitor-scope-item">${escapeHtml(merchant)}${suffix}</span>`;
+        })
+        .join("");
+      if (merchants.length <= 3) {
+        return `<span class="risk-monitor-scope-text">${visibleHtml}</span>`;
+      }
       return `
         <span class="risk-monitor-scope-tip" tabindex="0">
-          <span class="risk-monitor-scope-text">${escapeHtml(text)}</span>
+          <span class="risk-monitor-scope-text">${visibleHtml}</span>
           <span class="risk-monitor-scope-popup" role="tooltip">
             <span class="risk-monitor-scope-list">
               ${merchants.map((merchant) => `<span>${escapeHtml(merchant)}</span>`).join("")}
@@ -8796,8 +9010,106 @@
       `;
     }
 
+    function riskStopConditionEnabled(row, key) {
+      return row[key] !== false;
+    }
+
+    function riskStopRuleSummary(row) {
+      const hours = row.riskControlHours || "24";
+      return `在充值后${hours}小时内，若未满足以下配置条件，则触发“风险管理停机”机制，自动变更为“风险管理停机状态”。`;
+    }
+
+    function riskStopRuleConditionLines(row) {
+      const lines = [];
+      if (riskStopConditionEnabled(row, "riskRealNameCondition")) {
+        lines.push("完成实名，实名状态变更为“已实名”");
+      }
+      if (riskStopConditionEnabled(row, "riskCardStatusCondition")) {
+        lines.push("卡状态变更为“已激活”");
+      }
+      if (riskStopConditionEnabled(row, "riskFamilyCondition")) {
+        lines.push(`绑定亲情号数量≥${row.riskFamilyNumberCount || "1"}`);
+      }
+      if (riskStopConditionEnabled(row, "riskVoiceCondition")) {
+        lines.push(`产生语音用量≥${row.riskVoiceUsageCount || "1"}分钟`);
+      }
+      return lines;
+    }
+
+    function riskStopRuleChoiceLines(row) {
+      return [
+        `系统检测到SIM卡达成以上条件后，${row.riskMatchedRuleMonitorAction || "停止监控"}`,
+        `SIM卡解除“风险管理停机”状态后，再次触发“风险管理停机策略”，${row.riskStopRetriggerAction || "不触发风险管理停机"}`
+      ];
+    }
+
+    function riskStopStrategyForLog(row) {
+      return riskStrategyRows.find((strategy) => {
+        return strategy.strategyType === "风险管理停机策略"
+          && (!row?.triggerStrategyName || strategy.strategyName === row.triggerStrategyName);
+      }) || riskStrategyRows.find((strategy) => strategy.strategyType === "风险管理停机策略") || {};
+    }
+
+    function displayRiskTriggerReason(reason, row) {
+      const strategy = riskStopStrategyForLog(row);
+      if (reason === "绑定亲情号数量未达成") {
+        return `未达成条件：绑定亲情号数量≥${strategy.riskFamilyNumberCount || "1"}`;
+      }
+      if (reason === "产生语音用量分钟数未达成") {
+        return `未达成条件：产生语音用量≥${strategy.riskVoiceUsageCount || "1"}分钟`;
+      }
+      return reason;
+    }
+
+    function displayRiskTriggerReasons(row) {
+      return String(row?.triggerReason || "")
+        .split(/[；;]/)
+        .map((reason) => reason.trim())
+        .filter(Boolean)
+        .map((reason) => displayRiskTriggerReason(reason, row));
+    }
+
+    function riskStrategyContentLines(row) {
+      if (riskStrategyNeedsLimitConfig(row.strategyType)) {
+        return [`限制数量：${row.limitCount || "10"}`];
+      }
+      if (row.strategyType === "风险管理停机策略") {
+        return [
+          riskStopRuleSummary(row),
+          ...riskStopRuleConditionLines(row),
+          ...riskStopRuleChoiceLines(row)
+        ];
+      }
+      return ["/"];
+    }
+
+    function renderRiskStrategyContentCell(row) {
+      if (row.strategyType === "风险管理停机策略") {
+        const choiceLines = riskStopRuleChoiceLines(row);
+        const lines = [
+          { type: "numbered", index: "1", text: riskStopRuleSummary(row) },
+          ...riskStopRuleConditionLines(row).map((line) => ({ type: "bullet", text: line })),
+          { type: "numbered", index: "2", text: choiceLines[0] },
+          { type: "numbered", index: "3", text: choiceLines[1] }
+        ];
+        return `
+          <span class="risk-strategy-content">
+            ${lines.map((line) => line.type === "numbered"
+              ? `<span class="risk-strategy-content-numbered" data-index="${escapeHtml(line.index)}">${escapeHtml(line.text)}</span>`
+              : `<span class="risk-strategy-content-line">${escapeHtml(line.text)}</span>`).join("")}
+          </span>
+        `;
+      }
+      return `
+        <span class="risk-strategy-content">
+          ${riskStrategyContentLines(row).map((line) => `<span class="risk-strategy-content-line">${escapeHtml(line)}</span>`).join("")}
+        </span>
+      `;
+    }
+
     function renderRiskStrategyValue(value, column, row) {
       const strategyKey = riskStrategyRowKey(row);
+      if (column.key === "strategyContent") return renderRiskStrategyContentCell(row);
       if (column.key === "riskMonitorScope") return renderRiskMonitorScopeCell(row);
       if (column.key === "enabledStatus") {
         const isOn = value === "开启";
@@ -9061,7 +9373,11 @@
         const matchUnionId = riskLogState.values.unionId ? String(row.unionId || "").includes(riskLogState.values.unionId.trim()) : true;
         const matchTriggerType = riskLogState.values.triggerType ? row.triggerType === riskLogState.values.triggerType : true;
         const matchTriggerStrategy = riskLogState.values.triggerStrategyName ? String(row.triggerStrategyName || "").includes(riskLogState.values.triggerStrategyName.trim()) : true;
-        const matchTriggerReason = riskLogState.values.triggerReason ? String(row.triggerReason || "").includes(riskLogState.values.triggerReason) : true;
+        const triggerReasonText = [
+          String(row.triggerReason || ""),
+          ...displayRiskTriggerReasons(row)
+        ].join("；");
+        const matchTriggerReason = riskLogState.values.triggerReason ? triggerReasonText.includes(riskLogState.values.triggerReason) : true;
         const matchTime = isDateTextInRange(row.triggerTime, riskLogState.values.triggerStart, riskLogState.values.triggerEnd);
         return matchKeyword && matchMerchantName && matchMerchantType && matchEid && matchBoundPhone && matchOpenId && matchUnionId && matchTriggerType && matchTriggerStrategy && matchTriggerReason && matchTime;
       });
@@ -9097,10 +9413,21 @@
     function renderRiskLogValue(value, column, row) {
       if (column.key === "simIdentifiers") return renderRiskLogSimIdentifiers(row);
       if (column.key === "wechatIdentifiers") return renderRiskLogWechatIdentifiers(row);
+      if (column.key === "triggerReason") return renderRiskTriggerReasonCell(row);
       const identifierCell = renderIdentifierCell(value, column);
       if (identifierCell !== null) return identifierCell;
       if (column.key === "eid" && !value) return "/";
       return escapeHtml(value || "-");
+    }
+
+    function renderRiskTriggerReasonCell(row) {
+      const reasons = displayRiskTriggerReasons(row);
+      if (!reasons.length) return "-";
+      return `
+        <span class="risk-trigger-reason-list">
+          ${reasons.map((reason) => `<span class="risk-trigger-reason-item">${escapeHtml(reason)}</span>`).join("")}
+        </span>
+      `;
     }
 
     function renderRiskLogStackedRow(label, valueHtml) {
@@ -9688,7 +10015,7 @@
       document.getElementById("riskFamilyNumberCount").value = "";
       document.getElementById("riskVoiceUsageCount").value = "";
       document.querySelector('input[name="riskMatchedRuleMonitorAction"][value="停止监控"]').checked = true;
-      document.querySelector('input[name="riskStopRetriggerAction"][value="不变更状态为风险管理停机"]').checked = true;
+      document.querySelector('input[name="riskStopRetriggerAction"][value="不触发风险管理停机"]').checked = true;
       document.querySelectorAll("#riskRuleConfigSection .risk-rule-condition input[type='checkbox']").forEach((checkbox) => {
         checkbox.checked = true;
       });
@@ -9776,26 +10103,23 @@
       `;
     }
 
-    function renderRiskStopRuleDetailSection() {
+    function renderRiskStopRuleDetailSection(row) {
       return `
         <section class="risk-form-section" aria-label="风险管理停机规则配置">
           <div class="risk-section-title">风险管理停机规则配置</div>
           <div class="risk-detail-section-content">
             <div class="risk-rule-box">
-              <div class="risk-detail-rule-summary">在 24 小时内，若未满足以下配置条件，则触发“风险管理停机”机制，自动变更为“风险管理停机状态”。</div>
+              <div class="risk-detail-rule-summary">${escapeHtml(riskStopRuleSummary(row))}</div>
               <ul class="risk-detail-rule-list">
-                <li>完成实名，实名状态变更为“已实名”</li>
-                <li>卡状态变更为“已激活”</li>
-                <li>绑定亲情号数量≥1</li>
-                <li>产生语音用量≥1分钟</li>
+                ${riskStopRuleConditionLines(row).map((line) => `<li>${escapeHtml(line)}</li>`).join("")}
               </ul>
               <div class="risk-detail-choice">
                 <strong>达成规则后查询</strong>
-                系统检测到SIM卡达成以上条件后，停止监控。
+                ${escapeHtml(riskStopRuleChoiceLines(row)[0])}
               </div>
               <div class="risk-detail-choice">
                 <strong>再次触发处理</strong>
-                SIM卡解除“风险管理停机”状态后，再次触发“风险管理停机策略”时，不变更状态为“风险管理停机”。
+                ${escapeHtml(riskStopRuleChoiceLines(row)[1])}
               </div>
               <div class="risk-rule-note">
                 <div class="risk-rule-note-title">说明</div>
@@ -9866,7 +10190,7 @@
       body.innerHTML = [
         renderRiskDetailBaseSection(row),
         riskStrategyNeedsLimitConfig(row.strategyType) ? renderRiskLimitDetailSection(row) : "",
-        row.strategyType === "风险管理停机策略" ? renderRiskStopRuleDetailSection() : "",
+        row.strategyType === "风险管理停机策略" ? renderRiskStopRuleDetailSection(row) : "",
         row.strategyType === "风险管理停机策略" ? renderRiskStopScopeDetailSection(row) : ""
       ].join("");
     }
@@ -10203,10 +10527,18 @@
         riskStrategyCreateState.selectedMerchants = row.merchants || riskStrategyMerchantOptions.slice(0, 2);
         riskStrategyCreateState.selectedMerchantPage = 1;
         document.getElementById("riskControlHours").value = row.riskControlHours || "24";
+        document.getElementById("riskRealNameCondition").checked = row.riskRealNameCondition !== false;
+        document.getElementById("riskCardStatusCondition").checked = row.riskCardStatusCondition !== false;
         document.getElementById("riskFamilyCondition").checked = row.riskFamilyCondition !== false;
         document.getElementById("riskFamilyNumberCount").value = row.riskFamilyNumberCount ?? "1";
         document.getElementById("riskVoiceCondition").checked = row.riskVoiceCondition !== false;
         document.getElementById("riskVoiceUsageCount").value = row.riskVoiceUsageCount ?? "1";
+        const monitorAction = row.riskMatchedRuleMonitorAction || "停止监控";
+        const retriggerAction = row.riskStopRetriggerAction || "不触发风险管理停机";
+        const monitorInput = document.querySelector(`input[name="riskMatchedRuleMonitorAction"][value="${monitorAction}"]`);
+        const retriggerInput = document.querySelector(`input[name="riskStopRetriggerAction"][value="${retriggerAction}"]`);
+        if (monitorInput) monitorInput.checked = true;
+        if (retriggerInput) retriggerInput.checked = true;
       }
       syncRiskStrategyCreateModeUi();
       syncRiskStrategyCreateSections();
@@ -10262,10 +10594,14 @@
       }
       if (type === "风险管理停机策略") {
         row.riskControlHours = document.getElementById("riskControlHours").value.trim();
+        row.riskRealNameCondition = document.getElementById("riskRealNameCondition").checked;
+        row.riskCardStatusCondition = document.getElementById("riskCardStatusCondition").checked;
         row.riskFamilyCondition = document.getElementById("riskFamilyCondition").checked;
         row.riskFamilyNumberCount = document.getElementById("riskFamilyNumberCount").value.trim();
         row.riskVoiceCondition = document.getElementById("riskVoiceCondition").checked;
         row.riskVoiceUsageCount = document.getElementById("riskVoiceUsageCount").value.trim();
+        row.riskMatchedRuleMonitorAction = document.querySelector('input[name="riskMatchedRuleMonitorAction"]:checked')?.value || "停止监控";
+        row.riskStopRetriggerAction = document.querySelector('input[name="riskStopRetriggerAction"]:checked')?.value || "不触发风险管理停机";
       }
       return row;
     }
@@ -10365,10 +10701,14 @@
               ? riskStrategyMerchantOptions.slice()
               : riskStrategyCreateState.selectedMerchants.slice();
             row.riskControlHours = document.getElementById("riskControlHours").value.trim();
+            row.riskRealNameCondition = document.getElementById("riskRealNameCondition").checked;
+            row.riskCardStatusCondition = document.getElementById("riskCardStatusCondition").checked;
             row.riskFamilyCondition = document.getElementById("riskFamilyCondition").checked;
             row.riskFamilyNumberCount = document.getElementById("riskFamilyNumberCount").value.trim();
             row.riskVoiceCondition = document.getElementById("riskVoiceCondition").checked;
             row.riskVoiceUsageCount = document.getElementById("riskVoiceUsageCount").value.trim();
+            row.riskMatchedRuleMonitorAction = document.querySelector('input[name="riskMatchedRuleMonitorAction"]:checked')?.value || "停止监控";
+            row.riskStopRetriggerAction = document.querySelector('input[name="riskStopRetriggerAction"]:checked')?.value || "不触发风险管理停机";
           }
         }
         showToast("风险防控策略编辑已保存", "success");
@@ -12631,10 +12971,48 @@
       showToast(`ICCID ${iccid} 激活操作已提交`, "success");
     }
 
+    function getSimRiskControlReasonGroups(row = {}) {
+      return Array.isArray(row.riskControlReasons)
+        ? row.riskControlReasons.filter((group) => group && Array.isArray(group.contents) && group.contents.length)
+        : [];
+    }
+
+    function simRiskControlGroupIntro(group = {}) {
+      if (group.intro) return group.intro;
+      if (group.strategyType === "风险管理停机策略") {
+        return `在充值后${group.riskControlHours || "24"}小时内，未达成以下条件：`;
+      }
+      return "";
+    }
+
+    function renderSimRiskControlStatusCell(row = {}) {
+      const reasonGroups = getSimRiskControlReasonGroups(row);
+      if (!reasonGroups.length) {
+        return '<span class="status-text status-positive">未触发</span>';
+      }
+      return `
+        <span class="risk-control-status-tip" tabindex="0">
+          已触发
+          <span class="risk-control-status-popup" role="tooltip" aria-label="风险防控触发原因">
+            ${reasonGroups.map((group) => `
+              <span class="risk-control-reason-group">
+                <span class="risk-control-reason-type">${escapeHtml(group.strategyType || "风险防控策略")}</span>
+                ${simRiskControlGroupIntro(group) ? `<span class="risk-control-reason-intro">${escapeHtml(simRiskControlGroupIntro(group))}</span>` : ""}
+                <span class="risk-control-reason-list">
+                  ${group.contents.map((item) => `<span class="risk-control-reason-item">${escapeHtml(item)}</span>`).join("")}
+                </span>
+              </span>
+            `).join("")}
+          </span>
+        </span>
+      `;
+    }
+
     function renderSimCardValue(value, column, row = {}) {
       if (column.key === "action") {
         return `<button class="link-text sim-card-activate-btn" type="button" data-iccid="${escapeHtml(row.iccid)}">激活</button>`;
       }
+      if (column.key === "riskControlStatus") return renderSimRiskControlStatusCell(row);
       if (column.key === "riskStopStatus") {
         const isOn = value === "开启";
         return `
