@@ -1999,6 +1999,37 @@
       min-width: 1180px;
     }
 
+    .risk-trigger-log-table .stacked-id-cell {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      min-width: 220px;
+      line-height: 1.4;
+    }
+
+    .risk-trigger-log-table .stacked-id-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .risk-trigger-log-table .stacked-id-label {
+      flex: 0 0 48px;
+      color: #7b8798;
+    }
+
+    .risk-trigger-log-table .stacked-openid-cell .stacked-id-label {
+      flex-basis: 56px;
+    }
+
+    .risk-trigger-log-table .stacked-id-value {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-width: 0;
+    }
+
     .risk-log-empty {
       min-height: 240px;
       padding: 28px 18px;
@@ -3261,19 +3292,39 @@
       color: #2f3a4a;
     }
 
+    .status-link {
+      color: #1687e8;
+    }
+
     .operation-progress {
       display: inline-flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+      width: 100%;
+      min-width: 0;
+      max-width: 172px;
+      box-sizing: border-box;
+      padding: 2px 0;
+    }
+
+    .operation-progress-label {
+      display: inline-flex;
       align-items: center;
-      gap: 8px;
-      min-width: 180px;
-      white-space: nowrap;
+      min-height: 22px;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.25;
+      box-sizing: border-box;
     }
 
     .operation-progress-track {
-      width: 92px;
-      height: 8px;
+      width: 100%;
+      height: 10px;
       border-radius: 999px;
-      background: #edf2f7;
+      background: #edf1f5;
       overflow: hidden;
     }
 
@@ -3283,12 +3334,40 @@
       border-radius: inherit;
     }
 
+    .operation-progress.is-processing .operation-progress-label {
+      color: #1687e8;
+      background: #e8f2ff;
+    }
+
+    .operation-progress.is-processing .operation-progress-fill {
+      background: #1687e8;
+    }
+
+    .operation-progress.is-success .operation-progress-label {
+      color: #0d9a3d;
+      background: #e8f8ee;
+    }
+
     .operation-progress.is-success .operation-progress-fill {
-      background: #17a66a;
+      background: #12a83f;
+    }
+
+    .operation-progress.is-warning .operation-progress-label {
+      color: #f97316;
+      background: #fff3e6;
+    }
+
+    .operation-progress.is-warning .operation-progress-fill {
+      background: #ff7a00;
+    }
+
+    .operation-progress.is-failure .operation-progress-label {
+      color: #e11d2f;
+      background: #fde9ec;
     }
 
     .operation-progress.is-failure .operation-progress-fill {
-      background: #d92d20;
+      background: #dfe5ee;
     }
 
     .operation-progress-text {
@@ -6155,14 +6234,11 @@
       { key: "triggerTime", label: "触发时间", type: "daterange" }
     ];
     const riskLogTableColumns = [
-      { key: "iccid", label: "ICCID" },
+      { key: "simIdentifiers", label: "ICCID/MSISDN/EID" },
       { key: "merchantName", label: "商户名称" },
       { key: "merchantType", label: "商户类型" },
-      { key: "msisdn", label: "MSISDN" },
-      { key: "eid", label: "EID" },
       { key: "boundPhone", label: "用户绑定手机号" },
-      { key: "openId", label: "open ID" },
-      { key: "unionId", label: "union ID" },
+      { key: "wechatIdentifiers", label: "openID/unionID" },
       { key: "triggerType", label: "触发方式" },
       { key: "triggerStrategyName", label: "触发策略名称" },
       { key: "triggerReason", label: "触发原因" },
@@ -6256,7 +6332,7 @@
       { key: "batchNo", label: "批次号", type: "input" },
       { key: "operationMode", label: "操作方式", type: "select", options: ["手动变更", "系统变更"] },
       { key: "operationType", label: "操作类型", type: "select", options: ["开启风险管理停机", "关闭风险管理停机"] },
-      { key: "operationResult", label: "操作结果", type: "select", options: ["成功", "失败"] },
+      { key: "operationResult", label: "操作结果", type: "select", options: ["处理中", "成功", "失败"] },
       { key: "remark", label: "备注", type: "input" },
       { key: "operationTime", label: "操作时间", type: "daterange" }
     ];
@@ -6274,6 +6350,17 @@
       { key: "action", label: "操作", fixedRight: true }
     ];
     const riskStopChangeRecordRows = [
+      {
+        batchNo: "RMS20260619004",
+        operationMode: "系统操作",
+        operationType: "开启风险管理停机",
+        totalCount: 10,
+        successCount: 4,
+        failureCount: 0,
+        remark: "系统任务处理中",
+        operationTime: "2026-06-19 09:20:10",
+        operator: "系统"
+      },
       {
         batchNo: "RMS20260618001",
         operationMode: "手动操作",
@@ -6312,7 +6399,7 @@
       { key: "iccidMsisdn", label: "ICCID/MSISDN", type: "input" },
       { key: "merchantName", label: "商户名称", type: "input-select", options: riskStrategyMerchantOptions },
       { key: "merchantType", label: "商户类型", type: "select", options: ["代理商", "品牌商"] },
-      { key: "operationResult", label: "操作结果", type: "select", options: ["成功", "失败"] }
+      { key: "operationResult", label: "操作结果", type: "select", options: ["处理中", "成功", "失败"] }
     ];
     const riskStopChangeDetailColumns = [
       { key: "iccid", label: "ICCID" },
@@ -6325,6 +6412,16 @@
       { key: "operator", label: "操作人" }
     ];
     const riskStopChangeDetailRows = [
+      { batchNo: "RMS20260619004", iccid: "8986044219231000871", merchantName: "华东物联商户", merchantType: "代理商", msisdn: "106482913031", stopStatus: "开启", operationResult: "成功", failureReason: "-", operationTime: "2026-06-19 09:20:10", operator: "系统" },
+      { batchNo: "RMS20260619004", iccid: "8986044219231000872", merchantName: "华东物联上海子商户", merchantType: "品牌商", msisdn: "106482913032", stopStatus: "开启", operationResult: "成功", failureReason: "-", operationTime: "2026-06-19 09:20:10", operator: "系统" },
+      { batchNo: "RMS20260619004", iccid: "8986044219231000873", merchantName: "车载设备商户", merchantType: "代理商", msisdn: "106482913033", stopStatus: "开启", operationResult: "成功", failureReason: "-", operationTime: "2026-06-19 09:20:10", operator: "系统" },
+      { batchNo: "RMS20260619004", iccid: "8986044219231000874", merchantName: "车载设备华南子商户", merchantType: "品牌商", msisdn: "106482913034", stopStatus: "开启", operationResult: "成功", failureReason: "-", operationTime: "2026-06-19 09:20:10", operator: "系统" },
+      { batchNo: "RMS20260619004", iccid: "8986044219231000875", merchantName: "北区能源商户", merchantType: "代理商", msisdn: "106482913035", stopStatus: "-", operationResult: "处理中", failureReason: "-", operationTime: "2026-06-19 09:20:10", operator: "系统" },
+      { batchNo: "RMS20260619004", iccid: "8986044219231000876", merchantName: "北区能源天津子商户", merchantType: "品牌商", msisdn: "106482913036", stopStatus: "-", operationResult: "处理中", failureReason: "-", operationTime: "2026-06-19 09:20:10", operator: "系统" },
+      { batchNo: "RMS20260619004", iccid: "8986044219231000877", merchantName: "渠道直营商户", merchantType: "代理商", msisdn: "106482913037", stopStatus: "-", operationResult: "处理中", failureReason: "-", operationTime: "2026-06-19 09:20:10", operator: "系统" },
+      { batchNo: "RMS20260619004", iccid: "8986044219231000878", merchantName: "渠道直营南京子商户", merchantType: "品牌商", msisdn: "106482913038", stopStatus: "-", operationResult: "处理中", failureReason: "-", operationTime: "2026-06-19 09:20:10", operator: "系统" },
+      { batchNo: "RMS20260619004", iccid: "8986044219231000879", merchantName: "车载设备西南子商户", merchantType: "品牌商", msisdn: "106482913039", stopStatus: "-", operationResult: "处理中", failureReason: "-", operationTime: "2026-06-19 09:20:10", operator: "系统" },
+      { batchNo: "RMS20260619004", iccid: "8986044219231000880", merchantName: "华东物联杭州子商户", merchantType: "品牌商", msisdn: "106482913040", stopStatus: "-", operationResult: "处理中", failureReason: "-", operationTime: "2026-06-19 09:20:10", operator: "系统" },
       { batchNo: "RMS20260618001", iccid: "8986044219231000841", merchantName: "华东物联商户", merchantType: "代理商", msisdn: "106482913001", stopStatus: "开启", operationResult: "成功", failureReason: "-", operationTime: "2026-06-18 10:22:15", operator: "lifan" },
       { batchNo: "RMS20260618001", iccid: "8986044219231000842", merchantName: "华东物联上海子商户", merchantType: "品牌商", msisdn: "106482913002", stopStatus: "开启", operationResult: "成功", failureReason: "-", operationTime: "2026-06-18 10:22:15", operator: "lifan" },
       { batchNo: "RMS20260618001", iccid: "8986044219231000843", merchantName: "车载设备商户", merchantType: "代理商", msisdn: "106482913003", stopStatus: "开启", operationResult: "成功", failureReason: "-", operationTime: "2026-06-18 10:22:15", operator: "lifan" },
@@ -8998,10 +9095,50 @@
     }
 
     function renderRiskLogValue(value, column, row) {
+      if (column.key === "simIdentifiers") return renderRiskLogSimIdentifiers(row);
+      if (column.key === "wechatIdentifiers") return renderRiskLogWechatIdentifiers(row);
       const identifierCell = renderIdentifierCell(value, column);
       if (identifierCell !== null) return identifierCell;
       if (column.key === "eid" && !value) return "/";
       return escapeHtml(value || "-");
+    }
+
+    function renderRiskLogStackedRow(label, valueHtml) {
+      return `
+        <div class="stacked-id-row">
+          <span class="stacked-id-label">${escapeHtml(label)}：</span>
+          <span class="stacked-id-value">${valueHtml}</span>
+        </div>
+      `;
+    }
+
+    function renderRiskLogPlainCopyValue(label, value) {
+      if (!hasIdentifierValue(value)) return "/";
+      const safeValue = escapeHtml(value);
+      return `
+        <span>${safeValue}</span>
+        ${renderCopyIcon(label, value, "data-copy-text")}
+      `;
+    }
+
+    function renderRiskLogSimIdentifiers(row) {
+      const eidHtml = hasIdentifierValue(row.eid) ? renderEidLink(row.eid) : "/";
+      return `
+        <div class="stacked-id-cell">
+          ${renderRiskLogStackedRow("ICCID", renderIccidLink(row.iccid, true))}
+          ${renderRiskLogStackedRow("MSISDN", renderRiskLogPlainCopyValue("MSISDN", row.msisdn))}
+          ${renderRiskLogStackedRow("EID", eidHtml)}
+        </div>
+      `;
+    }
+
+    function renderRiskLogWechatIdentifiers(row) {
+      return `
+        <div class="stacked-id-cell stacked-openid-cell">
+          ${renderRiskLogStackedRow("openID", renderRiskLogPlainCopyValue("openID", row.openId))}
+          ${renderRiskLogStackedRow("unionID", renderRiskLogPlainCopyValue("unionID", row.unionId))}
+        </div>
+      `;
     }
 
     function renderRiskLogTable() {
@@ -9128,6 +9265,9 @@
     }
 
     function riskStopRecordResult(row) {
+      const total = Number(row.totalCount) || 0;
+      const processed = (Number(row.successCount) || 0) + (Number(row.failureCount) || 0);
+      if (total > 0 && processed < total) return "处理中";
       return Number(row.failureCount) > 0 ? "失败" : "成功";
     }
 
@@ -9179,12 +9319,35 @@
     }
 
     function renderRiskStopProgress(row) {
+      const total = Number(row.totalCount) || 0;
+      const success = Number(row.successCount) || 0;
       const failure = Number(row.failureCount) || 0;
-      const hasFailure = failure >= 1;
+      const processed = success + failure;
+      const progress = total ? Math.min(100, Math.round((processed / total) * 100)) : 0;
+      const isProcessing = total > 0 && processed < total;
+      const isFullFailure = total > 0 && failure >= total;
+      let stateClass = "is-success";
+      let label = "任务处理成功";
+      let width = 100;
+
+      if (isProcessing) {
+        stateClass = "is-processing";
+        label = "任务处理中";
+        width = progress;
+      } else if (isFullFailure) {
+        stateClass = "is-failure";
+        label = "任务处理失败";
+        width = 100;
+      } else if (failure >= 1) {
+        stateClass = "is-warning";
+        label = "任务处理成功，存在失败数据";
+        width = 100;
+      }
+
       return `
-        <div class="operation-progress ${hasFailure ? "is-failure" : "is-success"}">
-          <span class="operation-progress-track"><span class="operation-progress-fill" style="width:100%"></span></span>
-          <span class="operation-progress-text">100%</span>
+        <div class="operation-progress ${stateClass}">
+          <span class="operation-progress-label">${label}</span>
+          <span class="operation-progress-track"><span class="operation-progress-fill" style="width:${width}%"></span></span>
         </div>
       `;
     }
@@ -9326,7 +9489,12 @@
       const identifierCell = renderIdentifierCell(value, column);
       if (identifierCell !== null) return identifierCell;
       if (column.key === "operationResult") {
-        return `<span class="status-text ${value === "成功" ? "status-positive" : "status-negative"}">${escapeHtml(value || "-")}</span>`;
+        const statusClass = value === "成功"
+          ? "status-positive"
+          : value === "处理中"
+            ? "status-link"
+            : "status-negative";
+        return `<span class="status-text ${statusClass}">${escapeHtml(value || "-")}</span>`;
       }
       return escapeHtml(value || "-");
     }
@@ -12654,7 +12822,7 @@
       const safeLabel = escapeHtml(label);
       const safeValue = escapeHtml(value);
       return `
-        <button class="copy-eid-btn" type="button" ${dataAttr}="${safeValue}" aria-label="复制${safeLabel}">
+        <button class="copy-eid-btn" type="button" ${dataAttr}="${safeValue}" data-copy-label="${safeLabel}" aria-label="复制${safeLabel}">
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M8 8h10v12H8V8Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
             <path d="M6 16H4V4h12v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -15414,6 +15582,12 @@
     }
 
     document.addEventListener("click", (event) => {
+      const genericCopyButton = event.target.closest("[data-copy-text]");
+      if (genericCopyButton) {
+        event.stopPropagation();
+        copyText(genericCopyButton.dataset.copyText, genericCopyButton.dataset.copyLabel || "内容");
+        return;
+      }
       const eidCopyButton = event.target.closest("[data-copy-eid]");
       if (eidCopyButton) {
         event.stopPropagation();
