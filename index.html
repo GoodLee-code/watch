@@ -2084,6 +2084,12 @@
       white-space: normal;
     }
 
+    .risk-trigger-reason-intro {
+      display: block;
+      color: #4b5563;
+      font-weight: 500;
+    }
+
     .risk-trigger-reason-item {
       position: relative;
       display: block;
@@ -9423,8 +9429,14 @@
     function renderRiskTriggerReasonCell(row) {
       const reasons = displayRiskTriggerReasons(row);
       if (!reasons.length) return "-";
+      const strategy = riskStopStrategyForLog(row);
+      const intro = `在充值后${strategy.riskControlHours || "24"}小时内`;
+      const introHtml = row.triggerType === "手动触发"
+        ? ""
+        : `<span class="risk-trigger-reason-intro">${escapeHtml(intro)}</span>`;
       return `
         <span class="risk-trigger-reason-list">
+          ${introHtml}
           ${reasons.map((reason) => `<span class="risk-trigger-reason-item">${escapeHtml(reason)}</span>`).join("")}
         </span>
       `;
@@ -12980,9 +12992,28 @@
     function simRiskControlGroupIntro(group = {}) {
       if (group.intro) return group.intro;
       if (group.strategyType === "风险管理停机策略") {
-        return `在充值后${group.riskControlHours || "24"}小时内，未达成以下条件：`;
+        return `在充值后${group.riskControlHours || "24"}小时内`;
       }
       return "";
+    }
+
+    function simRiskLimitCount(group = {}, item = "") {
+      if (group.limitCount) return group.limitCount;
+      const text = [item, ...(Array.isArray(group.contents) ? group.contents : [])].join(" ");
+      const match = text.match(/限制数量[：:]\s*(\d+)/);
+      if (match) return match[1];
+      const strategy = riskStrategyRows.find((row) => row.strategyType === group.strategyType);
+      return strategy?.limitCount || "1";
+    }
+
+    function formatSimRiskControlReasonItem(group = {}, item = "") {
+      if (group.strategyType === "亲情号数量限制策略" || group.strategyType === "绑定数量限制策略") {
+        return `未达成条件：绑定数量<${simRiskLimitCount(group, item)}`;
+      }
+      if (group.strategyType === "风险管理停机策略" && !String(item).startsWith("未达成条件：")) {
+        return `未达成条件：${item}`;
+      }
+      return item;
     }
 
     function renderSimRiskControlStatusCell(row = {}) {
@@ -12999,7 +13030,7 @@
                 <span class="risk-control-reason-type">${escapeHtml(group.strategyType || "风险防控策略")}</span>
                 ${simRiskControlGroupIntro(group) ? `<span class="risk-control-reason-intro">${escapeHtml(simRiskControlGroupIntro(group))}</span>` : ""}
                 <span class="risk-control-reason-list">
-                  ${group.contents.map((item) => `<span class="risk-control-reason-item">${escapeHtml(item)}</span>`).join("")}
+                  ${group.contents.map((item) => `<span class="risk-control-reason-item">${escapeHtml(formatSimRiskControlReasonItem(group, item))}</span>`).join("")}
                 </span>
               </span>
             `).join("")}
