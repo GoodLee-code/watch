@@ -3275,15 +3275,38 @@
       transform: translateX(-50%) translateY(0);
     }
 
-    .risk-control-reason-group + .risk-control-reason-group {
-      margin-top: 10px;
-      padding-top: 10px;
-      border-top: 1px solid rgba(255, 255, 255, 0.14);
+    .risk-control-popup-title {
+      display: block;
+      margin-bottom: 8px;
+      color: #fff;
+      font-weight: 600;
     }
 
-    .risk-control-reason-type {
+    .risk-control-reason-group {
       display: block;
-      margin-bottom: 5px;
+    }
+
+    .risk-control-group-separator {
+      display: block;
+      width: 100%;
+      height: 0;
+      margin: 11px 0 12px;
+      border-top: 1px dashed rgba(255, 255, 255, 0.58);
+    }
+
+    .risk-control-reason-meta {
+      display: flex;
+      align-items: flex-start;
+      gap: 4px;
+      margin-bottom: 4px;
+    }
+
+    .risk-control-reason-label {
+      flex: 0 0 auto;
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .risk-control-reason-value {
       color: #9bd0ff;
       font-weight: 600;
     }
@@ -13016,6 +13039,16 @@
       return item;
     }
 
+    function formatSimRiskControlStrategyType(group = {}) {
+      return group.strategyType || "风险防控策略";
+    }
+
+    function formatSimRiskControlStrategyName(group = {}) {
+      const strategyType = group.strategyType || "";
+      if (strategyType !== "风险管理停机策略") return "";
+      return group.strategyName || riskStrategyRows.find((row) => row.strategyType === strategyType)?.strategyName || "";
+    }
+
     function renderSimRiskControlStatusCell(row = {}) {
       const reasonGroups = getSimRiskControlReasonGroups(row);
       if (!reasonGroups.length) {
@@ -13025,9 +13058,20 @@
         <span class="risk-control-status-tip" tabindex="0">
           已触发
           <span class="risk-control-status-popup" role="tooltip" aria-label="风险防控触发原因">
-            ${reasonGroups.map((group) => `
+            <span class="risk-control-popup-title">触发原因</span>
+            ${reasonGroups.map((group, index) => `
+              ${index > 0 ? '<span class="risk-control-group-separator" aria-hidden="true"></span>' : ""}
               <span class="risk-control-reason-group">
-                <span class="risk-control-reason-type">${escapeHtml(group.strategyType || "风险防控策略")}</span>
+                <span class="risk-control-reason-meta">
+                  <span class="risk-control-reason-label">触发策略类型：</span>
+                  <span class="risk-control-reason-value">${escapeHtml(formatSimRiskControlStrategyType(group))}</span>
+                </span>
+                ${formatSimRiskControlStrategyName(group) ? `
+                  <span class="risk-control-reason-meta">
+                    <span class="risk-control-reason-label">策略名称：</span>
+                    <span class="risk-control-reason-value">${escapeHtml(formatSimRiskControlStrategyName(group))}</span>
+                  </span>
+                ` : ""}
                 ${simRiskControlGroupIntro(group) ? `<span class="risk-control-reason-intro">${escapeHtml(simRiskControlGroupIntro(group))}</span>` : ""}
                 <span class="risk-control-reason-list">
                   ${group.contents.map((item) => `<span class="risk-control-reason-item">${escapeHtml(formatSimRiskControlReasonItem(group, item))}</span>`).join("")}
