@@ -4024,6 +4024,20 @@
       padding: 0 10px;
     }
 
+    .modal-select-field {
+      position: relative;
+      width: 100%;
+    }
+
+    .modal-select-field .select-menu {
+      top: 40px;
+    }
+
+    .modal-select-field .option.empty {
+      cursor: default;
+      color: #9aa4b1;
+    }
+
     .batch-textarea {
       height: 76px;
       resize: none;
@@ -6097,6 +6111,97 @@
     </div>
   </div>
 
+  <div class="modal-mask" id="chipAllocateModal" role="dialog" aria-modal="true" aria-labelledby="chipAllocateTitle">
+    <div class="modal batch-modal">
+      <div class="modal-head">
+        <h2 id="chipAllocateTitle">ESIM芯片划拨</h2>
+        <button class="close" id="closeChipAllocateModal" type="button" aria-label="关闭">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-form">
+          <div class="modal-form-row">
+            <label class="modal-label" for="chipAllocateMerchant"><span class="required">*</span>商户</label>
+            <div class="modal-select-field" id="chipAllocateMerchantField">
+              <input class="batch-select" id="chipAllocateMerchant" type="text" placeholder="请输入商户名称搜索" autocomplete="off" />
+              <div class="select-menu" id="chipAllocateMerchantMenu">
+                <div class="select-options" id="chipAllocateMerchantOptions"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-form-row">
+            <label class="modal-label" for="chipAllocateGroup"><span class="required">*</span>ESIM芯片组</label>
+            <div class="modal-select-field" id="chipAllocateGroupField">
+              <input class="batch-select" id="chipAllocateGroup" type="text" placeholder="请输入ESIM芯片组名称搜索" autocomplete="off" />
+              <div class="select-menu" id="chipAllocateGroupMenu">
+                <div class="select-options" id="chipAllocateGroupOptions"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-form-row">
+            <label class="modal-label"><span class="required">*</span>同级划拨</label>
+            <div class="radio-group" id="chipPeerAllocateGroup">
+              <label class="radio-option">
+                <input type="radio" name="chipPeerAllocate" value="不开启" checked />
+                不开启
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="chipPeerAllocate" value="开启" />
+                开启
+              </label>
+            </div>
+          </div>
+
+          <div class="modal-form-row">
+            <label class="modal-label"><span class="required">*</span>操作模式</label>
+            <div class="radio-group" id="chipAllocateModeGroup">
+              <label class="radio-option">
+                <input type="radio" name="chipAllocateMode" value="file" checked />
+                文件导入
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="chipAllocateMode" value="manual" />
+                手动录入
+              </label>
+            </div>
+          </div>
+
+          <div class="mode-fields" id="chipAllocateFileModeFields">
+            <div class="modal-form-row">
+              <label class="modal-label"><span class="required">*</span>选择文件</label>
+              <div>
+                <div class="file-line">
+                  <button class="file-btn" id="chooseChipAllocateFileBtn" type="button">导入模板</button>
+                  <button class="template-link" id="downloadChipAllocateTplBtn" type="button">下载模板</button>
+                  <span class="file-name" id="chipAllocateFileName">未选择文件</span>
+                </div>
+                <input id="chipAllocateFileInput" type="file" accept=".xls,.xlsx" hidden />
+                <div class="file-help">支持文件格式：.XLS、XLXS表格格式 ，单次导入文件上限为10MB</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mode-fields is-hidden" id="chipAllocateManualModeFields">
+            <div class="modal-form-row">
+              <label class="modal-label" for="chipAllocateEidInput"><span class="required">*</span>EID</label>
+              <textarea class="batch-textarea tall" id="chipAllocateEidInput" placeholder="多个EID用逗号隔开（建议EID小于100条）"></textarea>
+            </div>
+          </div>
+
+          <div class="modal-form-row">
+            <label class="modal-label" for="chipAllocateRemark">备注</label>
+            <textarea class="batch-textarea tall" id="chipAllocateRemark" placeholder="请输入备注"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button class="btn secondary" id="cancelChipAllocateBtn" type="button">取消</button>
+        <button class="btn" id="confirmChipAllocateBtn" type="button">确认</button>
+      </div>
+    </div>
+  </div>
+
   <div class="modal-mask" id="chipSnGenerateModal" role="dialog" aria-modal="true" aria-labelledby="chipSnGenerateTitle">
     <div class="modal batch-modal">
       <div class="modal-head">
@@ -6244,6 +6349,62 @@
         chipCount: "33",
         createdAt: "2026-05-15 17:40:31",
         updatedAt: "2026-05-22 11:06:45"
+      },
+      {
+        groupName: "华东物联备用芯片组",
+        merchant: "华东物联商户",
+        chipCount: "96",
+        createdAt: "2026-05-20 13:26:48",
+        updatedAt: "2026-05-29 09:45:22"
+      },
+      {
+        groupName: "华东物联低功耗芯片组",
+        merchant: "华东物联商户",
+        chipCount: "64",
+        createdAt: "2026-05-23 10:12:38",
+        updatedAt: "2026-06-02 15:20:16"
+      },
+      {
+        groupName: "车载设备备用芯片组",
+        merchant: "车载设备商户",
+        chipCount: "58",
+        createdAt: "2026-05-19 14:08:51",
+        updatedAt: "2026-05-30 18:17:40"
+      },
+      {
+        groupName: "车载设备高频写卡芯片组",
+        merchant: "车载设备商户",
+        chipCount: "112",
+        createdAt: "2026-05-24 11:30:27",
+        updatedAt: "2026-06-03 10:08:19"
+      },
+      {
+        groupName: "北区能源量产芯片组",
+        merchant: "北区能源商户",
+        chipCount: "87",
+        createdAt: "2026-05-20 09:38:06",
+        updatedAt: "2026-05-31 13:11:52"
+      },
+      {
+        groupName: "北区能源测试芯片组",
+        merchant: "北区能源商户",
+        chipCount: "29",
+        createdAt: "2026-05-25 16:24:15",
+        updatedAt: "2026-06-04 09:32:33"
+      },
+      {
+        groupName: "渠道直营备用芯片组",
+        merchant: "渠道直营商户",
+        chipCount: "51",
+        createdAt: "2026-05-21 08:50:42",
+        updatedAt: "2026-06-01 14:26:57"
+      },
+      {
+        groupName: "渠道直营儿童手表芯片组",
+        merchant: "渠道直营商户",
+        chipCount: "104",
+        createdAt: "2026-05-26 10:46:13",
+        updatedAt: "2026-06-05 11:19:28"
       }
     ];
 
@@ -15756,6 +15917,158 @@
       submitChipInboundDeleteTask(operationType);
     }
 
+    function chipAllocateMerchants() {
+      return [...new Set(chipGroupRows.map((row) => row.merchant).filter(Boolean))];
+    }
+
+    function chipAllocateGroups(merchant) {
+      const knownMerchant = chipAllocateMerchants().includes(merchant);
+      return chipGroupRows
+        .filter((row) => !knownMerchant || row.merchant === merchant)
+        .map((row) => row.groupName);
+    }
+
+    function chipAllocateSelectConfig(type) {
+      const merchantInput = document.getElementById("chipAllocateMerchant");
+      const groupInput = document.getElementById("chipAllocateGroup");
+      if (type === "merchant") {
+        return {
+          input: merchantInput,
+          menu: document.getElementById("chipAllocateMerchantMenu"),
+          optionsEl: document.getElementById("chipAllocateMerchantOptions"),
+          options: chipAllocateMerchants()
+        };
+      }
+      return {
+        input: groupInput,
+        menu: document.getElementById("chipAllocateGroupMenu"),
+        optionsEl: document.getElementById("chipAllocateGroupOptions"),
+        options: chipAllocateGroups(merchantInput.value.trim())
+      };
+    }
+
+    function renderChipAllocateOptions(type, keyword = "", openMenu = false) {
+      const config = chipAllocateSelectConfig(type);
+      const query = keyword.trim();
+      const options = config.options.filter((option) => !query || option.includes(query));
+      config.optionsEl.innerHTML = options.length
+        ? options.map((option) => `<div class="option" data-value="${escapeHtml(option)}">${escapeHtml(option)}</div>`).join("")
+        : '<div class="option empty">暂无匹配数据</div>';
+      config.menu.classList.toggle("open", openMenu);
+    }
+
+    function closeChipAllocateMenus(exceptType) {
+      ["merchant", "group"].forEach((type) => {
+        if (type !== exceptType) chipAllocateSelectConfig(type).menu.classList.remove("open");
+      });
+    }
+
+    function openChipAllocateMenu(type, showAll = true) {
+      const config = chipAllocateSelectConfig(type);
+      closeChipAllocateMenus(type);
+      renderChipAllocateOptions(type, showAll ? "" : config.input.value, true);
+    }
+
+    function selectChipAllocateOption(type, value) {
+      const config = chipAllocateSelectConfig(type);
+      config.input.value = value;
+      if (type === "merchant") {
+        document.getElementById("chipAllocateGroup").value = "";
+        renderChipAllocateOptions("group", "", false);
+      }
+      closeChipAllocateMenus();
+    }
+
+    function renderChipAllocateDatalists() {
+      const merchantInput = document.getElementById("chipAllocateMerchant");
+      const groupInput = document.getElementById("chipAllocateGroup");
+      const merchant = merchantInput.value.trim();
+      const groupNames = chipAllocateGroups(merchant);
+      renderChipAllocateOptions("merchant", "", false);
+      renderChipAllocateOptions("group", "", false);
+      if (chipAllocateMerchants().includes(merchant) && groupInput.value && !groupNames.includes(groupInput.value)) {
+        groupInput.value = "";
+      }
+    }
+
+    function getChipAllocateMode() {
+      const selectedMode = document.querySelector('input[name="chipAllocateMode"]:checked');
+      return selectedMode ? selectedMode.value : "file";
+    }
+
+    function syncChipAllocateModeFields() {
+      const isFileMode = getChipAllocateMode() === "file";
+      document.getElementById("chipAllocateFileModeFields").classList.toggle("is-hidden", !isFileMode);
+      document.getElementById("chipAllocateManualModeFields").classList.toggle("is-hidden", isFileMode);
+    }
+
+    function resetChipAllocateModal() {
+      document.getElementById("chipAllocateMerchant").value = "";
+      document.getElementById("chipAllocateGroup").value = "";
+      document.querySelector('input[name="chipPeerAllocate"][value="不开启"]').checked = true;
+      document.querySelector('input[name="chipAllocateMode"][value="file"]').checked = true;
+      document.getElementById("chipAllocateFileInput").value = "";
+      document.getElementById("chipAllocateFileName").textContent = "未选择文件";
+      document.getElementById("chipAllocateEidInput").value = "";
+      document.getElementById("chipAllocateRemark").value = "";
+      renderChipAllocateDatalists();
+      syncChipAllocateModeFields();
+    }
+
+    function openChipAllocateModal() {
+      resetChipAllocateModal();
+      document.getElementById("chipAllocateModal").classList.add("open");
+    }
+
+    function closeChipAllocateModal() {
+      document.getElementById("chipAllocateModal").classList.remove("open");
+    }
+
+    function confirmChipAllocate() {
+      const merchant = document.getElementById("chipAllocateMerchant").value.trim();
+      const groupName = document.getElementById("chipAllocateGroup").value.trim();
+      const entryMode = getChipAllocateMode();
+      const merchantOptions = chipAllocateMerchants();
+      const groupOptions = chipAllocateGroups(merchant);
+      if (!merchant) {
+        showToast("请选择商户", "error");
+        return;
+      }
+      if (!merchantOptions.includes(merchant)) {
+        showToast("请选择有效的商户", "error");
+        return;
+      }
+      if (!groupName) {
+        showToast("请选择ESIM芯片组", "error");
+        return;
+      }
+      if (!groupOptions.includes(groupName)) {
+        showToast("请选择当前商户关联的ESIM芯片组", "error");
+        return;
+      }
+      if (entryMode === "file") {
+        const file = document.getElementById("chipAllocateFileInput").files[0];
+        if (!file) {
+          showToast("请先选择文件", "error");
+          return;
+        }
+        const ext = file.name.split(".").pop().toLowerCase();
+        if (!["xls", "xlsx"].includes(ext)) {
+          showToast("仅支持上传 XLS、XLSX 表格文件", "error");
+          return;
+        }
+        if (file.size > 10 * 1024 * 1024) {
+          showToast("单次导入文件上限为10MB", "error");
+          return;
+        }
+      } else if (!document.getElementById("chipAllocateEidInput").value.trim()) {
+        showToast("请输入EID", "error");
+        return;
+      }
+      closeChipAllocateModal();
+      showToast("ESIM芯片划拨任务已提交", "success");
+    }
+
     function setSidebarSelected(pageId) {
       document.getElementById("simNavItem").classList.remove("active");
       document.getElementById("esimNavItem").classList.remove("active");
@@ -16279,9 +16592,7 @@
       event.stopPropagation();
     });
     document.getElementById("chipInboundBtn").addEventListener("click", openChipInboundDeleteModal);
-    document.getElementById("chipAllocateBtn").addEventListener("click", () => {
-      showToast("ESIM芯片划拨流程待接入", "info");
-    });
+    document.getElementById("chipAllocateBtn").addEventListener("click", openChipAllocateModal);
     document.getElementById("chipExportBtn").addEventListener("click", () => {
       showToast("已按当前查询条件导出ESIM芯片", "success");
     });
@@ -16489,6 +16800,52 @@
     });
     document.getElementById("chipInboundDeleteModal").addEventListener("click", (event) => {
       if (event.target.id === "chipInboundDeleteModal") closeChipInboundDeleteModal();
+    });
+    document.getElementById("closeChipAllocateModal").addEventListener("click", closeChipAllocateModal);
+    document.getElementById("cancelChipAllocateBtn").addEventListener("click", closeChipAllocateModal);
+    document.getElementById("confirmChipAllocateBtn").addEventListener("click", confirmChipAllocate);
+    ["merchant", "group"].forEach((type) => {
+      const config = chipAllocateSelectConfig(type);
+      config.input.addEventListener("click", (event) => {
+        event.stopPropagation();
+        openChipAllocateMenu(type, true);
+      });
+      config.input.addEventListener("focus", () => {
+        openChipAllocateMenu(type, true);
+      });
+      config.input.addEventListener("input", () => {
+        if (type === "merchant") {
+          document.getElementById("chipAllocateGroup").value = "";
+          renderChipAllocateOptions("group", "", false);
+        }
+        openChipAllocateMenu(type, false);
+      });
+      config.menu.addEventListener("click", (event) => {
+        event.stopPropagation();
+      });
+      config.optionsEl.addEventListener("click", (event) => {
+        event.stopPropagation();
+        const option = event.target.closest(".option");
+        if (!option || option.classList.contains("empty")) return;
+        selectChipAllocateOption(type, option.dataset.value);
+      });
+    });
+    document.querySelectorAll('input[name="chipAllocateMode"]').forEach((input) => {
+      input.addEventListener("change", syncChipAllocateModeFields);
+    });
+    document.getElementById("chooseChipAllocateFileBtn").addEventListener("click", () => {
+      document.getElementById("chipAllocateFileInput").click();
+    });
+    document.getElementById("chipAllocateFileInput").addEventListener("change", (event) => {
+      const file = event.target.files[0];
+      document.getElementById("chipAllocateFileName").textContent = file ? file.name : "未选择文件";
+    });
+    document.getElementById("downloadChipAllocateTplBtn").addEventListener("click", () => {
+      showToast("已下载ESIM芯片划拨模板", "success");
+    });
+    document.getElementById("chipAllocateModal").addEventListener("click", (event) => {
+      closeChipAllocateMenus();
+      if (event.target.id === "chipAllocateModal") closeChipAllocateModal();
     });
     document.getElementById("closeChipSnGenerateModal").addEventListener("click", closeChipSnGenerateModal);
     document.getElementById("cancelChipSnGenerateBtn").addEventListener("click", closeChipSnGenerateModal);
