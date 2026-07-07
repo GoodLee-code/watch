@@ -7270,14 +7270,19 @@
     ];
     const chipOperationRecordFields = [
       { key: "batchNo", label: "批次号", type: "input" },
+      { key: "merchant", label: "商户", type: "select", options: [...new Set(chipGroupRows.map((row) => row.merchant))] },
+      { key: "chipGroup", label: "ESIM芯片组", type: "select", options: chipGroupRows.map((row) => row.groupName) },
+      { key: "peerAllocate", label: "同级划拨", type: "select", options: ["不开启", "开启"] },
       { key: "operationType", label: "操作类型", type: "select", options: ["ESIM芯片入库", "ESIM芯片删除"] },
       { key: "supplier", label: "供应商", type: "select", options: ["中移物联", "联通智联", "天喻信息"] },
-      { key: "merchant", label: "商户", type: "select", options: ["华东物联商户", "车载设备商户", "北区能源商户", "渠道直营商户"] },
       { key: "status", label: "状态", type: "select", options: ["成功", "失败"] },
       { key: "operationTime", label: "操作时间", type: "daterange" }
     ];
     const chipOperationRecordColumns = [
       { key: "batchNo", label: "批次号", link: true },
+      { key: "merchant", label: "商户" },
+      { key: "chipGroup", label: "ESIM芯片组" },
+      { key: "peerAllocate", label: "同级划拨" },
       { key: "operationType", label: "操作类型" },
       { key: "status", label: "状态", status: true },
       { key: "totalCount", label: "处理总数", totalLink: true },
@@ -7305,6 +7310,8 @@
         batchNo: "CHIP20260607006",
         supplier: "联通智联",
         merchant: "车载设备商户",
+        chipGroup: "车载设备高频写卡芯片组",
+        peerAllocate: "不开启",
         operationType: "ESIM芯片划拨",
         status: "成功",
         totalCount: "86",
@@ -7775,6 +7782,7 @@
       { key: "agent", label: "代理商", type: "select", options: ["华东渠道代理", "华南直营代理", "北区合作代理"] },
       { key: "packageExpired", label: "套餐过期状态", type: "select", options: ["已过期", "未过期"] },
       { key: "cardStatus", label: "卡状态", type: "select", options: ["已激活", "激活失败", "已停机", "停机失败"] },
+      { key: "riskStopStatus", label: "风险管理停机状态", type: "select", options: ["开启", "关闭"] },
       { key: "riskControlStatus", label: "风险防控触发状态", type: "select", options: ["已触发", "未触发"] },
       { key: "cardGroup", label: "卡组名称", type: "select", options: ["儿童手表基础卡组", "智能终端流量卡组", "直营渠道卡组"] },
       { key: "lockFlag", label: "锁卡标志", type: "select", options: ["锁卡", "未锁卡"] },
@@ -7788,6 +7796,7 @@
       { key: "msisdn", label: "MSISDN" },
       { key: "imei", label: "IMEI" },
       { key: "cardStatus", label: "卡状态" },
+      { key: "riskStopStatus", label: "风险管理停机状态" },
       { key: "riskControlStatus", label: "风险防控触发状态" },
       { key: "serviceMonths", label: "服务有效月份" },
       { key: "lockStatus", label: "锁卡标志" },
@@ -12018,7 +12027,7 @@
       if (chipState.activeTab === "allocationRecords") {
         return chipOperationRecordFields.filter((field) => !["operationType", "supplier"].includes(field.key));
       }
-      return chipOperationRecordFields.filter((field) => !["supplier", "merchant"].includes(field.key));
+      return chipOperationRecordFields.filter((field) => !["supplier", "merchant", "chipGroup", "peerAllocate"].includes(field.key));
     }
 
     function renderChipOperationFilters() {
@@ -12196,9 +12205,11 @@
         const matchBatch = values.batchNo ? row.batchNo.includes(values.batchNo.trim()) : true;
         const matchSupplier = visibleFieldKeys.has("supplier") && values.supplier ? row.supplier === values.supplier : true;
         const matchMerchant = visibleFieldKeys.has("merchant") && values.merchant ? row.merchant === values.merchant : true;
+        const matchChipGroup = visibleFieldKeys.has("chipGroup") && values.chipGroup ? row.chipGroup === values.chipGroup : true;
+        const matchPeerAllocate = visibleFieldKeys.has("peerAllocate") && values.peerAllocate ? row.peerAllocate === values.peerAllocate : true;
         const matchStatus = values.status ? row.status === values.status : true;
         const matchTime = isDateTextInRange(row.operationTime, values.operationStart, values.operationEnd);
-        return matchType && matchOperationType && matchBatch && matchSupplier && matchMerchant && matchStatus && matchTime;
+        return matchType && matchOperationType && matchBatch && matchSupplier && matchMerchant && matchChipGroup && matchPeerAllocate && matchStatus && matchTime;
       });
     }
 
@@ -12232,7 +12243,9 @@
     }
 
     function currentChipOperationColumns() {
-      if (chipState.activeTab !== "allocationRecords") return chipOperationRecordColumns;
+      if (chipState.activeTab !== "allocationRecords") {
+        return chipOperationRecordColumns.filter((column) => !["merchant", "chipGroup", "peerAllocate"].includes(column.key));
+      }
       return chipOperationRecordColumns.filter((column) => column.key !== "operationType");
     }
 
@@ -13250,17 +13263,7 @@
       }
       if (column.key === "riskControlStatus") return renderSimRiskControlStatusCell(row);
       if (column.key === "riskStopStatus") {
-        const isOn = value === "开启";
-        return `
-          <button
-            class="risk-status-switch sim-risk-stop-switch ${isOn ? "is-on" : ""}"
-            type="button"
-            data-iccid="${escapeHtml(row.iccid)}"
-            aria-pressed="${isOn}"
-            aria-label="风险管理停机状态${isOn ? "开启" : "关闭"}，点击切换"
-            title="${isOn ? "关闭" : "开启"}"
-          ></button>
-        `;
+        return escapeHtml(value || "关闭");
       }
       return renderWritableValue(value, column, row);
     }
