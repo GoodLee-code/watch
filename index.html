@@ -885,7 +885,8 @@
     .content.chip-mode .business-tabs,
     .content.ab-mode .business-tabs,
     .content.sim-mode .business-tabs,
-    .content.risk-mode .business-tabs {
+    .content.risk-mode .business-tabs,
+    .content.refund-mode .business-tabs {
       display: none;
     }
 
@@ -1734,6 +1735,534 @@
     .ab-detail-table .operation-col {
       width: 100px;
       min-width: 100px;
+    }
+
+    .ab-dashboard-page {
+      padding: 0;
+      background: linear-gradient(135deg, #f7fbff 0%, #eef6ff 45%, #f8fbff 100%);
+    }
+
+    .ab-dashboard-shell {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      padding: 18px 18px 14px;
+      color: #17233d;
+    }
+
+    .ab-dashboard-header {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .ab-dashboard-header h1 {
+      margin: 0;
+      color: #14213d;
+      font-size: 20px;
+      line-height: 28px;
+      font-weight: 700;
+    }
+
+    .ab-toolbar {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .ab-toolbar-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .ab-toolbar-label {
+      color: #23324b;
+      font-size: 13px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .ab-date-field {
+      width: 224px;
+      min-width: 224px;
+    }
+
+    .ab-date-field .date-range-control {
+      height: 34px;
+      min-height: 34px;
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 4px 12px rgba(32, 85, 145, 0.08);
+    }
+
+    .ab-toolbar-actions {
+      margin-left: auto;
+      display: inline-flex;
+      gap: 10px;
+    }
+
+    .ab-refresh-btn::before {
+      content: "⟳";
+      margin-right: 6px;
+      font-size: 14px;
+    }
+
+    .ab-export-btn {
+      background: #3f7cff;
+      border-color: #3f7cff;
+    }
+
+    .ab-export-btn::before {
+      content: "⇩";
+      margin-right: 6px;
+      font-size: 14px;
+    }
+
+    .ab-dashboard-card,
+    .ab-kpi-card {
+      background: rgba(255, 255, 255, 0.96);
+      border: 1px solid rgba(221, 231, 245, 0.9);
+      border-radius: 8px;
+      box-shadow: 0 10px 24px rgba(54, 101, 168, 0.08);
+    }
+
+    .ab-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 999px;
+      display: inline-block;
+    }
+
+    .ab-dot.a {
+      background: #4f7dff;
+    }
+
+    .ab-dot.b {
+      background: #20b889;
+    }
+
+    .ab-dot.compare {
+      background: linear-gradient(135deg, #ffeded, #eef6ff);
+    }
+
+    .ab-kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .ab-kpi-card {
+      min-height: 148px;
+      padding: 18px 20px 16px;
+      min-width: 0;
+      overflow: hidden;
+    }
+
+    .ab-kpi-title {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      color: #15233d;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .ab-kpi-icon {
+      width: 26px;
+      height: 26px;
+      border-radius: 7px;
+      display: inline-grid;
+      place-items: center;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .ab-kpi-icon.scan {
+      background: #4d7cff;
+    }
+
+    .ab-kpi-icon.click {
+      background: #17bf6b;
+    }
+
+    .ab-kpi-icon.pay {
+      background: #9156f6;
+    }
+
+    .ab-kpi-icon.money {
+      background: #ff980f;
+    }
+
+    .ab-help {
+      width: 14px;
+      height: 14px;
+      border: 1px solid #9aa9bc;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #7b8798;
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .ab-kpi-matrix {
+      margin-top: 14px;
+      display: grid;
+      grid-template-columns: 62px repeat(var(--metric-cols), minmax(0, 1fr));
+      font-size: 13px;
+    }
+
+    .ab-kpi-matrix > span {
+      min-width: 0;
+      height: 27px;
+      padding: 0 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid #edf2f8;
+      color: #17233d;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .ab-kpi-label {
+      justify-content: flex-start !important;
+      font-weight: 600;
+    }
+
+    .ab-kpi-head {
+      color: #73829a;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .ab-kpi-compare {
+      border-bottom: 0;
+      background: linear-gradient(90deg, rgba(255, 241, 241, 0.7), rgba(243, 248, 255, 0.9));
+    }
+
+    .ab-page-a-text {
+      color: #3f72ff !important;
+    }
+
+    .ab-page-b-text {
+      color: #0bb875 !important;
+    }
+
+    .ab-positive {
+      color: #ff2f4d !important;
+    }
+
+    .ab-negative {
+      color: #089a82 !important;
+    }
+
+    .ab-dashboard-card {
+      padding: 16px;
+    }
+
+    .ab-dashboard-card h2 {
+      margin: 0 0 14px;
+      color: #14213d;
+      font-size: 16px;
+      line-height: 22px;
+      font-weight: 700;
+    }
+
+    .ab-funnel-compare {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 150px minmax(0, 1fr);
+      gap: 18px;
+      align-items: stretch;
+      min-height: 270px;
+    }
+
+    .ab-funnel-side {
+      position: relative;
+      display: grid;
+      grid-template-columns: 126px minmax(260px, 1fr) 78px;
+      align-items: center;
+      gap: 14px;
+      min-height: 250px;
+    }
+
+    .ab-funnel-side-title {
+      position: absolute;
+      top: 0;
+      left: 48%;
+      transform: translateX(-50%);
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: #20324e;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .ab-funnel-labels,
+    .ab-funnel-rates {
+      display: grid;
+      grid-template-rows: repeat(3, 1fr);
+      gap: 14px;
+      padding-top: 30px;
+    }
+
+    .ab-step-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #20324e;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .ab-step-no {
+      width: 20px;
+      height: 20px;
+      border-radius: 6px;
+      display: inline-grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 800;
+      font-size: 12px;
+    }
+
+    .ab-step-no.scan {
+      background: #4f7dff;
+    }
+
+    .ab-step-no.click {
+      background: #21a79b;
+    }
+
+    .ab-step-no.pay {
+      background: #8c5cf6;
+    }
+
+    .ab-funnel-stack {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 7px;
+      padding-top: 26px;
+      min-width: 250px;
+    }
+
+    .ab-funnel-bar {
+      height: 61px;
+      clip-path: polygon(8% 0, 92% 0, 80% 100%, 20% 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
+    }
+
+    .ab-funnel-bar.scan {
+      background: linear-gradient(135deg, #3e74ff, #4f83ff);
+    }
+
+    .ab-funnel-bar.click {
+      width: 72%;
+      align-self: center;
+      background: linear-gradient(135deg, #20b889, #23887e);
+    }
+
+    .ab-funnel-bar.pay {
+      width: 44%;
+      align-self: center;
+      background: linear-gradient(135deg, #3e74ff, #b144f5);
+    }
+
+    .ab-funnel-value {
+      font-size: 18px;
+      line-height: 22px;
+      font-weight: 800;
+    }
+
+    .ab-funnel-percent {
+      margin-top: 2px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .ab-funnel-arrow {
+      align-self: center;
+      color: #26a991;
+      font-size: 24px;
+      line-height: 12px;
+      transform: translateY(-2px);
+    }
+
+    .ab-rate-block {
+      color: #6f7d91;
+      font-size: 12px;
+      font-weight: 700;
+      text-align: left;
+    }
+
+    .ab-rate-block strong {
+      display: block;
+      margin-top: 3px;
+      color: #099a7e;
+      font-size: 14px;
+    }
+
+    .ab-rate-block.overall strong {
+      color: #2576ff;
+      font-size: 18px;
+    }
+
+    .ab-funnel-diff {
+      align-self: center;
+      min-height: 246px;
+      padding: 18px 14px;
+      border-radius: 8px;
+      background: linear-gradient(180deg, #eef5ff 0%, #f6f9fd 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      color: #52627a;
+      font-size: 12px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .ab-funnel-diff-title {
+      color: #23324b;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .ab-funnel-diff .diff-value {
+      color: #ff304f;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .ab-conversion-table {
+      min-width: 1100px;
+    }
+
+    .ab-conversion-table th,
+    .ab-conversion-table td {
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .ab-conversion-table th:first-child,
+    .ab-conversion-table td:first-child,
+    .ab-conversion-table th:nth-child(2),
+    .ab-conversion-table td:nth-child(2) {
+      text-align: left;
+    }
+
+    .ab-table-step {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+    }
+
+    .ab-table-step .ab-step-no {
+      flex: 0 0 auto;
+    }
+
+    .ab-mini-arrow {
+      color: #21a79b;
+      font-weight: 800;
+      line-height: 10px;
+    }
+
+    .ab-chart-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .ab-chart-legend {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      color: #5a6980;
+      font-size: 12px;
+      font-weight: 600;
+      margin: -2px 0 8px;
+    }
+
+    .ab-legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .ab-legend-line,
+    .ab-legend-dot {
+      width: 20px;
+      height: 3px;
+      border-radius: 999px;
+      display: inline-block;
+    }
+
+    .ab-legend-dot {
+      width: 9px;
+      height: 9px;
+    }
+
+    .ab-chart-wrap {
+      min-height: 210px;
+      overflow: hidden;
+    }
+
+    .ab-chart-wrap svg {
+      width: 100%;
+      height: 220px;
+      display: block;
+    }
+
+    .ab-chart-axis {
+      stroke: #d8e2ef;
+      stroke-width: 1;
+    }
+
+    .ab-chart-gridline {
+      stroke: #e9eff7;
+      stroke-width: 1;
+    }
+
+    .ab-chart-label {
+      fill: #5f6f86;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .ab-dashboard-note {
+      margin-top: -2px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #57708f;
+      font-size: 12px;
+      line-height: 18px;
+    }
+
+    .ab-note-icon {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 1px solid #2f7cff;
+      color: #2f7cff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      flex: 0 0 auto;
     }
 
     .drawer-mask {
@@ -3127,6 +3656,18 @@
       background: #fbfcfe;
     }
 
+    .refund-work-order-table .operation-col {
+      min-width: 148px;
+      width: 148px;
+    }
+
+    .refund-action-group {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+
     .iccid-link,
     .eid-link {
       border: 0;
@@ -3171,6 +3712,36 @@
       height: 15px;
     }
 
+    .writable-card-status-cell {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .inline-refresh-btn {
+      width: 20px;
+      height: 20px;
+      border: 0;
+      border-radius: 4px;
+      background: transparent;
+      color: #8b96a8;
+      display: inline-grid;
+      place-items: center;
+      padding: 0;
+      cursor: pointer;
+    }
+
+    .inline-refresh-btn:hover {
+      background: #eef5ff;
+      color: var(--blue-strong);
+    }
+
+    .inline-refresh-btn svg {
+      width: 14px;
+      height: 14px;
+    }
+
     .iccid-cell {
       display: inline-flex;
       align-items: center;
@@ -3179,6 +3750,25 @@
 
     .status-text {
       font-weight: 600;
+    }
+
+    .refund-status-stack {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 4px;
+      line-height: 1.45;
+      white-space: nowrap;
+    }
+
+    .refund-status-line {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .refund-status-label {
+      color: #667182;
+      font-weight: 400;
     }
 
     .disable-status-tip {
@@ -4602,6 +5192,19 @@
         <button class="sub-item" id="riskTriggerLogSubItem" type="button" data-page="riskTriggerLogPage">风险防控触发日志</button>
         <button class="sub-item" id="riskStopChangeRecordSubItem" type="button" data-page="riskStopChangeRecordPage">风险管理停机状态变更记录</button>
       </div>
+      <div class="nav-item" id="afterSaleNavItem" role="button" tabindex="0">
+        <svg class="nav-icon" viewBox="0 0 15 14" fill="none" aria-hidden="true">
+          <rect x="2.1" y="1.8" width="10.8" height="10.4" rx="2" />
+          <path d="M4.7 5.1h5.6M4.7 7.1h5.6M4.7 9.1h3.4" />
+        </svg>
+        <span class="nav-label">售后管理</span>
+        <button class="nav-toggle" id="afterSaleMenuToggle" type="button" aria-label="展开或收起售后管理菜单" aria-expanded="true">
+          <svg class="nav-caret" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m8 10 4 4 4-4" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+      <div class="sub-menu" id="afterSaleSubMenu" aria-label="售后管理二级菜单">
+        <button class="sub-item" id="refundWorkOrderSubItem" type="button" data-page="refundWorkOrderPage">退费工单</button>
+      </div>
       <button class="nav-item" id="abTestStatsNavItem" type="button" data-page="abTestStatsPage">
         <svg class="nav-icon" viewBox="0 0 15 14" fill="none" aria-hidden="true">
           <rect x="2.1" y="1.6" width="10.8" height="10.8" rx="2" />
@@ -4666,65 +5269,56 @@
 
         </div>
 
-        <div class="page-view ab-page" id="abTestStatsPage">
-          <section class="panel query-panel" aria-label="AB测试套餐购买统计查询区域">
-            <div class="filter-wrap">
-              <div class="field clearable-query">
-                <select class="control" id="abVersionFilter" aria-label="H5页面版本">
-                  <option value="" disabled hidden selected>全部</option>
-                  <option value="A页面">A页面</option>
-                  <option value="B页面">B页面</option>
-                </select>
-                <button class="query-clear" type="button" data-clear-control="abVersionFilter" aria-label="清除H5页面版本">×</button>
+        <div class="page-view ab-page ab-dashboard-page" id="abTestStatsPage">
+          <section class="ab-dashboard-shell" aria-label="H5套餐购买漏斗数据看板">
+            <header class="ab-dashboard-header">
+              <h1>H5套餐购买漏斗数据看板</h1>
+              <div class="ab-toolbar">
+                <div class="ab-toolbar-item">
+                  <span class="ab-toolbar-label">统计时间</span>
+                  <div class="field writable-date-range ab-date-field" id="abFunnelDateRangeField"></div>
+                </div>
+                <div class="ab-toolbar-actions">
+                  <button class="btn secondary ab-refresh-btn" id="abRefreshBtn" type="button">刷新数据</button>
+                  <button class="btn ab-export-btn" id="abExportBtn" type="button">导出数据</button>
+                </div>
               </div>
-              <div class="field">
-                <input class="control" id="abDeviceSnFilter" type="text" placeholder="设备SN" />
+            </header>
+
+            <section class="ab-kpi-grid" id="abKpiCards" aria-label="漏斗核心指标"></section>
+
+            <section class="ab-dashboard-card ab-funnel-card" aria-label="漏斗分析对比">
+              <h2>漏斗分析对比（去重用户数）</h2>
+              <div class="ab-funnel-compare" id="abFunnelCompare"></div>
+            </section>
+
+            <section class="ab-dashboard-card ab-conversion-card" aria-label="转化率与流失率对比">
+              <h2>转化率与流失率对比</h2>
+              <div class="table-scroll">
+                <table class="ab-conversion-table">
+                  <thead id="abConversionTableHead"></thead>
+                  <tbody id="abConversionTableBody"></tbody>
+                </table>
               </div>
-              <div class="field">
-                <input class="control" id="abIccidFilter" type="text" placeholder="ICCID" />
+            </section>
+
+            <section class="ab-chart-grid" aria-label="漏斗趋势对比">
+              <div class="ab-dashboard-card">
+                <h2>漏斗趋势对比（按日）</h2>
+                <div class="ab-chart-legend" id="abLeakTrendLegend"></div>
+                <div class="ab-chart-wrap" id="abLeakTrendChart"></div>
               </div>
-              <div class="field">
-                <input class="control" id="abPackageFilter" type="text" placeholder="套餐名称" />
+              <div class="ab-dashboard-card">
+                <h2>各步骤转化率趋势对比（按日）</h2>
+                <div class="ab-chart-legend" id="abStepTrendLegend"></div>
+                <div class="ab-chart-wrap" id="abStepTrendChart"></div>
               </div>
-              <div class="field writable-date-range" id="abPurchaseDateRangeField"></div>
-              <div class="form-actions">
-                <button class="btn" id="abSearchBtn" type="button">查询</button>
-                <button class="btn secondary" id="abResetBtn" type="button">重置</button>
-                <button class="btn secondary" id="abExportBtn" type="button">导出</button>
-              </div>
+            </section>
+
+            <div class="ab-dashboard-note">
+              <span class="ab-note-icon">i</span>
+              <span><strong>说明：</strong>去重用户数（UV）通过IP地址去重统计；转化率=下一步骤用户数/当前步骤用户数，流失率=1-转化率</span>
             </div>
-          </section>
-
-          <section class="ab-overview-grid" id="abOverviewCards" aria-label="AB测试统计概览"></section>
-
-          <section class="panel" aria-label="AB测试结果分析">
-            <div class="ab-analysis-grid" id="abAnalysisCards"></div>
-          </section>
-
-          <section class="panel table-panel" aria-label="套餐购买分析">
-            <h2 class="ab-section-title">套餐购买分析</h2>
-            <div class="table-scroll">
-              <table class="ab-package-table">
-                <thead>
-                  <tr id="abPackageTableHeader"></tr>
-                </thead>
-                <tbody id="abPackageTableBody"></tbody>
-              </table>
-            </div>
-            <div class="pager" id="abPackagePager" aria-label="套餐购买分析分页"></div>
-          </section>
-
-          <section class="panel table-panel" aria-label="购买明细列表">
-            <h2 class="ab-section-title">购买明细列表</h2>
-            <div class="table-scroll">
-              <table class="ab-detail-table">
-                <thead>
-                  <tr id="abDetailTableHeader"></tr>
-                </thead>
-                <tbody id="abDetailTableBody"></tbody>
-              </table>
-            </div>
-            <div class="pager" id="abDetailPager" aria-label="购买明细分页"></div>
           </section>
         </div>
 
@@ -5045,6 +5639,29 @@
               </section>
             </div>
           </div>
+        </div>
+
+        <div class="page-view" id="refundWorkOrderPage">
+          <section class="panel query-panel" aria-label="退费工单查询区域">
+            <div class="filter-wrap" id="refundWorkOrderFilterWrap"></div>
+          </section>
+
+          <div class="batch-actions" aria-label="退费工单操作">
+            <button class="btn" id="refundWorkOrderCreateBtn" type="button">新增退费工单</button>
+            <button class="btn secondary" id="refundWorkOrderExportBtn" type="button">导出</button>
+          </div>
+
+          <section class="panel table-panel" aria-label="退费工单列表">
+            <div class="table-scroll">
+              <table class="refund-work-order-table">
+                <thead>
+                  <tr id="refundWorkOrderTableHeader"></tr>
+                </thead>
+                <tbody id="refundWorkOrderTableBody"></tbody>
+              </table>
+            </div>
+            <div class="pager" id="refundWorkOrderPager" aria-label="退费工单分页"></div>
+          </section>
         </div>
 
         <div class="page-view" id="esimChipGroupPage">
@@ -7101,6 +7718,184 @@
       dateRangeError: ""
     };
 
+    const refundWorkOrderFields = [
+      { key: "refundNo", label: "退费工单号", type: "input" },
+      { key: "applicant", label: "申请人", type: "input" },
+      { key: "reviewer", label: "审核人", type: "input" },
+      { key: "iccidMsisdn", label: "ICCID/MSISDN", type: "input" },
+      { key: "auditStatus", label: "审核状态", type: "select", options: ["未审核", "已审核", "已驳回"] },
+      { key: "refundStatus", label: "退费状态", type: "select", options: ["未退费", "已退费", "退费失败"] },
+      { key: "refundMethod", label: "退费方式", type: "select", options: ["原路退回", "商家转账"] },
+      { key: "shopOrderNo", label: "店铺订单号", type: "input" },
+      { key: "applyDate", label: "申请日期", type: "daterange" },
+      { key: "auditDate", label: "审核日期", type: "daterange" },
+      { key: "customerNick", label: "客户昵称", type: "input" },
+      { key: "packageOrderNo", label: "套餐订单号", type: "input" }
+    ];
+
+    const refundWorkOrderDateConfigs = {
+      applyDate: {
+        label: "申请日期",
+        idPrefix: "refundApply",
+        openKey: "applyDateRangeOpen",
+        startKey: "applyStart",
+        endKey: "applyEnd",
+        draftStartKey: "draftApplyStart",
+        draftEndKey: "draftApplyEnd",
+        errorKey: "applyDateRangeError",
+        viewKey: "applyDateRangeViewMonth"
+      },
+      auditDate: {
+        label: "审核日期",
+        idPrefix: "refundAudit",
+        openKey: "auditDateRangeOpen",
+        startKey: "auditStart",
+        endKey: "auditEnd",
+        draftStartKey: "draftAuditStart",
+        draftEndKey: "draftAuditEnd",
+        errorKey: "auditDateRangeError",
+        viewKey: "auditDateRangeViewMonth"
+      }
+    };
+
+    const refundWorkOrderTableColumns = [
+      { key: "index", label: "序号" },
+      { key: "refundNo", label: "退费工单号", copyLabel: "退费工单号" },
+      { key: "workOrderStatus", label: "工单状态" },
+      { key: "applyRefundAmount", label: "申请退费金额（元）" },
+      { key: "actualRefundAmount", label: "实际退费金额（元）" },
+      { key: "iccid", label: "ICCID" },
+      { key: "msisdn", label: "MSISDN", copyLabel: "MSISDN" },
+      { key: "packageOrderNo", label: "套餐订单号", copyLabel: "套餐订单号" },
+      { key: "shopOrderNo", label: "店铺订单号", copyLabel: "店铺订单号" },
+      { key: "workOrderSource", label: "工单来源" },
+      { key: "customerNick", label: "客户昵称" },
+      { key: "shopName", label: "店铺名称" },
+      { key: "paymentScreenshot", label: "支付截图" },
+      { key: "refundReason", label: "退费原因" },
+      { key: "verifiedDeductionFee", label: "已核实扣取费用" },
+      { key: "applicant", label: "申请人" },
+      { key: "applicantRemark", label: "申请人备注" },
+      { key: "applyTime", label: "申请时间" },
+      { key: "reviewer", label: "审核人" },
+      { key: "reviewerRemark", label: "审核人备注" },
+      { key: "reviewTime", label: "审核时间" },
+      { key: "action", label: "操作", fixedRight: true }
+    ];
+
+    const refundWorkOrderRows = [
+      {
+        refundNo: "RF202607080001",
+        auditStatus: "未审核",
+        refundStatus: "未退费",
+        applyRefundAmount: "30.00",
+        actualRefundAmount: "-",
+        iccid: "8986044219231002841",
+        msisdn: "106482913001",
+        packageOrderNo: "ORD202606080001",
+        shopOrderNo: "SHOP202606080081",
+        workOrderSource: "客服后台",
+        customerNick: "小熊手表用户",
+        shopName: "华东物联旗舰店",
+        paymentScreenshot: "pay-080001.png",
+        refundReason: "用户重复购买套餐",
+        verifiedDeductionFee: "0.00",
+        applicant: "lifan",
+        applicantRemark: "用户反馈重复支付，申请全额退费",
+        applyTime: "2026-07-08 09:18:20",
+        reviewer: "-",
+        reviewerRemark: "-",
+        reviewTime: "-"
+      },
+      {
+        refundNo: "RF202607070026",
+        auditStatus: "已审核",
+        refundStatus: "已退费",
+        refundMethod: "商家转账",
+        payTime: "2025-05-30 16:42:09",
+        applyRefundAmount: "279.00",
+        actualRefundAmount: "259.00",
+        iccid: "8986044219231001842",
+        msisdn: "106482913002",
+        packageOrderNo: "ORD202606070026",
+        shopOrderNo: "SHOP202606070126",
+        workOrderSource: "店铺售后",
+        customerNick: "星辰守护",
+        shopName: "车载设备直营网店",
+        paymentScreenshot: "pay-070026.png",
+        refundReason: "设备返厂，套餐未使用",
+        verifiedDeductionFee: "20.00",
+        applicant: "zhangsan",
+        applicantRemark: "已核实订单支付凭证",
+        applyTime: "2026-07-07 16:42:09",
+        reviewer: "admin",
+        reviewerRemark: "扣除已使用费用后通过",
+        reviewTime: "2026-07-07 18:06:33"
+      },
+      {
+        refundNo: "RF202607060018",
+        auditStatus: "已驳回",
+        refundStatus: "未退费",
+        applyRefundAmount: "59.00",
+        actualRefundAmount: "0.00",
+        iccid: "8986044219231001843",
+        msisdn: "106482913003",
+        packageOrderNo: "ORD202606060018",
+        shopOrderNo: "SHOP202606060218",
+        workOrderSource: "客服后台",
+        customerNick: "北区用户01",
+        shopName: "北区能源服务店",
+        paymentScreenshot: "pay-060018.png",
+        refundReason: "套餐已产生用量",
+        verifiedDeductionFee: "59.00",
+        applicant: "wangwu",
+        applicantRemark: "用户申请退还续费套餐",
+        applyTime: "2026-07-06 10:18:33",
+        reviewer: "lifan",
+        reviewerRemark: "套餐已使用，不满足退费规则",
+        reviewTime: "2026-07-06 15:24:18"
+      },
+      {
+        refundNo: "RF202607050012",
+        auditStatus: "已审核",
+        refundStatus: "退费失败",
+        refundMethod: "-",
+        payTime: "2026-06-05 11:06:45",
+        applyRefundAmount: "30.00",
+        actualRefundAmount: "30.00",
+        iccid: "8986044219231001844",
+        msisdn: "106482913004",
+        packageOrderNo: "ORD202606050012",
+        shopOrderNo: "SHOP202606050312",
+        workOrderSource: "系统同步",
+        customerNick: "直营渠道用户",
+        shopName: "渠道直营网店",
+        paymentScreenshot: "pay-050012.png",
+        refundReason: "后台充值套餐作废",
+        verifiedDeductionFee: "0.00",
+        applicant: "system",
+        applicantRemark: "系统生成退费工单",
+        applyTime: "2026-07-05 11:06:45",
+        reviewer: "admin",
+        reviewerRemark: "支付渠道返回失败，待重试",
+        reviewTime: "2026-07-05 14:42:09"
+      }
+    ];
+
+    const refundWorkOrderState = {
+      values: {},
+      applyDateRangeOpen: false,
+      auditDateRangeOpen: false,
+      draftApplyStart: "",
+      draftApplyEnd: "",
+      draftAuditStart: "",
+      draftAuditEnd: "",
+      applyDateRangeError: "",
+      auditDateRangeError: "",
+      applyDateRangeViewMonth: "",
+      auditDateRangeViewMonth: ""
+    };
+
     const chipFields = [
       { key: "eid", label: "EID", type: "input", basic: true },
       { key: "chipGroup", label: "归属芯片组", type: "select", basic: true, options: ["儿童手表芯片组A", "儿童手表芯片组B", "渠道备用芯片组"] },
@@ -7426,146 +8221,65 @@
       }
     ];
 
-    const abOverviewColumns = [
-      { key: "aPeople", label: "A页面购买人数" },
-      { key: "aTimes", label: "A页面购买次数" },
-      { key: "bPeople", label: "B页面购买人数" },
-      { key: "bTimes", label: "B页面购买次数" },
-      { key: "totalPeople", label: "总购买人数" },
-      { key: "totalTimes", label: "总购买次数" }
+    const abFunnelSteps = [
+      { key: "scan", no: "1", label: "扫码进入H5", icon: "scan" },
+      { key: "click", no: "2", label: "点击商品卡片", icon: "click" },
+      { key: "pay", no: "3", label: "支付成功", icon: "pay" }
     ];
-    const abPackageColumns = [
-      { key: "packageName", label: "套餐名称", sortable: true },
-      { key: "aPeople", label: "A页面购买人数", sortable: true },
-      { key: "aTimes", label: "A页面购买次数", sortable: true },
-      { key: "bPeople", label: "B页面购买人数", sortable: true },
-      { key: "bTimes", label: "B页面购买次数", sortable: true },
-      { key: "totalPeople", label: "总购买人数", sortable: true },
-      { key: "totalTimes", label: "总购买次数", sortable: true }
-    ];
-    const abDetailColumns = [
-      { key: "purchaseTime", label: "购买时间" },
-      { key: "version", label: "H5页面版本" },
-      { key: "deviceSn", label: "设备SN" },
-      { key: "iccid", label: "ICCID" },
-      { key: "packageName", label: "套餐名称" },
-      { key: "packageId", label: "套餐ID" },
-      { key: "amount", label: "套餐金额" },
-      { key: "orderNo", label: "订单号" },
-      { key: "payStatus", label: "支付状态" },
-      { key: "action", label: "操作", fixedRight: true }
-    ];
-    const abPackageRows = [
-      { packageName: "儿童手表基础月包", aPeople: 18, aTimes: 22, bPeople: 24, bTimes: 31 },
-      { packageName: "儿童手表安心年包", aPeople: 16, aTimes: 20, bPeople: 21, bTimes: 28 },
-      { packageName: "亲情守护加油包", aPeople: 12, aTimes: 16, bPeople: 15, bTimes: 15 }
-    ].map((row) => ({
-      ...row,
-      totalPeople: row.aPeople + row.bPeople,
-      totalTimes: row.aTimes + row.bTimes
-    }));
-    const abPurchaseRows = [
-      {
-        id: "AB001",
-        purchaseTime: "2026-06-12 10:16:22",
-        version: "B页面",
-        deviceSn: "CW202606120018",
-        iccid: "8986044219231000842",
-        packageName: "儿童手表安心年包",
-        packageId: "PKG-YEAR-001",
-        amount: "¥199.00",
-        orderNo: "AB20260612101622001",
-        payStatus: "成功"
+    const abDashboardPages = {
+      A: {
+        code: "A",
+        name: "页面A",
+        version: "版本一",
+        dotClass: "a",
+        metrics: {
+          scan: { pv: 32568, uv: 26857 },
+          click: { pv: 15689, uv: 12542 },
+          pay: { pv: 6382, uv: 5124 },
+          money: { amount: 482569, unit: 75.62 }
+        }
       },
-      {
-        id: "AB002",
-        purchaseTime: "2026-06-12 09:42:10",
-        version: "A页面",
-        deviceSn: "CW202606120009",
-        iccid: "8986044219231000841",
-        packageName: "儿童手表基础月包",
-        packageId: "PKG-MONTH-001",
-        amount: "¥29.00",
-        orderNo: "AB20260612094210002",
-        payStatus: "成功"
-      },
-      {
-        id: "AB003",
-        purchaseTime: "2026-06-11 18:28:43",
-        version: "B页面",
-        deviceSn: "CW202606110076",
-        iccid: "8986044219231000843",
-        packageName: "亲情守护加油包",
-        packageId: "PKG-FAMILY-001",
-        amount: "¥39.00",
-        orderNo: "AB20260611182843003",
-        payStatus: "失败"
-      },
-      {
-        id: "AB004",
-        purchaseTime: "2026-06-11 14:09:37",
-        version: "B页面",
-        deviceSn: "CW202606110052",
-        iccid: "8986044219231000844",
-        packageName: "儿童手表基础月包",
-        packageId: "PKG-MONTH-001",
-        amount: "¥29.00",
-        orderNo: "AB20260611140937004",
-        payStatus: "成功"
-      },
-      {
-        id: "AB005",
-        purchaseTime: "2026-06-10 21:35:26",
-        version: "A页面",
-        deviceSn: "CW202606100031",
-        iccid: "8986044219231000845",
-        packageName: "儿童手表安心年包",
-        packageId: "PKG-YEAR-001",
-        amount: "¥199.00",
-        orderNo: "AB20260610213526005",
-        payStatus: "成功"
-      },
-      {
-        id: "AB006",
-        purchaseTime: "2026-06-10 16:12:08",
-        version: "B页面",
-        deviceSn: "CW202606100027",
-        iccid: "8986044219231000846",
-        packageName: "儿童手表安心年包",
-        packageId: "PKG-YEAR-001",
-        amount: "¥199.00",
-        orderNo: "AB20260610161208006",
-        payStatus: "成功"
-      },
-      {
-        id: "AB007",
-        purchaseTime: "2026-06-09 11:58:44",
-        version: "A页面",
-        deviceSn: "CW202606090014",
-        iccid: "8986044219231000847",
-        packageName: "亲情守护加油包",
-        packageId: "PKG-FAMILY-001",
-        amount: "¥39.00",
-        orderNo: "AB20260609115844007",
-        payStatus: "失败"
-      },
-      {
-        id: "AB008",
-        purchaseTime: "2026-06-09 08:41:19",
-        version: "B页面",
-        deviceSn: "CW202606090008",
-        iccid: "8986044219231000848",
-        packageName: "儿童手表基础月包",
-        packageId: "PKG-MONTH-001",
-        amount: "¥29.00",
-        orderNo: "AB20260609084119008",
-        payStatus: "成功"
+      B: {
+        code: "B",
+        name: "页面B",
+        version: "版本二",
+        dotClass: "b",
+        metrics: {
+          scan: { pv: 28341, uv: 23154 },
+          click: { pv: 13267, uv: 10321 },
+          pay: { pv: 4857, uv: 3801 },
+          money: { amount: 367890.5, unit: 75.84 }
+        }
       }
+    };
+    const abKpiCards = [
+      { key: "scan", title: "扫码进入H5访问", icon: "scan", columns: ["访问量（PV）", "去重用户数（UV）"], fields: ["pv", "uv"] },
+      { key: "click", title: "点击商品卡片", icon: "click", columns: ["点击次数（PV）", "用户数（UV）"], fields: ["pv", "uv"] },
+      { key: "pay", title: "支付成功", icon: "pay", columns: ["支付次数（PV）", "用户数（UV）"], fields: ["pv", "uv"] },
+      { key: "money", title: "支付金额（元）", icon: "money", columns: ["支付金额", "客单价"], fields: ["amount", "unit"] }
+    ];
+    const abTrendRows = [
+      { day: "06-01", aUv: 26857, bUv: 23154, aOverall: 19.08, bOverall: 16.42, a12: 58, b12: 49, a23: 24, b23: 13 },
+      { day: "06-02", aUv: 29800, bUv: 26100, aOverall: 20.2, bOverall: 18.1, a12: 57, b12: 52, a23: 22, b23: 12 },
+      { day: "06-03", aUv: 28600, bUv: 24900, aOverall: 19.4, bOverall: 16.8, a12: 55, b12: 43, a23: 17, b23: 10 },
+      { day: "06-04", aUv: 29200, bUv: 27200, aOverall: 20.1, bOverall: 18.5, a12: 55, b12: 45, a23: 16, b23: 11 },
+      { day: "06-05", aUv: 30100, bUv: 26600, aOverall: 20.7, bOverall: 17.9, a12: 56, b12: 48, a23: 20, b23: 12 },
+      { day: "06-06", aUv: 27100, bUv: 23800, aOverall: 19.6, bOverall: 17.2, a12: 51, b12: 45, a23: 18, b23: 11 },
+      { day: "06-07", aUv: 25400, bUv: 22400, aOverall: 18.6, bOverall: 15.9, a12: 50, b12: 43, a23: 17, b23: 10 },
+      { day: "06-08", aUv: 27900, bUv: 24600, aOverall: 19.7, bOverall: 16.8, a12: 52, b12: 42, a23: 18, b23: 11 },
+      { day: "06-09", aUv: 26600, bUv: 22100, aOverall: 19.1, bOverall: 16.1, a12: 50, b12: 39, a23: 20, b23: 12 },
+      { day: "06-10", aUv: 27200, bUv: 23600, aOverall: 18.8, bOverall: 16.2, a12: 48, b12: 41, a23: 21, b23: 11 },
+      { day: "06-11", aUv: 28100, bUv: 24200, aOverall: 19.3, bOverall: 16.6, a12: 48, b12: 40, a23: 17, b23: 10 },
+      { day: "06-12", aUv: 26900, bUv: 22600, aOverall: 18.5, bOverall: 15.8, a12: 48, b12: 39, a23: 16, b23: 10 },
+      { day: "06-13", aUv: 25800, bUv: 21700, aOverall: 17.9, bOverall: 15.2, a12: 46, b12: 38, a23: 15, b23: 9 },
+      { day: "06-14", aUv: 24100, bUv: 20500, aOverall: 17.2, bOverall: 14.7, a12: 43, b12: 36, a23: 14, b23: 8 }
     ];
     const abState = {
-      packageSortKey: "totalTimes",
-      packageSortDir: "desc",
-      values: {},
+      values: {
+        purchaseStart: "2025-06-01",
+        purchaseEnd: "2025-06-14"
+      },
+      selectedPages: { A: true, B: true },
       purchaseDateRangeOpen: false,
       draftPurchaseStart: "",
       draftPurchaseEnd: "",
@@ -8335,6 +9049,7 @@
     const riskStopChangeDetailFilterWrap = document.getElementById("riskStopChangeDetailFilterWrap");
     const writeApplyFilterWrap = document.getElementById("esimWriteApplyFilterWrap");
     const orderFilterWrap = document.getElementById("esimOrderFilterWrap");
+    const refundWorkOrderFilterWrap = document.getElementById("refundWorkOrderFilterWrap");
     const writableFilterWrap = document.getElementById("writableFilterWrap");
     const writableChangeRecordFilterWrap = document.getElementById("writableChangeRecordFilterWrap");
     const manageDisableRecordFilterWrap = document.getElementById("manageDisableRecordFilterWrap");
@@ -11087,41 +11802,65 @@
       showToast("预警配置已保存", "success");
     }
 
-    function abMetricTotals() {
-      const sourceRows = abFilteredPackageRows();
-      const aPeople = sourceRows.reduce((sum, row) => sum + row.aPeople, 0);
-      const aTimes = sourceRows.reduce((sum, row) => sum + row.aTimes, 0);
-      const bPeople = sourceRows.reduce((sum, row) => sum + row.bPeople, 0);
-      const bTimes = sourceRows.reduce((sum, row) => sum + row.bTimes, 0);
-      return {
-        aPeople,
-        aTimes,
-        bPeople,
-        bTimes,
-        totalPeople: aPeople + bPeople,
-        totalTimes: aTimes + bTimes
-      };
+    function abSelectedPageKeys() {
+      return ["A", "B"].filter((key) => abState.selectedPages[key]);
     }
 
-    function abVersionFilterValue() {
-      return document.getElementById("abVersionFilter").value;
+    function abFormatNumber(value) {
+      return Number(value || 0).toLocaleString("en-US");
     }
 
-    function normalizeAbTimeValue(value) {
-      return String(value || "").trim().replace(" ", "T");
+    function abFormatMoney(value) {
+      return `￥ ${Number(value || 0).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
     }
 
-    function renderAbPurchaseDateRange() {
-      const field = document.getElementById("abPurchaseDateRangeField");
+    function abFormatPercent(value, digits = 2) {
+      return `${Number(value || 0).toFixed(digits)}%`;
+    }
+
+    function abSignedPercent(value, digits = 2) {
+      const number = Number(value || 0);
+      return `${number >= 0 ? "+" : ""}${number.toFixed(digits)}%`;
+    }
+
+    function abMetric(pageKey, stepKey, field) {
+      return abDashboardPages[pageKey].metrics[stepKey][field];
+    }
+
+    function abCompareRate(stepKey, field) {
+      const a = abMetric("A", stepKey, field);
+      const b = abMetric("B", stepKey, field);
+      if (!b) return 0;
+      return ((a - b) / b) * 100;
+    }
+
+    function abStepConversion(pageKey, stepKey) {
+      const page = abDashboardPages[pageKey];
+      if (stepKey === "scan") return 100;
+      if (stepKey === "click") return (page.metrics.click.uv / page.metrics.scan.uv) * 100;
+      return (page.metrics.pay.uv / page.metrics.scan.uv) * 100;
+    }
+
+    function abStepLoss(pageKey, stepKey) {
+      if (stepKey === "scan") return null;
+      return 100 - abStepConversion(pageKey, stepKey);
+    }
+
+    function abTransitionRate(pageKey, fromStep, toStep) {
+      const from = abDashboardPages[pageKey].metrics[fromStep].uv;
+      const to = abDashboardPages[pageKey].metrics[toStep].uv;
+      return from ? (to / from) * 100 : 0;
+    }
+
+    function renderAbFunnelDateRange() {
+      const field = document.getElementById("abFunnelDateRangeField");
       if (!field) return;
-      const start = abState.values.purchaseStart || "";
-      const end = abState.values.purchaseEnd || "";
       field.innerHTML = renderDateRangeField({
         idPrefix: "abPurchase",
-        label: "购买时间",
+        label: "统计时间",
         isOpen: abState.purchaseDateRangeOpen,
-        start,
-        end,
+        start: abState.values.purchaseStart || "",
+        end: abState.values.purchaseEnd || "",
         draftStart: abState.draftPurchaseStart,
         draftEnd: abState.draftPurchaseEnd,
         error: abState.purchaseDateRangeError,
@@ -11129,10 +11868,14 @@
       });
       bindDateRangeField({
         idPrefix: "abPurchase",
-        label: "购买时间",
+        label: "统计时间",
         state: abState,
         filterWrap: field,
-        render: renderAbPurchaseDateRange,
+        render: () => {
+          renderAbFunnelDateRange();
+          renderAbLeakTrendChart();
+          renderAbStepTrendChart();
+        },
         openKey: "purchaseDateRangeOpen",
         valueStartKey: "purchaseStart",
         valueEndKey: "purchaseEnd",
@@ -11147,251 +11890,334 @@
       if (!abState.purchaseDateRangeOpen) return;
       abState.purchaseDateRangeOpen = false;
       abState.purchaseDateRangeError = "";
-      renderAbPurchaseDateRange();
+      renderAbFunnelDateRange();
     }
 
-    function abFilteredPurchaseRows() {
-      const version = abVersionFilterValue();
-      const deviceSn = document.getElementById("abDeviceSnFilter").value.trim();
-      const iccid = document.getElementById("abIccidFilter").value.trim();
-      const packageName = document.getElementById("abPackageFilter").value.trim();
-      const start = abState.values.purchaseStart || "";
-      const end = abState.values.purchaseEnd || "";
-      return abPurchaseRows.filter((row) => {
-        const matchVersion = version && version !== "全部" ? row.version === version : true;
-        const matchSn = deviceSn ? row.deviceSn.includes(deviceSn) : true;
-        const matchIccid = iccid ? row.iccid.includes(iccid) : true;
-        const matchPackage = packageName ? row.packageName.includes(packageName) : true;
-        const matchTime = isDateTextInRange(row.purchaseTime, start, end);
-        return matchVersion && matchSn && matchIccid && matchPackage && matchTime;
-      });
-    }
-
-    function abFilteredPackageRows() {
-      const version = abVersionFilterValue();
-      const packageName = document.getElementById("abPackageFilter").value.trim();
-      return abPackageRows
-        .filter((row) => (packageName ? row.packageName.includes(packageName) : true))
-        .map((row) => {
-          if (version === "A页面") {
-            return { ...row, bPeople: 0, bTimes: 0, totalPeople: row.aPeople, totalTimes: row.aTimes };
-          }
-          if (version === "B页面") {
-            return { ...row, aPeople: 0, aTimes: 0, totalPeople: row.bPeople, totalTimes: row.bTimes };
-          }
-          return row;
-        });
-    }
-
-    function renderAbOverviewCards() {
-      if (!abOverviewCards) return;
-      const totals = abMetricTotals();
-      abOverviewCards.innerHTML = abOverviewColumns.map((column) => `
-        <div class="ab-stat-card">
-          <div class="ab-stat-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M4 19V5M4 19h16M8 16v-5M12 16V8M16 16v-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+    function renderAbKpiCards() {
+      const container = document.getElementById("abKpiCards");
+      if (!container) return;
+      const selected = abSelectedPageKeys();
+      container.innerHTML = abKpiCards.map((card) => `
+        <article class="ab-kpi-card">
+          <div class="ab-kpi-title">
+            <span class="ab-kpi-icon ${card.icon}">${card.icon === "money" ? "¥" : card.icon === "pay" ? "▣" : card.icon === "click" ? "▢" : "⌗"}</span>
+            <span>${card.title}</span>
+            <span class="ab-help">?</span>
           </div>
-          <div>
-            <div class="ab-stat-title">${column.label}</div>
-            <div class="ab-stat-value">${totals[column.key]}</div>
+          <div class="ab-kpi-matrix" style="--metric-cols: ${card.columns.length}">
+            <span></span>
+            ${card.columns.map((column) => `<span class="ab-kpi-head">${column}</span>`).join("")}
+            ${["A", "B"].filter((pageKey) => selected.includes(pageKey)).map((pageKey) => {
+              const page = abDashboardPages[pageKey];
+              return `
+                <span class="ab-kpi-label ${pageKey === "A" ? "ab-page-a-text" : "ab-page-b-text"}">${page.name}</span>
+                ${card.fields.map((field) => {
+                  const value = page.metrics[card.key][field];
+                  const display = card.key === "money"
+                    ? field === "amount" ? abFormatMoney(value) : `￥ ${Number(value).toFixed(2)}`
+                    : abFormatNumber(value);
+                  return `<span>${display}</span>`;
+                }).join("")}
+              `;
+            }).join("")}
+            <span class="ab-kpi-label ab-kpi-compare">对比</span>
+            ${card.fields.map((field) => {
+              const enabled = selected.includes("A") && selected.includes("B");
+              const value = enabled ? abCompareRate(card.key, field) : 0;
+              return `<span class="ab-kpi-compare ${enabled && value < 0 ? "ab-negative" : "ab-positive"}">${enabled ? abSignedPercent(value) : "-"}</span>`;
+            }).join("")}
           </div>
-        </div>
+        </article>
       `).join("");
     }
 
-    function renderAbAnalysisCards() {
-      if (!abAnalysisCards) return;
-      const totals = abMetricTotals();
-      const allTimes = Math.max(totals.totalTimes, 1);
-      const aRatio = ((totals.aTimes / allTimes) * 100).toFixed(1);
-      const bRatio = ((totals.bTimes / allTimes) * 100).toFixed(1);
-      const winner = totals.bTimes >= totals.aTimes ? "B页面领先" : "A页面领先";
-      const weaker = Math.max(Math.min(totals.aTimes, totals.bTimes), 1);
-      const lift = (((Math.max(totals.aTimes, totals.bTimes) - weaker) / weaker) * 100).toFixed(1);
-      abAnalysisCards.innerHTML = `
-        <div class="ab-analysis-card">
-          <div class="ab-analysis-title">A页面</div>
-          <div class="ab-analysis-metrics">
-            <div class="ab-analysis-metric"><span>购买人数</span><strong>${totals.aPeople}</strong></div>
-            <div class="ab-analysis-metric"><span>购买次数</span><strong>${totals.aTimes}</strong></div>
-            <div class="ab-analysis-metric"><span>购买占比</span><strong>${aRatio}%</strong></div>
-          </div>
-        </div>
-        <div class="ab-analysis-card highlight">
-          <div class="ab-analysis-title">优胜版本</div>
-          <div>
-            <div class="ab-winner-label">当前领先页面</div>
-            <div class="ab-winner-page">${winner}</div>
-            <div class="ab-winner-label" style="margin-top:12px;">提升比例</div>
-            <div class="ab-winner-lift">+${lift}%</div>
-          </div>
-        </div>
-        <div class="ab-analysis-card">
-          <div class="ab-analysis-title">B页面</div>
-          <div class="ab-analysis-metrics">
-            <div class="ab-analysis-metric"><span>购买人数</span><strong>${totals.bPeople}</strong></div>
-            <div class="ab-analysis-metric"><span>购买次数</span><strong>${totals.bTimes}</strong></div>
-            <div class="ab-analysis-metric"><span>购买占比</span><strong>${bRatio}%</strong></div>
-          </div>
-        </div>
-      `;
-    }
-
-    function sortedAbPackageRows() {
-      const rowsToSort = [...abFilteredPackageRows()];
-      const key = abState.packageSortKey;
-      const dir = abState.packageSortDir === "asc" ? 1 : -1;
-      return rowsToSort.sort((left, right) => {
-        const a = left[key];
-        const b = right[key];
-        if (typeof a === "number" && typeof b === "number") return (a - b) * dir;
-        return String(a).localeCompare(String(b), "zh-Hans-CN") * dir;
-      });
-    }
-
-    function renderAbPackageTable() {
-      const header = document.getElementById("abPackageTableHeader");
-      const body = document.getElementById("abPackageTableBody");
-      const rowsToRender = sortedAbPackageRows();
-      header.innerHTML = abPackageColumns.map((column) => `
-        <th>
-          ${column.sortable ? `<button class="ab-sort-btn ${abState.packageSortKey === column.key ? "active" : ""}" data-sort-mark="${abState.packageSortDir === "asc" ? "↑" : "↓"}" type="button" data-ab-sort="${column.key}">${column.label}</button>` : column.label}
-        </th>
-      `).join("");
-      body.innerHTML = rowsToRender.length
-        ? rowsToRender.map((row) => `
-            <tr>
-              ${abPackageColumns.map((column) => `<td>${escapeHtml(row[column.key])}</td>`).join("")}
-            </tr>
-          `).join("")
-        : `<tr><td colspan="${abPackageColumns.length}" style="text-align:center;color:#6b7280;">暂无套餐购买数据</td></tr>`;
-      header.querySelectorAll("[data-ab-sort]").forEach((button) => {
-        button.addEventListener("click", () => {
-          const nextKey = button.dataset.abSort;
-          if (abState.packageSortKey === nextKey) {
-            abState.packageSortDir = abState.packageSortDir === "asc" ? "desc" : "asc";
-          } else {
-            abState.packageSortKey = nextKey;
-            abState.packageSortDir = "desc";
-          }
-          renderAbPackageTable();
-        });
-      });
-      document.getElementById("abPackagePager").innerHTML = `
-        <span>共 ${rowsToRender.length} 条</span>
-        <button class="page-btn active" type="button">1</button>
-      `;
-    }
-
-    function renderAbPayStatus(value) {
-      return `<span class="status-text ${value === "成功" ? "status-positive" : "status-negative"}">${value}</span>`;
-    }
-
-    function renderAbDetailValue(row, column) {
-      if (column.key === "payStatus") return renderAbPayStatus(row.payStatus);
-      if (column.key === "action") {
-        return `<button class="link-text ab-detail-link" type="button" data-ab-purchase-id="${row.id}">查看详情</button>`;
+    function renderAbFunnelSide(pageKey) {
+      if (!abState.selectedPages[pageKey]) {
+        return `<div class="ab-funnel-side"><div class="empty-cell" style="grid-column:1/-1;text-align:center;color:#8a97aa;">${abDashboardPages[pageKey].name} 已隐藏</div></div>`;
       }
-      const identifierCell = renderIdentifierCell(row[column.key], column);
-      if (identifierCell !== null) return identifierCell;
-      return escapeHtml(row[column.key]);
+      const page = abDashboardPages[pageKey];
+      const clickRate = abTransitionRate(pageKey, "scan", "click");
+      const payRate = abTransitionRate(pageKey, "click", "pay");
+      const overallRate = abTransitionRate(pageKey, "scan", "pay");
+      return `
+        <div class="ab-funnel-side">
+          <div class="ab-funnel-side-title"><span class="ab-dot ${page.dotClass}"></span>${page.name}（${page.version}）</div>
+          <div class="ab-funnel-labels">
+            ${abFunnelSteps.map((step) => `
+              <div class="ab-step-label"><span class="ab-step-no ${step.icon}">${step.no}</span>${step.label}</div>
+            `).join("")}
+          </div>
+          <div class="ab-funnel-stack">
+            ${abFunnelSteps.map((step, index) => `
+              <div class="ab-funnel-bar ${step.icon}">
+                <span class="ab-funnel-value">${abFormatNumber(page.metrics[step.key].uv)}</span>
+                <span class="ab-funnel-percent">(${index === 0 ? "100%" : abFormatPercent(abStepConversion(pageKey, step.key), 2)})</span>
+              </div>
+              ${index < 2 ? '<div class="ab-funnel-arrow">↓</div>' : ""}
+            `).join("")}
+          </div>
+          <div class="ab-funnel-rates">
+            <div class="ab-rate-block">转化率<strong>${abFormatPercent(clickRate, 2)}</strong></div>
+            <div class="ab-rate-block">转化率<strong>${abFormatPercent(payRate, 2)}</strong></div>
+            <div class="ab-rate-block overall">整体转化率<strong>${abFormatPercent(overallRate, 2)}</strong></div>
+          </div>
+        </div>
+      `;
     }
 
-    function renderAbDetailTable() {
-      const header = document.getElementById("abDetailTableHeader");
-      const body = document.getElementById("abDetailTableBody");
-      const rowsToRender = abFilteredPurchaseRows();
-      header.innerHTML = abDetailColumns.map((column) => `<th class="${column.fixedRight ? "operation-col" : ""}">${column.label}</th>`).join("");
-      body.innerHTML = rowsToRender.length
-        ? rowsToRender.map((row) => `
-            <tr>
-              ${abDetailColumns.map((column) => `<td class="${column.fixedRight ? "operation-col" : ""}">${renderAbDetailValue(row, column)}</td>`).join("")}
-            </tr>
-          `).join("")
-        : `<tr><td colspan="${abDetailColumns.length}" style="text-align:center;color:#6b7280;">暂无购买明细</td></tr>`;
-      body.querySelectorAll(".ab-detail-link").forEach((button) => {
-        button.addEventListener("click", () => openAbPurchaseDrawer(button.dataset.abPurchaseId));
-      });
-      document.getElementById("abDetailPager").innerHTML = `
-        <span>共 ${rowsToRender.length} 条</span>
-        <button class="page-btn" type="button">‹</button>
-        <button class="page-btn active" type="button">1</button>
-        <button class="page-btn" type="button">›</button>
+    function renderAbFunnelCompare() {
+      const container = document.getElementById("abFunnelCompare");
+      if (!container) return;
+      container.innerHTML = `
+        ${renderAbFunnelSide("A")}
+        <div class="ab-funnel-diff">
+          <div class="ab-funnel-diff-title">对比</div>
+          <div>转化率差值（A - B）<br><span class="diff-value">+5.86%</span></div>
+          <div><span class="diff-value">+6.04%</span></div>
+          <div><span class="diff-value">+7.33%</span></div>
+        </div>
+        ${renderAbFunnelSide("B")}
       `;
+    }
+
+    function renderAbConversionTable() {
+      const head = document.getElementById("abConversionTableHead");
+      const body = document.getElementById("abConversionTableBody");
+      if (!head || !body) return;
+      head.innerHTML = `
+        <tr>
+          <th rowspan="2">步骤</th>
+          <th rowspan="2"></th>
+          <th colspan="3"><span class="ab-dot a"></span> 页面A（版本一）</th>
+          <th colspan="3"><span class="ab-dot b"></span> 页面B（版本二）</th>
+          <th colspan="2">对比（A - B）</th>
+        </tr>
+        <tr>
+          <th>用户数（UV）</th><th>转化率</th><th>流失率</th>
+          <th>用户数（UV）</th><th>转化率</th><th>流失率</th>
+          <th>转化率差值</th><th>流失率差值</th>
+        </tr>
+      `;
+      body.innerHTML = abFunnelSteps.map((step) => {
+        const aUv = abMetric("A", step.key, "uv");
+        const bUv = abMetric("B", step.key, "uv");
+        const aConversion = abStepConversion("A", step.key);
+        const bConversion = abStepConversion("B", step.key);
+        const aLoss = abStepLoss("A", step.key);
+        const bLoss = abStepLoss("B", step.key);
+        const conversionDiff = aConversion - bConversion;
+        const lossDiff = aLoss === null || bLoss === null ? null : aLoss - bLoss;
+        return `
+          <tr>
+            <td><span class="ab-table-step"><span class="ab-step-no ${step.icon}">${step.no}</span>${step.label}</span></td>
+            <td></td>
+            <td>${abFormatNumber(aUv)}</td>
+            <td>${abFormatPercent(aConversion, 2)}<div class="ab-mini-arrow">↕</div></td>
+            <td>${aLoss === null ? "-" : `<span class="ab-positive">${abFormatPercent(aLoss, 2)}</span>`}</td>
+            <td>${abFormatNumber(bUv)}</td>
+            <td>${abFormatPercent(bConversion, 2)}<div class="ab-mini-arrow">↕</div></td>
+            <td>${bLoss === null ? "-" : `<span class="ab-positive">${abFormatPercent(bLoss, 2)}</span>`}</td>
+            <td>${step.key === "scan" ? "-" : `<span class="${conversionDiff >= 0 ? "ab-positive" : "ab-negative"}">${abSignedPercent(conversionDiff, 2)}</span>`}</td>
+            <td>${lossDiff === null ? "-" : `<span class="${lossDiff >= 0 ? "ab-positive" : "ab-negative"}">${abSignedPercent(lossDiff, 2)}</span>`}</td>
+          </tr>
+        `;
+      }).join("");
+    }
+
+    function abPolyline(points) {
+      return points.map((point) => `${point.x},${point.y}`).join(" ");
+    }
+
+    function abScalePoint(value, min, max, top, bottom) {
+      if (max === min) return bottom;
+      return bottom - ((value - min) / (max - min)) * (bottom - top);
+    }
+
+    function abDateAxisLabel(date) {
+      return `${padDateRangePart(date.getMonth() + 1)}-${padDateRangePart(date.getDate())}`;
+    }
+
+    function abDayDiff(start, end) {
+      return Math.round((end - start) / (24 * 60 * 60 * 1000));
+    }
+
+    function abTrendRowsForRange() {
+      const fallbackStart = parseDateRangeValue("2025-06-01");
+      const start = parseDateRangeValue(abState.values.purchaseStart) || fallbackStart;
+      const end = parseDateRangeValue(abState.values.purchaseEnd) || parseDateRangeValue("2025-06-14");
+      if (!start || !end || start > end) return abTrendRows;
+      const totalDays = abDayDiff(start, end) + 1;
+      return Array.from({ length: totalDays }, (_, index) => {
+        const current = shiftDateRange(start, index);
+        const offset = abDayDiff(fallbackStart, current);
+        const baseIndex = ((offset % abTrendRows.length) + abTrendRows.length) % abTrendRows.length;
+        return {
+          ...abTrendRows[baseIndex],
+          day: abDateAxisLabel(current)
+        };
+      });
+    }
+
+    function abAxisLabelVisible(index, total) {
+      if (total <= 8) return true;
+      const step = Math.ceil(total / 8);
+      return index === 0 || index === total - 1 || index % step === 0;
+    }
+
+    function renderAbLineChart(containerId, series, options = {}) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      const rows = options.rows || abTrendRowsForRange();
+      const width = 620;
+      const height = 220;
+      const pad = { left: 44, right: 30, top: 22, bottom: 34 };
+      const values = series.flatMap((item) => item.values);
+      const min = options.min ?? Math.min(...values);
+      const max = options.max ?? Math.max(...values);
+      const xStep = rows.length > 1 ? (width - pad.left - pad.right) / (rows.length - 1) : 0;
+      const xPosition = (index) => rows.length > 1 ? pad.left + index * xStep : pad.left + (width - pad.left - pad.right) / 2;
+      const gridValues = options.gridValues || [0, 20, 40, 60, 80];
+      container.innerHTML = `
+        <svg viewBox="0 0 ${width} ${height}" role="img" aria-label="${options.label || "趋势图"}">
+          ${gridValues.map((value) => {
+            const y = abScalePoint(value, min, max, pad.top, height - pad.bottom);
+            return `<line class="ab-chart-gridline" x1="${pad.left}" y1="${y}" x2="${width - pad.right}" y2="${y}"></line><text class="ab-chart-label" x="10" y="${y + 4}">${value}${options.unit || ""}</text>`;
+          }).join("")}
+          <line class="ab-chart-axis" x1="${pad.left}" y1="${height - pad.bottom}" x2="${width - pad.right}" y2="${height - pad.bottom}"></line>
+          ${rows.map((row, index) => {
+            const x = xPosition(index);
+            return abAxisLabelVisible(index, rows.length) ? `<text class="ab-chart-label" text-anchor="middle" x="${x}" y="${height - 10}">${row.day}</text>` : "";
+          }).join("")}
+          ${series.map((item) => {
+            const points = item.values.map((value, index) => ({
+              x: xPosition(index),
+              y: abScalePoint(value, min, max, pad.top, height - pad.bottom)
+            }));
+            return `
+              <polyline points="${abPolyline(points)}" fill="none" stroke="${item.color}" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"></polyline>
+              ${points.map((point) => `<circle cx="${point.x}" cy="${point.y}" r="3.2" fill="#fff" stroke="${item.color}" stroke-width="2"></circle>`).join("")}
+            `;
+          }).join("")}
+        </svg>
+      `;
+    }
+
+    function renderAbLeakTrendChart() {
+      const legend = document.getElementById("abLeakTrendLegend");
+      if (legend) {
+        legend.innerHTML = `
+          <span class="ab-legend-item"><span class="ab-legend-dot" style="background:#4f7dff"></span>页面A 访问用户（UV）</span>
+          <span class="ab-legend-item"><span class="ab-legend-dot" style="background:#20b889"></span>页面B 访问用户（UV）</span>
+          <span class="ab-legend-item"><input type="checkbox" checked disabled /> 显示整体转化率</span>
+        `;
+      }
+      const container = document.getElementById("abLeakTrendChart");
+      if (!container) return;
+      const rows = abTrendRowsForRange();
+      const width = 620;
+      const height = 220;
+      const pad = { left: 44, right: 34, top: 22, bottom: 34 };
+      const maxUv = 40000;
+      const xStep = (width - pad.left - pad.right) / Math.max(rows.length, 1);
+      const barWidth = Math.max(1.5, Math.min(6, xStep * 0.28));
+      const barGap = Math.max(1, Math.min(2, xStep * 0.08));
+      const rateXStep = rows.length > 1 ? (width - pad.left - pad.right) / (rows.length - 1) : 0;
+      const rateXPosition = (index) => rows.length > 1 ? pad.left + index * rateXStep : pad.left + (width - pad.left - pad.right) / 2;
+      const rateSeries = [
+        { key: "aOverall", color: "#4f7dff" },
+        { key: "bOverall", color: "#20b889" }
+      ];
+      container.innerHTML = `
+        <svg viewBox="0 0 ${width} ${height}" role="img" aria-label="漏斗趋势对比">
+          ${[0, 10000, 20000, 30000, 40000].map((value) => {
+            const y = abScalePoint(value, 0, maxUv, pad.top, height - pad.bottom);
+            return `<line class="ab-chart-gridline" x1="${pad.left}" y1="${y}" x2="${width - pad.right}" y2="${y}"></line><text class="ab-chart-label" x="8" y="${y + 4}">${value / 1000}K</text>`;
+          }).join("")}
+          ${[0, 10, 20, 30].map((value) => {
+            const y = abScalePoint(value, 0, 30, pad.top, height - pad.bottom);
+            return `<text class="ab-chart-label" text-anchor="end" x="${width - 2}" y="${y + 4}">${value}%</text>`;
+          }).join("")}
+          <line class="ab-chart-axis" x1="${pad.left}" y1="${height - pad.bottom}" x2="${width - pad.right}" y2="${height - pad.bottom}"></line>
+          ${rows.map((row, index) => {
+            const x = pad.left + index * xStep + xStep / 2;
+            const aHeight = ((height - pad.bottom - pad.top) * row.aUv) / maxUv;
+            const bHeight = ((height - pad.bottom - pad.top) * row.bUv) / maxUv;
+            return `
+              <rect x="${x - barWidth - barGap}" y="${height - pad.bottom - aHeight}" width="${barWidth}" height="${aHeight}" rx="2" fill="#4f7dff" opacity="0.72"></rect>
+              <rect x="${x + barGap}" y="${height - pad.bottom - bHeight}" width="${barWidth}" height="${bHeight}" rx="2" fill="#20b889" opacity="0.72"></rect>
+              ${abAxisLabelVisible(index, rows.length) ? `<text class="ab-chart-label" text-anchor="middle" x="${x}" y="${height - 10}">${row.day}</text>` : ""}
+            `;
+          }).join("")}
+          ${rateSeries.map((series) => {
+            const points = rows.map((row, index) => ({
+              x: rateXPosition(index),
+              y: abScalePoint(row[series.key], 0, 30, pad.top, height - pad.bottom)
+            }));
+            return `
+              <polyline points="${abPolyline(points)}" fill="none" stroke="${series.color}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"></polyline>
+              ${points.map((point) => `<circle cx="${point.x}" cy="${point.y}" r="3" fill="#fff" stroke="${series.color}" stroke-width="1.8"></circle>`).join("")}
+            `;
+          }).join("")}
+        </svg>
+      `;
+    }
+
+    function renderAbStepTrendChart() {
+      const legend = document.getElementById("abStepTrendLegend");
+      if (legend) {
+        legend.innerHTML = `
+          <span class="ab-legend-item"><span class="ab-legend-line" style="background:#4f7dff"></span>页面A 1→2 转化率</span>
+          <span class="ab-legend-item"><span class="ab-legend-line" style="background:#20b889"></span>页面B 1→2 转化率</span>
+          <span class="ab-legend-item"><span class="ab-legend-line" style="background:#9656ff"></span>页面A 2→3 转化率</span>
+          <span class="ab-legend-item"><span class="ab-legend-line" style="background:#f59f00"></span>页面B 2→3 转化率</span>
+        `;
+      }
+      const rows = abTrendRowsForRange();
+      renderAbLineChart("abStepTrendChart", [
+        { label: "页面A 1→2", color: "#4f7dff", values: rows.map((row) => row.a12) },
+        { label: "页面B 1→2", color: "#20b889", values: rows.map((row) => row.b12) },
+        { label: "页面A 2→3", color: "#9656ff", values: rows.map((row) => row.a23) },
+        { label: "页面B 2→3", color: "#f59f00", values: rows.map((row) => row.b23) }
+      ], { min: 0, max: 80, unit: "%", gridValues: [0, 20, 40, 60, 80], label: "各步骤转化率趋势对比", rows });
     }
 
     function renderAbTestStatsPage() {
-      renderAbPurchaseDateRange();
-      renderAbOverviewCards();
-      renderAbAnalysisCards();
-      renderAbPackageTable();
-      renderAbDetailTable();
+      renderAbFunnelDateRange();
+      renderAbKpiCards();
+      renderAbFunnelCompare();
+      renderAbConversionTable();
+      renderAbLeakTrendChart();
+      renderAbStepTrendChart();
     }
 
     function searchAbStats() {
-      const rangeError = validateManualDateRange(abState.values.purchaseStart, abState.values.purchaseEnd, "购买时间");
+      const rangeError = validateManualDateRange(abState.values.purchaseStart, abState.values.purchaseEnd, "统计时间");
       if (rangeError) {
         showToast(rangeError, "error");
         return;
       }
       renderAbTestStatsPage();
-      showToast("AB测试套餐购买统计已按查询条件刷新", "success");
+      showToast("H5套餐购买漏斗数据已刷新", "success");
     }
 
     function resetAbStats() {
-      ["abVersionFilter", "abDeviceSnFilter", "abIccidFilter", "abPackageFilter"].forEach((id) => {
-        document.getElementById(id).value = "";
-      });
-      abState.values.purchaseStart = "";
-      abState.values.purchaseEnd = "";
+      abState.values.purchaseStart = "2025-06-01";
+      abState.values.purchaseEnd = "2025-06-14";
+      abState.selectedPages = { A: true, B: true };
       abState.purchaseDateRangeOpen = false;
       abState.draftPurchaseStart = "";
       abState.draftPurchaseEnd = "";
       abState.purchaseDateRangeError = "";
       abState.purchaseDateRangeViewMonth = "";
-      syncQueryClearControl("abVersionFilter");
       renderAbTestStatsPage();
-      showToast("AB测试套餐购买统计查询条件已清空", "info");
-    }
-
-    function openAbPurchaseDrawer(id) {
-      const row = abPurchaseRows.find((item) => item.id === id);
-      if (!row) return;
-      document.getElementById("abPurchaseDrawerBody").innerHTML = `
-        <section class="drawer-section">
-          <h3>购买信息</h3>
-          <div class="drawer-info-grid">
-            <div><span class="drawer-info-label">订单号</span><span class="drawer-info-value">${escapeHtml(row.orderNo)}</span></div>
-            <div><span class="drawer-info-label">H5页面版本</span><span class="drawer-info-value">${escapeHtml(row.version)}</span></div>
-            <div><span class="drawer-info-label">购买时间</span><span class="drawer-info-value">${escapeHtml(row.purchaseTime)}</span></div>
-            <div><span class="drawer-info-label">支付状态</span><span class="drawer-info-value">${renderAbPayStatus(row.payStatus)}</span></div>
-          </div>
-        </section>
-        <section class="drawer-section">
-          <h3>设备信息</h3>
-          <div class="drawer-info-grid">
-            <div><span class="drawer-info-label">设备SN</span><span class="drawer-info-value">${escapeHtml(row.deviceSn)}</span></div>
-            <div><span class="drawer-info-label">ICCID</span><span class="drawer-info-value">${escapeHtml(row.iccid)}</span></div>
-          </div>
-        </section>
-        <section class="drawer-section">
-          <h3>套餐信息</h3>
-          <div class="drawer-info-grid">
-            <div><span class="drawer-info-label">套餐名称</span><span class="drawer-info-value">${escapeHtml(row.packageName)}</span></div>
-            <div><span class="drawer-info-label">套餐ID</span><span class="drawer-info-value">${escapeHtml(row.packageId)}</span></div>
-            <div><span class="drawer-info-label">套餐金额</span><span class="drawer-info-value">${escapeHtml(row.amount)}</span></div>
-          </div>
-        </section>
-      `;
-      document.getElementById("abPurchaseDrawer").classList.add("open");
-      document.getElementById("abPurchaseDrawer").setAttribute("aria-hidden", "false");
+      showToast("漏斗数据看板已恢复默认筛选", "info");
     }
 
     function closeAbPurchaseDrawer() {
-      document.getElementById("abPurchaseDrawer").classList.remove("open");
-      document.getElementById("abPurchaseDrawer").setAttribute("aria-hidden", "true");
+      const drawer = document.getElementById("abPurchaseDrawer");
+      if (!drawer) return;
+      drawer.classList.remove("open");
+      drawer.setAttribute("aria-hidden", "true");
     }
 
     function renderWriteApplyFilters() {
@@ -11784,6 +12610,329 @@
         <button class="page-btn" type="button">3</button>
         <button class="page-btn" type="button">...</button>
         <button class="page-btn" type="button">7</button>
+        <button class="page-btn" type="button">›</button>
+      `;
+    }
+
+    function renderRefundWorkOrderDateRangeControl(field) {
+      const config = refundWorkOrderDateConfigs[field.key];
+      return renderDateRangeField({
+        idPrefix: config.idPrefix,
+        label: config.label,
+        isOpen: refundWorkOrderState[config.openKey],
+        start: refundWorkOrderState.values[config.startKey] || "",
+        end: refundWorkOrderState.values[config.endKey] || "",
+        draftStart: refundWorkOrderState[config.draftStartKey],
+        draftEnd: refundWorkOrderState[config.draftEndKey],
+        error: refundWorkOrderState[config.errorKey],
+        viewMonth: refundWorkOrderState[config.viewKey]
+      });
+    }
+
+    function renderRefundWorkOrderFilters() {
+      refundWorkOrderFilterWrap.innerHTML = "";
+      refundWorkOrderFields.forEach((field) => {
+        const el = document.createElement("div");
+        el.className = "field";
+        el.dataset.key = field.key;
+
+        if (field.type === "select") {
+          const value = refundWorkOrderState.values[field.key] || "";
+          el.innerHTML = `
+            <input class="control select-trigger ${value ? "has-value" : ""}" data-key="${field.key}" type="text" placeholder="${field.label}" value="${value}" autocomplete="off" />
+            ${value ? `<button class="select-clear" type="button" data-key="${field.key}" aria-label="清除${field.label}">×</button>` : ""}
+            ${iconChevron().replace('class="icon"', 'class="field-icon"')}
+            <div class="select-menu" data-menu="${field.key}">
+              <div class="select-options"></div>
+            </div>
+          `;
+          refundWorkOrderFilterWrap.appendChild(el);
+          renderRefundWorkOrderOptions(el, field, "");
+          return;
+        }
+
+        if (field.type === "daterange") {
+          el.className = "field writable-date-range";
+          el.innerHTML = renderRefundWorkOrderDateRangeControl(field);
+          refundWorkOrderFilterWrap.appendChild(el);
+          return;
+        }
+
+        el.innerHTML = `
+          <input class="control" data-key="${field.key}" type="text" placeholder="${field.label}" value="${refundWorkOrderState.values[field.key] || ""}" />
+        `;
+        refundWorkOrderFilterWrap.appendChild(el);
+      });
+
+      const actions = document.createElement("div");
+      actions.className = "form-actions";
+      actions.innerHTML = `
+        <button class="btn search-btn" id="refundWorkOrderSearchBtn" type="button">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="m21 21-4.3-4.3M11 19a8 8 0 1 1 0-16 8 8 0 0 1 0 16Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          搜索
+        </button>
+        <button class="btn secondary" id="refundWorkOrderResetBtn" type="button">重置</button>
+      `;
+      refundWorkOrderFilterWrap.appendChild(actions);
+      bindRefundWorkOrderFilterEvents();
+    }
+
+    function renderRefundWorkOrderOptions(fieldEl, field, keyword) {
+      const optionsEl = fieldEl.querySelector(".select-options");
+      const selected = refundWorkOrderState.values[field.key] || "";
+      const options = field.options.filter((option) => option.includes(keyword.trim()));
+      optionsEl.innerHTML = options.length ? "" : '<div class="option empty">暂无匹配数据</div>';
+      options.forEach((option) => {
+        const node = document.createElement("div");
+        node.className = "option" + (selected === option ? " active" : "");
+        node.textContent = option;
+        node.dataset.value = option;
+        optionsEl.appendChild(node);
+      });
+    }
+
+    function bindRefundWorkOrderFilterEvents() {
+      refundWorkOrderFilterWrap.querySelectorAll(".control").forEach((input) => {
+        input.addEventListener("input", () => {
+          refundWorkOrderState.values[input.dataset.key] = input.value;
+        });
+        input.addEventListener("blur", () => {
+          input.value = input.value.trim();
+          refundWorkOrderState.values[input.dataset.key] = input.value;
+        });
+        input.addEventListener("keydown", (event) => {
+          if (event.key === "Enter") searchRefundWorkOrders();
+        });
+      });
+
+      refundWorkOrderFilterWrap.querySelectorAll(".select-trigger").forEach((trigger) => {
+        const openMenu = () => {
+          closeRefundWorkOrderMenus(trigger.dataset.key);
+          const field = refundWorkOrderFields.find((item) => item.key === trigger.dataset.key);
+          renderRefundWorkOrderOptions(trigger.closest(".field"), field, trigger.value);
+          trigger.classList.add("open");
+          refundWorkOrderFilterWrap.querySelector(`[data-menu="${trigger.dataset.key}"]`).classList.add("open");
+        };
+        trigger.addEventListener("click", (event) => {
+          event.stopPropagation();
+          openMenu();
+        });
+        trigger.addEventListener("focus", openMenu);
+        trigger.addEventListener("input", openMenu);
+      });
+
+      refundWorkOrderFilterWrap.querySelectorAll(".select-options").forEach((optionsEl) => {
+        optionsEl.addEventListener("click", (event) => {
+          const option = event.target.closest(".option");
+          if (!option || option.classList.contains("empty")) return;
+          refundWorkOrderState.values[optionsEl.closest(".field").dataset.key] = option.dataset.value;
+          renderRefundWorkOrderFilters();
+        });
+      });
+
+      refundWorkOrderFilterWrap.querySelectorAll(".select-clear").forEach((button) => {
+        button.addEventListener("click", (event) => {
+          event.stopPropagation();
+          refundWorkOrderState.values[button.dataset.key] = "";
+          closeRefundWorkOrderMenus();
+          renderRefundWorkOrderFilters();
+        });
+      });
+
+      Object.values(refundWorkOrderDateConfigs).forEach((config) => {
+        bindDateRangeField({
+          idPrefix: config.idPrefix,
+          label: config.label,
+          state: refundWorkOrderState,
+          filterWrap: refundWorkOrderFilterWrap,
+          render: renderRefundWorkOrderFilters,
+          openKey: config.openKey,
+          valueStartKey: config.startKey,
+          valueEndKey: config.endKey,
+          draftStartKey: config.draftStartKey,
+          draftEndKey: config.draftEndKey,
+          errorKey: config.errorKey,
+          viewKey: config.viewKey,
+          onBeforeOpen: closeRefundWorkOrderMenus
+        });
+      });
+
+      document.getElementById("refundWorkOrderSearchBtn").addEventListener("click", searchRefundWorkOrders);
+      document.getElementById("refundWorkOrderResetBtn").addEventListener("click", resetRefundWorkOrderFilters);
+    }
+
+    function closeRefundWorkOrderMenus(exceptKey) {
+      refundWorkOrderFilterWrap.querySelectorAll(".select-menu").forEach((menu) => {
+        if (menu.dataset.menu !== exceptKey) menu.classList.remove("open");
+      });
+      refundWorkOrderFilterWrap.querySelectorAll(".select-trigger").forEach((trigger) => {
+        if (trigger.dataset.key !== exceptKey) trigger.classList.remove("open");
+      });
+    }
+
+    function closeRefundWorkOrderDateRanges() {
+      let changed = false;
+      Object.values(refundWorkOrderDateConfigs).forEach((config) => {
+        if (refundWorkOrderState[config.openKey]) {
+          refundWorkOrderState[config.openKey] = false;
+          refundWorkOrderState[config.errorKey] = "";
+          changed = true;
+        }
+      });
+      if (changed) renderRefundWorkOrderFilters();
+    }
+
+    function validateRefundWorkOrderDateRanges() {
+      for (const config of Object.values(refundWorkOrderDateConfigs)) {
+        const rangeError = validateManualDateRange(refundWorkOrderState.values[config.startKey], refundWorkOrderState.values[config.endKey], config.label);
+        if (rangeError) return rangeError;
+      }
+      return "";
+    }
+
+    function clearRefundWorkOrderDateRanges() {
+      Object.values(refundWorkOrderDateConfigs).forEach((config) => {
+        refundWorkOrderState.values[config.startKey] = "";
+        refundWorkOrderState.values[config.endKey] = "";
+        refundWorkOrderState[config.openKey] = false;
+        refundWorkOrderState[config.draftStartKey] = "";
+        refundWorkOrderState[config.draftEndKey] = "";
+        refundWorkOrderState[config.errorKey] = "";
+        refundWorkOrderState[config.viewKey] = "";
+      });
+    }
+
+    function searchRefundWorkOrders() {
+      const rangeError = validateRefundWorkOrderDateRanges();
+      if (rangeError) {
+        showToast(rangeError, "error");
+        return;
+      }
+      const activeCount = Object.values(refundWorkOrderState.values).filter(Boolean).length;
+      showToast(activeCount ? "退费工单列表已按查询条件刷新" : "已查询全部退费工单", "success");
+      renderRefundWorkOrderFilters();
+    }
+
+    function resetRefundWorkOrderFilters() {
+      refundWorkOrderState.values = {};
+      clearRefundWorkOrderDateRanges();
+      renderRefundWorkOrderFilters();
+      showToast("退费工单查询条件已清空", "info");
+    }
+
+    function renderRefundWorkOrderStatus(value) {
+      const statusClass = ["已审核", "已退费"].includes(value)
+        ? "status-positive"
+        : ["已驳回", "退费失败"].includes(value)
+          ? "status-negative"
+          : "status-neutral";
+      return `<span class="status-text ${statusClass}">${escapeHtml(value || "-")}</span>`;
+    }
+
+    function renderRefundWorkOrderStatusGroup(row) {
+      const refundMethod = row.refundStatus === "已退费"
+        ? `
+          <span class="refund-status-line">
+            <span class="refund-status-label">退费方式：</span><span>${escapeHtml(row.refundMethod || "-")}</span>
+          </span>
+        `
+        : "";
+      return `
+        <span class="refund-status-stack">
+          <span class="refund-status-line">
+            <span class="refund-status-label">审核状态：</span>${renderRefundWorkOrderStatus(row.auditStatus)}
+          </span>
+          <span class="refund-status-line">
+            <span class="refund-status-label">退费状态：</span>${renderRefundWorkOrderStatus(row.refundStatus)}
+          </span>
+          ${refundMethod}
+        </span>
+      `;
+    }
+
+    function renderRefundWorkOrderActions(row) {
+      const auditStatus = row.auditStatus || "";
+      const refundStatus = row.refundStatus || "";
+      const refundNo = escapeHtml(row.refundNo || "");
+      let actions = [];
+      if (auditStatus === "已审核" && refundStatus === "退费失败") {
+        actions = [{ label: "线下退费", action: "offlineRefund" }];
+      } else if (auditStatus === "未审核" && refundStatus === "未退费") {
+        actions = [
+          { label: "编辑", action: "edit" },
+          { label: "审核", action: "audit" },
+          { label: "驳回", action: "reject", danger: true }
+        ];
+      } else if (auditStatus === "已审核" && refundStatus === "已退费") {
+        actions = [{ label: "下载退费回单", action: "downloadReceipt" }];
+      }
+      if (!actions.length) return "-";
+      return `
+        <span class="refund-action-group">
+          ${actions.map((item) => `
+            <button class="${item.danger ? "danger-link" : "link-text"} refund-action-btn" type="button" data-action="${item.action}" data-refund-no="${refundNo}">${item.label}</button>
+          `).join("")}
+        </span>
+      `;
+    }
+
+    function renderRefundCopyCell(value, label) {
+      if (!hasIdentifierValue(value)) return value || "-";
+      return `
+        <span class="eid-cell">
+          <span>${escapeHtml(value)}</span>
+          ${renderCopyIcon(label, value, "data-copy-text")}
+        </span>
+      `;
+    }
+
+    function renderRefundWorkOrderValue(value, column, row, index) {
+      if (column.key === "index") return String(index + 1);
+      if (column.key === "action") return renderRefundWorkOrderActions(row);
+      if (column.key === "workOrderStatus") return renderRefundWorkOrderStatusGroup(row);
+      if (column.status) return renderRefundWorkOrderStatus(value);
+      if (column.copyLabel) return renderRefundCopyCell(value, column.copyLabel);
+      const identifierCell = renderIdentifierCell(value, column);
+      if (identifierCell !== null) return identifierCell;
+      if (column.key === "paymentScreenshot") {
+        return value && value !== "-"
+          ? `<button class="link-text refund-screenshot-btn" type="button" data-screenshot="${escapeHtml(value)}">查看截图</button>`
+          : "-";
+      }
+      return escapeHtml(value || "-");
+    }
+
+    function renderRefundWorkOrderTable() {
+      const header = document.getElementById("refundWorkOrderTableHeader");
+      const body = document.getElementById("refundWorkOrderTableBody");
+      header.innerHTML = refundWorkOrderTableColumns.map((column) => `<th class="${column.fixedRight ? "operation-col" : ""}">${column.label}</th>`).join("");
+      body.innerHTML = refundWorkOrderRows.length
+        ? refundWorkOrderRows.map((row, index) => `
+            <tr>
+              ${refundWorkOrderTableColumns.map((column) => `<td class="${column.fixedRight ? "operation-col" : ""}">${renderRefundWorkOrderValue(row[column.key], column, row, index)}</td>`).join("")}
+            </tr>
+          `).join("")
+        : `<tr><td colspan="${refundWorkOrderTableColumns.length}" style="text-align:center;color:#6b7280;">暂无数据</td></tr>`;
+      body.querySelectorAll(".refund-screenshot-btn").forEach((button) => {
+        button.addEventListener("click", () => showToast(`查看支付截图：${button.dataset.screenshot}`, "info"));
+      });
+      body.querySelectorAll(".refund-action-btn").forEach((button) => {
+        button.addEventListener("click", () => {
+          const actionText = button.textContent.trim();
+          showToast(`${button.dataset.refundNo} ${actionText}操作已触发`, "success");
+        });
+      });
+    }
+
+    function renderRefundWorkOrderPager() {
+      document.getElementById("refundWorkOrderPager").innerHTML = `
+        <span>共 36 条</span>
+        <button class="page-btn" type="button">‹</button>
+        <button class="page-btn active" type="button">1</button>
+        <button class="page-btn" type="button">2</button>
+        <button class="page-btn" type="button">3</button>
         <button class="page-btn" type="button">›</button>
       `;
     }
@@ -13501,6 +14650,39 @@
       return value || "-";
     }
 
+    function renderWritableCardStatusCell(row = {}) {
+      const status = row.cardStatus || "-";
+      return `
+        <span class="writable-card-status-cell">
+          <span>${escapeHtml(status)}</span>
+          <button class="inline-refresh-btn writable-card-status-refresh-btn" type="button" data-iccid="${escapeHtml(row.iccid)}" aria-label="刷新卡状态" title="刷新卡状态">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M20 12a8 8 0 0 1-13.7 5.7M4 12A8 8 0 0 1 17.7 6.3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M17.5 3.5v3h-3M6.5 20.5v-3h3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </span>
+      `;
+    }
+
+    function renderWritableListValue(value, column, row = {}) {
+      if (column.key === "cardStatus") return renderWritableCardStatusCell(row);
+      return renderWritableValue(value, column, row);
+    }
+
+    function refreshWritableCardStatus(iccid) {
+      const row = writableRows.find((item) => item.iccid === iccid);
+      if (!row) {
+        showToast("未找到对应ICCID，无法刷新卡状态", "error");
+        return;
+      }
+      row.cardStatus = row.cardStatus || "-";
+      row.updatedAt = BATCH_OPERATION_TIME;
+      renderWritableTable();
+      renderWritablePager();
+      showToast(`ICCID ${iccid} 卡状态已刷新`, "success");
+    }
+
     function renderWritablePageTabs() {
       const tabs = document.getElementById("writablePageTabs");
       tabs.innerHTML = writableManageTabs.map((tab) => `
@@ -13949,13 +15131,19 @@
         ? visibleRows.map((row) => `
             <tr>
               ${writableTableColumns.map((column) => `
-                <td class="${column.fixedRight ? "operation-col" : ""}">${renderWritableValue(column.key === "action" ? row.iccid : row[column.key], column, row)}</td>
+                <td class="${column.fixedRight ? "operation-col" : ""}">${renderWritableListValue(column.key === "action" ? row.iccid : row[column.key], column, row)}</td>
               `).join("")}
             </tr>
           `).join("")
         : `<tr><td colspan="${writableTableColumns.length}" style="text-align:center;color:#6b7280;">暂无数据</td></tr>`;
       body.querySelectorAll(".writable-remove-btn").forEach((button) => {
         button.addEventListener("click", () => openWritableRemoveModal(button.dataset.iccid));
+      });
+      body.querySelectorAll(".writable-card-status-refresh-btn").forEach((button) => {
+        button.addEventListener("click", (event) => {
+          event.stopPropagation();
+          refreshWritableCardStatus(button.dataset.iccid);
+        });
       });
     }
 
@@ -16076,6 +17264,7 @@
       document.getElementById("simNavItem").classList.remove("active");
       document.getElementById("esimNavItem").classList.remove("active");
       document.getElementById("riskNavItem").classList.remove("active");
+      document.getElementById("afterSaleNavItem").classList.remove("active");
       document.getElementById("abTestStatsNavItem").classList.toggle("active", pageId === "abTestStatsPage");
       document.getElementById("simCardSubItem").classList.toggle("active", pageId === "simCardPage");
       const inRecycleModule = pageId === "recyclePage" || pageId === "recordPage";
@@ -16090,6 +17279,7 @@
       document.getElementById("riskStrategySubItem").classList.toggle("active", pageId === "riskStrategyPage" || pageId === "riskStrategyCreatePage" || pageId === "riskStrategyDetailPage");
       document.getElementById("riskTriggerLogSubItem").classList.toggle("active", pageId === "riskTriggerLogPage");
       document.getElementById("riskStopChangeRecordSubItem").classList.toggle("active", pageId === "riskStopChangeRecordPage");
+      document.getElementById("refundWorkOrderSubItem").classList.toggle("active", pageId === "refundWorkOrderPage");
     }
 
     function setEsimMenuExpanded(expanded) {
@@ -16108,6 +17298,12 @@
       document.getElementById("riskNavItem").classList.toggle("collapsed", !expanded);
       document.getElementById("riskSubMenu").classList.toggle("collapsed", !expanded);
       document.getElementById("riskMenuToggle").setAttribute("aria-expanded", String(expanded));
+    }
+
+    function setAfterSaleMenuExpanded(expanded) {
+      document.getElementById("afterSaleNavItem").classList.toggle("collapsed", !expanded);
+      document.getElementById("afterSaleSubMenu").classList.toggle("collapsed", !expanded);
+      document.getElementById("afterSaleMenuToggle").setAttribute("aria-expanded", String(expanded));
     }
 
     const pageLabelMap = {
@@ -16132,7 +17328,8 @@
       riskStrategyCreatePage: "风险防控策略新增",
       riskStrategyDetailPage: "风险防控策略详情",
       riskTriggerLogPage: "风险防控触发日志",
-      riskStopChangeRecordPage: "风险管理停机状态变更记录"
+      riskStopChangeRecordPage: "风险管理停机状态变更记录",
+      refundWorkOrderPage: "退费工单"
     };
     const detailPageIds = new Set(["batchDetailPage", "chipBatchDetailPage", "simDetailPage", "esimChipDetailPage", "writableResourcePoolDetailPage", "manageDisableDetailPage"]);
     let openCrumbs = [];
@@ -16210,6 +17407,7 @@
       document.getElementById("pageContent").classList.toggle("writable-mode", pageId === "writablePage");
       document.getElementById("pageContent").classList.toggle("ab-mode", pageId === "abTestStatsPage");
       document.getElementById("pageContent").classList.toggle("risk-mode", pageId === "riskStrategyPage" || pageId === "riskStrategyCreatePage" || pageId === "riskStrategyDetailPage" || pageId === "riskTriggerLogPage" || pageId === "riskStopChangeRecordPage");
+      document.getElementById("pageContent").classList.toggle("refund-mode", pageId === "refundWorkOrderPage");
       setSidebarSelected(pageId);
       ensureCrumb(pageId);
       activeCrumbPage = pageId;
@@ -16254,6 +17452,11 @@
         renderRiskStopChangeRecordFilters();
         renderRiskStopChangeRecordTable();
         renderRiskStopChangeRecordPager();
+      }
+      if (pageId === "refundWorkOrderPage") {
+        renderRefundWorkOrderFilters();
+        renderRefundWorkOrderTable();
+        renderRefundWorkOrderPager();
       }
       if (pageId === "writablePage") {
         renderWritablePageTabs();
@@ -16404,6 +17607,8 @@
       closeWriteApplyMenus();
       closeOrderMenus();
       closeOrderDateRange();
+      closeRefundWorkOrderMenus();
+      closeRefundWorkOrderDateRanges();
       closeChipLogMenus();
       closeAbPurchaseDateRange();
       closeMenus();
@@ -16441,6 +17646,11 @@
       setRiskMenuExpanded(!expanded);
     }
 
+    function toggleAfterSaleMenu() {
+      const expanded = document.getElementById("afterSaleMenuToggle").getAttribute("aria-expanded") === "true";
+      setAfterSaleMenuExpanded(!expanded);
+    }
+
     function bindNavMenuToggle(navId, toggleHandler) {
       const navItem = document.getElementById(navId);
       navItem.addEventListener("click", toggleHandler);
@@ -16454,6 +17664,7 @@
     bindNavMenuToggle("simNavItem", toggleSimMenu);
     bindNavMenuToggle("esimNavItem", toggleEsimMenu);
     bindNavMenuToggle("riskNavItem", toggleRiskMenu);
+    bindNavMenuToggle("afterSaleNavItem", toggleAfterSaleMenu);
     document.getElementById("crumbTabs").addEventListener("click", (event) => {
       const closeButton = event.target.closest("[data-close-page]");
       if (closeButton) {
@@ -16570,13 +17781,9 @@
     document.getElementById("resourcePoolWarningModal").addEventListener("click", (event) => {
       if (event.target.id === "resourcePoolWarningModal") closeResourcePoolWarningModal();
     });
-    document.getElementById("abSearchBtn").addEventListener("click", searchAbStats);
-    document.getElementById("abResetBtn").addEventListener("click", resetAbStats);
+    document.getElementById("abRefreshBtn").addEventListener("click", searchAbStats);
     document.getElementById("abExportBtn").addEventListener("click", () => {
-      showToast("AB测试套餐购买统计已导出", "success");
-    });
-    document.getElementById("abVersionFilter").addEventListener("change", () => {
-      syncQueryClearControl("abVersionFilter");
+      showToast("H5套餐购买漏斗数据已导出", "success");
     });
     document.getElementById("closeAbPurchaseDrawer").addEventListener("click", closeAbPurchaseDrawer);
     document.getElementById("abPurchaseDrawer").addEventListener("click", (event) => {
@@ -16608,6 +17815,12 @@
     });
     document.getElementById("orderExportBtn").addEventListener("click", () => {
       showToast("已按当前查询条件导出ESIM订单", "success");
+    });
+    document.getElementById("refundWorkOrderCreateBtn").addEventListener("click", () => {
+      showToast("新增退费工单入口已打开", "info");
+    });
+    document.getElementById("refundWorkOrderExportBtn").addEventListener("click", () => {
+      showToast("已按当前查询条件导出退费工单", "success");
     });
     document.getElementById("writableBatchBtn").addEventListener("click", () => {
       showToast("请选择增加或移出方式后继续操作", "info");
@@ -16882,7 +18095,7 @@
       }, 1300);
     });
 
-    ["recordActionType", "detailMerchant", "detailRecycleType", "checkStatus", "chipDetectionStatus", "abVersionFilter"].forEach(bindQueryClearControl);
+    ["recordActionType", "detailMerchant", "detailRecycleType", "checkStatus", "chipDetectionStatus"].forEach(bindQueryClearControl);
     renderSimCardPageTabs();
     renderSimCardFilters();
     renderSimCardTable();
@@ -16910,6 +18123,9 @@
     renderOrderFilters();
     renderOrderTable();
     renderOrderPager();
+    renderRefundWorkOrderFilters();
+    renderRefundWorkOrderTable();
+    renderRefundWorkOrderPager();
     renderChipFilters();
     renderChipTable();
     renderChipPager();
