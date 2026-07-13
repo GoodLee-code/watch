@@ -4385,6 +4385,530 @@
       background: #fff;
     }
 
+    .sim-card-detail-panel {
+      background: #fff;
+      border-radius: 0;
+    }
+
+    .sim-card-detail-tabs {
+      padding-left: 0;
+      border-bottom-color: #d9e1ec;
+    }
+
+    .sim-card-detail-body {
+      flex: 1 1 auto;
+      min-height: 0;
+      overflow: auto;
+      background: #fff;
+    }
+
+    .sim-card-detail-layout {
+      display: grid;
+      grid-template-columns: minmax(760px, 1fr) 340px;
+      gap: 12px;
+      padding: 12px 0 24px;
+      align-items: start;
+    }
+
+    .sim-card-detail-main {
+      min-width: 0;
+    }
+
+    .sim-detail-section {
+      margin-bottom: 22px;
+      border: 1px solid #e6ebf2;
+      background: #fff;
+    }
+
+    .sim-detail-section-head {
+      min-height: 46px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 14px;
+      border-bottom: 1px solid #e6ebf2;
+      background: #e8edf5;
+      color: #485466;
+      font-weight: 500;
+    }
+
+    .sim-detail-info-title {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-right: 8px;
+    }
+
+    .sim-detail-info-icon {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      display: inline-grid;
+      place-items: center;
+      color: #fff;
+      background: #2f91f1;
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .sim-detail-toolbar {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .sim-detail-toolbar .btn {
+      height: 28px;
+      min-width: 52px;
+      padding: 0 12px;
+      background: #fff;
+      color: #596273;
+      border-color: #d9e1ec;
+      box-shadow: none;
+    }
+
+    .sim-detail-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-left: 10px;
+      color: #596273;
+      font-weight: 400;
+    }
+
+    .sim-detail-edit-link {
+      border: 0;
+      background: transparent;
+      color: #1687e8;
+      padding: 0;
+      font-weight: 500;
+    }
+
+    .sim-detail-edit-link:hover {
+      color: #0b69bd;
+      text-decoration: underline;
+    }
+
+    .sim-detail-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      table-layout: fixed;
+      border: 0;
+    }
+
+    .sim-detail-table th,
+    .sim-detail-table td {
+      height: 42px;
+      padding: 0 10px;
+      border-right: 1px solid #e8edf4;
+      border-bottom: 1px solid #e8edf4;
+      font-size: 12px;
+      text-align: left;
+      vertical-align: middle;
+    }
+
+    .sim-detail-table th {
+      width: 112px;
+      color: #8a94a3;
+      background: #f1f5fb;
+      font-weight: 500;
+    }
+
+    .sim-detail-table td {
+      width: 160px;
+      color: #5f6876;
+      background: #fff;
+      line-height: 1.45;
+      word-break: break-word;
+    }
+
+    .sim-detail-table tr:last-child th,
+    .sim-detail-table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .sim-detail-table th:last-child,
+    .sim-detail-table td:last-child {
+      border-right: 0;
+    }
+
+    .sim-detail-status-ok {
+      color: #0f9f4f;
+      font-weight: 600;
+    }
+
+    .sim-detail-green-dot {
+      width: 8px;
+      height: 8px;
+      display: inline-block;
+      border-radius: 50%;
+      background: #0f9f4f;
+      margin: 0 5px;
+      vertical-align: middle;
+    }
+
+    .sim-detail-switch {
+      width: 36px;
+      height: 20px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      padding: 2px;
+      background: #c9ced6;
+      vertical-align: middle;
+    }
+
+    .sim-detail-switch::before {
+      content: "";
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.18);
+    }
+
+    .sim-status-overview {
+      padding: 0;
+      border-bottom: 1px solid #e6ebf2;
+      background: #fff;
+      overflow: visible;
+    }
+
+    .sim-status-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      table-layout: fixed;
+      border: 0;
+      overflow: visible;
+    }
+
+    .sim-status-label-col,
+    .sim-detail-label-col {
+      width: 112px;
+    }
+
+    .sim-status-value-col,
+    .sim-detail-value-col {
+      width: 160px;
+    }
+
+    .sim-status-table th,
+    .sim-status-table td {
+      height: 22px;
+      padding: 0 10px;
+      border-right: 1px solid #dbe3ee;
+      border-bottom: 1px solid #dbe3ee;
+      background: #fff;
+      color: #273142;
+      font-size: 13px;
+      text-align: left;
+      vertical-align: middle;
+      overflow: visible;
+    }
+
+    .sim-status-table th {
+      text-align: left;
+      font-weight: 600;
+      background: #fff;
+    }
+
+    .sim-status-table tr:last-child th,
+    .sim-status-table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .sim-status-table th:last-child,
+    .sim-status-table td:last-child {
+      border-right: 0;
+    }
+
+    .sim-status-main-cell {
+      min-height: 66px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 6px;
+      flex-wrap: nowrap;
+      line-height: 1.45;
+      white-space: nowrap;
+    }
+
+    .sim-status-value {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .sim-status-dot {
+      width: 8px;
+      height: 8px;
+      flex: 0 0 auto;
+      border-radius: 50%;
+      background: currentColor;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.12);
+    }
+
+    .sim-status-positive {
+      color: #2f9e44;
+    }
+
+    .sim-status-negative {
+      color: #c92a2a;
+    }
+
+    .sim-status-title-row {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-width: 0;
+    }
+
+    .sim-status-help {
+      position: relative;
+      flex: 0 0 auto;
+      width: 16px;
+      height: 16px;
+      border: 0;
+      border-radius: 50%;
+      display: inline-grid;
+      place-items: center;
+      padding: 0;
+      background: #2f91f1;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1;
+      cursor: help;
+    }
+
+    .sim-status-help-popup {
+      position: absolute;
+      left: 0;
+      top: calc(100% + 9px);
+      z-index: 80;
+      width: 460px;
+      max-width: min(460px, calc(100vw - 80px));
+      padding: 9px 11px;
+      border-radius: 6px;
+      background: #152033;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 1.55;
+      text-align: left;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.22);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(4px);
+      transition: opacity 0.16s ease, transform 0.16s ease, visibility 0.16s ease;
+      pointer-events: none;
+      white-space: normal;
+    }
+
+    .sim-status-help-popup::after {
+      content: "";
+      position: absolute;
+      left: 8px;
+      bottom: 100%;
+      border: 6px solid transparent;
+      border-bottom-color: #152033;
+    }
+
+    .sim-status-help:hover .sim-status-help-popup,
+    .sim-status-help:focus .sim-status-help-popup {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .sim-detail-footer-bar {
+      min-height: 52px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      background: #e8edf5;
+      border: 1px solid #e6ebf2;
+    }
+
+    .sim-detail-mini-preview {
+      border-left: 0;
+      background: #fff;
+      min-width: 0;
+    }
+
+    .mini-preview-title {
+      height: 44px;
+      display: flex;
+      align-items: center;
+      border-bottom: 3px solid #d4d4d4;
+      color: #606572;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .mini-preview-card {
+      padding: 16px 0;
+      background: #fff;
+    }
+
+    .mini-operator-row {
+      display: grid;
+      grid-template-columns: 94px 1fr;
+      gap: 12px;
+      align-items: center;
+      padding: 0 8px 12px;
+    }
+
+    .mini-operator-logo {
+      width: 78px;
+      height: 78px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      color: #1687e8;
+      font-weight: 700;
+      line-height: 1.2;
+      background: linear-gradient(135deg, #eaf7ff, #fff);
+      border: 1px solid #dbeafe;
+      text-align: center;
+    }
+
+    .mini-operator-name {
+      margin-top: 4px;
+      color: #1687e8;
+      font-size: 20px;
+      line-height: 1.1;
+      font-weight: 700;
+    }
+
+    .mini-balance-list {
+      display: grid;
+      gap: 9px;
+      color: #566072;
+      font-size: 13px;
+    }
+
+    .mini-balance-list strong,
+    .mini-balance-list a {
+      color: #1687e8;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .mini-balance-list .danger {
+      color: #ef4444;
+      font-weight: 700;
+      margin-left: 8px;
+    }
+
+    .mini-map {
+      height: 168px;
+      position: relative;
+      overflow: hidden;
+      margin: 0 0 10px;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,.72) 1px, transparent 1px) 0 0 / 36px 36px,
+        linear-gradient(0deg, rgba(255,255,255,.72) 1px, transparent 1px) 0 0 / 36px 36px,
+        linear-gradient(135deg, #b9f1b0, #c9f0ff 48%, #f2d5b5);
+      border-top: 1px solid #e5e7eb;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .mini-map::before,
+    .mini-map::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.75);
+      transform: rotate(-18deg);
+    }
+
+    .mini-map::before {
+      width: 430px;
+      height: 18px;
+      left: -50px;
+      top: 78px;
+    }
+
+    .mini-map::after {
+      width: 280px;
+      height: 14px;
+      right: -60px;
+      top: 32px;
+      transform: rotate(28deg);
+    }
+
+    .mini-map-action {
+      position: absolute;
+      top: 60px;
+      width: 72px;
+      text-align: center;
+      color: #374151;
+      font-size: 12px;
+      font-weight: 600;
+      z-index: 1;
+    }
+
+    .mini-map-action.call {
+      left: 48px;
+    }
+
+    .mini-map-action.refresh {
+      right: 48px;
+    }
+
+    .mini-map-icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 4px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-size: 16px;
+      background: #20c463;
+      box-shadow: 0 6px 14px rgba(15, 23, 42, 0.18);
+    }
+
+    .mini-map-action.refresh .mini-map-icon {
+      background: #a8adb5;
+    }
+
+    .mini-feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px 8px;
+      padding: 12px 4px 0;
+      text-align: center;
+      color: #374151;
+      font-weight: 600;
+    }
+
+    .mini-feature-icon {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 6px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .mini-feature-phone { background: #ff8a65; }
+    .mini-feature-service { background: #f5c242; }
+    .mini-feature-real { background: #9b8cf5; }
+    .mini-feature-renew { background: #7aa7ff; }
+    .mini-feature-disable { background: #f35d62; }
+    .mini-feature-sos { background: #ef4444; }
+
     .chip-log-query {
       border: 0;
       border-bottom: 1px solid var(--line-soft);
@@ -6095,7 +6619,12 @@
           </section>
         </div>
 
-        <div class="page-view" id="simDetailPage"></div>
+        <div class="page-view" id="simDetailPage">
+          <section class="panel sim-detail-panel sim-card-detail-panel" aria-label="SIM卡详情">
+            <div class="detail-tabs sim-card-detail-tabs" id="simDetailTabs" aria-label="SIM卡详情页签"></div>
+            <div class="sim-card-detail-body" id="simDetailBody"></div>
+          </section>
+        </div>
 
         <div class="page-view" id="esimChipDetailPage">
           <section class="panel sim-detail-panel chip-detail-panel" aria-label="ESIM芯片详情">
@@ -12865,8 +13394,6 @@
           { label: "审核", action: "audit" },
           { label: "驳回", action: "reject", danger: true }
         ];
-      } else if (auditStatus === "已审核" && refundStatus === "已退费") {
-        actions = [{ label: "下载退费回单", action: "downloadReceipt" }];
       }
       if (!actions.length) return "-";
       return `
@@ -17534,7 +18061,308 @@
       return value || "-";
     }
 
-    function renderSimDetail(iccid) {}
+    const simDetailTabs = ["设备信息", "设备套餐", "设备绑定", "实名认证", "设备订单", "亲情号码", "退费管理", "开停卡记录"];
+
+    function simDetailText(value) {
+      return escapeHtml(simDetailValue(value));
+    }
+
+    function simDetailDeviceSn(row = {}) {
+      const suffix = String(row.iccid || "00000000").slice(-8);
+      return `SN${suffix}`;
+    }
+
+    function simDetailImsi(row = {}) {
+      if (row.imsiEmpty === "为空") return "-";
+      const suffix = String(row.iccid || "0000000000").slice(-10);
+      return `46008${suffix}`;
+    }
+
+    function renderSimDetailStatus(value) {
+      const text = simDetailValue(value);
+      if (text === "已激活" || text === "已实名" || text === "已通过实名认证") {
+        return `<span class="sim-detail-status-ok">${escapeHtml(text === "已通过实名认证" ? "已实名" : text)}</span><span class="sim-detail-green-dot" aria-hidden="true"></span>`;
+      }
+      return escapeHtml(text);
+    }
+
+    function renderSimDetailSwitch(enabled = false) {
+      return `<span class="sim-detail-switch" aria-label="${enabled ? "开启" : "关闭"}"></span>`;
+    }
+
+    function isSimOperatorStatusNegative(status) {
+      return simDetailValue(status) === "预销户";
+    }
+
+    function simManageStopStatus(row = {}) {
+      const negative = isSimOperatorStatusNegative(row.cardStatus)
+        || row.manageDisableStatus === "管理停用"
+        || row.riskStopStatus === "开启";
+      return negative ? "已管理停机" : "未管理停机";
+    }
+
+    function simStatusTone(label, value) {
+      if (label === "销号状态") return value === "已销号" ? "negative" : "positive";
+      if (label === "管理停用状态") return value === "管理停用" ? "negative" : "positive";
+      if (label === "风险管理停机状态") return value === "开启" ? "negative" : "positive";
+      return value === "已管理停机" ? "negative" : "positive";
+    }
+
+    function renderSimStatusValue(label, value) {
+      const tone = simStatusTone(label, value);
+      return `
+        <span class="sim-status-value sim-status-${tone}">
+          <span class="sim-status-dot" aria-hidden="true"></span>
+          <span>${escapeHtml(simDetailValue(value))}</span>
+        </span>
+      `;
+    }
+
+    function simStatusHelpText(label) {
+      const messages = {
+        "管理停机状态": "风险管理停机状态为“开启”或管理停用状态为“管理停用”或卡运营商状态为“预销户”时，管理停机状态为“已管理停机”",
+        "销号状态": "SIMDOCKER平台将卡状态变更为已销号，终止卡片一切业务",
+        "管理停用状态": "查询到卡状态异常≥3次后，将管理停用状态变更为管理停用，终止卡片一切业务",
+        "风险管理停机状态": "ICCID触发风险管理停机策略时，变更为风险管理停机状态，终止卡片一切业务。"
+      };
+      return messages[label] || "";
+    }
+
+    function renderSimStatusLabel(label, suffix = "") {
+      const helpText = simStatusHelpText(label);
+      return `
+        <span class="sim-status-title-row">
+          ${helpText ? `
+            <button class="sim-status-help" type="button" aria-label="${escapeHtml(label)}说明">
+              ?
+              <span class="sim-status-help-popup" role="tooltip">${escapeHtml(helpText)}</span>
+            </button>
+          ` : ""}
+          <span>${escapeHtml(label)}${suffix}</span>
+        </span>
+      `;
+    }
+
+    function renderSimStatusOverview(row = {}) {
+      const manageStatus = simManageStopStatus(row);
+      const cancelStatus = row.cancelStatus || (row.cardStatus === "销户" ? "已销号" : "未销号");
+      const items = [
+        ["销号状态", cancelStatus],
+        ["管理停用状态", row.manageDisableStatus || "可用"],
+        ["风险管理停机状态", row.riskStopStatus || "关闭"]
+      ];
+      return `
+        <div class="sim-status-overview" aria-label="SIM卡状态概览">
+          <table class="sim-status-table">
+            <colgroup>
+              <col class="sim-status-label-col">
+              <col class="sim-status-value-col">
+              <col class="sim-status-label-col">
+              <col class="sim-status-value-col">
+              <col class="sim-status-label-col">
+              <col class="sim-status-value-col">
+            </colgroup>
+            <tbody>
+              ${items.map(([label, value], index) => `
+                <tr>
+                  ${index === 0 ? `
+                    <th class="sim-status-main-th" scope="row" colspan="2" rowspan="${items.length}">
+                      <span class="sim-status-main-cell">
+                        ${renderSimStatusLabel("管理停机状态", "：")}
+                        ${renderSimStatusValue("管理停机状态", manageStatus)}
+                      </span>
+                    </th>
+                  ` : ""}
+                  <th scope="row">${renderSimStatusLabel(label)}</th>
+                  <td>${renderSimStatusValue(label, value)}</td>
+                  <td colspan="2"></td>
+                </tr>
+              `).join("")}
+            </tbody>
+          </table>
+        </div>
+      `;
+    }
+
+    function renderSimDetailTable(rows) {
+      return `
+        <table class="sim-detail-table">
+          <colgroup>
+            <col class="sim-detail-label-col">
+            <col class="sim-detail-value-col">
+            <col class="sim-detail-label-col">
+            <col class="sim-detail-value-col">
+            <col class="sim-detail-label-col">
+            <col class="sim-detail-value-col">
+          </colgroup>
+          <tbody>
+            ${rows.map((row) => `
+              <tr>
+                ${row.map((item) => `
+                  <th>${escapeHtml(item.label)}</th>
+                  <td>${item.html ? item.value : simDetailText(item.value)}</td>
+                `).join("")}
+              </tr>
+            `).join("")}
+          </tbody>
+        </table>
+      `;
+    }
+
+    function renderSimDetailMiniPreview(row = {}) {
+      const phone = row.msisdn && row.msisdn !== "-" ? row.msisdn : "14856510000";
+      return `
+        <aside class="sim-detail-mini-preview" aria-label="百分百宝贝小程序预览">
+          <div class="mini-preview-title">百分百宝贝(小程序)预览</div>
+          <div class="mini-preview-card">
+            <div class="mini-operator-row">
+              <div>
+                <div class="mini-operator-logo">CM</div>
+                <div class="mini-operator-name">中国移动</div>
+              </div>
+              <div class="mini-balance-list">
+                <div>电话号码: <strong>${escapeHtml(phone)}</strong> <a href="javascript:void(0)">号码切换</a></div>
+                <div>套餐剩余天数: <strong>0天</strong></div>
+                <div>本月通话剩余: <strong>0分钟</strong><span class="danger">加油包</span></div>
+              </div>
+            </div>
+            <div class="mini-map" aria-label="设备地图预览">
+              <div class="mini-map-action call">
+                <div class="mini-map-icon">呼</div>
+                <div>呼叫宝贝</div>
+              </div>
+              <div class="mini-map-action refresh">
+                <div class="mini-map-icon">刷</div>
+                <div>刷新定位</div>
+              </div>
+            </div>
+            <div class="mini-feature-grid">
+              <div><div class="mini-feature-icon mini-feature-phone">本</div><div>电话本</div></div>
+              <div><div class="mini-feature-icon mini-feature-service">服</div><div>VIP专属客服</div></div>
+              <div><div class="mini-feature-icon mini-feature-real">实</div><div>实名</div></div>
+              <div><div class="mini-feature-icon mini-feature-renew">充</div><div>充值缴费</div></div>
+              <div><div class="mini-feature-icon mini-feature-disable">禁</div><div>上课禁用</div></div>
+              <div><div class="mini-feature-icon mini-feature-sos">SOS</div><div>SOS设置</div></div>
+            </div>
+          </div>
+        </aside>
+      `;
+    }
+
+    function renderSimDetail(iccid) {
+      const row = writableRows.find((item) => item.iccid === iccid) || writableRows[0] || {};
+      const tabs = document.getElementById("simDetailTabs");
+      const body = document.getElementById("simDetailBody");
+      if (!tabs || !body) return;
+      tabs.innerHTML = simDetailTabs.map((tab, index) => `
+        <button class="detail-tab ${index === 0 ? "active" : ""}" type="button" data-sim-detail-tab="${escapeHtml(tab)}">${escapeHtml(tab)}</button>
+      `).join("");
+
+      const deviceRows = [
+        [
+          { label: "ICCID", value: row.iccid },
+          { label: "IMEI", value: row.imei },
+          { label: "方案商", value: row.solutionProvider }
+        ],
+        [
+          { label: "MSISDN", value: row.msisdn },
+          { label: "设备SN", value: simDetailDeviceSn(row) },
+          { label: "颜色", value: "蓝色" }
+        ],
+        [
+          { label: "IMSI", value: simDetailImsi(row) },
+          { label: "设备箱号", value: row.boxNo },
+          { label: "型号", value: row.deviceModel }
+        ],
+        [
+          { label: "当前商户", value: row.merchant },
+          { label: "导入时间", value: row.importTime },
+          { label: "服务有效日期", value: row.serviceDate }
+        ],
+        [
+          { label: "代理商", value: row.agent },
+          { label: "设备状态", value: row.cardStatus },
+          { label: "小程序", value: "百分百宝贝(小程序)" }
+        ],
+        [
+          { label: "设备位置", value: "已同步" },
+          { label: "锁卡标志", value: row.lockStatus },
+          { label: "", value: "" }
+        ]
+      ];
+
+      const simRows = [
+        [
+          { label: "SIM卡供应商", value: row.supplier },
+          { label: "运营商", value: row.operator },
+          { label: "卡运营商状态", value: row.cardStatus }
+        ],
+        [
+          { label: "卡组", value: row.cardGroup },
+          { label: "SIM卡集成方式", value: row.integrationType },
+          { label: "本月数据用量(MB)", value: "0" }
+        ],
+        [
+          { label: "绑定时间", value: row.bindTime },
+          { label: "实名状态", value: renderSimDetailStatus(row.realNameStatus), html: true },
+          { label: "数据服务状态", value: renderSimDetailSwitch(false), html: true }
+        ],
+        [
+          { label: "激活时间", value: row.cardStatus === "已激活" ? row.importTime : "-" },
+          { label: "卡在线状态", value: row.cardStatus === "已激活" ? "在线" : "-" },
+          { label: "本月通话剩余(分钟)", value: "0" }
+        ],
+        [
+          { label: "实名认证时间", value: row.realNameTime },
+          { label: "机卡分离状态", value: "正常" },
+          { label: "区域限制状态", value: "未限制" }
+        ],
+        [
+          { label: "物联卡管理停复机冻结状态", value: row.freezeStatus || "-" },
+          { label: "本月实际语音用量(分钟)", value: "0" },
+          { label: "语音服务状态", value: renderSimDetailSwitch(false), html: true }
+        ]
+      ];
+
+      body.innerHTML = `
+        <div class="sim-card-detail-layout">
+          <div class="sim-card-detail-main">
+            <section class="sim-detail-section" aria-label="设备信息">
+              <div class="sim-detail-section-head">
+                <span class="sim-detail-info-title"><span class="sim-detail-info-icon">i</span>设备信息</span>
+                <span class="sim-detail-toolbar">
+                  <button class="btn secondary" type="button">激活</button>
+                  <button class="btn secondary" type="button">停机</button>
+                  <button class="btn secondary" type="button">一键刷新</button>
+                </span>
+                <span class="sim-detail-note">备注：-- <button class="sim-detail-edit-link" type="button">编辑</button></span>
+              </div>
+              ${renderSimDetailTable(deviceRows)}
+            </section>
+            <section class="sim-detail-section" aria-label="SIM卡信息">
+              <div class="sim-detail-section-head">
+                <span class="sim-detail-info-title"><span class="sim-detail-info-icon">i</span>SIM卡信息</span>
+              </div>
+              ${renderSimStatusOverview(row)}
+              ${renderSimDetailTable(simRows)}
+            </section>
+            <div class="sim-detail-footer-bar">
+              <span class="sim-detail-info-icon">i</span>
+              <button class="btn secondary" type="button">获取活码</button>
+            </div>
+          </div>
+          ${renderSimDetailMiniPreview(row)}
+        </div>
+      `;
+
+      tabs.querySelectorAll("[data-sim-detail-tab]").forEach((button) => {
+        button.addEventListener("click", () => {
+          tabs.querySelectorAll(".detail-tab").forEach((tab) => tab.classList.remove("active"));
+          button.classList.add("active");
+          if (button.dataset.simDetailTab !== "设备信息") showToast(`${button.dataset.simDetailTab}页面暂未设计`, "info");
+        });
+      });
+    }
 
     function openSimDetailPage(iccid) {
       const currentPage = document.querySelector(".page-view.active");
