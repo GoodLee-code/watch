@@ -1441,6 +1441,48 @@
       font-size: 15px;
     }
 
+    .sim-card-table-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 10px 12px 0;
+    }
+
+    .sim-card-table-panel > .table-scroll {
+      margin-top: 8px;
+    }
+
+    .table-setting-btn {
+      width: 32px;
+      height: 32px;
+      display: inline-grid;
+      place-items: center;
+      padding: 0;
+      border: 1px solid #d7dee7;
+      border-radius: 4px;
+      background: #fff;
+      color: #677384;
+      transition: transform 0.16s ease, color 0.16s ease, border-color 0.16s ease, box-shadow 0.16s ease;
+    }
+
+    .table-setting-btn:hover,
+    .table-setting-btn:focus-visible {
+      color: #1687e8;
+      border-color: #58a6f2;
+      box-shadow: 0 5px 12px rgba(22, 135, 232, 0.16);
+      transform: translateY(-1px);
+    }
+
+    .table-setting-btn:active {
+      box-shadow: none;
+      transform: translateY(1px);
+    }
+
+    .table-setting-btn svg {
+      width: 16px;
+      height: 16px;
+    }
+
     .applied {
       color: var(--muted);
       font-size: 13px;
@@ -4559,6 +4601,17 @@
       font-weight: 400;
     }
 
+    .sim-platform-management-table .sim-platform-status-content {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 2px;
+      line-height: 1.25;
+    }
+
+    .sim-platform-management-table .sim-platform-status-time {
+      line-height: 1.2;
+    }
+
     .sim-operator-detail-head {
       min-height: 126px;
       padding: 0;
@@ -4863,6 +4916,19 @@
       bottom: 100%;
       border: 6px solid transparent;
       border-bottom-color: #152033;
+    }
+
+    .sim-status-help-paragraph {
+      display: block;
+    }
+
+    .sim-status-help-paragraph + .sim-status-help-paragraph {
+      margin-top: 8px;
+    }
+
+    .sim-status-help-popup strong {
+      color: #fff;
+      font-weight: 700;
     }
 
     .sim-status-help:hover .sim-status-help-popup,
@@ -5191,6 +5257,65 @@
 
     .warning-config-modal {
       width: min(760px, 100%);
+    }
+
+    .sim-card-field-settings-modal {
+      width: min(760px, 100%);
+    }
+
+    .sim-card-field-settings-summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 12px;
+      color: #667182;
+      font-size: 12px;
+    }
+
+    .sim-card-field-settings-count {
+      color: #1687e8;
+      font-weight: 500;
+    }
+
+    .sim-card-field-settings-grid {
+      max-height: 420px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      overflow: auto;
+      padding: 2px;
+    }
+
+    .sim-card-field-option {
+      min-height: 38px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border: 1px solid #e5eaf1;
+      border-radius: 4px;
+      background: #fff;
+      color: #4d5664;
+      cursor: pointer;
+    }
+
+    .sim-card-field-option:hover {
+      border-color: #b8d9fa;
+      background: #f7fbff;
+    }
+
+    .sim-card-field-option input {
+      width: 15px;
+      height: 15px;
+      margin: 0;
+      accent-color: #2f91f1;
+    }
+
+    @media (max-width: 720px) {
+      .sim-card-field-settings-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
 
     .risk-stop-change-detail-modal {
@@ -5924,7 +6049,15 @@
               <button class="btn" id="riskStopBatchBtn" type="button">风险管理停机状态变更</button>
             </div>
 
-            <section class="panel table-panel" aria-label="SIM卡列表">
+            <section class="panel table-panel sim-card-table-panel" aria-label="SIM卡列表">
+              <div class="sim-card-table-toolbar" aria-label="SIM卡列表设置">
+                <button class="table-setting-btn" id="simCardFieldSettingsBtn" type="button" aria-label="字段设置" title="字段设置">
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M12 8.4a3.6 3.6 0 1 0 0 7.2 3.6 3.6 0 0 0 0-7.2Z" stroke="currentColor" stroke-width="1.8"/>
+                    <path d="M19.2 13.6a7.7 7.7 0 0 0 0-3.2l2-1.6-2-3.4-2.5 1a8.6 8.6 0 0 0-2.8-1.6L13.5 2h-4l-.4 2.8a8.6 8.6 0 0 0-2.8 1.6l-2.5-1-2 3.4 2 1.6a7.7 7.7 0 0 0 0 3.2l-2 1.6 2 3.4 2.5-1a8.6 8.6 0 0 0 2.8 1.6l.4 2.8h4l.4-2.8a8.6 8.6 0 0 0 2.8-1.6l2.5 1 2-3.4-2-1.6Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+              </div>
               <div class="table-scroll">
                 <table class="sim-card-table">
                   <thead>
@@ -6503,7 +6636,7 @@
             <div class="batch-actions" aria-label="可写码号操作">
               <button class="btn" id="writableBatchBtn" type="button">可写码号增加/移出</button>
               <button class="btn secondary" id="freezeStatusBtn" type="button">修改冻结状态</button>
-              <button class="btn secondary" id="manageDisableBtn" type="button">管理停用状态变更</button>
+              <button class="btn secondary" id="manageDisableBtn" type="button">平台管理禁用状态变更</button>
               <button class="btn secondary" id="writableExportBtn" type="button">导出</button>
             </div>
 
@@ -6524,11 +6657,11 @@
           <div class="chip-page-tab-view" id="writableChangeRecordView"></div>
 
           <div class="chip-page-tab-view" id="manageDisableRecordView">
-            <section class="panel query-panel" aria-label="管理停用状态变更记录查询区域">
+            <section class="panel query-panel" aria-label="平台管理禁用状态变更记录查询区域">
               <div class="filter-wrap" id="manageDisableRecordFilterWrap"></div>
             </section>
 
-            <section class="panel table-panel" aria-label="管理停用状态变更记录列表">
+            <section class="panel table-panel" aria-label="平台管理禁用状态变更记录列表">
               <div class="table-scroll">
                 <table class="manage-disable-record-table">
                   <thead>
@@ -6537,18 +6670,18 @@
                   <tbody id="manageDisableRecordTableBody"></tbody>
                 </table>
               </div>
-              <div class="pager" id="manageDisableRecordPager" aria-label="管理停用状态变更记录分页"></div>
+              <div class="pager" id="manageDisableRecordPager" aria-label="平台管理禁用状态变更记录分页"></div>
             </section>
           </div>
         </div>
 
         <div class="page-view" id="manageDisableDetailPage">
-          <section class="panel query-panel" aria-label="管理停用状态变更详情查询区域">
+          <section class="panel query-panel" aria-label="平台管理禁用状态变更详情查询区域">
             <div class="filter-wrap" id="manageDisableDetailFilterWrap"></div>
           </section>
 
-          <section class="panel table-panel" aria-label="管理停用状态变更详情列表">
-            <div class="writable-status-tabs" id="manageDisableDetailStatusTabs" aria-label="管理停用状态变更详情写卡状态筛选"></div>
+          <section class="panel table-panel" aria-label="平台管理禁用状态变更详情列表">
+            <div class="writable-status-tabs" id="manageDisableDetailStatusTabs" aria-label="平台管理禁用状态变更详情写卡状态筛选"></div>
             <div class="table-scroll">
               <table class="writable-table">
                 <thead>
@@ -6557,7 +6690,7 @@
                 <tbody id="manageDisableDetailTableBody"></tbody>
               </table>
             </div>
-            <div class="pager" id="manageDisableDetailPager" aria-label="管理停用状态变更详情分页"></div>
+            <div class="pager" id="manageDisableDetailPager" aria-label="平台管理禁用状态变更详情分页"></div>
           </section>
         </div>
 
@@ -6816,6 +6949,26 @@
     </aside>
   </div>
 
+  <div class="modal-mask" id="simCardFieldSettingsModal" role="dialog" aria-modal="true" aria-labelledby="simCardFieldSettingsTitle">
+    <div class="modal sim-card-field-settings-modal">
+      <div class="modal-head">
+        <h2 id="simCardFieldSettingsTitle">字段设置</h2>
+        <button class="close" id="closeSimCardFieldSettingsModal" type="button" aria-label="关闭">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="sim-card-field-settings-summary">
+          <span>勾选需要在SIM卡列表中显示的字段，取消勾选后列表将立即隐藏该字段。</span>
+          <span class="sim-card-field-settings-count" id="simCardFieldSettingsCount"></span>
+        </div>
+        <div class="sim-card-field-settings-grid" id="simCardFieldSettingsGrid"></div>
+      </div>
+      <div class="modal-foot">
+        <button class="btn secondary" id="cancelSimCardFieldSettingsBtn" type="button">取消</button>
+        <button class="btn" id="confirmSimCardFieldSettingsBtn" type="button">确认</button>
+      </div>
+    </div>
+  </div>
+
   <div class="modal-mask" id="resourcePoolWarningModal" role="dialog" aria-modal="true" aria-labelledby="resourcePoolWarningTitle">
     <div class="modal batch-modal warning-config-modal">
       <div class="modal-head">
@@ -7024,7 +7177,7 @@
   <div class="modal-mask" id="manageDisableModal" role="dialog" aria-modal="true" aria-labelledby="manageDisableTitle">
     <div class="modal batch-modal">
       <div class="modal-head">
-        <h2 id="manageDisableTitle">管理停用状态变更</h2>
+        <h2 id="manageDisableTitle">平台管理禁用状态变更</h2>
         <button class="close" id="closeManageDisableModal" type="button" aria-label="关闭">×</button>
       </div>
       <div class="modal-body">
@@ -7034,7 +7187,7 @@
             <select class="batch-select" id="manageDisableStatus">
               <option value="" disabled hidden selected>请选择变更状态</option>
               <option value="可用">可用</option>
-              <option value="管理停用">管理停用</option>
+              <option value="平台管理禁用">平台管理禁用</option>
             </select>
           </div>
 
@@ -7208,7 +7361,7 @@
   <div class="modal-mask" id="manageDisableRiskModal" role="dialog" aria-modal="true" aria-labelledby="manageDisableRiskTitle">
     <div class="modal">
       <div class="modal-head">
-        <h2 id="manageDisableRiskTitle">管理停用风险提示</h2>
+        <h2 id="manageDisableRiskTitle">平台管理禁用风险提示</h2>
         <button class="close" id="closeManageDisableRiskModal" type="button" aria-label="关闭">×</button>
       </div>
       <div class="modal-body">
@@ -8993,7 +9146,7 @@
       { key: "writeStatus", label: "写卡状态", type: "select", basic: true, options: ["待写卡", "待开机上电", "申请失败", "写卡中", "写卡失败", "写卡成功"] },
       { key: "cardStatus", label: "卡状态", type: "select", basic: true, options: ["已激活", "激活失败", "已停机", "停机失败"] },
       { key: "rechargeCount", label: "卡状态异常标记次数", type: "select", basic: true, options: ["0", "1", "2", "3"] },
-      { key: "manageDisableStatus", label: "管理停用状态", type: "select", basic: true, options: ["管理停用", "可用"] },
+      { key: "manageDisableStatus", label: "平台管理禁用状态", type: "select", basic: true, options: ["平台管理禁用", "可用"] },
       { key: "manageDisableReason", label: "停用原因", type: "select", basic: true, options: ["手动禁用", "卡状态异常"] },
       { key: "recycleStatus", label: "是否在回收池中", type: "select", basic: true, options: ["在", "不在"] },
       { key: "allocated", label: "是否分配", type: "select", basic: true, options: ["是", "否"] },
@@ -9186,7 +9339,7 @@
       { key: "imei", label: "IMEI" },
       { key: "cardStatus", label: "卡状态" },
       { key: "riskStopStatus", label: "风险管理停机状态" },
-      { key: "riskStopTime", label: "风险管理停机时间" },
+      { key: "riskControlStatus", label: "风险防控触发状态" },
       { key: "serviceMonths", label: "服务有效月份" },
       { key: "lockStatus", label: "锁卡标志" },
       { key: "merchant", label: "商户" },
@@ -9209,6 +9362,12 @@
       { key: "distributionBatchNo", label: "分发批次号" },
       { key: "action", label: "操作", fixedRight: true }
     ];
+
+    const simCardFieldSettingsState = {
+      visibleKeys: new Set(simCardTableColumns.map((column) => column.key)),
+      draftKeys: new Set(),
+      snapshotKeys: new Set()
+    };
 
     const simCardState = {
       expanded: true,
@@ -9238,7 +9397,7 @@
       { key: "writeStatus", label: "写卡状态" },
       { key: "cardStatus", label: "卡状态" },
       { key: "rechargeCount", label: "卡状态异常标记次数" },
-      { key: "manageDisableStatus", label: "管理停用状态" },
+      { key: "manageDisableStatus", label: "平台管理禁用状态" },
       { key: "recycleStatus", label: "是否在回收池中" },
       { key: "allocated", label: "是否分配" },
       { key: "freezeStatus", label: "冻结状态" },
@@ -9283,6 +9442,7 @@
           {
             strategyType: "风险管理停机策略",
             strategyName: "儿童手表反诈风险管理停机策略",
+            triggerTime: "2026-05-20 10:20:18",
             riskControlHours: "24",
             contents: [
               "完成实名，实名状态变更为“已实名”",
@@ -9292,6 +9452,7 @@
           },
           {
             strategyType: "亲情号数量限制策略",
+            triggerTime: "2026-05-20 10:22:46",
             contents: ["限制数量：2"]
           }
         ],
@@ -9381,6 +9542,7 @@
         riskControlReasons: [
           {
             strategyType: "风险管理停机策略",
+            triggerTime: "2026-05-16 15:42:08",
             riskControlHours: "24",
             contents: [
               "完成实名，实名状态变更为“已实名”",
@@ -9390,6 +9552,7 @@
           },
           {
             strategyType: "绑定数量限制策略",
+            triggerTime: "2026-05-16 15:44:31",
             contents: ["限制数量：2"]
           }
         ],
@@ -9416,7 +9579,7 @@
         boxNo: "BOX20260516003",
         familyNoStatus: "未清除",
         imsiEmpty: "不为空",
-        manageDisableStatus: "管理停用",
+        manageDisableStatus: "平台管理禁用",
         manageDisableReason: "手动禁用",
         manageDisableTime: "2026-05-16 15:42:08",
         manageDisableSource: "lifan",
@@ -9481,7 +9644,7 @@
     const writableManageTabs = [
       { key: "list", label: "ESIM可写码号列表" },
       { key: "changeRecords", label: "ESIM可写码号变更记录" },
-      { key: "manageDisableRecords", label: "管理停用状态变更记录" }
+      { key: "manageDisableRecords", label: "平台管理禁用状态变更记录" }
     ];
     function createWritableLikeState() {
       return {
@@ -9497,14 +9660,14 @@
     const writableChangeRecordState = createWritableLikeState();
     const manageDisableDetailListState = createWritableLikeState();
     const manageDisableRecordFields = [
-      { key: "changeStatus", label: "变更状态", options: ["可用", "管理停用"] },
-      { key: "disableReason", label: "管理停用原因", options: ["手动禁用", "卡状态异常"] },
+      { key: "changeStatus", label: "变更状态", options: ["可用", "平台管理禁用"] },
+      { key: "disableReason", label: "平台管理禁用原因", options: ["手动禁用", "卡状态异常"] },
       { key: "status", label: "状态", options: ["成功", "失败"] }
     ];
     const manageDisableRecordColumns = [
       { key: "batchNo", label: "批次号", link: true },
       { key: "changeStatus", label: "变更状态" },
-      { key: "disableReason", label: "管理停用原因" },
+      { key: "disableReason", label: "平台管理禁用原因" },
       { key: "status", label: "状态", status: true },
       { key: "totalCount", label: "处理总数", totalLink: true },
       { key: "successCount", label: "成功数" },
@@ -9516,7 +9679,7 @@
     const manageDisableDetailColumns = [
       { key: "iccid", label: "ICCID" },
       { key: "changeStatus", label: "变更状态" },
-      { key: "disableReason", label: "管理停用原因" },
+      { key: "disableReason", label: "平台管理禁用原因" },
       { key: "status", label: "状态", status: true },
       { key: "failReason", label: "失败原因" },
       { key: "operationTime", label: "操作时间" },
@@ -9525,13 +9688,13 @@
     let manageDisableRecordRows = [
       {
         batchNo: "MD20260612001",
-        changeStatus: "管理停用",
+        changeStatus: "平台管理禁用",
         disableReason: "手动禁用",
         status: "失败",
         totalCount: "4",
         successCount: "2",
         failCount: "2",
-        remark: "批量管理停用风险确认",
+        remark: "批量平台管理禁用风险确认",
         operationTime: "2026-06-12 10:50:00",
         operator: "lifan"
       },
@@ -9552,7 +9715,7 @@
       {
         batchNo: "MD20260612001",
         iccid: "8986044219231000841",
-        changeStatus: "管理停用",
+        changeStatus: "平台管理禁用",
         disableReason: "手动禁用",
         status: "失败",
         failReason: "存在生效中的套餐、已实名、未清除的亲情号",
@@ -9562,7 +9725,7 @@
       {
         batchNo: "MD20260612001",
         iccid: "8986044219231000842",
-        changeStatus: "管理停用",
+        changeStatus: "平台管理禁用",
         disableReason: "手动禁用",
         status: "成功",
         failReason: "-",
@@ -15063,13 +15226,25 @@
       return group.strategyName || riskStrategyRows.find((row) => row.strategyType === strategyType)?.strategyName || "";
     }
 
-    function renderSimRiskReasonPopup(reasonGroups = [], title = "触发原因", ariaLabel = "风险防控触发原因") {
+    function renderSimRiskReasonPopup(reasonGroups = [], title = "触发原因", ariaLabel = "风险防控触发原因", options = {}) {
       return `
         <span class="risk-control-status-popup" role="tooltip" aria-label="${escapeHtml(ariaLabel)}">
           <span class="risk-control-popup-title">${escapeHtml(title)}</span>
+          ${options.topMetaValue ? `
+            <span class="risk-control-reason-meta">
+              <span class="risk-control-reason-label">${escapeHtml(options.topMetaLabel || "时间")}：</span>
+              <span class="risk-control-reason-value">${escapeHtml(options.topMetaValue)}</span>
+            </span>
+          ` : ""}
           ${reasonGroups.length ? reasonGroups.map((group, index) => `
             ${index > 0 ? '<span class="risk-control-group-separator" aria-hidden="true"></span>' : ""}
             <span class="risk-control-reason-group">
+              ${options.groupTimeLabel && (group.triggerTime || options.groupTimeFallback) ? `
+                <span class="risk-control-reason-meta">
+                  <span class="risk-control-reason-label">${escapeHtml(options.groupTimeLabel)}：</span>
+                  <span class="risk-control-reason-value">${escapeHtml(group.triggerTime || options.groupTimeFallback)}</span>
+                </span>
+              ` : ""}
               <span class="risk-control-reason-meta">
                 <span class="risk-control-reason-label">触发策略类型：</span>
                 <span class="risk-control-reason-value">${escapeHtml(formatSimRiskControlStrategyType(group))}</span>
@@ -15095,10 +15270,14 @@
       if (!reasonGroups.length) {
         return '<span class="status-text status-positive">未触发</span>';
       }
+      const triggerTime = row.riskControlTime || (row.riskStopTime && row.riskStopTime !== "-" ? row.riskStopTime : row.importTime);
       return `
         <span class="risk-control-status-tip" tabindex="0">
           已触发
-          ${renderSimRiskReasonPopup(reasonGroups)}
+          ${renderSimRiskReasonPopup(reasonGroups, "触发原因", "风险防控触发原因", {
+            groupTimeLabel: "风险防控触发时间",
+            groupTimeFallback: triggerTime
+          })}
         </span>
       `;
     }
@@ -15109,10 +15288,14 @@
         return '<span class="status-text status-positive">关闭风险管理停机</span>';
       }
       const reasonGroups = getSimRiskControlReasonGroups(row).filter((group) => group.strategyType === "风险管理停机策略");
+      const riskStopTime = row.riskStopTime && row.riskStopTime !== "-" ? row.riskStopTime : "";
       return `
         <span class="risk-control-status-tip" tabindex="0">
           开启风险管理停机
-          ${renderSimRiskReasonPopup(reasonGroups, "开启风险管理停机原因", "开启风险管理停机原因")}
+          ${renderSimRiskReasonPopup(reasonGroups, "开启风险管理停机原因", "开启风险管理停机原因", {
+            topMetaLabel: "风险管理停机时间",
+            topMetaValue: riskStopTime
+          })}
         </span>
       `;
     }
@@ -15126,21 +15309,77 @@
       return renderWritableValue(value, column, row);
     }
 
+    function visibleSimCardTableColumns() {
+      return simCardTableColumns.filter((column) => simCardFieldSettingsState.visibleKeys.has(column.key));
+    }
+
+    function renderSimCardFieldSettings() {
+      const grid = document.getElementById("simCardFieldSettingsGrid");
+      const count = document.getElementById("simCardFieldSettingsCount");
+      if (!grid || !count) return;
+      grid.innerHTML = simCardTableColumns.map((column) => `
+        <label class="sim-card-field-option">
+          <input type="checkbox" data-sim-card-field-key="${escapeHtml(column.key)}" ${simCardFieldSettingsState.draftKeys.has(column.key) ? "checked" : ""} />
+          <span>${escapeHtml(column.label)}</span>
+        </label>
+      `).join("");
+      count.textContent = `已显示 ${simCardFieldSettingsState.draftKeys.size} / ${simCardTableColumns.length} 个字段`;
+    }
+
+    function openSimCardFieldSettingsModal() {
+      simCardFieldSettingsState.snapshotKeys = new Set(simCardFieldSettingsState.visibleKeys);
+      simCardFieldSettingsState.draftKeys = new Set(simCardFieldSettingsState.visibleKeys);
+      renderSimCardFieldSettings();
+      document.getElementById("simCardFieldSettingsModal").classList.add("open");
+    }
+
+    function previewSimCardFieldSettings(key, checked) {
+      if (checked) {
+        simCardFieldSettingsState.draftKeys.add(key);
+      } else {
+        if (simCardFieldSettingsState.draftKeys.size === 1) {
+          showToast("SIM卡列表至少需要保留一个显示字段", "error");
+          renderSimCardFieldSettings();
+          return;
+        }
+        simCardFieldSettingsState.draftKeys.delete(key);
+      }
+      simCardFieldSettingsState.visibleKeys = new Set(simCardFieldSettingsState.draftKeys);
+      renderSimCardTable();
+      renderSimCardFieldSettings();
+    }
+
+    function cancelSimCardFieldSettings() {
+      simCardFieldSettingsState.visibleKeys = new Set(simCardFieldSettingsState.snapshotKeys);
+      simCardFieldSettingsState.draftKeys = new Set(simCardFieldSettingsState.snapshotKeys);
+      document.getElementById("simCardFieldSettingsModal").classList.remove("open");
+      renderSimCardTable();
+    }
+
+    function confirmSimCardFieldSettings() {
+      simCardFieldSettingsState.visibleKeys = new Set(simCardFieldSettingsState.draftKeys);
+      simCardFieldSettingsState.snapshotKeys = new Set(simCardFieldSettingsState.visibleKeys);
+      document.getElementById("simCardFieldSettingsModal").classList.remove("open");
+      renderSimCardTable();
+      showToast(`SIM卡列表已显示 ${simCardFieldSettingsState.visibleKeys.size} 个字段`, "success");
+    }
+
     function renderSimCardTable() {
       const header = document.getElementById("simCardTableHeader");
       const body = document.getElementById("simCardTableBody");
-      header.innerHTML = simCardTableColumns.map((column) => `
+      const visibleColumns = visibleSimCardTableColumns();
+      header.innerHTML = visibleColumns.map((column) => `
         <th class="${column.fixedRight ? "operation-col" : ""}">${column.label}</th>
       `).join("");
       body.innerHTML = writableRows.length
         ? writableRows.map((row) => `
             <tr>
-              ${simCardTableColumns.map((column) => `
+              ${visibleColumns.map((column) => `
                 <td class="${column.fixedRight ? "operation-col" : ""}">${renderSimCardValue(column.key === "action" ? row.iccid : row[column.key], column, row)}</td>
               `).join("")}
             </tr>
           `).join("")
-        : `<tr><td colspan="${simCardTableColumns.length}" style="text-align:center;color:#6b7280;">暂无数据</td></tr>`;
+        : `<tr><td colspan="${visibleColumns.length}" style="text-align:center;color:#6b7280;">暂无数据</td></tr>`;
 
       body.querySelectorAll(".sim-card-activate-btn").forEach((button) => {
         button.addEventListener("click", () => handleSimCardActivate(button.dataset.iccid));
@@ -15327,7 +15566,7 @@
 
     function renderManageDisableStatusCell(row) {
       const status = row.manageDisableStatus || "-";
-      if (status !== "管理停用") return status;
+      if (status !== "平台管理禁用") return status;
       const items = [
         ["停用原因", row.manageDisableReason || "-"],
         ["停用时间", row.manageDisableTime || "-"],
@@ -15451,13 +15690,13 @@
       });
       document.getElementById("manageDisableRecordSearchBtn").addEventListener("click", () => {
         renderManageDisableRecordTable();
-        showToast("管理停用状态变更记录已按查询条件刷新", "success");
+        showToast("平台管理禁用状态变更记录已按查询条件刷新", "success");
       });
       document.getElementById("manageDisableRecordResetBtn").addEventListener("click", () => {
         manageDisableState.values = {};
         renderManageDisableRecordFilters();
         renderManageDisableRecordTable();
-        showToast("管理停用状态变更记录查询条件已清空", "info");
+        showToast("平台管理禁用状态变更记录查询条件已清空", "info");
       });
     }
 
@@ -15536,7 +15775,7 @@
     function openManageDisableDetailPage(batchNo) {
       manageDisableState.currentDetailBatchNo = batchNo;
       resetWritableLikeState(manageDisableDetailListState, "全部");
-      ensureCrumb("manageDisableDetailPage", "管理停用状态变更详情");
+      ensureCrumb("manageDisableDetailPage", "平台管理禁用状态变更详情");
       renderManageDisableDetailTable(batchNo);
       showPageOnly("manageDisableDetailPage");
     }
@@ -15878,8 +16117,8 @@
           tableHeaderId: "manageDisableDetailTableHeader",
           tableBodyId: "manageDisableDetailTableBody",
           pagerId: "manageDisableDetailPager",
-          toastLabel: "管理停用状态变更详情",
-          resetLabel: "管理停用状态变更详情查询条件已清空",
+          toastLabel: "平台管理禁用状态变更详情",
+          resetLabel: "平台管理禁用状态变更详情查询条件已清空",
           getRows: manageDisableDetailWritableRows
         }
       };
@@ -16765,7 +17004,7 @@
     }
 
     function syncManageDisableStatusFields() {
-      const isDisabled = document.getElementById("manageDisableStatus").value === "管理停用";
+      const isDisabled = document.getElementById("manageDisableStatus").value === "平台管理禁用";
       document.getElementById("manageDisableReasonRow").classList.toggle("is-hidden", !isDisabled);
       if (!isDisabled) document.getElementById("manageDisableReason").value = "";
     }
@@ -16855,7 +17094,7 @@
         showToast("请选择变更状态", "error");
         return;
       }
-      if (changeStatus === "管理停用" && !disableReason) {
+      if (changeStatus === "平台管理禁用" && !disableReason) {
         showToast("请选择停用原因", "error");
         return;
       }
@@ -16882,10 +17121,10 @@
       manageDisableState.pendingRows = entries;
       manageDisableState.pendingPayload = {
         changeStatus,
-        disableReason: changeStatus === "管理停用" ? disableReason : "/",
+        disableReason: changeStatus === "平台管理禁用" ? disableReason : "/",
         remark
       };
-      manageDisableState.riskRows = changeStatus === "管理停用"
+      manageDisableState.riskRows = changeStatus === "平台管理禁用"
         ? entries.map((entry) => ({ ...entry, reason: manageDisableRiskReason(entry) })).filter((entry) => entry.reason)
         : [];
       if (manageDisableState.riskRows.length) {
@@ -16933,7 +17172,7 @@
           };
         }
         entry.row.manageDisableStatus = payload.changeStatus;
-        if (payload.changeStatus === "管理停用") {
+        if (payload.changeStatus === "平台管理禁用") {
           entry.row.manageDisableReason = payload.disableReason;
           entry.row.manageDisableTime = operationTime;
           entry.row.manageDisableSource = "lifan";
@@ -16974,7 +17213,7 @@
       renderManageDisableRecordFilters();
       renderManageDisableRecordTable();
       renderManageDisableRecordPager();
-      showToast(`管理停用状态变更已提交，成功 ${successCount} 条，失败 ${failCount} 条`, failCount ? "info" : "success");
+      showToast(`平台管理禁用状态变更已提交，成功 ${successCount} 条，失败 ${failCount} 条`, failCount ? "info" : "success");
     }
 
     function renderFilters() {
@@ -18025,7 +18264,7 @@
       writableResourcePoolPage: "ESIM可写码号资源池",
       writableResourcePoolDetailPage: "可写码号资源池详情",
       writablePage: "ESIM可写码号管理",
-      manageDisableDetailPage: "管理停用状态变更详情",
+      manageDisableDetailPage: "平台管理禁用状态变更详情",
       recyclePage: "ESIM可写码号回收池",
       recordPage: "可写码号返厂记录",
       batchDetailPage: "可写码号返厂详情",
@@ -18278,14 +18517,14 @@
 
     function simManageStopStatus(row = {}) {
       const negative = isSimOperatorStatusNegative(row.cardStatus)
-        || row.manageDisableStatus === "管理停用"
+        || row.manageDisableStatus === "平台管理禁用"
         || row.riskStopStatus === "开启风险管理停机";
       return negative ? "已管理停机" : "未管理停机";
     }
 
     function simStatusTone(label, value) {
       if (label === "销号状态") return value === "已销号" ? "negative" : "positive";
-      if (label === "管理停用状态") return value === "管理停用" ? "negative" : "positive";
+      if (label === "平台管理禁用状态") return value === "平台管理禁用" ? "negative" : "positive";
       if (label === "风险管理停机状态") return value === "开启风险管理停机" ? "negative" : "positive";
       return value === "已管理停机" ? "negative" : "positive";
     }
@@ -18302,13 +18541,22 @@
 
     function simStatusHelpText(label) {
       const messages = {
-        "管理停机状态": "风险管理停机状态为“开启风险管理停机”或管理停用状态为“管理停用”或卡运营商状态为“预销户”时，管理停机状态为“已管理停机”",
+        "管理停机状态": "风险管理停机状态为“开启风险管理停机”或平台管理禁用状态为“平台管理禁用”或卡运营商状态为“预销户”时，管理停机状态为“已管理停机”",
         "销号状态": "SIMDOCKER平台将卡状态变更为已销号，终止卡片一切业务",
-        "平台管理销号状态": "根据 SIM DOCKER 平台卡状态判断：若卡状态为「已销号」，则本字段状态为「已销号」；否则，本字段状态为「未销号」。",
-        "管理停用状态": "查询到卡状态异常≥3次后，将管理停用状态变更为管理停用，终止卡片一切业务",
-        "风险管理停机状态": "ICCID触发风险管理停机策略时，变更为风险管理停机状态，终止卡片一切业务。"
+        "平台管理销号状态": "当状态为“已销号”时，表示该SIM卡已无法正常使用，可能是运营商平台已查询不到该SIM卡，或该SIM卡在运营商平台为预销户状态。此状态下无法进行激活、实名认证等业务操作。",
+        "平台管理禁用状态": "当状态为“已平台管理禁用”时，表示平台已禁止该SIM卡继续参与空写卡业务。可能是管理员手动禁用，或系统检测到该SIM卡运营商状态异常后被标记为自动禁用。禁用期间，新卡无法分配写卡，已分配的SIM卡也无法继续发起写卡申请。",
+        "风险管理停机状态": "当状态为“已风险管理停机”时，表示该SIM卡已被限制使用。可能是系统检测到该SIM卡存在风险行为，触发了风险管理停机策略；也可能是管理员手动开启了风险管理停机。此状态下，该SIM卡无法进行激活等任何变更卡状态的操作。",
+        "风险防控触发状态": "当前风险防控触发状态仅根据风险管理停机策略判断。SIM卡进入已风险管理停机状态时，将显示为已触发。后续将支持亲情号数量限制策略和手机号绑定数量限制策略的综合判断。当状态为“已触发”时，表示该SIM卡已被限制使用。可能是系统检测到该SIM卡存在风险行为，触发了风险管理停机策略；也可能是管理员手动开启了风险管理停机。此状态下，该SIM卡无法进行激活等任何变更卡状态的操作。"
       };
       return messages[label] || "";
+    }
+
+    function renderSimStatusHelpContent(label, helpText) {
+      if (label !== "风险防控触发状态") return escapeHtml(helpText);
+      return `
+        <span class="sim-status-help-paragraph">当前风险防控触发状态仅根据<strong>风险管理停机策略</strong>判断。SIM卡进入<strong>已风险管理停机</strong>状态时，将显示为<strong>已触发</strong>。后续将支持亲情号数量限制策略和手机号绑定数量限制策略的综合判断。</span>
+        <span class="sim-status-help-paragraph">当状态为“已触发”时，表示该SIM卡已被限制使用。可能是系统检测到该SIM卡存在风险行为，触发了风险管理停机策略；也可能是管理员手动开启了风险管理停机。此状态下，该SIM卡无法进行激活等任何变更卡状态的操作。</span>
+      `;
     }
 
     function renderSimStatusLabel(label, suffix = "") {
@@ -18318,7 +18566,7 @@
           ${helpText ? `
             <button class="sim-status-help" type="button" aria-label="${escapeHtml(label)}说明">
               ?
-              <span class="sim-status-help-popup" role="tooltip">${escapeHtml(helpText)}</span>
+              <span class="sim-status-help-popup" role="tooltip">${renderSimStatusHelpContent(label, helpText)}</span>
             </button>
           ` : ""}
           <span>${escapeHtml(label)}${suffix}</span>
@@ -18331,7 +18579,7 @@
       const cancelStatus = row.cancelStatus || (row.cardStatus === "销户" ? "已销号" : "未销号");
       const items = [
         ["销号状态", cancelStatus],
-        ["管理停用状态", row.manageDisableStatus || "可用"],
+        ["平台管理禁用状态", row.manageDisableStatus || "可用"],
         ["风险管理停机状态", row.riskStopStatus || "关闭风险管理停机"]
       ];
       return `
@@ -18415,12 +18663,12 @@
 
     function renderSimPlatformManagementGroup(row = {}) {
       const cancelStatus = row.platformCancelStatus || row.cancelStatus || (row.cardStatus === "销户" ? "已销号" : "未销号");
-      const disabled = row.platformDisableStatus === "已平台管理禁用" || row.manageDisableStatus === "管理停用";
+      const disabled = row.platformDisableStatus === "已平台管理禁用" || row.manageDisableStatus === "平台管理禁用";
       const disableStatus = disabled ? "已平台管理禁用" : "未平台管理禁用";
       const cancelTime = row.platformCancelTime || row.cancelTime || (cancelStatus === "已销号" ? row.importTime : "");
       const disableTime = row.platformDisableTime || row.manageDisableTime || (disabled ? row.importTime : "");
-      const riskStopEnabled = row.riskStopStatus === "开启风险管理停机";
-      const riskStopTime = row.riskStopTime && row.riskStopTime !== "-" ? row.riskStopTime : (riskStopEnabled ? row.importTime : "");
+      const riskControlTriggered = row.riskControlStatus === "已触发";
+      const riskControlTime = row.riskControlTime || (row.riskStopTime && row.riskStopTime !== "-" ? row.riskStopTime : row.importTime);
       return {
         groupLabel: "平台管理状态",
         items: [
@@ -18435,11 +18683,11 @@
             html: true
           },
           {
-            label: "风险管理停机状态",
+            label: "风险防控触发状态",
             value: `
               <span class="sim-platform-status-content">
-                ${renderSimRiskStopStatusCell(row)}
-                ${riskStopEnabled && riskStopTime ? `<span class="sim-platform-status-time">开启风险管理停机时间：${escapeHtml(riskStopTime)}</span>` : ""}
+                ${renderSimRiskControlStatusCell(row)}
+                ${riskControlTriggered && riskControlTime ? `<span class="sim-platform-status-time">风险防控触发时间：${escapeHtml(riskControlTime)}</span>` : ""}
               </span>
             `,
             html: true
@@ -18448,20 +18696,27 @@
       };
     }
 
-    function renderSimPlatformManagementHeader(row = {}) {
+    function renderSimPlatformManagementTable(row = {}) {
       const group = renderSimPlatformManagementGroup(row);
       return `
-        <div class="sim-platform-head-group" aria-label="平台管理状态">
-          <span class="sim-platform-head-title">${escapeHtml(group.groupLabel)}</span>
-          <span class="sim-platform-head-items">
-            ${group.items.map((item) => `
-              <span class="sim-platform-head-item">
-                <span class="sim-platform-head-label">${item.label === "平台管理销号状态" ? renderSimStatusLabel(item.label) : escapeHtml(item.label)}</span>
-                <span class="sim-platform-head-value">${item.value}</span>
-              </span>
-            `).join("")}
-          </span>
-        </div>
+        <table class="sim-detail-table sim-platform-management-table" aria-label="平台管理状态列表">
+          <colgroup>
+            <col class="sim-detail-label-col">
+            <col class="sim-detail-value-col">
+            <col class="sim-detail-label-col">
+            <col class="sim-detail-value-col">
+            <col class="sim-detail-label-col">
+            <col class="sim-detail-value-col">
+          </colgroup>
+          <tbody>
+            <tr>
+              ${group.items.map((item) => `
+                <th>${renderSimStatusLabel(item.label)}</th>
+                <td>${item.value}</td>
+              `).join("")}
+            </tr>
+          </tbody>
+        </table>
       `;
     }
 
@@ -18595,10 +18850,15 @@
               </div>
               ${renderSimDetailTable(deviceRows)}
             </section>
-            <section class="sim-detail-section" aria-label="运营商SIM卡信息">
-              <div class="sim-detail-section-head sim-operator-detail-head">
-                <span class="sim-detail-info-title"><span class="sim-detail-info-icon">i</span>运营商SIM卡信息</span>
-                ${renderSimPlatformManagementHeader(row)}
+            <section class="sim-detail-section" aria-label="平台管理状态">
+              <div class="sim-detail-section-head">
+                <span class="sim-detail-info-title">平台管理状态</span>
+              </div>
+              ${renderSimPlatformManagementTable(row)}
+            </section>
+            <section class="sim-detail-section" aria-label="运营商侧SIM卡信息">
+              <div class="sim-detail-section-head">
+                <span class="sim-detail-info-title"><span class="sim-detail-info-icon">i</span>运营商侧SIM卡信息</span>
               </div>
               ${renderSimDetailTable(simRows)}
             </section>
@@ -18768,6 +19028,18 @@
     });
     document.getElementById("riskStrategyCreateBtn").addEventListener("click", openRiskStrategyCreatePage);
     document.getElementById("riskStopBatchBtn").addEventListener("click", openRiskStopBatchModal);
+    document.getElementById("simCardFieldSettingsBtn").addEventListener("click", openSimCardFieldSettingsModal);
+    document.getElementById("closeSimCardFieldSettingsModal").addEventListener("click", cancelSimCardFieldSettings);
+    document.getElementById("cancelSimCardFieldSettingsBtn").addEventListener("click", cancelSimCardFieldSettings);
+    document.getElementById("confirmSimCardFieldSettingsBtn").addEventListener("click", confirmSimCardFieldSettings);
+    document.getElementById("simCardFieldSettingsGrid").addEventListener("change", (event) => {
+      const checkbox = event.target.closest("[data-sim-card-field-key]");
+      if (!checkbox) return;
+      previewSimCardFieldSettings(checkbox.dataset.simCardFieldKey, checkbox.checked);
+    });
+    document.getElementById("simCardFieldSettingsModal").addEventListener("click", (event) => {
+      if (event.target.id === "simCardFieldSettingsModal") cancelSimCardFieldSettings();
+    });
     document.getElementById("closeRiskStopChangeDetailModal").addEventListener("click", closeRiskStopChangeDetailModal);
     document.getElementById("riskStopChangeDetailModal").addEventListener("click", (event) => {
       if (event.target.id === "riskStopChangeDetailModal") closeRiskStopChangeDetailModal();
@@ -18969,7 +19241,7 @@
       document.getElementById("manageDisableFileName").textContent = file ? file.name : "未选择文件";
     });
     document.getElementById("downloadManageDisableTplBtn").addEventListener("click", () => {
-      showToast("已下载管理停用状态变更模版", "success");
+      showToast("已下载平台管理禁用状态变更模版", "success");
     });
     document.getElementById("manageDisableModal").addEventListener("click", (event) => {
       if (event.target.id === "manageDisableModal") closeManageDisableModal();
