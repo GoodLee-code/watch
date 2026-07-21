@@ -4104,6 +4104,11 @@
       border-bottom-color: #172033;
     }
 
+    .header-tip-popup strong {
+      color: #fff;
+      font-weight: 700;
+    }
+
     .header-tip-icon:hover + .header-tip-popup,
     .header-tip-icon:focus + .header-tip-popup {
       opacity: 1;
@@ -9339,7 +9344,12 @@
       { key: "imei", label: "IMEI" },
       { key: "cardStatus", label: "卡状态" },
       { key: "riskStopStatus", label: "风险管理停机状态" },
-      { key: "riskControlStatus", label: "风险防控触发状态" },
+      {
+        key: "riskControlStatus",
+        label: "风险防控触发状态",
+        tip: "当前风险防控触发状态仅根据风险管理停机策略判断。SIM卡进入已风险管理停机状态时，将显示为已触发。后续将支持亲情号数量限制策略和手机号绑定数量限制策略的综合判断。",
+        tipHtml: "当前风险防控触发状态仅根据<strong>风险管理停机策略</strong>判断。SIM卡进入<strong>已风险管理停机</strong>状态时，将显示为<strong>已触发</strong>。后续将支持亲情号数量限制策略和手机号绑定数量限制策略的综合判断。"
+      },
       { key: "serviceMonths", label: "服务有效月份" },
       { key: "lockStatus", label: "锁卡标志" },
       { key: "merchant", label: "商户" },
@@ -15369,7 +15379,7 @@
       const body = document.getElementById("simCardTableBody");
       const visibleColumns = visibleSimCardTableColumns();
       header.innerHTML = visibleColumns.map((column) => `
-        <th class="${column.fixedRight ? "operation-col" : ""}">${column.label}</th>
+        <th class="${column.fixedRight ? "operation-col" : ""}">${renderTableHeaderCell(column)}</th>
       `).join("");
       body.innerHTML = writableRows.length
         ? writableRows.map((row) => `
@@ -17639,11 +17649,12 @@
 
     function renderTableHeaderCell(column) {
       if (!column.tip) return column.label;
+      const tipContent = column.tipHtml || escapeHtml(column.tip);
       return `
         <span class="th-with-tip">
           <span>${column.label}</span>
-          <span class="header-tip-icon" tabindex="0" aria-label="${column.tip}">!</span>
-          <span class="header-tip-popup" role="tooltip">${column.tip}</span>
+          <span class="header-tip-icon" tabindex="0" aria-label="${escapeHtml(column.tip)}">!</span>
+          <span class="header-tip-popup" role="tooltip">${tipContent}</span>
         </span>
       `;
     }
