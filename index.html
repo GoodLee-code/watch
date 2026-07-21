@@ -7191,8 +7191,8 @@
             <label class="modal-label" for="manageDisableStatus"><span class="required">*</span>变更状态</label>
             <select class="batch-select" id="manageDisableStatus">
               <option value="" disabled hidden selected>请选择变更状态</option>
-              <option value="可用">可用</option>
-              <option value="平台管理禁用">平台管理禁用</option>
+              <option value="未平台管理禁用">未平台管理禁用</option>
+              <option value="已平台管理禁用">已平台管理禁用</option>
             </select>
           </div>
 
@@ -9151,7 +9151,7 @@
       { key: "writeStatus", label: "写卡状态", type: "select", basic: true, options: ["待写卡", "待开机上电", "申请失败", "写卡中", "写卡失败", "写卡成功"] },
       { key: "cardStatus", label: "卡状态", type: "select", basic: true, options: ["已激活", "激活失败", "已停机", "停机失败"] },
       { key: "rechargeCount", label: "卡状态异常标记次数", type: "select", basic: true, options: ["0", "1", "2", "3"] },
-      { key: "manageDisableStatus", label: "平台管理禁用状态", type: "select", basic: true, options: ["平台管理禁用", "可用"] },
+      { key: "manageDisableStatus", label: "平台管理禁用状态", type: "select", basic: true, options: ["已平台管理禁用", "未平台管理禁用"] },
       { key: "manageDisableReason", label: "停用原因", type: "select", basic: true, options: ["手动禁用", "卡状态异常"] },
       { key: "recycleStatus", label: "是否在回收池中", type: "select", basic: true, options: ["在", "不在"] },
       { key: "allocated", label: "是否分配", type: "select", basic: true, options: ["是", "否"] },
@@ -9329,7 +9329,6 @@
       { key: "agent", label: "代理商", type: "select", options: ["华东渠道代理", "华南直营代理", "北区合作代理"] },
       { key: "packageExpired", label: "套餐过期状态", type: "select", options: ["已过期", "未过期"] },
       { key: "cardStatus", label: "卡状态", type: "select", options: ["已激活", "激活失败", "已停机", "停机失败"] },
-      { key: "riskStopStatus", label: "风险管理停机状态", type: "select", options: ["已风险管理停机", "未风险管理停机"] },
       { key: "riskControlStatus", label: "风险防控触发状态", type: "select", options: ["已触发", "未触发"] },
       { key: "cardGroup", label: "卡组名称", type: "select", options: ["儿童手表基础卡组", "智能终端流量卡组", "直营渠道卡组"] },
       { key: "lockFlag", label: "锁卡标志", type: "select", options: ["锁卡", "未锁卡"] },
@@ -9343,7 +9342,6 @@
       { key: "msisdn", label: "MSISDN" },
       { key: "imei", label: "IMEI" },
       { key: "cardStatus", label: "卡状态" },
-      { key: "riskStopStatus", label: "风险管理停机状态" },
       {
         key: "riskControlStatus",
         label: "风险防控触发状态",
@@ -9489,7 +9487,7 @@
         boxNo: "BOX20260518001",
         familyNoStatus: "未清除",
         imsiEmpty: "不为空",
-        manageDisableStatus: "可用",
+        manageDisableStatus: "未平台管理禁用",
         manageDisableReason: "/",
         manageDisableTime: "-",
         manageDisableSource: "-",
@@ -9531,7 +9529,7 @@
         boxNo: "BOX20260517006",
         familyNoStatus: "已清除",
         imsiEmpty: "为空",
-        manageDisableStatus: "可用",
+        manageDisableStatus: "未平台管理禁用",
         manageDisableReason: "/",
         manageDisableTime: "-",
         manageDisableSource: "-",
@@ -9589,7 +9587,7 @@
         boxNo: "BOX20260516003",
         familyNoStatus: "未清除",
         imsiEmpty: "不为空",
-        manageDisableStatus: "平台管理禁用",
+        manageDisableStatus: "已平台管理禁用",
         manageDisableReason: "手动禁用",
         manageDisableTime: "2026-05-16 15:42:08",
         manageDisableSource: "lifan",
@@ -9631,7 +9629,7 @@
         boxNo: "BOX20260515009",
         familyNoStatus: "已清除",
         imsiEmpty: "为空",
-        manageDisableStatus: "可用",
+        manageDisableStatus: "未平台管理禁用",
         manageDisableReason: "/",
         manageDisableTime: "-",
         manageDisableSource: "-",
@@ -9670,7 +9668,7 @@
     const writableChangeRecordState = createWritableLikeState();
     const manageDisableDetailListState = createWritableLikeState();
     const manageDisableRecordFields = [
-      { key: "changeStatus", label: "变更状态", options: ["可用", "平台管理禁用"] },
+      { key: "changeStatus", label: "变更状态", options: ["未平台管理禁用", "已平台管理禁用"] },
       { key: "disableReason", label: "平台管理禁用原因", options: ["手动禁用", "卡状态异常"] },
       { key: "status", label: "状态", options: ["成功", "失败"] }
     ];
@@ -9698,7 +9696,7 @@
     let manageDisableRecordRows = [
       {
         batchNo: "MD20260612001",
-        changeStatus: "平台管理禁用",
+        changeStatus: "已平台管理禁用",
         disableReason: "手动禁用",
         status: "失败",
         totalCount: "4",
@@ -9710,7 +9708,7 @@
       },
       {
         batchNo: "MD20260611003",
-        changeStatus: "可用",
+        changeStatus: "未平台管理禁用",
         disableReason: "/",
         status: "成功",
         totalCount: "36",
@@ -9725,7 +9723,7 @@
       {
         batchNo: "MD20260612001",
         iccid: "8986044219231000841",
-        changeStatus: "平台管理禁用",
+        changeStatus: "已平台管理禁用",
         disableReason: "手动禁用",
         status: "失败",
         failReason: "存在生效中的套餐、已实名、未清除的亲情号",
@@ -9735,7 +9733,7 @@
       {
         batchNo: "MD20260612001",
         iccid: "8986044219231000842",
-        changeStatus: "平台管理禁用",
+        changeStatus: "已平台管理禁用",
         disableReason: "手动禁用",
         status: "成功",
         failReason: "-",
@@ -9745,7 +9743,7 @@
       {
         batchNo: "MD20260611003",
         iccid: "8986044219231000842",
-        changeStatus: "可用",
+        changeStatus: "未平台管理禁用",
         disableReason: "/",
         status: "成功",
         failReason: "-",
@@ -15576,7 +15574,10 @@
 
     function renderManageDisableStatusCell(row) {
       const status = row.manageDisableStatus || "-";
-      if (status !== "平台管理禁用") return status;
+      if (status === "未平台管理禁用") {
+        return `<span class="status-text status-positive">${escapeHtml(status)}</span>`;
+      }
+      if (status !== "已平台管理禁用") return status;
       const items = [
         ["停用原因", row.manageDisableReason || "-"],
         ["停用时间", row.manageDisableTime || "-"],
@@ -15732,7 +15733,10 @@
       if (column.key === "totalCount") {
         return `<button class="link-text manage-disable-total-link" type="button" data-batch="${row.batchNo}">${value}</button>`;
       }
-      if (column.key === "disableReason" && row.changeStatus === "可用") return "/";
+      if (column.key === "changeStatus" && value === "未平台管理禁用") {
+        return `<span class="status-text status-positive">${escapeHtml(value)}</span>`;
+      }
+      if (column.key === "disableReason" && row.changeStatus === "未平台管理禁用") return "/";
       if (column.key === "status") {
         return `<span class="status-text ${value === "成功" ? "status-positive" : "status-negative"}">${value}</span>`;
       }
@@ -15772,6 +15776,9 @@
     function renderManageDisableDetailValue(value, column) {
       const identifierCell = renderIdentifierCell(value, column);
       if (identifierCell !== null) return identifierCell;
+      if (column.key === "changeStatus" && value === "未平台管理禁用") {
+        return `<span class="status-text status-positive">${escapeHtml(value)}</span>`;
+      }
       if (column.key === "status") {
         return `<span class="status-text ${value === "成功" ? "status-positive" : "status-negative"}">${value}</span>`;
       }
@@ -17014,7 +17021,7 @@
     }
 
     function syncManageDisableStatusFields() {
-      const isDisabled = document.getElementById("manageDisableStatus").value === "平台管理禁用";
+      const isDisabled = document.getElementById("manageDisableStatus").value === "已平台管理禁用";
       document.getElementById("manageDisableReasonRow").classList.toggle("is-hidden", !isDisabled);
       if (!isDisabled) document.getElementById("manageDisableReason").value = "";
     }
@@ -17104,7 +17111,7 @@
         showToast("请选择变更状态", "error");
         return;
       }
-      if (changeStatus === "平台管理禁用" && !disableReason) {
+      if (changeStatus === "已平台管理禁用" && !disableReason) {
         showToast("请选择停用原因", "error");
         return;
       }
@@ -17131,10 +17138,10 @@
       manageDisableState.pendingRows = entries;
       manageDisableState.pendingPayload = {
         changeStatus,
-        disableReason: changeStatus === "平台管理禁用" ? disableReason : "/",
+        disableReason: changeStatus === "已平台管理禁用" ? disableReason : "/",
         remark
       };
-      manageDisableState.riskRows = changeStatus === "平台管理禁用"
+      manageDisableState.riskRows = changeStatus === "已平台管理禁用"
         ? entries.map((entry) => ({ ...entry, reason: manageDisableRiskReason(entry) })).filter((entry) => entry.reason)
         : [];
       if (manageDisableState.riskRows.length) {
@@ -17182,7 +17189,7 @@
           };
         }
         entry.row.manageDisableStatus = payload.changeStatus;
-        if (payload.changeStatus === "平台管理禁用") {
+        if (payload.changeStatus === "已平台管理禁用") {
           entry.row.manageDisableReason = payload.disableReason;
           entry.row.manageDisableTime = operationTime;
           entry.row.manageDisableSource = "lifan";
@@ -17209,7 +17216,7 @@
       manageDisableRecordRows = [{
         batchNo,
         changeStatus: payload.changeStatus,
-        disableReason: payload.changeStatus === "可用" ? "/" : payload.disableReason,
+        disableReason: payload.changeStatus === "未平台管理禁用" ? "/" : payload.disableReason,
         status: failCount ? "失败" : "成功",
         totalCount: String(entries.length),
         successCount: String(successCount),
@@ -18528,14 +18535,14 @@
 
     function simManageStopStatus(row = {}) {
       const negative = isSimOperatorStatusNegative(row.cardStatus)
-        || row.manageDisableStatus === "平台管理禁用"
+        || row.manageDisableStatus === "已平台管理禁用"
         || row.riskStopStatus === "已风险管理停机";
       return negative ? "已管理停机" : "未管理停机";
     }
 
     function simStatusTone(label, value) {
       if (label === "销号状态") return value === "已销号" ? "negative" : "positive";
-      if (label === "平台管理禁用状态") return value === "平台管理禁用" ? "negative" : "positive";
+      if (label === "平台管理禁用状态") return value === "已平台管理禁用" ? "negative" : "positive";
       if (label === "风险管理停机状态") return value === "已风险管理停机" ? "negative" : "positive";
       return value === "已管理停机" ? "negative" : "positive";
     }
@@ -18552,7 +18559,7 @@
 
     function simStatusHelpText(label) {
       const messages = {
-        "管理停机状态": "风险管理停机状态为“已风险管理停机”或平台管理禁用状态为“平台管理禁用”或卡运营商状态为“预销户”时，管理停机状态为“已管理停机”",
+        "管理停机状态": "风险管理停机状态为“已风险管理停机”或平台管理禁用状态为“已平台管理禁用”或卡运营商状态为“预销户”时，管理停机状态为“已管理停机”",
         "销号状态": "SIMDOCKER平台将卡状态变更为已销号，终止卡片一切业务",
         "平台管理销号状态": "当状态为“已销号”时，表示该SIM卡已无法正常使用，可能是运营商平台已查询不到该SIM卡，或该SIM卡在运营商平台为预销户状态。此状态下无法进行激活、实名认证等业务操作。",
         "平台管理禁用状态": "当状态为“已平台管理禁用”时，表示平台已禁止该SIM卡继续参与空写卡业务。可能是管理员手动禁用，或系统检测到该SIM卡运营商状态异常后被标记为自动禁用。禁用期间，新卡无法分配写卡，已分配的SIM卡也无法继续发起写卡申请。",
@@ -18590,7 +18597,7 @@
       const cancelStatus = row.cancelStatus || (row.cardStatus === "销户" ? "已销号" : "未销号");
       const items = [
         ["销号状态", cancelStatus],
-        ["平台管理禁用状态", row.manageDisableStatus || "可用"],
+        ["平台管理禁用状态", row.manageDisableStatus || "未平台管理禁用"],
         ["风险管理停机状态", row.riskStopStatus || "未风险管理停机"]
       ];
       return `
@@ -18674,7 +18681,7 @@
 
     function renderSimPlatformManagementGroup(row = {}) {
       const cancelStatus = row.platformCancelStatus || row.cancelStatus || (row.cardStatus === "销户" ? "已销号" : "未销号");
-      const disabled = row.platformDisableStatus === "已平台管理禁用" || row.manageDisableStatus === "平台管理禁用";
+      const disabled = row.platformDisableStatus === "已平台管理禁用" || row.manageDisableStatus === "已平台管理禁用";
       const disableStatus = disabled ? "已平台管理禁用" : "未平台管理禁用";
       const cancelTime = row.platformCancelTime || row.cancelTime || (cancelStatus === "已销号" ? row.importTime : "");
       const disableTime = row.platformDisableTime || row.manageDisableTime || (disabled ? row.importTime : "");
