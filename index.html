@@ -5484,6 +5484,27 @@
       min-width: 0;
     }
 
+    .chip-data-service-policy-value {
+      min-height: 36px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #4b5563;
+      font-size: 14px;
+    }
+
+    .chip-data-service-policy-row {
+      grid-template-columns: 190px minmax(0, 1fr);
+    }
+
+    .chip-data-service-policy-row .modal-label {
+      white-space: nowrap;
+    }
+
+    .chip-data-service-policy-value .batch-select {
+      width: 112px;
+    }
+
     .captcha-btn {
       height: 36px;
       min-width: 96px;
@@ -6534,6 +6555,7 @@
             <div class="batch-actions" aria-label="ESIM芯片操作">
               <button class="btn" id="chipInboundBtn" type="button">ESIM芯片入库/删除</button>
               <button class="btn" id="chipAllocateBtn" type="button">ESIM芯片划拨</button>
+              <button class="btn secondary" id="chipDataServicePolicyBtn" type="button">原始卡数据服务策略</button>
               <button class="btn secondary" id="chipExportBtn" type="button">导出</button>
             </div>
 
@@ -7734,6 +7756,30 @@
       <div class="modal-foot">
         <button class="btn secondary" id="cancelChipSnGenerateBtn" type="button">取消</button>
         <button class="btn" id="confirmChipSnGenerateBtn" type="button">确认</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-mask" id="chipDataServicePolicyModal" role="dialog" aria-modal="true" aria-labelledby="chipDataServicePolicyTitle">
+    <div class="modal batch-modal">
+      <div class="modal-head">
+        <h2 id="chipDataServicePolicyTitle">原始卡数据服务策略</h2>
+        <button class="close" id="closeChipDataServicePolicyModal" type="button" aria-label="关闭">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-form">
+          <div class="modal-form-row chip-data-service-policy-row">
+            <label class="modal-label" for="chipDataServicePolicyDays"><span class="required">*</span>原始卡数据服务开启≥</label>
+            <div class="chip-data-service-policy-value">
+              <input class="batch-select" id="chipDataServicePolicyDays" type="number" min="1" step="1" placeholder="请输入天数" />
+              <span>天，自动关闭数据服务。</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button class="btn secondary" id="cancelChipDataServicePolicyBtn" type="button">取消</button>
+        <button class="btn" id="confirmChipDataServicePolicyBtn" type="button">确认</button>
       </div>
     </div>
   </div>
@@ -9161,6 +9207,9 @@
       draftImportEnd: "",
       dateRangeError: "",
       activeTab: "list"
+    };
+    const chipDataServicePolicyState = {
+      days: ""
     };
     const chipOperationRecordState = {
       values: {},
@@ -18300,6 +18349,26 @@
       showToast("ESIM芯片划拨任务已提交", "success");
     }
 
+    function openChipDataServicePolicyModal() {
+      document.getElementById("chipDataServicePolicyDays").value = chipDataServicePolicyState.days;
+      document.getElementById("chipDataServicePolicyModal").classList.add("open");
+    }
+
+    function closeChipDataServicePolicyModal() {
+      document.getElementById("chipDataServicePolicyModal").classList.remove("open");
+    }
+
+    function confirmChipDataServicePolicy() {
+      const days = document.getElementById("chipDataServicePolicyDays").value.trim();
+      if (!/^[1-9]\d*$/.test(days)) {
+        showToast("请输入大于0的整数天数", "error");
+        return;
+      }
+      chipDataServicePolicyState.days = String(Number(days));
+      closeChipDataServicePolicyModal();
+      showToast(`原始卡数据服务策略已设置为开启≥${chipDataServicePolicyState.days}天自动关闭`, "success");
+    }
+
     function setSidebarSelected(pageId) {
       document.getElementById("simNavItem").classList.remove("active");
       document.getElementById("esimNavItem").classList.remove("active");
@@ -19251,6 +19320,7 @@
     });
     document.getElementById("chipInboundBtn").addEventListener("click", openChipInboundDeleteModal);
     document.getElementById("chipAllocateBtn").addEventListener("click", openChipAllocateModal);
+    document.getElementById("chipDataServicePolicyBtn").addEventListener("click", openChipDataServicePolicyModal);
     document.getElementById("chipExportBtn").addEventListener("click", () => {
       showToast("已按当前查询条件导出ESIM芯片", "success");
     });
@@ -19510,6 +19580,12 @@
     document.getElementById("chipAllocateModal").addEventListener("click", (event) => {
       closeChipAllocateMenus();
       if (event.target.id === "chipAllocateModal") closeChipAllocateModal();
+    });
+    document.getElementById("closeChipDataServicePolicyModal").addEventListener("click", closeChipDataServicePolicyModal);
+    document.getElementById("cancelChipDataServicePolicyBtn").addEventListener("click", closeChipDataServicePolicyModal);
+    document.getElementById("confirmChipDataServicePolicyBtn").addEventListener("click", confirmChipDataServicePolicy);
+    document.getElementById("chipDataServicePolicyModal").addEventListener("click", (event) => {
+      if (event.target.id === "chipDataServicePolicyModal") closeChipDataServicePolicyModal();
     });
     document.getElementById("closeChipSnGenerateModal").addEventListener("click", closeChipSnGenerateModal);
     document.getElementById("cancelChipSnGenerateBtn").addEventListener("click", closeChipSnGenerateModal);
