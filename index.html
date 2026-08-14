@@ -4256,6 +4256,20 @@
       transform: translateX(20px);
     }
 
+    .chip-data-service-cell {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+      padding: 5px 0;
+    }
+
+    .chip-data-service-time {
+      color: #8a97aa;
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
     .write-pending {
       color: #b86e00;
     }
@@ -8824,7 +8838,6 @@
       { key: "merchant", label: "商户" },
       { key: "writeStatus", label: "写卡状态", status: true },
       { key: "originalDataService", label: "原始卡数据服务" },
-      { key: "originalCardStatus", label: "原始卡状态" },
       { key: "originalMsisdn", label: "原始MSISDN" },
       { key: "originalIccid", label: "原始ICCID" },
       { key: "writtenMsisdn", label: "写卡后MSISDN" },
@@ -8847,7 +8860,7 @@
         merchant: "华东物联商户",
         writeStatus: "写卡成功",
         originalDataService: false,
-        originalCardStatus: "已激活",
+        originalDataServiceTime: "",
         originalMsisdn: "106482913101",
         originalIccid: "8986044219231001841",
         writtenMsisdn: "106482913201",
@@ -8867,7 +8880,7 @@
         merchant: "车载设备商户",
         writeStatus: "待写卡",
         originalDataService: false,
-        originalCardStatus: "未激活",
+        originalDataServiceTime: "",
         originalMsisdn: "-",
         originalIccid: "8986044219231001842",
         writtenMsisdn: "-",
@@ -8887,7 +8900,7 @@
         merchant: "北区能源商户",
         writeStatus: "写卡中",
         originalDataService: false,
-        originalCardStatus: "已激活",
+        originalDataServiceTime: "",
         originalMsisdn: "106482913103",
         originalIccid: "8986044219231001843",
         writtenMsisdn: "-",
@@ -8907,7 +8920,7 @@
         merchant: "渠道直营商户",
         writeStatus: "写卡失败",
         originalDataService: false,
-        originalCardStatus: "激活失败",
+        originalDataServiceTime: "",
         originalMsisdn: "-",
         originalIccid: "8986044219231001844",
         writtenMsisdn: "-",
@@ -14459,14 +14472,17 @@
       if (column.key === "originalDataService") {
         const isOn = Boolean(value);
         return `
-          <button
-            class="chip-data-service-switch ${isOn ? "is-on" : ""}"
-            type="button"
-            data-eid="${escapeHtml(row.eid)}"
-            aria-pressed="${isOn}"
-            aria-label="原始卡数据服务${isOn ? "已开启，点击关闭" : "已关闭，点击开启"}"
-            title="${isOn ? "关闭" : "开启"}"
-          ></button>
+          <div class="chip-data-service-cell">
+            <button
+              class="chip-data-service-switch ${isOn ? "is-on" : ""}"
+              type="button"
+              data-eid="${escapeHtml(row.eid)}"
+              aria-pressed="${isOn}"
+              aria-label="原始卡数据服务${isOn ? "已开启，点击关闭" : "已关闭，点击开启"}"
+              title="${isOn ? "关闭" : "开启"}"
+            ></button>
+            ${isOn && row.originalDataServiceTime ? `<span class="chip-data-service-time">开启时间：${escapeHtml(row.originalDataServiceTime)}</span>` : ""}
+          </div>
         `;
       }
       if (column.link) return renderEidLink(value);
@@ -14501,6 +14517,13 @@
           const row = chipRows.find((item) => item.eid === button.dataset.eid);
           if (!row) return;
           row.originalDataService = !row.originalDataService;
+          if (row.originalDataService) {
+            const now = new Date();
+            const pad = (value) => String(value).padStart(2, "0");
+            row.originalDataServiceTime = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+          } else {
+            row.originalDataServiceTime = "";
+          }
           renderChipTable();
           showToast(`原始卡数据服务已${row.originalDataService ? "开启" : "关闭"}`, "success");
         });
