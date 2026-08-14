@@ -813,6 +813,11 @@
       min-width: 68px;
     }
 
+    .batch-actions .sim-card-table-toolbar {
+      margin-left: auto;
+      padding: 0;
+    }
+
     .query-panel + .table-panel {
       margin-top: 20px;
     }
@@ -4210,7 +4215,8 @@
       font-weight: 500;
     }
 
-    .risk-status-switch {
+    .risk-status-switch,
+    .chip-data-service-switch {
       position: relative;
       width: 42px;
       height: 22px;
@@ -4225,7 +4231,8 @@
       transition: background 0.18s ease, box-shadow 0.18s ease;
     }
 
-    .risk-status-switch::after {
+    .risk-status-switch::after,
+    .chip-data-service-switch::after {
       content: "";
       position: absolute;
       left: 3px;
@@ -4238,12 +4245,14 @@
       transition: transform 0.18s ease;
     }
 
-    .risk-status-switch.is-on {
+    .risk-status-switch.is-on,
+    .chip-data-service-switch.is-on {
       background: #1687e8;
       box-shadow: 0 2px 7px rgba(22, 135, 232, 0.24);
     }
 
-    .risk-status-switch.is-on::after {
+    .risk-status-switch.is-on::after,
+    .chip-data-service-switch.is-on::after {
       transform: translateX(20px);
     }
 
@@ -5310,11 +5319,31 @@
       background: #f7fbff;
     }
 
+    .sim-card-field-option.is-required {
+      background: #f8fafc;
+      cursor: not-allowed;
+    }
+
+    .sim-card-field-option.is-required:hover {
+      border-color: #e5eaf1;
+      background: #f8fafc;
+    }
+
     .sim-card-field-option input {
       width: 15px;
       height: 15px;
       margin: 0;
       accent-color: #2f91f1;
+    }
+
+    .sim-card-field-option input:disabled {
+      opacity: 0.8;
+    }
+
+    .sim-card-field-required-tag {
+      margin-left: auto;
+      color: #8b96a6;
+      font-size: 11px;
     }
 
     @media (max-width: 720px) {
@@ -6052,9 +6081,6 @@
 
             <div class="batch-actions" aria-label="SIM卡操作">
               <button class="btn" id="riskStopBatchBtn" type="button">风险管理停机状态变更</button>
-            </div>
-
-            <section class="panel table-panel sim-card-table-panel" aria-label="SIM卡列表">
               <div class="sim-card-table-toolbar" aria-label="SIM卡列表设置">
                 <button class="table-setting-btn" id="simCardFieldSettingsBtn" type="button" aria-label="字段设置" title="字段设置">
                   <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -6063,6 +6089,9 @@
                   </svg>
                 </button>
               </div>
+            </div>
+
+            <section class="panel table-panel sim-card-table-panel" aria-label="SIM卡列表">
               <div class="table-scroll">
                 <table class="sim-card-table">
                   <thead>
@@ -6962,7 +6991,7 @@
       </div>
       <div class="modal-body">
         <div class="sim-card-field-settings-summary">
-          <span>勾选需要在SIM卡列表中显示的字段，取消勾选后列表将立即隐藏该字段。</span>
+          <span>勾选需要显示的字段；ICCID、MSISDN、IMEI、卡状态、操作为必选字段。</span>
           <span class="sim-card-field-settings-count" id="simCardFieldSettingsCount"></span>
         </div>
         <div class="sim-card-field-settings-grid" id="simCardFieldSettingsGrid"></div>
@@ -8748,6 +8777,7 @@
       { key: "chipSupplier", label: "ESIM芯片供应商" },
       { key: "merchant", label: "商户" },
       { key: "writeStatus", label: "写卡状态", status: true },
+      { key: "originalDataService", label: "原始卡数据服务" },
       { key: "originalCardStatus", label: "原始卡状态" },
       { key: "originalMsisdn", label: "原始MSISDN" },
       { key: "originalIccid", label: "原始ICCID" },
@@ -8770,6 +8800,7 @@
         chipSupplier: "中移物联",
         merchant: "华东物联商户",
         writeStatus: "写卡成功",
+        originalDataService: false,
         originalCardStatus: "已激活",
         originalMsisdn: "106482913101",
         originalIccid: "8986044219231001841",
@@ -8789,6 +8820,7 @@
         chipSupplier: "联通智联",
         merchant: "车载设备商户",
         writeStatus: "待写卡",
+        originalDataService: false,
         originalCardStatus: "未激活",
         originalMsisdn: "-",
         originalIccid: "8986044219231001842",
@@ -8808,6 +8840,7 @@
         chipSupplier: "天喻信息",
         merchant: "北区能源商户",
         writeStatus: "写卡中",
+        originalDataService: false,
         originalCardStatus: "已激活",
         originalMsisdn: "106482913103",
         originalIccid: "8986044219231001843",
@@ -8827,6 +8860,7 @@
         chipSupplier: "中移物联",
         merchant: "渠道直营商户",
         writeStatus: "写卡失败",
+        originalDataService: false,
         originalCardStatus: "激活失败",
         originalMsisdn: "-",
         originalIccid: "8986044219231001844",
@@ -9370,6 +9404,8 @@
       { key: "distributionBatchNo", label: "分发批次号" },
       { key: "action", label: "操作", fixedRight: true }
     ];
+
+    const simCardRequiredColumnKeys = new Set(["iccid", "msisdn", "imei", "cardStatus", "action"]);
 
     const simCardFieldSettingsState = {
       visibleKeys: new Set(simCardTableColumns.map((column) => column.key)),
@@ -14367,9 +14403,22 @@
       return value || "-";
     }
 
-    function renderChipValue(value, column) {
+    function renderChipValue(value, column, row) {
       if (column.key === "action") {
         return `<button class="link-text chip-refresh-btn" type="button" data-eid="${value}">刷新</button>`;
+      }
+      if (column.key === "originalDataService") {
+        const isOn = Boolean(value);
+        return `
+          <button
+            class="chip-data-service-switch ${isOn ? "is-on" : ""}"
+            type="button"
+            data-eid="${escapeHtml(row.eid)}"
+            aria-pressed="${isOn}"
+            aria-label="原始卡数据服务${isOn ? "已开启，点击关闭" : "已关闭，点击开启"}"
+            title="${isOn ? "关闭" : "开启"}"
+          ></button>
+        `;
       }
       if (column.link) return renderEidLink(value);
       const identifierCell = renderIdentifierCell(value, column);
@@ -14388,7 +14437,7 @@
         ? chipRows.map((row) => `
             <tr>
               ${chipTableColumns.map((column) => `
-                <td class="${column.fixedRight ? "operation-col" : ""}">${renderChipValue(column.key === "action" ? row.eid : row[column.key], column)}</td>
+                <td class="${column.fixedRight ? "operation-col" : ""}">${renderChipValue(column.key === "action" ? row.eid : row[column.key], column, row)}</td>
               `).join("")}
             </tr>
           `).join("")
@@ -14396,6 +14445,15 @@
       body.querySelectorAll(".chip-refresh-btn").forEach((button) => {
         button.addEventListener("click", () => {
           showToast(`已刷新 EID ${button.dataset.eid} 的芯片状态`, "success");
+        });
+      });
+      body.querySelectorAll(".chip-data-service-switch").forEach((button) => {
+        button.addEventListener("click", () => {
+          const row = chipRows.find((item) => item.eid === button.dataset.eid);
+          if (!row) return;
+          row.originalDataService = !row.originalDataService;
+          renderChipTable();
+          showToast(`原始卡数据服务已${row.originalDataService ? "开启" : "关闭"}`, "success");
         });
       });
       body.querySelectorAll(".copy-eid-btn").forEach((button) => {
@@ -15325,16 +15383,26 @@
       const grid = document.getElementById("simCardFieldSettingsGrid");
       const count = document.getElementById("simCardFieldSettingsCount");
       if (!grid || !count) return;
-      grid.innerHTML = simCardTableColumns.map((column) => `
-        <label class="sim-card-field-option">
-          <input type="checkbox" data-sim-card-field-key="${escapeHtml(column.key)}" ${simCardFieldSettingsState.draftKeys.has(column.key) ? "checked" : ""} />
-          <span>${escapeHtml(column.label)}</span>
-        </label>
-      `).join("");
+      grid.innerHTML = simCardTableColumns.map((column) => {
+        const isRequired = simCardRequiredColumnKeys.has(column.key);
+        return `
+          <label class="sim-card-field-option ${isRequired ? "is-required" : ""}">
+            <input type="checkbox" data-sim-card-field-key="${escapeHtml(column.key)}" ${simCardFieldSettingsState.draftKeys.has(column.key) ? "checked" : ""} ${isRequired ? "disabled" : ""} />
+            <span>${escapeHtml(column.label)}</span>
+            ${isRequired ? '<span class="sim-card-field-required-tag">必选</span>' : ""}
+          </label>
+        `;
+      }).join("");
       count.textContent = `已显示 ${simCardFieldSettingsState.draftKeys.size} / ${simCardTableColumns.length} 个字段`;
     }
 
+    function ensureSimCardRequiredColumns(keys) {
+      simCardRequiredColumnKeys.forEach((key) => keys.add(key));
+      return keys;
+    }
+
     function openSimCardFieldSettingsModal() {
+      simCardFieldSettingsState.visibleKeys = ensureSimCardRequiredColumns(new Set(simCardFieldSettingsState.visibleKeys));
       simCardFieldSettingsState.snapshotKeys = new Set(simCardFieldSettingsState.visibleKeys);
       simCardFieldSettingsState.draftKeys = new Set(simCardFieldSettingsState.visibleKeys);
       renderSimCardFieldSettings();
@@ -15342,6 +15410,11 @@
     }
 
     function previewSimCardFieldSettings(key, checked) {
+      if (simCardRequiredColumnKeys.has(key)) {
+        simCardFieldSettingsState.draftKeys.add(key);
+        renderSimCardFieldSettings();
+        return;
+      }
       if (checked) {
         simCardFieldSettingsState.draftKeys.add(key);
       } else {
@@ -15365,7 +15438,8 @@
     }
 
     function confirmSimCardFieldSettings() {
-      simCardFieldSettingsState.visibleKeys = new Set(simCardFieldSettingsState.draftKeys);
+      simCardFieldSettingsState.visibleKeys = ensureSimCardRequiredColumns(new Set(simCardFieldSettingsState.draftKeys));
+      simCardFieldSettingsState.draftKeys = new Set(simCardFieldSettingsState.visibleKeys);
       simCardFieldSettingsState.snapshotKeys = new Set(simCardFieldSettingsState.visibleKeys);
       document.getElementById("simCardFieldSettingsModal").classList.remove("open");
       renderSimCardTable();
