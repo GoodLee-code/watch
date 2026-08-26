@@ -452,6 +452,288 @@
       border-bottom: 1px solid #f0f3f7;
     }
 
+    .content.smart-mode .business-tabs {
+      display: none;
+    }
+
+    .content.package-mode .business-tabs {
+      display: none;
+    }
+
+    .smart-diagnosis-page {
+      gap: 20px;
+    }
+
+    .smart-diagnosis-search-panel {
+      padding: 24px 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .smart-diagnosis-search-form {
+      width: min(100%, 800px);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .smart-diagnosis-search-control {
+      position: relative;
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    .smart-diagnosis-search-input {
+      width: 100%;
+      height: 36px;
+      padding: 0 38px 0 12px;
+      border: 1px solid #dfe5ee;
+      border-radius: 4px;
+      color: #4c5666;
+      background: #fff;
+      font-size: 13px;
+      outline: none;
+    }
+
+    .smart-diagnosis-search-input::placeholder {
+      color: #b8c0cc;
+    }
+
+    .smart-diagnosis-search-input:focus {
+      border-color: #1687e8;
+      box-shadow: 0 0 0 2px rgba(22, 135, 232, 0.08);
+    }
+
+    .smart-diagnosis-search-clear {
+      position: absolute;
+      z-index: 1;
+      top: 50%;
+      right: 8px;
+      width: 20px;
+      height: 20px;
+      display: grid;
+      place-items: center;
+      transform: translateY(-50%);
+      border: 0;
+      border-radius: 50%;
+      padding: 0;
+      background: transparent;
+      color: #9aa4b2;
+      font-size: 17px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .smart-diagnosis-search-clear:hover {
+      color: var(--blue-strong);
+      background: var(--blue-soft);
+    }
+
+    .smart-diagnosis-search-btn {
+      min-width: 112px;
+      height: 36px;
+    }
+
+    .smart-diagnosis-results {
+      padding: 0;
+      overflow: visible;
+      border: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .smart-diagnosis-card-list {
+      display: grid;
+      gap: 18px;
+    }
+
+    .smart-diagnosis-result-card {
+      overflow: hidden;
+      border: 1px solid #e8edf4;
+      border-radius: 6px;
+      background: #fff;
+      box-shadow: 0 4px 14px rgba(31, 52, 78, 0.06);
+    }
+
+    .smart-diagnosis-card-header {
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      padding: 0 24px;
+      color: #344054;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .smart-diagnosis-card-header span {
+      padding-left: 14px;
+      border-left: 4px solid #2f91f1;
+      line-height: 22px;
+    }
+
+    .smart-diagnosis-identity-row {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      min-height: 72px;
+      margin: 0 24px;
+      border-bottom: 1px solid #e8edf4;
+    }
+
+    .smart-diagnosis-identity-item,
+    .smart-diagnosis-data-item {
+      display: grid;
+      align-items: center;
+      min-width: 0;
+      color: #4b5563;
+      font-size: 13px;
+    }
+
+    .smart-diagnosis-identity-item {
+      grid-template-columns: 76px minmax(0, 1fr);
+      gap: 12px;
+      padding: 0 22px;
+      border-right: 1px solid #e8edf4;
+    }
+
+    .smart-diagnosis-identity-item:first-child {
+      padding-left: 22px;
+    }
+
+    .smart-diagnosis-identity-item:last-child {
+      border-right: 0;
+    }
+
+    .smart-diagnosis-data-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      min-height: 72px;
+      margin: 0 24px;
+      border-bottom: 1px solid #e8edf4;
+    }
+
+    .smart-diagnosis-data-row:last-child {
+      border-bottom: 0;
+    }
+
+    .smart-diagnosis-data-item {
+      grid-template-columns: minmax(178px, 1.12fr) minmax(0, 0.88fr);
+      gap: 12px;
+      padding: 0 22px;
+    }
+
+    .smart-diagnosis-label {
+      color: #667182;
+      white-space: nowrap;
+    }
+
+    .smart-diagnosis-value {
+      min-width: 0;
+      color: #344054;
+      font-weight: 500;
+    }
+
+    .smart-diagnosis-identity-item .smart-diagnosis-value {
+      color: #263449;
+      font-weight: 600;
+    }
+
+    .smart-diagnosis-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-weight: 600;
+    }
+
+    .smart-diagnosis-status::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      flex: 0 0 7px;
+      border-radius: 50%;
+      background: #98a2b3;
+    }
+
+    .smart-diagnosis-status.is-positive {
+      color: #159447;
+    }
+
+    .smart-diagnosis-status.is-positive::before {
+      background: #35b96a;
+    }
+
+    .smart-diagnosis-status.is-negative {
+      color: #e11d2f;
+    }
+
+    .smart-diagnosis-status.is-negative::before {
+      background: #e11d2f;
+    }
+
+    .smart-diagnosis-status.is-warning {
+      color: #b86e00;
+    }
+
+    .smart-diagnosis-status.is-warning::before {
+      background: #f59e0b;
+    }
+
+    .smart-diagnosis-footer {
+      padding: 16px 0 2px;
+      color: #7b8798;
+      font-size: 13px;
+      text-align: center;
+    }
+
+    @media (max-width: 1080px) {
+      .smart-diagnosis-identity-row,
+      .smart-diagnosis-data-row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .smart-diagnosis-identity-item:nth-child(2) {
+        border-right: 0;
+      }
+
+      .smart-diagnosis-identity-item:nth-child(-n + 2) {
+        border-bottom: 1px solid #e8edf4;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .smart-diagnosis-search-form {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .smart-diagnosis-search-btn {
+        width: 100%;
+      }
+
+      .smart-diagnosis-identity-row,
+      .smart-diagnosis-data-row {
+        grid-template-columns: 1fr;
+        margin-left: 14px;
+        margin-right: 14px;
+      }
+
+      .smart-diagnosis-identity-item,
+      .smart-diagnosis-data-item {
+        min-height: 58px;
+        padding: 0 10px;
+        border-right: 0;
+        border-bottom: 1px solid #e8edf4;
+      }
+
+      .smart-diagnosis-data-row {
+        border-bottom: 0;
+      }
+
+      .smart-diagnosis-data-row:last-child .smart-diagnosis-data-item:last-child,
+      .smart-diagnosis-identity-item:last-child {
+        border-bottom: 0;
+      }
+    }
+
     .utility-row {
       display: flex;
       flex-wrap: wrap;
@@ -605,6 +887,7 @@
 
     .field.wide {
       width: 100%;
+      grid-column: 1 / -1;
     }
 
     .control {
@@ -727,6 +1010,14 @@
       align-items: center;
       color: #596273;
       cursor: pointer;
+    }
+
+    button.option {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      font: inherit;
+      text-align: left;
     }
 
     .option:hover,
@@ -2874,6 +3165,70 @@
       word-break: break-word;
     }
 
+    #userPackageDetailBody .risk-detail-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px 16px;
+    }
+
+    #userPackageDetailBody .risk-detail-item {
+      min-height: 42px;
+      grid-template-columns: 150px minmax(0, 1fr);
+      gap: 0;
+      border: 1px solid #edf1f5;
+      border-radius: 4px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    #userPackageDetailBody .risk-detail-label {
+      min-height: 42px;
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      border-right: 1px solid #edf1f5;
+      background: #f7f9fc;
+    }
+
+    #userPackageDetailBody .risk-detail-value {
+      min-height: 42px;
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+    }
+
+    .user-package-tip {
+      overflow: visible;
+    }
+
+    .user-package-modal .modal-label .user-package-tip {
+      justify-content: flex-end;
+    }
+
+    .user-package-modal .modal-label .user-package-tip .header-tip-popup {
+      left: calc(100% + 10px);
+      top: 50%;
+      width: 380px;
+      transform: translateY(-50%);
+      text-align: left;
+      z-index: 120;
+    }
+
+    .user-package-modal .modal-label .user-package-tip .header-tip-popup::after {
+      left: auto;
+      right: 100%;
+      top: 50%;
+      bottom: auto;
+      transform: translateY(-50%);
+      border: 6px solid transparent;
+      border-right-color: #172033;
+    }
+
+    .user-package-modal .modal-label .user-package-tip .header-tip-icon:hover + .header-tip-popup,
+    .user-package-modal .modal-label .user-package-tip .header-tip-icon:focus + .header-tip-popup {
+      opacity: 1;
+      transform: translateY(-50%) translateX(2px);
+    }
+
     .risk-detail-section-content {
       padding: 18px;
     }
@@ -2931,6 +3286,14 @@
     @media (max-width: 720px) {
       .risk-detail-grid {
         grid-template-columns: 1fr;
+      }
+
+      #userPackageDetailBody .risk-detail-grid {
+        grid-template-columns: 1fr;
+      }
+
+      #userPackageDetailBody .risk-detail-item {
+        grid-template-columns: 128px minmax(0, 1fr);
       }
     }
 
@@ -4120,6 +4483,27 @@
       transform: translateX(-50%) translateY(-2px);
     }
 
+    .table-header-tip .header-tip-popup {
+      left: calc(100% - 7.5px);
+    }
+
+    .th-with-tip.align-left .header-tip-popup {
+      left: 0;
+      right: auto;
+      transform: none;
+      text-align: left;
+    }
+
+    .th-with-tip.align-left .header-tip-popup::after {
+      left: var(--tip-arrow-left, 50%);
+      transform: translateX(-50%);
+    }
+
+    .th-with-tip.align-left .header-tip-icon:hover + .header-tip-popup,
+    .th-with-tip.align-left .header-tip-icon:focus + .header-tip-popup {
+      transform: translateY(-2px);
+    }
+
     .status-positive {
       color: #0f7b47;
     }
@@ -4262,6 +4646,51 @@
       align-items: flex-start;
       gap: 4px;
       padding: 5px 0;
+    }
+
+    .package-plan-table {
+      min-width: 2320px;
+    }
+
+    .package-plan-table .operation-col {
+      min-width: 82px;
+      width: 82px;
+    }
+
+    .package-plan-table th,
+    .package-plan-table td {
+      white-space: nowrap;
+    }
+
+    .package-plan-table th:nth-child(2),
+    .package-plan-table td:nth-child(2) {
+      min-width: 150px;
+    }
+
+    .package-plan-table th:nth-child(14),
+    .package-plan-table td:nth-child(14) {
+      min-width: 150px;
+      white-space: normal;
+    }
+
+    .package-plan-table th:nth-child(15),
+    .package-plan-table td:nth-child(15),
+    .package-plan-table th:nth-child(20),
+    .package-plan-table td:nth-child(20) {
+      min-width: 145px;
+      white-space: normal;
+    }
+
+    .package-plan-toggle-cell {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+
+    .package-plan-toggle-label {
+      color: #667182;
+      font-size: 12px;
     }
 
     .chip-data-service-time {
@@ -4779,12 +5208,15 @@
     .sim-detail-switch {
       width: 36px;
       height: 20px;
+      border: 0;
       border-radius: 999px;
       display: inline-flex;
       align-items: center;
       padding: 2px;
       background: #c9ced6;
       vertical-align: middle;
+      cursor: pointer;
+      transition: background 0.18s ease;
     }
 
     .sim-detail-switch::before {
@@ -4794,6 +5226,30 @@
       border-radius: 50%;
       background: #fff;
       box-shadow: 0 1px 3px rgba(15, 23, 42, 0.18);
+      transition: transform 0.18s ease;
+    }
+
+    .sim-detail-switch.active {
+      background: #28c76f;
+    }
+
+    .sim-detail-switch.active::before {
+      transform: translateX(16px);
+    }
+
+    .sim-detail-service-control {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      vertical-align: middle;
+    }
+
+    .sim-detail-service-meta {
+      color: #667182;
+      font-size: 12px;
+      line-height: 1.5;
+      white-space: nowrap;
     }
 
     .sim-status-overview {
@@ -5287,6 +5743,24 @@
       width: min(760px, 100%);
     }
 
+    .user-package-modal {
+      width: min(860px, 100%);
+    }
+
+    .user-package-modal .modal-body {
+      max-height: 72vh;
+      overflow: auto;
+    }
+
+    .user-package-modal .modal-form {
+      gap: 8px;
+    }
+
+    .user-package-modal #userPackageCreateFields {
+      display: grid;
+      gap: 8px;
+    }
+
     .sim-card-field-settings-modal {
       width: min(760px, 100%);
     }
@@ -5434,6 +5908,101 @@
 
     .warning-config-modal .modal-label {
       white-space: nowrap;
+    }
+
+    .user-package-modal .modal-form-row {
+      grid-template-columns: 142px minmax(0, 1fr);
+    }
+
+    .user-package-modal .modal-label {
+      white-space: nowrap;
+    }
+
+    .user-package-modal .batch-select::placeholder,
+    .user-package-modal .batch-textarea::placeholder {
+      color: #b8c0cc;
+      opacity: 1;
+    }
+
+    .user-package-select-wrap {
+      position: relative;
+      width: 100%;
+    }
+
+    .user-package-select-wrap .batch-select {
+      padding-right: 36px;
+    }
+
+    .user-package-select-clear {
+      position: absolute;
+      top: 50%;
+      right: 26px;
+      width: 18px;
+      height: 18px;
+      border: 0;
+      padding: 0;
+      border-radius: 50%;
+      background: transparent;
+      color: #9aa4b1;
+      font-size: 16px;
+      line-height: 18px;
+      cursor: pointer;
+      transform: translateY(-50%);
+    }
+
+    .user-package-select-clear:hover {
+      color: #4b5563;
+      background: #f1f5f9;
+    }
+
+    .user-package-modal select.batch-select.is-placeholder {
+      color: #b8c0cc;
+    }
+
+    .user-package-modal select.batch-select:not(.is-placeholder) {
+      color: var(--ink);
+    }
+
+    .user-package-modal select.batch-select option {
+      color: #111827;
+    }
+
+    .user-package-modal select.batch-select option[disabled] {
+      color: #b8c0cc;
+    }
+
+    .user-package-merchant-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .user-package-merchant-trigger.placeholder {
+      color: #b8c0cc;
+    }
+
+    .user-package-flow-line {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 10px;
+    }
+
+    .user-package-flow-line.has-fixed {
+      grid-template-columns: minmax(0, 1fr) 140px;
+    }
+
+    .user-package-empty-fields,
+    .user-package-empty-merchant {
+      min-height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px dashed #dbe3ee;
+      border-radius: 5px;
+      color: #8b96a6;
+      background: #f8fafc;
     }
 
     .required {
@@ -6020,6 +6589,19 @@
       <div class="sub-menu" id="simSubMenu" aria-label="SIM卡管理二级菜单">
         <button class="sub-item" id="simCardSubItem" type="button" data-page="simCardPage">SIM卡管理</button>
       </div>
+      <div class="nav-item" id="operationNavItem" role="button" tabindex="0">
+        <svg class="nav-icon" viewBox="0 0 15 14" fill="none" aria-hidden="true">
+          <rect x="2.1" y="1.6" width="10.8" height="10.8" rx="2" />
+          <path d="M4.5 9.6 6.3 7.7l1.6 1.2 2.6-3" />
+        </svg>
+        <span class="nav-label">运营管理</span>
+        <button class="nav-toggle" id="operationMenuToggle" type="button" aria-label="展开或收起运营管理菜单" aria-expanded="true">
+          <svg class="nav-caret" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m8 10 4 4 4-4" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+      <div class="sub-menu" id="operationSubMenu" aria-label="运营管理二级菜单">
+        <button class="sub-item" id="smartDiagnosisSubItem" type="button" data-page="smartDiagnosisPage">智能诊断</button>
+      </div>
       <div class="nav-item" id="esimNavItem" role="button" tabindex="0">
         <svg class="nav-icon" viewBox="0 0 15 14" fill="none" aria-hidden="true">
           <rect x="2.1" y="1.6" width="10.8" height="10.8" rx="2" />
@@ -6040,6 +6622,19 @@
         <button class="sub-item" id="esimWriteApplySubItem" type="button" data-page="esimWriteApplyPage">ESIM写卡申请</button>
         <button class="sub-item" id="esimOrderSubItem" type="button" data-page="esimOrderPage">ESIM订单管理</button>
         <button class="sub-item" id="esimChipSnSubItem" type="button" data-page="esimChipSnPage">ESIM芯片SN生成</button>
+      </div>
+      <div class="nav-item" id="packageNavItem" role="button" tabindex="0">
+        <svg class="nav-icon" viewBox="0 0 15 14" fill="none" aria-hidden="true">
+          <rect x="2.1" y="1.7" width="10.8" height="10.6" rx="2" />
+          <path d="M4.4 4.5h6.2M4.4 7h6.2M4.4 9.5h3.8" />
+        </svg>
+        <span class="nav-label">套餐管理</span>
+        <button class="nav-toggle" id="packageMenuToggle" type="button" aria-label="展开或收起套餐管理菜单" aria-expanded="true">
+          <svg class="nav-caret" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m8 10 4 4 4-4" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+      <div class="sub-menu" id="packageSubMenu" aria-label="套餐管理二级菜单">
+        <button class="sub-item" id="userPackageSubItem" type="button" data-page="userPackagePage">用户套餐管理</button>
       </div>
       <div class="nav-item" id="riskNavItem" role="button" tabindex="0">
         <svg class="nav-icon" viewBox="0 0 15 14" fill="none" aria-hidden="true">
@@ -6068,6 +6663,32 @@
       </div>
       <div class="sub-menu" id="afterSaleSubMenu" aria-label="售后管理二级菜单">
         <button class="sub-item" id="refundWorkOrderSubItem" type="button" data-page="refundWorkOrderPage">退费工单</button>
+      </div>
+      <div class="nav-item" id="logNavItem" role="button" tabindex="0">
+        <svg class="nav-icon" viewBox="0 0 15 14" fill="none" aria-hidden="true">
+          <rect x="2.1" y="1.7" width="10.8" height="10.6" rx="2" />
+          <path d="M4.5 4.6h6M4.5 7h6M4.5 9.4h3.8" />
+        </svg>
+        <span class="nav-label">日志管理</span>
+        <button class="nav-toggle" id="logMenuToggle" type="button" aria-label="展开或收起日志管理菜单" aria-expanded="true">
+          <svg class="nav-caret" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m8 10 4 4 4-4" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+      <div class="sub-menu" id="logSubMenu" aria-label="日志管理二级菜单">
+        <button class="sub-item" id="accountOperationLogSubItem" type="button" data-page="accountOperationLogPage">账户操作日志</button>
+      </div>
+      <div class="nav-item" id="taskNavItem" role="button" tabindex="0">
+        <svg class="nav-icon" viewBox="0 0 15 14" fill="none" aria-hidden="true">
+          <rect x="2.1" y="1.7" width="10.8" height="10.6" rx="2" />
+          <path d="M4.5 4.6h6M4.5 7h6M4.5 9.4h3.8" />
+        </svg>
+        <span class="nav-label">任务管理</span>
+        <button class="nav-toggle" id="taskMenuToggle" type="button" aria-label="展开或收起任务管理菜单" aria-expanded="true">
+          <svg class="nav-caret" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m8 10 4 4 4-4" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+      <div class="sub-menu" id="taskSubMenu" aria-label="任务管理二级菜单">
+        <button class="sub-item" id="batchTaskSubItem" type="button" data-page="batchTaskPage">批量任务</button>
       </div>
       <button class="nav-item" id="abTestStatsNavItem" type="button" data-page="abTestStatsPage">
         <svg class="nav-icon" viewBox="0 0 15 14" fill="none" aria-hidden="true">
@@ -6139,6 +6760,59 @@
             </section>
           </div>
 
+        </div>
+
+        <div class="page-view smart-diagnosis-page" id="smartDiagnosisPage">
+          <section class="panel smart-diagnosis-search-panel" aria-label="智能诊断查询区域">
+            <div class="smart-diagnosis-search-form">
+              <div class="smart-diagnosis-search-control">
+                <input class="smart-diagnosis-search-input" id="smartDiagnosisSearchInput" type="text" placeholder="请输入EID、SN、ICCID或MSISDN" aria-label="诊断查询号码" autocomplete="off" />
+                <button class="smart-diagnosis-search-clear is-hidden" id="smartDiagnosisSearchClear" type="button" aria-label="清空诊断查询">×</button>
+              </div>
+              <button class="btn smart-diagnosis-search-btn" id="smartDiagnosisSearchBtn" type="button">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="m21 21-4.3-4.3M11 19a8 8 0 1 1 0-16 8 8 0 0 1 0 16Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                一键诊断
+              </button>
+            </div>
+          </section>
+
+          <section class="panel smart-diagnosis-results is-hidden" id="smartDiagnosisResults" aria-label="智能诊断结果">
+            <div id="smartDiagnosisResultSections"></div>
+            <div class="smart-diagnosis-footer" id="smartDiagnosisFooter"></div>
+          </section>
+        </div>
+
+        <div class="page-view" id="userPackagePage">
+          <section class="panel query-panel" aria-label="用户套餐查询区域">
+            <div class="filter-wrap" id="userPackageFilterWrap"></div>
+          </section>
+
+          <div class="batch-actions" aria-label="用户套餐操作">
+            <button class="btn" id="userPackageCreateBtn" type="button">用户套餐新增</button>
+          </div>
+
+          <section class="panel table-panel" aria-label="用户套餐列表">
+            <div class="table-scroll">
+              <table class="package-plan-table">
+                <thead>
+                  <tr id="userPackageTableHeader"></tr>
+                </thead>
+                <tbody id="userPackageTableBody"></tbody>
+              </table>
+            </div>
+            <div class="pager" id="userPackagePager" aria-label="用户套餐分页"></div>
+          </section>
+        </div>
+
+        <div class="page-view" id="userPackageDetailPage">
+          <section class="panel risk-create-panel" aria-label="用户套餐详情">
+            <div class="risk-create-head">
+              <h2>用户套餐详情</h2>
+            </div>
+            <div class="risk-create-body risk-detail-body" id="userPackageDetailBody"></div>
+          </section>
         </div>
 
         <div class="page-view ab-page ab-dashboard-page" id="abTestStatsPage">
@@ -6533,6 +7207,50 @@
               </table>
             </div>
             <div class="pager" id="refundWorkOrderPager" aria-label="退费工单分页"></div>
+          </section>
+        </div>
+
+        <div class="page-view" id="accountOperationLogPage">
+          <section class="panel query-panel" aria-label="账户操作日志查询区域">
+            <div class="filter-wrap" id="accountOperationLogFilterWrap"></div>
+          </section>
+
+          <div class="batch-actions" aria-label="账户操作日志操作">
+            <button class="btn" id="accountOperationLogExportBtn" type="button">导出</button>
+          </div>
+
+          <section class="panel table-panel" aria-label="账户操作日志列表">
+            <div class="table-scroll">
+              <table class="account-operation-log-table">
+                <thead>
+                  <tr id="accountOperationLogTableHeader"></tr>
+                </thead>
+                <tbody id="accountOperationLogTableBody"></tbody>
+              </table>
+            </div>
+            <div class="pager" id="accountOperationLogPager" aria-label="账户操作日志分页"></div>
+          </section>
+        </div>
+
+        <div class="page-view" id="batchTaskPage">
+          <section class="panel query-panel" aria-label="批量任务查询区域">
+            <div class="filter-wrap" id="batchTaskFilterWrap"></div>
+          </section>
+
+          <div class="batch-actions" aria-label="批量任务操作">
+            <button class="btn" id="batchTaskCreateBtn" type="button">批量操作添加</button>
+          </div>
+
+          <section class="panel table-panel" aria-label="批量任务列表">
+            <div class="table-scroll">
+              <table class="batch-task-table">
+                <thead>
+                  <tr id="batchTaskTableHeader"></tr>
+                </thead>
+                <tbody id="batchTaskTableBody"></tbody>
+              </table>
+            </div>
+            <div class="pager" id="batchTaskPager" aria-label="批量任务分页"></div>
           </section>
         </div>
 
@@ -7085,6 +7803,67 @@
       <div class="modal-foot">
         <button class="btn secondary" id="cancelResourcePoolWarningBtn" type="button">取消</button>
         <button class="btn" id="confirmResourcePoolWarningBtn" type="button">确认</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-mask" id="userPackageCreateModal" role="dialog" aria-modal="true" aria-labelledby="userPackageCreateTitle">
+    <div class="modal user-package-modal">
+      <div class="modal-head">
+        <h2 id="userPackageCreateTitle">用户套餐新增</h2>
+        <button class="close" id="closeUserPackageCreateModal" type="button" aria-label="关闭">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-form">
+          <div class="modal-form-row">
+            <label class="modal-label" for="userPackageMerchantTrigger"><span class="required">*</span>所属商户</label>
+            <button class="batch-select user-package-merchant-trigger placeholder" id="userPackageMerchantTrigger" type="button">
+              <span id="userPackageMerchantText">请选择所属商户</span>
+              <span aria-hidden="true">⌄</span>
+            </button>
+          </div>
+
+          <div class="modal-form-row">
+            <label class="modal-label" for="userPackageCreateType"><span class="required">*</span>套餐类型</label>
+            <div class="user-package-select-wrap">
+              <select class="batch-select is-placeholder" id="userPackageCreateType">
+                <option value="" disabled hidden selected>请选择套餐类型</option>
+                <option value="日套餐">日套餐</option>
+                <option value="月套餐">月套餐</option>
+                <option value="季度套餐">季度套餐</option>
+                <option value="半年套餐">半年套餐</option>
+                <option value="年套餐">年套餐</option>
+                <option value="语音加油包">语音加油包</option>
+                <option value="流量加油包">流量加油包</option>
+              </select>
+              <button class="user-package-select-clear is-hidden" type="button" data-user-package-clear="userPackageCreateType" aria-label="清空套餐类型">×</button>
+            </div>
+          </div>
+
+          <div id="userPackageCreateFields">
+            <div class="user-package-empty-fields">请选择套餐类型后配置套餐内容</div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button class="btn secondary" id="cancelUserPackageCreateBtn" type="button">取消</button>
+        <button class="btn" id="confirmUserPackageCreateBtn" type="button">确认</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-mask" id="userPackageMerchantModal" role="dialog" aria-modal="true" aria-labelledby="userPackageMerchantTitle">
+    <div class="modal merchant-select-modal">
+      <div class="modal-head">
+        <h2 id="userPackageMerchantTitle">商户列表</h2>
+        <button class="close" id="closeUserPackageMerchantModal" type="button" aria-label="关闭">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="user-package-empty-merchant" aria-label="商户列表暂未设计"></div>
+      </div>
+      <div class="modal-foot">
+        <button class="btn secondary" id="cancelUserPackageMerchantBtn" type="button">取消</button>
+        <button class="btn" id="confirmUserPackageMerchantBtn" type="button">确认</button>
       </div>
     </div>
   </div>
@@ -8818,12 +9597,144 @@
       auditDateRangeViewMonth: ""
     };
 
+    const accountOperationBusinessTypes = [
+      "设备入库",
+      "SIM卡分发",
+      "套餐充值",
+      "设备返厂",
+      "实名认证",
+      "白名单添加",
+      "白名单删除",
+      "退费",
+      "资费转移",
+      "eSim芯片入库",
+      "eSim芯片划拨",
+      "eSim可写码号新增",
+      "eSim可写码号移出",
+      "eSim可写码号资源池新增可写码号",
+      "eSim可写码号资源池移出可写码号",
+      "IMEI合法性校验数据通知",
+      "eSim可写码号回收池可写码号返厂",
+      "卡解除风险管理停机",
+      "卡风险管理停机限制",
+      "数据服务开启",
+      "数据服务关闭",
+      "语音服务开启",
+      "语音服务关闭"
+    ];
+
+    const accountOperationLogFields = [
+      { key: "iccidMsisdn", label: "ICCID/MSISDN", type: "input" },
+      { key: "supplier", label: "供应商", type: "select", options: ["中移物联", "联通智联", "天喻信息", "捷德中国"] },
+      { key: "businessType", label: "业务类型", type: "select", options: accountOperationBusinessTypes },
+      { key: "operationTime", label: "操作时间", type: "daterange" }
+    ];
+
+    const accountOperationLogDateConfig = {
+      label: "操作时间",
+      idPrefix: "accountOperationLog",
+      openKey: "operationTimeRangeOpen",
+      startKey: "operationStart",
+      endKey: "operationEnd",
+      draftStartKey: "draftOperationStart",
+      draftEndKey: "draftOperationEnd",
+      errorKey: "operationTimeRangeError",
+      viewKey: "operationTimeRangeViewMonth"
+    };
+
+    const accountOperationLogColumns = [
+      { key: "index", label: "序号" },
+      { key: "iccid", label: "ICCID" },
+      { key: "operator", label: "运营商" },
+      { key: "supplier", label: "SIM卡供应商" },
+      { key: "businessType", label: "业务类型" },
+      { key: "operationUser", label: "操作人" },
+      { key: "operationTime", label: "操作时间" },
+      { key: "operationResult", label: "操作结果" },
+      { key: "remark", label: "备注" }
+    ];
+
+    const accountOperationLogRows = [
+      { iccid: "8986044219231000841", msisdn: "106482913001", operator: "中国移动", supplier: "中移物联", businessType: "SIM卡分发", operationUser: "lifan", operationTime: "2026-08-22 09:18:26", operationResult: "成功", remark: "分发至华东物联商户" },
+      { iccid: "8986044219231000842", msisdn: "106482913002", operator: "中国联通", supplier: "联通智联", businessType: "套餐充值", operationUser: "zhangsan", operationTime: "2026-08-22 10:42:13", operationResult: "成功", remark: "充值年度守护套餐" },
+      { iccid: "8986044219231000843", msisdn: "106482913003", operator: "中国移动", supplier: "中移物联", businessType: "实名认证", operationUser: "系统", operationTime: "2026-08-22 11:06:35", operationResult: "失败", remark: "实名信息校验未通过" },
+      { iccid: "8986044219231000844", msisdn: "106482913004", operator: "中国电信", supplier: "天喻信息", businessType: "退费", operationUser: "admin", operationTime: "2026-08-22 14:15:08", operationResult: "成功", remark: "退费工单审核通过" },
+      { iccid: "8986044219231000845", msisdn: "106482913005", operator: "中国移动", supplier: "捷德中国", businessType: "eSim芯片入库", operationUser: "lifan", operationTime: "2026-08-23 09:36:44", operationResult: "成功", remark: "芯片批次 CHIP20260823001 入库" },
+      { iccid: "8986044219231000846", msisdn: "106482913006", operator: "中国移动", supplier: "中移物联", businessType: "eSim芯片划拨", operationUser: "wangwu", operationTime: "2026-08-23 10:28:19", operationResult: "成功", remark: "划拨至华东物联芯片组" },
+      { iccid: "8986044219231000847", msisdn: "106482913007", operator: "中国联通", supplier: "联通智联", businessType: "eSim可写码号新增", operationUser: "lifan", operationTime: "2026-08-23 11:44:51", operationResult: "成功", remark: "文件导入新增可写码号" },
+      { iccid: "8986044219231000848", msisdn: "106482913008", operator: "中国移动", supplier: "中移物联", businessType: "eSim可写码号回收池可写码号返厂", operationUser: "系统", operationTime: "2026-08-24 09:20:36", operationResult: "失败", remark: "进入回收池时间不足两天" },
+      { iccid: "8986044219231000849", msisdn: "106482913009", operator: "中国电信", supplier: "天喻信息", businessType: "卡解除风险管理停机", operationUser: "lifan", operationTime: "2026-08-24 15:52:03", operationResult: "成功", remark: "人工核实后解除限制" },
+      { iccid: "8986044219231000850", msisdn: "106482913010", operator: "中国移动", supplier: "中移物联", businessType: "卡风险管理停机限制", operationUser: "系统", operationTime: "2026-08-25 08:31:42", operationResult: "成功", remark: "触发风险管理停机策略" }
+    ];
+
+    const accountOperationLogState = {
+      values: {},
+      operationTimeRangeOpen: false,
+      draftOperationStart: "",
+      draftOperationEnd: "",
+      operationTimeRangeError: "",
+      operationTimeRangeViewMonth: ""
+    };
+
+    const batchTaskOperationTypes = [
+      "批量查询风险设备",
+      "批量标识高频呼叫转移禁用卡",
+      "出库IMEI导入",
+      "批量删除亲情号码",
+      "设备变更卡状态",
+      "设备批量查询",
+      "批量查询迪沃设备锁卡信息",
+      "变更亲情号删除信息",
+      "批量查询设备锁卡信息",
+      "批量查询ICCID对应IMEI",
+      "店铺数据导入",
+      "批量添加运营商亲情号",
+      "批量设置移动卡限速"
+    ];
+
+    const batchTaskFields = [
+      { key: "operationType", label: "操作类型", type: "select", options: batchTaskOperationTypes },
+      { key: "taskStatus", label: "任务状态", type: "select", options: ["处理中", "成功", "失败"] }
+    ];
+
+    const batchTaskColumns = [
+      { key: "id", label: "ID" },
+      { key: "taskType", label: "任务类型" },
+      { key: "total", label: "处理总数" },
+      { key: "status", label: "状态" },
+      { key: "remark", label: "备注" },
+      { key: "operator", label: "操作人" },
+      { key: "operationTime", label: "操作时间" },
+      { key: "action", label: "操作", fixedRight: true }
+    ];
+
+    const batchTaskRows = [
+      { id: "BT202608250001", taskType: "批量查询风险设备", total: "120", status: "处理中", remark: "按商户维度批量查询风险设备", operator: "lifan", operationTime: "2026-08-25 09:18:26" },
+      { id: "BT202608240018", taskType: "批量标识高频呼叫转移禁用卡", total: "86", status: "成功", remark: "高频呼转规则命中卡片标识完成", operator: "zhangsan", operationTime: "2026-08-24 16:42:10" },
+      { id: "BT202608240011", taskType: "出库IMEI导入", total: "240", status: "成功", remark: "出库设备IMEI批量导入", operator: "wangwu", operationTime: "2026-08-24 11:26:48" },
+      { id: "BT202608230009", taskType: "批量删除亲情号码", total: "32", status: "失败", remark: "3条ICCID不存在，任务失败", operator: "admin", operationTime: "2026-08-23 18:05:31" },
+      { id: "BT202608230006", taskType: "设备变更卡状态", total: "58", status: "成功", remark: "设备卡状态批量变更完成", operator: "lifan", operationTime: "2026-08-23 14:19:07" },
+      { id: "BT202608220021", taskType: "设备批量查询", total: "500", status: "处理中", remark: "后台异步查询设备基础信息", operator: "系统", operationTime: "2026-08-22 20:36:42" },
+      { id: "BT202608220016", taskType: "批量查询设备锁卡信息", total: "76", status: "成功", remark: "设备锁卡信息已生成下载文件", operator: "zhangsan", operationTime: "2026-08-22 15:08:29" },
+      { id: "BT202608210014", taskType: "批量查询ICCID对应IMEI", total: "150", status: "成功", remark: "ICCID与IMEI映射关系查询完成", operator: "lifan", operationTime: "2026-08-21 17:28:10" }
+    ];
+
+    const batchTaskState = {
+      values: {}
+    };
+
+    const ESIM_CHIP_AGENT_TIP = "芯片划拨时，所选商户对应的一级商户为被划拨芯片的代理商。";
+    const ESIM_CHIP_LATEST_ALLOCATE_BATCH_TIP = "展示最近一次划拨操作的批次号";
+    const ESIM_CHIP_AGENT_OPTIONS = ["华东物联商户", "车载设备商户", "北区能源商户", "渠道直营商户"];
+
     const chipFields = [
-      { key: "eid", label: "EID", type: "input", basic: true },
+      { key: "eid", label: "EID", type: "input", basic: true, batch: true, wide: true },
+      { key: "latestAllocateBatchNo", label: "最新划拨批次号", type: "input", basic: true },
       { key: "chipGroup", label: "归属芯片组", type: "select", basic: true, options: ["儿童手表芯片组A", "儿童手表芯片组B", "渠道备用芯片组"] },
       { key: "deviceType", label: "设备类型", type: "select", basic: true, options: ["内置卡", "外插卡"] },
       { key: "chipSupplier", label: "ESIM芯片供应商", type: "select", basic: true, options: ["中移物联", "联通智联", "天喻信息"] },
       { key: "merchant", label: "商户名称", type: "select", basic: true, options: ["华东物联商户", "车载设备商户", "北区能源商户", "渠道直营商户"] },
+      { key: "agent", label: "代理商", type: "select", basic: true, options: ESIM_CHIP_AGENT_OPTIONS },
       { key: "iccid", label: "原始ICCID/写卡后ICCID", type: "input", basic: true },
       { key: "msisdn", label: "原始MSISDN/写卡后MSISDN", type: "input", basic: true },
       { key: "writeStatus", label: "写卡状态", type: "select", basic: true, options: ["待写卡", "待开机上电", "申请失败", "写卡中", "写卡失败", "写卡成功"] },
@@ -8831,11 +9742,13 @@
     ];
 
     const chipTableColumns = [
+      { key: "latestAllocateBatchNo", label: "最新划拨批次号", tip: ESIM_CHIP_LATEST_ALLOCATE_BATCH_TIP, tipAlign: "left", tipArrowLeft: 126 },
       { key: "eid", label: "EID", link: true },
       { key: "chipGroup", label: "归属芯片组" },
       { key: "deviceType", label: "设备类型" },
       { key: "chipSupplier", label: "ESIM芯片供应商" },
       { key: "merchant", label: "商户" },
+      { key: "agent", label: "代理商", tip: ESIM_CHIP_AGENT_TIP },
       { key: "writeStatus", label: "写卡状态", status: true },
       { key: "originalDataService", label: "原始卡数据服务" },
       { key: "originalMsisdn", label: "原始MSISDN" },
@@ -8853,11 +9766,13 @@
 
     const chipRows = [
       {
+        latestAllocateBatchNo: "CHIP20260607006",
         eid: "89049032000000000000000123456789",
         chipGroup: "儿童手表芯片组A",
         deviceType: "内置卡",
         chipSupplier: "中移物联",
         merchant: "华东物联商户",
+        agent: "华东物联商户",
         writeStatus: "写卡成功",
         originalDataService: false,
         originalDataServiceTime: "",
@@ -8873,11 +9788,13 @@
         updatedAt: "2026-05-28 10:18:09"
       },
       {
+        latestAllocateBatchNo: "CHIP20260607006",
         eid: "89049032000000000000000123456790",
         chipGroup: "儿童手表芯片组B",
         deviceType: "外插卡",
         chipSupplier: "联通智联",
         merchant: "车载设备商户",
+        agent: "车载设备商户",
         writeStatus: "待写卡",
         originalDataService: false,
         originalDataServiceTime: "",
@@ -8893,11 +9810,13 @@
         updatedAt: "2026-05-17 16:20:44"
       },
       {
+        latestAllocateBatchNo: "CHIP20260605002",
         eid: "89049032000000000000000123456791",
         chipGroup: "渠道备用芯片组",
         deviceType: "内置卡",
         chipSupplier: "天喻信息",
         merchant: "北区能源商户",
+        agent: "北区能源商户",
         writeStatus: "写卡中",
         originalDataService: false,
         originalDataServiceTime: "",
@@ -8913,11 +9832,13 @@
         updatedAt: "2026-05-27 18:06:33"
       },
       {
+        latestAllocateBatchNo: "CHIP20260604008",
         eid: "89049032000000000000000123456792",
         chipGroup: "儿童手表芯片组A",
         deviceType: "内置卡",
         chipSupplier: "中移物联",
         merchant: "渠道直营商户",
+        agent: "渠道直营商户",
         writeStatus: "写卡失败",
         originalDataService: false,
         originalDataServiceTime: "",
@@ -8992,6 +9913,7 @@
     const chipOperationRecordFields = [
       { key: "batchNo", label: "批次号", type: "input" },
       { key: "merchant", label: "商户", type: "select", options: [...new Set(chipGroupRows.map((row) => row.merchant))] },
+      { key: "agent", label: "代理商", type: "select", options: ESIM_CHIP_AGENT_OPTIONS },
       { key: "chipGroup", label: "ESIM芯片组", type: "select", options: chipGroupRows.map((row) => row.groupName) },
       { key: "peerAllocate", label: "同级划拨", type: "select", options: ["不开启", "开启"] },
       { key: "operationType", label: "操作类型", type: "select", options: ["ESIM芯片入库", "ESIM芯片删除"] },
@@ -9002,6 +9924,7 @@
     const chipOperationRecordColumns = [
       { key: "batchNo", label: "批次号", link: true },
       { key: "merchant", label: "商户" },
+      { key: "agent", label: "代理商", tip: ESIM_CHIP_AGENT_TIP },
       { key: "chipGroup", label: "ESIM芯片组" },
       { key: "peerAllocate", label: "同级划拨" },
       { key: "operationType", label: "操作类型" },
@@ -9018,6 +9941,7 @@
         batchNo: "CHIP20260608001",
         supplier: "中移物联",
         merchant: "华东物联商户",
+        agent: "华东物联商户",
         operationType: "ESIM芯片入库",
         status: "失败",
         totalCount: "120",
@@ -9031,6 +9955,7 @@
         batchNo: "CHIP20260607006",
         supplier: "联通智联",
         merchant: "车载设备商户",
+        agent: "车载设备商户",
         chipGroup: "车载设备高频写卡芯片组",
         peerAllocate: "不开启",
         operationType: "ESIM芯片划拨",
@@ -9046,6 +9971,7 @@
         batchNo: "CHIP20260606003",
         supplier: "天喻信息",
         merchant: "北区能源商户",
+        agent: "北区能源商户",
         operationType: "ESIM芯片删除",
         status: "失败",
         totalCount: "42",
@@ -9485,6 +10411,186 @@
     const simCardPageTabs = [
       { key: "list", label: "SIM卡列表" }
     ];
+
+    const smartDiagnosisState = {
+      query: "",
+      hasResult: false
+    };
+
+    const smartDiagnosisMockCards = [
+      {
+        iccid: "8986044219231000841",
+        msisdn: "106482913001",
+        eid: "",
+        sn: "",
+        cardOperatorStatus: "已激活",
+        machineCardSeparation: "正常",
+        iotManagementStatus: "正常",
+        voiceRemaining: "120分钟",
+        dataServiceStatus: "开启",
+        packageValidity: "2026-08-31",
+        familyNumberAdded: "是",
+        recyclable: "否"
+      },
+      {
+        iccid: "8986044219231000858",
+        msisdn: "106482913001",
+        eid: "",
+        sn: "",
+        cardOperatorStatus: "已激活",
+        machineCardSeparation: "正常",
+        iotManagementStatus: "正常",
+        voiceRemaining: "85分钟",
+        dataServiceStatus: "关闭",
+        packageValidity: "2026-06-15",
+        familyNumberAdded: "否",
+        recyclable: "是"
+      }
+    ];
+
+    const userPackageFields = [
+      { key: "merchant", label: "商户名称", type: "select", options: ["纽曼旺达京东专营店", "华东物联旗舰店", "儿童手表直营网店", "品牌商官方商城"] },
+      { key: "packageName", label: "套餐名称", type: "input" },
+      { key: "status", label: "状态", type: "select", options: ["上架", "下架"] }
+    ];
+
+    const USER_PACKAGE_TRAFFIC_MULTIPLIER_TIP = "流量科学用量倍数：用于按比例换算套餐流量用量。剩余流量 = 套餐总流量 − 实际已用流量 × 科学用量倍数。无换算需求时请填写 1。";
+    const USER_PACKAGE_TRAFFIC_MULTIPLIER_TIP_HTML = "流量科学用量倍数：用于按比例换算套餐流量用量。剩余流量 = 套餐总流量 − 实际已用流量 × 科学用量倍数。无换算需求时请填写 <strong>1</strong>。";
+
+    const userPackageTableColumns = [
+      { key: "index", label: "序号" },
+      { key: "packageName", label: "用户套餐名称" },
+      { key: "packageType", label: "套餐类型" },
+      { key: "price", label: "用户套餐价格" },
+      { key: "monthlyPrice", label: "折合每月价格" },
+      { key: "discountPrice", label: "折后价格" },
+      { key: "giftDays", label: "赠送天数" },
+      { key: "wechatMonthlyPrice", label: "微信折合每月价格" },
+      { key: "validDays", label: "有效时长(天)" },
+      { key: "voiceMinutes", label: "语音分钟数" },
+      { key: "trafficMb", label: "流量值（MB）" },
+      {
+        key: "trafficUsageMultiplier",
+        label: "流量科学用量倍数",
+        tip: USER_PACKAGE_TRAFFIC_MULTIPLIER_TIP,
+        tipHtml: USER_PACKAGE_TRAFFIC_MULTIPLIER_TIP_HTML
+      },
+      { key: "wechatVisible", label: "微信端是否展示" },
+      { key: "status", label: "上/下架状态" },
+      { key: "merchant", label: "商户" },
+      { key: "description", label: "套餐描述" },
+      { key: "sort", label: "套餐排序" },
+      { key: "rechargePolicy", label: "充值策略" },
+      { key: "remark", label: "备注" },
+      { key: "creator", label: "创建人" },
+      { key: "createdAt", label: "创建时间" },
+      { key: "action", label: "操作", fixedRight: true }
+    ];
+
+    const userPackageRows = [
+      {
+        packageName: "两年套餐",
+        packageType: "年套餐",
+        price: "199",
+        monthlyPrice: "8.29",
+        discountPrice: "199",
+        giftDays: "365",
+        wechatMonthlyPrice: "8.29",
+        validDays: "365",
+        voiceMinutes: "200",
+        trafficMb: "无限流量",
+        trafficUsageMultiplier: "",
+        wechatVisible: true,
+        status: "上架",
+        merchant: "纽曼旺达京东专营店",
+        description: "两年套餐",
+        sort: "1",
+        rechargePolicy: "无",
+        remark: "-",
+        creator: "张楠",
+        createdAt: "2025-12-18 11:57:39"
+      },
+      {
+        packageName: "年度守护套餐",
+        packageType: "年套餐",
+        price: "129",
+        monthlyPrice: "10.75",
+        discountPrice: "119",
+        giftDays: "0",
+        wechatMonthlyPrice: "9.92",
+        validDays: "365",
+        voiceMinutes: "120",
+        trafficMb: "10240",
+        trafficUsageMultiplier: "1.5",
+        wechatVisible: true,
+        status: "上架",
+        merchant: "华东物联旗舰店",
+        description: "全年语音与流量守护套餐",
+        sort: "2",
+        rechargePolicy: "首充优惠",
+        remark: "活动期可享折扣",
+        creator: "lifan",
+        createdAt: "2026-01-08 09:26:18"
+      },
+      {
+        packageName: "半年畅联套餐",
+        packageType: "半年套餐",
+        price: "79",
+        monthlyPrice: "13.17",
+        discountPrice: "69",
+        giftDays: "30",
+        wechatMonthlyPrice: "11.50",
+        validDays: "180",
+        voiceMinutes: "80",
+        trafficMb: "6144",
+        trafficUsageMultiplier: "1.2",
+        wechatVisible: true,
+        status: "上架",
+        merchant: "儿童手表直营网店",
+        description: "适用于短周期续费用户",
+        sort: "3",
+        rechargePolicy: "连续充值赠送30天",
+        remark: "-",
+        creator: "王芳",
+        createdAt: "2026-02-16 14:08:52"
+      },
+      {
+        packageName: "季度体验套餐",
+        packageType: "季度套餐",
+        price: "39",
+        monthlyPrice: "13.00",
+        discountPrice: "35",
+        giftDays: "0",
+        wechatMonthlyPrice: "11.67",
+        validDays: "90",
+        voiceMinutes: "50",
+        trafficMb: "3072",
+        trafficUsageMultiplier: "",
+        wechatVisible: false,
+        status: "下架",
+        merchant: "品牌商官方商城",
+        description: "渠道体验套餐",
+        sort: "4",
+        rechargePolicy: "无",
+        remark: "暂停售卖",
+        creator: "admin",
+        createdAt: "2026-03-05 16:42:10"
+      }
+    ];
+
+    const userPackageState = {
+      values: {},
+      appliedValues: {}
+    };
+    const userPackageCreateState = {
+      merchant: "",
+      packageType: "",
+      mode: "create",
+      editPackageName: ""
+    };
+    const userPackageDetailState = {
+      packageName: ""
+    };
 
     const writableStatusOrder = ["待写卡", "待开机上电", "申请失败", "写卡中", "写卡失败", "写卡成功", "全部"];
     const writableStatusTotals = {
@@ -9997,6 +11103,7 @@
 
     const filterWrap = document.getElementById("filterWrap");
     const simCardFilterWrap = document.getElementById("simCardFilterWrap");
+    const userPackageFilterWrap = document.getElementById("userPackageFilterWrap");
     const chipGroupFilterWrap = document.getElementById("esimChipGroupFilterWrap");
     const chipFilterWrap = document.getElementById("esimChipFilterWrap");
     const chipSnFilterWrap = document.getElementById("chipSnFilterWrap");
@@ -10010,6 +11117,8 @@
     const writeApplyFilterWrap = document.getElementById("esimWriteApplyFilterWrap");
     const orderFilterWrap = document.getElementById("esimOrderFilterWrap");
     const refundWorkOrderFilterWrap = document.getElementById("refundWorkOrderFilterWrap");
+    const accountOperationLogFilterWrap = document.getElementById("accountOperationLogFilterWrap");
+    const batchTaskFilterWrap = document.getElementById("batchTaskFilterWrap");
     const writableFilterWrap = document.getElementById("writableFilterWrap");
     const writableChangeRecordFilterWrap = document.getElementById("writableChangeRecordFilterWrap");
     const manageDisableRecordFilterWrap = document.getElementById("manageDisableRecordFilterWrap");
@@ -10027,7 +11136,7 @@
     }
 
     const DATE_RANGE_MAX_DAYS = 31;
-    const DATE_RANGE_SHORTCUTS = ["最近一周", "最近一个月", "最近3个月", "最近半年", "最近一年", "上月", "本月", "次月"];
+    const DATE_RANGE_SHORTCUTS = ["最近一周", "最近一个月", "最近3个月", "最近半年", "最近一年", "上月", "本月"];
     const DATE_RANGE_WEEKDAYS = ["日", "一", "二", "三", "四", "五", "六"];
 
     function padDateRangePart(value) {
@@ -10070,8 +11179,7 @@
         "最近半年": [dateRangeToValue(shiftDateRange(normalizedToday, -6, "month")), end],
         "最近一年": [dateRangeToValue(shiftDateRange(normalizedToday, -12, "month")), end],
         "上月": monthBoundary(-1),
-        "本月": monthBoundary(0),
-        "次月": monthBoundary(1)
+        "本月": monthBoundary(0)
       };
       return ranges[label] || ["", ""];
     }
@@ -10307,6 +11415,790 @@
           render();
         });
       });
+    }
+
+    function renderSmartDiagnosisStatus(value, tone = "") {
+      return `<span class="smart-diagnosis-status${tone ? ` ${tone}` : ""}">${escapeHtml(value)}</span>`;
+    }
+
+    function renderSmartDiagnosisIdentityField(item) {
+      const value = item.html ? item.value : escapeHtml(item.value || "-");
+      return `
+        <div class="smart-diagnosis-identity-item">
+          <span class="smart-diagnosis-label">${escapeHtml(item.label)}</span>
+          <span class="smart-diagnosis-value">${value}</span>
+        </div>
+      `;
+    }
+
+    function renderSmartDiagnosisDataField(item) {
+      const value = item.html ? item.value : escapeHtml(item.value || "-");
+      return `
+        <div class="smart-diagnosis-data-item">
+          <span class="smart-diagnosis-label">${escapeHtml(item.label)}</span>
+          <span class="smart-diagnosis-value">${value}</span>
+        </div>
+      `;
+    }
+
+    function parseSmartDiagnosisQuery(query) {
+      const explicitMatch = query.match(/^\s*(EID|SN|ICCID|MSISDN)\s*[:：]?\s*(.+)$/i);
+      if (explicitMatch) {
+        return { type: explicitMatch[1].toLowerCase(), value: explicitMatch[2].trim() };
+      }
+      const value = query.trim();
+      if (/^\d{30,}$/.test(value)) return { type: "eid", value };
+      if (/^\d{18,22}$/.test(value)) return { type: "iccid", value };
+      if (/^\d{7,17}$/.test(value)) return { type: "msisdn", value };
+      return { type: "sn", value };
+    }
+
+    function resolveSmartDiagnosisCards(query) {
+      const parsed = parseSmartDiagnosisQuery(query);
+      if (parsed.type === "msisdn") {
+        return smartDiagnosisMockCards.map((card) => ({ ...card, msisdn: parsed.value }));
+      }
+      const source = ["eid", "sn"].includes(parsed.type) ? smartDiagnosisMockCards[1] : smartDiagnosisMockCards[0];
+      return [{ ...source, [parsed.type]: parsed.value }];
+    }
+
+    function renderSmartDiagnosisIdentifier(value, label) {
+      if (!hasIdentifierValue(value)) return "/";
+      return `
+        <span class="eid-cell">
+          <span>${escapeHtml(value)}</span>
+          ${renderCopyIcon(label, value, "data-copy-text")}
+        </span>
+      `;
+    }
+
+    function smartDiagnosisTone(value) {
+      return ["已停机", "机卡分离", "冻结", "关闭", "否"].includes(value) ? "is-negative" : "is-positive";
+    }
+
+    function renderSmartDiagnosisPage() {
+      const results = document.getElementById("smartDiagnosisResults");
+      const sections = document.getElementById("smartDiagnosisResultSections");
+      const footer = document.getElementById("smartDiagnosisFooter");
+      if (!results || !sections || !footer) return;
+
+      results.classList.toggle("is-hidden", !smartDiagnosisState.hasResult);
+      if (!smartDiagnosisState.hasResult) {
+        sections.innerHTML = "";
+        footer.textContent = "";
+        return;
+      }
+
+      const query = smartDiagnosisState.query;
+      const cards = resolveSmartDiagnosisCards(query);
+      sections.innerHTML = `
+        <div class="smart-diagnosis-card-list">
+          ${cards.map((data) => {
+            const identityItems = [
+              { label: "ICCID", value: renderSmartDiagnosisIdentifier(data.iccid, "ICCID"), html: true },
+              { label: "MSISDN", value: renderSmartDiagnosisIdentifier(data.msisdn, "MSISDN"), html: true },
+              { label: "EID", value: renderSmartDiagnosisIdentifier(data.eid, "EID"), html: true },
+              { label: "SN", value: renderSmartDiagnosisIdentifier(data.sn, "SN"), html: true }
+            ];
+            const dataRows = [
+              [
+                { label: "卡（运营商）状态", value: renderSmartDiagnosisStatus(data.cardOperatorStatus, smartDiagnosisTone(data.cardOperatorStatus)), html: true },
+                { label: "机卡分离状态", value: renderSmartDiagnosisStatus(data.machineCardSeparation, smartDiagnosisTone(data.machineCardSeparation)), html: true },
+                { label: "物联网卡管理停复机冻结状态", value: renderSmartDiagnosisStatus(data.iotManagementStatus, smartDiagnosisTone(data.iotManagementStatus)), html: true }
+              ],
+              [
+                { label: "本月语音剩余时长（虚量）", value: data.voiceRemaining },
+                { label: "数据服务开关状态", value: renderSmartDiagnosisStatus(data.dataServiceStatus, smartDiagnosisTone(data.dataServiceStatus)), html: true },
+                { label: "套餐服务有效期", value: data.packageValidity }
+              ],
+              [
+                { label: "是否成功添加过亲情号", value: renderSmartDiagnosisStatus(data.familyNumberAdded, smartDiagnosisTone(data.familyNumberAdded)), html: true },
+                { label: "是否能回收利用", value: renderSmartDiagnosisStatus(data.recyclable, smartDiagnosisTone(data.recyclable)), html: true }
+              ]
+            ];
+            return `
+              <article class="smart-diagnosis-result-card" aria-label="诊断信息">
+                <div class="smart-diagnosis-card-header"><span>诊断信息</span></div>
+                <div class="smart-diagnosis-identity-row">
+                  ${identityItems.map(renderSmartDiagnosisIdentityField).join("")}
+                </div>
+                ${dataRows.map((row) => `
+                  <div class="smart-diagnosis-data-row">
+                    ${row.map(renderSmartDiagnosisDataField).join("")}
+                  </div>
+                `).join("")}
+              </article>
+            `;
+          }).join("")}
+        </div>
+      `;
+      footer.textContent = `已全部展示，共 ${cards.length} 条`;
+    }
+
+    function runSmartDiagnosis() {
+      const input = document.getElementById("smartDiagnosisSearchInput");
+      const query = input.value.trim();
+      if (!query) {
+        showToast("请输入EID、SN、ICCID或MSISDN", "error");
+        return;
+      }
+      smartDiagnosisState.query = query;
+      smartDiagnosisState.hasResult = true;
+      renderSmartDiagnosisPage();
+      showToast("智能诊断完成", "success");
+    }
+
+    function syncSmartDiagnosisSearchClear() {
+      const input = document.getElementById("smartDiagnosisSearchInput");
+      const clearButton = document.getElementById("smartDiagnosisSearchClear");
+      if (!input || !clearButton) return;
+      clearButton.classList.toggle("is-hidden", !input.value.trim());
+    }
+
+    function clearSmartDiagnosisSearch() {
+      const input = document.getElementById("smartDiagnosisSearchInput");
+      if (!input) return;
+      input.value = "";
+      smartDiagnosisState.query = "";
+      smartDiagnosisState.hasResult = false;
+      renderSmartDiagnosisPage();
+      syncSmartDiagnosisSearchClear();
+      input.focus();
+    }
+
+    function renderUserPackageFilters() {
+      userPackageFilterWrap.innerHTML = "";
+      userPackageFields.forEach((field) => {
+        const el = document.createElement("div");
+        el.className = "field";
+        el.dataset.key = field.key;
+
+        if (field.type === "select") {
+          const value = userPackageState.values[field.key] || "";
+          el.innerHTML = `
+            <input class="control select-trigger ${value ? "has-value" : ""}" data-key="${field.key}" type="text" placeholder="${field.label}" value="${escapeHtml(value)}" autocomplete="off" />
+            ${value ? `<button class="select-clear" type="button" data-key="${field.key}" aria-label="清除${field.label}">×</button>` : ""}
+            ${iconChevron().replace('class="icon"', 'class="field-icon"')}
+            <div class="select-menu" data-menu="${field.key}">
+              <div class="select-options"></div>
+            </div>
+          `;
+          userPackageFilterWrap.appendChild(el);
+          renderUserPackageOptions(el, field, "");
+          return;
+        }
+
+        el.innerHTML = `
+          <input class="control" data-key="${field.key}" type="text" placeholder="${field.label}" value="${escapeHtml(userPackageState.values[field.key] || "")}" />
+        `;
+        userPackageFilterWrap.appendChild(el);
+      });
+
+      const actions = document.createElement("div");
+      actions.className = "form-actions";
+      actions.innerHTML = `
+        <button class="btn search-btn" id="userPackageSearchBtn" type="button">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="m21 21-4.3-4.3M11 19a8 8 0 1 1 0-16 8 8 0 0 1 0 16Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          搜索
+        </button>
+        <button class="btn secondary" id="userPackageResetBtn" type="button">重置</button>
+      `;
+      userPackageFilterWrap.appendChild(actions);
+      bindUserPackageFilterEvents();
+    }
+
+    function renderUserPackageOptions(fieldEl, field, keyword) {
+      const optionsEl = fieldEl.querySelector(".select-options");
+      const selected = userPackageState.values[field.key] || "";
+      const normalizedKeyword = keyword.trim();
+      const options = field.options.filter((option) => option.includes(normalizedKeyword));
+      optionsEl.innerHTML = options.length ? "" : '<div class="option empty">暂无匹配数据</div>';
+      options.forEach((option) => {
+        const node = document.createElement("button");
+        node.type = "button";
+        node.className = "option" + (selected === option ? " active" : "");
+        node.setAttribute("role", "option");
+        node.setAttribute("aria-selected", String(selected === option));
+        node.textContent = option;
+        node.dataset.value = option;
+        node.addEventListener("click", (event) => {
+          event.stopPropagation();
+          userPackageState.values[field.key] = option;
+          renderUserPackageFilters();
+        });
+        optionsEl.appendChild(node);
+      });
+    }
+
+    function bindUserPackageFilterEvents() {
+      userPackageFilterWrap.querySelectorAll(".control").forEach((input) => {
+        input.addEventListener("input", () => {
+          userPackageState.values[input.dataset.key] = input.value;
+        });
+        input.addEventListener("blur", () => {
+          input.value = input.value.trim();
+          userPackageState.values[input.dataset.key] = input.value;
+        });
+        input.addEventListener("keydown", (event) => {
+          if (event.key === "Enter") searchUserPackages();
+        });
+      });
+
+      userPackageFilterWrap.querySelectorAll(".select-trigger").forEach((trigger) => {
+        const openMenu = () => {
+          closeUserPackageMenus(trigger.dataset.key);
+          const field = userPackageFields.find((item) => item.key === trigger.dataset.key);
+          renderUserPackageOptions(trigger.closest(".field"), field, trigger.value);
+          trigger.classList.add("open");
+          userPackageFilterWrap.querySelector(`[data-menu="${trigger.dataset.key}"]`).classList.add("open");
+        };
+        trigger.addEventListener("click", (event) => {
+          event.stopPropagation();
+          openMenu();
+        });
+        trigger.addEventListener("focus", openMenu);
+        trigger.addEventListener("input", openMenu);
+      });
+
+      userPackageFilterWrap.querySelectorAll(".select-clear").forEach((button) => {
+        button.addEventListener("click", (event) => {
+          event.stopPropagation();
+          userPackageState.values[button.dataset.key] = "";
+          closeUserPackageMenus();
+          renderUserPackageFilters();
+        });
+      });
+
+      document.getElementById("userPackageSearchBtn").addEventListener("click", searchUserPackages);
+      document.getElementById("userPackageResetBtn").addEventListener("click", resetUserPackageFilters);
+    }
+
+    function closeUserPackageMenus(exceptKey) {
+      if (!userPackageFilterWrap) return;
+      userPackageFilterWrap.querySelectorAll(".select-menu").forEach((menu) => {
+        if (menu.dataset.menu !== exceptKey) menu.classList.remove("open");
+      });
+      userPackageFilterWrap.querySelectorAll(".select-trigger").forEach((trigger) => {
+        if (trigger.dataset.key !== exceptKey) trigger.classList.remove("open");
+      });
+    }
+
+    function filteredUserPackageRows() {
+      const filters = userPackageState.appliedValues;
+      return userPackageRows.filter((row) => {
+        if (filters.merchant && row.merchant !== filters.merchant) return false;
+        if (filters.packageName && !row.packageName.includes(filters.packageName)) return false;
+        if (filters.status && row.status !== filters.status) return false;
+        return true;
+      });
+    }
+
+    function searchUserPackages() {
+      userPackageState.appliedValues = { ...userPackageState.values };
+      renderUserPackageTable();
+      renderUserPackagePager();
+      const activeCount = Object.values(userPackageState.appliedValues).filter(Boolean).length;
+      showToast(activeCount ? "用户套餐列表已按查询条件刷新" : "已查询全部用户套餐", "success");
+    }
+
+    function resetUserPackageFilters() {
+      userPackageState.values = {};
+      userPackageState.appliedValues = {};
+      renderUserPackageFilters();
+      renderUserPackageTable();
+      renderUserPackagePager();
+      showToast("用户套餐查询条件已清空", "info");
+    }
+
+    function renderUserPackageToggle(row, key, checked, label) {
+      return `
+        <span class="package-plan-toggle-cell">
+          <button
+            class="chip-data-service-switch ${checked ? "is-on" : ""}"
+            type="button"
+            role="switch"
+            aria-checked="${checked}"
+            aria-label="${label}"
+            title="${label}"
+            data-package-toggle="${key}"
+            data-package-name="${escapeHtml(row.packageName)}"
+          ></button>
+        </span>
+      `;
+    }
+
+    function renderUserPackageValue(value, column, row, index) {
+      if (column.key === "index") return String(index + 1);
+      if (column.key === "packageName") {
+        return `<button class="link-text user-package-name-btn" type="button" data-package-name="${escapeHtml(row.packageName)}">${escapeHtml(value)}</button>`;
+      }
+      if (column.key === "wechatVisible") {
+        return renderUserPackageToggle(row, "wechatVisible", Boolean(value), value ? "微信端已展示" : "微信端未展示");
+      }
+      if (column.key === "status") {
+        return renderUserPackageToggle(row, "status", value === "上架", value === "上架" ? "套餐已上架" : "套餐已下架");
+      }
+      if (column.key === "trafficUsageMultiplier") {
+        return escapeHtml(value && value !== "-" ? value : "--");
+      }
+      if (column.key === "action") {
+        return `<button class="link-text user-package-edit-btn" type="button" data-package-name="${escapeHtml(row.packageName)}">编辑</button>`;
+      }
+      return escapeHtml(value || "-");
+    }
+
+    function renderUserPackageTable() {
+      const header = document.getElementById("userPackageTableHeader");
+      const body = document.getElementById("userPackageTableBody");
+      const rows = filteredUserPackageRows();
+      header.innerHTML = userPackageTableColumns.map((column) => `<th class="${column.fixedRight ? "operation-col" : ""}">${renderTableHeaderCell(column)}</th>`).join("");
+      body.innerHTML = rows.length
+        ? rows.map((row, index) => `
+            <tr>
+              ${userPackageTableColumns.map((column) => `<td class="${column.fixedRight ? "operation-col" : ""}">${renderUserPackageValue(row[column.key], column, row, index)}</td>`).join("")}
+            </tr>
+          `).join("")
+        : `<tr><td colspan="${userPackageTableColumns.length}" style="text-align:center;color:#6b7280;">暂无数据</td></tr>`;
+
+      body.querySelectorAll("[data-package-toggle]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const row = userPackageRows.find((item) => item.packageName === button.dataset.packageName);
+          if (!row) return;
+          if (button.dataset.packageToggle === "wechatVisible") row.wechatVisible = !row.wechatVisible;
+          if (button.dataset.packageToggle === "status") row.status = row.status === "上架" ? "下架" : "上架";
+          renderUserPackageTable();
+          showToast(`套餐「${row.packageName}」状态已更新`, "success");
+        });
+      });
+      body.querySelectorAll(".user-package-name-btn").forEach((button) => {
+        button.addEventListener("click", () => openUserPackageDetailPage(button.dataset.packageName));
+      });
+      body.querySelectorAll(".user-package-edit-btn").forEach((button) => {
+        button.addEventListener("click", () => openUserPackageEditModal(button.dataset.packageName));
+      });
+    }
+
+    function renderUserPackagePager() {
+      const total = filteredUserPackageRows().length;
+      document.getElementById("userPackagePager").innerHTML = `
+        <span>共 ${total} 条</span>
+        <button class="page-btn" type="button">‹</button>
+        <button class="page-btn active" type="button">1</button>
+        <button class="page-btn" type="button">›</button>
+      `;
+    }
+
+    function userPackageTrafficLabel(packageType) {
+      return packageType === "月套餐" ? "每月总流量（MB）" : "总流量（MB）";
+    }
+
+    function renderUserPackageTrafficMultiplierLabel() {
+      return `
+        <span class="th-with-tip user-package-tip">
+          <span>流量科学用量倍数</span>
+          <span class="header-tip-icon" tabindex="0" aria-label="${escapeHtml(USER_PACKAGE_TRAFFIC_MULTIPLIER_TIP)}">!</span>
+          <span class="header-tip-popup" role="tooltip">${USER_PACKAGE_TRAFFIC_MULTIPLIER_TIP_HTML}</span>
+        </span>
+      `;
+    }
+
+    function shouldRenderUserPackageTraffic(packageType) {
+      return !["语音加油包", "流量加油包"].includes(packageType);
+    }
+
+    function shouldRenderUserPackageVoice(packageType) {
+      return packageType !== "流量加油包";
+    }
+
+    function userPackageRequiredRow(label, id, type = "text", placeholder = `请输入${label}`) {
+      return `
+        <div class="modal-form-row">
+          <label class="modal-label" for="${id}"><span class="required">*</span>${label}</label>
+          <input class="batch-select" id="${id}" data-user-package-required="${label}" type="${type}" ${type === "number" ? 'min="0" step="0.01"' : ""} placeholder="${placeholder}" />
+        </div>
+      `;
+    }
+
+    function syncUserPackageSelectPlaceholder(select) {
+      if (!select) return;
+      const hasValue = Boolean(select.value);
+      select.classList.toggle("is-placeholder", !hasValue);
+      const clearButton = select.closest(".user-package-select-wrap")?.querySelector(`[data-user-package-clear="${select.id}"]`);
+      if (clearButton) clearButton.classList.toggle("is-hidden", !hasValue);
+    }
+
+    function clearUserPackageSelect(select) {
+      if (!select) return;
+      select.value = "";
+      select.dispatchEvent(new Event("change", { bubbles: true }));
+      syncUserPackageSelectPlaceholder(select);
+    }
+
+    function bindUserPackageSelectPlaceholder(select) {
+      if (!select) return;
+      syncUserPackageSelectPlaceholder(select);
+      if (!select.dataset.userPackagePlaceholderBound) {
+        select.addEventListener("change", () => syncUserPackageSelectPlaceholder(select));
+        select.dataset.userPackagePlaceholderBound = "true";
+      }
+      const clearButton = select.closest(".user-package-select-wrap")?.querySelector(`[data-user-package-clear="${select.id}"]`);
+      if (clearButton && !clearButton.dataset.userPackageClearBound) {
+        clearButton.addEventListener("click", (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          clearUserPackageSelect(select);
+          select.focus();
+        });
+        clearButton.dataset.userPackageClearBound = "true";
+      }
+    }
+
+    function renderUserPackageCreateFields() {
+      const packageType = document.getElementById("userPackageCreateType").value;
+      const container = document.getElementById("userPackageCreateFields");
+      userPackageCreateState.packageType = packageType;
+      if (!packageType) {
+        container.innerHTML = '<div class="user-package-empty-fields">请选择套餐类型后配置套餐内容</div>';
+        return;
+      }
+
+      const trafficLabel = userPackageTrafficLabel(packageType);
+      const trafficRow = shouldRenderUserPackageTraffic(packageType) ? `
+        <div class="modal-form-row">
+          <label class="modal-label" for="userPackageTrafficType">${trafficLabel}</label>
+          <div class="user-package-flow-line" id="userPackageFlowLine">
+            <div class="user-package-select-wrap">
+              <select class="batch-select is-placeholder" id="userPackageTrafficType">
+                <option value="" disabled hidden selected>请选择${trafficLabel}</option>
+                <option value="无限流量">无限流量</option>
+                <option value="固定流量">固定流量</option>
+              </select>
+              <button class="user-package-select-clear is-hidden" type="button" data-user-package-clear="userPackageTrafficType" aria-label="清空${trafficLabel}">×</button>
+            </div>
+            <input class="batch-select is-hidden" id="userPackageTrafficValue" type="number" min="0" step="1" placeholder="请输入流量值" />
+          </div>
+        </div>
+        <div class="modal-form-row is-hidden" id="userPackageTrafficMultiplierRow">
+          <label class="modal-label" for="userPackageTrafficMultiplier"><span class="required">*</span>${renderUserPackageTrafficMultiplierLabel()}</label>
+          <input class="batch-select" id="userPackageTrafficMultiplier" type="number" min="0" step="0.01" placeholder="请输入流量科学用量倍数" />
+        </div>
+      ` : "";
+      const voiceRow = shouldRenderUserPackageVoice(packageType)
+        ? userPackageRequiredRow("语音分钟数", "userPackageVoiceMinutes", "number")
+        : "";
+      container.innerHTML = `
+        ${userPackageRequiredRow("用户套餐名称", "userPackageName")}
+        ${trafficRow}
+        ${userPackageRequiredRow("用户套餐价格（元）", "userPackagePrice", "number")}
+        ${userPackageRequiredRow("折合每月价格（元）", "userPackageMonthlyPrice", "number")}
+        ${userPackageRequiredRow("折后价格", "userPackageDiscountPrice", "number")}
+        ${voiceRow}
+        ${userPackageRequiredRow("有效时长", "userPackageValidDays", "number")}
+        ${userPackageRequiredRow("赠送天数", "userPackageGiftDays", "number")}
+        ${userPackageRequiredRow("微信折合每月价格", "userPackageWechatMonthlyPrice", "number")}
+        ${userPackageRequiredRow("套餐描述", "userPackageDescription")}
+        ${userPackageRequiredRow("套餐排序", "userPackageSort", "number")}
+        <div class="modal-form-row">
+          <label class="modal-label" for="userPackageTag">套餐标签</label>
+          <input class="batch-select" id="userPackageTag" type="text" placeholder="请输入套餐标签" />
+        </div>
+        <div class="modal-form-row">
+          <label class="modal-label" for="userPackageRechargePolicy"><span class="required">*</span>充值策略</label>
+          <div class="user-package-select-wrap">
+            <select class="batch-select is-placeholder" id="userPackageRechargePolicy" data-user-package-required="充值策略">
+              <option value="" disabled hidden selected>请选择充值策略</option>
+              <option value="无">无</option>
+              <option value="仅限充值一次">仅限充值一次</option>
+            </select>
+            <button class="user-package-select-clear is-hidden" type="button" data-user-package-clear="userPackageRechargePolicy" aria-label="清空充值策略">×</button>
+          </div>
+        </div>
+        <div class="modal-form-row">
+          <label class="modal-label" for="userPackageRemark">备注</label>
+          <textarea class="batch-textarea tall" id="userPackageRemark" placeholder="请输入备注"></textarea>
+        </div>
+      `;
+
+      document.getElementById("userPackageTrafficType")?.addEventListener("change", syncUserPackageTrafficValue);
+      bindUserPackageSelectPlaceholder(document.getElementById("userPackageTrafficType"));
+      bindUserPackageSelectPlaceholder(document.getElementById("userPackageRechargePolicy"));
+      syncUserPackageTrafficValue();
+    }
+
+    function syncUserPackageTrafficValue() {
+      const trafficType = document.getElementById("userPackageTrafficType");
+      const trafficValue = document.getElementById("userPackageTrafficValue");
+      const trafficMultiplierRow = document.getElementById("userPackageTrafficMultiplierRow");
+      const trafficMultiplier = document.getElementById("userPackageTrafficMultiplier");
+      const flowLine = document.getElementById("userPackageFlowLine");
+      if (!trafficType || !trafficValue || !flowLine) return;
+      const fixed = trafficType.value === "固定流量";
+      flowLine.classList.toggle("has-fixed", fixed);
+      trafficValue.classList.toggle("is-hidden", !fixed);
+      if (trafficMultiplierRow) trafficMultiplierRow.classList.toggle("is-hidden", !fixed);
+      if (!fixed) {
+        trafficValue.value = "";
+        if (trafficMultiplier) trafficMultiplier.value = "";
+      } else if (trafficMultiplier && !trafficMultiplier.value) {
+        trafficMultiplier.value = "1";
+      }
+    }
+
+    function setUserPackageFormValue(id, value) {
+      const field = document.getElementById(id);
+      if (field) field.value = value && value !== "-" ? value : "";
+    }
+
+    function inferUserPackageTrafficType(row) {
+      if (!shouldRenderUserPackageTraffic(row.packageType)) return "";
+      if (row.trafficMb === "无限流量") return "无限流量";
+      if (row.trafficMb && row.trafficMb !== "-") return "固定流量";
+      return "";
+    }
+
+    function fillUserPackageCreateForm(row) {
+      if (!row) return;
+      userPackageCreateState.merchant = row.merchant || "";
+      const merchantTrigger = document.getElementById("userPackageMerchantTrigger");
+      document.getElementById("userPackageMerchantText").textContent = row.merchant || "请选择所属商户";
+      merchantTrigger.classList.toggle("placeholder", !row.merchant);
+
+      const packageTypeSelect = document.getElementById("userPackageCreateType");
+      packageTypeSelect.value = row.packageType || "";
+      syncUserPackageSelectPlaceholder(packageTypeSelect);
+      renderUserPackageCreateFields();
+
+      setUserPackageFormValue("userPackageName", row.packageName);
+      setUserPackageFormValue("userPackagePrice", row.price);
+      setUserPackageFormValue("userPackageMonthlyPrice", row.monthlyPrice);
+      setUserPackageFormValue("userPackageDiscountPrice", row.discountPrice);
+      setUserPackageFormValue("userPackageVoiceMinutes", row.voiceMinutes);
+      setUserPackageFormValue("userPackageValidDays", row.validDays);
+      setUserPackageFormValue("userPackageGiftDays", row.giftDays);
+      setUserPackageFormValue("userPackageWechatMonthlyPrice", row.wechatMonthlyPrice);
+      setUserPackageFormValue("userPackageDescription", row.description);
+      setUserPackageFormValue("userPackageSort", row.sort);
+      setUserPackageFormValue("userPackageTag", row.packageTag);
+      setUserPackageFormValue("userPackageRemark", row.remark);
+
+      const trafficType = document.getElementById("userPackageTrafficType");
+      if (trafficType) {
+        trafficType.value = inferUserPackageTrafficType(row);
+        syncUserPackageSelectPlaceholder(trafficType);
+        syncUserPackageTrafficValue();
+        if (trafficType.value === "固定流量") {
+          setUserPackageFormValue("userPackageTrafficValue", row.trafficMb);
+          setUserPackageFormValue("userPackageTrafficMultiplier", row.trafficUsageMultiplier || "1");
+        }
+      }
+
+      const rechargePolicy = document.getElementById("userPackageRechargePolicy");
+      if (rechargePolicy) {
+        rechargePolicy.value = row.rechargePolicy || "";
+        syncUserPackageSelectPlaceholder(rechargePolicy);
+      }
+    }
+
+    function userPackageDetailValue(value) {
+      if (value === undefined || value === null || value === "" || value === "-") return "--";
+      return value;
+    }
+
+    function renderUserPackageDetailItem(label, value) {
+      const labelHtml = label === "流量科学用量倍数" ? renderUserPackageTrafficMultiplierLabel() : escapeHtml(label);
+      return `
+        <div class="risk-detail-item">
+          <div class="risk-detail-label">${labelHtml}</div>
+          <div class="risk-detail-value">${escapeHtml(userPackageDetailValue(value))}</div>
+        </div>
+      `;
+    }
+
+    function renderUserPackageDetailPage() {
+      const body = document.getElementById("userPackageDetailBody");
+      if (!body) return;
+      const row = userPackageRows.find((item) => item.packageName === userPackageDetailState.packageName);
+      if (!row) {
+        body.innerHTML = '<section class="risk-form-section"><div class="risk-selected-empty">暂无用户套餐详情</div></section>';
+        return;
+      }
+
+      const trafficType = inferUserPackageTrafficType(row);
+      const trafficItems = shouldRenderUserPackageTraffic(row.packageType)
+        ? [
+            [userPackageTrafficLabel(row.packageType), trafficType],
+            ...(trafficType === "固定流量" ? [["流量值（MB）", row.trafficMb], ["流量科学用量倍数", row.trafficUsageMultiplier]] : [])
+          ]
+        : [];
+      const voiceItems = shouldRenderUserPackageVoice(row.packageType) ? [["语音分钟数", row.voiceMinutes]] : [];
+      const detailItems = [
+        ["所属商户", row.merchant],
+        ["套餐类型", row.packageType],
+        ["用户套餐名称", row.packageName],
+        ...trafficItems,
+        ["用户套餐价格（元）", row.price],
+        ["折合每月价格（元）", row.monthlyPrice],
+        ["折后价格", row.discountPrice],
+        ...voiceItems,
+        ["有效时长", row.validDays],
+        ["赠送天数", row.giftDays],
+        ["微信折合每月价格", row.wechatMonthlyPrice],
+        ["套餐描述", row.description],
+        ["套餐排序", row.sort],
+        ["套餐标签", row.packageTag],
+        ["充值策略", row.rechargePolicy],
+        ["备注", row.remark]
+      ];
+
+      body.innerHTML = `
+        <section class="risk-form-section" aria-label="用户套餐信息">
+          <div class="risk-section-title">用户套餐信息</div>
+          <div class="risk-detail-grid">
+            ${detailItems.map(([label, value]) => renderUserPackageDetailItem(label, value)).join("")}
+          </div>
+        </section>
+      `;
+    }
+
+    function openUserPackageDetailPage(packageName) {
+      const row = userPackageRows.find((item) => item.packageName === packageName);
+      if (!row) {
+        showToast("未找到用户套餐详情", "error");
+        return;
+      }
+      userPackageDetailState.packageName = packageName;
+      renderUserPackageDetailPage();
+      detailCrumbPage = "userPackageDetailPage";
+      ensureCrumb("userPackageDetailPage", "用户套餐详情");
+      showPageOnly("userPackageDetailPage");
+    }
+
+    function resetUserPackageCreateModal() {
+      userPackageCreateState.merchant = "";
+      userPackageCreateState.packageType = "";
+      userPackageCreateState.mode = "create";
+      userPackageCreateState.editPackageName = "";
+      document.getElementById("userPackageCreateTitle").textContent = "用户套餐新增";
+      const merchantTrigger = document.getElementById("userPackageMerchantTrigger");
+      document.getElementById("userPackageMerchantText").textContent = "请选择所属商户";
+      merchantTrigger.classList.add("placeholder");
+      document.getElementById("userPackageCreateType").value = "";
+      syncUserPackageSelectPlaceholder(document.getElementById("userPackageCreateType"));
+      renderUserPackageCreateFields();
+    }
+
+    function openUserPackageCreateModal() {
+      resetUserPackageCreateModal();
+      document.getElementById("userPackageCreateModal").classList.add("open");
+    }
+
+    function openUserPackageEditModal(packageName) {
+      const row = userPackageRows.find((item) => item.packageName === packageName);
+      if (!row) {
+        showToast("未找到可编辑的用户套餐", "error");
+        return;
+      }
+      resetUserPackageCreateModal();
+      userPackageCreateState.mode = "edit";
+      userPackageCreateState.editPackageName = packageName;
+      document.getElementById("userPackageCreateTitle").textContent = "用户套餐编辑";
+      fillUserPackageCreateForm(row);
+      document.getElementById("userPackageCreateModal").classList.add("open");
+    }
+
+    function closeUserPackageCreateModal() {
+      document.getElementById("userPackageCreateModal").classList.remove("open");
+    }
+
+    function openUserPackageMerchantModal() {
+      document.getElementById("userPackageMerchantModal").classList.add("open");
+    }
+
+    function closeUserPackageMerchantModal() {
+      document.getElementById("userPackageMerchantModal").classList.remove("open");
+    }
+
+    function currentDateTimeText() {
+      const now = new Date();
+      const pad = (value) => String(value).padStart(2, "0");
+      return `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+    }
+
+    function confirmUserPackageCreate() {
+      const packageType = document.getElementById("userPackageCreateType").value;
+      if (!userPackageCreateState.merchant) {
+        showToast("请选择所属商户", "error");
+        return;
+      }
+      if (!packageType) {
+        showToast("请选择套餐类型", "error");
+        return;
+      }
+
+      const requiredFields = Array.from(document.querySelectorAll("#userPackageCreateFields [data-user-package-required]"));
+      const missingField = requiredFields.find((field) => !field.value.trim());
+      if (missingField) {
+        showToast(`请输入${missingField.dataset.userPackageRequired}`, "error");
+        missingField.focus();
+        return;
+      }
+
+      const trafficType = document.getElementById("userPackageTrafficType")?.value || "";
+      const trafficValue = document.getElementById("userPackageTrafficValue")?.value.trim() || "";
+      const trafficMultiplier = document.getElementById("userPackageTrafficMultiplier")?.value.trim() || "";
+      if (trafficType === "固定流量" && !trafficValue) {
+        showToast("请输入流量值", "error");
+        document.getElementById("userPackageTrafficValue").focus();
+        return;
+      }
+      if (trafficType === "固定流量" && !trafficMultiplier) {
+        showToast("请输入流量科学用量倍数", "error");
+        document.getElementById("userPackageTrafficMultiplier").focus();
+        return;
+      }
+
+      const formPayload = {
+        packageName: document.getElementById("userPackageName").value.trim(),
+        packageType,
+        price: document.getElementById("userPackagePrice").value.trim(),
+        monthlyPrice: document.getElementById("userPackageMonthlyPrice").value.trim(),
+        discountPrice: document.getElementById("userPackageDiscountPrice").value.trim(),
+        giftDays: document.getElementById("userPackageGiftDays").value.trim(),
+        wechatMonthlyPrice: document.getElementById("userPackageWechatMonthlyPrice").value.trim(),
+        validDays: document.getElementById("userPackageValidDays").value.trim(),
+        voiceMinutes: shouldRenderUserPackageVoice(packageType) ? document.getElementById("userPackageVoiceMinutes").value.trim() : "-",
+        trafficMb: shouldRenderUserPackageTraffic(packageType) ? (trafficType === "固定流量" ? trafficValue : (trafficType || "-")) : "-",
+        trafficUsageMultiplier: trafficType === "固定流量" ? trafficMultiplier : "-",
+        merchant: userPackageCreateState.merchant,
+        description: document.getElementById("userPackageDescription").value.trim(),
+        sort: document.getElementById("userPackageSort").value.trim(),
+        packageTag: document.getElementById("userPackageTag").value.trim() || "-",
+        rechargePolicy: document.getElementById("userPackageRechargePolicy").value,
+        remark: document.getElementById("userPackageRemark").value.trim() || "-"
+      };
+
+      if (userPackageCreateState.mode === "edit") {
+        const editRow = userPackageRows.find((item) => item.packageName === userPackageCreateState.editPackageName);
+        if (!editRow) {
+          showToast("未找到可编辑的用户套餐", "error");
+          return;
+        }
+        Object.assign(editRow, formPayload);
+      } else {
+        userPackageRows.unshift({
+          ...formPayload,
+          wechatVisible: false,
+          status: "下架",
+          creator: "lifan",
+          createdAt: currentDateTimeText()
+        });
+      }
+      closeUserPackageCreateModal();
+      renderUserPackageTable();
+      renderUserPackagePager();
+      showToast(userPackageCreateState.mode === "edit" ? "用户套餐编辑已保存" : "用户套餐新增已保存", "success");
     }
 
     function renderChipGroupFilters() {
@@ -13897,6 +15789,428 @@
       `;
     }
 
+    function renderAccountOperationLogDateRangeControl() {
+      const config = accountOperationLogDateConfig;
+      return renderDateRangeField({
+        idPrefix: config.idPrefix,
+        label: config.label,
+        isOpen: accountOperationLogState[config.openKey],
+        start: accountOperationLogState.values[config.startKey] || "",
+        end: accountOperationLogState.values[config.endKey] || "",
+        draftStart: accountOperationLogState[config.draftStartKey],
+        draftEnd: accountOperationLogState[config.draftEndKey],
+        error: accountOperationLogState[config.errorKey],
+        viewMonth: accountOperationLogState[config.viewKey]
+      });
+    }
+
+    function renderAccountOperationLogFilters() {
+      accountOperationLogFilterWrap.innerHTML = "";
+      accountOperationLogFields.forEach((field) => {
+        const el = document.createElement("div");
+        el.className = "field";
+        el.dataset.key = field.key;
+
+        if (field.type === "select") {
+          const value = accountOperationLogState.values[field.key] || "";
+          el.innerHTML = `
+            <input class="control select-trigger ${value ? "has-value" : ""}" data-key="${field.key}" type="text" placeholder="${field.label}" value="${escapeHtml(value)}" autocomplete="off" />
+            ${value ? `<button class="select-clear" type="button" data-key="${field.key}" aria-label="清除${field.label}">×</button>` : ""}
+            ${iconChevron().replace('class="icon"', 'class="field-icon"')}
+            <div class="select-menu" data-menu="${field.key}">
+              <div class="select-options"></div>
+            </div>
+          `;
+          accountOperationLogFilterWrap.appendChild(el);
+          renderAccountOperationLogOptions(el, field, "");
+          return;
+        }
+
+        if (field.type === "daterange") {
+          el.className = "field writable-date-range";
+          el.innerHTML = renderAccountOperationLogDateRangeControl();
+          accountOperationLogFilterWrap.appendChild(el);
+          return;
+        }
+
+        const value = accountOperationLogState.values[field.key] || "";
+        el.innerHTML = `
+          <input class="control" data-key="${field.key}" type="text" placeholder="${field.label}" value="${escapeHtml(value)}" />
+        `;
+        accountOperationLogFilterWrap.appendChild(el);
+      });
+
+      const actions = document.createElement("div");
+      actions.className = "form-actions";
+      actions.innerHTML = `
+        <button class="btn search-btn" id="accountOperationLogSearchBtn" type="button">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="m21 21-4.3-4.3M11 19a8 8 0 1 1 0-16 8 8 0 0 1 0 16Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          搜索
+        </button>
+        <button class="btn secondary" id="accountOperationLogResetBtn" type="button">重置</button>
+      `;
+      accountOperationLogFilterWrap.appendChild(actions);
+      bindAccountOperationLogFilterEvents();
+    }
+
+    function renderAccountOperationLogOptions(fieldEl, field, keyword) {
+      const optionsEl = fieldEl.querySelector(".select-options");
+      const selected = accountOperationLogState.values[field.key] || "";
+      const options = field.options.filter((option) => option.includes(keyword.trim()));
+      optionsEl.innerHTML = options.length ? "" : '<div class="option empty">暂无匹配数据</div>';
+      options.forEach((option) => {
+        const node = document.createElement("div");
+        node.className = "option" + (selected === option ? " active" : "");
+        node.textContent = option;
+        node.dataset.value = option;
+        optionsEl.appendChild(node);
+      });
+    }
+
+    function bindAccountOperationLogFilterEvents() {
+      accountOperationLogFilterWrap.querySelectorAll(".control").forEach((input) => {
+        input.addEventListener("input", () => {
+          accountOperationLogState.values[input.dataset.key] = input.value;
+        });
+        input.addEventListener("blur", () => {
+          input.value = input.value.trim();
+          accountOperationLogState.values[input.dataset.key] = input.value;
+        });
+        input.addEventListener("keydown", (event) => {
+          if (event.key === "Enter") searchAccountOperationLogs();
+        });
+      });
+
+      accountOperationLogFilterWrap.querySelectorAll(".select-trigger").forEach((trigger) => {
+        const openMenu = () => {
+          closeAccountOperationLogMenus(trigger.dataset.key);
+          const field = accountOperationLogFields.find((item) => item.key === trigger.dataset.key);
+          renderAccountOperationLogOptions(trigger.closest(".field"), field, trigger.value);
+          trigger.classList.add("open");
+          accountOperationLogFilterWrap.querySelector(`[data-menu="${trigger.dataset.key}"]`).classList.add("open");
+        };
+        trigger.addEventListener("click", (event) => {
+          event.stopPropagation();
+          openMenu();
+        });
+        trigger.addEventListener("focus", openMenu);
+        trigger.addEventListener("input", openMenu);
+      });
+
+      accountOperationLogFilterWrap.querySelectorAll(".select-options").forEach((optionsEl) => {
+        optionsEl.addEventListener("click", (event) => {
+          const option = event.target.closest(".option");
+          if (!option || option.classList.contains("empty")) return;
+          accountOperationLogState.values[optionsEl.closest(".field").dataset.key] = option.dataset.value;
+          renderAccountOperationLogFilters();
+        });
+      });
+
+      accountOperationLogFilterWrap.querySelectorAll(".select-clear").forEach((button) => {
+        button.addEventListener("click", (event) => {
+          event.stopPropagation();
+          accountOperationLogState.values[button.dataset.key] = "";
+          closeAccountOperationLogMenus();
+          renderAccountOperationLogFilters();
+        });
+      });
+
+      const config = accountOperationLogDateConfig;
+      bindDateRangeField({
+        idPrefix: config.idPrefix,
+        label: config.label,
+        state: accountOperationLogState,
+        filterWrap: accountOperationLogFilterWrap,
+        render: renderAccountOperationLogFilters,
+        openKey: config.openKey,
+        valueStartKey: config.startKey,
+        valueEndKey: config.endKey,
+        draftStartKey: config.draftStartKey,
+        draftEndKey: config.draftEndKey,
+        errorKey: config.errorKey,
+        viewKey: config.viewKey,
+        onBeforeOpen: closeAccountOperationLogMenus
+      });
+
+      document.getElementById("accountOperationLogSearchBtn").addEventListener("click", searchAccountOperationLogs);
+      document.getElementById("accountOperationLogResetBtn").addEventListener("click", resetAccountOperationLogFilters);
+    }
+
+    function closeAccountOperationLogMenus(exceptKey) {
+      if (!accountOperationLogFilterWrap) return;
+      accountOperationLogFilterWrap.querySelectorAll(".select-menu").forEach((menu) => {
+        if (menu.dataset.menu !== exceptKey) menu.classList.remove("open");
+      });
+      accountOperationLogFilterWrap.querySelectorAll(".select-trigger").forEach((trigger) => {
+        if (trigger.dataset.key !== exceptKey) trigger.classList.remove("open");
+      });
+    }
+
+    function closeAccountOperationLogDateRange() {
+      const config = accountOperationLogDateConfig;
+      if (!accountOperationLogState[config.openKey]) return;
+      accountOperationLogState[config.openKey] = false;
+      accountOperationLogState[config.errorKey] = "";
+      renderAccountOperationLogFilters();
+    }
+
+    function validateAccountOperationLogDateRange() {
+      const config = accountOperationLogDateConfig;
+      return validateManualDateRange(accountOperationLogState.values[config.startKey], accountOperationLogState.values[config.endKey], config.label);
+    }
+
+    function clearAccountOperationLogDateRange() {
+      const config = accountOperationLogDateConfig;
+      accountOperationLogState.values[config.startKey] = "";
+      accountOperationLogState.values[config.endKey] = "";
+      accountOperationLogState[config.openKey] = false;
+      accountOperationLogState[config.draftStartKey] = "";
+      accountOperationLogState[config.draftEndKey] = "";
+      accountOperationLogState[config.errorKey] = "";
+      accountOperationLogState[config.viewKey] = "";
+    }
+
+    function searchAccountOperationLogs() {
+      const rangeError = validateAccountOperationLogDateRange();
+      if (rangeError) {
+        showToast(rangeError, "error");
+        return;
+      }
+      const activeCount = Object.values(accountOperationLogState.values).filter(Boolean).length;
+      showToast(activeCount ? "账户操作日志已按查询条件刷新" : "已查询全部账户操作日志", "success");
+      renderAccountOperationLogFilters();
+    }
+
+    function resetAccountOperationLogFilters() {
+      accountOperationLogState.values = {};
+      clearAccountOperationLogDateRange();
+      renderAccountOperationLogFilters();
+      showToast("账户操作日志查询条件已清空", "info");
+    }
+
+    function renderAccountOperationLogStatus(value) {
+      const statusClass = value === "成功" ? "status-positive" : value === "失败" ? "status-negative" : "status-neutral";
+      return `<span class="status-text ${statusClass}">${escapeHtml(value || "-")}</span>`;
+    }
+
+    function renderAccountOperationLogValue(value, column, row, index) {
+      if (column.key === "index") return String(index + 1);
+      if (column.key === "operationResult") return renderAccountOperationLogStatus(value);
+      const identifierCell = renderIdentifierCell(value, column);
+      if (identifierCell !== null) return identifierCell;
+      return escapeHtml(value || "-");
+    }
+
+    function renderAccountOperationLogTable() {
+      const header = document.getElementById("accountOperationLogTableHeader");
+      const body = document.getElementById("accountOperationLogTableBody");
+      header.innerHTML = accountOperationLogColumns.map((column) => `<th>${column.label}</th>`).join("");
+      body.innerHTML = accountOperationLogRows.length
+        ? accountOperationLogRows.map((row, index) => `
+            <tr>
+              ${accountOperationLogColumns.map((column) => `<td>${renderAccountOperationLogValue(row[column.key], column, row, index)}</td>`).join("")}
+            </tr>
+          `).join("")
+        : `<tr><td colspan="${accountOperationLogColumns.length}" style="text-align:center;color:#6b7280;">暂无数据</td></tr>`;
+    }
+
+    function renderAccountOperationLogPager() {
+      document.getElementById("accountOperationLogPager").innerHTML = `
+        <span>共 ${accountOperationLogRows.length} 条</span>
+        <button class="page-btn" type="button">‹</button>
+        <button class="page-btn active" type="button">1</button>
+        <button class="page-btn" type="button">›</button>
+      `;
+    }
+
+    function appendAccountOperationServiceLog(row = {}, serviceKey = "data", enabled = false) {
+      const serviceName = serviceKey === "voice" ? "语音服务" : "数据服务";
+      const actionName = enabled ? "开启" : "关闭";
+      const operationTime = row[simDetailServiceTimeField(serviceKey)] || currentDateTimeText();
+      accountOperationLogRows.unshift({
+        iccid: row.iccid || "-",
+        msisdn: row.msisdn || "-",
+        operator: row.operator || "-",
+        supplier: row.supplier || "-",
+        businessType: `${serviceName}${actionName}`,
+        operationUser: row[simDetailServiceOperatorField(serviceKey)] || currentOperatorName(),
+        operationTime,
+        operationResult: "成功",
+        remark: `SIM卡详情页${serviceName}${actionName}`
+      });
+      if (document.getElementById("accountOperationLogPage")?.classList.contains("active")) {
+        renderAccountOperationLogTable();
+        renderAccountOperationLogPager();
+      }
+    }
+
+    function renderBatchTaskFilters() {
+      batchTaskFilterWrap.innerHTML = "";
+      batchTaskFields.forEach((field) => {
+        const el = document.createElement("div");
+        el.className = "field";
+        el.dataset.key = field.key;
+        const value = batchTaskState.values[field.key] || "";
+        el.innerHTML = `
+          <input class="control select-trigger ${value ? "has-value" : ""}" data-key="${field.key}" type="text" placeholder="${field.label}" value="${escapeHtml(value)}" autocomplete="off" />
+          ${value ? `<button class="select-clear" type="button" data-key="${field.key}" aria-label="清除${field.label}">×</button>` : ""}
+          ${iconChevron().replace('class="icon"', 'class="field-icon"')}
+          <div class="select-menu" data-menu="${field.key}">
+            <div class="select-options"></div>
+          </div>
+        `;
+        batchTaskFilterWrap.appendChild(el);
+        renderBatchTaskOptions(el, field, "");
+      });
+
+      const actions = document.createElement("div");
+      actions.className = "form-actions";
+      actions.innerHTML = `
+        <button class="btn search-btn" id="batchTaskSearchBtn" type="button">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="m21 21-4.3-4.3M11 19a8 8 0 1 1 0-16 8 8 0 0 1 0 16Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          搜索
+        </button>
+        <button class="btn secondary" id="batchTaskResetBtn" type="button">重置</button>
+      `;
+      batchTaskFilterWrap.appendChild(actions);
+      bindBatchTaskFilterEvents();
+    }
+
+    function renderBatchTaskOptions(fieldEl, field, keyword) {
+      const optionsEl = fieldEl.querySelector(".select-options");
+      const selected = batchTaskState.values[field.key] || "";
+      const options = field.options.filter((option) => option.includes(keyword.trim()));
+      optionsEl.innerHTML = options.length ? "" : '<div class="option empty">暂无匹配数据</div>';
+      options.forEach((option) => {
+        const node = document.createElement("div");
+        node.className = "option" + (selected === option ? " active" : "");
+        node.textContent = option;
+        node.dataset.value = option;
+        optionsEl.appendChild(node);
+      });
+    }
+
+    function bindBatchTaskFilterEvents() {
+      batchTaskFilterWrap.querySelectorAll(".control").forEach((input) => {
+        input.addEventListener("input", () => {
+          batchTaskState.values[input.dataset.key] = input.value;
+        });
+        input.addEventListener("blur", () => {
+          input.value = input.value.trim();
+          batchTaskState.values[input.dataset.key] = input.value;
+        });
+        input.addEventListener("keydown", (event) => {
+          if (event.key === "Enter") searchBatchTasks();
+        });
+      });
+
+      batchTaskFilterWrap.querySelectorAll(".select-trigger").forEach((trigger) => {
+        const openMenu = () => {
+          closeBatchTaskMenus(trigger.dataset.key);
+          const field = batchTaskFields.find((item) => item.key === trigger.dataset.key);
+          renderBatchTaskOptions(trigger.closest(".field"), field, trigger.value);
+          trigger.classList.add("open");
+          batchTaskFilterWrap.querySelector(`[data-menu="${trigger.dataset.key}"]`).classList.add("open");
+        };
+        trigger.addEventListener("click", (event) => {
+          event.stopPropagation();
+          openMenu();
+        });
+        trigger.addEventListener("focus", openMenu);
+        trigger.addEventListener("input", openMenu);
+      });
+
+      batchTaskFilterWrap.querySelectorAll(".select-options").forEach((optionsEl) => {
+        optionsEl.addEventListener("click", (event) => {
+          const option = event.target.closest(".option");
+          if (!option || option.classList.contains("empty")) return;
+          batchTaskState.values[optionsEl.closest(".field").dataset.key] = option.dataset.value;
+          renderBatchTaskFilters();
+        });
+      });
+
+      batchTaskFilterWrap.querySelectorAll(".select-clear").forEach((button) => {
+        button.addEventListener("click", (event) => {
+          event.stopPropagation();
+          batchTaskState.values[button.dataset.key] = "";
+          closeBatchTaskMenus();
+          renderBatchTaskFilters();
+        });
+      });
+
+      document.getElementById("batchTaskSearchBtn").addEventListener("click", searchBatchTasks);
+      document.getElementById("batchTaskResetBtn").addEventListener("click", resetBatchTaskFilters);
+    }
+
+    function closeBatchTaskMenus(exceptKey) {
+      if (!batchTaskFilterWrap) return;
+      batchTaskFilterWrap.querySelectorAll(".select-menu").forEach((menu) => {
+        if (menu.dataset.menu !== exceptKey) menu.classList.remove("open");
+      });
+      batchTaskFilterWrap.querySelectorAll(".select-trigger").forEach((trigger) => {
+        if (trigger.dataset.key !== exceptKey) trigger.classList.remove("open");
+      });
+    }
+
+    function searchBatchTasks() {
+      const activeCount = Object.values(batchTaskState.values).filter(Boolean).length;
+      showToast(activeCount ? "批量任务已按查询条件刷新" : "已查询全部批量任务", "success");
+      renderBatchTaskFilters();
+    }
+
+    function resetBatchTaskFilters() {
+      batchTaskState.values = {};
+      renderBatchTaskFilters();
+      showToast("批量任务查询条件已清空", "info");
+    }
+
+    function renderBatchTaskStatus(value) {
+      const statusClass = value === "成功" ? "status-positive" : value === "失败" ? "status-negative" : "status-neutral";
+      return `<span class="status-text ${statusClass}">${escapeHtml(value || "-")}</span>`;
+    }
+
+    function renderBatchTaskAction(row) {
+      return `<button class="link-text batch-task-download-btn" type="button" data-task-id="${escapeHtml(row.id || "")}">下载</button>`;
+    }
+
+    function renderBatchTaskValue(value, column, row, index) {
+      if (column.key === "id") return String(index + 1);
+      if (column.key === "status") return renderBatchTaskStatus(value);
+      if (column.key === "action") return renderBatchTaskAction(row);
+      return escapeHtml(value || "-");
+    }
+
+    function renderBatchTaskTable() {
+      const header = document.getElementById("batchTaskTableHeader");
+      const body = document.getElementById("batchTaskTableBody");
+      header.innerHTML = batchTaskColumns.map((column) => `<th class="${column.fixedRight ? "operation-col" : ""}">${column.label}</th>`).join("");
+      body.innerHTML = batchTaskRows.length
+        ? batchTaskRows.map((row, index) => `
+            <tr>
+              ${batchTaskColumns.map((column) => `<td class="${column.fixedRight ? "operation-col" : ""}">${renderBatchTaskValue(row[column.key], column, row, index)}</td>`).join("")}
+            </tr>
+          `).join("")
+        : `<tr><td colspan="${batchTaskColumns.length}" style="text-align:center;color:#6b7280;">暂无数据</td></tr>`;
+      body.querySelectorAll(".batch-task-download-btn").forEach((button) => {
+        button.addEventListener("click", () => {
+          showToast(`${button.dataset.taskId} 任务结果已下载`, "success");
+        });
+      });
+    }
+
+    function renderBatchTaskPager() {
+      document.getElementById("batchTaskPager").innerHTML = `
+        <span>共 ${batchTaskRows.length} 条</span>
+        <button class="page-btn" type="button">‹</button>
+        <button class="page-btn active" type="button">1</button>
+        <button class="page-btn" type="button">›</button>
+      `;
+    }
+
     function renderChipFilters() {
       chipFilterWrap.innerHTML = "";
       const visibleFields = chipState.expanded
@@ -13905,7 +16219,7 @@
 
       visibleFields.forEach((field) => {
         const el = document.createElement("div");
-        el.className = "field";
+        el.className = "field" + (field.wide ? " wide" : "");
         el.dataset.key = field.key;
 
         if (field.type === "select") {
@@ -13958,8 +16272,11 @@
           return;
         }
 
+        const inputPlaceholder = field.batch
+          ? `${field.label}（支持批量输入，最多100个，逗号分隔）`
+          : field.label;
         el.innerHTML = `
-          <input class="control" data-key="${field.key}" type="text" placeholder="${field.label}" value="${chipState.values[field.key] || ""}" />
+          <input class="control" data-key="${field.key}" type="text" placeholder="${inputPlaceholder}" value="${chipState.values[field.key] || ""}" />
         `;
         chipFilterWrap.appendChild(el);
       });
@@ -14081,6 +16398,11 @@
     }
 
     function searchChips() {
+      const eidBatchError = validateChipEidBatch();
+      if (eidBatchError) {
+        showToast(eidBatchError, "error");
+        return;
+      }
       const rangeError = validateManualDateRange(chipState.values.importStart, chipState.values.importEnd, "导入时间");
       if (rangeError) {
         showToast(rangeError, "error");
@@ -14089,6 +16411,14 @@
       const activeCount = Object.values(chipState.values).filter(Boolean).length;
       showToast(activeCount ? "ESIM芯片列表已按查询条件刷新" : "已查询全部ESIM芯片", "success");
       renderChipFilters();
+    }
+
+    function validateChipEidBatch() {
+      const value = String(chipState.values.eid || "").trim();
+      if (!value) return "";
+      const values = value.split(/[，,]/).map((item) => item.trim()).filter(Boolean);
+      if (values.length > 100) return "EID最多支持同时查询100个号码，请调整后重试";
+      return "";
     }
 
     function resetChipFilters() {
@@ -14136,7 +16466,7 @@
       if (chipState.activeTab === "allocationRecords") {
         return chipOperationRecordFields.filter((field) => !["operationType", "supplier"].includes(field.key));
       }
-      return chipOperationRecordFields.filter((field) => !["supplier", "merchant", "chipGroup", "peerAllocate"].includes(field.key));
+      return chipOperationRecordFields.filter((field) => !["supplier", "merchant", "agent", "chipGroup", "peerAllocate"].includes(field.key));
     }
 
     function renderChipOperationFilters() {
@@ -14314,11 +16644,12 @@
         const matchBatch = values.batchNo ? row.batchNo.includes(values.batchNo.trim()) : true;
         const matchSupplier = visibleFieldKeys.has("supplier") && values.supplier ? row.supplier === values.supplier : true;
         const matchMerchant = visibleFieldKeys.has("merchant") && values.merchant ? row.merchant === values.merchant : true;
+        const matchAgent = visibleFieldKeys.has("agent") && values.agent ? row.agent === values.agent : true;
         const matchChipGroup = visibleFieldKeys.has("chipGroup") && values.chipGroup ? row.chipGroup === values.chipGroup : true;
         const matchPeerAllocate = visibleFieldKeys.has("peerAllocate") && values.peerAllocate ? row.peerAllocate === values.peerAllocate : true;
         const matchStatus = values.status ? row.status === values.status : true;
         const matchTime = isDateTextInRange(row.operationTime, values.operationStart, values.operationEnd);
-        return matchType && matchOperationType && matchBatch && matchSupplier && matchMerchant && matchChipGroup && matchPeerAllocate && matchStatus && matchTime;
+        return matchType && matchOperationType && matchBatch && matchSupplier && matchMerchant && matchAgent && matchChipGroup && matchPeerAllocate && matchStatus && matchTime;
       });
     }
 
@@ -14353,7 +16684,7 @@
 
     function currentChipOperationColumns() {
       if (chipState.activeTab !== "allocationRecords") {
-        return chipOperationRecordColumns.filter((column) => !["merchant", "chipGroup", "peerAllocate"].includes(column.key));
+        return chipOperationRecordColumns.filter((column) => !["merchant", "agent", "chipGroup", "peerAllocate"].includes(column.key));
       }
       return chipOperationRecordColumns.filter((column) => column.key !== "operationType");
     }
@@ -14374,7 +16705,7 @@
       const body = document.getElementById("chipOperationTableBody");
       const rowsToRender = filteredChipOperationRows();
       const columns = currentChipOperationColumns();
-      header.innerHTML = columns.map((column) => `<th>${column.label}</th>`).join("");
+      header.innerHTML = columns.map((column) => `<th>${renderTableHeaderCell(column)}</th>`).join("");
       body.innerHTML = rowsToRender.length
         ? rowsToRender.map((row) => `
             <tr>
@@ -14496,7 +16827,7 @@
       const header = document.getElementById("chipTableHeader");
       const body = document.getElementById("chipTableBody");
       header.innerHTML = chipTableColumns.map((column) => `
-        <th class="${column.fixedRight ? "operation-col" : ""}">${column.label}</th>
+        <th class="${column.fixedRight ? "operation-col" : ""}">${renderTableHeaderCell(column)}</th>
       `).join("");
       body.innerHTML = chipRows.length
         ? chipRows.map((row) => `
@@ -17803,8 +20134,10 @@
     function renderTableHeaderCell(column) {
       if (!column.tip) return column.label;
       const tipContent = column.tipHtml || escapeHtml(column.tip);
+      const tipClass = column.tipAlign === "left" ? " align-left" : "";
+      const tipStyle = column.tipArrowLeft ? ` style="--tip-arrow-left: ${column.tipArrowLeft}px;"` : "";
       return `
-        <span class="th-with-tip">
+        <span class="th-with-tip table-header-tip${tipClass}"${tipStyle}>
           <span>${column.label}</span>
           <span class="header-tip-icon" tabindex="0" aria-label="${escapeHtml(column.tip)}">!</span>
           <span class="header-tip-popup" role="tooltip">${tipContent}</span>
@@ -18394,11 +20727,17 @@
 
     function setSidebarSelected(pageId) {
       document.getElementById("simNavItem").classList.remove("active");
+      document.getElementById("operationNavItem").classList.remove("active");
+      document.getElementById("packageNavItem").classList.remove("active");
       document.getElementById("esimNavItem").classList.remove("active");
       document.getElementById("riskNavItem").classList.remove("active");
       document.getElementById("afterSaleNavItem").classList.remove("active");
+      document.getElementById("logNavItem").classList.remove("active");
+      document.getElementById("taskNavItem").classList.remove("active");
       document.getElementById("abTestStatsNavItem").classList.toggle("active", pageId === "abTestStatsPage");
       document.getElementById("simCardSubItem").classList.toggle("active", pageId === "simCardPage");
+      document.getElementById("smartDiagnosisSubItem").classList.toggle("active", pageId === "smartDiagnosisPage");
+      document.getElementById("userPackageSubItem").classList.toggle("active", pageId === "userPackagePage" || pageId === "userPackageDetailPage");
       const inRecycleModule = pageId === "recyclePage" || pageId === "recordPage";
       document.getElementById("recycleSubItem").classList.toggle("active", inRecycleModule);
       document.getElementById("writableSubItem").classList.toggle("active", pageId === "writablePage" || pageId === "manageDisableDetailPage");
@@ -18412,6 +20751,8 @@
       document.getElementById("riskTriggerLogSubItem").classList.toggle("active", pageId === "riskTriggerLogPage");
       document.getElementById("riskStopChangeRecordSubItem").classList.toggle("active", pageId === "riskStopChangeRecordPage");
       document.getElementById("refundWorkOrderSubItem").classList.toggle("active", pageId === "refundWorkOrderPage");
+      document.getElementById("accountOperationLogSubItem").classList.toggle("active", pageId === "accountOperationLogPage");
+      document.getElementById("batchTaskSubItem").classList.toggle("active", pageId === "batchTaskPage");
     }
 
     function setEsimMenuExpanded(expanded) {
@@ -18426,6 +20767,18 @@
       document.getElementById("simMenuToggle").setAttribute("aria-expanded", String(expanded));
     }
 
+    function setOperationMenuExpanded(expanded) {
+      document.getElementById("operationNavItem").classList.toggle("collapsed", !expanded);
+      document.getElementById("operationSubMenu").classList.toggle("collapsed", !expanded);
+      document.getElementById("operationMenuToggle").setAttribute("aria-expanded", String(expanded));
+    }
+
+    function setPackageMenuExpanded(expanded) {
+      document.getElementById("packageNavItem").classList.toggle("collapsed", !expanded);
+      document.getElementById("packageSubMenu").classList.toggle("collapsed", !expanded);
+      document.getElementById("packageMenuToggle").setAttribute("aria-expanded", String(expanded));
+    }
+
     function setRiskMenuExpanded(expanded) {
       document.getElementById("riskNavItem").classList.toggle("collapsed", !expanded);
       document.getElementById("riskSubMenu").classList.toggle("collapsed", !expanded);
@@ -18438,8 +20791,23 @@
       document.getElementById("afterSaleMenuToggle").setAttribute("aria-expanded", String(expanded));
     }
 
+    function setLogMenuExpanded(expanded) {
+      document.getElementById("logNavItem").classList.toggle("collapsed", !expanded);
+      document.getElementById("logSubMenu").classList.toggle("collapsed", !expanded);
+      document.getElementById("logMenuToggle").setAttribute("aria-expanded", String(expanded));
+    }
+
+    function setTaskMenuExpanded(expanded) {
+      document.getElementById("taskNavItem").classList.toggle("collapsed", !expanded);
+      document.getElementById("taskSubMenu").classList.toggle("collapsed", !expanded);
+      document.getElementById("taskMenuToggle").setAttribute("aria-expanded", String(expanded));
+    }
+
     const pageLabelMap = {
       simCardPage: "SIM卡管理",
+      smartDiagnosisPage: "智能诊断",
+      userPackagePage: "用户套餐管理",
+      userPackageDetailPage: "用户套餐详情",
       esimChipGroupPage: "ESIM芯片组管理",
       esimChipPage: "ESIM芯片管理",
       esimChipSnPage: "ESIM芯片SN生成",
@@ -18461,9 +20829,11 @@
       riskStrategyDetailPage: "风险防控策略详情",
       riskTriggerLogPage: "风险防控触发日志",
       riskStopChangeRecordPage: "风险管理停机状态变更记录",
-      refundWorkOrderPage: "退费工单"
+      refundWorkOrderPage: "退费工单",
+      accountOperationLogPage: "账户操作日志",
+      batchTaskPage: "批量任务"
     };
-    const detailPageIds = new Set(["batchDetailPage", "chipBatchDetailPage", "simDetailPage", "esimChipDetailPage", "writableResourcePoolDetailPage", "manageDisableDetailPage"]);
+    const detailPageIds = new Set(["batchDetailPage", "chipBatchDetailPage", "simDetailPage", "esimChipDetailPage", "writableResourcePoolDetailPage", "manageDisableDetailPage", "userPackageDetailPage"]);
     let openCrumbs = [];
     let activeCrumbPage = "esimChipPage";
     let detailCrumbPage = "batchDetailPage";
@@ -18527,7 +20897,7 @@
     }
 
     function closeDetailCrumb() {
-      const activeDetailPage = ["esimChipDetailPage", "simDetailPage", "chipBatchDetailPage", "batchDetailPage", "writableResourcePoolDetailPage", "manageDisableDetailPage"]
+      const activeDetailPage = ["esimChipDetailPage", "simDetailPage", "chipBatchDetailPage", "batchDetailPage", "writableResourcePoolDetailPage", "manageDisableDetailPage", "userPackageDetailPage"]
         .find((pageId) => document.getElementById(pageId).classList.contains("active"));
       if (activeDetailPage) closeCrumbPage(activeDetailPage);
     }
@@ -18535,11 +20905,15 @@
     function switchBusinessPage(pageId) {
       document.getElementById("pageContent").classList.remove("detail-mode");
       document.getElementById("pageContent").classList.toggle("sim-mode", pageId === "simCardPage");
+      document.getElementById("pageContent").classList.toggle("smart-mode", pageId === "smartDiagnosisPage");
+      document.getElementById("pageContent").classList.toggle("package-mode", pageId === "userPackagePage");
       document.getElementById("pageContent").classList.toggle("chip-mode", pageId === "esimChipGroupPage" || pageId === "esimChipPage" || pageId === "esimChipSnPage" || pageId === "esimWriteApplyPage" || pageId === "esimOrderPage" || pageId === "writableResourcePoolPage");
       document.getElementById("pageContent").classList.toggle("writable-mode", pageId === "writablePage");
       document.getElementById("pageContent").classList.toggle("ab-mode", pageId === "abTestStatsPage");
       document.getElementById("pageContent").classList.toggle("risk-mode", pageId === "riskStrategyPage" || pageId === "riskStrategyCreatePage" || pageId === "riskStrategyDetailPage" || pageId === "riskTriggerLogPage" || pageId === "riskStopChangeRecordPage");
       document.getElementById("pageContent").classList.toggle("refund-mode", pageId === "refundWorkOrderPage");
+      document.getElementById("pageContent").classList.toggle("log-mode", pageId === "accountOperationLogPage");
+      document.getElementById("pageContent").classList.toggle("task-mode", pageId === "batchTaskPage");
       setSidebarSelected(pageId);
       ensureCrumb(pageId);
       activeCrumbPage = pageId;
@@ -18551,6 +20925,12 @@
           renderSimCardTable();
           renderSimCardPager();
         }
+      }
+      if (pageId === "smartDiagnosisPage") renderSmartDiagnosisPage();
+      if (pageId === "userPackagePage") {
+        renderUserPackageFilters();
+        renderUserPackageTable();
+        renderUserPackagePager();
       }
       if (pageId === "esimChipPage") renderChipPageTabs();
       if (pageId === "esimChipSnPage") {
@@ -18590,6 +20970,16 @@
         renderRefundWorkOrderTable();
         renderRefundWorkOrderPager();
       }
+      if (pageId === "accountOperationLogPage") {
+        renderAccountOperationLogFilters();
+        renderAccountOperationLogTable();
+        renderAccountOperationLogPager();
+      }
+      if (pageId === "batchTaskPage") {
+        renderBatchTaskFilters();
+        renderBatchTaskTable();
+        renderBatchTaskPager();
+      }
       if (pageId === "writablePage") {
         renderWritablePageTabs();
         if (writableState.activeTab === "changeRecords") renderWritableChangeRecordPage();
@@ -18605,16 +20995,21 @@
       document.querySelectorAll(".page-view").forEach((page) => {
         page.classList.toggle("active", page.id === pageId);
       });
+      if (pageId === "userPackageDetailPage") renderUserPackageDetailPage();
     }
 
     function showPageOnly(pageId) {
       document.getElementById("pageContent").classList.add("detail-mode");
       document.getElementById("pageContent").classList.remove("sim-mode");
+      document.getElementById("pageContent").classList.remove("smart-mode");
+      document.getElementById("pageContent").classList.remove("package-mode");
       document.getElementById("pageContent").classList.remove("chip-mode");
       document.getElementById("pageContent").classList.remove("writable-mode");
       document.getElementById("pageContent").classList.remove("ab-mode");
       document.getElementById("pageContent").classList.remove("risk-mode");
-      setSidebarSelected(["writableResourcePoolDetailPage", "manageDisableDetailPage"].includes(pageId) ? pageId : null);
+      document.getElementById("pageContent").classList.remove("log-mode");
+      document.getElementById("pageContent").classList.remove("task-mode");
+      setSidebarSelected(["writableResourcePoolDetailPage", "manageDisableDetailPage", "userPackageDetailPage"].includes(pageId) ? pageId : null);
       ensureCrumb(pageId);
       activeCrumbPage = pageId;
       renderCrumbs();
@@ -18624,6 +21019,7 @@
       document.querySelectorAll(".page-view").forEach((page) => {
         page.classList.toggle("active", page.id === pageId);
       });
+      if (pageId === "userPackageDetailPage") renderUserPackageDetailPage();
     }
 
     function closeCheckRecordModal() {
@@ -18691,8 +21087,72 @@
       return escapeHtml(text);
     }
 
-    function renderSimDetailSwitch(enabled = false) {
-      return `<span class="sim-detail-switch" aria-label="${enabled ? "开启" : "关闭"}"></span>`;
+    function simDetailServiceField(serviceKey) {
+      return serviceKey === "voice" ? "voiceServiceEnabled" : "dataServiceEnabled";
+    }
+
+    function simDetailServiceOperatorField(serviceKey) {
+      return serviceKey === "voice" ? "voiceServiceOperator" : "dataServiceOperator";
+    }
+
+    function simDetailServiceTimeField(serviceKey) {
+      return serviceKey === "voice" ? "voiceServiceOperateTime" : "dataServiceOperateTime";
+    }
+
+    function simDetailServiceLabel(serviceKey) {
+      return serviceKey === "voice" ? "语音服务状态" : "数据服务状态";
+    }
+
+    function currentOperatorName() {
+      return document.querySelector(".user span")?.textContent.trim() || "lifan";
+    }
+
+    function renderSimDetailServiceMeta(row = {}, serviceKey = "data") {
+      const enabled = Boolean(row[simDetailServiceField(serviceKey)]);
+      const operator = row[simDetailServiceOperatorField(serviceKey)] || "--";
+      const time = row[simDetailServiceTimeField(serviceKey)] || "--";
+      return `操作人：${escapeHtml(operator)}　${enabled ? "开启时间" : "关闭时间"}：${escapeHtml(time)}`;
+    }
+
+    function renderSimDetailSwitch(row = {}, serviceKey = "data") {
+      const enabled = Boolean(row[simDetailServiceField(serviceKey)]);
+      const label = simDetailServiceLabel(serviceKey);
+      return `
+        <span class="sim-detail-service-control">
+          <button
+            class="sim-detail-switch ${enabled ? "active" : ""}"
+            type="button"
+            data-sim-detail-switch="${escapeHtml(serviceKey)}"
+            data-iccid="${escapeHtml(row.iccid || "")}"
+            aria-label="${escapeHtml(label)}：${enabled ? "开启" : "关闭"}"
+            aria-pressed="${enabled ? "true" : "false"}">
+          </button>
+          <span class="sim-detail-service-meta">${renderSimDetailServiceMeta(row, serviceKey)}</span>
+        </span>
+      `;
+    }
+
+    function bindSimDetailSwitches(container) {
+      container.querySelectorAll("[data-sim-detail-switch]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const row = writableRows.find((item) => item.iccid === button.dataset.iccid);
+          if (!row) return;
+          const serviceKey = button.dataset.simDetailSwitch;
+          const field = simDetailServiceField(serviceKey);
+          const operatorField = simDetailServiceOperatorField(serviceKey);
+          const timeField = simDetailServiceTimeField(serviceKey);
+          row[field] = !Boolean(row[field]);
+          row[operatorField] = currentOperatorName();
+          row[timeField] = currentDateTimeText();
+          button.classList.toggle("active", row[field]);
+          button.setAttribute("aria-pressed", row[field] ? "true" : "false");
+          button.setAttribute("aria-label", `${simDetailServiceLabel(serviceKey)}：${row[field] ? "开启" : "关闭"}`);
+          const meta = button.closest(".sim-detail-service-control")?.querySelector(".sim-detail-service-meta");
+          if (meta) meta.innerHTML = renderSimDetailServiceMeta(row, serviceKey);
+          appendAccountOperationServiceLog(row, serviceKey, row[field]);
+          showToast(`${simDetailServiceLabel(serviceKey)}已${row[field] ? "开启" : "关闭"}`, "success");
+        });
+      });
     }
 
     function isSimOperatorStatusNegative(status) {
@@ -19000,7 +21460,7 @@
         [
           { label: "绑定时间", value: row.bindTime },
           { label: "实名状态", value: renderSimDetailStatus(row.realNameStatus), html: true },
-          { label: "数据服务状态", value: renderSimDetailSwitch(false), html: true }
+          { label: "数据服务状态", value: renderSimDetailSwitch(row, "data"), html: true }
         ],
         [
           { label: "激活时间", value: row.cardStatus === "已激活" ? row.importTime : "-" },
@@ -19015,7 +21475,7 @@
         [
           { label: "物联卡管理停复机冻结状态", value: row.freezeStatus || "-" },
           { label: "本月实际语音用量(分钟)", value: "0" },
-          { label: "语音服务状态", value: renderSimDetailSwitch(false), html: true }
+          { label: "语音服务状态", value: renderSimDetailSwitch(row, "voice"), html: true }
         ]
       ];
 
@@ -19062,6 +21522,7 @@
           if (button.dataset.simDetailTab !== "设备信息") showToast(`${button.dataset.simDetailTab}页面暂未设计`, "info");
         });
       });
+      bindSimDetailSwitches(body);
     }
 
     function openSimDetailPage(iccid) {
@@ -19110,6 +21571,7 @@
       }
       closeSimCardMenus();
       closeSimCardDateRanges();
+      closeUserPackageMenus();
       closeChipGroupMenus();
       closeChipMenus();
       closeChipDateRange();
@@ -19137,6 +21599,9 @@
       closeOrderDateRange();
       closeRefundWorkOrderMenus();
       closeRefundWorkOrderDateRanges();
+      closeAccountOperationLogMenus();
+      closeAccountOperationLogDateRange();
+      closeBatchTaskMenus();
       closeChipLogMenus();
       closeAbPurchaseDateRange();
       closeMenus();
@@ -19169,6 +21634,16 @@
       setSimMenuExpanded(!expanded);
     }
 
+    function toggleOperationMenu() {
+      const expanded = document.getElementById("operationMenuToggle").getAttribute("aria-expanded") === "true";
+      setOperationMenuExpanded(!expanded);
+    }
+
+    function togglePackageMenu() {
+      const expanded = document.getElementById("packageMenuToggle").getAttribute("aria-expanded") === "true";
+      setPackageMenuExpanded(!expanded);
+    }
+
     function toggleRiskMenu() {
       const expanded = document.getElementById("riskMenuToggle").getAttribute("aria-expanded") === "true";
       setRiskMenuExpanded(!expanded);
@@ -19177,6 +21652,16 @@
     function toggleAfterSaleMenu() {
       const expanded = document.getElementById("afterSaleMenuToggle").getAttribute("aria-expanded") === "true";
       setAfterSaleMenuExpanded(!expanded);
+    }
+
+    function toggleLogMenu() {
+      const expanded = document.getElementById("logMenuToggle").getAttribute("aria-expanded") === "true";
+      setLogMenuExpanded(!expanded);
+    }
+
+    function toggleTaskMenu() {
+      const expanded = document.getElementById("taskMenuToggle").getAttribute("aria-expanded") === "true";
+      setTaskMenuExpanded(!expanded);
     }
 
     function bindNavMenuToggle(navId, toggleHandler) {
@@ -19190,9 +21675,13 @@
     }
 
     bindNavMenuToggle("simNavItem", toggleSimMenu);
+    bindNavMenuToggle("operationNavItem", toggleOperationMenu);
+    bindNavMenuToggle("packageNavItem", togglePackageMenu);
     bindNavMenuToggle("esimNavItem", toggleEsimMenu);
     bindNavMenuToggle("riskNavItem", toggleRiskMenu);
     bindNavMenuToggle("afterSaleNavItem", toggleAfterSaleMenu);
+    bindNavMenuToggle("logNavItem", toggleLogMenu);
+    bindNavMenuToggle("taskNavItem", toggleTaskMenu);
     document.getElementById("crumbTabs").addEventListener("click", (event) => {
       const closeButton = event.target.closest("[data-close-page]");
       if (closeButton) {
@@ -19360,8 +21849,33 @@
     document.getElementById("refundWorkOrderCreateBtn").addEventListener("click", () => {
       showToast("新增退费工单入口已打开", "info");
     });
+    document.getElementById("userPackageCreateBtn").addEventListener("click", openUserPackageCreateModal);
+    document.getElementById("closeUserPackageCreateModal").addEventListener("click", closeUserPackageCreateModal);
+    document.getElementById("cancelUserPackageCreateBtn").addEventListener("click", closeUserPackageCreateModal);
+    document.getElementById("confirmUserPackageCreateBtn").addEventListener("click", confirmUserPackageCreate);
+    bindUserPackageSelectPlaceholder(document.getElementById("userPackageCreateType"));
+    document.getElementById("userPackageCreateType").addEventListener("change", () => {
+      syncUserPackageSelectPlaceholder(document.getElementById("userPackageCreateType"));
+      renderUserPackageCreateFields();
+    });
+    document.getElementById("userPackageMerchantTrigger").addEventListener("click", openUserPackageMerchantModal);
+    document.getElementById("closeUserPackageMerchantModal").addEventListener("click", closeUserPackageMerchantModal);
+    document.getElementById("cancelUserPackageMerchantBtn").addEventListener("click", closeUserPackageMerchantModal);
+    document.getElementById("confirmUserPackageMerchantBtn").addEventListener("click", closeUserPackageMerchantModal);
+    document.getElementById("userPackageCreateModal").addEventListener("click", (event) => {
+      if (event.target.id === "userPackageCreateModal") closeUserPackageCreateModal();
+    });
+    document.getElementById("userPackageMerchantModal").addEventListener("click", (event) => {
+      if (event.target.id === "userPackageMerchantModal") closeUserPackageMerchantModal();
+    });
     document.getElementById("refundWorkOrderExportBtn").addEventListener("click", () => {
       showToast("已按当前查询条件导出退费工单", "success");
+    });
+    document.getElementById("accountOperationLogExportBtn").addEventListener("click", () => {
+      showToast("已按当前查询条件导出账户操作日志", "success");
+    });
+    document.getElementById("batchTaskCreateBtn").addEventListener("click", () => {
+      showToast("批量操作添加入口已打开", "info");
     });
     document.getElementById("writableBatchBtn").addEventListener("click", () => {
       showToast("请选择增加或移出方式后继续操作", "info");
@@ -19630,6 +22144,13 @@
       if (event.target.id === "chipSnGenerateModal") closeChipSnGenerateModal();
     });
 
+    document.getElementById("smartDiagnosisSearchBtn").addEventListener("click", runSmartDiagnosis);
+    document.getElementById("smartDiagnosisSearchInput").addEventListener("input", syncSmartDiagnosisSearchClear);
+    document.getElementById("smartDiagnosisSearchInput").addEventListener("keydown", (event) => {
+      if (event.key === "Enter") runSmartDiagnosis();
+    });
+    document.getElementById("smartDiagnosisSearchClear").addEventListener("click", clearSmartDiagnosisSearch);
+
     document.getElementById("exportBtn").addEventListener("click", () => {
       const btn = document.getElementById("exportBtn");
       const original = btn.innerHTML;
@@ -19647,6 +22168,9 @@
     renderSimCardFilters();
     renderSimCardTable();
     renderSimCardPager();
+    renderUserPackageFilters();
+    renderUserPackageTable();
+    renderUserPackagePager();
     renderAbTestStatsPage();
     renderChipGroupFilters();
     renderChipGroupTable();
@@ -19673,6 +22197,12 @@
     renderRefundWorkOrderFilters();
     renderRefundWorkOrderTable();
     renderRefundWorkOrderPager();
+    renderAccountOperationLogFilters();
+    renderAccountOperationLogTable();
+    renderAccountOperationLogPager();
+    renderBatchTaskFilters();
+    renderBatchTaskTable();
+    renderBatchTaskPager();
     renderChipFilters();
     renderChipTable();
     renderChipPager();
