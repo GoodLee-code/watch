@@ -980,7 +980,7 @@
     .select-menu {
       position: absolute;
       z-index: 50;
-      top: 38px;
+      top: calc(100% + 4px);
       left: 0;
       right: 0;
       min-width: 100%;
@@ -1008,7 +1008,7 @@
       border-radius: 3px;
       display: flex;
       align-items: center;
-      color: #596273;
+      color: #111827;
       cursor: pointer;
     }
 
@@ -1023,7 +1023,7 @@
     .option:hover,
     .option.active {
       background: #edf6ff;
-      color: #1687e8;
+      color: #111827;
     }
 
     .option.empty {
@@ -3412,7 +3412,7 @@
     .risk-strategy-type-menu {
       position: absolute;
       z-index: 70;
-      top: 38px;
+      top: calc(100% + 4px);
       left: 0;
       right: 0;
       max-height: 220px;
@@ -3435,7 +3435,7 @@
       border: 0;
       background: #fff;
       padding: 0 12px;
-      color: #596273;
+      color: #111827;
       font-size: 12px;
       text-align: left;
       cursor: pointer;
@@ -3443,7 +3443,7 @@
 
     .risk-strategy-type-option:hover,
     .risk-strategy-type-option.active {
-      color: #1687e8;
+      color: #111827;
       background: #edf6ff;
     }
 
@@ -3706,7 +3706,7 @@
     .risk-merchant-menu {
       position: absolute;
       z-index: 60;
-      top: 38px;
+      top: calc(100% + 4px);
       left: 0;
       right: 0;
       max-height: 220px;
@@ -3729,14 +3729,14 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      color: #596273;
+      color: #111827;
       font-size: 12px;
       cursor: pointer;
     }
 
     .risk-merchant-option:hover {
       background: #edf6ff;
-      color: #1687e8;
+      color: #111827;
     }
 
     .risk-selected-merchant-list {
@@ -5739,6 +5739,10 @@
       width: min(620px, 100%);
     }
 
+    .chip-allocate-modal {
+      width: min(760px, 100%);
+    }
+
     .warning-config-modal {
       width: min(760px, 100%);
     }
@@ -5883,7 +5887,7 @@
 
     .modal-form {
       display: grid;
-      gap: 16px;
+      gap: 8px;
     }
 
     .modal-form-row {
@@ -5908,6 +5912,36 @@
 
     .warning-config-modal .modal-label {
       white-space: nowrap;
+    }
+
+    .chip-allocate-modal .modal-form-row {
+      grid-template-columns: 156px minmax(0, 1fr);
+    }
+
+    .chip-allocate-modal .modal-label {
+      white-space: nowrap;
+    }
+
+    .batch-operation-add-modal .mode-fields:not(.is-hidden) {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .batch-operation-add-modal select.batch-select.is-placeholder {
+      color: #b8c0cc !important;
+    }
+
+    .batch-operation-add-modal select.batch-select:not(.is-placeholder) {
+      color: var(--ink) !important;
+    }
+
+    .batch-operation-add-modal select.batch-select option {
+      color: #111827;
+    }
+
+    .batch-operation-add-modal select.batch-select option[disabled] {
+      color: #b8c0cc;
     }
 
     .user-package-modal .modal-form-row {
@@ -6026,13 +6060,30 @@
       padding: 0 10px;
     }
 
+    select.batch-select.is-placeholder {
+      color: #b8c0cc !important;
+    }
+
+    select.batch-select:not(.is-placeholder) {
+      color: #111827 !important;
+    }
+
+    select.batch-select option {
+      color: #111827;
+    }
+
+    select.batch-select option[disabled],
+    select.batch-select option[value=""] {
+      color: #b8c0cc;
+    }
+
     .modal-select-field {
       position: relative;
       width: 100%;
     }
 
     .modal-select-field .select-menu {
-      top: 40px;
+      top: calc(100% + 4px);
     }
 
     .modal-select-field .option.empty {
@@ -6161,7 +6212,7 @@
       display: none;
       position: absolute;
       z-index: 50;
-      top: 40px;
+      top: calc(100% + 4px);
       left: 0;
       right: 0;
       max-height: 210px;
@@ -6182,13 +6233,13 @@
       background: #fff;
       padding: 8px 10px;
       text-align: left;
-      color: #4c5666;
+      color: #111827;
       cursor: pointer;
     }
 
     .warning-account-option:hover {
       background: #edf6ff;
-      color: #1687e8;
+      color: #111827;
     }
 
     .warning-account-name {
@@ -6601,6 +6652,7 @@
       </div>
       <div class="sub-menu" id="operationSubMenu" aria-label="运营管理二级菜单">
         <button class="sub-item" id="smartDiagnosisSubItem" type="button" data-page="smartDiagnosisPage">智能诊断</button>
+        <button class="sub-item" id="cardActivationMonitorSubItem" type="button" data-page="cardActivationMonitorPage">卡激活数据监控</button>
       </div>
       <div class="nav-item" id="esimNavItem" role="button" tabindex="0">
         <svg class="nav-icon" viewBox="0 0 15 14" fill="none" aria-hidden="true">
@@ -6781,6 +6833,28 @@
           <section class="panel smart-diagnosis-results is-hidden" id="smartDiagnosisResults" aria-label="智能诊断结果">
             <div id="smartDiagnosisResultSections"></div>
             <div class="smart-diagnosis-footer" id="smartDiagnosisFooter"></div>
+          </section>
+        </div>
+
+        <div class="page-view" id="cardActivationMonitorPage">
+          <section class="panel query-panel" aria-label="卡激活数据监控查询区域">
+            <div class="filter-wrap" id="cardActivationMonitorFilterWrap"></div>
+          </section>
+
+          <div class="batch-actions" aria-label="卡激活数据监控操作">
+            <button class="btn" id="cardActivationMonitorCreateBtn" type="button">任务新增</button>
+          </div>
+
+          <section class="panel table-panel" aria-label="卡激活数据监控列表">
+            <div class="table-scroll">
+              <table class="card-activation-monitor-table">
+                <thead>
+                  <tr id="cardActivationMonitorTableHeader"></tr>
+                </thead>
+                <tbody id="cardActivationMonitorTableBody"></tbody>
+              </table>
+            </div>
+            <div class="pager" id="cardActivationMonitorPager" aria-label="卡激活数据监控分页"></div>
           </section>
         </div>
 
@@ -7869,7 +7943,7 @@
   </div>
 
   <div class="modal-mask" id="batchModal" role="dialog" aria-modal="true" aria-labelledby="batchTitle">
-    <div class="modal batch-modal">
+    <div class="modal batch-modal batch-operation-add-modal">
       <div class="modal-head">
         <h2 id="batchTitle">可写码号返厂</h2>
         <button class="close" id="closeBatchModal" type="button" aria-label="关闭">×</button>
@@ -8019,6 +8093,73 @@
       <div class="modal-foot">
         <button class="btn secondary" id="cancelFreezeStatusBtn" type="button">取消</button>
         <button class="btn" id="confirmFreezeStatusBtn" type="button">确认</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-mask" id="batchOperationAddModal" role="dialog" aria-modal="true" aria-labelledby="batchOperationAddTitle">
+    <div class="modal batch-modal">
+      <div class="modal-head">
+        <h2 id="batchOperationAddTitle">批量操作添加</h2>
+        <button class="close" id="closeBatchOperationAddModal" type="button" aria-label="关闭">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-form">
+          <div class="modal-form-row">
+            <label class="modal-label" for="batchOperationAddType"><span class="required">*</span>操作类型</label>
+            <select class="batch-select is-placeholder" id="batchOperationAddType">
+              <option value="" disabled hidden selected>请选择操作类型</option>
+              <option value="批量查询机卡分离情况">批量查询机卡分离情况</option>
+            </select>
+          </div>
+
+          <div class="mode-fields is-hidden" id="batchOperationAddDetailFields">
+            <div class="modal-form-row">
+              <label class="modal-label"><span class="required">*</span>操作模式</label>
+              <div class="radio-group" id="batchOperationAddModeGroup">
+                <label class="radio-option">
+                  <input type="radio" name="batchOperationAddMode" value="file" checked />
+                  文件导入
+                </label>
+                <label class="radio-option">
+                  <input type="radio" name="batchOperationAddMode" value="manual" />
+                  手动录入
+                </label>
+              </div>
+            </div>
+
+            <div class="mode-fields" id="batchOperationAddFileModeFields">
+              <div class="modal-form-row">
+                <label class="modal-label"><span class="required">*</span>选择文件</label>
+                <div>
+                  <div class="file-line">
+                    <button class="file-btn" id="chooseBatchOperationAddFileBtn" type="button">选取文件</button>
+                    <button class="template-link" id="downloadBatchOperationAddTplBtn" type="button">下载模版</button>
+                    <span class="file-name" id="batchOperationAddFileName">未选择文件</span>
+                  </div>
+                  <input id="batchOperationAddFileInput" type="file" accept=".xls,.xlsx" hidden />
+                  <div class="file-help">支持文件格式：.XLS、XLSX表格格式 ，单次导入文件上限为10MB</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mode-fields is-hidden" id="batchOperationAddManualModeFields">
+              <div class="modal-form-row">
+                <label class="modal-label" for="batchOperationAddManualInput"><span class="required">*</span>ICCID</label>
+                <textarea class="batch-textarea tall" id="batchOperationAddManualInput" placeholder="支持多个ICCID用逗号隔开"></textarea>
+              </div>
+            </div>
+
+            <div class="modal-form-row">
+              <label class="modal-label" for="batchOperationAddRemark">备注</label>
+              <textarea class="batch-textarea tall" id="batchOperationAddRemark" placeholder="请输入备注"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button class="btn secondary" id="cancelBatchOperationAddBtn" type="button">取消</button>
+        <button class="btn" id="confirmBatchOperationAddBtn" type="button">确认</button>
       </div>
     </div>
   </div>
@@ -8406,7 +8547,7 @@
   </div>
 
   <div class="modal-mask" id="chipAllocateModal" role="dialog" aria-modal="true" aria-labelledby="chipAllocateTitle">
-    <div class="modal batch-modal">
+    <div class="modal batch-modal chip-allocate-modal">
       <div class="modal-head">
         <h2 id="chipAllocateTitle">ESIM芯片划拨</h2>
         <button class="close" id="closeChipAllocateModal" type="button" aria-label="关闭">×</button>
@@ -8443,6 +8584,20 @@
               <label class="radio-option">
                 <input type="radio" name="chipPeerAllocate" value="开启" />
                 开启
+              </label>
+            </div>
+          </div>
+
+          <div class="modal-form-row">
+            <label class="modal-label"><span class="required">*</span>卡激活数据监控任务</label>
+            <div class="radio-group" id="chipActivationMonitorTaskGroup">
+              <label class="radio-option">
+                <input type="radio" name="chipActivationMonitorTask" value="新增" checked />
+                新增
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="chipActivationMonitorTask" value="不新增" />
+                不新增
               </label>
             </div>
           </div>
@@ -9689,7 +9844,8 @@
       "批量查询ICCID对应IMEI",
       "店铺数据导入",
       "批量添加运营商亲情号",
-      "批量设置移动卡限速"
+      "批量设置移动卡限速",
+      "批量查询机卡分离情况"
     ];
 
     const batchTaskFields = [
@@ -9720,6 +9876,37 @@
     ];
 
     const batchTaskState = {
+      values: {}
+    };
+
+    const cardActivationMonitorFields = [
+      { key: "taskName", label: "任务名称", type: "input" },
+      { key: "merchantName", label: "商户名称", type: "input-select", options: ["华东物联商户", "车载设备商户", "北区能源商户", "渠道直营商户"] }
+    ];
+
+    const cardActivationMonitorColumns = [
+      { key: "index", label: "序号" },
+      { key: "taskName", label: "任务名称" },
+      { key: "merchantName", label: "商户名称" },
+      { key: "taskType", label: "任务类型" },
+      { key: "relatedBatch", label: "关联批次" },
+      { key: "cardCount", label: "卡数量" },
+      { key: "bindRate", label: "绑定率" },
+      { key: "rechargeRate", label: "充值率" },
+      { key: "refundRate", label: "退费率" },
+      { key: "remark", label: "备注" },
+      { key: "createdAt", label: "创建时间" },
+      { key: "action", label: "操作", fixedRight: true }
+    ];
+
+    const cardActivationMonitorRows = [
+      { id: "ACT20260826001", taskName: "华东新卡激活转化监控", merchantName: "华东物联商户", taskType: "批次激活跟踪", relatedBatch: "SIM20260826001", cardCount: "1,260", bindRate: "72.4%", rechargeRate: "58.6%", refundRate: "3.2%", remark: "跟踪近7天新分发SIM卡激活与充值表现", createdAt: "2026-08-26 09:18:26" },
+      { id: "ACT20260825003", taskName: "车载设备商户首充监控", merchantName: "车载设备商户", taskType: "首充转化监控", relatedBatch: "SIM20260825018", cardCount: "835", bindRate: "68.9%", rechargeRate: "51.2%", refundRate: "4.7%", remark: "关注绑定后24小时内充值转化", createdAt: "2026-08-25 16:42:10" },
+      { id: "ACT20260824008", taskName: "北区能源渠道激活监控", merchantName: "北区能源商户", taskType: "渠道卡激活监控", relatedBatch: "SIM20260824009", cardCount: "412", bindRate: "64.1%", rechargeRate: "47.8%", refundRate: "2.9%", remark: "渠道导入卡片激活质量观察", createdAt: "2026-08-24 11:26:48" },
+      { id: "ACT20260823004", taskName: "直营渠道退费率监控", merchantName: "渠道直营商户", taskType: "退费风险监控", relatedBatch: "SIM20260823006", cardCount: "268", bindRate: "75.0%", rechargeRate: "62.3%", refundRate: "6.1%", remark: "退费率高于阈值时需要复核套餐说明", createdAt: "2026-08-23 14:19:07" }
+    ];
+
+    const cardActivationMonitorState = {
       values: {}
     };
 
@@ -9916,6 +10103,7 @@
       { key: "agent", label: "代理商", type: "select", options: ESIM_CHIP_AGENT_OPTIONS },
       { key: "chipGroup", label: "ESIM芯片组", type: "select", options: chipGroupRows.map((row) => row.groupName) },
       { key: "peerAllocate", label: "同级划拨", type: "select", options: ["不开启", "开启"] },
+      { key: "activationMonitorTask", label: "是否新增卡激活数据监控任务", type: "select", options: ["新增", "不新增"] },
       { key: "operationType", label: "操作类型", type: "select", options: ["ESIM芯片入库", "ESIM芯片删除"] },
       { key: "supplier", label: "供应商", type: "select", options: ["中移物联", "联通智联", "天喻信息"] },
       { key: "status", label: "状态", type: "select", options: ["成功", "失败"] },
@@ -9927,6 +10115,7 @@
       { key: "agent", label: "代理商", tip: ESIM_CHIP_AGENT_TIP },
       { key: "chipGroup", label: "ESIM芯片组" },
       { key: "peerAllocate", label: "同级划拨" },
+      { key: "activationMonitorTask", label: "是否新增卡激活数据监控任务" },
       { key: "operationType", label: "操作类型" },
       { key: "status", label: "状态", status: true },
       { key: "totalCount", label: "处理总数", totalLink: true },
@@ -9943,6 +10132,7 @@
         merchant: "华东物联商户",
         agent: "华东物联商户",
         operationType: "ESIM芯片入库",
+        activationMonitorTask: "-",
         status: "失败",
         totalCount: "120",
         successCount: "116",
@@ -9958,6 +10148,7 @@
         agent: "车载设备商户",
         chipGroup: "车载设备高频写卡芯片组",
         peerAllocate: "不开启",
+        activationMonitorTask: "新增",
         operationType: "ESIM芯片划拨",
         status: "成功",
         totalCount: "86",
@@ -9973,6 +10164,7 @@
         merchant: "北区能源商户",
         agent: "北区能源商户",
         operationType: "ESIM芯片删除",
+        activationMonitorTask: "-",
         status: "失败",
         totalCount: "42",
         successCount: "40",
@@ -11103,6 +11295,7 @@
 
     const filterWrap = document.getElementById("filterWrap");
     const simCardFilterWrap = document.getElementById("simCardFilterWrap");
+    const cardActivationMonitorFilterWrap = document.getElementById("cardActivationMonitorFilterWrap");
     const userPackageFilterWrap = document.getElementById("userPackageFilterWrap");
     const chipGroupFilterWrap = document.getElementById("esimChipGroupFilterWrap");
     const chipFilterWrap = document.getElementById("esimChipFilterWrap");
@@ -11825,6 +12018,7 @@
       if (!select) return;
       const hasValue = Boolean(select.value);
       select.classList.toggle("is-placeholder", !hasValue);
+      syncNativeSelectPlaceholder(select);
       const clearButton = select.closest(".user-package-select-wrap")?.querySelector(`[data-user-package-clear="${select.id}"]`);
       if (clearButton) clearButton.classList.toggle("is-hidden", !hasValue);
     }
@@ -11853,6 +12047,22 @@
         });
         clearButton.dataset.userPackageClearBound = "true";
       }
+    }
+
+    function syncNativeSelectPlaceholder(select) {
+      if (!select || !select.matches("select.batch-select")) return;
+      const isPlaceholder = !select.value;
+      select.classList.toggle("is-placeholder", isPlaceholder);
+      select.style.color = isPlaceholder ? "#b8c0cc" : "#111827";
+    }
+
+    function bindNativeSelectPlaceholders(root = document) {
+      root.querySelectorAll("select.batch-select").forEach((select) => {
+        syncNativeSelectPlaceholder(select);
+        if (select.dataset.nativePlaceholderBound) return;
+        select.addEventListener("change", () => syncNativeSelectPlaceholder(select));
+        select.dataset.nativePlaceholderBound = "true";
+      });
     }
 
     function renderUserPackageCreateFields() {
@@ -16211,6 +16421,313 @@
       `;
     }
 
+    function getBatchOperationAddMode() {
+      const selectedMode = document.querySelector('input[name="batchOperationAddMode"]:checked');
+      return selectedMode ? selectedMode.value : "file";
+    }
+
+    function isBatchOperationAddDetailVisible() {
+      return document.getElementById("batchOperationAddType").value === "批量查询机卡分离情况";
+    }
+
+    function syncBatchOperationAddSelectPlaceholder() {
+      const select = document.getElementById("batchOperationAddType");
+      syncNativeSelectPlaceholder(select);
+    }
+
+    function syncBatchOperationAddFields() {
+      const shouldShowDetails = isBatchOperationAddDetailVisible();
+      const isFileMode = getBatchOperationAddMode() === "file";
+      syncBatchOperationAddSelectPlaceholder();
+      document.getElementById("batchOperationAddDetailFields").classList.toggle("is-hidden", !shouldShowDetails);
+      document.getElementById("batchOperationAddFileModeFields").classList.toggle("is-hidden", !shouldShowDetails || !isFileMode);
+      document.getElementById("batchOperationAddManualModeFields").classList.toggle("is-hidden", !shouldShowDetails || isFileMode);
+    }
+
+    function resetBatchOperationAddModal() {
+      document.getElementById("batchOperationAddType").value = "";
+      document.querySelector('input[name="batchOperationAddMode"][value="file"]').checked = true;
+      document.getElementById("batchOperationAddFileInput").value = "";
+      document.getElementById("batchOperationAddFileName").textContent = "未选择文件";
+      document.getElementById("batchOperationAddManualInput").value = "";
+      document.getElementById("batchOperationAddRemark").value = "";
+      syncBatchOperationAddFields();
+    }
+
+    function openBatchOperationAddModal() {
+      resetBatchOperationAddModal();
+      document.getElementById("batchOperationAddModal").classList.add("open");
+    }
+
+    function closeBatchOperationAddModal() {
+      document.getElementById("batchOperationAddModal").classList.remove("open");
+    }
+
+    function countBatchOperationAddManualItems() {
+      const text = document.getElementById("batchOperationAddManualInput").value.trim();
+      return text.split(/[，,\s]+/).filter(Boolean).length;
+    }
+
+    function confirmBatchOperationAdd() {
+      const operationType = document.getElementById("batchOperationAddType").value;
+      const mode = getBatchOperationAddMode();
+      if (!operationType) {
+        showToast("请选择操作类型", "error");
+        return;
+      }
+      if (operationType === "批量查询机卡分离情况") {
+        if (mode === "file") {
+          const file = document.getElementById("batchOperationAddFileInput").files[0];
+          if (!file) {
+            showToast("请先选取文件", "error");
+            return;
+          }
+          const ext = file.name.split(".").pop().toLowerCase();
+          if (!["xls", "xlsx"].includes(ext)) {
+            showToast("仅支持上传 XLS、XLSX 表格文件", "error");
+            return;
+          }
+          if (file.size > 10 * 1024 * 1024) {
+            showToast("单次导入文件上限为10MB", "error");
+            return;
+          }
+        } else if (!document.getElementById("batchOperationAddManualInput").value.trim()) {
+          showToast("请输入ICCID", "error");
+          return;
+        }
+      }
+
+      const total = mode === "file" ? "100" : String(countBatchOperationAddManualItems());
+      batchTaskRows.unshift({
+        id: `BT${Date.now()}`,
+        taskType: operationType,
+        total,
+        status: "处理中",
+        remark: document.getElementById("batchOperationAddRemark").value.trim() || "批量查询机卡分离情况",
+        operator: currentOperatorName(),
+        operationTime: currentDateTimeText()
+      });
+      closeBatchOperationAddModal();
+      renderBatchTaskTable();
+      renderBatchTaskPager();
+      showToast("批量操作任务已添加", "success");
+    }
+
+    function renderCardActivationMonitorFilters() {
+      cardActivationMonitorFilterWrap.innerHTML = "";
+      cardActivationMonitorFields.forEach((field) => {
+        const el = document.createElement("div");
+        el.className = "field";
+        el.dataset.key = field.key;
+        const value = cardActivationMonitorState.values[field.key] || "";
+        if (field.type === "input-select") {
+          el.innerHTML = `
+            <input class="control select-trigger ${value ? "has-value" : ""}" data-key="${field.key}" type="text" placeholder="${field.label}" value="${escapeHtml(value)}" autocomplete="off" />
+            <button class="select-clear ${value ? "" : "is-hidden"}" type="button" data-key="${field.key}" aria-label="清除${field.label}">×</button>
+            ${iconChevron().replace('class="icon"', 'class="field-icon"')}
+            <div class="select-menu" data-menu="${field.key}">
+              <div class="select-options"></div>
+            </div>
+          `;
+          cardActivationMonitorFilterWrap.appendChild(el);
+          renderCardActivationMonitorOptions(el, field, "", true);
+          return;
+        }
+        el.innerHTML = `
+          <input class="control" data-key="${field.key}" type="text" placeholder="${field.label}" value="${escapeHtml(value)}" />
+        `;
+        cardActivationMonitorFilterWrap.appendChild(el);
+      });
+
+      const actions = document.createElement("div");
+      actions.className = "form-actions";
+      actions.innerHTML = `
+        <button class="btn search-btn" id="cardActivationMonitorSearchBtn" type="button">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="m21 21-4.3-4.3M11 19a8 8 0 1 1 0-16 8 8 0 0 1 0 16Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          搜索
+        </button>
+        <button class="btn secondary" id="cardActivationMonitorResetBtn" type="button">重置</button>
+      `;
+      cardActivationMonitorFilterWrap.appendChild(actions);
+      bindCardActivationMonitorFilterEvents();
+    }
+
+    function renderCardActivationMonitorOptions(fieldEl, field, keyword = "", showAll = false) {
+      const optionsEl = fieldEl.querySelector(".select-options");
+      if (!optionsEl) return;
+      const selected = cardActivationMonitorState.values[field.key] || "";
+      const normalizedKeyword = keyword.trim();
+      const options = (field.options || []).filter((option) => showAll || option.includes(normalizedKeyword));
+      optionsEl.innerHTML = options.length ? "" : '<div class="option empty">暂无匹配数据</div>';
+      options.forEach((option) => {
+        const node = document.createElement("div");
+        node.className = "option" + (selected === option ? " active" : "");
+        node.textContent = option;
+        node.dataset.value = option;
+        optionsEl.appendChild(node);
+      });
+    }
+
+    function toggleCardActivationMonitorClear(input) {
+      const fieldEl = input.closest(".field");
+      const clearButton = fieldEl?.querySelector(".select-clear");
+      const hasValue = Boolean(input.value.trim());
+      input.classList.toggle("has-value", hasValue);
+      if (clearButton) clearButton.classList.toggle("is-hidden", !hasValue);
+    }
+
+    function bindCardActivationMonitorFilterEvents() {
+      cardActivationMonitorFilterWrap.querySelectorAll(".control").forEach((input) => {
+        input.addEventListener("input", () => {
+          cardActivationMonitorState.values[input.dataset.key] = input.value;
+          if (input.classList.contains("select-trigger")) {
+            toggleCardActivationMonitorClear(input);
+          }
+        });
+        input.addEventListener("blur", () => {
+          input.value = input.value.trim();
+          cardActivationMonitorState.values[input.dataset.key] = input.value;
+          if (input.classList.contains("select-trigger")) {
+            toggleCardActivationMonitorClear(input);
+          }
+        });
+        input.addEventListener("keydown", (event) => {
+          if (event.key === "Enter") searchCardActivationMonitor();
+        });
+      });
+
+      cardActivationMonitorFilterWrap.querySelectorAll(".select-trigger").forEach((trigger) => {
+        const openMenu = (keyword = "", showAll = true) => {
+          closeCardActivationMonitorMenus(trigger.dataset.key);
+          const field = cardActivationMonitorFields.find((item) => item.key === trigger.dataset.key);
+          renderCardActivationMonitorOptions(trigger.closest(".field"), field, keyword, showAll);
+          trigger.classList.add("open");
+          cardActivationMonitorFilterWrap.querySelector(`[data-menu="${trigger.dataset.key}"]`)?.classList.add("open");
+        };
+        trigger.addEventListener("click", (event) => {
+          event.stopPropagation();
+          openMenu("", true);
+        });
+        trigger.addEventListener("focus", () => openMenu("", true));
+        trigger.addEventListener("input", () => openMenu(trigger.value, false));
+      });
+
+      cardActivationMonitorFilterWrap.querySelectorAll(".select-options").forEach((optionsEl) => {
+        optionsEl.addEventListener("click", (event) => {
+          const option = event.target.closest(".option");
+          if (!option || option.classList.contains("empty")) return;
+          const fieldEl = optionsEl.closest(".field");
+          const key = fieldEl.dataset.key;
+          const trigger = fieldEl.querySelector(".select-trigger");
+          cardActivationMonitorState.values[key] = option.dataset.value;
+          trigger.value = option.dataset.value;
+          toggleCardActivationMonitorClear(trigger);
+          closeCardActivationMonitorMenus();
+        });
+      });
+
+      cardActivationMonitorFilterWrap.querySelectorAll(".select-clear").forEach((button) => {
+        button.addEventListener("click", (event) => {
+          event.stopPropagation();
+          const fieldEl = button.closest(".field");
+          const trigger = fieldEl.querySelector(".select-trigger");
+          const menuWasOpen = fieldEl.querySelector(".select-menu")?.classList.contains("open");
+          cardActivationMonitorState.values[button.dataset.key] = "";
+          trigger.value = "";
+          toggleCardActivationMonitorClear(trigger);
+          if (menuWasOpen) {
+            const field = cardActivationMonitorFields.find((item) => item.key === button.dataset.key);
+            renderCardActivationMonitorOptions(fieldEl, field, "", true);
+            trigger.classList.add("open");
+            fieldEl.querySelector(".select-menu")?.classList.add("open");
+          }
+        });
+      });
+
+      document.getElementById("cardActivationMonitorSearchBtn").addEventListener("click", searchCardActivationMonitor);
+      document.getElementById("cardActivationMonitorResetBtn").addEventListener("click", resetCardActivationMonitorFilters);
+    }
+
+    function closeCardActivationMonitorMenus(exceptKey) {
+      if (!cardActivationMonitorFilterWrap) return;
+      cardActivationMonitorFilterWrap.querySelectorAll(".select-menu").forEach((menu) => {
+        if (menu.dataset.menu !== exceptKey) menu.classList.remove("open");
+      });
+      cardActivationMonitorFilterWrap.querySelectorAll(".select-trigger").forEach((trigger) => {
+        if (trigger.dataset.key !== exceptKey) trigger.classList.remove("open");
+      });
+    }
+
+    function searchCardActivationMonitor() {
+      const activeCount = Object.values(cardActivationMonitorState.values).filter(Boolean).length;
+      showToast(activeCount ? "卡激活数据监控列表已按查询条件刷新" : "已查询全部卡激活数据监控任务", "success");
+      renderCardActivationMonitorFilters();
+    }
+
+    function resetCardActivationMonitorFilters() {
+      cardActivationMonitorState.values = {};
+      renderCardActivationMonitorFilters();
+      showToast("卡激活数据监控查询条件已清空", "info");
+    }
+
+    function renderCardActivationMonitorAction(row) {
+      const id = escapeHtml(row.id || "");
+      const name = escapeHtml(row.taskName || "");
+      return `
+        <button class="link-text card-activation-edit-btn" type="button" data-task-id="${id}" data-task-name="${name}">编辑</button>
+        <button class="danger-link card-activation-delete-btn" type="button" data-task-id="${id}" data-task-name="${name}">删除</button>
+        <button class="link-text card-activation-data-btn" type="button" data-task-id="${id}" data-task-name="${name}">数据管理</button>
+        <button class="link-text card-activation-refresh-btn" type="button" data-task-id="${id}" data-task-name="${name}">刷新</button>
+      `;
+    }
+
+    function renderCardActivationMonitorValue(value, column, row, index) {
+      if (column.key === "index") return String(index + 1);
+      if (column.key === "action") return renderCardActivationMonitorAction(row);
+      return escapeHtml(value || "-");
+    }
+
+    function renderCardActivationMonitorTable() {
+      const header = document.getElementById("cardActivationMonitorTableHeader");
+      const body = document.getElementById("cardActivationMonitorTableBody");
+      header.innerHTML = cardActivationMonitorColumns.map((column) => `<th class="${column.fixedRight ? "operation-col" : ""}">${column.label}</th>`).join("");
+      body.innerHTML = cardActivationMonitorRows.length
+        ? cardActivationMonitorRows.map((row, index) => `
+            <tr>
+              ${cardActivationMonitorColumns.map((column) => `<td class="${column.fixedRight ? "operation-col" : ""}">${renderCardActivationMonitorValue(row[column.key], column, row, index)}</td>`).join("")}
+            </tr>
+          `).join("")
+        : `<tr><td colspan="${cardActivationMonitorColumns.length}" style="text-align:center;color:#6b7280;">暂无数据</td></tr>`;
+
+      body.querySelectorAll(".card-activation-edit-btn").forEach((button) => {
+        button.addEventListener("click", () => showToast(`卡激活数据监控「${button.dataset.taskName}」编辑流程待接入`, "info"));
+      });
+      body.querySelectorAll(".card-activation-delete-btn").forEach((button) => {
+        button.addEventListener("click", () => {
+          openDeleteConfirmModal(`确定删除卡激活数据监控任务「${button.dataset.taskName}」吗？`, () => {
+            showToast(`卡激活数据监控任务「${button.dataset.taskName}」删除操作已确认`, "success");
+          });
+        });
+      });
+      body.querySelectorAll(".card-activation-data-btn").forEach((button) => {
+        button.addEventListener("click", () => showToast(`卡激活数据监控「${button.dataset.taskName}」数据管理流程待接入`, "info"));
+      });
+      body.querySelectorAll(".card-activation-refresh-btn").forEach((button) => {
+        button.addEventListener("click", () => showToast(`卡激活数据监控「${button.dataset.taskName}」数据已刷新`, "success"));
+      });
+    }
+
+    function renderCardActivationMonitorPager() {
+      document.getElementById("cardActivationMonitorPager").innerHTML = `
+        <span>共 ${cardActivationMonitorRows.length} 条</span>
+        <button class="page-btn" type="button">‹</button>
+        <button class="page-btn active" type="button">1</button>
+        <button class="page-btn" type="button">›</button>
+      `;
+    }
+
     function renderChipFilters() {
       chipFilterWrap.innerHTML = "";
       const visibleFields = chipState.expanded
@@ -16466,7 +16983,7 @@
       if (chipState.activeTab === "allocationRecords") {
         return chipOperationRecordFields.filter((field) => !["operationType", "supplier"].includes(field.key));
       }
-      return chipOperationRecordFields.filter((field) => !["supplier", "merchant", "agent", "chipGroup", "peerAllocate"].includes(field.key));
+      return chipOperationRecordFields.filter((field) => !["supplier", "merchant", "agent", "chipGroup", "peerAllocate", "activationMonitorTask"].includes(field.key));
     }
 
     function renderChipOperationFilters() {
@@ -16647,9 +17164,10 @@
         const matchAgent = visibleFieldKeys.has("agent") && values.agent ? row.agent === values.agent : true;
         const matchChipGroup = visibleFieldKeys.has("chipGroup") && values.chipGroup ? row.chipGroup === values.chipGroup : true;
         const matchPeerAllocate = visibleFieldKeys.has("peerAllocate") && values.peerAllocate ? row.peerAllocate === values.peerAllocate : true;
+        const matchActivationMonitorTask = visibleFieldKeys.has("activationMonitorTask") && values.activationMonitorTask ? row.activationMonitorTask === values.activationMonitorTask : true;
         const matchStatus = values.status ? row.status === values.status : true;
         const matchTime = isDateTextInRange(row.operationTime, values.operationStart, values.operationEnd);
-        return matchType && matchOperationType && matchBatch && matchSupplier && matchMerchant && matchAgent && matchChipGroup && matchPeerAllocate && matchStatus && matchTime;
+        return matchType && matchOperationType && matchBatch && matchSupplier && matchMerchant && matchAgent && matchChipGroup && matchPeerAllocate && matchActivationMonitorTask && matchStatus && matchTime;
       });
     }
 
@@ -16684,7 +17202,7 @@
 
     function currentChipOperationColumns() {
       if (chipState.activeTab !== "allocationRecords") {
-        return chipOperationRecordColumns.filter((column) => !["merchant", "agent", "chipGroup", "peerAllocate"].includes(column.key));
+        return chipOperationRecordColumns.filter((column) => !["merchant", "agent", "chipGroup", "peerAllocate", "activationMonitorTask"].includes(column.key));
       }
       return chipOperationRecordColumns.filter((column) => column.key !== "operationType");
     }
@@ -20632,6 +21150,82 @@
       return selectedMode ? selectedMode.value : "file";
     }
 
+    function getChipActivationMonitorTaskChoice() {
+      const selected = document.querySelector('input[name="chipActivationMonitorTask"]:checked');
+      return selected ? selected.value : "新增";
+    }
+
+    function getChipAllocatePeerChoice() {
+      const selected = document.querySelector('input[name="chipPeerAllocate"]:checked');
+      return selected ? selected.value : "不开启";
+    }
+
+    function chipAllocateEntryCount(entryMode) {
+      if (entryMode === "manual") {
+        const text = document.getElementById("chipAllocateEidInput").value.trim();
+        return String(text.split(/[，,\s]+/).filter(Boolean).length || 0);
+      }
+      return "100";
+    }
+
+    function createChipAllocateBatchNo() {
+      const now = new Date();
+      const pad = (value) => String(value).padStart(2, "0");
+      const suffix = String(chipOperationRecordRows.length + 1).padStart(3, "0");
+      return `CHIP${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(now.getDate())}${suffix}`;
+    }
+
+    function syncChipAllocateSubmitRecords({ merchant, groupName, entryMode }) {
+      const batchNo = createChipAllocateBatchNo();
+      const operationTime = currentDateTimeText();
+      const totalCount = chipAllocateEntryCount(entryMode);
+      const peerAllocate = getChipAllocatePeerChoice();
+      const activationMonitorTask = getChipActivationMonitorTaskChoice();
+
+      chipOperationRecordRows.unshift({
+        batchNo,
+        supplier: "中移物联",
+        merchant,
+        agent: merchant,
+        chipGroup: groupName,
+        peerAllocate,
+        activationMonitorTask,
+        operationType: "ESIM芯片划拨",
+        status: "成功",
+        totalCount,
+        successCount: totalCount,
+        failCount: "0",
+        remark: document.getElementById("chipAllocateRemark").value.trim() || `划拨至${merchant}`,
+        operationTime,
+        operator: currentOperatorName()
+      });
+
+      if (activationMonitorTask === "新增") {
+        cardActivationMonitorRows.unshift({
+          id: `ACT${Date.now()}`,
+          taskName: `${merchant}卡激活数据监控`,
+          merchantName: merchant,
+          taskType: "ESIM芯片划拨激活监控",
+          relatedBatch: batchNo,
+          cardCount: totalCount,
+          bindRate: "0.0%",
+          rechargeRate: "0.0%",
+          refundRate: "0.0%",
+          remark: `关联ESIM芯片组：${groupName}`,
+          createdAt: operationTime
+        });
+      }
+
+      if (document.getElementById("chipOperationRecordView")?.classList.contains("active")) {
+        renderChipOperationTable();
+        renderChipOperationPager();
+      }
+      if (document.getElementById("cardActivationMonitorPage")?.classList.contains("active")) {
+        renderCardActivationMonitorTable();
+        renderCardActivationMonitorPager();
+      }
+    }
+
     function syncChipAllocateModeFields() {
       const isFileMode = getChipAllocateMode() === "file";
       document.getElementById("chipAllocateFileModeFields").classList.toggle("is-hidden", !isFileMode);
@@ -20642,6 +21236,7 @@
       document.getElementById("chipAllocateMerchant").value = "";
       document.getElementById("chipAllocateGroup").value = "";
       document.querySelector('input[name="chipPeerAllocate"][value="不开启"]').checked = true;
+      document.querySelector('input[name="chipActivationMonitorTask"][value="新增"]').checked = true;
       document.querySelector('input[name="chipAllocateMode"][value="file"]').checked = true;
       document.getElementById("chipAllocateFileInput").value = "";
       document.getElementById("chipAllocateFileName").textContent = "未选择文件";
@@ -20701,8 +21296,9 @@
         showToast("请输入EID", "error");
         return;
       }
+      syncChipAllocateSubmitRecords({ merchant, groupName, entryMode });
       closeChipAllocateModal();
-      showToast("ESIM芯片划拨任务已提交", "success");
+      showToast(getChipActivationMonitorTaskChoice() === "新增" ? "ESIM芯片划拨任务已提交，并已新增卡激活数据监控任务" : "ESIM芯片划拨任务已提交", "success");
     }
 
     function openChipDataServicePolicyModal() {
@@ -20737,6 +21333,7 @@
       document.getElementById("abTestStatsNavItem").classList.toggle("active", pageId === "abTestStatsPage");
       document.getElementById("simCardSubItem").classList.toggle("active", pageId === "simCardPage");
       document.getElementById("smartDiagnosisSubItem").classList.toggle("active", pageId === "smartDiagnosisPage");
+      document.getElementById("cardActivationMonitorSubItem").classList.toggle("active", pageId === "cardActivationMonitorPage");
       document.getElementById("userPackageSubItem").classList.toggle("active", pageId === "userPackagePage" || pageId === "userPackageDetailPage");
       const inRecycleModule = pageId === "recyclePage" || pageId === "recordPage";
       document.getElementById("recycleSubItem").classList.toggle("active", inRecycleModule);
@@ -20806,6 +21403,7 @@
     const pageLabelMap = {
       simCardPage: "SIM卡管理",
       smartDiagnosisPage: "智能诊断",
+      cardActivationMonitorPage: "卡激活数据监控",
       userPackagePage: "用户套餐管理",
       userPackageDetailPage: "用户套餐详情",
       esimChipGroupPage: "ESIM芯片组管理",
@@ -20927,6 +21525,11 @@
         }
       }
       if (pageId === "smartDiagnosisPage") renderSmartDiagnosisPage();
+      if (pageId === "cardActivationMonitorPage") {
+        renderCardActivationMonitorFilters();
+        renderCardActivationMonitorTable();
+        renderCardActivationMonitorPager();
+      }
       if (pageId === "userPackagePage") {
         renderUserPackageFilters();
         renderUserPackageTable();
@@ -21602,6 +22205,7 @@
       closeAccountOperationLogMenus();
       closeAccountOperationLogDateRange();
       closeBatchTaskMenus();
+      closeCardActivationMonitorMenus();
       closeChipLogMenus();
       closeAbPurchaseDateRange();
       closeMenus();
@@ -21682,6 +22286,10 @@
     bindNavMenuToggle("afterSaleNavItem", toggleAfterSaleMenu);
     bindNavMenuToggle("logNavItem", toggleLogMenu);
     bindNavMenuToggle("taskNavItem", toggleTaskMenu);
+    document.addEventListener("change", (event) => {
+      const select = event.target.closest?.("select.batch-select");
+      if (select) syncNativeSelectPlaceholder(select);
+    });
     document.getElementById("crumbTabs").addEventListener("click", (event) => {
       const closeButton = event.target.closest("[data-close-page]");
       if (closeButton) {
@@ -21700,6 +22308,9 @@
       showToast("码号资源池创建流程待接入", "info");
     });
     document.getElementById("riskStrategyCreateBtn").addEventListener("click", openRiskStrategyCreatePage);
+    document.getElementById("cardActivationMonitorCreateBtn").addEventListener("click", () => {
+      showToast("卡激活数据监控任务新增流程待接入", "info");
+    });
     document.getElementById("riskStopBatchBtn").addEventListener("click", openRiskStopBatchModal);
     document.getElementById("simCardFieldSettingsBtn").addEventListener("click", openSimCardFieldSettingsModal);
     document.getElementById("closeSimCardFieldSettingsModal").addEventListener("click", cancelSimCardFieldSettings);
@@ -21874,8 +22485,26 @@
     document.getElementById("accountOperationLogExportBtn").addEventListener("click", () => {
       showToast("已按当前查询条件导出账户操作日志", "success");
     });
-    document.getElementById("batchTaskCreateBtn").addEventListener("click", () => {
-      showToast("批量操作添加入口已打开", "info");
+    document.getElementById("batchTaskCreateBtn").addEventListener("click", openBatchOperationAddModal);
+    document.getElementById("closeBatchOperationAddModal").addEventListener("click", closeBatchOperationAddModal);
+    document.getElementById("cancelBatchOperationAddBtn").addEventListener("click", closeBatchOperationAddModal);
+    document.getElementById("confirmBatchOperationAddBtn").addEventListener("click", confirmBatchOperationAdd);
+    document.getElementById("batchOperationAddType").addEventListener("change", syncBatchOperationAddFields);
+    document.querySelectorAll('input[name="batchOperationAddMode"]').forEach((input) => {
+      input.addEventListener("change", syncBatchOperationAddFields);
+    });
+    document.getElementById("chooseBatchOperationAddFileBtn").addEventListener("click", () => {
+      document.getElementById("batchOperationAddFileInput").click();
+    });
+    document.getElementById("batchOperationAddFileInput").addEventListener("change", (event) => {
+      const file = event.target.files[0];
+      document.getElementById("batchOperationAddFileName").textContent = file ? file.name : "未选择文件";
+    });
+    document.getElementById("downloadBatchOperationAddTplBtn").addEventListener("click", () => {
+      showToast("已下载批量查询机卡分离情况模版", "success");
+    });
+    document.getElementById("batchOperationAddModal").addEventListener("click", (event) => {
+      if (event.target.id === "batchOperationAddModal") closeBatchOperationAddModal();
     });
     document.getElementById("writableBatchBtn").addEventListener("click", () => {
       showToast("请选择增加或移出方式后继续操作", "info");
@@ -22168,6 +22797,9 @@
     renderSimCardFilters();
     renderSimCardTable();
     renderSimCardPager();
+    renderCardActivationMonitorFilters();
+    renderCardActivationMonitorTable();
+    renderCardActivationMonitorPager();
     renderUserPackageFilters();
     renderUserPackageTable();
     renderUserPackagePager();
@@ -22226,6 +22858,7 @@
     renderFilters();
     renderTable();
     renderBatchDetail("BATCH20260519001");
+    bindNativeSelectPlaceholders();
     switchBusinessPage("esimChipPage");
   </script>
 </body>
