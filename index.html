@@ -18,7 +18,7 @@
       --line: #e5e7eb;
       --line-soft: #e6ebf2;
       --panel: #ffffff;
-      --page: #f4f7fb;
+      --page: #ffffff;
       --shadow: 0 8px 24px rgba(31, 41, 55, 0.06);
       --radius: 8px;
       --control-h: 34px;
@@ -32,7 +32,7 @@
     body {
       margin: 0;
       color: var(--ink);
-      background: #f7f8fb;
+      background: #fff;
       min-width: 320px;
       font-size: 12px;
     }
@@ -263,7 +263,7 @@
       min-width: 0;
       display: flex;
       flex-direction: column;
-      background: #f7f8fb;
+      background: #fff;
       overflow: hidden;
     }
 
@@ -416,6 +416,7 @@
       display: flex;
       flex-direction: column;
       min-height: 0;
+      background: #fff;
     }
 
     .page-title {
@@ -461,7 +462,7 @@
     }
 
     .smart-diagnosis-page {
-      gap: 20px;
+      gap: 0;
     }
 
     .smart-diagnosis-search-panel {
@@ -1092,7 +1093,7 @@
       gap: 10px;
       align-items: center;
       padding: 14px 18px 20px;
-      margin: 20px 0 0;
+      margin: 0;
       background: #fff;
       border: 1px solid #e6ebf2;
       border-bottom: 0;
@@ -1110,11 +1111,11 @@
     }
 
     .query-panel + .table-panel {
-      margin-top: 20px;
+      margin-top: 0;
     }
 
     .query-panel + .batch-actions {
-      margin-top: 20px;
+      margin-top: 0;
     }
 
     .batch-actions + .table-panel {
@@ -1125,10 +1126,6 @@
 
     .batch-actions + .table-panel > .table-scroll {
       margin-top: 0;
-    }
-
-    .batch-actions + .table-panel > .writable-number-stats {
-      padding-top: 0;
     }
 
     .business-tabs {
@@ -1191,10 +1188,51 @@
       flex: 1 1 auto;
       min-height: 0;
       flex-direction: column;
+      background: #fff;
+      border: 1px solid var(--line-soft);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
     }
 
     .page-view.active {
       display: flex;
+    }
+
+    .page-view.active > .panel,
+    .page-view.active > .batch-actions,
+    .page-view.active > .writable-number-stats,
+    .page-view.active > .chip-page-tab-view.active > .panel,
+    .page-view.active > .chip-page-tab-view.active > .batch-actions,
+    .page-view.active > .chip-page-tab-view.active > .writable-number-stats {
+      border-left: 0;
+      border-right: 0;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    .page-view.active > .panel:first-child,
+    .page-view.active > .batch-actions:first-child,
+    .page-view.active > .writable-number-stats:first-child,
+    .page-view.active > .chip-page-tab-view.active > .panel:first-child,
+    .page-view.active > .chip-page-tab-view.active > .batch-actions:first-child,
+    .page-view.active > .chip-page-tab-view.active > .writable-number-stats:first-child {
+      border-top: 0;
+    }
+
+    .page-view.active > .panel:last-child,
+    .page-view.active > .batch-actions:last-child,
+    .page-view.active > .writable-number-stats:last-child,
+    .page-view.active > .chip-page-tab-view.active > .panel:last-child,
+    .page-view.active > .chip-page-tab-view.active > .batch-actions:last-child,
+    .page-view.active > .chip-page-tab-view.active > .writable-number-stats:last-child {
+      border-bottom: 0;
+    }
+
+    .query-panel + .table-panel,
+    .query-panel + .batch-actions,
+    .query-panel + .writable-number-stats,
+    .writable-number-stats + .batch-actions {
+      border-top: 0;
     }
 
     .range-field {
@@ -1848,49 +1886,178 @@
 
     .writable-number-stats {
       display: grid;
-      grid-template-columns: repeat(2, minmax(220px, 1fr));
-      gap: 10px;
-      padding: 14px 12px 10px;
+      grid-template-columns: repeat(2, minmax(320px, 1fr));
+      gap: 18px;
+      padding: 10px 12px;
       background: #fff;
     }
 
-    .writable-number-stat {
-      min-height: 62px;
-      padding: 12px 14px;
-      border: 1px solid #e6ebf2;
-      border-radius: 6px;
-      background: #fbfcfe;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 6px;
+    .query-panel + .writable-number-stats {
+      margin-top: 0;
     }
 
-    .writable-number-stat-label {
-      color: #667182;
-      font-size: 13px;
-      line-height: 18px;
+    .writable-number-stats + .batch-actions {
+      margin-top: 0;
+    }
+
+    .writable-number-stat {
+      min-height: 116px;
+      padding: 16px 20px;
+      border: 1px solid rgba(24, 160, 88, 0.24);
+      border-radius: 18px;
+      background:
+        radial-gradient(circle at 22% 20%, rgba(24, 160, 88, 0.08), transparent 34%),
+        linear-gradient(135deg, #ffffff 0%, #fbfffd 100%);
+      display: grid;
+      grid-template-columns: 82px minmax(0, 1fr) 88px;
+      align-items: center;
+      gap: 18px;
+      box-shadow: 0 10px 28px rgba(31, 41, 55, 0.05);
+    }
+
+    .writable-number-stat.is-warning {
+      border-color: rgba(255, 138, 0, 0.28);
+      background:
+        radial-gradient(circle at 22% 20%, rgba(255, 138, 0, 0.09), transparent 34%),
+        linear-gradient(135deg, #ffffff 0%, #fffdf9 100%);
+    }
+
+    .writable-number-stat-visual {
+      width: 72px;
+      height: 72px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      color: var(--stat-color);
+      background: color-mix(in srgb, var(--stat-color) 10%, #fff);
+    }
+
+    .writable-number-stat-visual svg {
+      width: 44px;
+      height: 44px;
+    }
+
+    .writable-number-stat-main {
+      min-width: 0;
+    }
+
+    .writable-number-stat-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #111827;
+      font-size: 17px;
+      line-height: 24px;
+      font-weight: 700;
+      white-space: normal;
+      word-break: break-word;
+    }
+
+    .writable-number-stat-info {
+      width: 16px;
+      height: 16px;
+      border: 2px solid #7c8798;
+      border-radius: 50%;
+      display: inline-grid;
+      place-items: center;
+      color: #7c8798;
+      font-size: 11px;
+      line-height: 1;
+      font-weight: 700;
+      cursor: default;
+      position: relative;
+      flex: 0 0 auto;
+    }
+
+    .writable-number-stat-info::after {
+      content: attr(data-tip);
+      position: absolute;
+      left: 50%;
+      bottom: calc(100% + 9px);
+      transform: translateX(-50%) translateY(4px);
+      width: 360px;
+      padding: 8px 10px;
+      border-radius: 6px;
+      background: #172033;
+      color: #fff;
+      font-size: 12px;
+      line-height: 1.6;
+      font-weight: 400;
+      white-space: pre-line;
+      box-shadow: 0 10px 24px rgba(23, 32, 51, 0.18);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.16s ease, transform 0.16s ease;
+      z-index: 60;
+    }
+
+    .writable-number-stat-info::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: calc(100% + 3px);
+      transform: translateX(-50%) translateY(4px);
+      border: 6px solid transparent;
+      border-top: 0;
+      border-bottom-color: #172033;
+      opacity: 0;
+      transition: opacity 0.16s ease, transform 0.16s ease;
+      z-index: 61;
+    }
+
+    .writable-number-stat-info:hover::after,
+    .writable-number-stat-info:hover::before,
+    .writable-number-stat-info:focus::after,
+    .writable-number-stat-info:focus::before {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
     }
 
     .writable-number-stat-value {
-      color: #1f2937;
-      font-size: 22px;
-      line-height: 26px;
-      font-weight: 600;
+      margin-top: 8px;
+      color: var(--stat-color);
+      font-size: 38px;
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: -1px;
     }
 
-    .writable-number-stat-detail {
+    .writable-number-stat-ring {
       display: flex;
-      flex-wrap: wrap;
-      gap: 8px 18px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
       color: #667182;
       font-size: 12px;
       line-height: 18px;
+      white-space: nowrap;
     }
 
-    .writable-number-stat-detail strong {
-      color: #1f2937;
-      font-weight: 600;
+    .writable-number-stat-donut {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: conic-gradient(var(--stat-color) calc(var(--stat-percent) * 1%), #e5e7ed 0);
+      display: grid;
+      place-items: center;
+      position: relative;
+    }
+
+    .writable-number-stat-donut::before {
+      content: "";
+      position: absolute;
+      inset: 9px;
+      border-radius: 50%;
+      background: #fff;
+    }
+
+    .writable-number-stat-percent {
+      position: relative;
+      color: var(--stat-color);
+      font-size: 18px;
+      line-height: 1;
+      font-weight: 700;
     }
 
     .ab-page {
@@ -2708,6 +2875,21 @@
       .writable-number-stats {
         grid-template-columns: 1fr;
       }
+
+      .writable-number-stat {
+        grid-template-columns: 104px minmax(0, 1fr) 112px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .writable-number-stat {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .writable-number-stat-ring {
+        align-items: flex-start;
+      }
     }
 
     .chip-page-tabs {
@@ -2717,7 +2899,7 @@
       gap: 0;
       min-height: 42px;
       padding: 0 0 0 14px;
-      margin-bottom: 14px;
+      margin-bottom: 0;
       border-bottom: 1px solid #e6ebf2;
       background: #fff;
       overflow-x: auto;
@@ -6469,6 +6651,22 @@
       justify-content: flex-end;
     }
 
+    .page-view.active > .panel,
+    .page-view.active > .batch-actions,
+    .page-view.active > .writable-number-stats,
+    .page-view.active > .chip-page-tab-view.active > .panel,
+    .page-view.active > .chip-page-tab-view.active > .batch-actions,
+    .page-view.active > .chip-page-tab-view.active > .writable-number-stats {
+      border: 0;
+      box-shadow: none;
+    }
+
+    .page-view.active > .chip-page-tabs,
+    .page-view.active .writable-status-tabs,
+    .page-view.active .table-head {
+      border-bottom: 0;
+    }
+
     @media (max-width: 1080px) {
       .filter-wrap {
         grid-template-columns: repeat(2, minmax(180px, 1fr));
@@ -7495,6 +7693,8 @@
               <div class="filter-wrap" id="writableFilterWrap"></div>
             </section>
 
+            <div class="writable-number-stats panel" id="writableNumberStats" aria-label="可写卡码号统计"></div>
+
             <div class="batch-actions" aria-label="可写码号操作">
               <button class="btn" id="writableBatchBtn" type="button">可写码号增加/移出</button>
               <button class="btn secondary" id="freezeStatusBtn" type="button">修改冻结状态</button>
@@ -7503,7 +7703,6 @@
             </div>
 
             <section class="panel table-panel" aria-label="ESIM可写码号列表">
-              <div class="writable-number-stats" id="writableNumberStats" aria-label="可写卡码号统计"></div>
               <div class="table-scroll">
                 <table class="writable-table">
                   <thead>
@@ -10368,7 +10567,7 @@
       { key: "manageDisableStatus", label: "平台管理禁用状态", type: "select", basic: true, options: ["已平台管理禁用", "未平台管理禁用"] },
       { key: "manageDisableReason", label: "停用原因", type: "select", basic: true, options: ["手动禁用", "卡状态异常"] },
       { key: "recycleStatus", label: "是否在回收池中", type: "select", basic: true, options: ["在", "不在"] },
-      { key: "allocated", label: "是否分配", type: "select", basic: true, options: ["是", "否"] },
+      { key: "allocated", label: "是否分配", type: "select", basic: true, options: ["已分配", "未分配"] },
       { key: "freezeStatus", label: "冻结状态", type: "select", basic: true, options: ["未冻结", "已冻结"] },
       { key: "realNameStatus", label: "实名认证状态", type: "select", options: ["未实名认证", "实名认证中", "已通过实名认证", "未通过实名认证"] },
       { key: "bindStatus", label: "绑定状态", type: "select", options: ["未绑定", "已绑定"] },
@@ -10793,6 +10992,11 @@
       "写卡失败": 7,
       "写卡成功": 113
     };
+    const writableNumberSummary = {
+      writableCount: 26,
+      writtenCount: 12,
+      cardExceptionCount: 5
+    };
 
     const writableTableColumns = [
       { key: "iccid", label: "ICCID" },
@@ -10833,7 +11037,7 @@
         iccid: "8986044219231000841",
         distributionBatchNo: "DIST20260518001",
         writeStatus: "写卡成功",
-        allocated: "是",
+        allocated: "已分配",
         msisdn: "106482913001",
         imei: "861234050001842",
         cardStatus: "已激活",
@@ -10894,7 +11098,7 @@
         iccid: "8986044219231000842",
         distributionBatchNo: "DIST20260517006",
         writeStatus: "待写卡",
-        allocated: "否",
+        allocated: "未分配",
         msisdn: "-",
         imei: "-",
         cardStatus: "-",
@@ -10936,7 +11140,7 @@
         iccid: "8986044219231000843",
         distributionBatchNo: "DIST20260516003",
         writeStatus: "写卡中",
-        allocated: "是",
+        allocated: "已分配",
         msisdn: "106482913003",
         imei: "861234050001856",
         cardStatus: "已激活",
@@ -10994,7 +11198,7 @@
         iccid: "8986044219231000844",
         distributionBatchNo: "DIST20260515009",
         writeStatus: "写卡失败",
-        allocated: "否",
+        allocated: "未分配",
         msisdn: "-",
         imei: "861234050001867",
         cardStatus: "激活失败",
@@ -18432,7 +18636,7 @@
       writableState.draftBindEnd = "";
       writableState.dateRangeError = "";
       writableState.dateRangeOpen = false;
-      renderWritableFilters();
+      refreshWritableFiltersAndResults();
     }
 
     function renderWritableOptions(fieldEl, field, keyword) {
@@ -18453,10 +18657,12 @@
       writableFilterWrap.querySelectorAll(".control").forEach((input) => {
         input.addEventListener("input", () => {
           writableState.values[input.dataset.key] = input.value;
+          if (!input.classList.contains("select-trigger")) renderWritableResults();
         });
         input.addEventListener("blur", () => {
           if (input.type !== "date") input.value = input.value.trim();
           writableState.values[input.dataset.key] = input.value;
+          if (!input.classList.contains("select-trigger")) renderWritableResults();
         });
         input.addEventListener("keydown", (event) => {
           if (event.key === "Enter") searchWritableNumbers();
@@ -18484,7 +18690,7 @@
           const option = event.target.closest(".option");
           if (!option || option.classList.contains("empty")) return;
           writableState.values[optionsEl.closest(".field").dataset.key] = option.dataset.value;
-          renderWritableFilters();
+          refreshWritableFiltersAndResults();
         });
       });
 
@@ -18493,11 +18699,11 @@
           event.stopPropagation();
           writableState.values[button.dataset.key] = "";
           closeWritableMenus();
-          renderWritableFilters();
+          refreshWritableFiltersAndResults();
         });
       });
 
-      bindWritableDateRangeControls(writableState, writableFilterWrap, renderWritableFilters, "writable", closeWritableMenus);
+      bindWritableDateRangeControls(writableState, writableFilterWrap, refreshWritableFiltersAndResults, "writable", closeWritableMenus);
 
       document.getElementById("writableSearchBtn").addEventListener("click", searchWritableNumbers);
       document.getElementById("writableResetBtn").addEventListener("click", resetWritableFilters);
@@ -18505,6 +18711,17 @@
         writableState.expanded = !writableState.expanded;
         renderWritableFilters();
       });
+    }
+
+    function refreshWritableFiltersAndResults() {
+      renderWritableFilters();
+      renderWritableResults();
+    }
+
+    function renderWritableResults() {
+      renderWritableStatusTabs();
+      renderWritableTable();
+      renderWritablePager();
     }
 
     function closeWritableMenus(exceptKey) {
@@ -18524,13 +18741,13 @@
       }
       const activeCount = writableFields.filter((field) => isWritableFilterActive(writableState, field)).length;
       showToast(activeCount ? "可写码号列表已按查询条件刷新" : "已查询全部可写码号", "success");
-      renderWritableFilters();
+      refreshWritableFiltersAndResults();
     }
 
     function resetWritableFilters() {
       writableState.values = {};
       clearWritableDateRanges(writableState);
-      renderWritableFilters();
+      refreshWritableFiltersAndResults();
       showToast("可写码号查询条件已清空", "info");
     }
 
@@ -18998,23 +19215,86 @@
     }
 
     function writableStatusTotal(status) {
-      if (status !== "全部") return writableStatusTotals[status] || 0;
-      return Object.values(writableStatusTotals).reduce((total, count) => total + count, 0);
+      const rows = filteredWritableRows();
+      if (status !== "全部") return rows.filter((row) => row.writeStatus === status).length;
+      return rows.length;
     }
 
     function isCardStatusException(row) {
       return ["激活失败", "停机失败", "冻结", "销户", "未入库"].includes(row.cardStatus);
     }
 
+    function writableRowFieldValue(row, field) {
+      const map = {
+        iccidMsisdn: [row.iccid, row.msisdn].join(" "),
+        merchantName: row.merchant,
+        lockFlag: row.lockStatus
+      };
+      return map[field.key] ?? row[field.key] ?? "";
+    }
+
+    function extractDateValues(value) {
+      return String(value || "").match(/\d{4}-\d{2}-\d{2}/g) || [];
+    }
+
+    function writableDateRangeMatches(rowValue, start, end) {
+      if (!start && !end) return true;
+      const dates = extractDateValues(rowValue);
+      if (!dates.length) return false;
+      const rowStart = dates[0];
+      const rowEnd = dates[dates.length - 1];
+      if (start && rowEnd < start) return false;
+      if (end && rowStart > end) return false;
+      return true;
+    }
+
+    function writableFieldMatches(row, field) {
+      const config = writableDateRangeConfigs[field.key];
+      if (config) {
+        return writableDateRangeMatches(
+          writableRowFieldValue(row, field),
+          writableState.values[config.startKey] || "",
+          writableState.values[config.endKey] || ""
+        );
+      }
+      const filterValue = String(writableState.values[field.key] || "").trim();
+      if (!filterValue) return true;
+      const rowValue = String(writableRowFieldValue(row, field) || "");
+      if (field.type === "select") return rowValue === filterValue;
+      return rowValue.includes(filterValue);
+    }
+
+    function filteredWritableRows(options = {}) {
+      const includeStatus = Boolean(options.includeStatus && document.getElementById("writableStatusTabs"));
+      return writableRows.filter((row) => {
+        const matchFilters = writableFields.every((field) => writableFieldMatches(row, field));
+        if (!matchFilters) return false;
+        if (includeStatus && writableState.activeStatus !== "全部") return row.writeStatus === writableState.activeStatus;
+        return true;
+      });
+    }
+
+    function isAssignableWritableNumber(row) {
+      const platformCancelStatus = row.platformCancelStatus || "未销号";
+      const manageDisableStatus = row.manageDisableStatus || "未平台管理禁用";
+      return platformCancelStatus === "未销号"
+        && manageDisableStatus === "未平台管理禁用"
+        && !["预销号", "其他"].includes(row.cardStatus)
+        && row.writeStatus === "待写卡"
+        && row.recycleStatus === "不在"
+        && row.allocated === "未分配";
+    }
+
     function writableNumberStats() {
-      const cardExceptionCount = writableRows.filter(isCardStatusException).length;
-      const writableCount = writableRows.filter((row) => row.writeStatus === "待写卡" && !isCardStatusException(row)).length;
-      const writtenCount = writableRows.filter((row) => row.writeStatus !== "待写卡" && !isCardStatusException(row)).length;
+      const rows = filteredWritableRows();
+      const writableCount = rows.filter(isAssignableWritableNumber).length;
+      const unwritableCount = Math.max(rows.length - writableCount, 0);
+      const total = rows.length;
       return {
         writableCount,
-        writtenCount,
-        cardExceptionCount,
-        unwritableCount: writtenCount + cardExceptionCount
+        unwritableCount,
+        writablePercent: total ? Math.round((writableCount / total) * 100) : 0,
+        unwritablePercent: total ? Math.round((unwritableCount / total) * 100) : 0
       };
     }
 
@@ -19023,25 +19303,55 @@
       if (!stats) return;
       const totals = writableNumberStats();
       const items = [
-        { label: "可写卡码号数量", value: totals.writableCount },
         {
-          label: "不可写卡码号数量",
+          label: "可被分配给用户且能够发起写卡任务的码号数量",
+          value: totals.writableCount,
+          percent: totals.writablePercent,
+          variant: "success",
+          color: "#18a058",
+          tip: "可被分配给用户且能够发起写卡任务的码号需同时满足以下条件：\n1、平台管理销号状态为「未销号」；\n2、平台管理禁用状态为「未平台管理禁用」；\n3、卡运营商状态非「预销号」、「其他」；\n4、写卡状态为「待写卡」；\n5、是否在回收池中为「不在」；\n6、是否分配为「未分配」。",
+          icon: `
+            <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+              <rect x="10" y="14" width="38" height="28" rx="5" stroke="currentColor" stroke-width="4"/>
+              <path d="M10 24h38M18 34h13" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+              <circle cx="45" cy="43" r="13" fill="currentColor"/>
+              <path d="m38 43 5 5 10-12" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          `
+        },
+        {
+          label: "不可被分配给用户发起写卡任务的码号数量",
           value: totals.unwritableCount,
-          detail: [
-            { label: "已写卡码号数量", value: totals.writtenCount },
-            { label: "卡状态异常码号数量", value: totals.cardExceptionCount }
-          ]
+          percent: totals.unwritablePercent,
+          variant: "warning",
+          color: "#ff8a00",
+          icon: `
+            <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+              <rect x="10" y="14" width="38" height="28" rx="5" stroke="currentColor" stroke-width="4"/>
+              <path d="M10 24h38M18 34h13" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+              <circle cx="45" cy="43" r="13" fill="currentColor"/>
+              <path d="M45 35v10" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+              <circle cx="45" cy="50" r="2" fill="#fff"/>
+            </svg>
+          `
         }
       ];
       stats.innerHTML = items.map((item) => `
-        <div class="writable-number-stat">
-          <div class="writable-number-stat-label">${item.label}</div>
-          <div class="writable-number-stat-value">${item.value}</div>
-          ${item.detail ? `
-            <div class="writable-number-stat-detail">
-              ${item.detail.map((detail) => `<span>${detail.label}：<strong>${detail.value}</strong></span>`).join("")}
+        <div class="writable-number-stat is-${item.variant}" style="--stat-color:${item.color};--stat-percent:${item.percent};">
+          <div class="writable-number-stat-visual">${item.icon}</div>
+          <div class="writable-number-stat-main">
+            <div class="writable-number-stat-title">
+              <span>${item.label}</span>
+              ${item.tip ? `<span class="writable-number-stat-info" tabindex="0" data-tip="${escapeHtml(item.tip)}" aria-label="${escapeHtml(item.tip)}">i</span>` : ""}
             </div>
-          ` : ""}
+            <div class="writable-number-stat-value">${item.value}</div>
+          </div>
+          <div class="writable-number-stat-ring">
+            <div class="writable-number-stat-donut">
+              <span class="writable-number-stat-percent">${item.percent}%</span>
+            </div>
+            <div>占全部码号</div>
+          </div>
         </div>
       `).join("");
     }
@@ -19068,7 +19378,7 @@
     }
 
     function renderWritablePager() {
-      const total = writableStatusTotal("全部");
+      const total = filteredWritableRows({ includeStatus: true }).length;
       const pageCount = Math.max(Math.ceil(total / 20), 1);
       const pageLabels = pageCount > 4 ? ["1", "2", "3", "...", String(pageCount)] : Array.from({ length: pageCount }, (_, index) => String(index + 1));
       document.getElementById("writablePager").innerHTML = `
@@ -19083,7 +19393,7 @@
       renderWritableNumberStats();
       const header = document.getElementById("writableTableHeader");
       const body = document.getElementById("writableTableBody");
-      const visibleRows = writableRows;
+      const visibleRows = filteredWritableRows({ includeStatus: true });
       header.innerHTML = writableTableColumns.map((column) => `
         <th class="${column.fixedRight ? "operation-col" : ""}">${column.label}</th>
       `).join("");
