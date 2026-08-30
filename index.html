@@ -5316,20 +5316,23 @@
 
     .sim-card-detail-layout {
       display: grid;
-      grid-template-columns: minmax(760px, 1fr) 340px;
+      grid-template-columns: minmax(0, 1fr) 340px;
       gap: 12px;
       padding: 12px 0 24px;
       align-items: start;
+      position: relative;
     }
 
     .sim-card-detail-main {
       min-width: 0;
+      overflow-x: auto;
     }
 
     .sim-detail-section {
       margin-bottom: 22px;
       border: 1px solid #e6ebf2;
       background: #fff;
+      min-width: 816px;
     }
 
     .sim-detail-section-head {
@@ -5404,6 +5407,7 @@
 
     .sim-detail-table {
       width: 100%;
+      min-width: 816px;
       border-collapse: separate;
       border-spacing: 0;
       table-layout: fixed;
@@ -5843,12 +5847,21 @@
       padding: 10px 14px;
       background: #e8edf5;
       border: 1px solid #e6ebf2;
+      min-width: 816px;
     }
 
     .sim-detail-mini-preview {
       border-left: 0;
       background: #fff;
       min-width: 0;
+      width: 340px;
+      position: sticky;
+      top: 0;
+      right: 0;
+      z-index: 3;
+      align-self: start;
+      max-height: calc(100vh - 128px);
+      overflow: auto;
     }
 
     .mini-preview-title {
@@ -20169,7 +20182,7 @@
           percent: totals.writablePercent,
           variant: "success",
           color: "#18a058",
-          tip: "可被分配给用户且能够发起写卡任务的码号需同时满足以下条件：\n1、平台管理销号状态为「未销号」；\n2、平台管理禁用状态为「未平台管理禁用」；\n3、卡运营商状态非「预销号」、「其他」；\n4、写卡状态为「待写卡」；\n5、是否在回收池中为「不在」；\n6、是否分配为「未分配」。",
+          tip: "满足以下全部条件的码号，可分配给用户并发起写卡任务：\n1. 平台管理销号状态：未销号\n2. 平台管理禁用状态：未平台管理禁用\n3. 卡运营商状态：非“预销号 ”、“其他”；\n4. 写卡状态：待写卡\n5. 是否在回收池中：不在\n6. 是否分配：未分配",
           icon: `
             <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
               <rect x="10" y="14" width="38" height="28" rx="5" stroke="currentColor" stroke-width="4"/>
@@ -20185,6 +20198,7 @@
           percent: totals.unwritablePercent,
           variant: "warning",
           color: "#ff8a00",
+          tip: "存在以下任一情况的码号，将统计为“不可分配给用户发起写卡任务的码号”：\n1. 平台管理码号状态：已销号\n2. 平台管理禁用状态：已平台管理禁用\n3. 卡运营商状态：不符合可写卡要求\n4. 写卡状态：预销号、其他\n5. 是否在回收池中：在回收池\n6. 分配状态：已分配",
           icon: `
             <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
               <rect x="10" y="14" width="38" height="28" rx="5" stroke="currentColor" stroke-width="4"/>
