@@ -11837,6 +11837,16 @@
       pages: {}
     };
 
+    const smartDeviceBindingRecordState = {
+      pageSize: 5,
+      pages: {}
+    };
+
+    const smartDevicePackageRecordState = {
+      pageSize: 5,
+      pages: {}
+    };
+
     const smartDiagnosisRecordTabs = [
       { key: "refund", label: "退费申请记录", docField: "refundRecord" },
       { key: "deviceBinding", label: "设备绑定", docField: "deviceBinding" },
@@ -13350,6 +13360,18 @@
       `;
     }
 
+    function renderSmartDiagnosisRecordPager(type, iccid, total, page, pageSize, ariaLabel) {
+      const pageCount = Math.max(1, Math.ceil(total / pageSize));
+      return `
+        <div class="pager smart-diagnosis-refund-pager" aria-label="${escapeHtml(ariaLabel)}">
+          <span>共 ${total} 条</span>
+          <button class="page-btn" type="button" data-smart-record-page="${escapeHtml(type)}" data-iccid="${escapeHtml(iccid)}" data-page="${Math.max(1, page - 1)}" ${page <= 1 ? "disabled" : ""}>‹</button>
+          <button class="page-btn active" type="button">${page}</button>
+          <button class="page-btn" type="button" data-smart-record-page="${escapeHtml(type)}" data-iccid="${escapeHtml(iccid)}" data-page="${Math.min(pageCount, page + 1)}" ${page >= pageCount ? "disabled" : ""}>›</button>
+        </div>
+      `;
+    }
+
     function renderSmartDiagnosisRefundRecords(iccid) {
       const rows = smartRefundRecordRows.filter((row) => row.iccid === iccid);
       const pageSize = smartRefundRecordState.pageSize;
@@ -13417,6 +13439,12 @@
 
     function renderSmartDiagnosisDeviceBindingRecords(iccid) {
       const rows = smartDeviceBindingRows.filter((row) => row.iccid === iccid);
+      const pageSize = smartDeviceBindingRecordState.pageSize;
+      const pageCount = Math.max(1, Math.ceil(rows.length / pageSize));
+      const currentPage = Math.min(Math.max(1, smartDeviceBindingRecordState.pages[iccid] || 1), pageCount);
+      smartDeviceBindingRecordState.pages[iccid] = currentPage;
+      const start = (currentPage - 1) * pageSize;
+      const pageRows = rows.slice(start, start + pageSize);
       return `
         <div class="table-scroll smart-diagnosis-record-table-scroll">
           <table class="smart-diagnosis-device-binding-table">
@@ -13425,7 +13453,7 @@
             </thead>
             <tbody>
               ${rows.length
-                ? rows.map((row) => `
+                ? pageRows.map((row) => `
                   <tr>
                     ${smartDeviceBindingColumns.map((column) => `<td>${renderSmartDeviceBindingValue(row, column)}</td>`).join("")}
                   </tr>
@@ -13434,6 +13462,7 @@
             </tbody>
           </table>
         </div>
+        ${renderSmartDiagnosisRecordPager("deviceBinding", iccid, rows.length, currentPage, pageSize, "设备绑定分页")}
       `;
     }
 
@@ -13446,6 +13475,12 @@
 
     function renderSmartDiagnosisDevicePackageRecords(iccid) {
       const rows = smartDevicePackageRows.filter((row) => row.iccid === iccid);
+      const pageSize = smartDevicePackageRecordState.pageSize;
+      const pageCount = Math.max(1, Math.ceil(rows.length / pageSize));
+      const currentPage = Math.min(Math.max(1, smartDevicePackageRecordState.pages[iccid] || 1), pageCount);
+      smartDevicePackageRecordState.pages[iccid] = currentPage;
+      const start = (currentPage - 1) * pageSize;
+      const pageRows = rows.slice(start, start + pageSize);
       return `
         <div class="table-scroll smart-diagnosis-record-table-scroll">
           <table class="smart-diagnosis-device-package-table">
@@ -13454,7 +13489,7 @@
             </thead>
             <tbody>
               ${rows.length
-                ? rows.map((row) => `
+                ? pageRows.map((row) => `
                   <tr>
                     ${smartDevicePackageColumns.map((column) => `<td>${renderSmartDevicePackageValue(row, column)}</td>`).join("")}
                   </tr>
@@ -13463,6 +13498,7 @@
             </tbody>
           </table>
         </div>
+        ${renderSmartDiagnosisRecordPager("devicePackage", iccid, rows.length, currentPage, pageSize, "设备套餐分页")}
       `;
     }
 
@@ -23648,7 +23684,7 @@
       },
       smartDiagnosisPage: {
         page: { title: "智能诊断", purpose: "用于通过 EID、SN、ICCID 或 MSISDN 查询卡诊断信息，并查看诊断信息、退费申请记录、设备绑定和设备套餐。" },
-        queries: ["EID/SN/ICCID/MSISDN"],
+        queries: ["EID/SN/ICCID/MSISDN/原始ICCID"],
         fields: [
           docField("iccid", "ICCID", "SIM 卡 ICCID；存在值时支持复制。"),
           docField("msisdn", "MSISDN", "SIM 卡号码；存在值时支持复制。"),
@@ -25027,6 +25063,19 @@
       if (pageButton) {
         const iccid = pageButton.dataset.smartRefundPage;
         smartRefundRecordState.pages[iccid] = Number(pageButton.dataset.page) || 1;
+        renderSmartDiagnosisPage();
+        return;
+      }
+      const recordPageButton = event.target.closest("[data-smart-record-page]");
+      if (recordPageButton) {
+        const iccid = recordPageButton.dataset.iccid;
+        const page = Number(recordPageButton.dataset.page) || 1;
+        if (recordPageButton.dataset.smartRecordPage === "deviceBinding") {
+          smartDeviceBindingRecordState.pages[iccid] = page;
+        }
+        if (recordPageButton.dataset.smartRecordPage === "devicePackage") {
+          smartDevicePackageRecordState.pages[iccid] = page;
+        }
         renderSmartDiagnosisPage();
         return;
       }
