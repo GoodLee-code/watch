@@ -11838,9 +11838,9 @@
     };
 
     const smartDiagnosisRecordTabs = [
-      { key: "refund", label: "退费申请记录" },
-      { key: "deviceBinding", label: "设备绑定" },
-      { key: "devicePackage", label: "设备套餐" }
+      { key: "refund", label: "退费申请记录", docField: "refundRecord" },
+      { key: "deviceBinding", label: "设备绑定", docField: "deviceBinding" },
+      { key: "devicePackage", label: "设备套餐", docField: "devicePackage" }
     ];
 
     const smartRefundOrderColumns = [
@@ -13215,8 +13215,9 @@
 
     function renderSmartDiagnosisIdentityField(item) {
       const value = item.html ? item.value : escapeHtml(item.value || "-");
+      const docFieldAttr = item.docField ? ` data-doc-field="${escapeHtml(item.docField)}"` : "";
       return `
-        <div class="smart-diagnosis-identity-item">
+        <div class="smart-diagnosis-identity-item"${docFieldAttr}>
           <span class="smart-diagnosis-label">${escapeHtml(item.label)}：</span>
           <span class="smart-diagnosis-value">${value}</span>
         </div>
@@ -13225,8 +13226,9 @@
 
     function renderSmartDiagnosisDataField(item) {
       const value = item.html ? item.value : escapeHtml(item.value || "-");
+      const docFieldAttr = item.docField ? ` data-doc-field="${escapeHtml(item.docField)}"` : "";
       return `
-        <div class="smart-diagnosis-data-item${item.wide ? " is-wide" : ""}">
+        <div class="smart-diagnosis-data-item${item.wide ? " is-wide" : ""}"${docFieldAttr}>
           <span class="smart-diagnosis-label">${escapeHtml(item.label)}：</span>
           <span class="smart-diagnosis-value">${value}</span>
         </div>
@@ -13394,6 +13396,7 @@
               role="tab"
               aria-selected="${activeTab === tab.key ? "true" : "false"}"
               data-smart-record-tab="${escapeHtml(tab.key)}"
+              data-doc-field="${escapeHtml(tab.docField)}"
               data-iccid="${escapeHtml(iccid)}"
             >${escapeHtml(tab.label)}</button>
           `).join("")}
@@ -13477,7 +13480,9 @@
             ${renderSmartDiagnosisRecordTabs(data.iccid)}
             ${activeTab === "refund" ? `<button class="btn smart-diagnosis-refund-btn" type="button" data-smart-diagnosis-refund data-iccid="${escapeHtml(data.iccid || "")}">申请退费</button>` : ""}
           </div>
-          ${renderSmartDiagnosisActiveRecordContent(activeTab, data.iccid)}
+          <div data-doc-field="${escapeHtml(activeTab === "deviceBinding" ? "deviceBinding" : activeTab === "devicePackage" ? "devicePackage" : "refundRecord")}">
+            ${renderSmartDiagnosisActiveRecordContent(activeTab, data.iccid)}
+          </div>
         </section>
       `;
     }
@@ -13492,6 +13497,7 @@
       if (!smartDiagnosisState.hasResult) {
         sections.innerHTML = "";
         footer.textContent = "";
+        if (pageDocumentationState.open) syncPageDocumentationFieldTargets();
         return;
       }
 
@@ -13501,33 +13507,33 @@
         <div class="smart-diagnosis-card-list">
           ${cards.map((data) => {
             const identityItems = [
-              { label: "ICCID", value: renderSmartDiagnosisIdentifier(data.iccid, "ICCID"), html: true },
-              { label: "MSISDN", value: renderSmartDiagnosisIdentifier(data.msisdn, "MSISDN"), html: true },
-              { label: "EID", value: renderSmartDiagnosisIdentifier(data.eid, "EID"), html: true },
-              { label: "SN", value: renderSmartDiagnosisIdentifier(data.sn, "SN"), html: true }
+              { label: "ICCID", value: renderSmartDiagnosisIdentifier(data.iccid, "ICCID"), html: true, docField: "iccid" },
+              { label: "MSISDN", value: renderSmartDiagnosisIdentifier(data.msisdn, "MSISDN"), html: true, docField: "msisdn" },
+              { label: "EID", value: renderSmartDiagnosisIdentifier(data.eid, "EID"), html: true, docField: "eid" },
+              { label: "SN", value: renderSmartDiagnosisIdentifier(data.sn, "SN"), html: true, docField: "sn" }
             ];
             const dataRows = [
               [
-                { label: "卡（运营商）状态", value: renderSmartDiagnosisStatus(data.cardOperatorStatus, smartDiagnosisTone(data.cardOperatorStatus)), html: true },
-                { label: "实名状态", value: renderSmartDiagnosisStatus(data.realNameStatus, smartDiagnosisTone(data.realNameStatus)), html: true },
-                { label: "卡在线状态", value: renderSmartDiagnosisOnlineStatus(data.onlineStatus), html: true }
+                { label: "卡（运营商）状态", value: renderSmartDiagnosisStatus(data.cardOperatorStatus, smartDiagnosisTone(data.cardOperatorStatus)), html: true, docField: "cardOperatorStatus" },
+                { label: "实名状态", value: renderSmartDiagnosisStatus(data.realNameStatus, smartDiagnosisTone(data.realNameStatus)), html: true, docField: "realNameStatus" },
+                { label: "卡在线状态", value: renderSmartDiagnosisOnlineStatus(data.onlineStatus), html: true, docField: "onlineStatus" }
               ],
               [
-                { label: "机卡分离状态", value: renderSmartDiagnosisMachineCardSeparationStatus(data.machineCardSeparation), html: true },
-                { label: "物联卡管理停复机冻结状态", value: renderSmartDiagnosisIotManagementStatus(data.iotManagementStatus), html: true },
-                { label: "本月语音剩余时长", value: renderSmartDiagnosisVoiceRemaining(data.voiceRemaining), html: true }
+                { label: "机卡分离状态", value: renderSmartDiagnosisMachineCardSeparationStatus(data.machineCardSeparation), html: true, docField: "machineCardSeparation" },
+                { label: "物联卡管理停复机冻结状态", value: renderSmartDiagnosisIotManagementStatus(data.iotManagementStatus), html: true, docField: "iotManagementStatus" },
+                { label: "本月语音剩余时长", value: renderSmartDiagnosisVoiceRemaining(data.voiceRemaining), html: true, docField: "voiceRemaining" }
               ],
               [
-                { label: "已用流量", value: renderSmartDiagnosisTrafficUsage(data), html: true },
-                { label: "数据服务开关状态", value: renderSmartDiagnosisStatus(data.dataServiceStatus, smartDiagnosisTone(data.dataServiceStatus)), html: true },
-                { label: "套餐服务有效期", value: renderSmartDiagnosisPackageValidity(data.packageValidity), html: true }
+                { label: "已用流量", value: renderSmartDiagnosisTrafficUsage(data), html: true, docField: "usedTraffic" },
+                { label: "数据服务开关状态", value: renderSmartDiagnosisStatus(data.dataServiceStatus, smartDiagnosisTone(data.dataServiceStatus)), html: true, docField: "dataServiceStatus" },
+                { label: "套餐服务有效期", value: renderSmartDiagnosisPackageValidity(data.packageValidity), html: true, docField: "packageValidity" }
               ],
               [
-                { label: "代理商", value: data.agent },
-                { label: "所属商户", value: data.merchant }
+                { label: "代理商", value: data.agent, docField: "agent" },
+                { label: "所属商户", value: data.merchant, docField: "merchant" }
               ],
               [
-                { label: "亲情号", value: renderSmartDiagnosisFamilyNumbers(data), html: true, wide: true }
+                { label: "亲情号", value: renderSmartDiagnosisFamilyNumbers(data), html: true, wide: true, docField: "familyNumbers" }
               ]
             ];
             return `
@@ -13557,6 +13563,7 @@
         </div>
       `;
       footer.textContent = "";
+      if (pageDocumentationState.open) syncPageDocumentationFieldTargets();
     }
 
     function runSmartDiagnosis() {
@@ -22822,6 +22829,12 @@
         .replace(/'/g, "&#39;");
     }
 
+    function cssEscapeValue(value) {
+      const text = String(value ?? "");
+      if (window.CSS && typeof window.CSS.escape === "function") return window.CSS.escape(text);
+      return text.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
+    }
+
     function parseDateTimeValue(value) {
       if (!value || value === "-") return null;
       const normalized = String(value).replace("T", " ").trim();
@@ -23883,10 +23896,6 @@
           <h3>业务规则</h3>
           ${renderPageDocList(doc.businessRules)}
         </section>
-        <section class="page-doc-section">
-          <h3>交互说明</h3>
-          ${renderPageDocList(doc.interactions)}
-        </section>
       `;
     }
 
@@ -23907,11 +23916,13 @@
       const doc = activePageDocumentation();
       const activePage = document.getElementById(activeCrumbPage);
       if (!activePage || !doc.fields) return;
-      activePage.querySelectorAll("[data-doc-field]").forEach((el) => {
+      activePage.querySelectorAll("[data-doc-field-auto]").forEach((el) => {
         el.removeAttribute("data-doc-field");
+        el.removeAttribute("data-doc-field-auto");
       });
       const candidates = Array.from(activePage.querySelectorAll("th, label, input, select, textarea, button, .smart-diagnosis-label, .sim-detail-table th, .risk-form-label, .modal-label, .field, .table-head"));
       doc.fields.forEach((field) => {
+        if (activePage.querySelector(`[data-doc-field="${cssEscapeValue(field.id)}"]`)) return;
         const labels = pageDocumentationFieldLabels(field);
         const matched = candidates.find((el) => {
           const text = normalizeDocText(el.textContent || el.getAttribute("aria-label") || el.getAttribute("placeholder"));
@@ -23920,6 +23931,7 @@
         if (matched) {
           const target = matched.closest(".field, .modal-form-row, .risk-form-row, .smart-diagnosis-data-item, .smart-diagnosis-identity-item") || matched;
           target.setAttribute("data-doc-field", field.id);
+          target.setAttribute("data-doc-field-auto", "true");
         }
       });
     }
@@ -23928,7 +23940,7 @@
       const activePage = document.getElementById(activeCrumbPage);
       if (!activePage) return;
       syncPageDocumentationFieldTargets();
-      const escapedFieldId = String(fieldId || "").replace(/\\/g, "\\\\").replace(/"/g, '\\"');
+      const escapedFieldId = cssEscapeValue(fieldId);
       const target = activePage.querySelector(`[data-doc-field="${escapedFieldId}"]`);
       if (!target) {
         showToast("当前页面暂未找到对应字段位置", "info");
