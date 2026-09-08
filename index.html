@@ -1960,7 +1960,9 @@
     .content.ab-mode .business-tabs,
     .content.sim-mode .business-tabs,
     .content.risk-mode .business-tabs,
-    .content.refund-mode .business-tabs {
+    .content.refund-mode .business-tabs,
+    .content.log-mode .business-tabs,
+    .content.task-mode .business-tabs {
       display: none;
     }
 
@@ -7728,6 +7730,7 @@
       </div>
       <div class="sub-menu" id="logSubMenu" aria-label="日志管理二级菜单">
         <button class="sub-item" id="accountOperationLogSubItem" type="button" data-page="accountOperationLogPage">账户操作日志</button>
+        <button class="sub-item" id="smartDiagnosisLogSubItem" type="button" data-page="smartDiagnosisLogPage">智能诊断日志</button>
       </div>
       <div class="nav-item" id="taskNavItem" role="button" tabindex="0">
         <svg class="nav-icon" viewBox="0 0 15 14" fill="none" aria-hidden="true">
@@ -8306,6 +8309,28 @@
               </table>
             </div>
             <div class="pager" id="accountOperationLogPager" aria-label="账户操作日志分页"></div>
+          </section>
+        </div>
+
+        <div class="page-view" id="smartDiagnosisLogPage">
+          <section class="panel query-panel" aria-label="智能诊断日志查询区域">
+            <div class="filter-wrap" id="smartDiagnosisLogFilterWrap"></div>
+          </section>
+
+          <div class="batch-actions" aria-label="智能诊断日志操作">
+            <button class="btn" id="smartDiagnosisLogExportBtn" type="button">导出</button>
+          </div>
+
+          <section class="panel table-panel" aria-label="智能诊断日志列表">
+            <div class="table-scroll">
+              <table class="account-operation-log-table">
+                <thead>
+                  <tr id="smartDiagnosisLogTableHeader"></tr>
+                </thead>
+                <tbody id="smartDiagnosisLogTableBody"></tbody>
+              </table>
+            </div>
+            <div class="pager" id="smartDiagnosisLogPager" aria-label="智能诊断日志分页"></div>
           </section>
         </div>
 
@@ -10981,6 +11006,49 @@
       operationTimeRangeViewMonth: ""
     };
 
+    const smartDiagnosisLogFields = [
+      { key: "iccidMsisdn", label: "ICCID/MSISDN", type: "input" },
+      { key: "diagnosisSource", label: "诊断来源", type: "select", options: ["管理后台", "米云智联小程序"] },
+      { key: "diagnosisResult", label: "诊断结果", type: "select", options: ["卡状态正常", "卡状态异常"] },
+      { key: "diagnosisTime", label: "诊断时间", type: "daterange" }
+    ];
+
+    const smartDiagnosisLogDateConfig = {
+      label: "诊断时间",
+      idPrefix: "smartDiagnosisLog",
+      openKey: "diagnosisTimeRangeOpen",
+      startKey: "diagnosisStart",
+      endKey: "diagnosisEnd",
+      draftStartKey: "draftDiagnosisStart",
+      draftEndKey: "draftDiagnosisEnd",
+      errorKey: "diagnosisTimeRangeError",
+      viewKey: "diagnosisTimeRangeViewMonth"
+    };
+
+    const smartDiagnosisLogColumns = [
+      { key: "iccid", label: "ICCID" },
+      { key: "msisdn", label: "MSISDN" },
+      { key: "diagnosisSource", label: "诊断来源" },
+      { key: "diagnosisResult", label: "诊断结果" },
+      { key: "diagnosisTime", label: "诊断时间" }
+    ];
+
+    const smartDiagnosisLogRows = [
+      { iccid: "8986044219231000841", msisdn: "13812345678", diagnosisSource: "管理后台", diagnosisResult: "卡状态正常", diagnosisTime: "2026-09-08 10:12:36" },
+      { iccid: "8986044219231000842", msisdn: "13812345678", diagnosisSource: "管理后台", diagnosisResult: "卡状态异常", diagnosisTime: "2026-09-08 10:18:24" },
+      { iccid: "8986044219231000858", msisdn: "13912345678", diagnosisSource: "米云智联小程序", diagnosisResult: "卡状态正常", diagnosisTime: "2026-09-07 16:42:08" },
+      { iccid: "8986044219231000866", msisdn: "13712345678", diagnosisSource: "米云智联小程序", diagnosisResult: "卡状态异常", diagnosisTime: "2026-09-07 09:25:41" }
+    ];
+
+    const smartDiagnosisLogState = {
+      values: {},
+      diagnosisTimeRangeOpen: false,
+      draftDiagnosisStart: "",
+      draftDiagnosisEnd: "",
+      diagnosisTimeRangeError: "",
+      diagnosisTimeRangeViewMonth: ""
+    };
+
     const batchTaskOperationTypes = [
       "批量查询风险设备",
       "批量标识高频呼叫转移禁用卡",
@@ -12784,6 +12852,7 @@
     const orderFilterWrap = document.getElementById("esimOrderFilterWrap");
     const refundWorkOrderFilterWrap = document.getElementById("refundWorkOrderFilterWrap");
     const accountOperationLogFilterWrap = document.getElementById("accountOperationLogFilterWrap");
+    const smartDiagnosisLogFilterWrap = document.getElementById("smartDiagnosisLogFilterWrap");
     const batchTaskFilterWrap = document.getElementById("batchTaskFilterWrap");
     const writableFilterWrap = document.getElementById("writableFilterWrap");
     const writableChangeRecordFilterWrap = document.getElementById("writableChangeRecordFilterWrap");
@@ -18360,6 +18429,241 @@
       }
     }
 
+    function renderSmartDiagnosisLogDateRangeControl() {
+      const config = smartDiagnosisLogDateConfig;
+      return renderDateRangeField({
+        idPrefix: config.idPrefix,
+        label: config.label,
+        isOpen: smartDiagnosisLogState[config.openKey],
+        start: smartDiagnosisLogState.values[config.startKey] || "",
+        end: smartDiagnosisLogState.values[config.endKey] || "",
+        draftStart: smartDiagnosisLogState[config.draftStartKey],
+        draftEnd: smartDiagnosisLogState[config.draftEndKey],
+        error: smartDiagnosisLogState[config.errorKey],
+        viewMonth: smartDiagnosisLogState[config.viewKey]
+      });
+    }
+
+    function renderSmartDiagnosisLogFilters() {
+      smartDiagnosisLogFilterWrap.innerHTML = "";
+      smartDiagnosisLogFields.forEach((field) => {
+        const el = document.createElement("div");
+        el.className = "field";
+        el.dataset.key = field.key;
+
+        if (field.type === "select") {
+          const value = smartDiagnosisLogState.values[field.key] || "";
+          el.innerHTML = `
+            <input class="control select-trigger ${value ? "has-value" : ""}" data-key="${field.key}" type="text" placeholder="${field.label}" value="${escapeHtml(value)}" autocomplete="off" />
+            ${value ? `<button class="select-clear" type="button" data-key="${field.key}" aria-label="清除${field.label}">×</button>` : ""}
+            ${iconChevron().replace('class="icon"', 'class="field-icon"')}
+            <div class="select-menu" data-menu="${field.key}">
+              <div class="select-options"></div>
+            </div>
+          `;
+          smartDiagnosisLogFilterWrap.appendChild(el);
+          renderSmartDiagnosisLogOptions(el, field, "");
+          return;
+        }
+
+        if (field.type === "daterange") {
+          el.className = "field writable-date-range";
+          el.innerHTML = renderSmartDiagnosisLogDateRangeControl();
+          smartDiagnosisLogFilterWrap.appendChild(el);
+          return;
+        }
+
+        const value = smartDiagnosisLogState.values[field.key] || "";
+        el.innerHTML = `
+          <input class="control" data-key="${field.key}" type="text" placeholder="${field.label}" value="${escapeHtml(value)}" />
+        `;
+        smartDiagnosisLogFilterWrap.appendChild(el);
+      });
+
+      const actions = document.createElement("div");
+      actions.className = "form-actions";
+      actions.innerHTML = `
+        <button class="btn search-btn" id="smartDiagnosisLogSearchBtn" type="button">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="m21 21-4.3-4.3M11 19a8 8 0 1 1 0-16 8 8 0 0 1 0 16Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          搜索
+        </button>
+        <button class="btn secondary" id="smartDiagnosisLogResetBtn" type="button">重置</button>
+      `;
+      smartDiagnosisLogFilterWrap.appendChild(actions);
+      bindSmartDiagnosisLogFilterEvents();
+    }
+
+    function renderSmartDiagnosisLogOptions(fieldEl, field, keyword) {
+      const optionsEl = fieldEl.querySelector(".select-options");
+      const selected = smartDiagnosisLogState.values[field.key] || "";
+      const options = field.options.filter((option) => option.includes(keyword.trim()));
+      optionsEl.innerHTML = options.length ? "" : '<div class="option empty">暂无匹配数据</div>';
+      options.forEach((option) => {
+        const node = document.createElement("div");
+        node.className = "option" + (selected === option ? " active" : "");
+        node.textContent = option;
+        node.dataset.value = option;
+        optionsEl.appendChild(node);
+      });
+    }
+
+    function bindSmartDiagnosisLogFilterEvents() {
+      smartDiagnosisLogFilterWrap.querySelectorAll(".control").forEach((input) => {
+        input.addEventListener("input", () => {
+          smartDiagnosisLogState.values[input.dataset.key] = input.value;
+        });
+        input.addEventListener("blur", () => {
+          input.value = input.value.trim();
+          smartDiagnosisLogState.values[input.dataset.key] = input.value;
+        });
+        input.addEventListener("keydown", (event) => {
+          if (event.key === "Enter") searchSmartDiagnosisLogs();
+        });
+      });
+
+      smartDiagnosisLogFilterWrap.querySelectorAll(".select-trigger").forEach((trigger) => {
+        const openMenu = () => {
+          closeSmartDiagnosisLogMenus(trigger.dataset.key);
+          const field = smartDiagnosisLogFields.find((item) => item.key === trigger.dataset.key);
+          renderSmartDiagnosisLogOptions(trigger.closest(".field"), field, trigger.value);
+          trigger.classList.add("open");
+          smartDiagnosisLogFilterWrap.querySelector(`[data-menu="${trigger.dataset.key}"]`).classList.add("open");
+        };
+        trigger.addEventListener("click", (event) => {
+          event.stopPropagation();
+          openMenu();
+        });
+        trigger.addEventListener("focus", openMenu);
+        trigger.addEventListener("input", openMenu);
+      });
+
+      smartDiagnosisLogFilterWrap.querySelectorAll(".select-options").forEach((optionsEl) => {
+        optionsEl.addEventListener("click", (event) => {
+          const option = event.target.closest(".option");
+          if (!option || option.classList.contains("empty")) return;
+          smartDiagnosisLogState.values[optionsEl.closest(".field").dataset.key] = option.dataset.value;
+          renderSmartDiagnosisLogFilters();
+        });
+      });
+
+      smartDiagnosisLogFilterWrap.querySelectorAll(".select-clear").forEach((button) => {
+        button.addEventListener("click", (event) => {
+          event.stopPropagation();
+          smartDiagnosisLogState.values[button.dataset.key] = "";
+          closeSmartDiagnosisLogMenus();
+          renderSmartDiagnosisLogFilters();
+        });
+      });
+
+      const config = smartDiagnosisLogDateConfig;
+      bindDateRangeField({
+        idPrefix: config.idPrefix,
+        label: config.label,
+        state: smartDiagnosisLogState,
+        filterWrap: smartDiagnosisLogFilterWrap,
+        render: renderSmartDiagnosisLogFilters,
+        openKey: config.openKey,
+        valueStartKey: config.startKey,
+        valueEndKey: config.endKey,
+        draftStartKey: config.draftStartKey,
+        draftEndKey: config.draftEndKey,
+        errorKey: config.errorKey,
+        viewKey: config.viewKey,
+        onBeforeOpen: closeSmartDiagnosisLogMenus
+      });
+
+      document.getElementById("smartDiagnosisLogSearchBtn").addEventListener("click", searchSmartDiagnosisLogs);
+      document.getElementById("smartDiagnosisLogResetBtn").addEventListener("click", resetSmartDiagnosisLogFilters);
+    }
+
+    function closeSmartDiagnosisLogMenus(exceptKey) {
+      if (!smartDiagnosisLogFilterWrap) return;
+      smartDiagnosisLogFilterWrap.querySelectorAll(".select-menu").forEach((menu) => {
+        if (menu.dataset.menu !== exceptKey) menu.classList.remove("open");
+      });
+      smartDiagnosisLogFilterWrap.querySelectorAll(".select-trigger").forEach((trigger) => {
+        if (trigger.dataset.key !== exceptKey) trigger.classList.remove("open");
+      });
+    }
+
+    function closeSmartDiagnosisLogDateRange() {
+      const config = smartDiagnosisLogDateConfig;
+      if (!smartDiagnosisLogState[config.openKey]) return;
+      smartDiagnosisLogState[config.openKey] = false;
+      smartDiagnosisLogState[config.errorKey] = "";
+      renderSmartDiagnosisLogFilters();
+    }
+
+    function validateSmartDiagnosisLogDateRange() {
+      const config = smartDiagnosisLogDateConfig;
+      return validateManualDateRange(smartDiagnosisLogState.values[config.startKey], smartDiagnosisLogState.values[config.endKey], config.label);
+    }
+
+    function clearSmartDiagnosisLogDateRange() {
+      const config = smartDiagnosisLogDateConfig;
+      smartDiagnosisLogState.values[config.startKey] = "";
+      smartDiagnosisLogState.values[config.endKey] = "";
+      smartDiagnosisLogState[config.openKey] = false;
+      smartDiagnosisLogState[config.draftStartKey] = "";
+      smartDiagnosisLogState[config.draftEndKey] = "";
+      smartDiagnosisLogState[config.errorKey] = "";
+      smartDiagnosisLogState[config.viewKey] = "";
+    }
+
+    function searchSmartDiagnosisLogs() {
+      const rangeError = validateSmartDiagnosisLogDateRange();
+      if (rangeError) {
+        showToast(rangeError, "error");
+        return;
+      }
+      const activeCount = Object.values(smartDiagnosisLogState.values).filter(Boolean).length;
+      showToast(activeCount ? "智能诊断日志已按查询条件刷新" : "已查询全部智能诊断日志", "success");
+      renderSmartDiagnosisLogFilters();
+    }
+
+    function resetSmartDiagnosisLogFilters() {
+      smartDiagnosisLogState.values = {};
+      clearSmartDiagnosisLogDateRange();
+      renderSmartDiagnosisLogFilters();
+      showToast("智能诊断日志查询条件已清空", "info");
+    }
+
+    function renderSmartDiagnosisLogResult(value) {
+      const statusClass = value === "卡状态正常" ? "status-positive" : "status-negative";
+      return `<span class="status-text ${statusClass}">${escapeHtml(value || "-")}</span>`;
+    }
+
+    function renderSmartDiagnosisLogValue(value, column) {
+      if (column.key === "diagnosisResult") return renderSmartDiagnosisLogResult(value);
+      const identifierCell = renderIdentifierCell(value, column);
+      if (identifierCell !== null) return identifierCell;
+      return escapeHtml(value || "-");
+    }
+
+    function renderSmartDiagnosisLogTable() {
+      const header = document.getElementById("smartDiagnosisLogTableHeader");
+      const body = document.getElementById("smartDiagnosisLogTableBody");
+      header.innerHTML = smartDiagnosisLogColumns.map((column) => `<th>${column.label}</th>`).join("");
+      body.innerHTML = smartDiagnosisLogRows.length
+        ? smartDiagnosisLogRows.map((row) => `
+            <tr>
+              ${smartDiagnosisLogColumns.map((column) => `<td>${renderSmartDiagnosisLogValue(row[column.key], column)}</td>`).join("")}
+            </tr>
+          `).join("")
+        : `<tr><td colspan="${smartDiagnosisLogColumns.length}" style="text-align:center;color:#6b7280;">暂无数据</td></tr>`;
+    }
+
+    function renderSmartDiagnosisLogPager() {
+      document.getElementById("smartDiagnosisLogPager").innerHTML = `
+        <span>共 ${smartDiagnosisLogRows.length} 条</span>
+        <button class="page-btn" type="button">‹</button>
+        <button class="page-btn active" type="button">1</button>
+        <button class="page-btn" type="button">›</button>
+      `;
+    }
+
     function renderBatchTaskFilters() {
       batchTaskFilterWrap.innerHTML = "";
       batchTaskFields.forEach((field) => {
@@ -23544,6 +23848,7 @@
       document.getElementById("riskStopChangeRecordSubItem").classList.toggle("active", pageId === "riskStopChangeRecordPage");
       document.getElementById("refundWorkOrderSubItem").classList.toggle("active", pageId === "refundWorkOrderPage");
       document.getElementById("accountOperationLogSubItem").classList.toggle("active", pageId === "accountOperationLogPage");
+      document.getElementById("smartDiagnosisLogSubItem").classList.toggle("active", pageId === "smartDiagnosisLogPage");
       document.getElementById("batchTaskSubItem").classList.toggle("active", pageId === "batchTaskPage");
     }
 
@@ -23624,6 +23929,7 @@
       riskStopChangeRecordPage: "风险管理停机状态变更记录",
       refundWorkOrderPage: "退费工单",
       accountOperationLogPage: "账户操作日志",
+      smartDiagnosisLogPage: "智能诊断日志",
       batchTaskPage: "批量任务"
     };
     const detailPageIds = new Set(["batchDetailPage", "chipBatchDetailPage", "simDetailPage", "esimChipDetailPage", "writableResourcePoolDetailPage", "manageDisableDetailPage", "userPackageDetailPage"]);
@@ -24061,7 +24367,7 @@
       document.getElementById("pageContent").classList.toggle("ab-mode", pageId === "abTestStatsPage");
       document.getElementById("pageContent").classList.toggle("risk-mode", pageId === "riskStrategyPage" || pageId === "riskStrategyCreatePage" || pageId === "riskStrategyDetailPage" || pageId === "riskTriggerLogPage" || pageId === "riskStopChangeRecordPage");
       document.getElementById("pageContent").classList.toggle("refund-mode", pageId === "refundWorkOrderPage");
-      document.getElementById("pageContent").classList.toggle("log-mode", pageId === "accountOperationLogPage");
+      document.getElementById("pageContent").classList.toggle("log-mode", pageId === "accountOperationLogPage" || pageId === "smartDiagnosisLogPage");
       document.getElementById("pageContent").classList.toggle("task-mode", pageId === "batchTaskPage");
       setSidebarSelected(pageId);
       ensureCrumb(pageId);
@@ -24128,6 +24434,11 @@
         renderAccountOperationLogFilters();
         renderAccountOperationLogTable();
         renderAccountOperationLogPager();
+      }
+      if (pageId === "smartDiagnosisLogPage") {
+        renderSmartDiagnosisLogFilters();
+        renderSmartDiagnosisLogTable();
+        renderSmartDiagnosisLogPager();
       }
       if (pageId === "batchTaskPage") {
         renderBatchTaskFilters();
@@ -24757,6 +25068,8 @@
       closeRefundWorkOrderDateRanges();
       closeAccountOperationLogMenus();
       closeAccountOperationLogDateRange();
+      closeSmartDiagnosisLogMenus();
+      closeSmartDiagnosisLogDateRange();
       closeBatchTaskMenus();
       closeCardActivationMonitorMenus();
       closeChipLogMenus();
@@ -25176,6 +25489,9 @@
     document.getElementById("accountOperationLogExportBtn").addEventListener("click", () => {
       showToast("已按当前查询条件导出账户操作日志", "success");
     });
+    document.getElementById("smartDiagnosisLogExportBtn").addEventListener("click", () => {
+      showToast("已按当前查询条件导出智能诊断日志", "success");
+    });
     document.getElementById("batchTaskCreateBtn").addEventListener("click", openBatchOperationAddModal);
     document.getElementById("closeBatchOperationAddModal").addEventListener("click", closeBatchOperationAddModal);
     document.getElementById("cancelBatchOperationAddBtn").addEventListener("click", closeBatchOperationAddModal);
@@ -25523,6 +25839,9 @@
     renderAccountOperationLogFilters();
     renderAccountOperationLogTable();
     renderAccountOperationLogPager();
+    renderSmartDiagnosisLogFilters();
+    renderSmartDiagnosisLogTable();
+    renderSmartDiagnosisLogPager();
     renderBatchTaskFilters();
     renderBatchTaskTable();
     renderBatchTaskPager();
