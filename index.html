@@ -652,6 +652,7 @@
       border-bottom: 1px solid #f0f3f7;
     }
 
+    .content.operation-mode .business-tabs,
     .content.smart-mode .business-tabs {
       display: none;
     }
@@ -1825,6 +1826,16 @@
 
     .filter-wrap:has(> .field:nth-of-type(4)) > .form-actions {
       grid-column: 1 / -1;
+    }
+
+    .traffic-monitor-filter-wrap {
+      align-items: center;
+    }
+
+    .traffic-monitor-filter-wrap > .form-actions {
+      padding-top: 0;
+      align-self: center;
+      flex-wrap: nowrap;
     }
 
     .chevron {
@@ -7655,6 +7666,7 @@
       <div class="sub-menu" id="operationSubMenu" aria-label="运营管理二级菜单">
         <button class="sub-item" id="smartDiagnosisSubItem" type="button" data-page="smartDiagnosisPage">智能诊断</button>
         <button class="sub-item" id="cardActivationMonitorSubItem" type="button" data-page="cardActivationMonitorPage">卡激活数据监控</button>
+        <button class="sub-item" id="trafficMonitorSubItem" type="button" data-page="trafficMonitorPage">流量监控</button>
       </div>
       <div class="nav-item" id="esimNavItem" role="button" tabindex="0">
         <svg class="nav-icon" viewBox="0 0 15 14" fill="none" aria-hidden="true">
@@ -7861,6 +7873,28 @@
               </table>
             </div>
             <div class="pager" id="cardActivationMonitorPager" aria-label="卡激活数据监控分页"></div>
+          </section>
+        </div>
+
+        <div class="page-view" id="trafficMonitorPage">
+          <section class="panel query-panel" aria-label="流量监控查询区域">
+            <div class="filter-wrap traffic-monitor-filter-wrap" id="trafficMonitorFilterWrap"></div>
+          </section>
+
+          <div class="batch-actions" aria-label="流量监控操作">
+            <button class="btn" id="trafficMonitorExportBtn" type="button">导出</button>
+          </div>
+
+          <section class="panel table-panel" aria-label="流量监控列表">
+            <div class="table-scroll">
+              <table class="traffic-monitor-table">
+                <thead>
+                  <tr id="trafficMonitorTableHeader"></tr>
+                </thead>
+                <tbody id="trafficMonitorTableBody"></tbody>
+              </table>
+            </div>
+            <div class="pager" id="trafficMonitorPager" aria-label="流量监控分页"></div>
           </section>
         </div>
 
@@ -11127,6 +11161,52 @@
       values: {}
     };
 
+    const trafficMonitorFields = [
+      { key: "iccidMsisdn", label: "ICCID/MSISDN", type: "input" },
+      { key: "monthlyTraffic", label: "本月累计使用流量（MB）", type: "range", minKey: "monthlyTrafficMin", maxKey: "monthlyTrafficMax" },
+      { key: "statTime", label: "统计时间", type: "daterange" }
+    ];
+
+    const trafficMonitorDateConfig = {
+      label: "统计时间",
+      idPrefix: "trafficMonitor",
+      openKey: "statTimeRangeOpen",
+      startKey: "statStart",
+      endKey: "statEnd",
+      draftStartKey: "draftStatStart",
+      draftEndKey: "draftStatEnd",
+      errorKey: "statTimeRangeError",
+      viewKey: "statTimeRangeViewMonth"
+    };
+
+    const trafficMonitorColumns = [
+      { key: "iccid", label: "ICCID" },
+      { key: "msisdn", label: "MSISDN", copyLabel: "MSISDN" },
+      { key: "operator", label: "运营商" },
+      { key: "packageName", label: "套餐名称" },
+      { key: "packageTraffic", label: "套餐总流量" },
+      { key: "effectiveTime", label: "套餐生效时间" },
+      { key: "expireTime", label: "套餐到期时间" },
+      { key: "monthlyUsedTraffic", label: "本月累计使用流量" },
+      { key: "statTime", label: "统计时间" }
+    ];
+
+    const trafficMonitorRows = [
+      { iccid: "8986044219231000841", msisdn: "13812345678", operator: "中国移动", packageName: "（01）年套餐100GB", packageTraffic: "无限流量", effectiveTime: "2026-01-01 00:00:00", expireTime: "2026-12-31 23:59:59", monthlyUsedTraffic: "1,280 MB", statTime: "2026-09-09 10:00:00" },
+      { iccid: "8986044219231000858", msisdn: "13912345678", operator: "中国联通", packageName: "（02）月套餐20GB", packageTraffic: "2048 MB", effectiveTime: "2026-09-01 00:00:00", expireTime: "2026-09-30 23:59:59", monthlyUsedTraffic: "1,896 MB", statTime: "2026-09-09 10:00:00" },
+      { iccid: "8986044219231000866", msisdn: "13712345678", operator: "中国电信", packageName: "（03）流量加油包10GB", packageTraffic: "1024 MB", effectiveTime: "2026-09-05 09:18:26", expireTime: "2026-10-04 23:59:59", monthlyUsedTraffic: "856 MB", statTime: "2026-09-09 10:00:00" },
+      { iccid: "8986044219231000872", msisdn: "13612345678", operator: "中国移动", packageName: "（04）半年套餐50GB", packageTraffic: "5120 MB", effectiveTime: "2026-07-01 00:00:00", expireTime: "2026-12-31 23:59:59", monthlyUsedTraffic: "2,436 MB", statTime: "2026-09-09 10:00:00" }
+    ];
+
+    const trafficMonitorState = {
+      values: {},
+      statTimeRangeOpen: false,
+      draftStatStart: "",
+      draftStatEnd: "",
+      statTimeRangeError: "",
+      statTimeRangeViewMonth: ""
+    };
+
     const ESIM_CHIP_AGENT_TIP = "芯片划拨时，所选商户对应的一级商户为被划拨芯片的代理商。";
     const ESIM_CHIP_LATEST_ALLOCATE_BATCH_TIP = "展示最近一次划拨操作的批次号";
     const ESIM_CHIP_AGENT_OPTIONS = ["华东物联商户", "车载设备商户", "北区能源商户", "渠道直营商户"];
@@ -12837,6 +12917,7 @@
     const filterWrap = document.getElementById("filterWrap");
     const simCardFilterWrap = document.getElementById("simCardFilterWrap");
     const cardActivationMonitorFilterWrap = document.getElementById("cardActivationMonitorFilterWrap");
+    const trafficMonitorFilterWrap = document.getElementById("trafficMonitorFilterWrap");
     const userPackageFilterWrap = document.getElementById("userPackageFilterWrap");
     const chipGroupFilterWrap = document.getElementById("esimChipGroupFilterWrap");
     const chipFilterWrap = document.getElementById("esimChipFilterWrap");
@@ -19114,6 +19195,176 @@
       `;
     }
 
+    function renderTrafficMonitorDateRangeControl() {
+      const config = trafficMonitorDateConfig;
+      return renderDateRangeField({
+        idPrefix: config.idPrefix,
+        label: config.label,
+        isOpen: trafficMonitorState[config.openKey],
+        start: trafficMonitorState.values[config.startKey] || "",
+        end: trafficMonitorState.values[config.endKey] || "",
+        draftStart: trafficMonitorState[config.draftStartKey],
+        draftEnd: trafficMonitorState[config.draftEndKey],
+        error: trafficMonitorState[config.errorKey],
+        viewMonth: trafficMonitorState[config.viewKey]
+      });
+    }
+
+    function renderTrafficMonitorFilters() {
+      trafficMonitorFilterWrap.innerHTML = "";
+      trafficMonitorFields.forEach((field) => {
+        const el = document.createElement("div");
+        el.className = field.type === "daterange" ? "field writable-date-range" : "field";
+        el.dataset.key = field.key;
+
+        if (field.type === "range") {
+          const minValue = trafficMonitorState.values[field.minKey] || "";
+          const maxValue = trafficMonitorState.values[field.maxKey] || "";
+          el.innerHTML = `
+            <div class="range-field" aria-label="${field.label}">
+              <input class="control" data-key="${field.minKey}" type="number" min="0" placeholder="最小使用流量" value="${escapeHtml(minValue)}" />
+              <span class="range-separator">至</span>
+              <input class="control" data-key="${field.maxKey}" type="number" min="0" placeholder="最大使用流量" value="${escapeHtml(maxValue)}" />
+            </div>
+          `;
+          trafficMonitorFilterWrap.appendChild(el);
+          return;
+        }
+
+        if (field.type === "daterange") {
+          el.innerHTML = renderTrafficMonitorDateRangeControl();
+          trafficMonitorFilterWrap.appendChild(el);
+          return;
+        }
+
+        const value = trafficMonitorState.values[field.key] || "";
+        el.innerHTML = `
+          <input class="control" data-key="${field.key}" type="text" placeholder="${field.label}" value="${escapeHtml(value)}" />
+        `;
+        trafficMonitorFilterWrap.appendChild(el);
+      });
+
+      const actions = document.createElement("div");
+      actions.className = "form-actions";
+      actions.innerHTML = `
+        <button class="btn search-btn" id="trafficMonitorSearchBtn" type="button">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="m21 21-4.3-4.3M11 19a8 8 0 1 1 0-16 8 8 0 0 1 0 16Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          搜索
+        </button>
+        <button class="btn secondary" id="trafficMonitorResetBtn" type="button">重置</button>
+      `;
+      trafficMonitorFilterWrap.appendChild(actions);
+      bindTrafficMonitorFilterEvents();
+    }
+
+    function bindTrafficMonitorFilterEvents() {
+      trafficMonitorFilterWrap.querySelectorAll(".control").forEach((input) => {
+        input.addEventListener("input", () => {
+          trafficMonitorState.values[input.dataset.key] = input.value;
+        });
+        input.addEventListener("blur", () => {
+          input.value = input.value.trim();
+          trafficMonitorState.values[input.dataset.key] = input.value;
+        });
+        input.addEventListener("keydown", (event) => {
+          if (event.key === "Enter") searchTrafficMonitor();
+        });
+      });
+
+      const config = trafficMonitorDateConfig;
+      bindDateRangeField({
+        idPrefix: config.idPrefix,
+        label: config.label,
+        state: trafficMonitorState,
+        filterWrap: trafficMonitorFilterWrap,
+        render: renderTrafficMonitorFilters,
+        openKey: config.openKey,
+        valueStartKey: config.startKey,
+        valueEndKey: config.endKey,
+        draftStartKey: config.draftStartKey,
+        draftEndKey: config.draftEndKey,
+        errorKey: config.errorKey,
+        viewKey: config.viewKey
+      });
+
+      document.getElementById("trafficMonitorSearchBtn").addEventListener("click", searchTrafficMonitor);
+      document.getElementById("trafficMonitorResetBtn").addEventListener("click", resetTrafficMonitorFilters);
+    }
+
+    function validateTrafficMonitorFilters() {
+      const min = trafficMonitorState.values.monthlyTrafficMin;
+      const max = trafficMonitorState.values.monthlyTrafficMax;
+      if (min && max && Number(min) > Number(max)) return "本月累计使用流量范围不正确";
+      return validateManualDateRange(trafficMonitorState.values.statStart, trafficMonitorState.values.statEnd, "统计时间");
+    }
+
+    function clearTrafficMonitorDateRange() {
+      const config = trafficMonitorDateConfig;
+      trafficMonitorState.values[config.startKey] = "";
+      trafficMonitorState.values[config.endKey] = "";
+      trafficMonitorState[config.openKey] = false;
+      trafficMonitorState[config.draftStartKey] = "";
+      trafficMonitorState[config.draftEndKey] = "";
+      trafficMonitorState[config.errorKey] = "";
+      trafficMonitorState[config.viewKey] = "";
+    }
+
+    function closeTrafficMonitorDateRange() {
+      const config = trafficMonitorDateConfig;
+      if (!trafficMonitorState[config.openKey]) return;
+      trafficMonitorState[config.openKey] = false;
+      trafficMonitorState[config.errorKey] = "";
+      renderTrafficMonitorFilters();
+    }
+
+    function searchTrafficMonitor() {
+      const error = validateTrafficMonitorFilters();
+      if (error) {
+        showToast(error, "error");
+        return;
+      }
+      const activeCount = Object.values(trafficMonitorState.values).filter(Boolean).length;
+      showToast(activeCount ? "流量监控列表已按查询条件刷新" : "已查询全部流量监控数据", "success");
+      renderTrafficMonitorFilters();
+    }
+
+    function resetTrafficMonitorFilters() {
+      trafficMonitorState.values = {};
+      clearTrafficMonitorDateRange();
+      renderTrafficMonitorFilters();
+      showToast("流量监控查询条件已清空", "info");
+    }
+
+    function renderTrafficMonitorValue(value, column) {
+      const identifierCell = renderIdentifierCell(value, column);
+      if (identifierCell !== null) return identifierCell;
+      return escapeHtml(value || "-");
+    }
+
+    function renderTrafficMonitorTable() {
+      const header = document.getElementById("trafficMonitorTableHeader");
+      const body = document.getElementById("trafficMonitorTableBody");
+      header.innerHTML = trafficMonitorColumns.map((column) => `<th>${column.label}</th>`).join("");
+      body.innerHTML = trafficMonitorRows.length
+        ? trafficMonitorRows.map((row) => `
+            <tr>
+              ${trafficMonitorColumns.map((column) => `<td>${renderTrafficMonitorValue(row[column.key], column)}</td>`).join("")}
+            </tr>
+          `).join("")
+        : `<tr><td colspan="${trafficMonitorColumns.length}" style="text-align:center;color:#6b7280;">暂无数据</td></tr>`;
+    }
+
+    function renderTrafficMonitorPager() {
+      document.getElementById("trafficMonitorPager").innerHTML = `
+        <span>共 ${trafficMonitorRows.length} 条</span>
+        <button class="page-btn" type="button">‹</button>
+        <button class="page-btn active" type="button">1</button>
+        <button class="page-btn" type="button">›</button>
+      `;
+    }
+
     function renderChipFilters() {
       chipFilterWrap.innerHTML = "";
       const visibleFields = chipState.expanded
@@ -20963,6 +21214,15 @@
     function renderIdentifierCell(value, column) {
       if (isIccidColumn(column)) return renderIccidLink(value, true);
       if (isEidColumn(column)) return renderEidLink(value);
+      if (column?.copyLabel && hasIdentifierValue(value)) {
+        const safeValue = escapeHtml(value);
+        return `
+          <span class="iccid-cell">
+            <span>${safeValue}</span>
+            ${renderCopyIcon(column.copyLabel, value, "data-copy-text")}
+          </span>
+        `;
+      }
       return null;
     }
 
@@ -23833,6 +24093,7 @@
       document.getElementById("simCardSubItem").classList.toggle("active", pageId === "simCardPage");
       document.getElementById("smartDiagnosisSubItem").classList.toggle("active", pageId === "smartDiagnosisPage");
       document.getElementById("cardActivationMonitorSubItem").classList.toggle("active", pageId === "cardActivationMonitorPage");
+      document.getElementById("trafficMonitorSubItem").classList.toggle("active", pageId === "trafficMonitorPage");
       document.getElementById("userPackageSubItem").classList.toggle("active", pageId === "userPackagePage" || pageId === "userPackageDetailPage");
       const inRecycleModule = pageId === "recyclePage" || pageId === "recordPage";
       document.getElementById("recycleSubItem").classList.toggle("active", inRecycleModule);
@@ -23904,6 +24165,7 @@
       simCardPage: "SIM卡管理",
       smartDiagnosisPage: "智能诊断",
       cardActivationMonitorPage: "卡激活数据监控",
+      trafficMonitorPage: "流量监控",
       userPackagePage: "用户套餐管理",
       userPackageDetailPage: "用户套餐详情",
       esimChipGroupPage: "ESIM芯片组管理",
@@ -24033,6 +24295,24 @@
         functions: ["任务新增：创建新的卡激活数据监控任务。", "编辑/删除/数据管理/刷新：处理对应监控任务。"],
         businessRules: ["ESIM 芯片划拨时可选择是否同步新增监控任务。", "指标计算口径待补充。"],
         interactions: ["商户名称查询框支持下拉选择、模糊匹配和清空重置。"]
+      },
+      trafficMonitorPage: {
+        page: { title: "流量监控", purpose: "用于按卡号和统计时间查看 SIM 卡套餐流量使用情况。" },
+        queries: ["ICCID/MSISDN", "本月累计使用流量（使用流量范围）", "统计时间"],
+        fields: docFieldsFrom(trafficMonitorColumns, {
+          iccid: "SIM 卡 ICCID。",
+          msisdn: "SIM 卡号码。",
+          operator: "SIM 卡所属运营商。",
+          packageName: "套餐 ID 与套餐名称组合展示。",
+          packageTraffic: "当前套餐配置的总流量。",
+          effectiveTime: "套餐开始生效时间。",
+          expireTime: "套餐到期时间。",
+          monthlyUsedTraffic: "本月累计已使用流量。",
+          statTime: "当前流量统计数据的统计时间。"
+        }),
+        functions: ["搜索：按 ICCID/MSISDN、使用流量范围和统计时间筛选列表。", "重置：清空流量监控查询条件。", "导出：按当前查询条件导出流量监控列表。"],
+        businessRules: ["本月累计使用流量范围支持最小值和最大值，最小值不能大于最大值。", "套餐流量统计口径、刷新频率和导出文件格式待补充。"],
+        interactions: ["点击运营管理下的“流量监控”进入该页面。", "统计时间使用日期范围选择器。"]
       },
       userPackagePage: {
         page: { title: "用户套餐管理", purpose: "用于维护用户套餐、价格、流量、语音和上下架状态。" },
@@ -24359,6 +24639,7 @@
 
     function switchBusinessPage(pageId) {
       document.getElementById("pageContent").classList.remove("detail-mode");
+      document.getElementById("pageContent").classList.toggle("operation-mode", pageId === "smartDiagnosisPage" || pageId === "cardActivationMonitorPage" || pageId === "trafficMonitorPage");
       document.getElementById("pageContent").classList.toggle("sim-mode", pageId === "simCardPage");
       document.getElementById("pageContent").classList.toggle("smart-mode", pageId === "smartDiagnosisPage");
       document.getElementById("pageContent").classList.toggle("package-mode", pageId === "userPackagePage");
@@ -24386,6 +24667,11 @@
         renderCardActivationMonitorFilters();
         renderCardActivationMonitorTable();
         renderCardActivationMonitorPager();
+      }
+      if (pageId === "trafficMonitorPage") {
+        renderTrafficMonitorFilters();
+        renderTrafficMonitorTable();
+        renderTrafficMonitorPager();
       }
       if (pageId === "userPackagePage") {
         renderUserPackageFilters();
@@ -25072,6 +25358,7 @@
       closeSmartDiagnosisLogDateRange();
       closeBatchTaskMenus();
       closeCardActivationMonitorMenus();
+      closeTrafficMonitorDateRange();
       closeChipLogMenus();
       closeAbPurchaseDateRange();
       closeMenus();
@@ -25491,6 +25778,9 @@
     });
     document.getElementById("smartDiagnosisLogExportBtn").addEventListener("click", () => {
       showToast("已按当前查询条件导出智能诊断日志", "success");
+    });
+    document.getElementById("trafficMonitorExportBtn").addEventListener("click", () => {
+      showToast("已按当前查询条件导出流量监控数据", "success");
     });
     document.getElementById("batchTaskCreateBtn").addEventListener("click", openBatchOperationAddModal);
     document.getElementById("closeBatchOperationAddModal").addEventListener("click", closeBatchOperationAddModal);
