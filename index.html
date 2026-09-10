@@ -11059,11 +11059,23 @@
       viewKey: "diagnosisTimeRangeViewMonth"
     };
 
+    const SMART_DIAGNOSIS_LOG_RESULT_TIP = "当SIM卡同时满足以下全部条件时，系统判定为“正常”状态，可以正常使用；任意一项未达成，则判定为异常，无法正常使用：\n1. 卡运营商状态：已激活\n2. 套餐状态：存在有效套餐\n3. 数据服务状态：开启\n4. 本月剩余通话分钟数：大于 0分钟\n5. 实名状态：已实名\n6. 物联卡管理停复机状态：正常\n7. 机卡分离状态：未机卡分离";
+    const SMART_DIAGNOSIS_LOG_RESULT_TIP_HTML = `
+      当SIM卡<strong>同时满足</strong>以下全部条件时，系统判定为“正常”状态，可以正常使用；<strong>任意一项未达成</strong>，则判定为异常，无法正常使用：<br>
+      1. 卡运营商状态：已激活<br>
+      2. 套餐状态：存在有效套餐<br>
+      3. 数据服务状态：开启<br>
+      4. 本月剩余通话分钟数：大于 0分钟<br>
+      5. 实名状态：已实名<br>
+      6. 物联卡管理停复机状态：正常<br>
+      7. 机卡分离状态：未机卡分离
+    `;
+
     const smartDiagnosisLogColumns = [
       { key: "iccid", label: "ICCID" },
       { key: "msisdn", label: "MSISDN" },
       { key: "diagnosisSource", label: "诊断来源" },
-      { key: "diagnosisResult", label: "诊断结果" },
+      { key: "diagnosisResult", label: "诊断结果", tip: SMART_DIAGNOSIS_LOG_RESULT_TIP, tipHtml: SMART_DIAGNOSIS_LOG_RESULT_TIP_HTML },
       { key: "diagnosisTime", label: "诊断时间" }
     ];
 
@@ -18726,7 +18738,7 @@
     function renderSmartDiagnosisLogTable() {
       const header = document.getElementById("smartDiagnosisLogTableHeader");
       const body = document.getElementById("smartDiagnosisLogTableBody");
-      header.innerHTML = smartDiagnosisLogColumns.map((column) => `<th>${column.label}</th>`).join("");
+      header.innerHTML = smartDiagnosisLogColumns.map((column) => `<th>${renderTableHeaderCell(column)}</th>`).join("");
       body.innerHTML = smartDiagnosisLogRows.length
         ? smartDiagnosisLogRows.map((row) => `
             <tr>
