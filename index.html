@@ -5868,6 +5868,55 @@
       background: #fff;
     }
 
+    .chip-info-section {
+      padding: 20px;
+    }
+
+    .chip-info-section h3 {
+      margin: 0 0 16px;
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .chip-info-grid {
+      margin: 0;
+      padding: 0;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px 24px;
+    }
+
+    .chip-info-item {
+      display: flex;
+      align-items: baseline;
+      min-width: 0;
+      min-height: 28px;
+      gap: 8px;
+      line-height: 20px;
+    }
+
+    .chip-info-item dt {
+      flex: 0 0 auto;
+      color: var(--muted);
+    }
+
+    .chip-info-item dd {
+      margin: 0;
+      min-width: 0;
+      color: var(--ink);
+      overflow-wrap: anywhere;
+    }
+
+    .chip-expiry-expired {
+      color: var(--red);
+    }
+
+    @media (max-width: 1100px) {
+      .chip-info-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
     .sim-card-detail-panel {
       background: #fff;
       border-radius: 0;
@@ -11822,6 +11871,7 @@
 
     const ESIM_CHIP_AGENT_TIP = "芯片划拨时，所选商户对应的一级商户为被划拨芯片的代理商。";
     const ESIM_CHIP_LATEST_ALLOCATE_BATCH_TIP = "展示最近一次划拨操作的批次号";
+    const ESIM_CHIP_INVENTORY_STATUS_TIP = "库存效期从SIMCloud系统入库ESIM芯片的时间起计算270天。当前时间早于库存效期时间为“未过期”；达到或超过库存效期时间为“已过期”。已过期的芯片不支持发起写卡动作。SIMCloud入库时间缺失或无效时显示“-”，不使用本页导入时间代替计算。";
     const ESIM_CHIP_AGENT_OPTIONS = ["华东物联商户", "车载设备商户", "北区能源商户", "渠道直营商户"];
 
     const chipFields = [
@@ -11835,6 +11885,7 @@
       { key: "iccid", label: "原始ICCID/写卡后ICCID", type: "input", basic: true },
       { key: "msisdn", label: "原始MSISDN/写卡后MSISDN", type: "input", basic: true },
       { key: "writeStatus", label: "写卡状态", type: "select", basic: true, options: ["待写卡", "待开机上电", "申请失败", "写卡中", "写卡失败", "写卡成功"] },
+      { key: "inventoryStatus", label: "ESIM芯片库存状态", type: "select", basic: true, options: ["已过期", "未过期"] },
       { key: "importTime", label: "导入时间", type: "daterange" }
     ];
 
@@ -11857,6 +11908,8 @@
       { key: "recentLocation", label: "设备最近位置" },
       { key: "recentLocationTime", label: "最近上报位置时间" },
       { key: "importTime", label: "导入时间" },
+      { key: "expireTime", label: "ESIM芯片库存效期时间" },
+      { key: "inventoryStatus", label: "ESIM芯片库存状态", tip: ESIM_CHIP_INVENTORY_STATUS_TIP },
       { key: "updatedAt", label: "更新时间" },
       { key: "action", label: "操作", fixedRight: true }
     ];
@@ -11881,6 +11934,7 @@
         recentImeiTime: "2026-05-28 10:12:26",
         recentLocation: "上海市浦东新区",
         recentLocationTime: "2026-05-28 10:15:03",
+        simCloudInboundTime: "2026-05-18 09:36:20",
         importTime: "2026-05-18 09:36:20",
         updatedAt: "2026-05-28 10:18:09"
       },
@@ -11903,6 +11957,7 @@
         recentImeiTime: "-",
         recentLocation: "-",
         recentLocationTime: "-",
+        simCloudInboundTime: "2026-05-17 16:20:44",
         importTime: "2026-05-17 16:20:44",
         updatedAt: "2026-05-17 16:20:44"
       },
@@ -11925,6 +11980,7 @@
         recentImeiTime: "2026-05-27 18:04:11",
         recentLocation: "北京市朝阳区",
         recentLocationTime: "2026-05-27 18:05:20",
+        simCloudInboundTime: "2026-05-16 10:04:58",
         importTime: "2026-05-16 10:04:58",
         updatedAt: "2026-05-27 18:06:33"
       },
@@ -11947,7 +12003,8 @@
         recentImeiTime: "2026-05-26 09:32:15",
         recentLocation: "广州市天河区",
         recentLocationTime: "2026-05-26 09:33:02",
-        importTime: "2026-05-15 17:40:31",
+        simCloudInboundTime: "2026-01-01 17:40:31",
+        importTime: "2026-01-01 17:40:31",
         updatedAt: "2026-05-26 09:35:48"
       }
     ];
@@ -12243,6 +12300,7 @@
     const chipState = {
       expanded: false,
       values: {},
+      appliedValues: {},
       dateRangeOpen: false,
       draftImportStart: "",
       draftImportEnd: "",
@@ -21108,6 +21166,16 @@
         showToast(rangeError, "error");
         return;
       }
+      const inventoryStatus = String(chipState.values.inventoryStatus || "").trim();
+      const inventoryOptions = chipFields.find((field) => field.key === "inventoryStatus").options;
+      if (inventoryStatus && !inventoryOptions.includes(inventoryStatus)) {
+        showToast("请选择有效的ESIM芯片库存状态：已过期或未过期", "error");
+        return;
+      }
+      chipState.values.inventoryStatus = inventoryStatus;
+      chipState.appliedValues = { ...chipState.values, inventoryStatus };
+      renderChipTable();
+      renderChipPager();
       const activeCount = Object.values(chipState.values).filter(Boolean).length;
       showToast(activeCount ? "ESIM芯片列表已按查询条件刷新" : "已查询全部ESIM芯片", "success");
       renderChipFilters();
@@ -21123,11 +21191,14 @@
 
     function resetChipFilters() {
       chipState.values = {};
+      chipState.appliedValues = {};
       chipState.dateRangeOpen = false;
       chipState.draftImportStart = "";
       chipState.draftImportEnd = "";
       chipState.dateRangeError = "";
       renderChipFilters();
+      renderChipTable();
+      renderChipPager();
       showToast("ESIM芯片查询条件已清空", "info");
     }
 
@@ -21497,7 +21568,33 @@
       return value || "-";
     }
 
+    function getChipExpiryInfo(simCloudInboundTime, now = Date.now()) {
+      const empty = { value: "-", expired: false };
+      const normalized = String(simCloudInboundTime || "").trim().replace(" ", "T");
+      if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}$/.test(normalized)) return empty;
+      // SIMCloud inbound timestamps use Asia/Shanghai wall-clock time.
+      const inboundAt = new Date(`${normalized}+08:00`);
+      if (!Number.isFinite(inboundAt.getTime())) return empty;
+      const formatter = new Intl.DateTimeFormat("zh-CN", {
+        timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit",
+        hour: "2-digit", minute: "2-digit", second: "2-digit", hourCycle: "h23"
+      });
+      const format = (date) => {
+        const parts = Object.fromEntries(formatter.formatToParts(date).map((part) => [part.type, part.value]));
+        return `${parts.year}-${parts.month}-${parts.day} ${parts.hour}:${parts.minute}:${parts.second}`;
+      };
+      if (format(inboundAt) !== normalized.replace("T", " ")) return empty;
+      const expiresAt = new Date(inboundAt.getTime() + 270 * 24 * 60 * 60 * 1000);
+      return { value: format(expiresAt), expired: expiresAt.getTime() <= now };
+    }
+
     function renderChipValue(value, column, row) {
+      if (column.key === "expireTime" || column.key === "inventoryStatus") {
+        const expiry = getChipExpiryInfo(row.simCloudInboundTime);
+        if (expiry.value === "-") return "-";
+        const text = column.key === "expireTime" ? expiry.value : (expiry.expired ? "已过期" : "未过期");
+        return expiry.expired ? `<span class="chip-expiry-expired">${escapeHtml(text)}</span>` : escapeHtml(text);
+      }
       if (column.key === "action") {
         return `<button class="link-text chip-refresh-btn" type="button" data-eid="${value}">刷新</button>`;
       }
@@ -21524,14 +21621,25 @@
       return value || "-";
     }
 
+    function filteredChipRows(now = Date.now()) {
+      const inventoryStatus = chipState.appliedValues.inventoryStatus;
+      if (!inventoryStatus) return chipRows;
+      return chipRows.filter((row) => {
+        const expiry = getChipExpiryInfo(row.simCloudInboundTime, now);
+        if (expiry.value === "-") return false;
+        return inventoryStatus === "已过期" ? expiry.expired : !expiry.expired;
+      });
+    }
+
     function renderChipTable() {
       const header = document.getElementById("chipTableHeader");
       const body = document.getElementById("chipTableBody");
+      const rows = filteredChipRows();
       header.innerHTML = chipTableColumns.map((column) => `
-        <th class="${column.fixedRight ? "operation-col" : ""}">${renderTableHeaderCell(column)}</th>
+        <th class="${column.fixedRight ? "operation-col" : ""}"${["expireTime", "inventoryStatus"].includes(column.key) ? ` data-doc-field="${escapeHtml(column.key)}"` : ""}>${renderTableHeaderCell(column)}</th>
       `).join("");
-      body.innerHTML = chipRows.length
-        ? chipRows.map((row) => `
+      body.innerHTML = rows.length
+        ? rows.map((row) => `
             <tr>
               ${chipTableColumns.map((column) => `
                 <td class="${column.fixedRight ? "operation-col" : ""}">${renderChipValue(column.key === "action" ? row.eid : row[column.key], column, row)}</td>
@@ -21570,14 +21678,10 @@
 
     function renderChipPager() {
       document.getElementById("chipPager").innerHTML = `
-        <span>共 256 条</span>
-        <button class="page-btn" type="button">‹</button>
-        <button class="page-btn active" type="button">1</button>
-        <button class="page-btn" type="button">2</button>
-        <button class="page-btn" type="button">3</button>
-        <button class="page-btn" type="button">...</button>
-        <button class="page-btn" type="button">13</button>
-        <button class="page-btn" type="button">›</button>
+        <span>共 ${filteredChipRows().length} 条</span>
+        <button class="page-btn" type="button" aria-label="上一页" disabled>‹</button>
+        <button class="page-btn active" type="button" aria-current="page">1</button>
+        <button class="page-btn" type="button" aria-label="下一页" disabled>›</button>
       `;
     }
 
@@ -22069,9 +22173,50 @@
       });
     }
 
+    function renderChipInfo() {
+      const row = chipRows.find((item) => item.eid === chipDetailState.eid);
+      if (!row) return '<div class="chip-info-section">未找到对应芯片信息</div>';
+      const hasValue = (value) => value !== null && value !== undefined && value !== "" && value !== "-";
+      const written = row.writeStatus === "写卡成功";
+      const currentIccid = hasValue(row.currentIccid) ? row.currentIccid : written && hasValue(row.writtenIccid) ? row.writtenIccid : row.originalIccid;
+      const currentMsisdn = hasValue(row.currentMsisdn) ? row.currentMsisdn : written && hasValue(row.writtenMsisdn) ? row.writtenMsisdn : row.originalMsisdn;
+      const snRecord = chipSnRows.filter((item) => item.eid === row.eid).sort((a, b) => String(b.sceneTime).localeCompare(String(a.sceneTime)))[0];
+      const fields = [
+        { key: "eid", label: "EID", value: row.eid },
+        { key: "chipGroup", label: "归属芯片组", value: row.chipGroup },
+        { key: "chipSupplier", label: "ESIM芯片供应商", value: row.chipSupplier },
+        { key: "merchant", label: "商户", value: row.merchant },
+        { key: "writeStatus", label: "写卡状态", value: row.writeStatus },
+        { key: "recentTerminalImei", label: "终端最近使用IMEI", value: row.recentTerminalImei },
+        { key: "recentImeiTime", label: "最近上报IMEI时间", value: row.recentImeiTime },
+        { key: "recentLocation", label: "设备最近位置", value: row.recentLocation },
+        { key: "recentLocationTime", label: "最近位置上报时间", value: row.recentLocationTime },
+        { key: "currentIccid", label: "当前ICCID", value: currentIccid },
+        { key: "currentMsisdn", label: "当前电话号码", value: currentMsisdn },
+        { key: "agent", label: "代理商", value: row.agent },
+        { key: "originalIccid", label: "出厂ICCID", value: row.originalIccid },
+        { key: "originalMsisdn", label: "出厂电话号码", value: row.originalMsisdn },
+        { key: "writeTime", label: "写卡时间", value: row.writeTime },
+        { key: "importTime", label: "导入时间", value: row.importTime },
+        { key: "sn", label: "SN", value: hasValue(row.sn) ? row.sn : hasValue(row.deviceSn) ? row.deviceSn : snRecord?.deviceSn }
+      ];
+      return `<section class="chip-info-section" aria-label="芯片信息">
+        <h3>芯片信息</h3>
+        <dl class="sim-detail-grid chip-info-grid">
+          ${fields.map((field) => `<div class="chip-info-item" data-doc-field="${field.key}">
+            <dt>${field.label}：</dt><dd>${escapeHtml(hasValue(field.value) ? String(field.value) : "-")}</dd>
+          </div>`).join("")}
+        </dl>
+      </section>`;
+    }
+
     function renderEsimChipDetail() {
       renderChipDetailTabs();
       const body = document.getElementById("chipDetailBody");
+      if (chipDetailState.activeTab === "ESIM芯片信息") {
+        body.innerHTML = renderChipInfo();
+        return;
+      }
       if (chipDetailState.activeTab !== "ESIM芯片日志") {
         body.innerHTML = '<div class="chip-detail-empty"></div>';
         return;
@@ -25892,18 +26037,22 @@
         interactions: ["由用户套餐管理页点击套餐名称进入。"]
       },
       esimChipPage: {
-        page: { title: "ESIM芯片管理", purpose: "用于管理 ESIM 芯片列表、入库/删除、划拨和原始卡数据服务策略。" },
-        queries: docTextList(chipFields.map((field) => field.label)),
-        fields: docFieldsFrom(chipTableColumns, {
-          latestBatchNo: "展示最近一次划拨操作的批次号。",
-          eid: "ESIM 芯片 EID，点击可进入芯片详情。",
-          merchantName: "芯片当前所属商户。",
-          agent: "芯片划拨时，所选商户对应的一级商户为被划拨芯片的代理商。",
-          dataServiceStatus: "原始卡数据服务开启/关闭状态。"
-        }),
-        functions: ["ESIM芯片入库/删除：打开批量入库或删除弹窗。", "ESIM芯片划拨：打开划拨弹窗。", "原始卡数据服务策略：设置开启达到指定天数后自动关闭。", "导出：导出当前查询结果。"],
-        businessRules: ["EID 查询支持批量查询，最多一次 100 个号码，用逗号隔开。", "原始卡数据服务初始关闭，开启状态显示开启时间。", "芯片划拨校验规则待补充。"],
-        interactions: ["芯片划拨弹窗可选择是否新增卡激活数据监控任务。", "点击 EID 进入 ESIM 芯片详情页。"]
+        page: { title: "ESIM芯片管理", purpose: "ESIM芯片库存效期时间与库存状态的计算及展示规则。" },
+        queries: ["ESIM芯片库存状态：已过期、未过期；不选择时查询全部记录。"],
+        fields: [
+          docField("expireTime", "ESIM芯片库存效期时间", "从SIMCloud系统入库ESIM芯片时的时间起，有效期270天，保留时、分、秒；仅展示日期时间，过期时红色显示。"),
+          docField("inventoryStatus", "ESIM芯片库存状态", "根据当前时间与库存效期时间比较，展示“已过期”或“未过期”；已过期时红色显示。已过期的芯片不支持发起写卡动作。")
+        ],
+        functions: [],
+        businessRules: [
+          "ESIM芯片库存效期时间 = SIMCloud系统入库ESIM芯片时的时间 + 270 天，按北京时间（Asia/Shanghai）计算。",
+          "库存效期以SIMCloud系统记录的入库时间为准，不以本页导入时间、划拨时间或写卡时间重新起算。",
+          "当前时间达到或超过库存效期时间时，库存状态为“已过期”；库存效期时间和库存状态均以红色字体显示。",
+          "已过期的芯片不支持发起写卡动作。",
+          "当前时间早于库存效期时间时，库存状态为“未过期”；两个字段以常规字体显示。",
+          "SIMCloud系统入库时间缺失或格式无效时，库存效期时间和库存状态均显示“-”，不使用本页导入时间代替计算；该记录仅在未选择库存状态时展示。"
+        ],
+        interactions: []
       },
       writablePage: {
         page: { title: "ESIM可写码号管理", purpose: "用于管理可写码号、可分配状态、回收池状态和平台管理禁用状态。" },
@@ -26052,13 +26201,15 @@
       const title = document.getElementById("pageDocTitle");
       const body = document.getElementById("pageDocBody");
       if (!title || !body) return;
-      if (activeCrumbPage !== "smartDiagnosisPage") {
+      if (activeCrumbPage !== "smartDiagnosisPage" && activeCrumbPage !== "esimChipPage") {
         title.textContent = "";
         body.innerHTML = "";
         return;
       }
       const doc = activePageDocumentation();
       title.textContent = doc.page?.title || "页面说明";
+      const queryHtml = renderPageDocList(doc.queries);
+      const functionHtml = renderPageDocList(doc.functions);
       const fieldHtml = (doc.fields || []).length
         ? `<section class="page-doc-section">
             <h3>字段说明</h3>
@@ -26079,15 +26230,15 @@
           <h3>页面说明</h3>
           <p>${escapeHtml(doc.page?.purpose || "待补充")}</p>
         </section>
-        <section class="page-doc-section">
+        ${queryHtml ? `<section class="page-doc-section">
           <h3>查询条件</h3>
-          ${renderPageDocList(doc.queries)}
-        </section>
+          ${queryHtml}
+        </section>` : ""}
         ${fieldHtml}
-        <section class="page-doc-section">
+        ${functionHtml ? `<section class="page-doc-section">
           <h3>功能逻辑</h3>
-          ${renderPageDocList(doc.functions)}
-        </section>
+          ${functionHtml}
+        </section>` : ""}
         <section class="page-doc-section">
           <h3>业务规则</h3>
           ${renderPageDocList(doc.businessRules)}
