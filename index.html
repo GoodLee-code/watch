@@ -6945,6 +6945,253 @@
       outline-offset: 2px;
     }
 
+    .exchange-reship-table {
+      min-width: 3400px;
+      table-layout: auto;
+    }
+
+    .exchange-reship-table th,
+    .exchange-reship-table td {
+      white-space: nowrap;
+    }
+
+    .exchange-reship-table .notes-col {
+      min-width: 160px;
+      max-width: 220px;
+      white-space: normal;
+      overflow-wrap: anywhere;
+    }
+
+    .exchange-reship-table .address-col {
+      min-width: 240px;
+      max-width: 300px;
+      white-space: normal;
+      overflow-wrap: anywhere;
+    }
+
+    .exchange-reship-table .operation-col {
+      min-width: 220px;
+      width: 220px;
+    }
+
+    .exchange-reship-filter-wrap {
+      align-items: center;
+    }
+
+    .exchange-reship-filter-wrap > .form-actions {
+      padding-top: 0;
+    }
+
+    .exchange-reship-filter-wrap .query-clear {
+      right: 8px;
+    }
+
+    .exchange-reship-filter-wrap .date-range-menu {
+      left: auto;
+      right: 0;
+    }
+
+    .exchange-reship-filter-wrap .option:focus-visible {
+      outline: 2px solid var(--blue-strong);
+      outline-offset: -2px;
+    }
+
+    .exchange-reship-modal {
+      width: min(680px, 100%);
+      max-height: calc(100vh - 36px);
+      max-height: calc(100dvh - 36px);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .exchange-reship-modal .modal-head,
+    .exchange-reship-modal .modal-foot {
+      flex-shrink: 0;
+    }
+
+    .exchange-reship-modal .modal-body {
+      min-height: 0;
+      overflow: auto;
+    }
+
+    .exchange-reship-modal .modal-form {
+      gap: 8px;
+    }
+
+    .exchange-reship-recipient-section {
+      min-width: 0;
+      margin: 0;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+    }
+
+    .exchange-reship-recipient-section legend {
+      padding: 0 6px;
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .exchange-reship-recipient-fields {
+      display: grid;
+      gap: 8px;
+    }
+
+    .exchange-reship-modal .modal-form-row {
+      grid-template-columns: 120px minmax(0, 1fr);
+    }
+
+    .exchange-reship-modal .modal-label {
+      min-height: 36px;
+      white-space: nowrap;
+    }
+
+    .exchange-reship-modal .batch-select,
+    .exchange-reship-modal .batch-textarea {
+      font: inherit;
+      font-size: 14px;
+    }
+
+    .exchange-reship-modal .batch-select::placeholder,
+    .exchange-reship-modal .batch-textarea::placeholder,
+    .exchange-reship-modal .exchange-reship-select.is-placeholder {
+      color: #b8c0cc;
+    }
+
+    .exchange-reship-field-control {
+      min-width: 0;
+    }
+
+    .exchange-reship-select {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-right: 34px;
+      text-align: left;
+    }
+
+    .exchange-reship-select.has-value {
+      padding-right: 54px;
+    }
+
+    .exchange-reship-select-value {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .exchange-reship-modal .field-icon {
+      top: 10px;
+    }
+
+    .exchange-reship-modal .select-clear {
+      top: 9px;
+    }
+
+    .exchange-reship-select-menu {
+      position: fixed;
+      right: auto;
+      min-width: 0;
+      overflow: auto;
+      font-size: 14px;
+    }
+
+    .exchange-reship-select-menu .option:focus-visible {
+      outline: 2px solid var(--blue-strong);
+      outline-offset: -2px;
+    }
+
+    .exchange-reship-textarea-wrap {
+      position: relative;
+    }
+
+    .exchange-reship-textarea-wrap .batch-textarea {
+      display: block;
+      min-height: 76px;
+      padding-bottom: 24px;
+    }
+
+    .exchange-reship-char-count {
+      position: absolute;
+      right: 10px;
+      bottom: 7px;
+      color: var(--subtle);
+      font-size: 12px;
+      pointer-events: none;
+    }
+
+    .exchange-reship-radio-group {
+      min-height: 36px;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 14px;
+    }
+
+    .exchange-reship-radio-group label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .exchange-reship-radio-group input {
+      margin: 0;
+      accent-color: var(--blue);
+    }
+
+    .exchange-reship-field-error {
+      margin-top: 4px;
+      color: var(--red);
+      font-size: 12px;
+      line-height: 18px;
+    }
+
+    .exchange-reship-field-error:empty {
+      display: none;
+    }
+
+    .exchange-reship-modal [aria-invalid="true"] {
+      border-color: var(--red);
+    }
+
+    .exchange-reship-modal button:focus-visible {
+      outline: 2px solid var(--blue-strong);
+      outline-offset: 2px;
+    }
+
+    @media (max-width: 640px) {
+      .exchange-reship-modal .modal-form-row {
+        grid-template-columns: 110px minmax(0, 1fr);
+        gap: 8px;
+      }
+
+      .exchange-reship-modal .modal-label {
+        font-size: 12px;
+      }
+
+      .exchange-reship-modal .modal-foot {
+        flex-wrap: wrap;
+      }
+    }
+
+    @media (max-width: 1080px) {
+      .exchange-reship-filter-wrap .field[data-key="reshipDate"] .date-range-menu {
+        left: 0;
+        right: auto;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .exchange-reship-filter-wrap .date-range-menu {
+        left: 0;
+        right: auto;
+      }
+    }
+
     .warning-config-modal .modal-form-row {
       grid-template-columns: 128px minmax(0, 1fr);
     }
@@ -7682,46 +7929,46 @@
     </header>
 
     <aside class="side" aria-label="后台导航">
-      <div class="nav-item" id="simNavItem" role="button" tabindex="0">
+      <div class="nav-item collapsed" id="simNavItem" role="button" tabindex="0">
         <svg class="nav-icon" viewBox="0 0 15 14" fill="none" aria-hidden="true">
           <rect x="3" y="1.6" width="9" height="10.8" rx="1.8" />
           <path d="M5.2 4.3h4.6M5.2 6.8h4.6M5.2 9.3h2.6" />
         </svg>
         <span class="nav-label">SIM卡管理</span>
-        <button class="nav-toggle" id="simMenuToggle" type="button" aria-label="展开或收起SIM卡管理菜单" aria-expanded="true">
+        <button class="nav-toggle" id="simMenuToggle" type="button" aria-label="展开或收起SIM卡管理菜单" aria-expanded="false">
           <svg class="nav-caret" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m8 10 4 4 4-4" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
       </div>
-      <div class="sub-menu" id="simSubMenu" aria-label="SIM卡管理二级菜单">
+      <div class="sub-menu collapsed" id="simSubMenu" aria-label="SIM卡管理二级菜单">
         <button class="sub-item" id="simCardSubItem" type="button" data-page="simCardPage">SIM卡管理</button>
       </div>
-      <div class="nav-item" id="operationNavItem" role="button" tabindex="0">
+      <div class="nav-item collapsed" id="operationNavItem" role="button" tabindex="0">
         <svg class="nav-icon" viewBox="0 0 15 14" fill="none" aria-hidden="true">
           <rect x="2.1" y="1.6" width="10.8" height="10.8" rx="2" />
           <path d="M4.5 9.6 6.3 7.7l1.6 1.2 2.6-3" />
         </svg>
         <span class="nav-label">运营管理</span>
-        <button class="nav-toggle" id="operationMenuToggle" type="button" aria-label="展开或收起运营管理菜单" aria-expanded="true">
+        <button class="nav-toggle" id="operationMenuToggle" type="button" aria-label="展开或收起运营管理菜单" aria-expanded="false">
           <svg class="nav-caret" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m8 10 4 4 4-4" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
       </div>
-      <div class="sub-menu" id="operationSubMenu" aria-label="运营管理二级菜单">
+      <div class="sub-menu collapsed" id="operationSubMenu" aria-label="运营管理二级菜单">
         <button class="sub-item" id="smartDiagnosisSubItem" type="button" data-page="smartDiagnosisPage">智能诊断</button>
         <button class="sub-item" id="cardActivationMonitorSubItem" type="button" data-page="cardActivationMonitorPage">卡激活数据监控</button>
         <button class="sub-item" id="trafficMonitorSubItem" type="button" data-page="trafficMonitorPage">流量监控</button>
       </div>
-      <div class="nav-item" id="esimNavItem" role="button" tabindex="0">
+      <div class="nav-item collapsed" id="esimNavItem" role="button" tabindex="0">
         <svg class="nav-icon" viewBox="0 0 15 14" fill="none" aria-hidden="true">
           <rect x="2.1" y="1.6" width="10.8" height="10.8" rx="2" />
           <line x1="5.4" y1="1.9" x2="5.4" y2="12.1" />
           <line x1="2.4" y1="5.1" x2="12.6" y2="5.1" />
         </svg>
         <span class="nav-label">ESIM管理</span>
-        <button class="nav-toggle" id="esimMenuToggle" type="button" aria-label="展开或收起ESIM管理菜单" aria-expanded="true">
+        <button class="nav-toggle" id="esimMenuToggle" type="button" aria-label="展开或收起ESIM管理菜单" aria-expanded="false">
           <svg class="nav-caret" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m8 10 4 4 4-4" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
       </div>
-      <div class="sub-menu" id="esimSubMenu" aria-label="ESIM管理二级菜单">
+      <div class="sub-menu collapsed" id="esimSubMenu" aria-label="ESIM管理二级菜单">
         <button class="sub-item active" id="esimChipSubItem" type="button" data-page="esimChipPage">ESIM芯片管理</button>
         <button class="sub-item" id="esimChipGroupSubItem" type="button" data-page="esimChipGroupPage">ESIM芯片组管理</button>
         <button class="sub-item" id="writableSubItem" type="button" data-page="writablePage">ESIM可写码号管理</button>
@@ -7731,73 +7978,74 @@
         <button class="sub-item" id="esimOrderSubItem" type="button" data-page="esimOrderPage">ESIM订单管理</button>
         <button class="sub-item" id="esimChipSnSubItem" type="button" data-page="esimChipSnPage">ESIM芯片SN生成</button>
       </div>
-      <div class="nav-item" id="packageNavItem" role="button" tabindex="0">
+      <div class="nav-item collapsed" id="packageNavItem" role="button" tabindex="0">
         <svg class="nav-icon" viewBox="0 0 15 14" fill="none" aria-hidden="true">
           <rect x="2.1" y="1.7" width="10.8" height="10.6" rx="2" />
           <path d="M4.4 4.5h6.2M4.4 7h6.2M4.4 9.5h3.8" />
         </svg>
         <span class="nav-label">套餐管理</span>
-        <button class="nav-toggle" id="packageMenuToggle" type="button" aria-label="展开或收起套餐管理菜单" aria-expanded="true">
+        <button class="nav-toggle" id="packageMenuToggle" type="button" aria-label="展开或收起套餐管理菜单" aria-expanded="false">
           <svg class="nav-caret" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m8 10 4 4 4-4" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
       </div>
-      <div class="sub-menu" id="packageSubMenu" aria-label="套餐管理二级菜单">
+      <div class="sub-menu collapsed" id="packageSubMenu" aria-label="套餐管理二级菜单">
         <button class="sub-item" id="userPackageSubItem" type="button" data-page="userPackagePage">用户套餐管理</button>
       </div>
-      <div class="nav-item" id="riskNavItem" role="button" tabindex="0">
+      <div class="nav-item collapsed" id="riskNavItem" role="button" tabindex="0">
         <svg class="nav-icon" viewBox="0 0 15 14" fill="none" aria-hidden="true">
           <path d="M7.5 1.6 12.1 3.2v3.1c0 2.9-1.8 5.2-4.6 6.1-2.8-.9-4.6-3.2-4.6-6.1V3.2l4.6-1.6Z" />
           <path d="M5.3 6.7 6.8 8.2l3-3.2" />
         </svg>
         <span class="nav-label">风险防控</span>
-        <button class="nav-toggle" id="riskMenuToggle" type="button" aria-label="展开或收起风险防控菜单" aria-expanded="true">
+        <button class="nav-toggle" id="riskMenuToggle" type="button" aria-label="展开或收起风险防控菜单" aria-expanded="false">
           <svg class="nav-caret" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m8 10 4 4 4-4" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
       </div>
-      <div class="sub-menu" id="riskSubMenu" aria-label="风险防控二级菜单">
+      <div class="sub-menu collapsed" id="riskSubMenu" aria-label="风险防控二级菜单">
         <button class="sub-item" id="riskStrategySubItem" type="button" data-page="riskStrategyPage">风险防控策略</button>
         <button class="sub-item" id="riskTriggerLogSubItem" type="button" data-page="riskTriggerLogPage">风险防控触发日志</button>
         <button class="sub-item" id="riskStopChangeRecordSubItem" type="button" data-page="riskStopChangeRecordPage">风险管理停机状态变更记录</button>
       </div>
-      <div class="nav-item" id="afterSaleNavItem" role="button" tabindex="0">
+      <div class="nav-item collapsed" id="afterSaleNavItem" role="button" tabindex="0">
         <svg class="nav-icon" viewBox="0 0 15 14" fill="none" aria-hidden="true">
           <rect x="2.1" y="1.8" width="10.8" height="10.4" rx="2" />
           <path d="M4.7 5.1h5.6M4.7 7.1h5.6M4.7 9.1h3.4" />
         </svg>
         <span class="nav-label">售后管理</span>
-        <button class="nav-toggle" id="afterSaleMenuToggle" type="button" aria-label="展开或收起售后管理菜单" aria-expanded="true">
+        <button class="nav-toggle" id="afterSaleMenuToggle" type="button" aria-label="展开或收起售后管理菜单" aria-expanded="false">
           <svg class="nav-caret" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m8 10 4 4 4-4" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
       </div>
-      <div class="sub-menu" id="afterSaleSubMenu" aria-label="售后管理二级菜单">
+      <div class="sub-menu collapsed" id="afterSaleSubMenu" aria-label="售后管理二级菜单">
         <button class="sub-item" id="refundWorkOrderSubItem" type="button" data-page="refundWorkOrderPage">退费工单</button>
         <button class="sub-item" id="complaintManageSubItem" type="button" data-page="complaintManagePage">投诉管理</button>
+        <button class="sub-item" id="exchangeReshipSubItem" type="button" data-page="exchangeReshipPage">换货/补发工单</button>
       </div>
-      <div class="nav-item" id="logNavItem" role="button" tabindex="0">
+      <div class="nav-item collapsed" id="logNavItem" role="button" tabindex="0">
         <svg class="nav-icon" viewBox="0 0 15 14" fill="none" aria-hidden="true">
           <rect x="2.1" y="1.7" width="10.8" height="10.6" rx="2" />
           <path d="M4.5 4.6h6M4.5 7h6M4.5 9.4h3.8" />
         </svg>
         <span class="nav-label">日志管理</span>
-        <button class="nav-toggle" id="logMenuToggle" type="button" aria-label="展开或收起日志管理菜单" aria-expanded="true">
+        <button class="nav-toggle" id="logMenuToggle" type="button" aria-label="展开或收起日志管理菜单" aria-expanded="false">
           <svg class="nav-caret" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m8 10 4 4 4-4" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
       </div>
-      <div class="sub-menu" id="logSubMenu" aria-label="日志管理二级菜单">
+      <div class="sub-menu collapsed" id="logSubMenu" aria-label="日志管理二级菜单">
         <button class="sub-item" id="accountOperationLogSubItem" type="button" data-page="accountOperationLogPage">账户操作日志</button>
         <button class="sub-item" id="smartDiagnosisLogSubItem" type="button" data-page="smartDiagnosisLogPage">智能诊断日志</button>
       </div>
-      <div class="nav-item" id="taskNavItem" role="button" tabindex="0">
+      <div class="nav-item collapsed" id="taskNavItem" role="button" tabindex="0">
         <svg class="nav-icon" viewBox="0 0 15 14" fill="none" aria-hidden="true">
           <rect x="2.1" y="1.7" width="10.8" height="10.6" rx="2" />
           <path d="M4.5 4.6h6M4.5 7h6M4.5 9.4h3.8" />
         </svg>
         <span class="nav-label">任务管理</span>
-        <button class="nav-toggle" id="taskMenuToggle" type="button" aria-label="展开或收起任务管理菜单" aria-expanded="true">
+        <button class="nav-toggle" id="taskMenuToggle" type="button" aria-label="展开或收起任务管理菜单" aria-expanded="false">
           <svg class="nav-caret" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m8 10 4 4 4-4" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
       </div>
-      <div class="sub-menu" id="taskSubMenu" aria-label="任务管理二级菜单">
+      <div class="sub-menu collapsed" id="taskSubMenu" aria-label="任务管理二级菜单">
         <button class="sub-item" id="batchTaskSubItem" type="button" data-page="batchTaskPage">批量任务</button>
       </div>
       <button class="nav-item" id="abTestStatsNavItem" type="button" data-page="abTestStatsPage">
@@ -7829,7 +8077,7 @@
             <h1>设备/码号信息查询</h1>
             <p>支持商户、卡信息、设备、运营、状态及时间范围等多条件组合筛选</p>
           </div>
-          <div class="data-hint">默认展开全部条件，条件变更后不自动查询</div>
+          <div class="data-hint">默认折叠查询条件，条件变更后不自动查询</div>
         </div>
 
         <div class="business-tabs" aria-label="业务页签">
@@ -8386,6 +8634,28 @@
               </table>
             </div>
             <div class="pager" id="complaintManagePager" aria-label="投诉管理分页"></div>
+          </section>
+        </div>
+
+        <div class="page-view" id="exchangeReshipPage">
+          <section class="panel query-panel" aria-label="换货/补发工单查询区域">
+            <div class="filter-wrap exchange-reship-filter-wrap" id="exchangeReshipFilterWrap"></div>
+          </section>
+
+          <div class="batch-actions" aria-label="换货/补发工单操作">
+            <button class="btn" id="exchangeReshipCreateBtn" type="button">换货/补发工单新增</button>
+            <button class="btn secondary" id="exchangeReshipExportBtn" type="button">导出</button>
+            <button class="btn secondary" id="exchangeReshipSyncBtn" type="button">批量同步物流单号</button>
+          </div>
+
+          <section class="panel table-panel" aria-label="换货/补发工单列表">
+            <div class="table-scroll">
+              <table class="exchange-reship-table">
+                <thead><tr id="exchangeReshipTableHeader"></tr></thead>
+                <tbody id="exchangeReshipTableBody"></tbody>
+              </table>
+            </div>
+            <div class="pager" id="exchangeReshipPager" aria-label="换货/补发工单分页"></div>
           </section>
         </div>
 
@@ -8984,6 +9254,23 @@
   </div>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <div class="modal-mask" id="exchangeReshipCreateModal" role="dialog" aria-modal="true" aria-labelledby="exchangeReshipCreateTitle">
+    <div class="modal exchange-reship-modal">
+      <div class="modal-head">
+        <h2 id="exchangeReshipCreateTitle">换货/补发工单新增</h2>
+        <button class="close" id="closeExchangeReshipCreateModal" type="button" aria-label="关闭换货/补发工单新增">×</button>
+      </div>
+      <div class="modal-body">
+        <form class="modal-form" id="exchangeReshipCreateForm" novalidate></form>
+      </div>
+      <div class="modal-foot">
+        <button class="btn secondary" id="clearExchangeReshipCreateBtn" type="button">清除所有内容</button>
+        <button class="btn" id="confirmExchangeReshipCreateBtn" type="submit" form="exchangeReshipCreateForm">新增换货补发工单</button>
+      </div>
+      <div class="select-menu exchange-reship-select-menu" id="exchangeReshipCreateSelectMenu" role="listbox" aria-label="请选择"></div>
+    </div>
+  </div>
 
   <div class="modal-mask" id="smartRefundModal" role="dialog" aria-modal="true" aria-labelledby="smartRefundTitle">
     <div class="modal smart-refund-modal">
@@ -10644,7 +10931,7 @@
     const resourcePoolDetailState = {
       poolName: "",
       activeStatus: "待写卡",
-      expanded: true,
+      expanded: false,
       values: {},
       dateRangeOpen: false,
       draftBindStart: "",
@@ -11173,6 +11460,104 @@
     const complaintManageState = {
       values: {},
       currentComplaintNo: ""
+    };
+
+    const exchangeReshipFields = [
+      { key: "reshipWaybill", label: "补发快递单号", type: "input" },
+      { key: "goodsCategory", label: "货品类别", type: "select", options: ["手表", "配件", "SIM卡"] },
+      { key: "operationType", label: "操作类型", type: "select", options: ["补发", "换货"] },
+      { key: "customerPhone", label: "客户电话号码", type: "input" },
+      { key: "orderNo", label: "换货/补发工单号", type: "input" },
+      { key: "handler", label: "处理人", type: "input" },
+      { key: "registrar", label: "登记人", type: "input" },
+      { key: "shopName", label: "店铺名称", type: "input" },
+      { key: "returnWaybill", label: "退回物流单号", type: "input" },
+      { key: "shopOrderNo", label: "店铺订单号", type: "input" },
+      { key: "reshipDate", label: "补发日期", type: "daterange", rowKey: "reshipAt" },
+      { key: "registeredDate", label: "登记日期", type: "daterange", rowKey: "registeredAt" }
+    ];
+
+    const exchangeReshipTableColumns = [
+      { key: "index", label: "序号" },
+      { key: "orderNo", label: "换货补发工单号", copyLabel: "换货补发工单号" },
+      { key: "status", label: "工单状态" },
+      { key: "registrar", label: "登记人" },
+      { key: "registrarRemark", label: "登记人备注", className: "notes-col" },
+      { key: "handlingRemark", label: "处理备注", className: "notes-col" },
+      { key: "operationType", label: "操作类型" },
+      { key: "returnWaybill", label: "退回物流单号", copyLabel: "退回物流单号" },
+      { key: "returnReceived", label: "是否收到退货" },
+      { key: "reshipWaybill", label: "补发物流单号", copyLabel: "补发物流单号" },
+      { key: "shopOrderNo", label: "店铺订单号", copyLabel: "店铺订单号" },
+      { key: "shopName", label: "店铺名称" },
+      { key: "goodsCategory", label: "货品类别" },
+      { key: "goodsName", label: "货品名称" },
+      { key: "goodsQuantity", label: "货品数量" },
+      { key: "model", label: "型号" },
+      { key: "color", label: "颜色" },
+      { key: "imei", label: "IMEI", copyLabel: "IMEI" },
+      { key: "address", label: "地址", className: "address-col" },
+      { key: "warehouseOmission", label: "云仓漏发" },
+      { key: "registeredAt", label: "登记时间" },
+      { key: "handler", label: "处理人" },
+      { key: "handledAt", label: "处理时间" },
+      { key: "action", label: "操作", fixedRight: true }
+    ];
+
+    const exchangeReshipRows = [
+      {
+        orderNo: "HHBF202608180001", status: "待处理", registrar: "张楠", registrarRemark: "客户反馈手表无法充电", operationType: "换货",
+        returnWaybill: "SF153608180001", returnReceived: "未收到", shopOrderNo: "JD202608160001", shopName: "百分百宝贝旗舰店",
+        goodsCategory: "手表", goodsName: "儿童智能手表", goodsQuantity: 1, model: "KIDS-W5", color: "蓝色", imei: "861234567890101",
+        customerPhone: "13800138001", address: "上海市浦东新区张江路100号", registeredAt: "2026-08-18 09:30:00"
+      },
+      {
+        orderNo: "HHBF202608180002", status: "待发货", registrar: "李敏", registrarRemark: "充电线漏发，请补发", handlingRemark: "已核对订单配件",
+        operationType: "补发", shopOrderNo: "TM202608170002", shopName: "儿童手表天猫专营店", goodsCategory: "配件",
+        goodsName: "磁吸充电线", goodsQuantity: 1, model: "W5充电线", color: "白色", customerPhone: "13800138002",
+        address: "浙江省杭州市西湖区文一路200号", warehouseOmission: "是", registeredAt: "2026-08-18 10:12:00", handler: "王磊", handledAt: "2026-08-18 11:05:00"
+      },
+      {
+        orderNo: "HHBF202608170003", status: "已发货", registrar: "张楠", registrarRemark: "SIM卡无法使用，需要补发", handlingRemark: "已安排补发",
+        operationType: "补发", reshipWaybill: "YT202608180003", shopOrderNo: "JD202608150003", shopName: "百分百宝贝旗舰店",
+        goodsCategory: "SIM卡", goodsName: "儿童手表SIM卡", goodsQuantity: 1, model: "Nano SIM", customerPhone: "13800138003",
+        address: "江苏省南京市鼓楼区中山北路88号", registeredAt: "2026-08-17 14:20:00", handler: "王磊", handledAt: "2026-08-18 14:35:00", reshipAt: "2026-08-18 14:35:00"
+      },
+      {
+        orderNo: "HHBF202608160004", status: "已完成", registrar: "李敏", registrarRemark: "手表屏幕故障换货", handlingRemark: "客户已收到换货商品",
+        operationType: "换货", returnWaybill: "SF153608160004", returnReceived: "已收到", reshipWaybill: "SF153608170004",
+        shopOrderNo: "PDD202608120004", shopName: "米云智联官方店", goodsCategory: "手表", goodsName: "儿童智能手表",
+        goodsQuantity: 1, model: "KIDS-Pro", color: "粉色", imei: "861234567890104", customerPhone: "13800138004",
+        address: "广东省深圳市南山区科技南路66号", registeredAt: "2026-08-16 16:40:00", handler: "陈晨", handledAt: "2026-08-19 10:00:00", reshipAt: "2026-08-17 15:20:00"
+      },
+      {
+        orderNo: "HHBF202608150005", status: "已驳回", registrar: "张楠", registrarRemark: "客户重复提交换货申请", handlingRemark: "重复工单，已告知客户",
+        operationType: "换货", shopOrderNo: "JD202608130005", shopName: "百分百宝贝旗舰店", goodsCategory: "手表",
+        goodsName: "儿童智能手表", goodsQuantity: 1, model: "KIDS-W5", color: "蓝色", imei: "861234567890105", customerPhone: "13800138005",
+        address: "四川省成都市武侯区人民南路50号", registeredAt: "2026-08-15 11:20:00", handler: "陈晨", handledAt: "2026-08-15 15:10:00"
+      },
+      {
+        orderNo: "HHBF202608140006", status: "已发货", registrar: "李敏", registrarRemark: "补发漏发的表带", handlingRemark: "已补发表带两条",
+        operationType: "补发", reshipWaybill: "ZTO202608150006", shopOrderNo: "TM202608110006", shopName: "儿童手表天猫专营店",
+        goodsCategory: "配件", goodsName: "儿童手表硅胶表带", goodsQuantity: 2, model: "W5表带", color: "黑色", customerPhone: "13800138006",
+        address: "湖北省武汉市洪山区珞喻路300号", warehouseOmission: "是", registeredAt: "2026-08-14 17:00:00",
+        handler: "王磊", handledAt: "2026-08-15 09:10:00", reshipAt: "2026-08-15 09:10:00"
+      }
+    ].map((row) => ({
+      registrarRemark: "-", handlingRemark: "-", returnWaybill: "-", returnReceived: "-", reshipWaybill: "-",
+      color: "-", imei: "-", warehouseOmission: "否", handler: "-", handledAt: "-", reshipAt: "", ...row
+    }));
+
+    const exchangeReshipState = { values: {}, appliedValues: {}, page: 1, pageSize: 20 };
+
+    const exchangeReshipCreateOptions = {
+      models: ["A93", "B9", "其它", "XH06B", "Z7"],
+      colors: ["蓝色", "粉色", "黑色"],
+      miniPrograms: ["米云智联", "天使爱宝贝"]
+    };
+    const exchangeReshipCreateState = {
+      values: {}, errors: {}, selectKey: "", submitting: false, editingOrderNo: "",
+      returnFocus: null, previousBodyOverflow: "", previousBackgroundInert: false
     };
 
     const accountOperationBusinessTypes = [
@@ -11854,7 +12239,7 @@
     };
 
     const chipState = {
-      expanded: true,
+      expanded: false,
       values: {},
       dateRangeOpen: false,
       draftImportStart: "",
@@ -12118,7 +12503,7 @@
     };
 
     const simCardState = {
-      expanded: true,
+      expanded: false,
       activeTab: "list",
       values: {},
       pendingRiskStopIccid: ""
@@ -12883,7 +13268,7 @@
     ];
 
     const writableState = {
-      expanded: true,
+      expanded: false,
       values: {},
       pendingRemoveIccid: "",
       activeStatus: "待写卡",
@@ -12900,7 +13285,7 @@
     ];
     function createWritableLikeState() {
       return {
-        expanded: true,
+        expanded: false,
         values: {},
         activeStatus: "待写卡",
         dateRangeOpen: false,
@@ -13003,7 +13388,7 @@
       currentDetailBatchNo: ""
     };
     const chipBatchDetailState = {
-      expanded: true,
+      expanded: false,
       values: {},
       dateRangeOpen: false,
       draftBindStart: "",
@@ -13125,7 +13510,7 @@
     ];
 
     const state = {
-      expanded: true,
+      expanded: false,
       values: {},
       selectedIds: new Set(),
       selectedAllFiltered: false,
@@ -13160,6 +13545,7 @@
     const orderFilterWrap = document.getElementById("esimOrderFilterWrap");
     const refundWorkOrderFilterWrap = document.getElementById("refundWorkOrderFilterWrap");
     const complaintManageFilterWrap = document.getElementById("complaintManageFilterWrap");
+    const exchangeReshipFilterWrap = document.getElementById("exchangeReshipFilterWrap");
     const accountOperationLogFilterWrap = document.getElementById("accountOperationLogFilterWrap");
     const smartDiagnosisLogFilterWrap = document.getElementById("smartDiagnosisLogFilterWrap");
     const batchTaskFilterWrap = document.getElementById("batchTaskFilterWrap");
@@ -18492,6 +18878,689 @@
       `;
     }
 
+    function getExchangeReshipCreateFields(values = exchangeReshipCreateState.values) {
+      const isExchange = values.operationType === "换货";
+      const isSimReship = values.operationType === "补发" && values.goodsCategory === "SIM卡";
+      const editingRow = exchangeReshipRows.find((row) => row.orderNo === exchangeReshipCreateState.editingOrderNo);
+      const selectableOptions = (options, key) => {
+        const currentValue = editingRow?.[key];
+        return currentValue && currentValue !== "-" && !options.includes(currentValue) ? [...options, currentValue] : options;
+      };
+      const categoryFields = values.goodsCategory === "手表"
+        ? [
+            { key: "model", label: "货品型号", type: "select", required: true, options: selectableOptions(exchangeReshipCreateOptions.models, "model") },
+            { key: "color", label: "货品颜色", type: "select", required: true, options: selectableOptions(exchangeReshipCreateOptions.colors, "color") }
+          ]
+        : values.goodsCategory === "配件"
+          ? [{ key: "goodsName", label: "货品名称", type: "input", required: true }]
+          : values.goodsCategory === "SIM卡"
+            ? [{ key: "imei", label: "IMEI", type: "input", required: true, inputMode: "numeric" }]
+            : [];
+      return [
+        { key: "operationType", label: "操作类型", type: "select", required: true, options: ["补发", "换货"] },
+        { key: "shopName", label: "店铺名称", type: "input", required: true },
+        { key: "shopOrderNo", label: "店铺订单号", type: "input", required: true },
+        ...(isExchange ? [{ key: "returnWaybill", label: "退回物流单号", type: "input", required: values.goodsCategory !== "SIM卡" }] : []),
+        { key: "goodsCategory", label: "货品类别", type: "select", required: true, options: ["手表", "配件", "SIM卡"] },
+        ...categoryFields,
+        ...(isSimReship ? [
+          { key: "supplier", label: "供应商", type: "select", options: simCardFields.find((field) => field.key === "supplier").options },
+          { key: "miniProgram", label: "归属小程序", type: "select", options: exchangeReshipCreateOptions.miniPrograms }
+        ] : []),
+        { key: "goodsQuantity", label: "数量", type: "number", required: true },
+        ...(values.operationType === "补发" ? [{ key: "warehouseOmission", label: "是否云仓漏发", type: "radio", options: ["是", "否"] }] : []),
+        { key: "registrarRemark", label: "备注", type: "textarea", required: true, maxLength: 255 },
+        { key: "recipientName", label: "收货人姓名", type: "input", required: true, group: "recipient", autocomplete: "shipping name" },
+        { key: "recipientPhone", label: "收货人电话号码", type: "tel", required: true, group: "recipient", autocomplete: "shipping tel" },
+        { key: "recipientAddress", label: "收货地址", type: "textarea", required: true, maxLength: 200, group: "recipient", autocomplete: "shipping street-address" }
+      ];
+    }
+
+    function renderExchangeReshipCreateField(field) {
+      const id = `exchangeReshipCreate-${field.key}`;
+      const value = String(exchangeReshipCreateState.values[field.key] || "");
+      const error = exchangeReshipCreateState.errors[field.key] || "";
+      const descriptionIds = [field.maxLength ? `${id}Count` : "", error ? `${id}Error` : ""].filter(Boolean).join(" ");
+      const aria = `aria-invalid="${Boolean(error)}" ${field.required ? 'aria-required="true"' : ""} ${descriptionIds ? `aria-describedby="${descriptionIds}"` : ""}`;
+      const autocomplete = field.autocomplete ? `autocomplete="${field.autocomplete}"` : "";
+      let control;
+      if (field.type === "select") {
+        control = `
+          <div class="modal-select-field">
+            <button class="batch-select exchange-reship-select ${value ? "has-value" : "is-placeholder"}" id="${id}" type="button" data-exchange-select="${field.key}" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-controls="exchangeReshipCreateSelectMenu" ${aria}>
+              <span class="exchange-reship-select-value">${escapeHtml(value || `请选择${field.label}`)}</span>
+              ${iconChevron().replace('class="icon"', 'class="field-icon"')}
+            </button>
+            ${value ? `<button class="select-clear" type="button" data-exchange-select-clear="${field.key}" aria-label="清除${field.label}">×</button>` : ""}
+          </div>`;
+      } else if (field.type === "textarea") {
+        control = `
+          <div class="exchange-reship-textarea-wrap">
+            <textarea class="batch-textarea" id="${id}" data-exchange-input="${field.key}" rows="3" maxlength="${field.maxLength}" placeholder="请输入${field.label}" ${autocomplete} ${aria}>${escapeHtml(value)}</textarea>
+            <span class="exchange-reship-char-count" id="${id}Count">${value.length}/${field.maxLength}</span>
+          </div>`;
+      } else if (field.type === "radio") {
+        control = `<fieldset class="exchange-reship-radio-group" id="${id}" aria-label="${field.label}">
+          ${field.options.map((option) => `<label><input type="radio" name="exchangeReshipCreate-${field.key}" data-exchange-input="${field.key}" value="${option}" ${value === option ? "checked" : ""} />${option}</label>`).join("")}
+        </fieldset>`;
+      } else {
+        control = `<input class="batch-select" id="${id}" data-exchange-input="${field.key}" type="${field.type === "number" ? "number" : field.type === "tel" ? "tel" : "text"}" ${field.type === "number" ? 'min="1" step="1" inputmode="numeric"' : ""} ${field.inputMode ? `inputmode="${field.inputMode}"` : ""} value="${escapeHtml(value)}" placeholder="请输入${field.label}" ${autocomplete} ${aria} />`;
+      }
+      return `
+        <div class="modal-form-row" data-exchange-create-row="${field.key}">
+          <label class="modal-label" for="${id}">${field.required ? '<span class="required" aria-hidden="true">*</span>' : ""}${field.label}</label>
+          <div class="exchange-reship-field-control">
+            ${control}
+            <div class="exchange-reship-field-error" id="${id}Error">${escapeHtml(error)}</div>
+          </div>
+        </div>`;
+    }
+
+    function renderExchangeReshipCreateFields() {
+      closeExchangeReshipCreateSelect(false);
+      const fields = getExchangeReshipCreateFields();
+      const recipientFields = fields.filter((field) => field.group === "recipient");
+      document.getElementById("exchangeReshipCreateForm").innerHTML = fields.map((field) => {
+        if (field.group !== "recipient") return renderExchangeReshipCreateField(field);
+        if (field !== recipientFields[0]) return "";
+        return `<fieldset class="exchange-reship-recipient-section">
+          <legend>收货信息</legend>
+          <div class="exchange-reship-recipient-fields">${recipientFields.map(renderExchangeReshipCreateField).join("")}</div>
+        </fieldset>`;
+      }).join("");
+    }
+
+    function clearExchangeReshipCreateError(key) {
+      delete exchangeReshipCreateState.errors[key];
+      const id = `exchangeReshipCreate-${key}`;
+      const control = document.getElementById(id);
+      const error = document.getElementById(`${id}Error`);
+      if (error) error.textContent = "";
+      if (control) {
+        control.setAttribute("aria-invalid", "false");
+        if (document.getElementById(`${id}Count`)) control.setAttribute("aria-describedby", `${id}Count`);
+        else control.removeAttribute("aria-describedby");
+      }
+    }
+
+    function changeExchangeReshipCreateSelect(key, value) {
+      const values = exchangeReshipCreateState.values;
+      values[key] = value;
+      clearExchangeReshipCreateError(key);
+      if (key === "goodsCategory") {
+        ["model", "color", "goodsName", "imei"].forEach((fieldKey) => {
+          delete values[fieldKey];
+          delete exchangeReshipCreateState.errors[fieldKey];
+        });
+      }
+      if (key === "operationType") {
+        const hiddenKey = value === "补发" ? "returnWaybill" : "warehouseOmission";
+        delete values[hiddenKey];
+        delete exchangeReshipCreateState.errors[hiddenKey];
+        if (!value) delete values.returnWaybill;
+      }
+      if (values.operationType !== "补发" || values.goodsCategory !== "SIM卡") {
+        ["supplier", "miniProgram"].forEach((fieldKey) => {
+          delete values[fieldKey];
+          delete exchangeReshipCreateState.errors[fieldKey];
+        });
+      }
+      getExchangeReshipCreateFields().filter((field) => !field.required).forEach((field) => { delete exchangeReshipCreateState.errors[field.key]; });
+      renderExchangeReshipCreateFields();
+      document.getElementById(`exchangeReshipCreate-${key}`).focus();
+    }
+
+    function closeExchangeReshipCreateSelect(restoreFocus = true) {
+      const key = exchangeReshipCreateState.selectKey;
+      const menu = document.getElementById("exchangeReshipCreateSelectMenu");
+      if (menu) menu.classList.remove("open");
+      const trigger = key ? document.getElementById(`exchangeReshipCreate-${key}`) : null;
+      if (trigger) {
+        trigger.setAttribute("aria-expanded", "false");
+        if (restoreFocus) trigger.focus();
+      }
+      exchangeReshipCreateState.selectKey = "";
+    }
+
+    function positionExchangeReshipCreateSelect() {
+      const key = exchangeReshipCreateState.selectKey;
+      if (!key) return;
+      const trigger = document.getElementById(`exchangeReshipCreate-${key}`);
+      const menu = document.getElementById("exchangeReshipCreateSelectMenu");
+      const rect = trigger.getBoundingClientRect();
+      menu.style.left = `${rect.left}px`;
+      menu.style.top = `${rect.bottom + 4}px`;
+      menu.style.width = `${rect.width}px`;
+      menu.style.maxHeight = `${Math.max(36, Math.min(220, window.innerHeight - rect.bottom - 16))}px`;
+    }
+
+    function openExchangeReshipCreateSelect(key, focusOption = false) {
+      const field = getExchangeReshipCreateFields().find((item) => item.key === key && item.type === "select");
+      if (!field) return;
+      closeExchangeReshipCreateSelect(false);
+      const trigger = document.getElementById(`exchangeReshipCreate-${key}`);
+      const menu = document.getElementById("exchangeReshipCreateSelectMenu");
+      const value = exchangeReshipCreateState.values[key];
+      trigger.scrollIntoView({ block: "nearest" });
+      exchangeReshipCreateState.selectKey = key;
+      trigger.setAttribute("aria-expanded", "true");
+      menu.setAttribute("aria-label", field.label);
+      menu.innerHTML = field.options.map((option) => `<button class="option ${value === option ? "active" : ""}" type="button" role="option" aria-selected="${value === option}" tabindex="-1" data-exchange-select-value="${escapeHtml(option)}">${escapeHtml(option)}</button>`).join("");
+      positionExchangeReshipCreateSelect();
+      menu.classList.add("open");
+      if (focusOption) (menu.querySelector(".option.active") || menu.querySelector(".option"))?.focus();
+    }
+
+    function resetExchangeReshipCreateForm() {
+      exchangeReshipCreateState.values = {};
+      exchangeReshipCreateState.errors = {};
+      renderExchangeReshipCreateFields();
+      document.getElementById("exchangeReshipCreate-operationType").focus();
+    }
+
+    function getExchangeReshipEditValues(row) {
+      const values = {
+        ...row,
+        recipientName: row.recipientName || "",
+        recipientPhone: row.recipientPhone || row.customerPhone || "",
+        recipientAddress: row.recipientAddress || row.address || ""
+      };
+      return Object.fromEntries(getExchangeReshipCreateFields(values).map((field) => {
+        const value = String(values[field.key] ?? "");
+        return [field.key, value === "-" ? "" : value];
+      }));
+    }
+
+    function openExchangeReshipCreateModal(orderNo = "") {
+      const modal = document.getElementById("exchangeReshipCreateModal");
+      if (modal.classList.contains("open")) return;
+      const row = orderNo ? exchangeReshipRows.find((item) => item.orderNo === orderNo) : null;
+      if (orderNo && !row) return showToast("未找到对应工单，请刷新列表后重试", "error");
+      exchangeReshipCreateState.editingOrderNo = row?.orderNo || "";
+      exchangeReshipCreateState.returnFocus = document.activeElement;
+      exchangeReshipCreateState.previousBodyOverflow = document.body.style.overflow;
+      const background = document.querySelector(".app-shell");
+      exchangeReshipCreateState.previousBackgroundInert = background.inert;
+      background.inert = true;
+      document.body.style.overflow = "hidden";
+      modal.classList.add("open");
+      const title = row ? "换货/补发工单编辑" : "换货/补发工单新增";
+      document.getElementById("exchangeReshipCreateTitle").textContent = title;
+      document.getElementById("closeExchangeReshipCreateModal").setAttribute("aria-label", `关闭${title}`);
+      document.getElementById("confirmExchangeReshipCreateBtn").textContent = row ? "保存修改" : "新增换货补发工单";
+      exchangeReshipCreateState.values = row ? getExchangeReshipEditValues(row) : {};
+      exchangeReshipCreateState.errors = {};
+      renderExchangeReshipCreateFields();
+      document.getElementById("exchangeReshipCreate-operationType").focus();
+    }
+
+    function closeExchangeReshipCreateModal() {
+      const modal = document.getElementById("exchangeReshipCreateModal");
+      if (!modal.classList.contains("open")) return;
+      closeExchangeReshipCreateSelect(false);
+      modal.classList.remove("open");
+      document.body.style.overflow = exchangeReshipCreateState.previousBodyOverflow;
+      document.querySelector(".app-shell").inert = exchangeReshipCreateState.previousBackgroundInert;
+      exchangeReshipCreateState.editingOrderNo = "";
+      const target = exchangeReshipCreateState.returnFocus;
+      if (target?.isConnected) target.focus();
+      else document.getElementById("exchangeReshipCreateBtn").focus();
+    }
+
+    function validateExchangeReshipCreate(values) {
+      const errors = {};
+      getExchangeReshipCreateFields(values).forEach((field) => {
+        const value = String(values[field.key] || "").trim();
+        if (field.required && !value) {
+          errors[field.key] = `${field.type === "select" ? "请选择" : "请输入"}${field.label}`;
+        } else if (value && field.options && !field.options.includes(value)) {
+          errors[field.key] = `请选择有效的${field.label}`;
+        } else if (value && field.type === "number" && (!Number.isSafeInteger(Number(value)) || Number(value) <= 0)) {
+          errors[field.key] = "请输入大于 0 的整数数量";
+        } else if (field.maxLength && value.length > field.maxLength) {
+          errors[field.key] = `${field.label}最多输入 ${field.maxLength} 个字符`;
+        }
+      });
+      return errors;
+    }
+
+    function createExchangeReshipOrderNo(time) {
+      const prefix = `HHBF${time.slice(0, 10).replace(/-/g, "")}`;
+      let sequence = 1;
+      while (exchangeReshipRows.some((row) => row.orderNo === `${prefix}${String(sequence).padStart(4, "0")}`)) sequence += 1;
+      return `${prefix}${String(sequence).padStart(4, "0")}`;
+    }
+
+    function buildExchangeReshipCreateRecord(values, time, registrar, existingRow = null) {
+      const fields = getExchangeReshipCreateFields(values);
+      const visibleValues = Object.fromEntries(fields.map((field) => [field.key, String(values[field.key] || "").trim()]));
+      const sameCategory = existingRow?.goodsCategory === visibleValues.goodsCategory;
+      const sameOperation = existingRow?.operationType === visibleValues.operationType;
+      const record = existingRow || {
+        orderNo: createExchangeReshipOrderNo(time), status: "待处理", registrar,
+        handlingRemark: "-", reshipWaybill: "-", registeredAt: time, handler: "-", handledAt: "-", reshipAt: ""
+      };
+      return {
+        ...record,
+        registrarRemark: visibleValues.registrarRemark, operationType: visibleValues.operationType,
+        returnWaybill: visibleValues.returnWaybill || "-", returnReceived: sameOperation ? existingRow.returnReceived : visibleValues.operationType === "换货" ? "未收到" : "-",
+        shopOrderNo: visibleValues.shopOrderNo, shopName: visibleValues.shopName,
+        goodsCategory: visibleValues.goodsCategory, goodsName: visibleValues.goodsName || (sameCategory ? existingRow.goodsName : "") || visibleValues.goodsCategory,
+        goodsQuantity: Number(visibleValues.goodsQuantity), model: visibleValues.model || (sameCategory ? existingRow.model : "") || "-", color: visibleValues.color || (sameCategory ? existingRow.color : "") || "-",
+        imei: visibleValues.imei || (sameCategory ? existingRow.imei : "") || "-",
+        supplier: visibleValues.supplier || "", miniProgram: visibleValues.miniProgram || "",
+        warehouseOmission: visibleValues.operationType === "补发" ? visibleValues.warehouseOmission || "-" : sameOperation ? existingRow.warehouseOmission : "-",
+        recipientName: visibleValues.recipientName, recipientPhone: visibleValues.recipientPhone, recipientAddress: visibleValues.recipientAddress,
+        address: visibleValues.recipientAddress, customerPhone: visibleValues.recipientPhone
+      };
+    }
+
+    function confirmExchangeReshipCreate() {
+      if (exchangeReshipCreateState.submitting || !document.getElementById("exchangeReshipCreateModal").classList.contains("open")) return;
+      document.getElementById("exchangeReshipCreateForm").querySelectorAll("[data-exchange-input]").forEach((input) => {
+        if (input.type !== "radio" || input.checked) exchangeReshipCreateState.values[input.dataset.exchangeInput] = input.value;
+      });
+      const errors = validateExchangeReshipCreate(exchangeReshipCreateState.values);
+      exchangeReshipCreateState.errors = errors;
+      const firstErrorKey = Object.keys(errors)[0];
+      if (firstErrorKey) {
+        renderExchangeReshipCreateFields();
+        const field = document.getElementById(`exchangeReshipCreate-${firstErrorKey}`);
+        field.focus();
+        field.scrollIntoView({ block: "nearest" });
+        showToast(errors[firstErrorKey], "error");
+        return;
+      }
+      exchangeReshipCreateState.submitting = true;
+      const submitButton = document.getElementById("confirmExchangeReshipCreateBtn");
+      submitButton.disabled = true;
+      try {
+        const editingOrderNo = exchangeReshipCreateState.editingOrderNo;
+        const existingRow = editingOrderNo ? exchangeReshipRows.find((item) => item.orderNo === editingOrderNo) : null;
+        if (editingOrderNo && !existingRow) {
+          showToast("未找到对应工单，请刷新列表后重试", "error");
+          return;
+        }
+        const row = buildExchangeReshipCreateRecord(exchangeReshipCreateState.values, currentDateTimeText(), currentOperatorName(), existingRow);
+        if (existingRow) Object.assign(existingRow, row);
+        else {
+          exchangeReshipRows.unshift(row);
+          exchangeReshipState.page = 1;
+        }
+        renderExchangeReshipTable();
+        closeExchangeReshipCreateModal();
+        const action = existingRow ? "修改" : "新增";
+        showToast(getExchangeReshipRows().includes(existingRow || row) ? `换货/补发工单${action}成功` : `工单${action}成功，当前查询条件下未展示`, "success");
+      } finally {
+        exchangeReshipCreateState.submitting = false;
+        submitButton.disabled = false;
+      }
+    }
+
+    function bindExchangeReshipCreateEvents() {
+      const modal = document.getElementById("exchangeReshipCreateModal");
+      const form = document.getElementById("exchangeReshipCreateForm");
+      const menu = document.getElementById("exchangeReshipCreateSelectMenu");
+      document.getElementById("exchangeReshipCreateBtn").addEventListener("click", () => openExchangeReshipCreateModal());
+      document.getElementById("closeExchangeReshipCreateModal").addEventListener("click", closeExchangeReshipCreateModal);
+      document.getElementById("clearExchangeReshipCreateBtn").addEventListener("click", resetExchangeReshipCreateForm);
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        confirmExchangeReshipCreate();
+      });
+      const updateValue = (event) => {
+        const input = event.target.closest("[data-exchange-input]");
+        if (!input || (input.type === "radio" && !input.checked)) return;
+        const key = input.dataset.exchangeInput;
+        exchangeReshipCreateState.values[key] = input.value;
+        clearExchangeReshipCreateError(key);
+        const count = document.getElementById(`exchangeReshipCreate-${key}Count`);
+        if (count) count.textContent = `${input.value.length}/${input.maxLength}`;
+      };
+      form.addEventListener("input", updateValue);
+      form.addEventListener("change", updateValue);
+      modal.addEventListener("click", (event) => {
+        event.stopPropagation();
+        if (event.target === modal) return closeExchangeReshipCreateModal();
+        const clear = event.target.closest("[data-exchange-select-clear]");
+        if (clear) return changeExchangeReshipCreateSelect(clear.dataset.exchangeSelectClear, "");
+        const trigger = event.target.closest("[data-exchange-select]");
+        if (trigger) {
+          if (exchangeReshipCreateState.selectKey === trigger.dataset.exchangeSelect) closeExchangeReshipCreateSelect();
+          else openExchangeReshipCreateSelect(trigger.dataset.exchangeSelect);
+          return;
+        }
+        const option = event.target.closest("[data-exchange-select-value]");
+        if (option) return changeExchangeReshipCreateSelect(exchangeReshipCreateState.selectKey, option.dataset.exchangeSelectValue);
+        closeExchangeReshipCreateSelect(false);
+      });
+      modal.addEventListener("keydown", (event) => {
+        if (event.isComposing) {
+          if (event.key === "Enter") event.preventDefault();
+          return;
+        }
+        const trigger = event.target.closest("[data-exchange-select]");
+        if (trigger && ["ArrowDown", "ArrowUp", "Enter", " "].includes(event.key)) {
+          event.preventDefault();
+          openExchangeReshipCreateSelect(trigger.dataset.exchangeSelect, true);
+          return;
+        }
+        if (exchangeReshipCreateState.selectKey) {
+          if (event.key === "Escape" || event.key === "Tab") {
+            closeExchangeReshipCreateSelect();
+            if (event.key === "Escape") {
+              event.preventDefault();
+              return;
+            }
+          } else if (menu.contains(event.target) && ["ArrowDown", "ArrowUp", "Home", "End"].includes(event.key)) {
+            event.preventDefault();
+            const options = Array.from(menu.querySelectorAll(".option"));
+            const index = options.indexOf(document.activeElement);
+            const nextIndex = event.key === "Home" ? 0 : event.key === "End" ? options.length - 1 : (index + (event.key === "ArrowDown" ? 1 : -1) + options.length) % options.length;
+            options[nextIndex]?.focus();
+            return;
+          }
+        } else if (event.key === "Escape") {
+          event.preventDefault();
+          closeExchangeReshipCreateModal();
+          return;
+        }
+        if (event.key === "Tab") {
+          const focusables = Array.from(modal.querySelectorAll('button:not(:disabled), input:not(:disabled), textarea:not(:disabled)')).filter((element) => element.tabIndex >= 0 && element.getClientRects().length);
+          const first = focusables[0];
+          const last = focusables[focusables.length - 1];
+          if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault();
+            last?.focus();
+          } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault();
+            first?.focus();
+          }
+        }
+      });
+      modal.querySelector(".modal-body").addEventListener("scroll", positionExchangeReshipCreateSelect);
+      window.addEventListener("resize", () => closeExchangeReshipCreateSelect(false));
+    }
+
+    function exchangeReshipDateConfig(field) {
+      return {
+        idPrefix: `exchangeReship${field.key}`,
+        label: field.label,
+        openKey: `${field.key}Open`,
+        valueStartKey: `${field.key}Start`,
+        valueEndKey: `${field.key}End`,
+        draftStartKey: `${field.key}DraftStart`,
+        draftEndKey: `${field.key}DraftEnd`,
+        errorKey: `${field.key}Error`,
+        viewKey: `${field.key}ViewMonth`
+      };
+    }
+
+    function renderExchangeReshipFilters() {
+      exchangeReshipFilterWrap.innerHTML = "";
+      exchangeReshipFields.forEach((field) => {
+        const el = document.createElement("div");
+        const value = exchangeReshipState.values[field.key] || "";
+        el.className = "field";
+        el.dataset.key = field.key;
+        if (field.type === "daterange") {
+          const config = exchangeReshipDateConfig(field);
+          el.classList.add("writable-date-range");
+          el.innerHTML = renderDateRangeField({
+            idPrefix: config.idPrefix, label: field.label,
+            isOpen: Boolean(exchangeReshipState[config.openKey]),
+            start: exchangeReshipState.values[config.valueStartKey] || "",
+            end: exchangeReshipState.values[config.valueEndKey] || "",
+            draftStart: exchangeReshipState[config.draftStartKey] || "",
+            draftEnd: exchangeReshipState[config.draftEndKey] || "",
+            error: exchangeReshipState[config.errorKey] || "",
+            viewMonth: exchangeReshipState[config.viewKey] || ""
+          });
+        } else if (field.type === "select") {
+          el.innerHTML = `
+            <input class="control select-trigger ${value ? "has-value" : ""}" data-key="${field.key}" type="text" placeholder="${field.label}" aria-label="${field.label}" value="${escapeHtml(value)}" readonly role="combobox" aria-expanded="false" aria-controls="exchangeReship${field.key}Options" aria-haspopup="listbox" />
+            ${value ? `<button class="select-clear" type="button" data-key="${field.key}" aria-label="清除${field.label}">×</button>` : ""}
+            ${iconChevron().replace('class="icon"', 'class="field-icon"')}
+            <div class="select-menu" data-menu="${field.key}">
+              <div class="select-options" id="exchangeReship${field.key}Options" role="listbox" aria-label="${field.label}">
+                ${field.options.map((option) => `<button class="option ${value === option ? "active" : ""}" type="button" role="option" aria-selected="${value === option}" data-value="${escapeHtml(option)}">${escapeHtml(option)}</button>`).join("")}
+              </div>
+            </div>
+          `;
+        } else {
+          el.classList.add("clearable-query");
+          el.classList.toggle("has-value", Boolean(value));
+          el.innerHTML = `
+            <input class="control" data-key="${field.key}" type="text" placeholder="${field.label}" aria-label="${field.label}" value="${escapeHtml(value)}" />
+            <button class="query-clear" type="button" data-key="${field.key}" aria-label="清除${field.label}">×</button>
+          `;
+        }
+        exchangeReshipFilterWrap.appendChild(el);
+      });
+      const actions = document.createElement("div");
+      actions.className = "form-actions";
+      actions.innerHTML = `
+        <button class="btn search-btn" id="exchangeReshipSearchBtn" type="button">搜索</button>
+        <button class="btn secondary" id="exchangeReshipResetBtn" type="button">重置</button>
+      `;
+      exchangeReshipFilterWrap.appendChild(actions);
+      bindExchangeReshipFilterEvents();
+    }
+
+    function closeExchangeReshipMenus(exceptKey, renderDates = true) {
+      exchangeReshipFilterWrap.querySelectorAll(".select-menu").forEach((menu) => {
+        if (menu.dataset.menu === exceptKey) return;
+        menu.classList.remove("open");
+        const trigger = menu.closest(".field").querySelector(".select-trigger");
+        trigger.classList.remove("open");
+        trigger.setAttribute("aria-expanded", "false");
+      });
+      let changed = false;
+      exchangeReshipFields.filter((field) => field.type === "daterange").forEach((field) => {
+        const config = exchangeReshipDateConfig(field);
+        if (field.key !== exceptKey && exchangeReshipState[config.openKey]) {
+          exchangeReshipState[config.openKey] = false;
+          changed = true;
+        }
+      });
+      if (changed && renderDates) renderExchangeReshipFilters();
+    }
+
+    function openExchangeReshipSelect(key) {
+      closeExchangeReshipMenus(key);
+      const field = exchangeReshipFilterWrap.querySelector(`.field[data-key="${key}"]`);
+      const trigger = field.querySelector(".select-trigger");
+      trigger.classList.add("open");
+      trigger.setAttribute("aria-expanded", "true");
+      field.querySelector(".select-menu").classList.add("open");
+      return field;
+    }
+
+    function bindExchangeReshipFilterEvents() {
+      exchangeReshipFilterWrap.querySelectorAll(".control:not(.select-trigger)").forEach((input) => {
+        input.addEventListener("input", () => {
+          exchangeReshipState.values[input.dataset.key] = input.value;
+          input.closest(".field").classList.toggle("has-value", Boolean(input.value));
+        });
+        input.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" && !event.isComposing) searchExchangeReship();
+        });
+      });
+      exchangeReshipFilterWrap.querySelectorAll(".select-trigger").forEach((trigger) => {
+        trigger.addEventListener("click", (event) => {
+          event.stopPropagation();
+          if (trigger.classList.contains("open")) closeExchangeReshipMenus();
+          else openExchangeReshipSelect(trigger.dataset.key);
+        });
+        trigger.addEventListener("keydown", (event) => {
+          if (["ArrowDown", "ArrowUp", "Enter", " "].includes(event.key)) {
+            event.preventDefault();
+            const field = openExchangeReshipSelect(trigger.dataset.key);
+            field.querySelector(".option.active, .option").focus();
+          } else if (event.key === "Escape") closeExchangeReshipMenus();
+        });
+      });
+      exchangeReshipFilterWrap.querySelectorAll(".option").forEach((option) => {
+        option.addEventListener("click", (event) => {
+          event.stopPropagation();
+          const key = option.closest(".field").dataset.key;
+          exchangeReshipState.values[key] = option.dataset.value;
+          renderExchangeReshipFilters();
+          exchangeReshipFilterWrap.querySelector(`.select-trigger[data-key="${key}"]`).focus();
+        });
+        option.addEventListener("keydown", (event) => {
+          const field = option.closest(".field");
+          if (event.key === "Escape") {
+            event.preventDefault();
+            closeExchangeReshipMenus();
+            field.querySelector(".select-trigger").focus();
+          } else if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+            event.preventDefault();
+            const options = Array.from(field.querySelectorAll(".option"));
+            const index = options.indexOf(option);
+            options[(index + (event.key === "ArrowDown" ? 1 : -1) + options.length) % options.length].focus();
+          }
+        });
+      });
+      exchangeReshipFilterWrap.querySelectorAll(".query-clear, .select-clear").forEach((button) => {
+        button.addEventListener("click", (event) => {
+          event.stopPropagation();
+          const key = button.dataset.key;
+          exchangeReshipState.values[key] = "";
+          renderExchangeReshipFilters();
+          exchangeReshipFilterWrap.querySelector(`.control[data-key="${key}"]`).focus();
+        });
+      });
+      exchangeReshipFields.filter((field) => field.type === "daterange").forEach((field) => {
+        bindDateRangeField({
+          ...exchangeReshipDateConfig(field), state: exchangeReshipState, filterWrap: exchangeReshipFilterWrap,
+          render: renderExchangeReshipFilters, onBeforeOpen: () => closeExchangeReshipMenus(field.key, false)
+        });
+      });
+      document.getElementById("exchangeReshipSearchBtn").addEventListener("click", searchExchangeReship);
+      document.getElementById("exchangeReshipResetBtn").addEventListener("click", resetExchangeReshipFilters);
+    }
+
+    function getExchangeReshipRows(values = exchangeReshipState.appliedValues) {
+      return exchangeReshipRows.filter((row) => exchangeReshipFields.every((field) => {
+        if (field.type === "daterange") {
+          const config = exchangeReshipDateConfig(field);
+          const start = values[config.valueStartKey] || "";
+          const end = values[config.valueEndKey] || "";
+          if (!start && !end) return true;
+          const date = String(row[field.rowKey] || "").slice(0, 10);
+          return Boolean(date) && (!start || date >= start) && (!end || date <= end);
+        }
+        const value = String(values[field.key] || "").trim();
+        if (!value) return true;
+        if (field.type === "select") return row[field.key] === value;
+        return String(row[field.key] || "").toLowerCase().includes(value.toLowerCase());
+      }));
+    }
+
+    function searchExchangeReship() {
+      for (const field of exchangeReshipFields.filter((item) => item.type === "daterange")) {
+        const config = exchangeReshipDateConfig(field);
+        const error = validateManualDateRange(exchangeReshipState.values[config.valueStartKey], exchangeReshipState.values[config.valueEndKey], field.label);
+        if (error) return showToast(error, "error");
+      }
+      exchangeReshipState.appliedValues = Object.fromEntries(Object.entries(exchangeReshipState.values).map(([key, value]) => [key, String(value || "").trim()]));
+      exchangeReshipState.page = 1;
+      closeExchangeReshipMenus();
+      renderExchangeReshipTable();
+      showToast(`已查询到 ${getExchangeReshipRows().length} 条换货/补发工单`, "success");
+    }
+
+    function resetExchangeReshipFilters() {
+      exchangeReshipState.values = {};
+      exchangeReshipState.appliedValues = {};
+      exchangeReshipState.page = 1;
+      exchangeReshipFields.filter((field) => field.type === "daterange").forEach((field) => {
+        const config = exchangeReshipDateConfig(field);
+        exchangeReshipState[config.openKey] = false;
+        [config.draftStartKey, config.draftEndKey, config.errorKey, config.viewKey].forEach((key) => { exchangeReshipState[key] = ""; });
+      });
+      renderExchangeReshipFilters();
+      renderExchangeReshipTable();
+      showToast("换货/补发工单查询条件已清空", "info");
+    }
+
+    function exchangeReshipCellText(row, column, index) {
+      if (column.key === "index") return String(index + 1);
+      const value = row[column.key];
+      return value === null || value === undefined || value === "" ? "-" : String(value);
+    }
+
+    function renderExchangeReshipValue(row, column, index) {
+      if (column.key === "action") {
+        return `<span class="refund-action-group">${["编辑", "驳回", "发货", "确认收货"].map((action) => `<button class="${action === "驳回" ? "danger-link" : "link-text"}" type="button" data-exchange-action="${action}" data-order-no="${escapeHtml(row.orderNo)}">${action}</button>`).join("")}</span>`;
+      }
+      const value = exchangeReshipCellText(row, column, index);
+      if (column.copyLabel) return renderRefundCopyCell(value, column.copyLabel);
+      return escapeHtml(value);
+    }
+
+    function renderExchangeReshipTable() {
+      const records = getExchangeReshipRows();
+      const pageCount = Math.max(1, Math.ceil(records.length / exchangeReshipState.pageSize));
+      exchangeReshipState.page = Math.max(1, Math.min(exchangeReshipState.page, pageCount));
+      const offset = (exchangeReshipState.page - 1) * exchangeReshipState.pageSize;
+      const visibleRows = records.slice(offset, offset + exchangeReshipState.pageSize);
+      const columnClass = (column) => column.fixedRight ? "operation-col" : column.className || "";
+      document.getElementById("exchangeReshipTableHeader").innerHTML = exchangeReshipTableColumns.map((column) => `<th class="${columnClass(column)}" scope="col">${escapeHtml(column.label)}</th>`).join("");
+      document.getElementById("exchangeReshipTableBody").innerHTML = visibleRows.length
+        ? visibleRows.map((row, index) => `<tr>${exchangeReshipTableColumns.map((column) => `<td class="${columnClass(column)}">${renderExchangeReshipValue(row, column, offset + index)}</td>`).join("")}</tr>`).join("")
+        : `<tr><td colspan="${exchangeReshipTableColumns.length}" style="text-align:center;color:#6b7280;">暂无数据</td></tr>`;
+      renderExchangeReshipPager(records.length);
+    }
+
+    function renderExchangeReshipPager(total) {
+      const pageCount = Math.max(1, Math.ceil(total / exchangeReshipState.pageSize));
+      const page = exchangeReshipState.page;
+      const start = Math.max(1, Math.min(page - 2, pageCount - 4));
+      const pages = Array.from({ length: Math.min(5, pageCount) }, (_, index) => start + index);
+      const pager = document.getElementById("exchangeReshipPager");
+      pager.innerHTML = `
+        <span>共 ${total} 条</span><span>${exchangeReshipState.pageSize}条/页</span>
+        <button class="page-btn" type="button" data-page="${page - 1}" aria-label="上一页" ${page <= 1 ? "disabled" : ""}>‹</button>
+        ${pages.map((number) => `<button class="page-btn ${page === number ? "active" : ""}" type="button" data-page="${number}" ${page === number ? 'aria-current="page"' : ""}>${number}</button>`).join("")}
+        <button class="page-btn" type="button" data-page="${page + 1}" aria-label="下一页" ${page >= pageCount ? "disabled" : ""}>›</button>
+      `;
+      pager.querySelectorAll("[data-page]").forEach((button) => {
+        button.addEventListener("click", () => {
+          exchangeReshipState.page = Math.max(1, Math.min(Number(button.dataset.page), pageCount));
+          renderExchangeReshipTable();
+        });
+      });
+    }
+
+    function createExchangeReshipCsv(records) {
+      const columns = exchangeReshipTableColumns.filter((column) => column.key !== "action");
+      const quote = (value) => {
+        const text = String(value);
+        const safe = /^[=+\-@\t\r]/.test(text) ? `'${text}` : text;
+        return `"${safe.replace(/"/g, '""')}"`;
+      };
+      return "\ufeff" + [
+        columns.map((column) => quote(column.label)).join(","),
+        ...records.map((row, index) => columns.map((column) => quote(exchangeReshipCellText(row, column, index))).join(","))
+      ].join("\r\n");
+    }
+
+    function exportExchangeReship() {
+      const records = getExchangeReshipRows();
+      if (!records.length) return showToast("当前查询结果为空，暂无可导出的工单", "info");
+      const url = URL.createObjectURL(new Blob([createExchangeReshipCsv(records)], { type: "text/csv;charset=utf-8;" }));
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `换货补发工单-${dateRangeToValue(new Date())}.csv`;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+      showToast(`已导出 ${records.length} 条换货/补发工单`, "success");
+    }
+
     function renderComplaintManageFilters() {
       complaintManageFilterWrap.innerHTML = "";
       complaintManageFields.forEach((field) => {
@@ -22368,7 +23437,7 @@
     }
 
     function resetWritableLikeState(listState, activeStatus = "待写卡") {
-      listState.expanded = true;
+      listState.expanded = false;
       listState.values = {};
       listState.activeStatus = activeStatus;
       clearWritableDateRanges(listState);
@@ -24586,6 +25655,7 @@
       document.getElementById("riskStopChangeRecordSubItem").classList.toggle("active", pageId === "riskStopChangeRecordPage");
       document.getElementById("refundWorkOrderSubItem").classList.toggle("active", pageId === "refundWorkOrderPage");
       document.getElementById("complaintManageSubItem").classList.toggle("active", pageId === "complaintManagePage");
+      document.getElementById("exchangeReshipSubItem").classList.toggle("active", pageId === "exchangeReshipPage");
       document.getElementById("accountOperationLogSubItem").classList.toggle("active", pageId === "accountOperationLogPage");
       document.getElementById("smartDiagnosisLogSubItem").classList.toggle("active", pageId === "smartDiagnosisLogPage");
       document.getElementById("batchTaskSubItem").classList.toggle("active", pageId === "batchTaskPage");
@@ -24669,6 +25739,7 @@
       riskStopChangeRecordPage: "风险管理停机状态变更记录",
       refundWorkOrderPage: "退费工单",
       complaintManagePage: "投诉管理",
+      exchangeReshipPage: "换货/补发工单",
       accountOperationLogPage: "账户操作日志",
       smartDiagnosisLogPage: "智能诊断日志",
       batchTaskPage: "批量任务"
@@ -25148,7 +26219,7 @@
       document.getElementById("pageContent").classList.toggle("writable-mode", pageId === "writablePage");
       document.getElementById("pageContent").classList.toggle("ab-mode", pageId === "abTestStatsPage");
       document.getElementById("pageContent").classList.toggle("risk-mode", pageId === "riskStrategyPage" || pageId === "riskStrategyCreatePage" || pageId === "riskStrategyDetailPage" || pageId === "riskTriggerLogPage" || pageId === "riskStopChangeRecordPage");
-      document.getElementById("pageContent").classList.toggle("refund-mode", pageId === "refundWorkOrderPage" || pageId === "complaintManagePage");
+      document.getElementById("pageContent").classList.toggle("refund-mode", pageId === "refundWorkOrderPage" || pageId === "complaintManagePage" || pageId === "exchangeReshipPage");
       document.getElementById("pageContent").classList.toggle("log-mode", pageId === "accountOperationLogPage" || pageId === "smartDiagnosisLogPage");
       document.getElementById("pageContent").classList.toggle("task-mode", pageId === "batchTaskPage");
       setSidebarSelected(pageId);
@@ -25221,6 +26292,10 @@
         renderComplaintManageFilters();
         renderComplaintManageTable();
         renderComplaintManagePager();
+      }
+      if (pageId === "exchangeReshipPage") {
+        renderExchangeReshipFilters();
+        renderExchangeReshipTable();
       }
       if (pageId === "accountOperationLogPage") {
         renderAccountOperationLogFilters();
@@ -25862,6 +26937,7 @@
       closeRefundWorkOrderMenus();
       closeRefundWorkOrderDateRanges();
       closeComplaintManageMenus();
+      closeExchangeReshipMenus();
       closeAccountOperationLogMenus();
       closeAccountOperationLogDateRange();
       closeSmartDiagnosisLogMenus();
@@ -26295,6 +27371,17 @@
     document.getElementById("complaintManageExportBtn").addEventListener("click", () => {
       showToast("已按当前查询条件导出投诉记录", "success");
     });
+    document.getElementById("exchangeReshipExportBtn").addEventListener("click", exportExchangeReship);
+    document.getElementById("exchangeReshipSyncBtn").addEventListener("click", () => {
+      showToast("批量同步物流单号流程待补充", "info");
+    });
+    bindExchangeReshipCreateEvents();
+    document.getElementById("exchangeReshipTableBody").addEventListener("click", (event) => {
+      const button = event.target.closest("[data-exchange-action]");
+      if (!button) return;
+      if (button.dataset.exchangeAction === "编辑") return openExchangeReshipCreateModal(button.dataset.orderNo);
+      showToast(`${button.dataset.orderNo} 的${button.dataset.exchangeAction}流程待补充`, "info");
+    });
     document.getElementById("closeComplaintHandleModal").addEventListener("click", closeComplaintHandleModal);
     document.getElementById("cancelComplaintHandleBtn").addEventListener("click", closeComplaintHandleModal);
     document.getElementById("confirmComplaintHandleBtn").addEventListener("click", confirmComplaintHandle);
@@ -26660,6 +27747,8 @@
     renderComplaintManageFilters();
     renderComplaintManageTable();
     renderComplaintManagePager();
+    renderExchangeReshipFilters();
+    renderExchangeReshipTable();
     renderAccountOperationLogFilters();
     renderAccountOperationLogTable();
     renderAccountOperationLogPager();
