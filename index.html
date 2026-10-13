@@ -11496,6 +11496,8 @@
       { key: "model", label: "型号" },
       { key: "color", label: "颜色" },
       { key: "imei", label: "IMEI", copyLabel: "IMEI" },
+      { key: "supplier", label: "SIM卡供应商" },
+      { key: "miniProgram", label: "归属小程序" },
       { key: "address", label: "地址", className: "address-col" },
       { key: "warehouseOmission", label: "云仓漏发" },
       { key: "registeredAt", label: "登记时间" },
@@ -18904,8 +18906,8 @@
         { key: "goodsCategory", label: "货品类别", type: "select", required: true, options: ["手表", "配件", "SIM卡"] },
         ...categoryFields,
         ...(isSimReship ? [
-          { key: "supplier", label: "供应商", type: "select", options: simCardFields.find((field) => field.key === "supplier").options },
-          { key: "miniProgram", label: "归属小程序", type: "select", options: exchangeReshipCreateOptions.miniPrograms }
+          { key: "supplier", label: "SIM卡供应商", type: "select", required: true, options: simCardFields.find((field) => field.key === "supplier").options },
+          { key: "miniProgram", label: "归属小程序", type: "select", required: true, options: exchangeReshipCreateOptions.miniPrograms }
         ] : []),
         { key: "goodsQuantity", label: "数量", type: "number", required: true },
         ...(values.operationType === "补发" ? [{ key: "warehouseOmission", label: "是否云仓漏发", type: "radio", options: ["是", "否"] }] : []),
