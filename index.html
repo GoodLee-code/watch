@@ -6748,6 +6748,10 @@
       width: min(860px, 100%);
     }
 
+    .complaint-handle-modal {
+      width: min(720px, 100%);
+    }
+
     .user-package-modal .modal-body {
       max-height: 72vh;
       overflow: auto;
@@ -6901,6 +6905,44 @@
       justify-content: flex-end;
       color: #4b5563;
       font-size: 14px;
+    }
+
+    .modal-static-value {
+      min-height: 34px;
+      display: flex;
+      align-items: center;
+      color: var(--ink);
+      line-height: 1.6;
+    }
+
+    .complaint-manage-table {
+      min-width: 1560px;
+      table-layout: auto;
+    }
+
+    .complaint-manage-table th,
+    .complaint-manage-table td {
+      white-space: nowrap;
+    }
+
+    .complaint-manage-table th:nth-child(7),
+    .complaint-manage-table td:nth-child(7),
+    .complaint-manage-table th:nth-child(11),
+    .complaint-manage-table td:nth-child(11) {
+      min-width: 150px;
+      white-space: normal;
+    }
+
+    .complaint-image-thumb {
+      width: 64px;
+      height: 48px;
+      border-radius: 6px;
+      cursor: zoom-in;
+    }
+
+    .complaint-image-thumb:focus-visible {
+      outline: 2px solid #2f91f1;
+      outline-offset: 2px;
     }
 
     .warning-config-modal .modal-form-row {
@@ -7729,6 +7771,7 @@
       </div>
       <div class="sub-menu" id="afterSaleSubMenu" aria-label="售后管理二级菜单">
         <button class="sub-item" id="refundWorkOrderSubItem" type="button" data-page="refundWorkOrderPage">退费工单</button>
+        <button class="sub-item" id="complaintManageSubItem" type="button" data-page="complaintManagePage">投诉管理</button>
       </div>
       <div class="nav-item" id="logNavItem" role="button" tabindex="0">
         <svg class="nav-icon" viewBox="0 0 15 14" fill="none" aria-hidden="true">
@@ -8324,6 +8367,72 @@
           </section>
         </div>
 
+        <div class="page-view" id="complaintManagePage">
+          <section class="panel query-panel" aria-label="投诉管理查询区域">
+            <div class="filter-wrap" id="complaintManageFilterWrap"></div>
+          </section>
+
+          <div class="batch-actions" aria-label="投诉管理操作">
+            <button class="btn" id="complaintManageExportBtn" type="button">导出</button>
+          </div>
+
+          <section class="panel table-panel" aria-label="投诉管理列表">
+            <div class="table-scroll">
+              <table class="complaint-manage-table">
+                <thead>
+                  <tr id="complaintManageTableHeader"></tr>
+                </thead>
+                <tbody id="complaintManageTableBody"></tbody>
+              </table>
+            </div>
+            <div class="pager" id="complaintManagePager" aria-label="投诉管理分页"></div>
+          </section>
+        </div>
+
+        <div class="modal-mask" id="complaintHandleModal" role="dialog" aria-modal="true" aria-labelledby="complaintHandleTitle">
+          <div class="modal complaint-handle-modal">
+            <div class="modal-head">
+              <h2 id="complaintHandleTitle">处理投诉</h2>
+              <button class="close" id="closeComplaintHandleModal" type="button" aria-label="关闭">×</button>
+            </div>
+            <div class="modal-body">
+              <div class="modal-form">
+                <div class="modal-form-row">
+                  <label class="modal-label">投诉单号</label>
+                  <div class="modal-static-value" id="complaintHandleNo">-</div>
+                </div>
+                <div class="modal-form-row">
+                  <label class="modal-label">商户</label>
+                  <div class="modal-static-value" id="complaintHandleMerchant">-</div>
+                </div>
+                <div class="modal-form-row">
+                  <label class="modal-label">ICCID</label>
+                  <div class="modal-static-value" id="complaintHandleIccid">-</div>
+                </div>
+                <div class="modal-form-row">
+                  <label class="modal-label">投诉类型</label>
+                  <div class="modal-static-value" id="complaintHandleType">-</div>
+                </div>
+                <div class="modal-form-row">
+                  <label class="modal-label" for="complaintHandleResult"><span class="required">*</span>处理结果</label>
+                  <textarea class="batch-select" id="complaintHandleResult" rows="4" placeholder="请输入处理结果"></textarea>
+                </div>
+                <div class="modal-form-row">
+                  <label class="modal-label">文件上传</label>
+                  <div>
+                    <button class="btn" id="complaintHandleUploadBtn" type="button">点击上传</button>
+                    <div class="file-help">只能上传jpg/png文件，且不超过500kb</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-foot">
+              <button class="btn secondary" id="cancelComplaintHandleBtn" type="button">取消</button>
+              <button class="btn" id="confirmComplaintHandleBtn" type="button">确定</button>
+            </div>
+          </div>
+        </div>
+
         <div class="page-view" id="accountOperationLogPage">
           <section class="panel query-panel" aria-label="账户操作日志查询区域">
             <div class="filter-wrap" id="accountOperationLogFilterWrap"></div>
@@ -8565,6 +8674,8 @@
               <button class="btn secondary" id="manageDisableBtn" type="button">平台管理禁用状态变更</button>
               <button class="btn secondary" id="writableExportBtn" type="button">导出</button>
             </div>
+
+            <div class="writable-status-tabs" id="writableStatusTabs" aria-label="写卡状态筛选"></div>
 
             <section class="panel table-panel" aria-label="ESIM可写码号列表">
               <div class="table-scroll">
@@ -10961,6 +11072,109 @@
       auditDateRangeViewMonth: ""
     };
 
+    const complaintManageFields = [
+      { key: "iccid", label: "ICCID", type: "input" },
+      { key: "complaintType", label: "投诉类型", type: "select", options: ["其他", "设备无法使用", "套餐/流量问题", "实名认证问题", "发布不适当内容对我造成骚扰"] },
+      { key: "complaintNo", label: "投诉单号", type: "input" },
+      { key: "merchant", label: "商户", type: "input" },
+      { key: "contactPhone", label: "联系电话", type: "input" },
+      { key: "handler", label: "处理人", type: "input" }
+    ];
+
+    const complaintManageTableColumns = [
+      { key: "complaintNo", label: "投诉单号", copyLabel: "投诉单号" },
+      { key: "merchant", label: "商户" },
+      { key: "iccid", label: "ICCID", copyLabel: "ICCID" },
+      { key: "complaintType", label: "投诉类型" },
+      { key: "contactPhone", label: "联系人电话" },
+      { key: "complaintImage", label: "投诉截图" },
+      { key: "complaintContent", label: "投诉内容" },
+      { key: "complaintTime", label: "投诉时间" },
+      { key: "handleStatus", label: "是否处理" },
+      { key: "handler", label: "处理人" },
+      { key: "handleResult", label: "处理结果" },
+      { key: "updatedAt", label: "更新时间" },
+      { key: "action", label: "操作", fixedRight: true }
+    ];
+
+    const complaintManageRows = [
+      {
+        complaintNo: "CPT2026080916545998",
+        merchant: "诺达测试",
+        iccid: "8986044219231000841",
+        complaintType: "其他",
+        contactPhone: "13900004444",
+        complaintImage: "投诉截图",
+        complaintContent: "-",
+        complaintTime: "2026-08-09 16:55:00",
+        handleStatus: "未处理",
+        handler: "-",
+        handleResult: "-",
+        updatedAt: "-"
+      },
+      {
+        complaintNo: "CPT2026080916545916",
+        merchant: "诺达测试",
+        iccid: "8986044219231000858",
+        complaintType: "其他",
+        contactPhone: "13900004444",
+        complaintImage: "投诉截图",
+        complaintContent: "-",
+        complaintTime: "2026-08-09 16:54:59",
+        handleStatus: "未处理",
+        handler: "-",
+        handleResult: "-",
+        updatedAt: "-"
+      },
+      {
+        complaintNo: "CPT2026080916544143",
+        merchant: "诺达测试",
+        iccid: "8986044219231000866",
+        complaintType: "其他",
+        contactPhone: "13966668888",
+        complaintImage: "投诉截图",
+        complaintContent: "-",
+        complaintTime: "2026-08-09 16:54:42",
+        handleStatus: "未处理",
+        handler: "-",
+        handleResult: "-",
+        updatedAt: "-"
+      },
+      {
+        complaintNo: "CPT2026080916403754",
+        merchant: "诺达测试",
+        iccid: "8986044219231000874",
+        complaintType: "设备无法使用",
+        contactPhone: "18907426460",
+        complaintImage: "投诉截图",
+        complaintContent: "-",
+        complaintTime: "2026-08-09 16:40:38",
+        handleStatus: "未处理",
+        handler: "-",
+        handleResult: "-",
+        updatedAt: "-"
+      },
+      {
+        complaintNo: "CPT2026080916401267",
+        merchant: "诺达测试",
+        iccid: "8986044219231000882",
+        complaintType: "发布不适当内容对我造成骚扰",
+        contactPhone: "18907426460",
+        complaintImage: "投诉截图",
+        complaintContent: "111",
+        complaintTime: "2026-08-09 16:40:13",
+        handleStatus: "已处理",
+        handler: "admin",
+        handleResult: "已联系客户并完成处理",
+        updatedAt: "2026-08-09 17:10:26"
+      }
+    ];
+
+    const complaintManageState = {
+      values: {},
+      currentComplaintNo: ""
+    };
+
     const accountOperationBusinessTypes = [
       "设备入库",
       "SIM卡分发",
@@ -11699,6 +11913,7 @@
       { key: "bindTime", label: "绑定时间", type: "daterange" },
       { key: "importTime", label: "导入时间", type: "daterange" }
     ];
+    const writableListFields = writableFields.filter((field) => field.key !== "writeStatus");
 
     const writableDateRangeConfigs = {
       serviceDate: {
@@ -12944,6 +13159,7 @@
     const writeApplyFilterWrap = document.getElementById("esimWriteApplyFilterWrap");
     const orderFilterWrap = document.getElementById("esimOrderFilterWrap");
     const refundWorkOrderFilterWrap = document.getElementById("refundWorkOrderFilterWrap");
+    const complaintManageFilterWrap = document.getElementById("complaintManageFilterWrap");
     const accountOperationLogFilterWrap = document.getElementById("accountOperationLogFilterWrap");
     const smartDiagnosisLogFilterWrap = document.getElementById("smartDiagnosisLogFilterWrap");
     const batchTaskFilterWrap = document.getElementById("batchTaskFilterWrap");
@@ -13933,19 +14149,30 @@
       showToast("退费申请已撤销", "success");
     }
 
-    function openSmartRefundScreenshotPreview(filename) {
+    let screenshotPreviewReturnFocus = null;
+
+    function openSmartRefundScreenshotPreview(filename, options = {}) {
       if (!filename || filename === "-") return;
       const image = document.getElementById("smartRefundScreenshotPreviewImage");
       const name = document.getElementById("smartRefundScreenshotPreviewName");
-      if (image) image.src = smartRefundScreenshotSrc(filename);
+      const title = options.title || "付款截图预览";
+      screenshotPreviewReturnFocus = document.activeElement;
+      document.getElementById("smartRefundScreenshotPreviewTitle").textContent = title;
+      if (image) {
+        image.src = options.src || smartRefundScreenshotSrc(filename);
+        image.alt = title;
+      }
       if (name) name.textContent = filename;
       document.getElementById("smartRefundScreenshotPreviewModal").classList.add("open");
+      document.getElementById("closeSmartRefundScreenshotPreviewModal").focus();
     }
 
     function closeSmartRefundScreenshotPreview() {
       document.getElementById("smartRefundScreenshotPreviewModal").classList.remove("open");
       const image = document.getElementById("smartRefundScreenshotPreviewImage");
       if (image) image.removeAttribute("src");
+      if (screenshotPreviewReturnFocus?.isConnected) screenshotPreviewReturnFocus.focus();
+      screenshotPreviewReturnFocus = null;
     }
 
     function handleSmartRefundScreenshotPaste(event) {
@@ -18265,6 +18492,242 @@
       `;
     }
 
+    function renderComplaintManageFilters() {
+      complaintManageFilterWrap.innerHTML = "";
+      complaintManageFields.forEach((field) => {
+        const el = document.createElement("div");
+        el.className = "field";
+        el.dataset.key = field.key;
+
+        if (field.type === "select") {
+          const value = complaintManageState.values[field.key] || "";
+          el.innerHTML = `
+            <input class="control select-trigger ${value ? "has-value" : ""}" data-key="${field.key}" type="text" placeholder="${field.label}" value="${value}" autocomplete="off" />
+            ${value ? `<button class="select-clear" type="button" data-key="${field.key}" aria-label="清除${field.label}">×</button>` : ""}
+            ${iconChevron().replace('class="icon"', 'class="field-icon"')}
+            <div class="select-menu" data-menu="${field.key}">
+              <div class="select-options"></div>
+            </div>
+          `;
+          complaintManageFilterWrap.appendChild(el);
+          renderComplaintManageOptions(el, field, "");
+          return;
+        }
+
+        el.innerHTML = `
+          <input class="control" data-key="${field.key}" type="text" placeholder="${field.label}" value="${complaintManageState.values[field.key] || ""}" />
+        `;
+        complaintManageFilterWrap.appendChild(el);
+      });
+
+      const actions = document.createElement("div");
+      actions.className = "form-actions";
+      actions.innerHTML = `
+        <button class="btn search-btn" id="complaintManageSearchBtn" type="button">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="m21 21-4.3-4.3M11 19a8 8 0 1 1 0-16 8 8 0 0 1 0 16Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          搜索
+        </button>
+        <button class="btn secondary" id="complaintManageResetBtn" type="button">重置</button>
+      `;
+      complaintManageFilterWrap.appendChild(actions);
+      bindComplaintManageFilterEvents();
+    }
+
+    function renderComplaintManageOptions(fieldEl, field, keyword) {
+      const optionsEl = fieldEl.querySelector(".select-options");
+      const selected = complaintManageState.values[field.key] || "";
+      const options = field.options.filter((option) => option.includes(keyword.trim()));
+      optionsEl.innerHTML = options.length ? "" : '<div class="option empty">暂无匹配数据</div>';
+      options.forEach((option) => {
+        const node = document.createElement("div");
+        node.className = "option" + (selected === option ? " active" : "");
+        node.textContent = option;
+        node.dataset.value = option;
+        optionsEl.appendChild(node);
+      });
+    }
+
+    function bindComplaintManageFilterEvents() {
+      complaintManageFilterWrap.querySelectorAll(".control").forEach((input) => {
+        input.addEventListener("input", () => {
+          complaintManageState.values[input.dataset.key] = input.value;
+        });
+        input.addEventListener("blur", () => {
+          input.value = input.value.trim();
+          complaintManageState.values[input.dataset.key] = input.value;
+        });
+        input.addEventListener("keydown", (event) => {
+          if (event.key === "Enter") searchComplaintManage();
+        });
+      });
+
+      complaintManageFilterWrap.querySelectorAll(".select-trigger").forEach((trigger) => {
+        const openMenu = () => {
+          closeComplaintManageMenus(trigger.dataset.key);
+          const field = complaintManageFields.find((item) => item.key === trigger.dataset.key);
+          renderComplaintManageOptions(trigger.closest(".field"), field, trigger.value);
+          trigger.classList.add("open");
+          complaintManageFilterWrap.querySelector(`[data-menu="${trigger.dataset.key}"]`).classList.add("open");
+        };
+        trigger.addEventListener("click", (event) => {
+          event.stopPropagation();
+          openMenu();
+        });
+        trigger.addEventListener("focus", openMenu);
+        trigger.addEventListener("input", openMenu);
+      });
+
+      complaintManageFilterWrap.querySelectorAll(".select-options").forEach((optionsEl) => {
+        optionsEl.addEventListener("click", (event) => {
+          const option = event.target.closest(".option");
+          if (!option || option.classList.contains("empty")) return;
+          complaintManageState.values[optionsEl.closest(".field").dataset.key] = option.dataset.value;
+          renderComplaintManageFilters();
+        });
+      });
+
+      complaintManageFilterWrap.querySelectorAll(".select-clear").forEach((button) => {
+        button.addEventListener("click", (event) => {
+          event.stopPropagation();
+          complaintManageState.values[button.dataset.key] = "";
+          closeComplaintManageMenus();
+          renderComplaintManageFilters();
+        });
+      });
+
+      document.getElementById("complaintManageSearchBtn").addEventListener("click", searchComplaintManage);
+      document.getElementById("complaintManageResetBtn").addEventListener("click", resetComplaintManageFilters);
+    }
+
+    function closeComplaintManageMenus(exceptKey) {
+      if (!complaintManageFilterWrap) return;
+      complaintManageFilterWrap.querySelectorAll(".select-menu").forEach((menu) => {
+        if (menu.dataset.menu !== exceptKey) menu.classList.remove("open");
+      });
+      complaintManageFilterWrap.querySelectorAll(".select-trigger").forEach((trigger) => {
+        if (trigger.dataset.key !== exceptKey) trigger.classList.remove("open");
+      });
+    }
+
+    function searchComplaintManage() {
+      const activeCount = Object.values(complaintManageState.values).filter(Boolean).length;
+      showToast(activeCount ? "投诉管理列表已按查询条件刷新" : "已查询全部投诉记录", "success");
+      renderComplaintManageFilters();
+    }
+
+    function resetComplaintManageFilters() {
+      complaintManageState.values = {};
+      renderComplaintManageFilters();
+      showToast("投诉管理查询条件已清空", "info");
+    }
+
+    function renderComplaintManageStatus(value) {
+      const statusClass = value === "已处理" ? "status-positive" : value === "未处理" ? "status-negative" : "status-neutral";
+      return `<span class="status-text ${statusClass}">${escapeHtml(value || "-")}</span>`;
+    }
+
+    function complaintScreenshotSrc(value) {
+      if (/^(data:image\/|blob:|https?:\/\/|\/|\.{1,2}\/)/i.test(value)) return value;
+      return smartRefundScreenshotSrc(value);
+    }
+
+    function renderComplaintImage(value) {
+      if (!value || value === "-") return "-";
+      const src = complaintScreenshotSrc(value);
+      return `
+        <button class="smart-refund-screenshot-thumb-btn complaint-image-thumb" type="button" data-complaint-image="${escapeHtml(value)}" aria-label="查看投诉截图">
+          <img class="smart-refund-screenshot-thumb" src="${escapeHtml(src)}" alt="投诉截图" />
+        </button>
+      `;
+    }
+
+    function renderComplaintManageActions(row) {
+      return `<button class="link-text complaint-handle-btn" type="button" data-complaint-no="${escapeHtml(row.complaintNo)}">处理投诉</button>`;
+    }
+
+    function renderComplaintManageValue(value, column, row) {
+      if (column.key === "action") return renderComplaintManageActions(row);
+      if (column.key === "handleStatus") return renderComplaintManageStatus(value);
+      if (column.key === "complaintImage") return renderComplaintImage(value);
+      if (column.copyLabel) return renderRefundCopyCell(value, column.copyLabel);
+      const identifierCell = renderIdentifierCell(value, column);
+      if (identifierCell !== null) return identifierCell;
+      return escapeHtml(value || "-");
+    }
+
+    function renderComplaintManageTable() {
+      const header = document.getElementById("complaintManageTableHeader");
+      const body = document.getElementById("complaintManageTableBody");
+      header.innerHTML = complaintManageTableColumns.map((column) => `<th class="${column.fixedRight ? "operation-col" : ""}">${column.label}</th>`).join("");
+      body.innerHTML = complaintManageRows.length
+        ? complaintManageRows.map((row) => `
+            <tr>
+              ${complaintManageTableColumns.map((column) => `<td class="${column.fixedRight ? "operation-col" : ""}">${renderComplaintManageValue(row[column.key], column, row)}</td>`).join("")}
+            </tr>
+          `).join("")
+        : `<tr><td colspan="${complaintManageTableColumns.length}" style="text-align:center;color:#6b7280;">暂无数据</td></tr>`;
+      body.querySelectorAll(".complaint-image-thumb").forEach((button) => {
+        button.addEventListener("click", () => openSmartRefundScreenshotPreview(button.dataset.complaintImage, {
+          title: "投诉截图预览",
+          src: complaintScreenshotSrc(button.dataset.complaintImage)
+        }));
+      });
+      body.querySelectorAll(".complaint-handle-btn").forEach((button) => {
+        button.addEventListener("click", () => openComplaintHandleModal(button.dataset.complaintNo));
+      });
+    }
+
+    function renderComplaintManagePager() {
+      document.getElementById("complaintManagePager").innerHTML = `
+        <span>共 55 条</span>
+        <button class="page-btn" type="button">‹</button>
+        <button class="page-btn active" type="button">1</button>
+        <button class="page-btn" type="button">2</button>
+        <button class="page-btn" type="button">3</button>
+        <button class="page-btn" type="button">›</button>
+      `;
+    }
+
+    function openComplaintHandleModal(complaintNo) {
+      const row = complaintManageRows.find((item) => item.complaintNo === complaintNo);
+      if (!row) return;
+      complaintManageState.currentComplaintNo = complaintNo;
+      document.getElementById("complaintHandleNo").textContent = row.complaintNo || "-";
+      document.getElementById("complaintHandleMerchant").textContent = row.merchant || "-";
+      document.getElementById("complaintHandleIccid").textContent = row.iccid || "-";
+      document.getElementById("complaintHandleType").textContent = row.complaintType || "-";
+      document.getElementById("complaintHandleResult").value = row.handleResult && row.handleResult !== "-" ? row.handleResult : "";
+      document.getElementById("complaintHandleModal").classList.add("open");
+      window.setTimeout(() => document.getElementById("complaintHandleResult").focus(), 0);
+    }
+
+    function closeComplaintHandleModal() {
+      document.getElementById("complaintHandleModal").classList.remove("open");
+      complaintManageState.currentComplaintNo = "";
+      document.getElementById("complaintHandleResult").value = "";
+    }
+
+    function confirmComplaintHandle() {
+      const result = document.getElementById("complaintHandleResult").value.trim();
+      if (!result) {
+        showToast("请输入处理结果", "error");
+        document.getElementById("complaintHandleResult").focus();
+        return;
+      }
+      const row = complaintManageRows.find((item) => item.complaintNo === complaintManageState.currentComplaintNo);
+      if (!row) return;
+      row.handleStatus = "已处理";
+      row.handler = currentOperatorName();
+      row.handleResult = result;
+      row.updatedAt = currentDateTimeText();
+      closeComplaintHandleModal();
+      renderComplaintManageTable();
+      renderComplaintManagePager();
+      showToast("投诉处理已提交", "success");
+    }
+
     function renderAccountOperationLogDateRangeControl() {
       const config = accountOperationLogDateConfig;
       return renderDateRangeField({
@@ -20568,8 +21031,8 @@
     function renderWritableFilters() {
       writableFilterWrap.innerHTML = "";
       const visibleFields = writableState.expanded
-        ? writableFields
-        : writableFields.slice(0, 8);
+        ? writableListFields
+        : writableListFields.slice(0, 8);
 
       visibleFields.forEach((field) => {
         const el = document.createElement("div");
@@ -21117,7 +21580,7 @@
       writableFilterWrap.querySelectorAll(".select-trigger").forEach((trigger) => {
         const openMenu = () => {
           closeWritableMenus(trigger.dataset.key);
-          const field = writableFields.find((item) => item.key === trigger.dataset.key);
+          const field = writableListFields.find((item) => item.key === trigger.dataset.key);
           renderWritableOptions(trigger.closest(".field"), field, trigger.value);
           trigger.classList.add("open");
           writableFilterWrap.querySelector(`[data-menu="${trigger.dataset.key}"]`).classList.add("open");
@@ -21184,7 +21647,7 @@
         showToast(rangeError, "error");
         return;
       }
-      const activeCount = writableFields.filter((field) => isWritableFilterActive(writableState, field)).length;
+      const activeCount = writableListFields.filter((field) => isWritableFilterActive(writableState, field)).length;
       showToast(activeCount ? "可写码号列表已按查询条件刷新" : "已查询全部可写码号", "success");
       refreshWritableFiltersAndResults();
     }
@@ -21330,6 +21793,8 @@
             renderManageDisableRecordFilters();
             renderManageDisableRecordTable();
             renderManageDisableRecordPager();
+          } else {
+            renderWritableResults();
           }
         });
       });
@@ -21721,7 +22186,7 @@
     function filteredWritableRows(options = {}) {
       const includeStatus = Boolean(options.includeStatus && document.getElementById("writableStatusTabs"));
       return writableRows.filter((row) => {
-        const matchFilters = writableFields.every((field) => writableFieldMatches(row, field));
+        const matchFilters = writableListFields.every((field) => writableFieldMatches(row, field));
         if (!matchFilters) return false;
         if (includeStatus && writableState.activeStatus !== "全部") return row.writeStatus === writableState.activeStatus;
         return true;
@@ -21740,7 +22205,7 @@
     }
 
     function writableNumberStats() {
-      const rows = filteredWritableRows();
+      const rows = filteredWritableRows({ includeStatus: true });
       const writableCount = rows.filter(isAssignableWritableNumber).length;
       const unwritableCount = Math.max(rows.length - writableCount, 0);
       const total = rows.length;
@@ -24120,6 +24585,7 @@
       document.getElementById("riskTriggerLogSubItem").classList.toggle("active", pageId === "riskTriggerLogPage");
       document.getElementById("riskStopChangeRecordSubItem").classList.toggle("active", pageId === "riskStopChangeRecordPage");
       document.getElementById("refundWorkOrderSubItem").classList.toggle("active", pageId === "refundWorkOrderPage");
+      document.getElementById("complaintManageSubItem").classList.toggle("active", pageId === "complaintManagePage");
       document.getElementById("accountOperationLogSubItem").classList.toggle("active", pageId === "accountOperationLogPage");
       document.getElementById("smartDiagnosisLogSubItem").classList.toggle("active", pageId === "smartDiagnosisLogPage");
       document.getElementById("batchTaskSubItem").classList.toggle("active", pageId === "batchTaskPage");
@@ -24202,6 +24668,7 @@
       riskTriggerLogPage: "风险防控触发日志",
       riskStopChangeRecordPage: "风险管理停机状态变更记录",
       refundWorkOrderPage: "退费工单",
+      complaintManagePage: "投诉管理",
       accountOperationLogPage: "账户操作日志",
       smartDiagnosisLogPage: "智能诊断日志",
       batchTaskPage: "批量任务"
@@ -24367,7 +24834,7 @@
       },
       writablePage: {
         page: { title: "ESIM可写码号管理", purpose: "用于管理可写码号、可分配状态、回收池状态和平台管理禁用状态。" },
-        queries: docTextList(writableFields.map((field) => field.label)),
+        queries: docTextList(writableListFields.map((field) => field.label)),
         fields: docFieldsFrom(writableTableColumns, {
           iccid: "SIM 卡 ICCID。",
           msisdn: "SIM 卡号码。",
@@ -24378,8 +24845,8 @@
           action: "支持移出等当前操作。"
         }),
         functions: ["可写码号增加/移出：进入码号增删流程。", "修改冻结状态：变更码号冻结状态。", "平台管理禁用状态变更：批量调整平台管理禁用状态。", "导出：导出当前列表。"],
-        businessRules: ["可分配码号需满足统计卡片提示中的全部条件。", "不可分配码号按统计卡片提示中的任一情况归类。", "统计区域数据随查询条件变动。"],
-        interactions: ["统计卡片提示 icon 可查看规则。", "点击批次/总数进入详情。"]
+        businessRules: ["可分配码号需满足统计卡片提示中的全部条件。", "不可分配码号按统计卡片提示中的任一情况归类。", "统计区域数据随查询条件和写卡状态 tab 变动。", "写卡状态 tab 数量按当前查询条件下对应状态码号数统计。"],
+        interactions: ["载入列表时默认选中“待写卡”状态。", "点击写卡状态 tab 切换列表数据和统计区数量。", "统计卡片提示 icon 可查看规则。", "点击批次/总数进入详情。"]
       },
       writableResourcePoolPage: {
         page: { title: "ESIM可写码号资源池", purpose: "用于维护可写码号资源池和预警配置。" },
@@ -24421,6 +24888,28 @@
         functions: ["新增退费工单：打开新增入口。", "导出：导出工单列表。", "审核/驳回/线下退费：处理退费工单。"],
         businessRules: ["不同审核状态和退费状态可用操作不同。", "退款金额计算规则待补充。"],
         interactions: ["付款截图可查看。", "操作按钮触发对应流程提示。"]
+      },
+      complaintManagePage: {
+        page: { title: "投诉管理", purpose: "用于查询、导出并处理用户投诉记录。" },
+        queries: docTextList(complaintManageFields.map((field) => field.label)),
+        fields: docFieldsFrom(complaintManageTableColumns, {
+          complaintNo: "用户投诉单号，支持复制。",
+          merchant: "投诉关联商户。",
+          iccid: "投诉关联 SIM 卡 ICCID，替代原设备 SN 字段。",
+          complaintType: "投诉类型。",
+          contactPhone: "投诉联系人电话。",
+          complaintImage: "投诉截图，列表中展示缩略图，点击可放大查看图片。",
+          complaintContent: "用户投诉内容。",
+          complaintTime: "投诉提交时间。",
+          handleStatus: "是否已处理。",
+          handler: "投诉处理人。",
+          handleResult: "投诉处理结果。",
+          updatedAt: "投诉记录更新时间。",
+          action: "处理投诉入口。"
+        }),
+        functions: ["导出：按当前查询条件导出投诉记录。", "处理投诉：打开处理投诉弹窗，填写处理结果并提交。"],
+        businessRules: ["设备SN字段已按当前需求替换为ICCID。", "处理结果为必填项。", "处理附件限制为 jpg/png 且不超过 500kb；当前原型仅展示上传入口。"],
+        interactions: ["点击投诉截图缩略图打开图片预览，支持关闭按钮、点击遮罩或按 Esc 关闭。", "点击“处理投诉”打开弹窗。", "提交处理结果后，当前行状态更新为已处理并记录处理人和更新时间。"]
       },
       accountOperationLogPage: {
         page: { title: "账户操作日志", purpose: "用于查询账户相关业务操作日志。" },
@@ -24659,7 +25148,7 @@
       document.getElementById("pageContent").classList.toggle("writable-mode", pageId === "writablePage");
       document.getElementById("pageContent").classList.toggle("ab-mode", pageId === "abTestStatsPage");
       document.getElementById("pageContent").classList.toggle("risk-mode", pageId === "riskStrategyPage" || pageId === "riskStrategyCreatePage" || pageId === "riskStrategyDetailPage" || pageId === "riskTriggerLogPage" || pageId === "riskStopChangeRecordPage");
-      document.getElementById("pageContent").classList.toggle("refund-mode", pageId === "refundWorkOrderPage");
+      document.getElementById("pageContent").classList.toggle("refund-mode", pageId === "refundWorkOrderPage" || pageId === "complaintManagePage");
       document.getElementById("pageContent").classList.toggle("log-mode", pageId === "accountOperationLogPage" || pageId === "smartDiagnosisLogPage");
       document.getElementById("pageContent").classList.toggle("task-mode", pageId === "batchTaskPage");
       setSidebarSelected(pageId);
@@ -24728,6 +25217,11 @@
         renderRefundWorkOrderTable();
         renderRefundWorkOrderPager();
       }
+      if (pageId === "complaintManagePage") {
+        renderComplaintManageFilters();
+        renderComplaintManageTable();
+        renderComplaintManagePager();
+      }
       if (pageId === "accountOperationLogPage") {
         renderAccountOperationLogFilters();
         renderAccountOperationLogTable();
@@ -24745,8 +25239,11 @@
       }
       if (pageId === "writablePage") {
         renderWritablePageTabs();
-        if (writableState.activeTab === "changeRecords") renderWritableChangeRecordPage();
-        if (writableState.activeTab === "manageDisableRecords") {
+        if (writableState.activeTab === "list") {
+          renderWritableResults();
+        } else if (writableState.activeTab === "changeRecords") {
+          renderWritableChangeRecordPage();
+        } else if (writableState.activeTab === "manageDisableRecords") {
           renderManageDisableRecordFilters();
           renderManageDisableRecordTable();
           renderManageDisableRecordPager();
@@ -25364,6 +25861,7 @@
       closeOrderDateRange();
       closeRefundWorkOrderMenus();
       closeRefundWorkOrderDateRanges();
+      closeComplaintManageMenus();
       closeAccountOperationLogMenus();
       closeAccountOperationLogDateRange();
       closeSmartDiagnosisLogMenus();
@@ -25744,6 +26242,15 @@
     document.getElementById("smartRefundScreenshotPreviewModal").addEventListener("click", (event) => {
       if (event.target.id === "smartRefundScreenshotPreviewModal") closeSmartRefundScreenshotPreview();
     });
+    document.getElementById("smartRefundScreenshotPreviewModal").addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeSmartRefundScreenshotPreview();
+      } else if (event.key === "Tab") {
+        event.preventDefault();
+        document.getElementById("closeSmartRefundScreenshotPreviewModal").focus();
+      }
+    });
     document.getElementById("smartRefundOrderSearchBtn").addEventListener("click", () => {
       smartRefundState.orderKeyword = document.getElementById("smartRefundOrderSearchInput").value.trim();
       renderSmartRefundOrderTable();
@@ -25784,6 +26291,18 @@
     });
     document.getElementById("refundWorkOrderExportBtn").addEventListener("click", () => {
       showToast("已按当前查询条件导出退费工单", "success");
+    });
+    document.getElementById("complaintManageExportBtn").addEventListener("click", () => {
+      showToast("已按当前查询条件导出投诉记录", "success");
+    });
+    document.getElementById("closeComplaintHandleModal").addEventListener("click", closeComplaintHandleModal);
+    document.getElementById("cancelComplaintHandleBtn").addEventListener("click", closeComplaintHandleModal);
+    document.getElementById("confirmComplaintHandleBtn").addEventListener("click", confirmComplaintHandle);
+    document.getElementById("complaintHandleUploadBtn").addEventListener("click", () => {
+      showToast("投诉处理附件上传入口待接入", "info");
+    });
+    document.getElementById("complaintHandleModal").addEventListener("click", (event) => {
+      if (event.target.id === "complaintHandleModal") closeComplaintHandleModal();
     });
     document.getElementById("accountOperationLogExportBtn").addEventListener("click", () => {
       showToast("已按当前查询条件导出账户操作日志", "success");
@@ -26138,6 +26657,9 @@
     renderRefundWorkOrderFilters();
     renderRefundWorkOrderTable();
     renderRefundWorkOrderPager();
+    renderComplaintManageFilters();
+    renderComplaintManageTable();
+    renderComplaintManagePager();
     renderAccountOperationLogFilters();
     renderAccountOperationLogTable();
     renderAccountOperationLogPager();
