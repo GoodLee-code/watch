@@ -13836,8 +13836,8 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       returnFocus: null, previousBodyOverflow: "", previousBackgroundInert: false
     };
 
-    const speedLimitRates = [1, 64, 256, 512, 1024, 3072, 5120];
-    const speedLimitRateLabels = { 1: "1Kb/s", 64: "64Kb/s", 256: "256Kb/s", 512: "512Kb/s", 1024: "1Mb/s", 3072: "3Mb/s", 5120: "5Mb/s" };
+    const speedLimitRates = [1, 64, 128, 256, 512, 1024, 3072, 5120];
+    const speedLimitRateLabels = { 1: "1Kb/s", 64: "64Kb/s", 128: "128kb/s", 256: "256Kb/s", 512: "512Kb/s", 1024: "1Mb/s", 3072: "3Mb/s", 5120: "5Mb/s" };
     const speedLimitColumns = [
       { key: "id", label: "策略ID" },
       { key: "strategyName", label: "策略名称" },
@@ -29670,7 +29670,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         queries: ["商户名称", "策略名称", "时间段限速状态", "用量限速状态"],
         fields: docFieldsFrom(speedLimitColumns, { id: "自动生成的唯一策略标识。", strategyName: "策略名称，以纯文本展示。", merchant: "策略归属商户。", usageEnabled: "开启/停用用量限速。", timeEnabled: "开启/停用每日时间段限速。", createdBy: "策略创建人。", createdAt: "首次创建时间。", updatedAt: "最近保存配置或切换状态的时间。", action: "编辑策略配置，或通过强提示确认后删除策略。" }),
         functions: ["限速策略新增：配置策略名称、商户、多级用量限速及时间段限速。", "列表开关：确认后切换对应限速状态。", "操作列编辑：编辑已有配置。", "操作列删除：展示策略名称、商户及不可恢复提示，确认后删除策略及配置。"],
-        businessRules: ["用量限速初始为一级，支持添加或删除层级，至少保留一级，层级数量不限；开启时，已配置层级的日/月流量阈值与限速值均必填，流量单位 MB。", "日、月流量阈值分别按已配置层级递增；限速值支持 1Kb/s、64Kb/s、256Kb/s、512Kb/s、1Mb/s、3Mb/s、5Mb/s。", "时间段限速的开始、结束时间点击后分别下拉选择时、分，使用24小时制，精确到分钟；与其他时段重叠的时间不可选，整小时无可用分钟时禁用该小时；相邻时段可衔接。开启时至少配置一个时间段，结束时间晚于开始时间，保存时再次校验重叠。", "两种限速可独立开启或停用；开关只控制是否生效，停用时仍可编辑、增删及保存配置。", "未完成配置的策略开启限速前须先补充参数。"],
+        businessRules: ["用量限速初始为一级，支持添加或删除层级，至少保留一级，层级数量不限；开启时，已配置层级的日/月流量阈值与限速值均必填，流量单位 MB。", "日、月流量阈值分别按已配置层级递增；限速值支持 1Kb/s、64Kb/s、128kb/s、256Kb/s、512Kb/s、1Mb/s、3Mb/s、5Mb/s。", "时间段限速的开始、结束时间点击后分别下拉选择时、分，使用24小时制，精确到分钟；与其他时段重叠的时间不可选，整小时无可用分钟时禁用该小时；相邻时段可衔接。开启时至少配置一个时间段，结束时间晚于开始时间，保存时再次校验重叠。", "两种限速可独立开启或停用；开关只控制是否生效，停用时仍可编辑、增删及保存配置。", "未完成配置的策略开启限速前须先补充参数。"],
         interactions: ["查询条件支持组合查询、清空和重置。", "新增或编辑保存后返回列表并保留查询条件。", "取消新增保留当前草稿，再次打开可继续填写。", "删除确认默认聚焦取消；取消、关闭或按Esc均不删除。确认删除后保留筛选条件并自动调整分页。"]
       },
       userPackagePage: {
