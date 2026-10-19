@@ -6025,6 +6025,12 @@
       text-decoration: underline;
     }
 
+    .sim-detail-real-name-time { display: inline-flex; align-items: center; gap: 6px; max-width: 100%; }
+    .sim-detail-real-name-value { min-width: 0; overflow-wrap: anywhere; }
+    .sim-detail-real-name-time .inline-refresh-btn { flex: 0 0 20px; }
+    .sim-detail-real-name-time .inline-refresh-btn:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+    .sim-detail-real-name-time .inline-refresh-btn:active { color: var(--blue-strong); background: var(--blue-soft); }
+
     .sim-detail-table {
       width: 100%;
       min-width: 816px;
@@ -8376,7 +8382,140 @@
     #simDetailSpeedLimitModal :is(button,select,textarea):focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
     #simDetailSpeedLimitModal .modal-foot .btn { min-width: 88px; }
     @media (max-width: 640px) { #simDetailSpeedLimitModal .modal-form-row { grid-template-columns: minmax(0, 1fr); gap: 6px; } #simDetailSpeedLimitModal .modal-label { justify-content: flex-start; } }
-  </style>
+  /* Rule and message centers use the existing application tokens and controls. */
+.content.wc-mode > .business-tabs,.content.wc-mode > .page-title{display:none}
+.wc-page{flex:1 0 auto;min-width:0;min-height:480px;max-width:100%;box-shadow:none}
+.wc-page[hidden]{display:none}
+.wc-page [hidden],.wc-modal-mask [hidden]{display:none!important}
+.wc-page > .wc-heading{margin:0;padding:16px 18px 0;font-size:16px;font-weight:600;color:var(--ink)}
+.wc-page .query-panel{padding:16px 18px 0;border:0;box-shadow:none;margin:0}
+.wc-page .filter-wrap{grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.wc-page .filter-wrap > .wc-field{display:flex;flex-direction:column;gap:6px;align-items:stretch}
+.wc-page .filter-wrap > .wc-field > label,.wc-page .filter-wrap > .wc-field > span{font-size:12px;color:var(--muted)}
+.wc-page .form-actions{display:flex;align-items:center;gap:8px;grid-column:1/-1;padding:0;margin:0}
+.wc-page .wc-actions{display:flex;flex:0 0 auto;justify-content:flex-start;align-items:center;gap:10px;flex-wrap:wrap;margin:16px 18px}
+.wc-page .wc-actions .wc-note{margin:0}
+.wc-page .chip-page-tabs{flex:0 0 auto;padding:0 0 0 14px;margin:0;border-bottom:0}
+.wc-page > .writable-status-tabs,.wc-page > .wc-segment{margin:16px 18px 0;align-self:flex-start}
+.wc-page .wc-table-panel{margin:0;min-width:0;min-height:360px;flex:1 1 auto;border:0!important;border-radius:0;box-shadow:none}
+.wc-table-panel > .table-scroll{margin:12px 12px 0!important;width:calc(100% - 24px)!important;min-width:0;overflow:auto}
+.wc-table{width:100%;border-collapse:separate;border-spacing:0;table-layout:fixed}
+.wc-table th,.wc-table td{padding:6px 9px;vertical-align:middle;text-align:left;border-bottom:1px solid #edf1f5;font-size:14px;line-height:1.5;overflow-wrap:anywhere;white-space:normal}
+.wc-table th{height:38px;background:#fbfcfe;color:#4b5563;font-weight:500;white-space:normal}
+.wc-table td{height:42px;color:rgb(96,98,102)}
+.wc-table .wc-empty{text-align:center;height:180px;color:var(--muted)}
+.wc-page .wc-table :is(.link-text,.link-btn,.danger-link,.wc-text-button),.wc-modal-mask .wc-table :is(.link-text,.link-btn,.danger-link,.wc-text-button){font:inherit;font-weight:500}
+.wc-table button.link-text,.wc-table button.danger-link{margin-right:12px}
+.wc-pager{padding:12px 16px;min-width:0;display:flex;flex:0 0 auto;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:8px}
+.wc-pager > span{white-space:nowrap}
+.wc-pager .page-btn{display:inline-flex;flex:0 0 auto;align-items:center;justify-content:center;min-width:32px;height:32px;min-height:32px}
+.wc-pager [aria-current]{cursor:default}
+.wc-page button,.wc-modal-mask button,#wcTopbarMessages button{cursor:pointer}
+.wc-page button:disabled,.wc-modal-mask button:disabled{cursor:not-allowed;opacity:.5}
+.wc-page button:focus-visible,.wc-modal-mask button:focus-visible,#wcTopbarMessages button:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.wc-page textarea.control,.wc-modal-mask textarea.control{height:auto;min-height:88px;resize:vertical;padding:9px 12px;line-height:1.7}
+.wc-page select.control,.wc-modal-mask select.control{appearance:auto;background-image:none;padding-right:10px;cursor:pointer}
+.wc-page .wc-note,.wc-modal-mask .wc-note{font-size:12px;color:var(--muted);line-height:1.8}
+.wc-page .wc-rule-type-note > span{color:var(--blue)}
+.wc-query-date-label{display:block;font-size:12px;color:var(--muted);line-height:18px;margin-bottom:6px}
+.wc-range-labelled .date-range-clear{top:auto;bottom:8px}
+.wc-error,.wc-negative{color:var(--red,#ef4444)}
+.wc-positive{color:#16a34a}
+.wc-danger{color:var(--red,#ef4444)}
+.wc-success{color:#16a34a}
+.wc-muted{color:var(--muted);font-size:12px}
+.wc-row-actions{display:flex;align-items:center;flex-wrap:wrap;gap:10px}
+.wc-page .text-link,.wc-modal-mask .text-link,.wc-page .link-btn,.wc-modal-mask .link-btn{border:0;padding:0;background:transparent;color:var(--blue);font-size:12px}
+.wc-page .text-link.danger,.wc-page .link-btn.danger{color:var(--red)}
+.wc-page .text-link:hover,.wc-page .link-btn:hover,.wc-modal-mask .text-link:hover{text-decoration:underline}
+.wc-page .wc-switch{display:inline-flex;align-items:center;gap:8px;border:0;background:transparent;color:var(--ink);padding:0}
+.wc-page .wc-switch .scientific-calculation-status-switch{flex:0 0 auto}
+.wc-modal-error{padding:10px 12px;margin-top:14px;background:#fff1f2;border-radius:4px}
+.wc-modal-error[hidden]{display:none}
+.wc-tooltip{position:relative;display:inline-flex;align-items:center;justify-content:center;color:var(--blue);margin-left:5px;cursor:help;vertical-align:middle}
+.wc-tooltip > [role=tooltip]{display:none;position:absolute;z-index:60;top:24px;left:0;width:min(440px,70vw);padding:10px 12px;border:1px solid var(--line);border-radius:4px;background:#fff;box-shadow:var(--shadow);font-size:12px;line-height:1.8;color:var(--ink);white-space:normal;text-align:left;font-weight:400}
+.wc-tooltip:hover > [role=tooltip],.wc-tooltip:focus > [role=tooltip]{display:block}
+.wc-tooltip-portal{position:fixed;z-index:1600;max-height:calc(100dvh - 24px);overflow:auto;padding:10px 12px;border:1px solid var(--line);border-radius:4px;background:#fff;box-shadow:var(--shadow);font-size:12px;line-height:1.8;color:var(--ink);white-space:normal;text-align:left}
+.wc-tooltip-portal[hidden]{display:none}
+.wc-page .wc-rule-form{width:100%;max-width:1150px;padding:0 18px;box-sizing:border-box}
+.wc-rule-form-title{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--line-soft)}
+.wc-rule-form-title h2{margin:0;font-size:17px;font-weight:600}
+.wc-form-section{padding:20px 0;border-bottom:1px solid var(--line-soft)}
+.wc-form-section h2,.wc-form-section h3{margin:0 0 20px;font-size:15px;font-weight:600;color:var(--ink)}
+.wc-field{display:grid;grid-template-columns:180px minmax(0,1fr);align-items:start;gap:14px;margin:0 0 18px;font-size:13px;line-height:1.8}
+.wc-field > label,.wc-field > span{padding-top:6px;text-align:left;color:var(--ink);overflow-wrap:anywhere}
+.wc-field > div{min-width:0}
+.wc-field .control{width:100%}
+.wc-radio-line,.wc-inline-config{display:flex;align-items:center;gap:10px 20px;flex-wrap:wrap;min-height:34px}
+.wc-radio-line label{display:inline-flex;align-items:center;gap:7px;cursor:pointer;white-space:nowrap}
+.wc-rule-footer{padding:18px 0;display:flex;justify-content:flex-end;gap:12px}
+.wc-rule-footer .btn{min-width:96px}
+.wc-setting-card,.wc-method{padding:16px;border:1px solid var(--line-soft);border-radius:4px;margin:14px 0;background:#fff}
+.wc-setting-card h3,.wc-method h3{font-size:13px;margin:0 0 16px}
+.wc-setting-card h4,.wc-method h4{font-size:13px;font-weight:600;margin:0 0 16px}
+.wc-preview{white-space:pre-wrap;overflow-wrap:anywhere;padding:12px;background:#f8fafc;border:1px solid var(--line-soft);font-size:12px;line-height:1.8;margin-top:8px}
+.wc-recipients,.wc-tags{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.wc-tag{display:inline-flex;align-items:center;gap:6px;padding:3px 8px;background:var(--blue-soft);border:1px solid #dbeafe;border-radius:4px;font-size:12px;color:var(--blue-strong)}
+.wc-tag button{border:0;background:none;color:inherit;padding:0 3px}
+.wc-rule-error{margin:10px 0;color:var(--red);line-height:1.8}
+.wc-threshold-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+.wc-threshold-row .control,.wc-inline-config .control{width:170px;flex:0 1 170px}
+.wc-threshold-row > span{white-space:normal}
+.wc-modal-mask{z-index:300}
+.wc-modal{width:min(var(--wc-modal-width,720px),100%);max-height:calc(100dvh - 36px);display:flex;flex-direction:column;background:#fff;border-radius:8px;overflow:hidden}
+.wc-modal-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;border-bottom:1px solid var(--line-soft);flex:0 0 auto}
+.wc-modal-head h2{font-size:17px;color:var(--ink);margin:0}
+.wc-modal-body{padding:18px;overflow:auto;min-height:0;overscroll-behavior:contain}
+.wc-modal-body .wc-field:last-child{margin-bottom:0}
+.wc-modal-footer{display:flex;align-items:center;justify-content:flex-end;gap:12px;padding:14px 18px;border-top:1px solid var(--line-soft);flex:0 0 auto}
+.wc-confirm-copy{margin:0;white-space:pre-wrap;line-height:1.9;color:var(--ink)}
+.wc-drawer-mask{padding:0;justify-content:flex-end}
+.wc-drawer-mask .wc-modal{height:100dvh;max-height:100dvh;border-radius:0;width:min(var(--wc-modal-width,900px),100%)}
+.wc-dl{display:grid;grid-template-columns:minmax(200px,240px) minmax(0,1fr);gap:12px 16px;font-size:13px;line-height:1.8;margin:0}
+.wc-dl dt{color:var(--muted);text-align:left;overflow-wrap:anywhere}
+.wc-dl dd{margin:0;text-align:left;white-space:pre-wrap;overflow-wrap:anywhere}
+.wc-highlight td{background:#eff6ff!important}
+.wc-modal-mask .wc-actions{display:flex;gap:12px;align-items:center;justify-content:flex-start;margin:16px 0}
+.wc-modal-mask .wc-table-panel{margin:0;min-height:120px;flex:none;border:0}
+.wc-modal-mask .filter-wrap{gap:12px}
+.wc-modal-mask .filter-wrap .wc-field{display:flex;flex-direction:column;gap:6px;margin:0}
+.wc-segment{display:inline-flex;gap:0;border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.wc-segment button{height:34px;padding:0 20px;border:0;background:#fff;color:var(--ink)}
+.wc-segment button+button{border-left:1px solid var(--line)}
+.wc-segment button.active,.wc-segment button[aria-pressed=true]{background:var(--blue-soft);color:var(--blue-strong)}
+.wc-page .date-range-menu{z-index:1500}
+.wc-batch-progress{padding:16px;border:1px solid var(--line);border-radius:4px;line-height:1.8;background:#f8fafc}
+#wcTopbarMessages{margin-left:auto;min-width:0;position:relative;padding-right:18px}
+.wc-page .wc-text-button{border:0;padding:0;background:transparent;color:var(--blue);font-size:12px}
+.wc-page .wc-text-button:hover{text-decoration:underline}
+@media(max-width:1080px){.wc-page .filter-wrap{grid-template-columns:repeat(2,minmax(0,1fr))}.wc-field{grid-template-columns:160px minmax(0,1fr)}}
+@media(max-width:720px){.wc-page .filter-wrap{grid-template-columns:minmax(0,1fr)}.wc-field{grid-template-columns:minmax(0,1fr);gap:6px}.wc-field > label,.wc-field > span{padding-top:0}.wc-dl{grid-template-columns:minmax(0,1fr);gap:4px}.wc-dl dd{margin-bottom:12px}.wc-modal-head,.wc-modal-footer{padding:14px 16px}.wc-modal-body{padding:16px}.wc-rule-form{padding:0 16px!important}.wc-threshold-row{gap:8px}.wc-page .date-range-body{flex-direction:column}.wc-page .date-range-shortcuts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-right:0;border-bottom:1px solid var(--line-soft);padding:8px}.wc-page .date-range-calendar-wrap{grid-template-columns:minmax(0,1fr)}.wc-page .date-range-calendar+.date-range-calendar{border-left:0;border-top:1px solid var(--line-soft)}}
+@media(prefers-reduced-motion:reduce){#wcTopbarMessages *,.wc-modal-mask *{animation:none!important;transition:none!important}}
+
+
+/* Query controls in rule/message centers inherit the existing compact filter layout. */
+.wc-page .wc-query-wrap > .field,.wc-modal-mask .wc-query-wrap > .field{margin:0;min-width:0}
+.wc-page .wc-query-wrap > .form-actions,.wc-modal-mask .wc-query-wrap > .form-actions{grid-column:auto;gap:10px;padding-top:2px;align-self:start}
+.wc-page .wc-query-wrap:has(> .field:nth-of-type(4)) > .form-actions,.wc-modal-mask .wc-query-wrap:has(> .field:nth-of-type(4)) > .form-actions{grid-column:1/-1}
+.wc-query-wrap .control,.wc-query-wrap .date-range-trigger{height:var(--control-h);min-height:var(--control-h);font-size:12px}
+.wc-query-wrap .control{padding-top:0;padding-bottom:0}
+.wc-query-wrap .select-trigger{padding-right:54px}
+.wc-query-wrap .select-menu{max-height:240px;overflow:visible}
+.wc-query-wrap .select-options{max-height:220px;overflow:auto}
+.wc-query-wrap .option{font-size:12px}
+.wc-query-wrap .query-clear{top:8px;bottom:auto}
+.wc-query-wrap .date-range-clear{top:8px;bottom:auto}
+.main.doc-open .wc-page .wc-query-wrap{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:720px){.main.doc-open .wc-page .wc-query-wrap{grid-template-columns:minmax(0,1fr)}}
+
+
+/* Preserve the existing list/table scroll chain; long rule forms keep document scrolling. */
+.wc-page:not(#rcRuleFormPage){flex:1 1 auto;min-height:0}
+.wc-page > .wc-module{display:flex;flex:1 1 auto;flex-direction:column;min-width:0;min-height:0}
+.wc-page :is([data-wcr-table],#wc-channel-list,#wc-template-list,[data-wc-record-grid]){display:flex;flex:1 1 auto;flex-direction:column;min-width:0;min-height:360px}
+.wc-page .query-panel{flex:0 0 auto}
+
+</style>
 </head>
 <body>
   <div class="app-shell">
@@ -29249,6 +29388,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         page: { title: "SIM卡详情", purpose: "查看当前SIM卡信息，以及每次限速和解除限速的独立历史快照。" },
         queries: ["限速与解除限速记录在同一列表中按当前ICCID精确匹配。"],
         fields: [
+          { label: "实名认证时间", description: "载入当前SIM卡详情时自动刷新一次；点击时间右侧刷新图标可重新读取当前卡片的实名认证时间。" },
           { label: "限速状态", description: "展示当前SIM卡已限速或未限速；解除申请执行中保持实际限速状态。" },
           { label: "当前限速策略", description: "展示当前关联策略名称和策略ID，未关联显示--。" },
           { label: "操作批次号", description: "本次限速或解除限速操作所属批次。" },
@@ -29847,6 +29987,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         page.classList.toggle("active", page.id === pageId);
       });
       if (pageId === "userPackageDetailPage") renderUserPackageDetailPage();
+      if (pageId === "simDetailPage") refreshSimDetailRealNameTime({ automatic: true });
       renderPageDocumentation();
     }
 
@@ -30553,12 +30694,51 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       `;
     }
 
+    function renderSimDetailRealNameTime(row = {}) {
+      return `
+        <span class="sim-detail-real-name-time" id="simDetailRealNameTime" data-iccid="${escapeHtml(row.iccid || "")}">
+          <span class="sim-detail-real-name-value" id="simDetailRealNameTimeValue" aria-live="polite" aria-atomic="true">${simDetailText(row.realNameTime)}</span>
+          <button class="inline-refresh-btn" id="simDetailRealNameTimeRefreshBtn" type="button" aria-label="刷新实名认证时间" title="刷新实名认证时间">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M20 12a8 8 0 0 1-13.7 5.7M4 12A8 8 0 0 1 17.7 6.3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M17.5 3.5v3h-3M6.5 20.5v-3h3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </span>
+      `;
+    }
+
+    function refreshSimDetailRealNameTime({ automatic = false } = {}) {
+      const body = document.getElementById("simDetailBody");
+      const field = document.getElementById("simDetailRealNameTime");
+      const value = document.getElementById("simDetailRealNameTimeValue");
+      const iccid = body?.dataset.iccid || "";
+      if (!iccid || !field || !value || field.dataset.iccid !== iccid) return false;
+      const row = writableRows.find(item => item.iccid === iccid);
+      if (!row) {
+        if (!automatic) showToast("未找到当前SIM卡，无法刷新实名认证时间", "error");
+        return false;
+      }
+      // Read the current prototype source; authentication time is not the refresh time.
+      value.textContent = String(simDetailValue(row.realNameTime));
+      if (!automatic) showToast("实名认证时间已刷新", "success");
+      return true;
+    }
+
+    function bindSimDetailRealNameTimeRefresh() {
+      document.getElementById("simDetailRealNameTimeRefreshBtn")?.addEventListener("click", event => {
+        event.stopPropagation();
+        refreshSimDetailRealNameTime();
+      });
+    }
+
     function renderSimDetail(iccid) {
       const row = writableRows.find((item) => item.iccid === iccid) || { iccid };
       if (simDetailSpeedState.iccid !== iccid) { simDetailSpeedState.iccid = iccid; simDetailSpeedState.activeTab = "设备信息"; simDetailSpeedState.page = 1; }
       const tabs = document.getElementById("simDetailTabs");
       const body = document.getElementById("simDetailBody");
       if (!tabs || !body) return;
+      body.dataset.iccid = String(iccid || "");
       tabs.innerHTML = simDetailTabs.map((tab, index) => {
         const id = tab === "限速操作记录" ? "simDetailSpeedHistoryTab" : `simDetailTab${index}`;
         const panel = tab === "设备信息" ? "simDetailDevicePanel" : tab === "限速操作记录" ? "simDetailSpeedHistoryPanel" : "simDetailUnavailablePanel";
@@ -30621,7 +30801,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
           { label: "本月通话剩余(分钟)", value: "0" }
         ],
         [
-          { label: "实名认证时间", value: row.realNameTime },
+          { label: "实名认证时间", value: renderSimDetailRealNameTime(row), html: true },
           { label: "机卡分离状态", value: "正常" },
           { label: "区域限制状态", value: "未限制" }
         ],
@@ -30673,6 +30853,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
       bindSimDetailSpeedHistoryEvents();
       bindSimDetailSwitches(body);
+      bindSimDetailRealNameTimeRefresh();
     }
 
     function openSimDetailPage(iccid) {
@@ -31602,5 +31783,808 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     bindNativeSelectPlaceholders();
     switchBusinessPage("esimChipPage");
   </script>
+<script id="watch-centers-script">
+(function(){
+  'use strict';
+  const C=window.WatchCenters={};
+  C.esc=escapeHtml; C.clone=value=>JSON.parse(JSON.stringify(value)); C.toast=showToast;
+  C.now=()=>{const d=new Date(),p=n=>String(n).padStart(2,'0');return `${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())} ${p(d.getHours())}:${p(d.getMinutes())}:${p(d.getSeconds())}`;};
+  C.id=prefix=>`${prefix}-${Date.now().toString(36)}-${crypto.randomUUID().slice(0,8)}`;
+  C.types=[{id:'email',name:'邮箱'},{id:'wechat',name:'企业微信'},{id:'sms',name:'短信通知'},{id:'inapp',name:'站内通知'}];
+  C.events=[{id:'traffic',name:'流量超阈值'},{id:'batch',name:'批量任务执行完成'},{id:'query',name:'卡流量查询完成'}];
+  C.monitorNote='规则生效后，系统将于每日凌晨 01:50 执行 SIM 卡流量批量查询任务，并根据监测规则识别、记录触发规则的 SIM 卡。待本次批量查询任务全部执行完成后，系统将汇总触发规则的 SIM 卡信息，并通知对应业务人员。';
+  C.typeHint=()=>`<span class="wc-tooltip" tabindex="0" aria-label="${C.esc(C.monitorNote)}">ⓘ</span>`;
+  C.input=(name,value='',extra='')=>`<input class="control" id="wc-${C.esc(name)}" name="${C.esc(name)}" value="${C.esc(value??'')}" ${extra}>`;
+  C.select=(name,value,options,placeholder='请选择')=>`<select class="control" id="wc-${C.esc(name)}" name="${C.esc(name)}">${placeholder?`<option value="" disabled hidden ${value?'':'selected'}>${C.esc(placeholder)}</option>`:''}${options.map(o=>{const v=typeof o==='object'?o.id:o,t=typeof o==='object'?o.name:o;return `<option value="${C.esc(v)}" ${String(value??'')===String(v)?'selected':''}>${C.esc(t)}</option>`;}).join('')}</select>`;
+  C.field=(label,html,required=false)=>{const id=html.match(/\bid="([^"]+)"/);return `<div class="wc-field"><${id?'label for="'+id[1]+'"':'span'}>${required?'<span class="required" aria-hidden="true">*</span> ':''}${C.esc(label)}</${id?'label':'span'}><div>${html}</div></div>`;};
+  C.inRange=(value,range)=>{const date=String(value||'').slice(0,10);return (!range.dateStart&&!range.dateEnd)||Boolean(date&&date!=='--'&&date!=='-'&&(!range.dateStart||date>=range.dateStart)&&(!range.dateEnd||date<=range.dateEnd));};
+  C.csv=(filename,columns,rows)=>{const quote=v=>{let text=String(v??'');if(typeof v==='string'&&/^[\t\r\n ]*[=+@-]/.test(text))text="'"+text;return '"'+text.replaceAll('"','""')+'"';};const text='\ufeff'+[columns.map(c=>quote(c.label)).join(','),...rows.map(row=>columns.map(c=>quote(typeof c.export==='function'?c.export(row):row[c.key])).join(','))].join('\r\n');downloadAdminBlob(new Blob([text],{type:'text/csv;charset=utf-8'}),filename);};
+  C.grid=(rows,columns,state,minWidth=1400)=>{
+    state.pageSize=state.pageSize||20;const pages=Math.max(1,Math.ceil(rows.length/state.pageSize));state.page=Math.max(1,Math.min(pages,Number(state.page)||1));
+    const pageRows=rows.slice((state.page-1)*state.pageSize,state.page*state.pageSize);
+    return `<div class="panel table-panel wc-table-panel"><div class="table-scroll" tabindex="0" aria-label="列表，可横向滚动"><table class="wc-table" style="min-width:${Number(minWidth)}px"><thead><tr>${columns.map(c=>`<th scope="col">${C.esc(c.label)}</th>`).join('')}</tr></thead><tbody>${pageRows.length?pageRows.map(row=>`<tr data-wc-row="${C.esc(row.id||'')}" class="${row._highlight?'wc-highlight':''}">${columns.map(c=>`<td>${c.render?c.render(row[c.key],row):C.esc(row[c.key]??'--')}</td>`).join('')}</tr>`).join(''):`<tr><td colspan="${columns.length}" class="wc-empty" role="status">暂无匹配记录</td></tr>`}</tbody></table></div><div class="pager wc-pager"><span role="status">共 ${rows.length} 条</span><span>${state.pageSize}条/页</span><button type="button" class="page-btn" data-wc-page="${state.page-1}" aria-label="上一页" ${state.page===1?'disabled':''}>‹</button><span class="page-btn active" aria-current="page">${state.page}</span><span>/ ${pages}</span><button type="button" class="page-btn" data-wc-page="${state.page+1}" aria-label="下一页" ${state.page===pages?'disabled':''}>›</button></div></div>`;
+  };
+  C.bindPager=(host,state,render)=>host.querySelectorAll('[data-wc-page]').forEach(button=>button.addEventListener('click',()=>{if(button.disabled)return;const p=Number(button.dataset.wcPage);if(Number.isInteger(p)&&p>0){state.page=p;render();host.querySelector('[aria-current="page"]')?.focus();}}));
+  const tooltip=document.createElement('div');tooltip.className='wc-tooltip-portal';tooltip.setAttribute('role','tooltip');tooltip.hidden=true;tooltip.textContent=C.monitorNote;document.body.appendChild(tooltip);
+  const hideTooltip=()=>{tooltip.hidden=true;};
+  const showTooltip=target=>{tooltip.hidden=false;const rect=target.getBoundingClientRect(),width=Math.min(440,innerWidth-24);tooltip.style.width=width+'px';tooltip.style.left=Math.max(12,Math.min(rect.left,innerWidth-width-12))+'px';tooltip.style.top=(innerHeight-rect.bottom>160?rect.bottom+8:Math.max(12,rect.top-tooltip.getBoundingClientRect().height-8))+'px';};
+  document.addEventListener('pointerover',event=>{const target=event.target.closest?.('.wc-tooltip');if(target)showTooltip(target);});
+  document.addEventListener('focusin',event=>{if(event.target.matches?.('.wc-tooltip'))showTooltip(event.target);});
+  document.addEventListener('pointerout',event=>{if(event.target.matches?.('.wc-tooltip')&&event.target!==document.activeElement)hideTooltip();});
+  document.addEventListener('focusout',event=>{if(event.target.matches?.('.wc-tooltip'))hideTooltip();});
+  document.addEventListener('scroll',hideTooltip,true);window.addEventListener('resize',hideTooltip);
+  const ranges=new Map();
+  C.range=(host,prefix,state)=>{
+    const internal=state._dateUi||(state._dateUi={values:{},dateRangeOpen:false});
+    const draw=()=>{
+      internal.values.dateStart=state.dateStart||'';internal.values.dateEnd=state.dateEnd||'';
+      host.classList.add('field','writable-date-range');
+      const hadFocus=host.contains(document.activeElement);
+      const dateLabel=prefix.includes('Rule')?'最近触发时间':'触发时间';const outsideLabel=host.closest('.wc-field'),inQuery=Boolean(host.closest('.query-panel'));host.classList.toggle('wc-range-labelled',!outsideLabel&&!inQuery);
+      host.innerHTML=(!outsideLabel&&!inQuery?`<label class="wc-query-date-label" for="${prefix}DateRangeTrigger">${dateLabel}</label>`:'')+renderDateRangeField({idPrefix:prefix,label:inQuery?dateLabel:'',isOpen:internal.dateRangeOpen,start:state.dateStart||'',end:state.dateEnd||'',draftStart:internal.draftStart||'',draftEnd:internal.draftEnd||'',error:internal.dateRangeError||'',viewMonth:internal.dateRangeViewMonth||''});
+      host.querySelector('.date-range-trigger')?.setAttribute('aria-label',prefix.includes('Rule')?'最近触发时间范围':'触发时间范围');
+      const syncDraw=()=>{state.dateStart=internal.values.dateStart||'';state.dateEnd=internal.values.dateEnd||'';draw();};
+      bindDateRangeField({idPrefix:prefix,label:'查询',state:internal,filterWrap:host,render:syncDraw,valueStartKey:'dateStart',valueEndKey:'dateEnd',draftStartKey:'draftStart',draftEndKey:'draftEnd',allowSameDay:true,maxDays:null,onBeforeOpen:()=>{C.closeQuerySelects?.();ranges.forEach((other,key)=>{if(key!==prefix)other.close();});}});
+      const menu=host.querySelector('.date-range-menu.open'),trigger=host.querySelector('.date-range-trigger');
+      if(menu&&trigger){const rect=trigger.getBoundingClientRect(),width=Math.min(innerWidth<=720?360:630,innerWidth-24);menu.style.position='fixed';menu.style.width=width+'px';menu.style.left=Math.max(12,Math.min(rect.left,innerWidth-width-12))+'px';const below=innerHeight-rect.bottom-16,above=rect.top-16,useAbove=below<340&&above>below,available=Math.max(0,useAbove?above:below);menu.style.maxHeight=available+'px';menu.style.top=(useAbove?Math.max(12,rect.top-Math.min(menu.scrollHeight,available)-4):rect.bottom+4)+'px';menu.style.overflowY='auto';menu.style.zIndex='1500';}
+      if(hadFocus)trigger?.focus();
+    };
+    const close=()=>{if(internal.dateRangeOpen){internal.dateRangeOpen=false;draw();}};
+    ranges.set(prefix,{host,close});host.addEventListener('keydown',event=>{if(event.key==='Escape'&&!event.isComposing){event.preventDefault();event.stopPropagation();close();host.querySelector('.date-range-trigger')?.focus();}});draw();
+  };
+  document.addEventListener('click',event=>ranges.forEach((r,key)=>{if(!r.host.isConnected){ranges.delete(key);return;}if(!r.host.contains(event.target))r.close();}));
+  window.addEventListener('resize',()=>ranges.forEach(r=>r.close()));
+  document.addEventListener('scroll',event=>{if(!event.target.closest?.('.date-range-menu'))ranges.forEach(r=>r.close());},true);
+  // Query-only variant of the existing .field / .select-menu controls.
+  C.closeQuerySelects=except=>document.querySelectorAll('.wc-query-wrap .select-menu.open').forEach(menu=>{
+    const field=menu.closest('.field');if(field===except)return;
+    menu.classList.remove('open');const trigger=field.querySelector('.select-trigger');
+    trigger?.classList.remove('open');trigger?.setAttribute('aria-expanded','false');
+  });
+  C.adaptQueryUI=host=>{
+    const wraps=Array.from(host.querySelectorAll('.filter-wrap'));
+    if(host.matches?.('.filter-wrap'))wraps.unshift(host);
+    wraps.forEach(wrap=>{
+      wrap.classList.add('wc-query-wrap');
+      Array.from(wrap.children).filter(field=>field.classList.contains('wc-field')).forEach(field=>{
+        const label=field.querySelector('label,span')?.textContent.replace(/^\s*\*\s*/,'').trim()||'';
+        const content=Array.from(field.children).find(child=>child.tagName==='DIV');if(!content)return;
+        const range=content.querySelector('.writable-date-range');
+        if(range&&content.children.length===1){range.dataset.wcQueryLabel=label;field.replaceWith(range);return;}
+        const nodes=Array.from(content.childNodes);field.replaceChildren(...nodes);field.classList.remove('wc-field');field.classList.add('field');field.dataset.wcQueryLabel=label;
+      });
+      Array.from(wrap.children).filter(field=>field.classList.contains('field')).forEach(field=>{
+        if(field.classList.contains('writable-date-range')||field.dataset.wcQueryBound)return;
+        const native=field.querySelector('select.control'),input=field.querySelector('input.control');
+        const label=field.dataset.wcQueryLabel||native?.getAttribute('aria-label')||input?.getAttribute('placeholder')||'';
+        if(native){
+          field.dataset.wcQueryBound='select';field.classList.add('clearable-query');
+          const options=Array.from(native.options).filter(option=>option.value!=='').map(option=>({id:option.value,name:option.textContent,disabled:option.disabled}));
+          const trigger=document.createElement('input');trigger.type='text';trigger.id=native.id+'-trigger';trigger.className='control select-trigger';trigger.readOnly=true;trigger.setAttribute('readonly','');trigger.autocomplete='off';trigger.placeholder=label;
+          trigger.setAttribute('aria-label',label);trigger.setAttribute('role','combobox');trigger.setAttribute('aria-expanded','false');trigger.setAttribute('aria-haspopup','listbox');
+          const menu=document.createElement('div');menu.className='select-menu';const list=document.createElement('div');list.className='select-options';list.id=native.id+'-options';list.setAttribute('role','listbox');list.setAttribute('aria-label',label);menu.appendChild(list);trigger.setAttribute('aria-controls',list.id);
+          const clear=document.createElement('button');clear.type='button';clear.className='query-clear select-clear';clear.textContent='×';clear.setAttribute('aria-label','清除'+label);
+          native.hidden=true;native.tabIndex=-1;native.setAttribute('aria-hidden','true');
+          field.append(trigger,clear);field.insertAdjacentHTML('beforeend',iconChevron().replace('class="icon"','class="field-icon"'));field.appendChild(menu);
+          const sync=()=>{trigger.value=options.find(option=>option.id===native.value)?.name||'';trigger.classList.toggle('has-value',Boolean(native.value));field.classList.toggle('has-value',Boolean(native.value));list.querySelectorAll('[role="option"]').forEach(button=>{const selected=button.dataset.value===native.value;button.classList.toggle('active',selected);button.setAttribute('aria-selected',String(selected));});};
+          const close=restore=>{menu.classList.remove('open');trigger.classList.remove('open');trigger.setAttribute('aria-expanded','false');if(restore)trigger.focus();};
+          const publish=()=>{sync();native.dispatchEvent(new Event('input',{bubbles:true}));native.dispatchEvent(new Event('change',{bubbles:true}));};
+          options.forEach(option=>{const button=document.createElement('button');button.className='option';button.type='button';button.tabIndex=-1;button.dataset.value=option.id;button.setAttribute('role','option');button.disabled=option.disabled;button.textContent=option.name;list.appendChild(button);
+            button.addEventListener('click',event=>{event.stopPropagation();if(button.disabled)return;native.value=option.id;publish();close(true);});
+            button.addEventListener('keydown',event=>{if(event.isComposing)return;const buttons=Array.from(list.querySelectorAll('button:not(:disabled)')),index=buttons.indexOf(button);if(['ArrowDown','ArrowUp','Home','End'].includes(event.key)){event.preventDefault();event.stopPropagation();const next=event.key==='Home'?0:event.key==='End'?buttons.length-1:(index+(event.key==='ArrowDown'?1:-1)+buttons.length)%buttons.length;buttons[next]?.focus();}else if(event.key==='Escape'){event.preventDefault();event.stopPropagation();close(true);}});
+          });
+          const open=focus=>{C.closeQuerySelects(field);ranges.forEach(range=>range.close());sync();menu.classList.add('open');trigger.classList.add('open');trigger.setAttribute('aria-expanded','true');if(focus)(list.querySelector('.option.active:not(:disabled)')||list.querySelector('.option:not(:disabled)'))?.focus();};
+          trigger.addEventListener('click',event=>{event.stopPropagation();if(menu.classList.contains('open'))close(false);else open(false);});
+          trigger.addEventListener('keydown',event=>{if(event.isComposing)return;if(['ArrowDown','ArrowUp','Enter',' '].includes(event.key)){event.preventDefault();event.stopPropagation();open(true);}else if(event.key==='Escape'){event.preventDefault();event.stopPropagation();close(false);}});
+          menu.addEventListener('click',event=>event.stopPropagation());
+          bindQueryClearControl(trigger.id);
+          clear.addEventListener('click',()=>{native.value='';publish();close(true);});
+          native.addEventListener('change',sync);sync();
+          field.addEventListener('focusout',event=>{if(!field.contains(event.relatedTarget))close(false);});
+        }else if(input){
+          field.dataset.wcQueryBound='input';field.classList.add('clearable-query');input.placeholder=label;input.setAttribute('aria-label',label);input.autocomplete='off';
+          if(!input.id)input.id=C.id('wc-query');
+          const clear=document.createElement('button');clear.type='button';clear.className='query-clear';clear.textContent='×';clear.setAttribute('aria-label','清除'+label);field.appendChild(clear);
+          bindQueryClearControl(input.id);clear.addEventListener('click',()=>{input.dispatchEvent(new Event('input',{bubbles:true}));input.dispatchEvent(new Event('change',{bubbles:true}));});
+        }
+      });
+      wrap.querySelectorAll('.form-actions button').forEach(button=>{
+        const label=button.textContent.trim();button.classList.add('btn');
+        if(label==='搜索'){button.classList.add('search-btn');if(!button.querySelector('svg'))button.insertAdjacentHTML('afterbegin','<svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m21 21-4.3-4.3M11 19a8 8 0 1 1 0-16 8 8 0 0 1 0 16Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');}
+        if(label==='重置')button.classList.add('secondary');
+      });
+      if(!wrap.dataset.wcQueryKeys){wrap.dataset.wcQueryKeys='true';wrap.addEventListener('keydown',event=>{
+        if(event.key!=='Enter'||event.isComposing||event.keyCode===229||!event.target.matches('input.control:not(.select-trigger)'))return;
+        const search=wrap.querySelector('.form-actions .search-btn');if(!search||search.disabled)return;
+        event.preventDefault();
+        if(search.type==='submit'&&search.closest('form')){const form=search.closest('form');if(form.requestSubmit)form.requestSubmit(search);else form.dispatchEvent(new Event('submit',{bubbles:true,cancelable:true}));}
+        else search.click();
+      });}
+    });
+  };
+  document.addEventListener('click',()=>C.closeQuerySelects());
+  window.addEventListener('resize',()=>C.closeQuerySelects());
+
+  C.parseIccids=text=>{const valid=[],invalid=[],seen=new Set();let duplicates=0;String(text||'').replace(/^\ufeff/,'').split(/[\s,，;；、]+/).filter(Boolean).forEach(token=>{const value=token.replace(/^['"]|['"]$/g,'');if(value.toUpperCase()==='ICCID')return;if(!/^\d{10,22}$/.test(value)){invalid.push(value);return;}if(seen.has(value))duplicates++;else{seen.add(value);valid.push(value);}});return {valid,invalid,duplicates};};
+  C.parseFile=async file=>{
+    if(!file||!file.size)throw new Error('文件为空，请重新选择');if(file.size>10*1024*1024)throw new Error('文件不能超过10MB');const ext=file.name.split('.').pop().toLowerCase();if(!['txt','csv','xlsx','xls'].includes(ext))throw new Error('请选择 TXT、CSV、XLSX 或 XLS 文件');
+    if(ext==='txt')return {...C.parseIccids(await file.text()),fileName:file.name};
+    const X=globalThis.XLSX;if(!X?.read)throw new Error('文件解析组件未就绪');let data=ext==='csv'?await file.text():new Uint8Array(await file.arrayBuffer());
+    if(ext==='xlsx'&&!(data[0]===0x50&&data[1]===0x4b)||ext==='xls'&&!(data[0]===0xd0&&data[1]===0xcf))throw new Error('文件内容与扩展名不符');
+    let book;try{book=X.read(data,{type:ext==='csv'?'string':'array',raw:true,cellFormula:true,cellHTML:false,sheets:0});}catch{throw new Error('无法解析文件，请检查文件是否损坏或加密');}
+    const sheet=book.Sheets[book.SheetNames[0]];if(!sheet?.['!ref'])throw new Error('文件中没有可识别的ICCID');const range=X.utils.decode_range(sheet['!ref']);if(range.e.r>100000||range.e.c>1000)throw new Error('工作表范围过大，请仅保留ICCID列后重试');let col=range.s.c,start=range.s.r,header=false;
+    for(let c=range.s.c;c<=range.e.c;c++){if(String(sheet[X.utils.encode_cell({r:start,c})]?.v??'').trim().toUpperCase()==='ICCID'){col=c;header=true;break;}}
+    if(header)start++;else if(range.e.c!==range.s.c)throw new Error('请在首行提供ICCID列标题');const values=[];
+    for(let r=start;r<=range.e.r;r++){const cell=sheet[X.utils.encode_cell({r,c:col})];if(!cell||cell.v==null||String(cell.v).trim()==='')continue;if(cell.f||cell.t==='n')throw new Error(`第${r+1}行ICCID是数值或公式，请改为文本，避免号码精度丢失`);values.push(String(cell.v));}
+    return {...C.parseIccids(values.join('\n')),fileName:file.name};
+  };
+  C.downloadTemplate=()=>C.csv('规则ICCID导入模板.csv',[{key:'iccid',label:'ICCID'}],[{iccid:'8986044219231000841'}]);
+  const overlayStack=[];
+  C.modal=({title,html,onSave,saveText='保存',width=720,drawer=false,confirm=false})=>{
+    const id=C.id('wc-dialog'),mask=document.createElement('div');mask.id=id;mask.className='modal-mask wc-modal-mask'+(drawer?' wc-drawer-mask':'');mask.innerHTML=`<section class="modal wc-modal" style="--wc-modal-width:${Number(width)}px" role="${confirm?'alertdialog':'dialog'}" aria-modal="true" aria-labelledby="${id}-title"><header class="modal-head wc-modal-head"><h2 id="${id}-title">${C.esc(title)}</h2><button class="close wc-close" type="button" aria-label="关闭">×</button></header><div class="modal-body wc-modal-body"><form novalidate>${html}<div class="wc-modal-error wc-error" role="alert" hidden></div></form></div><footer class="modal-foot wc-modal-footer"><button class="btn secondary" type="button" data-wc-cancel>${onSave?'取消':'关闭'}</button>${onSave?`<button class="btn" type="button" data-wc-save>${C.esc(saveText)}</button>`:''}</footer></section>`;
+    document.body.appendChild(mask);const previous=overlayStack.at(-1),state={submitting:false};if(previous)previous.el.inert=true;
+    const modal={el:mask,busy:false,close(){if(modal.busy)return;const index=overlayStack.indexOf(modal);if(index<0)return;if(overlayStack.length>index+1){modal._closeAfterChildren=true;return;}closeAdminPrototypeModal(id,state);mask.remove();overlayStack.splice(index,1);if(previous?.el.isConnected){previous.el.inert=false;previous.el.querySelector('input,select,textarea,button')?.focus();if(previous._closeAfterChildren){previous._closeAfterChildren=false;previous.close();}}},error(message,name){const error=mask.querySelector('.wc-modal-error');error.textContent=message;error.hidden=false;mask.querySelectorAll('[aria-invalid="true"]').forEach(el=>{el.removeAttribute('aria-invalid');el.removeAttribute('aria-describedby');});const input=Array.from(mask.querySelectorAll('[name]')).find(el=>el.name===name);if(input){error.id=id+'-error';input.setAttribute('aria-invalid','true');input.setAttribute('aria-describedby',error.id);input.focus();}return false;}};
+    overlayStack.push(modal);mask.querySelector('.wc-close').id=id+'-close';openAdminPrototypeModal(id,state,id+'-close','pageDocEntry');
+    bindAdminPrototypeModalKeyboard(id,()=>modal.close());mask.querySelector('.wc-close').addEventListener('click',()=>modal.close());mask.querySelector('[data-wc-cancel]').addEventListener('click',()=>modal.close());
+    if(onSave){const save=mask.querySelector('[data-wc-save]');const submit=async()=>{if(modal.busy)return;modal.busy=true;save.disabled=true;save.setAttribute('aria-busy','true');try{await onSave(mask.querySelector('form'),modal);}catch(error){modal.error(error.message||'操作失败，请重试');}finally{modal.busy=false;save.disabled=false;save.removeAttribute('aria-busy');if(modal._closeRequested)modal.close();}};const close=modal.close;modal.close=()=>{if(modal.busy){modal._closeRequested=true;return;}close();};save.addEventListener('click',submit);mask.querySelector('form').addEventListener('submit',event=>{event.preventDefault();if(!event.isComposing)submit();});}
+    queueMicrotask(()=>{(confirm?mask.querySelector('[data-wc-cancel]'):mask.querySelector('input,select,textarea,[data-wc-cancel]'))?.focus();});return modal;
+  };
+  C.drawer=(title,html)=>C.modal({title,html,width:900,drawer:true});
+  C.confirm=(title,text,action,verb='确认')=>C.modal({title,html:`<p class="wc-confirm-copy">${C.esc(text)}</p>`,confirm:true,onSave:async(form,modal)=>{await action();modal.close();},saveText:verb,width:480});
+  const accounts=[{id:'acct-admin',account:'admin',name:'张敏',mobile:'13800138000',email:'zhangmin@example.com',wechatId:'zhangmin',role:'运营管理员',merchant:'华东物联商户'},{id:'acct-wang',account:'wangfang',name:'王芳',mobile:'13900139000',email:'wangfang@example.com',wechatId:'wangfang',role:'商户管理员',merchant:'车载设备商户'},{id:'acct-li',account:'liming',name:'李明',mobile:'13700137000',email:'liming@example.com',wechatId:'liming',role:'业务人员',merchant:'华东物联商户'},{id:'acct-chen',account:'chenjie',name:'陈洁',mobile:'13600136000',email:'chenjie@example.com',wechatId:'chenjie',role:'客服人员',merchant:'北区能源商户'}];
+  const time='2026-10-15 10:20:00';
+  C.store={rules:[],accounts,currentAccountId:'acct-admin',channels:[
+    {id:'CH-EMAIL-001',type:'email',name:'运营企业邮箱',enabled:true,remark:'演示渠道',updatedAt:time,operator:'张敏',config:{provider:'企业微信邮箱',host:'smtp.exmail.qq.com',port:'465',encryption:'SSL/TLS',fromEmail:'notice@example.com',username:'notice@example.com',password:'demo-password',senderName:'运营通知'}},
+    {id:'CH-WECHAT-001',type:'wechat',name:'运营企业微信',enabled:true,remark:'演示渠道',updatedAt:time,operator:'张敏',config:{corpId:'demo-corp',agentId:'1000002',secret:'demo-secret'}},
+    {id:'CH-SMS-001',type:'sms',name:'运营短信',enabled:true,remark:'演示渠道',updatedAt:time,operator:'张敏',config:{secretId:'demo-secret-id',secretKey:'demo-secret-key',appId:'140000001'}},
+    {id:'CH-INAPP-001',type:'inapp',name:'系统站内通知',enabled:true,remark:'系统内置',updatedAt:time,operator:'系统',config:{}}
+  ],templates:C.types.map(type=>({id:'TPL-'+type.id.toUpperCase()+'-001',type:type.id,name:'流量用量提醒',event:'traffic',title:'流量用量监测提醒',body:type.id==='sms'?'设备{{1}}流量达到{{2}}MB，请关注。':'设备{{设备编号}}当前流量为{{当前流量}}MB，触发时间：{{触发时间}}。',variables:type.id==='sms'?['1','2']:['设备编号','当前流量','触发时间'],attachment:false,channelId:type.id==='sms'?'CH-SMS-001':undefined,providerTemplateId:type.id==='sms'?'SMS_TRAFFIC_001':undefined,variableOrder:type.id==='sms'?['设备编号','当前流量']:undefined,updatedAt:time,operator:'张敏'})),cards:writableRows.map(row=>({...C.clone(row),group:row.cardGroup||'',usageMB:({'8986044219231000841':780,'8986044219231000842':420,'8986044219231000843':120,'8986044219231000844':990})[row.iccid]??360})),batches:[],triggers:[],triggerDetails:[],notifications:[],views:{}};
+  C.defaultNotification=()=>({timeMode:'immediate',time:'',methods:['email','inapp'],bindings:{email:{channelId:'CH-EMAIL-001',templateId:'TPL-EMAIL-001'},inapp:{channelId:'CH-INAPP-001',templateId:'TPL-INAPP-001'}}});
+  C.store.rules=[{id:'RULE-20261015-001',name:'月累计流量用量提醒',type:'流量用量监测',enabled:true,remark:'演示规则，监测与发送均为模拟',scope:{mode:'range',entry:'file',iccids:[],fileName:'',manualText:'',merchant:'',group:'',supplier:'',operator:''},monitor:{mode:'threshold',thresholds:[300,600],interval:null,action:'notify',restoreNextMonth:true},effective:{mode:'immediate',month:'',at:'2026-10-01 00:00:00'},notification:{mode:'unified',recipientIds:['acct-admin','acct-wang'],unified:C.defaultNotification(),individual:{}},createdAt:'2026-10-01 09:00:00',updatedAt:time,operator:'张敏'}];
+  const waiting=C.clone(C.store.rules[0]);Object.assign(waiting,{id:'RULE-20261015-002',name:'指定卡片流量预警',enabled:false});waiting.scope={mode:'iccid',entry:'manual',iccids:C.store.cards.slice(0,2).map(c=>c.iccid),manualText:C.store.cards.slice(0,2).map(c=>c.iccid).join('\n'),fileName:'',merchant:'',group:'',supplier:'',operator:''};waiting.notification={mode:'individual',recipientIds:['acct-admin','acct-li'],unified:C.defaultNotification(),individual:{'acct-admin':C.defaultNotification(),'acct-li':{timeMode:'specified',time:'10:30',methods:['wechat'],bindings:{wechat:{channelId:'CH-WECHAT-001',templateId:'TPL-WECHAT-001'}}}}};C.store.rules.push(waiting);
+  const future=C.clone(C.store.rules[0]);Object.assign(future,{id:'RULE-20261015-003',name:'下月流量间隔提醒'});future.monitor={mode:'interval',thresholds:[],interval:100,action:'notify',restoreNextMonth:true};future.effective={mode:'month',month:'2099-01',at:'2099-01-01 00:00:00'};C.store.rules.push(future);
+  C.notificationSummary=task=>{const messages=task.messages||[],total=messages.length,success=messages.filter(m=>m.status==='成功').length,failed=messages.filter(m=>m.status==='失败').length,pending=total-success-failed;const status=!total||pending?'发送中':success===total?'全部成功':failed===total?'全部失败':'部分成功';return {total,success,failed,pending,status,completedAt:pending?'':task.completedAt||messages.map(m=>m.sentAt||'').sort().at(-1)||''};};
+  C.isMine=task=>(task.messages||[]).some(m=>m.accountId===C.store.currentAccountId);
+  C.isUnread=task=>C.isMine(task)&&!C.store.views[`${C.store.currentAccountId}:${task.id}`];
+  C.markViewed=id=>{C.store.views[`${C.store.currentAccountId}:${id}`]=C.now();C.emit();};
+  C.emit=()=>C.refreshMessages?.();
+  C.createNotification=(rule,trigger,batch,outcome='pending')=>{
+    if(batch.status!=='completed')throw new Error('本轮查询任务未全部完成，尚不能创建通知任务');
+    const task={id:C.id('NOTICE'),batchId:batch.id,triggerId:trigger.id,ruleId:rule.id,ruleName:rule.name,ruleSnapshot:C.clone(rule),triggeredAt:trigger.triggeredAt,cardIds:[...trigger.cardIds],messages:[],completedAt:''};
+    const methods=C.types.map(t=>t.id);let ordinal=0;
+    rule.notification.recipientIds.forEach(accountId=>{const recipient=C.store.accounts.find(a=>a.id===accountId);const setting=rule.notification.mode==='individual'?rule.notification.individual[accountId]:rule.notification.unified;if(!recipient||!setting)return;(setting.methods||[]).filter(m=>methods.includes(m)).forEach(method=>{
+      const binding=setting.bindings[method]||{},channel=C.store.channels.find(c=>c.id===binding.channelId&&c.type===method),template=C.store.templates.find(t=>t.id===binding.templateId&&t.type===method);const pending=outcome==='pending'||setting.timeMode==='specified';let status=pending?'发送中':outcome==='failure'?'失败':outcome==='mixed'&&ordinal%2===1?'失败':'成功';let reason=status==='失败'?'模拟发送失败：服务商返回演示错误':'';
+      // Missing dependencies remain explicit failures in this simulation, never borrowed from another config.
+      if(!channel||!channel.enabled||!template){status='失败';reason='当前绑定渠道已停用/删除或模板不存在（模拟校验）';}
+      const payload={设备编号:trigger.cardIds.join('、'),当前流量:trigger.cardIds.map(id=>C.store.cards.find(c=>c.iccid===id)?.usageMB??'--').join('、'),流量阈值:(rule.monitor.thresholds||[]).join('、'),触发时间:trigger.triggeredAt};let content=template?.body||'';content=content.replace(/\{\{([^}]+)\}\}/g,(all,key)=>/^\d+$/.test(key)?payload[(template.variableOrder||[])[Number(key)-1]]??all:payload[key]??all);
+      if(template?.event!=='traffic'||/\{\{[^}]+\}\}/.test(content)){status='失败';reason='模拟校验：模板变量缺少本次流量监测数据，待确认变量缺失处理策略';}
+      if(template?.type==='sms'&&template.channelId&&template.channelId!==binding.channelId){status='失败';reason='模拟校验：短信模板不属于所选渠道';}
+      const destination=method==='email'?recipient.email:method==='sms'?recipient.mobile:method==='wechat'?recipient.wechatId:recipient.account;if(!destination){status='失败';reason='模拟校验：通知对象缺少该方式的接收信息';}
+      task.messages.push({id:C.id('MSG'),notificationId:task.id,accountId,recipientSnapshot:C.clone(recipient),method,channelId:binding.channelId||'',channelSnapshot:channel?C.clone(channel):null,templateId:binding.templateId||'',templateSnapshot:template?C.clone(template):null,content,status,failureReason:reason,sentAt:status==='发送中'?'':C.now(),scheduledAt:setting.timeMode==='specified'?setting.time:''});ordinal++;
+    });});
+    if(!task.messages.some(m=>m.status==='发送中'))task.completedAt=C.now();C.store.notifications.unshift(task);trigger.notificationId=task.id;C.store.triggerDetails.filter(d=>d.triggerId===trigger.id).forEach(d=>d.notificationId=task.id);C.emit();return task;
+  };
+  C.startSimulation=ruleId=>{const rule=C.store.rules.find(r=>r.id===ruleId);if(!rule)throw new Error('规则不存在');if(!rule.enabled)throw new Error('规则已关闭，本轮不执行');if(rule.effective.at>C.now())throw new Error('规则尚未达到生效时间');if(rule.monitor.mode==='interval')throw new Error('间隔提醒基准及跨间隔补发口径待确认，本原型不模拟自动间隔判定');const cards=C.store.cards.filter(card=>rule.scope.mode==='iccid'?rule.scope.iccids.includes(card.iccid):['merchant','group','supplier','operator'].every(key=>!rule.scope[key]||rule.scope[key]===card[key]));const batch={id:C.id('QUERY'),ruleId,ruleSnapshot:C.clone(rule),startedAt:C.now(),completedAt:'',status:'running',cards:C.clone(cards)};C.store.batches.unshift(batch);return batch;};
+  C.finishSimulation=(batchId,outcome='pending')=>{const batch=C.store.batches.find(b=>b.id===batchId);if(!batch)throw new Error('模拟批次不存在');if(batch.status!=='running')throw new Error('本轮查询已经完成，请勿重复提交');const rule=batch.ruleSnapshot;const hits=batch.cards.filter(card=>rule.monitor.thresholds.some(value=>card.usageMB>=Number(value)));batch.status='completed';batch.completedAt=C.now();if(!hits.length)return null;const trigger={id:C.id('TRIGGER'),batchId:batch.id,ruleId:rule.id,ruleName:rule.name,ruleType:rule.type,ruleSnapshot:C.clone(rule),triggeredAt:C.now(),cardIds:hits.map(c=>c.iccid),notificationId:''};C.store.triggers.unshift(trigger);hits.forEach(card=>C.store.triggerDetails.push({id:C.id('HIT'),triggerId:trigger.id,ruleId:rule.id,ruleName:rule.name,ruleType:rule.type,triggeredAt:trigger.triggeredAt,msisdn:card.msisdn,iccid:card.iccid,merchant:card.merchant,supplier:card.supplier,operator:card.operator,usageMB:card.usageMB,condition:'单卡累计数据使用量达到 '+rule.monitor.thresholds.filter(v=>card.usageMB>=Number(v)).join(' / ')+' MB',action:rule.monitor.action==='closeData'?'通知并关闭流量数据服务':'仅通知',actionResult:'成功',notificationId:'',actionSnapshot:{simulated:true,requestedAction:rule.monitor.action,restoreNextMonth:rule.monitor.restoreNextMonth}}));return {trigger,notification:C.createNotification(rule,trigger,batch,outcome)};};
+  // Explicit historical simulation samples; each task keeps independent immutable source snapshots.
+  ['success','mixed','failure','pending'].forEach((outcome,index)=>{const rule=C.clone(C.store.rules[0]);const batch={id:'QUERY-DEMO-'+(index+1),ruleId:rule.id,ruleSnapshot:C.clone(rule),startedAt:`2026-10-${12+index} 01:50:00`,completedAt:`2026-10-${12+index} 02:05:00`,status:'completed',cards:C.clone(C.store.cards.slice(0,2))};C.store.batches.push(batch);const trigger={id:'TRIGGER-DEMO-'+(index+1),batchId:batch.id,ruleId:rule.id,ruleName:rule.name,ruleType:rule.type,ruleSnapshot:C.clone(rule),triggeredAt:`2026-10-${12+index} 02:04:00`,cardIds:batch.cards.map(c=>c.iccid),notificationId:''};C.store.triggers.push(trigger);batch.cards.forEach(card=>C.store.triggerDetails.push({id:C.id('HIT'),triggerId:trigger.id,ruleId:rule.id,ruleName:rule.name,ruleType:rule.type,triggeredAt:trigger.triggeredAt,msisdn:card.msisdn,iccid:card.iccid,merchant:card.merchant,supplier:card.supplier,operator:card.operator,usageMB:card.usageMB,condition:'单卡累计数据使用量达到 300 MB',action:'仅通知',actionResult:'成功',notificationId:''}));const task=C.createNotification(rule,trigger,batch,outcome);task.id='NOTICE-DEMO-'+(index+1);task.messages.forEach(message=>message.notificationId=task.id);trigger.notificationId=task.id;C.store.triggerDetails.filter(d=>d.triggerId===trigger.id).forEach(d=>d.notificationId=task.id);task.messages.forEach(m=>{if(m.status!=='发送中')m.sentAt=batch.completedAt;});task.completedAt=outcome==='pending'?'':batch.completedAt;});
+  const titles={rcRulePage:'规则管理',rcRuleFormPage:'规则新增',rcTriggerPage:'触发记录',mcChannelPage:'通知渠道',mcTemplatePage:'消息模板',mcRecordPage:'通知记录'};
+  const renderers={};C.register=(id,render)=>{renderers[id]=render;};C.render=id=>{const host=document.getElementById(id);if(host&&renderers[id])renderers[id](host);};
+  const content=document.getElementById('pageContent');Object.entries(titles).forEach(([id,title])=>{pageLabelMap[id]=title;const section=document.createElement('section');section.id=id;section.className='page-view wc-page';section.setAttribute('aria-label',title);content.appendChild(section);});
+  const icon='<svg class="nav-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="3" y="3" width="14" height="14" rx="2" stroke="currentColor"/><path d="M6 7h8M6 10h8M6 13h5" stroke="currentColor"/></svg>';
+  const menus=[{id:'wcRule',label:'规则中心',pages:['rcRulePage','rcTriggerPage']},{id:'wcMessage',label:'消息中心',pages:['mcChannelPage','mcTemplatePage','mcRecordPage']}];
+  const anchor=document.getElementById('taskNavItem');
+  anchor.querySelector('.nav-label').textContent='任务中心';
+  document.getElementById('taskMenuToggle').setAttribute('aria-label','展开或收起任务中心菜单');
+  document.getElementById('taskSubMenu').setAttribute('aria-label','任务中心二级菜单');
+  const caret='<svg class="nav-caret" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m8 10 4 4 4-4" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  menus.forEach(menu=>{
+    const wrapper=document.createElement('div');wrapper.className='wc-menu-group';
+    wrapper.innerHTML=`<div class="nav-item collapsed" id="${menu.id}NavItem" role="button" tabindex="0" aria-expanded="false" aria-controls="${menu.id}SubMenu">${icon}<span class="nav-label">${menu.label}</span><button class="nav-toggle" id="${menu.id}MenuToggle" type="button" aria-label="展开或收起${menu.label}菜单" aria-expanded="false" aria-controls="${menu.id}SubMenu">${caret}</button></div><div class="sub-menu collapsed" id="${menu.id}SubMenu" aria-label="${menu.label}二级菜单">${menu.pages.map(id=>`<button class="sub-item" type="button" data-wc-route="${id}">${titles[id]}</button>`).join('')}</div>`;
+    anchor.before(wrapper);menu.wrapper=wrapper;
+    const nav=wrapper.querySelector('.nav-item'),sub=wrapper.querySelector('.sub-menu'),button=wrapper.querySelector('.nav-toggle');
+    menu.setExpanded=expanded=>{
+      const value=Boolean(expanded);
+      nav.classList.toggle('collapsed',!value);sub.classList.toggle('collapsed',!value);
+      nav.setAttribute('aria-expanded',String(value));button.setAttribute('aria-expanded',String(value));
+      if(!value&&sub.contains(document.activeElement))button.focus();
+    };
+    // Use the same pointer and Enter/Space handling as existing first-level menus.
+    bindNavMenuToggle(nav.id,()=>menu.setExpanded(button.getAttribute('aria-expanded')!=='true'));
+    wrapper.querySelectorAll('[data-wc-route]').forEach(el=>el.addEventListener('click',()=>C.open(el.dataset.wcRoute)));
+  });
+  function syncCenterSidebar(pageId){
+    menus.forEach(menu=>{
+      const owner=pageId==='rcRuleFormPage'?'rcRulePage':pageId;
+      // Existing sections reserve selection highlighting for second-level entries.
+      menu.wrapper.querySelector('.nav-item').classList.remove('active');
+      menu.wrapper.querySelectorAll('[data-wc-route]').forEach(button=>{
+        const selected=button.dataset.wcRoute===owner;
+        button.classList.toggle('active',selected);
+        if(selected)button.setAttribute('aria-current','page');else button.removeAttribute('aria-current');
+      });
+      if(menu.pages.includes(owner))menu.setExpanded(true);
+    });
+  }
+  const originalSwitch=switchBusinessPage;
+  switchBusinessPage=function(pageId){
+    originalSwitch(pageId);
+    content.classList.toggle('wc-mode',Boolean(titles[pageId]));
+    syncCenterSidebar(pageId);
+    if(titles[pageId])C.render(pageId);
+  };
+  const originalShowPageOnly=showPageOnly;
+  showPageOnly=function(pageId){
+    originalShowPageOnly(pageId);
+    if(!titles[pageId])content.classList.remove('wc-mode');
+    syncCenterSidebar(pageId);
+  };
+  C.open=id=>{if(!pageLabelMap[id])return;if(activeCrumbPage==='rcRuleFormPage'&&id==='rcRulePage')openCrumbs=openCrumbs.filter(crumb=>crumb.pageId!=='rcRuleFormPage');switchBusinessPage(id);};
+  C.setFormTitle=title=>{pageLabelMap.rcRuleFormPage=title;const crumb=openCrumbs.find(c=>c.pageId==='rcRuleFormPage');if(crumb)crumb.label=title;renderCrumbs();};
+  const topbar=document.createElement('div');topbar.id='wcTopbarMessages';topbar.className='top-actions';document.querySelector('.topbar').appendChild(topbar);C.topbarHost=topbar;
+  C.pendingDecisions=['跨规则合并、重复事件去重与失败重试策略','间隔提醒基准、按月重置与跨间隔补发','指定通知时间已过、节假日和时区调度','模板未来版本绑定、附件来源及变量缺失处理','真实定时任务、流量查询、服务关闭/恢复和渠道发送接口'];
+})();
+
+(function(C){
+  'use strict';
+  const E=C.esc;
+  const list={draft:{keyword:'',type:'',enabled:'',triggered:'',dateStart:'',dateEnd:''},applied:{},page:1,pageSize:20};
+  let draft=null, original=null, formErrors={}, saving=false, fileBusy=false, fileToken=0, composing=false;
+  const typeOptions=[{id:'流量用量监测',name:'流量用量监测'}];
+  const account=id=>C.store.accounts.find(x=>x.id===id);
+  const byId=(rows,id)=>rows.find(x=>x.id===id);
+  const textArea=(name,value,placeholder,extra='')=>`<textarea class="control" id="wc-${E(name)}" name="${E(name)}" rows="4" placeholder="${E(placeholder)}" ${extra}>${E(value||'')}</textarea>`;
+  const button=(label,action,extra='',cls='secondary')=>`<button type="button" class="${action==='new'?'btn':action==='upload'?'file-btn':action==='remove-threshold'?'danger-link':action==='add-threshold'?'btn outline':'btn '+cls}" data-wcr-action="${E(action)}" ${extra}>${E(label)}</button>`;
+  const errorMarkup=name=>formErrors[name]?`<span class="wc-rule-error" id="wc-rule-error-${E(name)}" role="alert" data-wcr-error="${E(name)}">${E(formErrors[name])}</span>`:'';
+  const field=(label,html,name,required=true)=>`<div class="wc-field${formErrors[name]?' wc-invalid':''}" data-wcr-field="${E(name||'')}"><label class="wc-field-label" for="wc-${E(name||'')}">${required?'<span aria-hidden="true" class="required">*</span> ':''}${E(label)}</label><div class="wc-field-value">${html}${errorMarkup(name)}</div></div>`;
+  function radio(name,value,options){return `<div class="wc-radio-line" role="radiogroup" aria-label="${E(({"scope-mode":"监测范围","scope-entry":"录入方式","monitor-action":"跟进动作","monitor-restore":"次月是否恢复流量数据服务","effective-mode":"生效时间","notification-mode":"配置方式"})[name]||name)}">${options.map(o=>`<label><input type="radio" name="${E(name)}" value="${E(o.id)}" ${value===o.id?'checked':''}>${E(o.name)}</label>`).join('')}</div>`;}
+  const section=(title,html)=>`<section class="wc-form-section"><h3>${E(title)}</h3>${html}</section>`;
+  const plain=(label,value,raw=false)=>`<dt>${E(label)}</dt><dd>${raw?value:E(value===''||value===undefined||value===null?'--':value)}</dd>`;
+  const dl=html=>`<dl class="wc-dl">${html}</dl>`;
+  function defaultSetting(){return {timeMode:'immediate',time:'',methods:['email','inapp'],bindings:{email:{channelId:'',templateId:''},inapp:{channelId:'',templateId:''}}};}
+  function newRule(){
+    fileToken++; fileBusy=false; original=null; formErrors={};
+    draft={id:'',name:'',type:'流量用量监测',enabled:true,remark:'',scope:{mode:'iccid',entry:'file',iccids:[],fileName:'',manualText:'',merchant:'',group:'',supplier:'',operator:''},monitor:{mode:'threshold',thresholds:[''],interval:'',action:'notify',restoreNextMonth:true},effective:{mode:'immediate',month:'',at:''},notification:{mode:'unified',recipientIds:[],unified:defaultSetting(),individual:{}},createdAt:'',updatedAt:'',operator:''};
+    C.setFormTitle?.(original?'规则编辑':'规则新增'); C.open('rcRuleFormPage'); return draft;
+  }
+  function editRule(id){
+    const found=byId(C.store.rules,id); if(!found){C.toast('规则不存在，请刷新列表后重试。','error');return null;}
+    fileToken++; fileBusy=false; original=C.clone(found); draft=C.clone(found); formErrors={};
+    draft.scope.manualText=draft.scope.manualText||draft.scope.iccids.join('\n');
+    draft.monitor.thresholds=draft.monitor.thresholds.length?draft.monitor.thresholds:[''];
+    draft.notification.individual=draft.notification.individual||{};
+    draft.notification.unified=draft.notification.unified||defaultSetting();
+    C.setFormTitle?.(original?'规则编辑':'规则新增'); C.open('rcRuleFormPage'); return draft;
+  }
+  function triggerInfo(rule){const rows=C.store.triggers.filter(t=>t.ruleId===rule.id);return {triggered:rows.length>0,last:rows.map(t=>t.triggeredAt).sort().at(-1)||''};}
+  function filteredRules(){const f=list.applied;return C.store.rules.filter(r=>{const t=triggerInfo(r);return (!f.keyword||`${r.id} ${r.name}`.toLowerCase().includes(f.keyword.toLowerCase()))&&(!f.type||r.type===f.type)&&(f.enabled===''||f.enabled===undefined||r.enabled===(f.enabled==='true'))&&(!f.triggered||t.triggered===(f.triggered==='true'))&&(!(f.dateStart||f.dateEnd)||(t.last&&C.inRange(t.last,f)));});}
+  function renderList(host){
+    const q=list.draft;
+    host.innerHTML=`<div class="query-panel"><form class="filter-wrap" data-wcr-query novalidate>${C.field('规则ID / 规则名称',C.input('ruleKeyword',q.keyword,'placeholder="请输入规则ID或规则名称"'))}${C.field('规则类型',C.select('ruleQueryType',q.type,[{id:'',name:'全部'},...typeOptions],''))}${C.field('生效状态',C.select('ruleEnabled',q.enabled,[{id:'',name:'全部'},{id:'true',name:'开启'},{id:'false',name:'关闭'}],''))}${C.field('触发状态',C.select('ruleTriggered',q.triggered,[{id:'',name:'全部'},{id:'true',name:'已触发'},{id:'false',name:'未触发'}],''))}<div class="field writable-date-range" data-wcr-range></div><div class="form-actions"><button type="submit" class="btn search-btn">搜索</button>${button('重置','reset')}</div></form></div><div class="wc-actions">${button('规则新增','new','','search-btn')}</div><div data-wcr-table></div>`;
+    C.range(host.querySelector('[data-wcr-range]'),'wcRuleRecent',q,()=>{});
+    const cols=[{key:'id',label:'规则ID'},{key:'name',label:'规则名称'},{key:'type',label:'规则类型',render:v=>`${E(v)} ${C.typeHint()}`},{key:'enabled',label:'生效状态',render:(v,r)=>`<button type="button" class="wc-switch${v?' is-on':''}" role="switch" aria-checked="${!!v}" aria-label="${E((v?'关闭':'开启')+r.name)}" data-wcr-action="toggle" data-id="${E(r.id)}"><span class="scientific-calculation-status-switch${v?' is-on':''}" aria-hidden="true"></span><span>${v?'开启':'关闭'}</span></button>`},{key:'triggered',label:'触发状态',render:(v,r)=>{const t=triggerInfo(r);return `<span class="${t.triggered?'wc-danger':'wc-success'}">${t.triggered?'已触发':'未触发'}</span>`;}},{key:'effective',label:'生效时间',render:(v,r)=>E(r.effective.at||'--')},{key:'last',label:'最近触发时间',render:(v,r)=>E(triggerInfo(r).last||'--')},{key:'createdAt',label:'创建时间'},{key:'updatedAt',label:'更新时间'},{key:'operator',label:'操作人'},{key:'actions',label:'操作',render:(v,r)=>`<button type="button" class="link-btn" data-wcr-action="edit" data-id="${E(r.id)}">编辑</button> <button type="button" class="link-btn" data-wcr-action="view" data-id="${E(r.id)}">查看</button>`}];
+    host.querySelector('[data-wcr-table]').innerHTML=C.grid(filteredRules(),cols,list,1960);
+    C.bindPager(host,list,()=>renderList(host));
+    host.querySelector('[data-wcr-query]').addEventListener('input',()=>readQuery(host));
+    host.querySelector('[data-wcr-query]').addEventListener('change',()=>readQuery(host));
+    host.querySelector('[data-wcr-query]').addEventListener('submit',e=>{e.preventDefault();if(e.isComposing||composing)return;readQuery(host);list.applied=C.clone(q);list.page=1;renderList(host);});
+    host.oncompositionstart=()=>{composing=true;};host.oncompositionend=()=>{composing=false;};
+    host.onclick=e=>{const b=e.target.closest('[data-wcr-action]');if(!b)return;const a=b.dataset.wcrAction,id=b.dataset.id;if(a==='new')newRule();if(a==='edit')editRule(id);if(a==='view')viewRule(id);if(a==='toggle')toggleRule(id);if(a==='reset'){list.draft={keyword:'',type:'',enabled:'',triggered:'',dateStart:'',dateEnd:''};list.applied={};list.page=1;renderList(host);}};
+    C.adaptQueryUI(host);
+  }
+  function readQuery(host){const f=host.querySelector('[data-wcr-query]');list.draft.keyword=f.elements.ruleKeyword.value.trim();list.draft.type=f.elements.ruleQueryType.value;list.draft.enabled=f.elements.ruleEnabled.value;list.draft.triggered=f.elements.ruleTriggered.value;}
+  function toggleRule(id){const row=byId(C.store.rules,id);if(!row)return;const enabled=!row.enabled;C.confirm(enabled?'开启规则':'关闭规则',`确定${enabled?'开启':'关闭'}“${row.name}”规则？${enabled?'开启后将在达到生效时间后参与模拟监测。':'关闭后将不再参与后续模拟监测，已有记录保留。'}`,()=>{const current=byId(C.store.rules,id);if(!current)throw new Error('规则已不存在，请刷新列表。');const previous={enabled:current.enabled,updatedAt:current.updatedAt,operator:current.operator};try{current.enabled=enabled;current.updatedAt=C.now();current.operator=account(C.store.currentAccountId)?.name||C.store.currentAccountId;C.emit();C.render('rcRulePage');C.toast(`已${enabled?'开启':'关闭'}规则（原型配置）。`);}catch(error){Object.assign(current,previous);throw error;}},enabled?'开启':'关闭');}
+  function ensureSetting(setting){setting.methods=setting.methods||[];setting.bindings=setting.bindings||{};setting.methods.forEach(m=>{setting.bindings[m]=setting.bindings[m]||{channelId:'',templateId:''};});return setting;}
+  function settingFor(key){if(key==='unified')return ensureSetting(draft.notification.unified);draft.notification.individual[key]=draft.notification.individual[key]||defaultSetting();return ensureSetting(draft.notification.individual[key]);}
+  function settingMarkup(key){
+    const s=settingFor(key),prefix=`notify-${key}`,times=(s.time||'').split(':');
+    const schedule=`<span class="wc-inline-config" ${s.timeMode==='specified'?'':'hidden'}>${C.select(`${prefix}-hour`,times[0]||'',Array.from({length:24},(_,i)=>({id:String(i).padStart(2,'0'),name:String(i).padStart(2,'0')})),'时')}<span>时</span>${C.select(`${prefix}-minute`,times[1]||'',Array.from({length:60},(_,i)=>({id:String(i).padStart(2,'0'),name:String(i).padStart(2,'0')})),'分')}<span>分</span></span>`;
+    const time=`<div class="wc-radio-line" role="radiogroup" aria-label="通知时间"><label><input type="radio" name="${E(prefix)}-timeMode" value="immediate" ${s.timeMode==='immediate'?'checked':''}>规则触发后立即通知</label><label><input type="radio" name="${E(prefix)}-timeMode" value="specified" ${s.timeMode==='specified'?'checked':''}>指定通知时间</label>${schedule}</div>`;
+    const methods=`<div class="wc-radio-line" role="group" aria-label="通知方式">${C.types.map(t=>`<label><input type="checkbox" name="${E(prefix)}-methods" value="${E(t.id)}" ${s.methods.includes(t.id)?'checked':''}>${E(t.name)}</label>`).join('')}</div>`;
+    return `<div class="wc-setting-card" data-wcr-setting="${E(key)}">${key!=='unified'?`<h4>通知对象：${E(account(key)?.name||key)}（${E(account(key)?.account||'--')}）</h4>`:''}${field('通知时间',time,`${prefix}-time`)}${field('通知方式',methods,`${prefix}-methods`)}${s.methods.map(m=>{
+      const type=C.types.find(t=>t.id===m),bind=s.bindings[m]||{},chs=C.store.channels.filter(ch=>ch.type===m&&ch.enabled),tmps=C.store.templates.filter(t=>t.type===m&&(m!=='sms'||t.channelId===bind.channelId));
+      const channelOpts=chs.map(ch=>({id:ch.id,name:`${ch.name}（${ch.id}）`}));
+      if(bind.channelId&&!chs.some(ch=>ch.id===bind.channelId))channelOpts.unshift({id:bind.channelId,name:`${bind.channelId}（渠道已停用或不存在，请重选）`});
+      const templateOpts=tmps.map(t=>({id:t.id,name:`${t.name}（${t.id}）`}));
+      if(bind.templateId&&!tmps.some(t=>t.id===bind.templateId))templateOpts.unshift({id:bind.templateId,name:`${bind.templateId}（模板不存在或不属于当前渠道，请重选）`});
+      const template=tmps.find(t=>t.id===bind.templateId);
+      return `<section class="wc-method"><h4>通知方式：${E(type?.name||m)}</h4>${field('通知渠道',C.select(`${prefix}-${m}-channel`,bind.channelId,channelOpts),`${prefix}-${m}-channel`)}${field('通知模板',C.select(`${prefix}-${m}-template`,bind.templateId,templateOpts),`${prefix}-${m}-template`)}${template?field('模板内容预览',`<div class="wc-preview">${E(template.title||'')}${template.title?'\n':''}${E(template.body||'--')}</div>`,`${prefix}-${m}-preview`,false):''}</section>`;
+    }).join('')}</div>`;
+  }
+  function scopeMarkup(){const s=draft.scope;let branch='';if(s.mode==='range'){
+    const names={merchant:'商户',group:'卡组',supplier:'供应商',operator:'运营商'};
+    branch=Object.keys(names).map(k=>{const opts=[{id:'',name:'全部'},...Array.from(new Set(C.store.cards.map(c=>c[k]).filter(Boolean))).sort().map(v=>({id:v,name:v}))];if(s[k]&&!opts.some(o=>o.id===s[k]))opts.push({id:s[k],name:s[k]});return field(names[k],C.select(`scope-${k}`,s[k],opts,''),`scope-${k}`,false);}).join('');
+  }else{
+    branch=field('录入方式',radio('scope-entry',s.entry,[{id:'file',name:'文件导入'},{id:'manual',name:'手动录入'}]),'scope-entry');
+    if(s.entry==='manual'){
+      const p=C.parseIccids(s.manualText||'');branch+=field('ICCID',`${textArea('scope-manual',s.manualText,'请输入ICCID，支持换行、逗号、空格分隔')}<div class="wc-note" aria-live="polite" data-wcr-parse-summary>${E(parseSummary(p))}</div><div class="wc-rule-error" data-wcr-parse-invalid ${p.invalid.length?'':'hidden'}>${p.invalid.length?'无效项：'+E(p.invalid.join('、')):''}</div>`,'scope-manual');
+    }else{
+      branch+=field('上传ICCID文件',`<div class="wc-inline-config">${button(fileBusy?'正在解析…':'上传ICCID文件','upload',fileBusy?'disabled':'','search-btn')}<button type="button" class="template-link" data-wcr-action="template">下载模板</button><input type="file" id="wc-scope-file" name="scope-file" accept=".txt,.csv,.xlsx,.xls" hidden></div><div class="wc-note">支持 TXT、CSV、XLSX、XLS</div>${s.fileName?`<div class="wc-note">${E(s.fileName)} · 已识别 ${s.iccids.length} 个有效ICCID${s.duplicates?`，去重 ${s.duplicates} 个`:''}</div>`:''}${s.fileInvalid?.length?`<div class="wc-rule-error">无效项：${E(s.fileInvalid.join('、'))}</div>`:''}`,'scope-file');
+    }
+  }return field('监测范围',radio('scope-mode',s.mode,[{id:'iccid',name:'指定ICCID'},{id:'range',name:'指定范围'}]),'scope-mode')+branch;}
+  const parseSummary=p=>`已识别 ${p.valid.length} 个有效ICCID${p.duplicates?`，已去重 ${p.duplicates} 个`:''}${p.invalid.length?`，${p.invalid.length} 个无效项，请修正`:''}`;
+  function monitorMarkup(){const m=draft.monitor;let html=field('提醒方式',C.select('monitor-mode',m.mode,[{id:'threshold',name:'阈值提醒'},{id:'interval',name:'间隔提醒'}]),'monitor-mode');
+    if(m.mode==='threshold'){
+      html+=`<div class="wc-field"><div class="wc-field-label"></div><div class="wc-field-value">${m.thresholds.map((v,i)=>`<div class="wc-threshold-row" data-wcr-field="monitor-threshold-${i}"><span>第${ordinal(i+1)}次通知提醒：单卡累计数据使用量达到</span>${C.input(`monitor-threshold-${i}`,v,'type="number" step="any" placeholder="请输入流量数值" aria-label="第'+ordinal(i+1)+'次提醒阈值"')}<span>MB</span>${button('删除','remove-threshold',`data-index="${i}" ${m.thresholds.length===1?'disabled':''}`)}${errorMarkup(`monitor-threshold-${i}`)}</div>`).join('')}${button('+ 添加','add-threshold')}</div></div>`;
+      html+=field('跟进动作',radio('monitor-action',m.action,[{id:'notify',name:'仅通知'},{id:'closeData',name:'通知并关闭流量数据服务'}]),'monitor-action');
+      if(m.action==='closeData')html+=field('次月是否恢复流量数据服务',radio('monitor-restore',m.restoreNextMonth?'yes':'no',[{id:'yes',name:'次月恢复流量数据服务'},{id:'no',name:'不恢复'}]),'monitor-restore');
+    }else html+=`<div class="wc-field" data-wcr-field="monitor-interval"><div class="wc-field-label"></div><div class="wc-field-value"><div class="wc-threshold-row"><span>数据使用每增加</span>${C.input('monitor-interval',m.interval??'','type="number" step="any" min="0" placeholder="请输入间隔数值" aria-label="流量提醒间隔"')}<span>MB，下发一次提醒，直到不再触发。</span></div>${errorMarkup('monitor-interval')}</div></div>`;
+    return html;
+  }
+  function ordinal(n){return ['','一','二','三','四','五','六','七','八','九','十'][n]||String(n);}
+  function recipientsMarkup(){const ids=draft.notification.recipientIds;return `<div class="wc-inline-config">${button('选择通知对象','recipients')}<span>已选择 ${ids.length} 个通知对象</span></div><div class="wc-recipients">${ids.map(id=>{const a=account(id);return `<span class="wc-tag">${E(a?`${a.name}（${a.account}）`:id)} <button type="button" data-wcr-action="remove-recipient" data-id="${E(id)}" aria-label="移除${E(a?.name||id)}">×</button></span>`;}).join('')}</div>`;}
+  function renderForm(host){
+    if(!draft){newRule();return;}
+    const focusBefore=document.activeElement,focusMemo=host.contains(focusBefore)?{id:focusBefore.id,name:focusBefore.name,value:focusBefore.value,action:focusBefore.dataset?.wcrAction}:null;
+    const n=draft.notification;
+    host.innerHTML=`<form class="wc-rule-form" data-wcr-form novalidate><div class="wc-rule-form-title"><h2>${original?'规则编辑':'规则新增'}</h2>${original?`<span class="wc-note">规则ID：${E(original.id)}</span>`:''}</div><div class="wc-rule-error" role="alert" data-wcr-form-error ${formErrors._form?'':'hidden'}>${E(formErrors._form||'')}</div>${section('基础信息',field('规则类型',`${C.select('rule-type',draft.type,typeOptions)}<div class="wc-note wc-rule-type-note"><span aria-hidden="true">ⓘ</span> ${E(C.monitorNote)}</div>`,'rule-type')+field('规则名称',C.input('rule-name',draft.name,'placeholder="请输入规则名称"'),'rule-name')+field('备注',textArea('rule-remark',draft.remark,'请输入备注'),'rule-remark',false))}${section('监测范围',scopeMarkup())}${section('监测规则',monitorMarkup())}${section('生效时间',field('生效时间',radio('effective-mode',draft.effective.mode,[{id:'immediate',name:'立即生效'},{id:'month',name:'指定日期生效'}]),'effective-mode')+(draft.effective.mode==='month'?field('生效年月',`<div class="wc-inline-config">${C.input('effective-month',draft.effective.month,'type="month" aria-label="生效年月"')}${button('清空','clear-month')}</div><span class="wc-note">所选月份的1日00:00生效</span>`,'effective-month'):''))}${section('通知配置',field('通知对象',recipientsMarkup(),'recipients')+field('配置方式',radio('notification-mode',n.mode,[{id:'unified',name:'所有通知对象统一配置'},{id:'individual',name:'按通知对象分别配置'}]),'notification-mode')+(n.mode==='unified'?settingMarkup('unified'):n.recipientIds.map(settingMarkup).join('')))}<div class="wc-rule-footer">${button('取消','cancel')}<button type="submit" class="btn" ${saving||(fileBusy&&draft.scope.mode==='iccid'&&draft.scope.entry==='file')?'disabled':''}>${saving?'正在保存…':'保存规则'}</button></div></form>`;
+    const form=host.querySelector('[data-wcr-form]');
+    form.querySelectorAll('[data-wcr-error]').forEach(error=>{const control=error.closest('[data-wcr-field]')?.querySelector('input:not([hidden]),select,textarea,button:not([disabled])');if(control){control.setAttribute('aria-invalid','true');control.setAttribute('aria-describedby',error.id);}});
+    form.addEventListener('compositionstart',()=>{composing=true;});form.addEventListener('compositionend',()=>{composing=false;});
+    form.addEventListener('input',()=>{syncDraft(form);});
+    form.addEventListener('change',e=>{const name=e.target.name;if(name==='scope-file'){readFile(e.target.files?.[0]);return;}syncDraft(form);if(name==='scope-manual')return;if(name==='monitor-mode'||name==='monitor-action'||name==='scope-mode'||name==='scope-entry'||name==='effective-mode'||name==='notification-mode'||/-timeMode$|-methods$|-template$|-channel$/.test(name))renderForm(host);});
+    form.addEventListener('submit',e=>{e.preventDefault();if(e.isComposing||composing)return;syncDraft(form);saveRule();});
+    host.onclick=e=>{const b=e.target.closest('[data-wcr-action]');if(!b)return;const action=b.dataset.wcrAction;syncDraft(form);
+      if(action==='cancel'){fileToken++;fileBusy=false;draft=null;original=null;C.open('rcRulePage');}
+      else if(action==='add-threshold'){draft.monitor.thresholds.push('');renderForm(host);host.querySelector(`[name="monitor-threshold-${draft.monitor.thresholds.length-1}"]`)?.focus();}
+      else if(action==='remove-threshold'&&draft.monitor.thresholds.length>1){const index=Number(b.dataset.index);draft.monitor.thresholds.splice(index,1);formErrors={};renderForm(host);host.querySelector(`[name="monitor-threshold-${Math.min(index,draft.monitor.thresholds.length-1)}"]`)?.focus();}
+      else if(action==='remove-recipient'){const id=b.dataset.id;draft.notification.recipientIds=draft.notification.recipientIds.filter(x=>x!==id);delete draft.notification.individual[id];renderForm(host);host.querySelector('[data-wcr-action="recipients"]')?.focus();}
+      else if(action==='recipients')openRecipients();
+      else if(action==='upload')host.querySelector('[name="scope-file"]')?.click();
+      else if(action==='template')C.downloadTemplate();
+      else if(action==='clear-month'){draft.effective.month='';renderForm(host);host.querySelector('[name="effective-month"]')?.focus();}
+    };
+    if(focusMemo){const target=(focusMemo.id&&host.querySelector('[id="'+focusMemo.id+'"]'))||Array.from(host.querySelectorAll('[name]')).find(e=>e.name===focusMemo.name&&(e.type!=='radio'&&e.type!=='checkbox'||e.value===focusMemo.value))||(focusMemo.action&&Array.from(host.querySelectorAll('[data-wcr-action]')).find(e=>e.dataset.wcrAction===focusMemo.action));target?.focus();}
+  }
+  function syncDraft(form){if(!draft)return;const el=name=>form.elements.namedItem(name);const value=name=>{const e=el(name);return e?e.value:undefined;};
+    const set=(name,obj,key)=>{const v=value(name);if(v!==undefined)obj[key]=v;};
+    set('rule-type',draft,'type');set('rule-name',draft,'name');set('rule-remark',draft,'remark');
+    set('scope-mode',draft.scope,'mode');set('scope-entry',draft.scope,'entry');set('scope-manual',draft.scope,'manualText');
+    ['merchant','group','supplier','operator'].forEach(k=>set(`scope-${k}`,draft.scope,k));
+    set('monitor-mode',draft.monitor,'mode');set('monitor-action',draft.monitor,'action');if(value('monitor-restore')!==undefined)draft.monitor.restoreNextMonth=value('monitor-restore')==='yes';
+    draft.monitor.thresholds=draft.monitor.thresholds.map((v,i)=>value(`monitor-threshold-${i}`)??v);set('monitor-interval',draft.monitor,'interval');set('effective-mode',draft.effective,'mode');set('effective-month',draft.effective,'month');set('notification-mode',draft.notification,'mode');
+    form.querySelectorAll('[data-wcr-setting]').forEach(card=>{const key=card.dataset.wcrSetting,s=settingFor(key),p=`notify-${key}`;const mode=value(`${p}-timeMode`);if(mode!==undefined)s.timeMode=mode;const hh=value(`${p}-hour`),mm=value(`${p}-minute`);if(hh!==undefined||mm!==undefined)s.time=`${hh||''}:${mm||''}`;s.methods=Array.from(card.querySelectorAll(`input[name="${p}-methods"]:checked`)).map(x=>x.value);s.methods.forEach(m=>{s.bindings[m]=s.bindings[m]||{channelId:'',templateId:''};set(`${p}-${m}-channel`,s.bindings[m],'channelId');set(`${p}-${m}-template`,s.bindings[m],'templateId');});});
+    if(draft.scope.mode==='iccid'&&draft.scope.entry==='manual'){const p=C.parseIccids(draft.scope.manualText||'');const summary=form.querySelector('[data-wcr-parse-summary]');if(summary)summary.textContent=parseSummary(p);const invalid=form.querySelector('[data-wcr-parse-invalid]');if(invalid){invalid.hidden=!p.invalid.length;invalid.textContent=p.invalid.length?'无效项：'+p.invalid.join('、'):'';}}
+  }
+  async function readFile(file){if(!file||!draft)return;const current=draft,token=++fileToken;fileBusy=true;formErrors['scope-file']='';C.render('rcRuleFormPage');try{const parsed=await C.parseFile(file);if(token!==fileToken||draft!==current)return;draft.scope.iccids=parsed.valid;draft.scope.fileName=parsed.fileName||file.name;draft.scope.fileInvalid=parsed.invalid;draft.scope.duplicates=parsed.duplicates;if(!parsed.valid.length)formErrors['scope-file']='文件未识别到有效ICCID，请检查内容或下载模板重试。';}catch(error){if(token!==fileToken||draft!==current)return;draft.scope.fileName='';draft.scope.iccids=[];draft.scope.fileInvalid=[];formErrors['scope-file']=error.message||'文件解析失败，请检查文件格式后重试。';}finally{if(token===fileToken&&draft===current){fileBusy=false;C.render('rcRuleFormPage');}}}
+  function openRecipients(){
+    const selected=new Set(draft.notification.recipientIds),query={merchant:'',keyword:''},pager={page:1,pageSize:20};let modal;
+    const merchants=[{id:'',name:'全部'},...Array.from(new Set(C.store.accounts.map(a=>a.merchant).filter(Boolean))).map(v=>({id:v,name:v}))];
+    function render(){const f=modal.el.querySelector('form'),modalError=f.querySelector('.wc-modal-error');const rows=C.store.accounts.filter(a=>(!query.merchant||a.merchant===query.merchant)&&(!query.keyword||`${a.account} ${a.mobile} ${a.name} ${a.wechatId}`.toLowerCase().includes(query.keyword.toLowerCase())));f.innerHTML=`<div class="filter-wrap">${C.field('商户名称',C.select('recipientMerchant',query.merchant,merchants,''))}${C.field('账号/手机号/姓名/企业微信userid',C.input('recipientKeyword',query.keyword,'placeholder="请输入关键字"'))}<div class="form-actions">${button('搜索','recipient-search','','search-btn')}${button('重置','recipient-reset')}</div></div><p class="wc-note" data-recipient-count>已选择 ${selected.size} 个通知对象</p>${C.grid(rows,[{key:'choice',label:'选择',render:(v,a)=>`<input type="checkbox" name="recipient-choice" data-account-id="${E(a.id)}" aria-label="选择${E(a.name)}" ${selected.has(a.id)?'checked':''}>`},{key:'account',label:'账号'},{key:'mobile',label:'手机号'},{key:'email',label:'邮箱'},{key:'wechatId',label:'企业微信userid'},{key:'name',label:'姓名'},{key:'role',label:'角色'},{key:'merchant',label:'所属商户'}],pager,1180)}`;if(modalError)f.appendChild(modalError);
+      C.bindPager(f,pager,render);f.addEventListener('change',e=>{if(e.target.name==='recipient-choice'){e.target.checked?selected.add(e.target.dataset.accountId):selected.delete(e.target.dataset.accountId);f.querySelector('[data-recipient-count]').textContent=`已选择 ${selected.size} 个通知对象`;}});
+      f.onclick=e=>{const b=e.target.closest('[data-wcr-action]');if(!b)return;if(b.dataset.wcrAction==='recipient-search'){query.merchant=f.elements.recipientMerchant.value;query.keyword=f.elements.recipientKeyword.value.trim();pager.page=1;render();}if(b.dataset.wcrAction==='recipient-reset'){query.merchant='';query.keyword='';pager.page=1;render();}};
+      f.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.isComposing&&e.target.name==='recipientKeyword'){e.preventDefault();query.merchant=f.elements.recipientMerchant.value;query.keyword=f.elements.recipientKeyword.value.trim();pager.page=1;render();}});
+      C.adaptQueryUI(f);
+    }
+    modal=C.modal({title:'选择通知对象',html:'',width:1280,saveText:'确认选择',onSave:()=>{const retained=Array.from(selected).filter(id=>!!account(id));draft.notification.recipientIds=retained;Object.keys(draft.notification.individual).forEach(id=>{if(!retained.includes(id))delete draft.notification.individual[id];});retained.forEach(id=>{if(!draft.notification.individual[id])draft.notification.individual[id]=defaultSetting();});delete formErrors.recipients;modal.close();C.render('rcRuleFormPage');}});render();return modal;
+  }
+  function validateRule(rule){
+    const errors={};if(!typeOptions.some(t=>t.id===rule.type))errors['rule-type']='请选择规则类型。';if(!String(rule.name||'').trim())errors['rule-name']='请输入规则名称。';
+    if(!['iccid','range'].includes(rule.scope.mode))errors['scope-mode']='请选择监测范围。';
+    if(rule.scope.mode==='iccid'){
+      if(!['file','manual'].includes(rule.scope.entry))errors['scope-entry']='请选择录入方式。';
+      else if(rule.scope.entry==='manual'){const p=C.parseIccids(rule.scope.manualText||'');if(!p.valid.length)errors['scope-manual']='请至少输入一个有效ICCID（10–22位数字）。';else if(p.invalid.length)errors['scope-manual']='存在无效ICCID，请修正后保存。';}
+      else if(fileBusy)errors['scope-file']='文件仍在解析，请稍候再保存。';else if(!rule.scope.fileName||!rule.scope.iccids.length)errors['scope-file']='请上传包含有效ICCID的文件。';else if(rule.scope.fileInvalid?.length)errors['scope-file']='文件中存在无效ICCID，请修正后重新上传。';
+    }
+    if(!['threshold','interval'].includes(rule.monitor.mode))errors['monitor-mode']='请选择提醒方式。';
+    if(rule.monitor.mode==='threshold'){
+      if(!rule.monitor.thresholds.length)errors['monitor-threshold-0']='至少配置一次阈值提醒。';rule.monitor.thresholds.forEach((v,i)=>{if(String(v??'').trim()===''||!Number.isFinite(Number(v)))errors[`monitor-threshold-${i}`]='请输入有效数值。';});
+      if(!['notify','closeData'].includes(rule.monitor.action))errors['monitor-action']='请选择跟进动作。';
+      if(rule.monitor.action==='closeData'&&typeof rule.monitor.restoreNextMonth!=='boolean')errors['monitor-restore']='请选择次月是否恢复流量数据服务。';
+    }else if(rule.monitor.mode==='interval'&&(String(rule.monitor.interval??'').trim()===''||!Number.isFinite(Number(rule.monitor.interval))||Number(rule.monitor.interval)<=0))errors['monitor-interval']='请输入大于0的有效间隔，避免零间隔重复通知。';
+    if(!['immediate','month'].includes(rule.effective.mode))errors['effective-mode']='请选择生效时间。';
+    if(rule.effective.mode==='month'&&!/^[1-9]\d{3}-(0[1-9]|1[0-2])$/.test(rule.effective.month||''))errors['effective-month']='请选择有效年月。';
+    const n=rule.notification;if(!n.recipientIds.length)errors.recipients='请至少选择一个通知对象。';else if(n.recipientIds.some(id=>!account(id)))errors.recipients='部分通知对象已不存在，请重新选择。';if(!['unified','individual'].includes(n.mode))errors['notification-mode']='请选择配置方式。';
+    function validateSetting(key,setting){const s=setting||{},p=`notify-${key}`;if(!['immediate','specified'].includes(s.timeMode)||s.timeMode==='specified'&&!/^([01]\d|2[0-3]):[0-5]\d$/.test(s.time||''))errors[`${p}-time`]='请选择有效的通知时、分。';if(!s.methods?.length)errors[`${p}-methods`]='请至少选择一种通知方式。';(s.methods||[]).forEach(m=>{const bind=s.bindings?.[m]||{};if(!C.types.some(t=>t.id===m))errors[`${p}-methods`]='存在无效通知方式，请重新选择。';if(!C.store.channels.some(ch=>ch.id===bind.channelId&&ch.type===m&&ch.enabled))errors[`${p}-${m}-channel`]='请选择同类型且已启用的通知渠道。';if(!C.store.templates.some(t=>t.id===bind.templateId&&t.type===m&&(m!=='sms'||t.channelId===bind.channelId)))errors[`${p}-${m}-template`]=m==='sms'?'请选择当前短信渠道下的通知模板。':'请选择同类型的通知模板。';});}
+    if(n.mode==='unified')validateSetting('unified',n.unified);else if(n.mode==='individual')n.recipientIds.forEach(id=>validateSetting(id,n.individual[id]));return errors;
+  }
+  function focusError(){const host=document.getElementById('rcRuleFormPage');const key=Object.keys(formErrors)[0];const row=Array.from(host?.querySelectorAll('[data-wcr-field]')||[]).find(e=>e.dataset.wcrField===key);const target=row?.querySelector('input:not([hidden]),select,textarea,button:not([disabled])')||host?.querySelector('[data-wcr-form-error]');if(target){if(!target.hasAttribute('tabindex')&&!target.matches('input,select,textarea,button'))target.setAttribute('tabindex','-1');target.focus();row?.scrollIntoView({block:'center'});}}
+  function cleanSetting(s){const setting=C.clone(s);setting.methods=Array.from(new Set(setting.methods));setting.bindings=Object.fromEntries(setting.methods.map(m=>[m,{channelId:setting.bindings[m].channelId,templateId:setting.bindings[m].templateId}]));if(setting.timeMode==='immediate')setting.time='';return setting;}
+  function normalizedRule(rule){const out=C.clone(rule);out.name=out.name.trim();if(out.scope.mode==='iccid'){if(out.scope.entry==='manual'){out.scope.iccids=C.parseIccids(out.scope.manualText||'').valid;out.scope.fileName='';delete out.scope.fileInvalid;delete out.scope.duplicates;}else out.scope.manualText='';['merchant','group','supplier','operator'].forEach(k=>{out.scope[k]='';});}else{out.scope.iccids=[];out.scope.fileName='';out.scope.manualText='';delete out.scope.fileInvalid;delete out.scope.duplicates;}
+    if(out.monitor.mode==='threshold'){out.monitor.thresholds=out.monitor.thresholds.map(Number);out.monitor.interval=null;if(out.monitor.action==='notify')out.monitor.restoreNextMonth=true;}else{out.monitor.thresholds=[];out.monitor.interval=Number(out.monitor.interval);out.monitor.action='notify';out.monitor.restoreNextMonth=true;}
+    if(out.notification.mode==='unified'){out.notification.unified=cleanSetting(out.notification.unified);out.notification.individual={};}else{out.notification.individual=Object.fromEntries(out.notification.recipientIds.map(id=>[id,cleanSetting(out.notification.individual[id])]));out.notification.unified=null;}
+    return out;
+  }
+  async function saveRule(){if(!draft||saving)return false;formErrors=validateRule(draft);if(Object.keys(formErrors).length){C.render('rcRuleFormPage');focusError();return false;}
+    saving=true;C.render('rcRuleFormPage');try{const out=normalizedRule(draft),stamp=C.now();if(original){const index=C.store.rules.findIndex(r=>r.id===original.id);if(index<0)throw new Error('该规则已不存在，请返回规则列表后重试。');out.id=original.id;out.createdAt=original.createdAt;out.enabled=C.store.rules[index].enabled;out.effective.at=out.effective.mode==='month'?`${out.effective.month}-01 00:00:00`:original.effective.mode==='immediate'?original.effective.at:stamp;out.updatedAt=stamp;out.operator=account(C.store.currentAccountId)?.name||C.store.currentAccountId;C.store.rules[index]=out;}else{out.id=C.id('RULE');out.createdAt=stamp;out.updatedAt=stamp;out.operator=account(C.store.currentAccountId)?.name||C.store.currentAccountId;out.effective.at=out.effective.mode==='month'?`${out.effective.month}-01 00:00:00`:stamp;C.store.rules.unshift(out);}if(out.effective.mode==='immediate')out.effective.month='';draft=null;original=null;fileToken++;C.emit();C.open('rcRulePage');C.toast('规则已保存到原型数据。');return out;}catch(error){formErrors._form=error.message||'保存失败，请稍后重试。';return false;}finally{saving=false;if(draft){C.render('rcRuleFormPage');focusError();}}}
+  function settingDetail(s){if(!s)return dl(plain('通知配置','--'));const typeName=id=>C.types.find(t=>t.id===id)?.name||id;return dl(plain('通知时间',s.timeMode==='specified'?`指定通知时间 ${s.time||'--'}`:'规则触发后立即通知')+plain('通知方式',(s.methods||[]).map(typeName).join('、')||'--'))+(s.methods||[]).map(m=>{const b=s.bindings?.[m]||{},ch=byId(C.store.channels,b.channelId),t=byId(C.store.templates,b.templateId);return `<section class="wc-method"><h4>通知方式：${E(typeName(m))}</h4>${dl(plain('通知渠道',b.channelId?`${ch?.name||'渠道已不存在'}（${b.channelId}）`:'--')+plain('通知模板',b.templateId?`${t?.name||'模板已不存在'}（${b.templateId}）`:'--')+plain('模板内容预览',t?`${t.title||''}\n${t.body||''}`:'--'))}</section>`;}).join('');}
+  function detailMarkup(r){const t=triggerInfo(r),s=r.scope,m=r.monitor,n=r.notification;let scope=plain('监测范围',s.mode==='range'?'指定范围':'指定ICCID');if(s.mode==='range')scope+=['merchant','group','supplier','operator'].map((k,i)=>plain(['商户','卡组','供应商','运营商'][i],s[k]||'全部')).join('');else scope+=plain('录入方式',s.entry==='manual'?'手动录入':'文件导入')+(s.entry==='file'?plain('已上传文件',s.fileName||'--'):'')+plain('ICCID',s.iccids?.join('\n')||'--');let monitor=plain('提醒方式',m.mode==='threshold'?'阈值提醒':'间隔提醒');if(m.mode==='threshold'){monitor+=plain('提醒阈值',m.thresholds.map((v,i)=>`第${ordinal(i+1)}次通知提醒：单卡累计数据使用量达到 ${v} MB`).join('\n'))+plain('跟进动作',m.action==='closeData'?'通知并关闭流量数据服务':'仅通知');if(m.action==='closeData')monitor+=plain('次月是否恢复流量数据服务',m.restoreNextMonth?'次月恢复流量数据服务':'不恢复');}else monitor+=plain('间隔提醒',`数据使用每增加 ${m.interval} MB，下发一次提醒，直到不再触发。`);
+    return section('基础信息',dl(plain('规则类型',`${E(r.type)} ${C.typeHint()}`,true)+plain('规则名称',r.name)+plain('规则ID',r.id)+plain('生效状态',r.enabled?'开启':'关闭')+plain('触发状态',`<span class="${t.triggered?'wc-danger':'wc-success'}">${t.triggered?'已触发':'未触发'}</span>`,true)+plain('创建时间',r.createdAt)+plain('更新时间',r.updatedAt)+plain('操作人',r.operator)+plain('备注',r.remark)))+section('监测范围',dl(scope))+section('监测规则',dl(monitor))+section('生效时间',dl(plain('生效模式',r.effective.mode==='month'?'指定日期生效':'立即生效')+plain('生效时间',r.effective.at)))+section('通知配置',dl(plain('通知对象',n.recipientIds.map(id=>{const a=account(id);return a?`${a.name}（${a.account}）`:id;}).join('\n'))+plain('配置方式',n.mode==='individual'?'按通知对象分别配置':'所有通知对象统一配置'))+(n.mode==='unified'?settingDetail(n.unified):n.recipientIds.map(id=>`<section class="wc-setting-card"><h4>通知对象：${E(account(id)?.name||id)}（${E(account(id)?.account||'--')}）</h4>${settingDetail(n.individual[id])}</section>`).join('')));
+  }
+  function viewRule(id){const row=byId(C.store.rules,id);if(!row){C.toast('规则不存在。','error');return null;}return C.drawer('规则详情',detailMarkup(row));}
+  C.register('rcRulePage',renderList);C.register('rcRuleFormPage',renderForm);
+  C.rulesModule={newRule,editRule,validateRule,saveRule,normalizedRule,viewRule,detailMarkup,toggleRule,triggerInfo,filteredRules,openRecipients,readFile,getDraft:()=>draft,getOriginal:()=>original,getErrors:()=>C.clone(formErrors),list,defaultSetting};
+})(window.WatchCenters);
+
+(function(C){
+  'use strict';
+  const channelState={type:'email',page:1,pageSize:20};
+  const templateState={type:'email',page:1,pageSize:20};
+  const typeNames={email:'邮箱',wechat:'企业微信',sms:'短信',inapp:'站内通知'};
+  const templateTypeNames={email:'企业邮箱消息',wechat:'企业微信消息',sms:'短信消息',inapp:'站内消息'};
+  const eventNames={traffic:'流量超阈值',batch:'批量任务执行完成',query:'卡流量查询完成'};
+  const variableMap={
+    traffic:['设备编号','当前流量','流量阈值','触发时间'],
+    batch:['任务编号','任务名称','任务发起人','任务总数','成功数量','失败数量','执行结果','完成时间','任务详情地址'],
+    query:['任务编号','任务名称','任务发起人','任务总数','查询总数','成功数量','失败数量','执行结果','完成时间','任务详情地址']
+  };
+  const esc=C.esc;
+  function operator(){const a=C.store.accounts.find(x=>x.id===C.store.currentAccountId);return a?(a.name||a.account):'当前账号';}
+  function now(){return C.now();}
+  function text(form,name){const e=form.elements.namedItem(name);return e?String(e.value||'').trim():'';}
+  function checked(form,name){const e=form.elements.namedItem(name);return !!(e&&e.checked);}
+  function required(value,name,label){return String(value===undefined||value===null?'':value).trim()?null:{field:name,message:'请填写'+label};}
+  function fieldError(modal,error){if(error){modal.error(error.message,error.field);return false;}return true;}
+  function activeSettings(rule){const n=rule.notification||{};if(n.mode==='individual')return (n.recipientIds||[]).map(id=>(n.individual||{})[id]).filter(Boolean);return n.unified?[n.unified]:[];}
+  function references(kind,id){return C.store.rules.filter(rule=>activeSettings(rule).some(setting=>(setting.methods||[]).some(method=>{const b=(setting.bindings||{})[method];return b&&b[kind]===id;})));}
+  function channelReferences(id){return references('channelId',id);}
+  function templateReferences(id){return references('templateId',id);}
+  function refNames(rows){return rows.map(x=>x.name+'（'+x.id+'）').join('、');}
+  function mask(value){return value?'••••••••':'--';}
+  function display(value){return esc(value===undefined||value===null||value===''?'--':value);}
+  function switchButton(row){return '<button type="button" class="speed-limit-state-button" role="switch" aria-checked="'+!!row.enabled+'" aria-label="'+esc(row.name)+'：'+(row.enabled?'开启':'停用')+'" data-wc-channel-toggle="'+esc(row.id)+'"><span class="scientific-calculation-status-switch '+(row.enabled?'is-on':'')+'" aria-hidden="true"></span><span>'+(row.enabled?'开启':'停用')+'</span></button>';}
+  function channelTabs(){return '<div class="chip-page-tabs" role="tablist" aria-label="通知渠道类型">'+Object.keys(typeNames).map(t=>'<button type="button" class="chip-page-tab '+(channelState.type===t?'active':'')+'" role="tab" tabindex="'+(channelState.type===t?0:-1)+'" aria-controls="wc-channel-list" aria-selected="'+(channelState.type===t)+'" data-wc-channel-type="'+t+'">'+typeNames[t]+'</button>').join('')+'</div>';}
+  function templateTabs(){return '<div class="chip-page-tabs" role="tablist" aria-label="消息模板类型">'+Object.keys(templateTypeNames).map(t=>'<button type="button" class="chip-page-tab '+(templateState.type===t?'active':'')+'" role="tab" tabindex="'+(templateState.type===t?0:-1)+'" aria-controls="wc-template-list" aria-selected="'+(templateState.type===t)+'" data-wc-template-type="'+t+'">'+templateTypeNames[t]+'</button>').join('')+'</div>';}
+  function bindTabKeys(host,selector){host.querySelectorAll(selector).forEach(button=>button.addEventListener('keydown',event=>{const keys=['ArrowLeft','ArrowRight','Home','End'];if(!keys.includes(event.key))return;const buttons=Array.from(host.querySelectorAll(selector));let index=buttons.indexOf(button);index=event.key==='Home'?0:event.key==='End'?buttons.length-1:(index+(event.key==='ArrowRight'?1:-1)+buttons.length)%buttons.length;event.preventDefault();const key=buttons[index].getAttribute(selector.includes('channel')?'data-wc-channel-type':'data-wc-template-type');buttons[index].click();const fresh=host.querySelector(selector+'[data-wc-'+(selector.includes('channel')?'channel':'template')+'-type="'+key+'"]');if(fresh)fresh.focus();}));}
+  function channelColumns(type){
+    const cols=[{key:'id',label:'渠道ID'}];
+    const cfg=(key,label,sensitive)=>({key,label,render:(_,r)=>sensitive?mask((r.config||{})[key]):display((r.config||{})[key])});
+    if(type==='email')cols.push(cfg('provider','服务商'));
+    cols.push({key:'name',label:'渠道名称'});
+    if(type==='email')cols.push(cfg('host','SMTP服务器'),cfg('port','SMTP端口'),cfg('encryption','加密方式'),cfg('fromEmail','发件邮箱'),cfg('username','SMTP用户名'),cfg('password','SMTP密码/客户端专用密码',true),cfg('senderName','发件人名称'));
+    if(type==='wechat')cols.push(cfg('corpId','企业ID（CorpID）'),cfg('agentId','应用AgentId'),cfg('secret','Secret',true));
+    if(type==='sms')cols.push(cfg('secretId','SecretId',true),cfg('secretKey','SecretKey',true),cfg('appId','SmsSdkAppId'));
+    cols.push({key:'remark',label:'备注',render:display},{key:'enabled',label:'启用状态',render:(_,r)=>switchButton(r)},{key:'updatedAt',label:'更新时间'},{key:'operator',label:'操作人'},{key:'actions',label:'操作',render:(_,r)=>type==='inapp'?'系统内置':'<div class="wc-row-actions"><button type="button" class="link-btn" data-wc-channel-edit="'+esc(r.id)+'">编辑</button><button type="button" class="link-btn" data-wc-channel-test="'+esc(r.id)+'">测试发送</button><button type="button" class="link-btn danger" data-wc-channel-delete="'+esc(r.id)+'">删除</button></div>'});
+    return cols;
+  }
+  function renderChannels(host){
+    const rows=C.store.channels.filter(c=>c.type===channelState.type);
+    host.innerHTML='<div class="wc-module">'+channelTabs()+(channelState.type==='inapp'?'':'<div class="wc-actions"><button type="button" class="btn" data-wc-channel-add>渠道新增</button></div>')+'<div id="wc-channel-list" role="tabpanel" aria-label="'+typeNames[channelState.type]+'通知渠道">'+C.grid(rows,channelColumns(channelState.type),channelState,channelState.type==='email'?2450:channelState.type==='inapp'?1050:1650)+'</div></div>';
+    host.querySelectorAll('[data-wc-channel-type]').forEach(b=>b.addEventListener('click',()=>{channelState.type=b.dataset.wcChannelType;channelState.page=1;C.render('mcChannelPage');}));
+    const add=host.querySelector('[data-wc-channel-add]');if(add)add.addEventListener('click',()=>openChannelModal(channelState.type));
+    host.querySelectorAll('[data-wc-channel-edit]').forEach(b=>b.addEventListener('click',()=>{const row=C.store.channels.find(r=>r.id===b.dataset.wcChannelEdit);if(row)openChannelModal(row.type,row.id);}));
+    host.querySelectorAll('[data-wc-channel-test]').forEach(b=>b.addEventListener('click',()=>openChannelTest(b.dataset.wcChannelTest)));
+    host.querySelectorAll('[data-wc-channel-delete]').forEach(b=>b.addEventListener('click',()=>deleteChannel(b.dataset.wcChannelDelete)));
+    host.querySelectorAll('[data-wc-channel-toggle]').forEach(b=>b.addEventListener('click',()=>toggleChannel(b.dataset.wcChannelToggle)));
+    bindTabKeys(host,'[data-wc-channel-type]');
+    C.bindPager(host,channelState,()=>C.render('mcChannelPage'));
+  }
+  function channelFields(type,row){
+    const cfg=(row&&row.config)||{},editing=!!row;
+    const inp=(name,value,extra)=>C.input(name,value||'',extra||'');
+    const password=(name,label)=>C.field(label,inp(name,'','type="password" autocomplete="new-password" placeholder="'+(editing?'留空保留原值':'请输入'+label)+'"')+(editing?'<small class="wc-muted">留空保留原值</small>':''),!editing);
+    let html='';
+    if(type==='email')html+=C.field('服务商',C.select('provider',cfg.provider||'企业微信邮箱',['企业微信邮箱']),true);
+    html+=C.field('渠道名称',inp('name',row?row.name:'','maxlength="100"'),true);
+    if(type==='email')html+=C.field('SMTP服务器',inp('host',cfg.host||'smtp.exmail.qq.com','autocomplete="off"'),true)+C.field('SMTP端口',inp('port',cfg.port||'465','type="number" min="1" max="65535" step="1"'),true)+C.field('加密方式',C.select('encryption',cfg.encryption||'SSL/TLS',['SSL/TLS','STARTTLS','不使用']),true)+C.field('发件邮箱',inp('fromEmail',cfg.fromEmail,'type="email" autocomplete="off"'),true)+C.field('SMTP用户名',inp('username',cfg.username,'autocomplete="off"'),true)+password('password','SMTP密码/客户端专用密码')+C.field('发件人名称',inp('senderName',cfg.senderName),true);
+    if(type==='wechat')html+=C.field('企业ID（CorpID）',inp('corpId',cfg.corpId),true)+C.field('应用AgentId',inp('agentId',cfg.agentId),true)+password('secret','Secret');
+    if(type==='sms')html+=C.field('SecretId',inp('secretId',cfg.secretId,'autocomplete="off"'),true)+password('secretKey','SecretKey')+C.field('SmsSdkAppId',inp('appId',cfg.appId),true);
+    html+=C.field('备注','<textarea class="control" id="wc-remark" name="remark" rows="3" maxlength="500">'+esc(row?row.remark||'':'')+'</textarea>')+C.field('启用状态','<label><input type="checkbox" name="enabled" '+(!row||row.enabled?'checked':'')+'> 开启</label>');
+    return html;
+  }
+  function validateChannel(type,data,existing){
+    if(type==='inapp'||!typeNames[type])return {field:'name',message:'系统内置渠道不支持新增或编辑'};
+    let e=required(data.name,'name','渠道名称');if(e)return e;
+    const cfg=data.config||{},old=(existing&&existing.config)||{};
+    const fields=type==='email'?[['provider','服务商'],['host','SMTP服务器'],['port','SMTP端口'],['encryption','加密方式'],['fromEmail','发件邮箱'],['username','SMTP用户名'],['senderName','发件人名称']]:type==='wechat'?[['corpId','企业ID（CorpID）'],['agentId','应用AgentId']]:[['secretId','SecretId'],['appId','SmsSdkAppId']];
+    for(const [key,label] of fields){e=required(cfg[key],key,label);if(e)return e;}
+    const secret=type==='email'?'password':type==='wechat'?'secret':'secretKey';if(!cfg[secret]&&!old[secret])return {field:secret,message:'请填写'+(type==='email'?'SMTP密码/客户端专用密码':secret==='secret'?'Secret':'SecretKey')};
+    if(type==='email'){
+      if(cfg.provider!=='企业微信邮箱')return {field:'provider',message:'请选择有效的服务商'};
+      if(!['SSL/TLS','STARTTLS','不使用'].includes(cfg.encryption))return {field:'encryption',message:'请选择有效的加密方式'};
+      if(!/^\d+$/.test(String(cfg.port))||Number(cfg.port)<1||Number(cfg.port)>65535)return {field:'port',message:'SMTP端口请输入1–65535之间的整数'};
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cfg.fromEmail))return {field:'fromEmail',message:'请输入有效的发件邮箱'};
+    }
+    return null;
+  }
+  function readChannel(form,type){const fields=['provider','host','port','encryption','fromEmail','username','password','senderName','corpId','agentId','secret','secretId','secretKey','appId'];const config={};fields.forEach(k=>{if(form.elements.namedItem(k))config[k]=text(form,k);});return {type,name:text(form,'name'),remark:text(form,'remark'),enabled:checked(form,'enabled'),config};}
+  function saveChannel(type,data,id){
+    const existing=id?C.store.channels.find(r=>r.id===id):null;
+    if(id&&!existing)return {ok:false,error:{field:'name',message:'渠道已不存在，请刷新列表'}};
+    if(existing&&existing.type!==type)return {ok:false,error:{field:'name',message:'渠道类型不可变更，请重新打开编辑弹窗'}};
+    const error=validateChannel(type,data,existing);if(error)return {ok:false,error};
+    const config=Object.assign({},existing?existing.config:{},C.clone(data.config));
+    for(const key of ['password','secret','secretKey'])if(existing&&!data.config[key]&&existing.config&&existing.config[key])config[key]=existing.config[key];
+    const values={type,name:data.name,remark:data.remark||'',enabled:!!data.enabled,config,updatedAt:now(),operator:operator()};
+    let row;if(existing){Object.assign(existing,values);row=existing;}else{row=Object.assign({id:C.id('CH')},values);C.store.channels.push(row);}C.emit();return {ok:true,row};
+  }
+  function openChannelModal(type,id){
+    if(type==='inapp')return;
+    const existing=id?C.store.channels.find(r=>r.id===id):null;if(id&&!existing){C.toast('渠道已不存在','error');return;}
+    const modal=C.modal({title:existing?typeNames[type]+'渠道编辑':'渠道新增',html:channelFields(type,existing),width:760,onSave(form,m){
+      const data=readChannel(form,type),error=validateChannel(type,data,existing);if(!fieldError(m,error))return;
+      if(existing&&existing.enabled&&!data.enabled&&channelReferences(id).length){
+        C.confirm('停用引用渠道','该渠道被 '+channelReferences(id).length+' 条规则引用。停用后，这些规则后续发送可能失败。确认停用并保存？',()=>{const result=saveChannel(type,data,id);if(!result.ok){m.error(result.error.message,result.error.field);return;}m.close();C.render('mcChannelPage');C.toast('渠道已保存');},'确认停用');return;
+      }
+      const result=saveChannel(type,data,id);if(!result.ok){m.error(result.error.message,result.error.field);return;}m.close();C.render('mcChannelPage');C.toast('渠道已保存');
+    }});
+    return modal;
+  }
+  function toggleChannel(id){
+    const row=C.store.channels.find(r=>r.id===id);if(!row){C.toast('渠道已不存在','error');return;}
+    const next=!row.enabled,refs=channelReferences(id);
+    const apply=()=>{const current=C.store.channels.find(r=>r.id===id);if(!current){C.toast('渠道已不存在，未修改状态','error');return;}current.enabled=next;current.updatedAt=now();current.operator=operator();C.emit();C.render('mcChannelPage');C.toast('渠道已'+(next?'开启':'停用'));};
+    if(!next&&refs.length)C.confirm('停用引用渠道','渠道“'+row.name+'”被 '+refs.length+' 条规则引用（'+refNames(refs)+'）。停用可能导致后续消息发送失败，确认停用？',apply,'确认停用');else apply();
+  }
+  function deleteChannel(id){const row=C.store.channels.find(r=>r.id===id);if(!row||row.type==='inapp')return;const refs=channelReferences(id);C.confirm('删除通知渠道','确定删除渠道“'+row.name+'”？'+(refs.length?'该渠道被 '+refs.length+' 条规则引用（'+refNames(refs)+'）。继续删除会使对应配置失效，可能导致后续发送失败；历史发送快照保留。':'删除后无法在新配置中选择此渠道。'),()=>{const index=C.store.channels.findIndex(r=>r.id===id);if(index<0){C.toast('渠道已不存在，删除未执行','error');return;}C.store.channels.splice(index,1);C.emit();C.render('mcChannelPage');C.toast('渠道已删除');},refs.length?'仍要删除':'确认删除');}
+  function validateRecipient(type,value){if(!value)return '请填写接收对象';if(type==='email'&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value))return '请输入有效的接收邮箱';if(type==='sms'&&!/^\+?\d{6,20}$/.test(value))return '请输入有效的接收手机号';return '';}
+  function runTest(id,recipient,mode){const row=C.store.channels.find(r=>r.id===id);if(!row||row.type==='inapp')return {ok:false,reason:'渠道已不存在或不支持测试'};const invalid=validateRecipient(row.type,recipient);if(invalid)return {ok:false,validation:true,reason:invalid};if(!row.enabled)return {ok:false,reason:'渠道已停用，本次模拟未执行发送'};if(mode==='fail')return {ok:false,reason:'模拟服务商返回发送失败，请检查渠道配置后重试'};return {ok:true,reason:'模拟发送成功；未调用真实发送接口，不能据此判断渠道实际可用性'};}
+  function openChannelTest(id){
+    const row=C.store.channels.find(r=>r.id===id);if(!row||row.type==='inapp')return;
+    const label=row.type==='email'?'接收邮箱':row.type==='sms'?'接收手机号':'接收账号';
+    const sample=row.type==='email'?'【渠道测试】这是一封模拟测试邮件。':row.type==='wechat'?'【渠道测试】这是一条模拟企业微信应用消息。':'【渠道测试】这是一条模拟测试短信。';
+    return C.modal({title:typeNames[row.type]+'测试发送',width:620,saveText:'模拟发送',html:'<p class="wc-note">原型模拟测试，不调用真实服务商接口。</p>'+C.field(label,C.input('recipient','','autocomplete="off"'),true)+C.field('测试内容','<p>'+esc(sample)+'</p>')+C.field('模拟结果',C.select('testMode','success',[{id:'success',name:'模拟成功'},{id:'fail',name:'模拟失败'}]),true)+'<div data-wc-test-result role="status" aria-live="polite"></div>',onSave(form,m){const result=runTest(id,text(form,'recipient'),text(form,'testMode'));if(result.validation){m.error(result.reason,'recipient');return;}const output=m.el.querySelector('[data-wc-test-result]');output.className=result.ok?'wc-note':'wc-error';output.textContent=result.reason;}});
+  }
+  function eventOptions(){return Object.keys(eventNames).map(id=>({id,name:eventNames[id]}));}
+  function eventVariables(event){return (variableMap[event]||[]).slice();}
+  function parsedVariables(body){return Array.from(new Set(Array.from(String(body||'').matchAll(/\{\{\s*([^{}]+?)\s*\}\}/g),m=>m[1])));}
+  function templateColumns(type){
+    if(type==='sms')return [{key:'id',label:'模板消息ID'},{key:'event',label:'绑定规则',render:v=>display(eventNames[v]||v)},{key:'name',label:'模板消息名称'},{key:'body',label:'模板消息内容',render:(v,r)=>contentCell(v,r)},{key:'channelId',label:'渠道ID',render:display},{key:'channelId',label:'渠道名称',render:v=>display((C.store.channels.find(x=>x.id===v)||{}).name)},{key:'updatedAt',label:'更新时间'},{key:'operator',label:'操作人'}];
+    return [{key:'id',label:'模板消息ID'},{key:'name',label:'模板消息名称'},{key:'type',label:'模板消息类型',render:v=>display(templateTypeNames[v]||v)},{key:'body',label:'模板消息内容',render:(v,r)=>contentCell(v,r)},{key:'updatedAt',label:'更新时间'},{key:'operator',label:'操作人'},{key:'actions',label:'操作',render:(_,r)=>'<div class="wc-row-actions"><button type="button" class="link-btn" data-wc-template-edit="'+esc(r.id)+'">编辑</button><button type="button" class="link-btn danger" data-wc-template-delete="'+esc(r.id)+'">删除</button></div>'}];
+  }
+  function contentCell(value,row){return '<div class="wc-template-snippet" style="max-width:360px;white-space:normal;overflow-wrap:anywhere">'+esc(String(value||'').length>90?String(value).slice(0,90)+'…':value||'--')+'</div><button type="button" class="link-btn" data-wc-template-preview="'+esc(row.id)+'">查看完整内容</button>';}
+  function renderTemplates(host){
+    const rows=C.store.templates.filter(t=>t.type===templateState.type);
+    host.innerHTML='<div class="wc-module">'+templateTabs()+'<div class="wc-actions"><button type="button" class="btn" '+(templateState.type==='sms'?'data-wc-sms-sync>同步短信模板':'data-wc-template-add>模板消息新增')+'</button></div>'+'<div id="wc-template-list" role="tabpanel" aria-label="'+templateTypeNames[templateState.type]+'模板">'+C.grid(rows,templateColumns(templateState.type),templateState,templateState.type==='sms'?1550:1450)+'</div></div>';
+    host.querySelectorAll('[data-wc-template-type]').forEach(b=>b.addEventListener('click',()=>{templateState.type=b.dataset.wcTemplateType;templateState.page=1;C.render('mcTemplatePage');}));
+    const add=host.querySelector('[data-wc-template-add]');if(add)add.addEventListener('click',()=>openTemplateModal(templateState.type));
+    const sync=host.querySelector('[data-wc-sms-sync]');if(sync)sync.addEventListener('click',()=>openSmsSync());
+    host.querySelectorAll('[data-wc-template-edit]').forEach(b=>b.addEventListener('click',()=>{const t=C.store.templates.find(r=>r.id===b.dataset.wcTemplateEdit);if(t)openTemplateModal(t.type,t.id);}));
+    host.querySelectorAll('[data-wc-template-delete]').forEach(b=>b.addEventListener('click',()=>deleteTemplate(b.dataset.wcTemplateDelete)));
+    host.querySelectorAll('[data-wc-template-preview]').forEach(b=>b.addEventListener('click',()=>previewTemplate(b.dataset.wcTemplatePreview)));
+    bindTabKeys(host,'[data-wc-template-type]');
+    C.bindPager(host,templateState,()=>C.render('mcTemplatePage'));
+  }
+  function variableButtons(event){const vars=eventVariables(event);return '<div class="wc-tags" aria-label="可插入变量">'+vars.map(v=>'<button type="button" class="btn secondary" data-wc-variable="'+esc(v)+'">'+esc(v)+'</button>').join('')+'</div>';}
+  function templateFields(type,row){const wx=type==='wechat';return C.field('模板消息名称',C.input('name',row?row.name:'','maxlength="100"'),true)+C.field('绑定规则',C.select('event',row?row.event:'traffic',eventOptions()),true)+'<p class="wc-muted">当前绑定业务事件；具体规则在规则中心关联本模板。</p>'+C.field(wx?'消息标题':'通知标题',C.input('title',row?row.title:'','maxlength="200"'),true)+C.field(wx?'消息正文':'通知正文','<div data-wc-variables>'+variableButtons(row?row.event:'traffic')+'</div><textarea class="control" name="body" id="wc-body" rows="7">'+esc(row?row.body:'')+'</textarea><small class="wc-muted">点击变量会在正文光标处插入。切换绑定规则后，请移除不再适用的变量。</small>',true)+C.field('是否携带附件通知','<div class="wc-segment"><label><input type="radio" name="attachment" value="yes" '+(row&&row.attachment?'checked':'')+'> 携带附件</label><label><input type="radio" name="attachment" value="no" '+(!row||!row.attachment?'checked':'')+'> 不携带附件</label></div>');}
+  function validateTemplate(type,data,id){if(type==='sms'||!templateTypeNames[type])return {field:'name',message:'短信模板仅支持从服务商模拟同步'};for(const [key,label] of [['name','模板消息名称'],['event','绑定规则'],['title',type==='wechat'?'消息标题':'通知标题'],['body',type==='wechat'?'消息正文':'通知正文']]){const e=required(data[key],key,label);if(e)return e;}if(!eventNames[data.event])return {field:'event',message:'请选择有效的绑定规则'};const allowed=eventVariables(data.event);const used=parsedVariables(data.title+'\n'+data.body),invalid=used.filter(v=>!allowed.includes(v));if(invalid.length)return {field:'body',message:'当前事件不具备以下变量：'+invalid.join('、')+'。请调整正文或标题后保存。'};return null;}
+  function saveTemplate(type,data,id){const old=id?C.store.templates.find(t=>t.id===id):null;if(id&&!old)return {ok:false,error:{field:'name',message:'模板已不存在，请刷新列表'}};if(old&&old.type!==type)return {ok:false,error:{field:'name',message:'模板类型不可变更，请重新打开编辑弹窗'}};const error=validateTemplate(type,data,id);if(error)return {ok:false,error};const values={type,name:data.name,event:data.event,title:data.title,body:data.body,variables:parsedVariables(data.title+'\n'+data.body),attachment:!!data.attachment,updatedAt:now(),operator:operator()};let row;if(old){Object.assign(old,values);row=old;}else{row=Object.assign({id:C.id('TPL')},values);C.store.templates.push(row);}C.emit();return {ok:true,row};}
+  function insertVariable(textarea,name){const value='{{'+name+'}}';const start=textarea.selectionStart===null?textarea.value.length:textarea.selectionStart;const end=textarea.selectionEnd===null?start:textarea.selectionEnd;textarea.value=textarea.value.slice(0,start)+value+textarea.value.slice(end);const cursor=start+value.length;textarea.focus();textarea.setSelectionRange(cursor,cursor);textarea.dispatchEvent(new Event('input',{bubbles:true}));return textarea.value;}
+  function openTemplateModal(type,id){
+    if(type==='sms')return;const old=id?C.store.templates.find(t=>t.id===id):null;if(id&&!old){C.toast('模板已不存在','error');return;}
+    const modal=C.modal({title:old?'模板消息编辑':'模板消息新增',html:templateFields(type,old),width:800,onSave(form,m){const data={name:text(form,'name'),event:text(form,'event'),title:text(form,'title'),body:text(form,'body'),attachment:text(form,'attachment')==='yes'};const result=saveTemplate(type,data,id);if(!result.ok){m.error(result.error.message,result.error.field);return;}m.close();C.render('mcTemplatePage');C.toast('模板已保存');}});
+    const form=modal.el.querySelector('form'),body=form.elements.namedItem('body');
+    function bindVariables(){form.querySelectorAll('[data-wc-variable]').forEach(b=>b.addEventListener('click',()=>insertVariable(body,b.dataset.wcVariable)));}
+    bindVariables();form.elements.namedItem('event').addEventListener('change',()=>{form.querySelector('[data-wc-variables]').innerHTML=variableButtons(text(form,'event'));bindVariables();});
+    return modal;
+  }
+  function deleteTemplate(id){const row=C.store.templates.find(t=>t.id===id);if(!row||row.type==='sms')return;const refs=templateReferences(id);if(refs.length){C.toast('该模板已被规则引用（'+refNames(refs)+'），禁止删除','error');return;}C.confirm('删除消息模板','确定删除模板“'+row.name+'”？删除后无法恢复。',()=>{if(templateReferences(id).length){C.toast('模板现已被规则引用，删除未执行','error');return;}const i=C.store.templates.findIndex(t=>t.id===id);if(i<0){C.toast('模板已不存在，删除未执行','error');return;}C.store.templates.splice(i,1);C.emit();C.render('mcTemplatePage');C.toast('模板已删除');},'确认删除');}
+  function previewTemplate(id){const t=C.store.templates.find(r=>r.id===id);if(!t)return;const html='<dl class="wc-dl"><dt>模板消息ID</dt><dd>'+display(t.id)+'</dd><dt>模板消息名称</dt><dd>'+display(t.name)+'</dd><dt>绑定规则</dt><dd>'+display(eventNames[t.event]||t.event)+'</dd>'+(t.type==='sms'?'':'<dt>'+(t.type==='wechat'?'消息标题':'通知标题')+'</dt><dd>'+display(t.title)+'</dd>')+'<dt>'+(t.type==='wechat'?'消息正文':'通知正文')+'</dt><dd style="white-space:pre-wrap;overflow-wrap:anywhere">'+display(t.body)+'</dd>'+(t.type==='sms'?'<dt>服务商模板标识</dt><dd>'+display(t.providerTemplateId||t.id)+'</dd><dt>变量映射</dt><dd>'+display((t.variableOrder||[]).map((v,i)=>'{{'+(i+1)+'}}：'+v).join('；'))+'</dd>':'<dt>是否携带附件通知</dt><dd>'+(t.attachment?'携带附件':'不携带附件')+'</dd>')+'</dl>';C.drawer('模板完整内容',html);}
+  function syncSms(mode){if(mode==='fail')return {ok:false,reason:'模拟服务商同步失败，请重试；原模板数据未改变'};const channels=C.store.channels.filter(c=>c.type==='sms');if(!channels.length)return {ok:false,reason:'尚无短信渠道，请先新增短信渠道后重试'};let count=0;channels.forEach(channel=>{const providerTemplateId='SMS_TRAFFIC_001',id='SMS-'+channel.id+'-'+providerTemplateId;let row=C.store.templates.find(t=>t.type==='sms'&&t.channelId===channel.id&&t.providerTemplateId===providerTemplateId);if(!row)row=C.store.templates.find(t=>t.id===id);const values={type:'sms',event:'traffic',name:'流量用量监测提醒（模拟已审核）',title:'',body:'设备{{1}}当前流量为{{2}}MB，达到阈值{{3}}MB，触发时间{{4}}。',variables:['1','2','3','4'],variableOrder:['设备编号','当前流量','流量阈值','触发时间'],providerTemplateId,channelId:channel.id,attachment:false,updatedAt:now(),operator:operator()};if(row)Object.assign(row,values);else C.store.templates.push(Object.assign({id},values));count++;});C.emit();return {ok:true,count};}
+  function openSmsSync(){return C.modal({title:'同步短信模板',width:560,saveText:'开始模拟同步',html:'<p class="wc-note">原型仅模拟读取服务商已审核模板，不调用真实同步接口。失败时保留已有数据，可再次重试。</p>'+C.field('模拟结果',C.select('syncMode','success',[{id:'success',name:'模拟成功'},{id:'fail',name:'模拟失败'}]),true)+'<div data-wc-sync-result role="status" aria-live="polite"></div>',async onSave(form,m){const result=syncSms(text(form,'syncMode'));if(!result.ok){const out=m.el.querySelector('[data-wc-sync-result]');out.className='wc-error';out.textContent=result.reason;return;}m.close();C.render('mcTemplatePage');C.toast('模拟同步完成，已刷新 '+result.count+' 个服务商模板；未调用真实接口');}});}
+  C.configsModule={channelState,templateState,renderChannels,renderTemplates,channelColumns,templateColumns,channelReferences,templateReferences,validateChannel,saveChannel,openChannelModal,toggleChannel,deleteChannel,validateRecipient,runTest,openChannelTest,eventOptions,eventVariables,parsedVariables,validateTemplate,saveTemplate,insertVariable,openTemplateModal,deleteTemplate,syncSms,openSmsSync};
+  C.register('mcChannelPage',renderChannels);
+  C.register('mcTemplatePage',renderTemplates);
+})(window.WatchCenters);
+
+(function(C){
+  'use strict';
+  const state={tab:'records',records:{draft:{},applied:{},page:1,pageSize:20},details:{draft:{},applied:{},page:1,pageSize:20}};
+  const columns=[{key:'id',label:'触发记录ID',render:value=>`<button class="link-text" type="button" data-wc-trigger="${C.esc(value)}">${C.esc(value)}</button>`},{key:'ruleType',label:'触发规则类型'},{key:'ruleId',label:'触发规则ID'},{key:'ruleName',label:'触发规则名称'},{key:'triggeredAt',label:'触发时间'},{key:'count',label:'触发卡数'},{key:'notificationId',label:'通知记录ID'}];
+  const detailColumns=[{key:'triggerId',label:'触发记录ID'},{key:'ruleType',label:'触发规则类型'},{key:'ruleId',label:'触发规则ID'},{key:'ruleName',label:'触发规则名称'},{key:'triggeredAt',label:'触发时间'},{key:'msisdn',label:'MSISDN'},{key:'iccid',label:'ICCID'},{key:'merchant',label:'所属商户'},{key:'supplier',label:'供应商'},{key:'operator',label:'运营商'},{key:'usageMB',label:'使用量（MB）'},{key:'condition',label:'触发条件'},{key:'action',label:'触发动作'},{key:'actionResult',label:'动作结果'},{key:'notificationId',label:'通知记录ID'}];
+  const contains=(text,needle)=>String(text||'').toLowerCase().includes(String(needle||'').trim().toLowerCase());
+  function filtered(){const s=state[state.tab],f=s.applied;return (state.tab==='records'?C.store.triggers.map(row=>({...row,count:row.cardIds.length})):C.store.triggerDetails).filter(row=>(!f.triggerId||contains(row.triggerId,f.triggerId))&&(!f.type||row.ruleType===f.type)&&(!f.keyword||contains(row.ruleId,f.keyword)||contains(row.ruleName,f.keyword))&&(!f.card||contains(row.msisdn,f.card)||contains(row.iccid,f.card))&&C.inRange(row.triggeredAt,f)).sort((a,b)=>b.triggeredAt.localeCompare(a.triggeredAt));}
+  function render(host){const s=state[state.tab],f=s.draft,details=state.tab==='details';host.innerHTML=`<div class="chip-page-tabs" role="tablist" aria-label="触发记录页签"><button class="chip-page-tab ${details?'':'active'}" type="button" role="tab" aria-selected="${!details}" tabindex="${details?-1:0}" data-trigger-tab="records">触发记录</button><button class="chip-page-tab ${details?'active':''}" type="button" role="tab" aria-selected="${details}" tabindex="${details?0:-1}" data-trigger-tab="details">触发明细</button></div><div class="query-panel"><div class="filter-wrap">${details?C.field('触发记录ID',C.input('triggerId',f.triggerId||'','placeholder="请输入触发记录ID"')):''}${C.field('触发规则类型',C.select('type',f.type||'',[{id:'',name:'全部'},{id:'流量用量监测',name:'流量用量监测'}],''))}${C.field('触发规则ID/触发规则名称',C.input('keyword',f.keyword||'','placeholder="请输入规则ID或名称"'))}${C.field('触发时间范围','<div id="wc-trigger-range"></div>')}${details?C.field('MSISDN/ICCID',C.input('card',f.card||'','placeholder="请输入MSISDN或ICCID"')):''}<div class="form-actions"><button class="btn search-btn" data-trigger-search>搜索</button><button class="btn secondary" data-trigger-reset>重置</button></div></div></div>${details?'<div class="wc-actions"><button class="btn" data-trigger-export>导出</button></div>':''}${C.grid(filtered(),details?detailColumns:columns,s,details?3000:1550)}`;
+    C.range(host.querySelector('#wc-trigger-range'),'wcTrigger'+state.tab,f);
+    host.querySelectorAll('[name]').forEach(input=>{input.addEventListener('input',()=>f[input.name]=input.value);input.addEventListener('change',()=>f[input.name]=input.value);});
+    const tabs=Array.from(host.querySelectorAll('[data-trigger-tab]'));tabs.forEach((button,index)=>{button.addEventListener('click',()=>{state.tab=button.dataset.triggerTab;C.render('rcTriggerPage');});button.addEventListener('keydown',event=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;event.preventDefault();const next=event.key==='Home'?0:event.key==='End'?1:(index+(event.key==='ArrowRight'?1:-1)+2)%2;tabs[next].click();document.querySelector(`[data-trigger-tab="${state.tab}"]`)?.focus();});});
+    host.querySelector('[data-trigger-search]').addEventListener('click',()=>{s.applied=C.clone(f);delete s.applied._dateUi;s.page=1;C.render('rcTriggerPage');});host.querySelector('[data-trigger-reset]').addEventListener('click',()=>{s.draft={};s.applied={};s.page=1;C.render('rcTriggerPage');});
+    host.querySelectorAll('[data-wc-trigger]').forEach(button=>button.addEventListener('click',()=>openDetails(button.dataset.wcTrigger)));
+    host.querySelector('[data-trigger-export]')?.addEventListener('click',()=>C.csv('规则触发明细.csv',detailColumns,filtered()));C.bindPager(host,s,()=>C.render('rcTriggerPage'));C.adaptQueryUI(host);
+  }
+  function openDetails(id){state.tab='details';state.details.draft={triggerId:id};state.details.applied={triggerId:id};state.details.page=1;C.open('rcTriggerPage');}
+  C.triggersModule={state,filtered,openDetails,columns,detailColumns};C.register('rcTriggerPage',render);
+})(window.WatchCenters);
+
+(function(C){
+  'use strict';
+  const EMPTY={recordId:'',ruleId:'',ruleName:'',status:'',dateStart:'',dateEnd:''};
+  const state={draft:{...EMPTY},applied:{...EMPTY},scope:'mine',page:1,pageSize:20,highlightId:''};
+  const statusOptions=['发送中','全部成功','部分成功','全部失败'];
+  let recordHost=null,topbarOpen=false;
+  const esc=C.esc;
+  const text=value=>value===null||value===undefined||String(value)===''?'--':String(value);
+  const methodName=id=>(C.types.find(type=>type.id===id)||{}).name||'--';
+  function summary(task){return C.notificationSummary(task);}
+  function statusHTML(value){
+    const kind=value==='成功'||value==='全部成功'?'success':value==='失败'||value==='全部失败'?'failure':value==='部分成功'?'partial':'pending';
+    return '<span class="wc-notification-result wc-notification-result-'+kind+'">'+esc(text(value))+'</span>';
+  }
+  function snapshotRuleName(task){return text(task.ruleName||task.ruleSnapshot&&task.ruleSnapshot.name);}
+  function sortedTasks(){return C.store.notifications.slice().sort((a,b)=>String(b.triggeredAt||'').localeCompare(String(a.triggeredAt||''))||String(b.id).localeCompare(String(a.id)));}
+  function filteredRecords(){
+    const q=state.applied;
+    return sortedTasks().filter(task=>{
+      if(state.scope==='mine'&&!C.isMine(task))return false;
+      if(q.recordId&&!String(task.id).includes(q.recordId))return false;
+      if(q.ruleId&&!String(task.ruleId||'').includes(q.ruleId))return false;
+      if(q.ruleName&&!snapshotRuleName(task).includes(q.ruleName))return false;
+      if(q.status&&summary(task).status!==q.status)return false;
+      return C.inRange(task.triggeredAt,q);
+    });
+  }
+  function idInner(task){return '<span>'+esc(text(task.id))+'</span>'+(C.isMine(task)&&C.isUnread(task)?'<span class="wc-notification-unread">未读</span>':'');}
+  const recordColumns=[
+    {key:'id',label:'通知记录ID',render:(value,row)=>'<span class="wc-notification-record-id" tabindex="-1" data-wc-record-id="'+esc(row.id)+'">'+idInner(row)+'</span>'},
+    {key:'ruleId',label:'触发规则ID'},
+    {key:'ruleName',label:'触发规则名称',render:(value,row)=>esc(snapshotRuleName(row))},
+    {key:'triggeredAt',label:'触发时间'},
+    {key:'total',label:'通知消息总数',render:(value,row)=>esc(summary(row).total)},
+    {key:'success',label:'成功数',render:(value,row)=>esc(summary(row).success)},
+    {key:'failed',label:'失败数',render:(value,row)=>esc(summary(row).failed)},
+    {key:'status',label:'通知状态',render:(value,row)=>statusHTML(summary(row).status)},
+    {key:'completedAt',label:'通知完成时间',render:(value,row)=>esc(text(summary(row).completedAt))},
+    {key:'actions',label:'操作',render:(value,row)=>'<button class="link-btn wc-text-button" type="button" data-wc-record-detail="'+esc(row.id)+'">记录详情</button>'}
+  ];
+  function syncReadMarkers(){
+    if(!recordHost)return;
+    recordHost.querySelectorAll('[data-wc-record-id]').forEach(node=>{
+      const task=C.store.notifications.find(item=>item.id===node.getAttribute('data-wc-record-id'));
+      if(!task)return;
+      node.innerHTML=idInner(task);
+      const row=node.closest('tr');
+      if(row){row.classList.toggle('wc-notification-unread-row',C.isMine(task)&&C.isUnread(task));row.classList.toggle('wc-highlight',task.id===state.highlightId);}
+    });
+  }
+  function renderRecordList(){
+    const tableHost=recordHost&&recordHost.querySelector('[data-wc-record-grid]');
+    if(!tableHost)return;
+    const rows=filteredRecords();
+    const targetIndex=state.highlightId?rows.findIndex(task=>task.id===state.highlightId):-1;
+    if(targetIndex>=0)state.page=Math.floor(targetIndex/state.pageSize)+1;
+    tableHost.innerHTML=C.grid(rows,recordColumns,state,1610);
+    C.bindPager(tableHost,state,()=>{state.highlightId='';renderRecordList();});
+    tableHost.querySelectorAll('[data-wc-record-detail]').forEach(button=>button.addEventListener('click',()=>openRecord(button.getAttribute('data-wc-record-detail'))));
+    syncReadMarkers();
+  }
+  function readQuery(form){
+    ['recordId','ruleId','ruleName','status'].forEach(key=>{const input=form.elements.namedItem('mcRecord-'+key);state.draft[key]=String(input&&input.value||'').trim();});
+  }
+  function render(host){
+    recordHost=host;
+    const q=state.draft;
+    host.innerHTML='<div class="wc-module wc-notification-records">'+
+      '<form class="query-panel" data-wc-record-query novalidate><div class="filter-wrap">'+
+      C.field('通知记录ID',C.input('mcRecord-recordId',q.recordId,'placeholder="请输入通知记录ID"'))+
+      C.field('触发规则ID',C.input('mcRecord-ruleId',q.ruleId,'placeholder="请输入触发规则ID"'))+
+      C.field('触发规则名称',C.input('mcRecord-ruleName',q.ruleName,'placeholder="请输入触发规则名称"'))+
+      C.field('通知状态',C.select('mcRecord-status',q.status,[{id:'',name:'全部'},...statusOptions.map(name=>({id:name,name}))],''))+
+      '<div class="field writable-date-range" data-wc-record-date></div>'+
+      '<div class="form-actions"><button class="btn search-btn" type="submit">搜索</button><button class="btn secondary" type="button" data-wc-record-reset>重置</button></div>'+
+      '</div></form>'+
+      '<div class="writable-status-tabs wc-notification-scope" role="group" aria-label="通知记录范围">'+
+      '<button class="writable-status-tab '+(state.scope==='mine'?'active':'')+'" type="button" data-wc-record-scope="mine" aria-pressed="'+(state.scope==='mine')+'">与我相关</button>'+
+      '<button class="writable-status-tab '+(state.scope==='all'?'active':'')+'" type="button" data-wc-record-scope="all" aria-pressed="'+(state.scope==='all')+'">全部</button></div>'+
+      '<div data-wc-record-grid></div></div>';
+    const form=host.querySelector('[data-wc-record-query]');
+    C.range(host.querySelector('[data-wc-record-date]'),'wcNotificationRecord',state.draft,()=>{});
+    form.addEventListener('input',()=>readQuery(form));
+    form.addEventListener('change',()=>readQuery(form));
+    form.addEventListener('submit',event=>{event.preventDefault();readQuery(form);state.applied={...state.draft};state.page=1;state.highlightId='';renderRecordList();});
+    host.querySelector('[data-wc-record-reset]').addEventListener('click',()=>{state.draft={...EMPTY};state.applied={...EMPTY};state.page=1;state.highlightId='';render(host);});
+    host.querySelectorAll('[data-wc-record-scope]').forEach(button=>button.addEventListener('click',()=>{readQuery(form);state.scope=button.getAttribute('data-wc-record-scope');state.page=1;state.highlightId='';render(host);}));
+    renderRecordList();
+    C.adaptQueryUI(host);
+  }
+  function detailRows(task){
+    return (task.messages||[]).map(message=>{
+      const recipient=message.recipientSnapshot||{};
+      const result=message.status==='成功'?'成功':message.status==='失败'?'失败':'发送中';
+      return {name:text(recipient.name),mobile:text(recipient.mobile),email:text(recipient.email),account:text(recipient.account),merchant:text(recipient.merchant),role:text(recipient.role),method:methodName(message.method),templateId:text(message.templateId||message.templateSnapshot&&message.templateSnapshot.id),status:result,failureReason:result==='失败'?text(message.failureReason):'--',sentAt:text(message.sentAt)};
+    });
+  }
+  const detailColumns=[
+    {key:'name',label:'姓名'},{key:'mobile',label:'手机号'},{key:'email',label:'邮箱'},{key:'account',label:'账号'},{key:'merchant',label:'商户名称'},{key:'role',label:'角色'},{key:'method',label:'通知方式'},{key:'templateId',label:'通知模板ID'},{key:'status',label:'通知状态',render:value=>statusHTML(value)},{key:'failureReason',label:'失败原因'},{key:'sentAt',label:'通知时间'}
+  ];
+  function dlItem(label,value){return '<dt>'+esc(label)+'</dt><dd>'+esc(text(value))+'</dd>';}
+  function openRecord(id){
+    const task=C.store.notifications.find(item=>item.id===id);
+    if(!task){C.toast('未找到该通知记录，请刷新后重试。','error');return null;}
+    topbarOpen=false;
+    C.markViewed(task.id);
+    refreshMessages();
+    syncReadMarkers();
+    const historical=C.clone(task),counts=summary(historical),rows=detailRows(historical);
+    const methods=Array.from(new Set((historical.messages||[]).map(message=>message.method))).map(methodName).join('、')||'--';
+    const cardCount=new Set((historical.cardIds||[]).map(String)).size;
+    const html='<section class="wc-form-section"><h3>通知记录信息</h3><dl class="wc-dl">'+
+      dlItem('通知记录ID',historical.id)+dlItem('触发规则ID',historical.ruleId)+dlItem('触发规则名称',snapshotRuleName(historical))+dlItem('触发时间',historical.triggeredAt)+dlItem('触发卡数',cardCount)+dlItem('通知方式',methods)+dlItem('通知消息总数',counts.total)+dlItem('通知状态',counts.status)+dlItem('通知完成时间',counts.completedAt)+
+      '</dl></section><section class="wc-form-section"><h3>通知明细</h3><div class="wc-actions"><button class="btn" type="button" data-wc-notification-export>导出</button></div><div data-wc-notification-details></div></section>';
+    const drawer=C.drawer('通知记录详情',html);
+    if(!drawer||!drawer.el){C.toast('通知详情暂时无法打开，请重试。','error');return drawer;}
+    const detailsHost=drawer.el.querySelector('[data-wc-notification-details]');
+    const detailState={page:1,pageSize:20};
+    const renderDetails=()=>{detailsHost.innerHTML=C.grid(rows,detailColumns,detailState,1690);C.bindPager(detailsHost,detailState,renderDetails);};
+    renderDetails();
+    drawer.el.querySelector('[data-wc-notification-export]').addEventListener('click',()=>C.csv('通知明细-'+historical.id+'.csv',detailColumns.map(({key,label})=>({key,label})),rows));
+    return drawer;
+  }
+  function jumpToRecord(id){
+    const task=C.store.notifications.find(item=>item.id===id);
+    if(!task){C.toast('未找到该通知记录，请刷新后重试。','error');return;}
+    state.draft={...EMPTY,recordId:task.id};state.applied={...state.draft};state.scope=C.isMine(task)?'mine':'all';state.page=1;state.highlightId=task.id;
+    topbarOpen=false;
+    C.markViewed(task.id);
+    refreshMessages();
+    C.open('mcRecordPage');
+    const locate=()=>{
+      const node=recordHost&&Array.from(recordHost.querySelectorAll('[data-wc-record-id]')).find(item=>item.getAttribute('data-wc-record-id')===task.id);
+      if(node){node.focus({preventScroll:true});if(node.scrollIntoView)node.scrollIntoView({block:'nearest',inline:'nearest'});}
+    };
+    if(typeof window.requestAnimationFrame==='function')window.requestAnimationFrame(locate);else setTimeout(locate,0);
+  }
+  const bell='<svg class="wc-message-bell-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M10 21h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
+  function positionPopover(){
+    const host=document.getElementById('wcTopbarMessages'),panel=host&&host.querySelector('[data-wc-message-panel]'),button=host&&host.querySelector('[data-wc-message-toggle]');
+    if(!panel||!button)return;
+    const rect=button.getBoundingClientRect();
+    const viewport=window.innerWidth||document.documentElement.clientWidth||1200;
+    const width=Math.min(400,Math.max(240,viewport-24));
+    panel.style.width=width+'px';panel.style.left=Math.max(12,Math.min(rect.right-width,viewport-width-12))+'px';panel.style.top=Math.min(rect.bottom+8,Math.max(12,(window.innerHeight||800)-160))+'px';
+    panel.style.maxHeight=Math.max(120,(window.innerHeight||800)-rect.bottom-20)+'px';
+  }
+  function refreshMessages(){
+    const host=document.getElementById('wcTopbarMessages');
+    if(!host)return;
+    const mine=sortedTasks().filter(task=>C.isMine(task));
+    const unread=mine.filter(task=>C.isUnread(task));
+    const active=document.activeElement;
+    const focusRole=active&&host.contains(active)?active.getAttribute('data-wc-message-focus'):'';
+    host.classList.add('wc-topbar-messages');
+    host.innerHTML='<button class="wc-message-toggle '+(unread.length?'wc-message-has-unread':'')+'" type="button" data-wc-message-toggle data-wc-message-focus="toggle" aria-expanded="'+topbarOpen+'" aria-controls="wcNotificationMessagePanel" aria-label="消息通知'+(unread.length?'，'+unread.length+'条未查看':'，暂无未查看消息')+'">'+bell+(unread.length?'<span class="wc-message-badge" aria-hidden="true">'+(unread.length>99?'99+':unread.length)+'</span>':'')+'</button>'+
+      (unread.length?'<span class="wc-message-hint" role="status">您有'+unread.length+'条待处理的消息，请尽快查看～</span>':'')+
+      (topbarOpen?'<section class="wc-message-panel" id="wcNotificationMessagePanel" data-wc-message-panel role="region" aria-label="消息列表"><div class="wc-message-panel-heading"><strong>消息通知</strong><button type="button" class="wc-text-button" data-wc-message-read-all data-wc-message-focus="readall" '+(!unread.length?'disabled':'')+'>全部已读</button></div><p class="wc-message-reading-note">已读仅表示已查看，发送结果独立记录。</p><div class="wc-message-list">'+(mine.length?mine.map(task=>{
+        const counts=summary(task),isUnread=C.isUnread(task);
+        return '<button type="button" class="wc-message-item '+(isUnread?'is-unread':'')+'" data-wc-message-id="'+esc(task.id)+'" data-wc-message-focus="'+esc(task.id)+'"><span class="wc-message-item-title">'+esc('规则通知：'+snapshotRuleName(task))+'</span><span class="wc-message-item-time">'+esc(text(task.triggeredAt))+'</span><span class="wc-message-item-summary">'+esc('共'+counts.total+'条通知消息，'+counts.status)+'</span><span class="wc-message-item-read">'+(isUnread?'未查看':'已查看')+'</span></button>';
+      }).join(''):'<p class="wc-message-empty">暂无与我相关的消息</p>')+'</div></section>':'');
+    host.querySelector('[data-wc-message-toggle]').addEventListener('click',()=>{topbarOpen=!topbarOpen;refreshMessages();});
+    host.querySelectorAll('[data-wc-message-id]').forEach(button=>button.addEventListener('click',()=>jumpToRecord(button.getAttribute('data-wc-message-id'))));
+    const readAll=host.querySelector('[data-wc-message-read-all]');
+    if(readAll)readAll.addEventListener('click',()=>{mine.filter(task=>C.isUnread(task)).forEach(task=>C.markViewed(task.id));syncReadMarkers();refreshMessages();const toggle=host.querySelector('[data-wc-message-toggle]');if(toggle)toggle.focus({preventScroll:true});});
+    positionPopover();
+    if(focusRole){const next=Array.from(host.querySelectorAll('[data-wc-message-focus]')).find(node=>node.getAttribute('data-wc-message-focus')===focusRole);if(next&&!next.disabled)next.focus({preventScroll:true});}
+  }
+  function closeMessages(restore){
+    if(!topbarOpen)return;
+    topbarOpen=false;refreshMessages();
+    if(restore){const button=document.querySelector('#wcTopbarMessages [data-wc-message-toggle]');if(button)button.focus();}
+  }
+  document.addEventListener('pointerdown',event=>{const host=document.getElementById('wcTopbarMessages');if(topbarOpen&&host&&!host.contains(event.target))closeMessages(false);});
+  document.addEventListener('keydown',event=>{if(topbarOpen&&event.key==='Escape'){event.preventDefault();closeMessages(true);}});
+  window.addEventListener('resize',positionPopover);
+  window.addEventListener('scroll',positionPopover,true);
+  const style=document.createElement('style');
+  style.textContent=`
+    .wc-notification-records .wc-notification-scope{gap:10px;margin:16px 18px;padding:0;border:0;flex:0 0 auto;align-self:flex-start;flex-wrap:wrap;overflow:visible;}
+    .wc-notification-result{white-space:nowrap;}.wc-notification-result-success{color:#16803e;}.wc-notification-result-failure{color:#dc2626;}.wc-notification-result-partial{color:#b45309;}.wc-notification-result-pending{color:#2563eb;}
+    .wc-notification-record-id{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;}.wc-notification-record-id:focus{outline:2px solid var(--blue,#1687e8);outline-offset:4px;}
+    .wc-notification-unread{display:inline-flex;padding:1px 6px;border:1px solid #bfdbfe;border-radius:3px;color:#1687e8;background:#eff6ff;font-size:11px;line-height:18px;}
+    .wc-notification-records tr.wc-notification-unread-row>td{background:#f7fbff;}.wc-notification-records tr.wc-highlight>td{background:#eaf4ff;box-shadow:inset 0 1px #bfdbfe,inset 0 -1px #bfdbfe;}
+    .wc-topbar-messages{display:flex;align-items:center;gap:8px;position:relative;min-width:34px;height:100%;font-size:12px;color:inherit;}
+    .wc-message-toggle{position:relative;width:34px;height:34px;border:0;border-radius:4px;background:transparent;color:inherit;display:grid;place-items:center;padding:6px;cursor:pointer;}
+    .wc-message-toggle:hover,.wc-message-toggle[aria-expanded="true"]{background:rgba(255,255,255,.15);}.wc-message-bell-icon{display:block;width:22px;height:22px;}
+    .wc-message-has-unread .wc-message-bell-icon{animation:wc-message-bell 1.8s ease-in-out infinite;transform-origin:50% 15%;}
+    .wc-message-badge{position:absolute;right:-6px;top:0;min-width:17px;height:17px;padding:0 4px;border-radius:9px;background:#f04452;color:white;font-size:10px;line-height:17px;text-align:center;}
+    .wc-message-hint{font-size:12px;line-height:18px;white-space:normal;max-width:245px;}
+    .wc-message-panel{position:fixed;z-index:80;display:flex;flex-direction:column;background:#fff;color:#253247;border:1px solid #e2e8f0;border-radius:6px;box-shadow:0 10px 35px rgba(15,23,42,.16);overflow:hidden;font-size:13px;white-space:normal;}
+    .wc-message-panel-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;border-bottom:1px solid #edf0f5;flex:0 0 auto;}.wc-message-panel-heading strong{font-size:14px;}
+    .wc-message-reading-note{padding:8px 16px;margin:0;color:#7a8799;font-size:12px;line-height:18px;flex:0 0 auto;}.wc-message-list{overflow:auto;min-height:0;max-height:430px;}
+    .wc-message-item{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:5px 10px;width:100%;padding:12px 16px;border:0;border-top:1px solid #edf0f5;background:#fff;text-align:left;color:inherit;font:inherit;cursor:pointer;}
+    .wc-message-item.is-unread{background:#f4f9ff;}.wc-message-item:hover{background:#eaf4ff;}.wc-message-item-title{grid-column:1 / -1;font-weight:600;overflow-wrap:anywhere;}.wc-message-item-time{grid-column:1 / -1;color:#8290a4;font-size:12px;}.wc-message-item-summary{color:#586679;font-size:12px;overflow-wrap:anywhere;}.wc-message-item-read{align-self:end;white-space:nowrap;color:#7c8797;font-size:12px;}.wc-message-item.is-unread .wc-message-item-read{color:#1687e8;}.wc-message-empty{padding:28px 16px;text-align:center;color:#8290a4;}
+    .wc-message-panel .wc-text-button{border:0;background:transparent;color:var(--blue,#1687e8);padding:0;cursor:pointer;font:inherit;}.wc-message-panel .wc-text-button:disabled{color:#a0aabb;cursor:default;}
+    .wc-topbar-messages button:focus-visible{outline:2px solid #94c5ff;outline-offset:2px;}.wc-message-item:focus-visible{outline-offset:-3px;}
+    @keyframes wc-message-bell{0%,40%,100%{transform:rotate(0)}8%{transform:rotate(-13deg)}16%{transform:rotate(11deg)}24%{transform:rotate(-8deg)}32%{transform:rotate(5deg)}}
+    @media(prefers-reduced-motion:reduce){.wc-message-has-unread .wc-message-bell-icon{animation:none;}}
+    @media(max-width:900px){.wc-message-hint{max-width:180px;font-size:11px;line-height:15px;}}
+    @media(max-width:640px){.wc-message-hint{max-width:130px;font-size:10px;line-height:14px;}.wc-topbar-messages{gap:4px;}}
+  `;
+  document.head.appendChild(style);
+  C.refreshMessages=refreshMessages;
+  C.recordsModule={render,openRecord,jumpToRecord,filteredRecords,detailRows,detailColumns,recordColumns,refreshMessages,getState:()=>state};
+  C.register('mcRecordPage',render);
+  refreshMessages();
+})(window.WatchCenters);
+
+</script>
 </body>
 </html>
