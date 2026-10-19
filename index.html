@@ -7994,7 +7994,7 @@
     }
     .admin-tab-panel[hidden] { display: none; }
     #speedLimitPage .speed-limit-history-table { table-layout: fixed; }
-    #speedLimitPage .speed-limit-record-table { min-width: 3010px; }
+    #speedLimitPage .speed-limit-record-table { min-width: 3150px; }
     #speedLimitPage .speed-limit-history-table th,
     #speedLimitPage .speed-limit-history-table td { width: 140px; white-space: nowrap; }
     #speedLimitPage .speed-limit-history-table th:first-child,
@@ -8003,8 +8003,8 @@
     #speedLimitPage .speed-limit-history-table td.speed-limit-empty { position: static; white-space: normal; }
     #speedLimitPage .speed-limit-history-table th:nth-child(6),
     #speedLimitPage .speed-limit-history-table td:nth-child(6) { width: 220px; white-space: normal; overflow-wrap: anywhere; }
-    #speedLimitPage .speed-limit-record-table :is(th,td):is(:nth-child(9),:nth-child(10),:nth-child(15),:nth-child(16)) { width: 190px; font-variant-numeric: tabular-nums; }
-    #speedLimitPage .speed-limit-record-table :is(th,td):is(:nth-child(12),:nth-child(13)) { width: 230px; white-space: normal; overflow-wrap: anywhere; }
+    #speedLimitPage .speed-limit-record-table :is(th,td):is(:nth-child(10),:nth-child(11),:nth-child(16),:nth-child(17)) { width: 190px; font-variant-numeric: tabular-nums; }
+    #speedLimitPage .speed-limit-record-table :is(th,td):is(:nth-child(13),:nth-child(14)) { width: 230px; white-space: normal; overflow-wrap: anywhere; }
     #speedLimitPage .speed-limit-history-table :is(th,td):nth-child(2) { width: 250px; font-variant-numeric: tabular-nums; }
     #speedLimitRecordFilterWrap > .form-actions { grid-column: auto; }
     :is(#speedLimitRecordDateField, #speedLimitReportDateField, #simManualSpeedDateField, #simDetailSpeedLimitDateField) .date-range-menu { position: fixed; overflow-x: hidden; overflow-y: auto; }
@@ -8079,7 +8079,7 @@
     #speedLimitPage .speed-limit-report-table th:nth-child(3),
     #speedLimitPage .speed-limit-report-table td:nth-child(3) { min-width: 0; }
 
-    #speedLimitPage .speed-limit-table { min-width: 1040px; }
+    #speedLimitPage .speed-limit-table { min-width: 1180px; }
     #speedLimitPage .speed-limit-table .operation-col { min-width: 128px; width: 128px; }
     #speedLimitPage .speed-limit-row-actions { display: inline-flex; align-items: center; gap: 20px; white-space: nowrap; }
     #speedLimitPage .speed-limit-row-actions button { min-height: 32px; }
@@ -8351,12 +8351,12 @@
     :is(#simDetailSpeedHistoryPager, #speedLimitBatchPager) .page-btn:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
     #simDetailPage .sim-detail-speed-history .table-scroll { min-width: 0; max-width: 100%; overflow: auto; border-top: 1px solid var(--line-soft); }
     #simDetailPage .sim-detail-speed-history .table-scroll:focus-visible { outline: 2px solid var(--blue); outline-offset: -2px; }
-    #simDetailPage .sim-detail-speed-table { min-width: 2330px; table-layout: fixed; }
+    #simDetailPage .sim-detail-speed-table { min-width: 2850px; table-layout: fixed; }
     #simDetailPage .sim-detail-speed-table :is(th, td) { width: 140px; white-space: nowrap; }
     #simDetailPage .sim-detail-speed-table :is(th, td):nth-child(3) { width: 160px; }
     #simDetailPage .sim-detail-speed-table :is(th, td):nth-child(4) { width: 230px; white-space: normal; overflow-wrap: anywhere; }
-    #simDetailPage .sim-detail-speed-table :is(th, td):is(:nth-child(12), :last-child) { width: 260px; white-space: normal; overflow-wrap: anywhere; }
-    #simDetailPage .sim-detail-speed-table :is(th, td):nth-child(10) { width: 190px; font-variant-numeric: tabular-nums; }
+    #simDetailPage .sim-detail-speed-table :is(th, td):is(:nth-child(15), :last-child) { width: 260px; white-space: normal; overflow-wrap: anywhere; }
+    #simDetailPage .sim-detail-speed-table :is(th, td):is(:nth-child(8), :nth-child(9), :nth-child(13)) { width: 190px; font-variant-numeric: tabular-nums; }
     #simDetailPage .sim-detail-speed-table :is(th, td):first-child { width: 250px; font-variant-numeric: tabular-nums; }
     #simDetailPage .sim-detail-speed-table td.sim-detail-speed-empty { white-space: normal; text-align: center; padding: 48px 20px; color: var(--muted); }
     #simDetailUnavailablePanel { padding: 48px 20px; text-align: center; color: var(--muted); }
@@ -8379,7 +8379,7 @@
     #simDetailSpeedLimitRate { width: 100%; cursor: pointer; }
     #simDetailSpeedLimitRemark { width: 100%; min-height: 100px; resize: none; font: inherit; line-height: 1.7; }
     #simDetailSpeedLimitModal [aria-invalid="true"] { border-color: var(--red); }
-    #simDetailSpeedLimitModal :is(button,select,textarea):focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+    #simDetailSpeedLimitModal :is(button,input,select,textarea):focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
     #simDetailSpeedLimitModal .modal-foot .btn { min-width: 88px; }
     @media (max-width: 640px) { #simDetailSpeedLimitModal .modal-form-row { grid-template-columns: minmax(0, 1fr); gap: 6px; } #simDetailSpeedLimitModal .modal-label { justify-content: flex-start; } }
   /* Rule and message centers use the existing application tokens and controls. */
@@ -8850,6 +8850,10 @@
                   <select class="control" id="speedLimitFilterUsage" aria-label="月用量限速状态"><option value="" disabled hidden selected>月用量限速状态</option><option value="true">开启</option><option value="false">停用</option></select>
                   <button class="query-clear" type="button" aria-label="清空月用量限速状态">×</button>
                 </div>
+                <div class="field clearable-query" data-key="restoreNextMonth">
+                  <select class="control" id="speedLimitFilterRestoreNextMonth" aria-label="次月恢复"><option value="" disabled hidden selected>次月恢复</option><option value="true">恢复</option><option value="false">不恢复</option></select>
+                  <button class="query-clear" type="button" aria-label="清空次月恢复">×</button>
+                </div>
                 <div class="form-actions"><button class="btn search-btn" id="speedLimitSearchBtn" type="button">搜索</button><button class="btn secondary" id="speedLimitResetBtn" type="button">重置</button></div>
               </div>
             </section>
@@ -8904,6 +8908,10 @@
                 <div class="field clearable-query" data-key="status">
                   <select class="control" id="speedLimitRecordFilterStatus" aria-label="操作状态"><option value="" disabled hidden selected>操作状态</option></select>
                   <button class="query-clear" type="button" aria-label="清空操作状态">×</button>
+                </div>
+                <div class="field clearable-query" data-key="restoreNextMonth">
+                  <select class="control" id="speedLimitRecordFilterRestoreNextMonth" aria-label="次月恢复"><option value="" disabled hidden selected>次月恢复</option></select>
+                  <button class="query-clear" type="button" aria-label="清空次月恢复">×</button>
                 </div>
                 <div class="field writable-date-range" id="speedLimitRecordDateField" data-key="historyDate"></div>
                 <div class="form-actions"><button class="btn search-btn" id="speedLimitRecordSearchBtn" type="button">搜索</button><button class="btn secondary" id="speedLimitRecordResetBtn" type="button">重置</button></div>
@@ -10242,6 +10250,7 @@
         <form class="modal-form" id="simDetailSpeedLimitForm" novalidate>
           <div class="modal-form-row"><label class="modal-label" for="simDetailSpeedLimitRate"><span class="required" aria-hidden="true">*</span>限速值</label><div><select class="batch-select" id="simDetailSpeedLimitRate" required aria-required="true" aria-describedby="simDetailSpeedLimitRateError"><option value="" disabled hidden selected>请选择限速值</option></select><div class="modal-field-error" id="simDetailSpeedLimitRateError" role="alert"></div></div></div>
           <div class="modal-form-row"><span class="modal-label" id="simDetailSpeedLimitDatesLabel"><span class="required" aria-hidden="true">*</span>生效日期</span><div><div class="field writable-date-range" id="simDetailSpeedLimitDateField"></div><div class="modal-field-error" id="simDetailSpeedLimitDatesError" role="alert"></div></div></div>
+          <div class="modal-form-row"><span class="modal-label" id="simDetailSpeedLimitRestoreNextMonthLabel"><span class="required" aria-hidden="true">*</span>次月恢复</span><div><div class="radio-group" id="simDetailSpeedLimitRestoreNextMonthGroup" role="radiogroup" aria-labelledby="simDetailSpeedLimitRestoreNextMonthLabel" aria-describedby="simDetailSpeedLimitRestoreNextMonthError" aria-required="true" tabindex="-1"></div><div class="modal-field-error" id="simDetailSpeedLimitRestoreNextMonthError" role="alert"></div></div></div>
           <div class="modal-form-row"><label class="modal-label" for="simDetailSpeedLimitRemark">备注（选填）</label><div><textarea class="batch-textarea" id="simDetailSpeedLimitRemark" rows="4" placeholder="请输入备注（选填）"></textarea></div></div>
           <div class="modal-field-error" id="simDetailSpeedLimitSubmitError" role="alert" aria-live="polite" tabindex="-1"></div>
         </form>
@@ -13226,10 +13235,31 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     const scientificCalculationUiIcons = {"question":"data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjODU5MGE4IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGNsYXNzPSJpY29uIiB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0Ij4KICA8cGF0aCBkPSJNNTEyIDY0QzI2NC42IDY0IDY0IDI2NC42IDY0IDUxMnMyMDAuNiA0NDggNDQ4IDQ0OCA0NDgtMjAwLjYgNDQ4LTQ0OFM3NTkuNCA2NCA1MTIgNjR6bTAgODIwYy0yMDUuNCAwLTM3Mi0xNjYuNi0zNzItMzcyczE2Ni42LTM3MiAzNzItMzcyIDM3MiAxNjYuNiAzNzIgMzcyLTE2Ni42IDM3Mi0zNzIgMzcyeiIvPgogIDxwYXRoIGQ9Ik02MjMuNiAzMTYuN0M1OTMuNiAyOTAuNCA1NTQgMjc2IDUxMiAyNzZzLTgxLjYgMTQuNS0xMTEuNiA0MC43QzM2OS4yIDM0NCAzNTIgMzgwLjcgMzUyIDQyMHY3LjZjMCA0LjQgMy42IDggOCA4aDQ4YzQuNCAwIDgtMy42IDgtOFY0MjBjMC00NC4xIDQzLjEtODAgOTYtODBzOTYgMzUuOSA5NiA4MGMwIDMxLjEtMjIgNTkuNi01Ni4xIDcyLjctMjEuMiA4LjEtMzkuMiAyMi4zLTUyLjEgNDAuOS0xMy4xIDE5LTE5LjkgNDEuOC0xOS45IDY0LjlWNjIwYzAgNC40IDMuNiA4IDggOGg0OGM0LjQgMCA4LTMuNiA4LTh2LTIyLjdhNDguMyA0OC4zIDAgMCAxIDMwLjktNDQuOGM1OS0yMi43IDk3LjEtNzQuNyA5Ny4xLTEzMi41LjEtMzkuMy0xNy4xLTc2LTQ4LjMtMTAzLjN6TTQ3MiA3MzJhNDAgNDAgMCAxIDAgODAgMCA0MCA0MCAwIDEgMC04MCAweiIvPgo8L3N2Zz4K","info":"data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjODU5MGE4IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGNsYXNzPSJpY29uIiB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0Ij4KICA8cGF0aCBkPSJNNTEyIDY0QzI2NC42IDY0IDY0IDI2NC42IDY0IDUxMnMyMDAuNiA0NDggNDQ4IDQ0OCA0NDgtMjAwLjYgNDQ4LTQ0OFM3NTkuNCA2NCA1MTIgNjR6bTAgODIwYy0yMDUuNCAwLTM3Mi0xNjYuNi0zNzItMzcyczE2Ni42LTM3MiAzNzItMzcyIDM3MiAxNjYuNiAzNzIgMzcyLTE2Ni42IDM3Mi0zNzIgMzcyeiIvPgogIDxwYXRoIGQ9Ik00NjQgMzM2YTQ4IDQ4IDAgMSAwIDk2IDAgNDggNDggMCAxIDAtOTYgMHptNzIgMTEyaC00OGMtNC40IDAtOCAzLjYtOCA4djI3MmMwIDQuNCAzLjYgOCA4IDhoNDhjNC40IDAgOC0zLjYgOC04VjQ1NmMwLTQuNC0zLjYtOC04LTh6Ii8+Cjwvc3ZnPgo=","infoFilled":"data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTY3N2ZmIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGNsYXNzPSJpY29uIiB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0Ij4KICA8cGF0aCBkPSJNNTEyIDY0QzI2NC42IDY0IDY0IDI2NC42IDY0IDUxMnMyMDAuNiA0NDggNDQ4IDQ0OCA0NDgtMjAwLjYgNDQ4LTQ0OFM3NTkuNCA2NCA1MTIgNjR6bTMyIDY2NGMwIDQuNC0zLjYgOC04IDhoLTQ4Yy00LjQgMC04LTMuNi04LThWNDU2YzAtNC40IDMuNi04IDgtOGg0OGM0LjQgMCA4IDMuNiA4IDh2Mjcyem0tMzItMzQ0YTQ4LjAxIDQ4LjAxIDAgMCAxIDAtOTYgNDguMDEgNDguMDEgMCAwIDEgMCA5NnoiLz4KPC9zdmc+Cg==","trash":"data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZmYyNDM3IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGNsYXNzPSJpY29uIiB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0Ij4KICA8cGF0aCBkPSJNMzYwIDE4NGgtOGM0LjQgMCA4LTMuNiA4LTh2OGgzMDR2LThjMCA0LjQgMy42IDggOCA4aC04djcyaDcydi04MGMwLTM1LjMtMjguNy02NC02NC02NEgzNTJjLTM1LjMgMC02NCAyOC43LTY0IDY0djgwaDcydi03MnptNTA0IDcySDE2MGMtMTcuNyAwLTMyIDE0LjMtMzIgMzJ2MzJjMCA0LjQgMy42IDggOCA4aDYwLjRsMjQuNyA1MjNjMS42IDM0LjEgMjkuOCA2MSA2My45IDYxaDQ1NGMzNC4yIDAgNjIuMy0yNi44IDYzLjktNjFsMjQuNy01MjNIODg4YzQuNCAwIDgtMy42IDgtOHYtMzJjMC0xNy43LTE0LjMtMzItMzItMzJ6TTczMS4zIDg0MEgyOTIuN2wtMjQuMi01MTJoNDg3bC0yNC4yIDUxMnoiLz4KPC9zdmc+Cg==","trashDisabled":"data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjY2JkMmRlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGNsYXNzPSJpY29uIiB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0Ij4KICA8cGF0aCBkPSJNMzYwIDE4NGgtOGM0LjQgMCA4LTMuNiA4LTh2OGgzMDR2LThjMCA0LjQgMy42IDggOCA4aC04djcyaDcydi04MGMwLTM1LjMtMjguNy02NC02NC02NEgzNTJjLTM1LjMgMC02NCAyOC43LTY0IDY0djgwaDcydi03MnptNTA0IDcySDE2MGMtMTcuNyAwLTMyIDE0LjMtMzIgMzJ2MzJjMCA0LjQgMy42IDggOCA4aDYwLjRsMjQuNyA1MjNjMS42IDM0LjEgMjkuOCA2MSA2My45IDYxaDQ1NGMzNC4yIDAgNjIuMy0yNi44IDYzLjktNjFsMjQuNy01MjNIODg4YzQuNCAwIDgtMy42IDgtOHYtMzJjMC0xNy43LTE0LjMtMzItMzItMzJ6TTczMS4zIDg0MEgyOTIuN2wtMjQuMi01MTJoNDg3bC0yNC4yIDUxMnoiLz4KPC9zdmc+Cg==","plus":"data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMTY3N2ZmIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGNsYXNzPSJpY29uIiB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0Ij4KICAgIDxwYXRoIGQ9Ik00ODIgMTUyaDYwcTggMCA4IDh2NzA0cTAgOC04IDhoLTYwcS04IDAtOC04VjE2MHEwLTggOC04WiIvPgogICAgPHBhdGggZD0iTTE5MiA0NzRoNjcycTggMCA4IDh2NjBxMCA4LTggOEgxNjBxLTggMC04LTh2LTYwcTAtOCA4LThaIi8+Cjwvc3ZnPgo=","close":"data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjN2U4YWE0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDI0IDEwMjQiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PHBhdGggZD0iTTc5OS44NTUgMTY2LjMxMmMuMDIzLjAwNy4wNDMuMDE4LjA4NC4wNTlsNTcuNjkgNTcuNjljLjA0MS4wNDEuMDUyLjA2LjA1OS4wODRhLjExOC4xMTggMCAwIDEgMCAuMDY5Yy0uMDA3LjAyMy0uMDE4LjA0Mi0uMDU5LjA4M0w1NjkuOTI2IDUxMmwyODcuNzAzIDI4Ny43MDNjLjA0MS4wNC4wNTIuMDYuMDU5LjA4M2EuMTE4LjExOCAwIDAgMSAwIC4wN2MtLjAwNy4wMjItLjAxOC4wNDItLjA1OS4wODNsLTU3LjY5IDU3LjY5Yy0uMDQxLjA0MS0uMDYuMDUyLS4wODQuMDU5YS4xMTguMTE4IDAgMCAxLS4wNjkgMGMtLjAyMy0uMDA3LS4wNDItLjAxOC0uMDgzLS4wNTlMNTEyIDU2OS45MjYgMjI0LjI5NyA4NTcuNjI5Yy0uMDQuMDQxLS4wNi4wNTItLjA4My4wNTlhLjExOC4xMTggMCAwIDEtLjA3IDBjLS4wMjItLjAwNy0uMDQyLS4wMTgtLjA4My0uMDU5bC01Ny42OS01Ny42OWMtLjA0MS0uMDQxLS4wNTItLjA2LS4wNTktLjA4NGEuMTE4LjExOCAwIDAgMSAwLS4wNjljLjAwNy0uMDIzLjAxOC0uMDQyLjA1OS0uMDgzTDQ1NC4wNzMgNTEyIDE2Ni4zNzEgMjI0LjI5N2MtLjA0MS0uMDQtLjA1Mi0uMDYtLjA1OS0uMDgzYS4xMTguMTE4IDAgMCAxIDAtLjA3Yy4wMDctLjAyMi4wMTgtLjA0Mi4wNTktLjA4M2w1Ny42OS01Ny42OWMuMDQxLS4wNDEuMDYtLjA1Mi4wODQtLjA1OWEuMTE4LjExOCAwIDAgMSAuMDY5IDBjLjAyMy4wMDcuMDQyLjAxOC4wODMuMDU5TDUxMiA0NTQuMDczbDI4Ny43MDMtMjg3LjcwMmMuMDQtLjA0MS4wNi0uMDUyLjA4My0uMDU5YS4xMTguMTE4IDAgMCAxIC4wNyAwWiIvPjwvc3ZnPgo=","down":"data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjODU5MGE4IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGNsYXNzPSJpY29uIiB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0Ij4KICA8cGF0aCBkPSJNODg0IDI1NmgtNzVjLTUuMSAwLTkuOSAyLjUtMTIuOSA2LjZMNTEyIDY1NC4yIDIyNy45IDI2Mi42Yy0zLTQuMS03LjgtNi42LTEyLjktNi42aC03NWMtNi41IDAtMTAuMyA3LjQtNi41IDEyLjdsMzUyLjYgNDg2LjFjMTIuOCAxNy42IDM5IDE3LjYgNTEuNyAwbDM1Mi42LTQ4Ni4xYzMuOS01LjMuMS0xMi43LTYuNC0xMi43eiIvPgo8L3N2Zz4K"};
     const speedLimitRates = [1, 64, 128, 256, 512, 1024, 3072, 5120];
     const speedLimitRateLabels = { 1: "1Kb/s", 64: "64Kb/s", 128: "128kb/s", 256: "256Kb/s", 512: "512Kb/s", 1024: "1Mb/s", 3072: "3Mb/s", 5120: "5Mb/s" };
+    const speedLimitRestoreNextMonthLabels = { true: "恢复", false: "不恢复" };
+    // Execution records use their saved value or the original limit snapshot, never a later policy edit.
+    function speedLimitRestoreNextMonth(row, source = null) {
+      const value = row?.restoreNextMonth ?? row?.strategySnapshot?.restoreNextMonth ?? source?.restoreNextMonth ?? source?.strategySnapshot?.restoreNextMonth;
+      return typeof value === "boolean" ? value : true;
+    }
+
+    function renderSpeedLimitRestoreRadios(name, value = true) {
+      return Object.entries(speedLimitRestoreNextMonthLabels).map(([key, label]) => `<label class="radio-option" for="${name}${key}"><input id="${name}${key}" type="radio" name="${name}" value="${key}" ${String(value) === key ? "checked" : ""} required aria-required="true" aria-describedby="${name}Error" />${label}</label>`).join("");
+    }
+
+    function readSpeedLimitRestoreRadios(name) {
+      const input = document.querySelector(`input[name="${name}"]:checked`);
+      return input ? input.value === "true" : null;
+    }
+
+    function syncSpeedLimitRestoreRadios(name, value) {
+      document.querySelectorAll(`input[name="${name}"]`).forEach(input => { input.checked = String(value) === input.value; });
+    }
+
     const speedLimitColumns = [
       { key: "id", label: "策略ID" },
       { key: "strategyName", label: "策略名称" },
       { key: "usageEnabled", label: "月用量限速状态" },
+      { key: "restoreNextMonth", label: "次月恢复" },
       { key: "createdBy", label: "操作人" },
       { key: "createdAt", label: "创建时间" },
       { key: "updatedAt", label: "更新时间" },
@@ -13237,14 +13267,15 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     ];
     const speedLimitFilterFields = [
       { key: "strategyName", id: "speedLimitFilterName" },
-      { key: "usageEnabled", id: "speedLimitFilterUsage" }
+      { key: "usageEnabled", id: "speedLimitFilterUsage" },
+      { key: "restoreNextMonth", id: "speedLimitFilterRestoreNextMonth" }
     ];
     const speedLimitRows = [
       { id: "SL202610140001", strategyName: "儿童手表日常限速策略", usageEnabled: true, createdBy: "张楠", createdAt: "2026-10-14 09:00:00", updatedAt: "2026-10-14 09:00:00" },
       { id: "SL202610140002", strategyName: "月度用量分级限速", usageEnabled: true, createdBy: "lifan", createdAt: "2026-10-14 09:10:00", updatedAt: "2026-10-14 09:10:00" },
       { id: "SL202610140003", strategyName: "儿童手表月用量限速策略", usageEnabled: false, createdBy: "王芳", createdAt: "2026-10-14 09:20:00", updatedAt: "2026-10-14 09:20:00" },
       { id: "SL202610140004", strategyName: "渠道备用限速策略", usageEnabled: false, createdBy: "admin", createdAt: "2026-10-14 09:30:00", updatedAt: "2026-10-14 09:30:00" }
-    ].map((row) => ({ ...row,
+    ].map((row) => ({ ...row, restoreNextMonth: true,
       usageTiers: [
         { monthlyMb: 10240, monthlySpeed: 1024 },
         { monthlyMb: 20480, monthlySpeed: 512 },
@@ -13269,8 +13300,9 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       { key: "strategyName", label: "限速策略名称" },
       { key: "speed", label: "限速值" },
       { key: "type", label: "限速等级" },
-      { key: "startTime", label: "开始时间" },
-      { key: "endTime", label: "结束时间" },
+      { key: "restoreNextMonth", label: "次月恢复" },
+      { key: "startTime", label: "限速开始时间" },
+      { key: "endTime", label: "限速结束时间" },
       { key: "result", label: "处理结果" },
       { key: "failureReason", label: "失败原因" },
       { key: "remark", label: "备注" },
@@ -13284,6 +13316,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       { key: "operation", id: "speedLimitRecordFilterOperation", label: "操作类型", options: () => speedLimitBatchOperationLabels },
       { key: "operationSource", id: "speedLimitRecordFilterSource", label: "操作来源", options: speedLimitOperationSources },
       { key: "type", id: "speedLimitRecordFilterType", label: "限速等级", options: speedLimitRecordLevels },
+      { key: "restoreNextMonth", id: "speedLimitRecordFilterRestoreNextMonth", label: "次月恢复", options: speedLimitRestoreNextMonthLabels },
       { key: "status", id: "speedLimitRecordFilterStatus", label: "操作状态", options: speedLimitRecordStatuses }
     ];
     const speedLimitRecordRows = [
@@ -13575,7 +13608,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       submitting: false, returnFocus: null, previousBodyOverflow: "", previousBackgroundInert: false
     };
 
-    const simDetailSpeedLimitState = { iccid: "", values: { rate: "", remark: "" }, errors: {}, submitting: false, bound: false, appliedValues: {}, page: 1,
+    const simDetailSpeedLimitState = { iccid: "", values: { rate: "", restoreNextMonth: true, remark: "" }, errors: {}, submitting: false, bound: false, appliedValues: {}, page: 1,
       dateRangeOpen: false, draftStart: "", draftEnd: "", dateRangeError: "", dateRangeViewMonth: "", returnFocus: null, previousBodyOverflow: "", previousBackgroundInert: false };
 
     const simManualSpeedTemplateBase64 = "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";
@@ -23038,6 +23071,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
     function speedLimitRecordCellText(row, column) {
       if (column.key === "operation") return speedLimitBatchOperationLabels[row.operation] || "--";
+      if (column.key === "restoreNextMonth") return speedLimitRestoreNextMonthLabels[String(speedLimitRestoreNextMonth(row))];
       if (column.key === "speed") return speedLimitRateLabels[row.speed] || "--";
       if (column.key === "result" && String(row.result).startsWith("失败")) return "失败";
       return String(row[column.key] ?? "--");
@@ -23050,6 +23084,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         && (!query.operation || row.operation === query.operation)
         && (!query.operationSource || row.operationSource === query.operationSource)
         && (!query.type || row.type === query.type)
+        && (!query.restoreNextMonth || String(row.restoreNextMonth) === query.restoreNextMonth)
         && (!query.status || row[statusKey] === query.status)
         && (!query.dateStart || row[dateKey].slice(0, 10) >= query.dateStart)
         && (!query.dateEnd || row[dateKey].slice(0, 10) <= query.dateEnd));
@@ -23060,7 +23095,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         const release = operation === "release";
         const source = release && row.limitRecordKey ? speedLimitRecordRows.find(item => speedLimitRecordKey(item) === row.limitRecordKey) : null;
         const record = simDetailSpeedOperationRow(row, operation);
-        return { ...row, operation, operationSource: record.operationSource,
+        return { ...row, operation, operationSource: record.operationSource, restoreNextMonth: record.restoreNextMonth,
           strategyName: release ? "--" : row.strategyName || "--", speed: release ? null : record.speed, type: release ? "--" : speedLimitRecordLevel(row),
           startTime: row.startTime || source?.startTime || "--", endTime: row.endTime || source?.endTime || "--",
           status: (release ? row.releaseStatus : row.status) || "--",
@@ -23529,6 +23564,8 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
     function createSimSpeedLimitBatch(iccids, options = {}) {
       const speed = Number(options.rate), dateStart = options.dateStart, dateEnd = options.dateEnd;
+      if (options.restoreNextMonth !== undefined && typeof options.restoreNextMonth !== "boolean") throw new Error("请选择次月是否恢复。");
+      const restoreNextMonth = options.restoreNextMonth ?? true;
       const validDate = value => /^\d{4}-\d{2}-\d{2}$/.test(value || "") && dateRangeToValue(parseDateRangeValue(value)) === value;
       if (!speedLimitRates.includes(speed)) throw new Error("请选择有效的限速值。");
       if (!validDate(dateStart) || !validDate(dateEnd) || validateManualDateRange(dateStart, dateEnd, "生效", true, null)) throw new Error("请选择有效的开始日期和结束日期，结束日期不能早于开始日期。");
@@ -23544,7 +23581,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       const cards = new Map(writableRows.map(row => [row.iccid, row]));
       const rows = fresh.map(iccid => {
         const beforeState = simDetailCurrentSpeedInfo(iccid).status;
-        return { iccid, operator: cards.get(iccid)?.operator || "--", strategyName: "--", category: "手动限速", operationSource: "手动操作", speed, type: "--", startTime, endTime,
+        return { iccid, operator: cards.get(iccid)?.operator || "--", strategyName: "--", category: "手动限速", operationSource: "手动操作", speed, restoreNextMonth, type: "--", startTime, endTime,
           status: "待限速", limitResult: "待处理", createdBy: creator, releaseStatus: "未解除", releaseResult: "--", releasedBy: "--",
           beforeState, afterState: beforeState, inputMode: options.inputMode || "manual", remark, createdAt: time, updatedAt: time };
       });
@@ -23571,7 +23608,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       const remark = String(options.remark || "").trim() || "--";
       const rows = targets.map(source => ({
         iccid: source.iccid, operator: source.operator, strategyName: source.strategyName, strategyId: source.strategyId || "", category: source.category,
-        speed: source.speed, type: source.type, startTime: source.startTime, endTime: source.endTime,
+        speed: source.speed, restoreNextMonth: speedLimitRestoreNextMonth(source), type: source.type, startTime: source.startTime, endTime: source.endTime,
         limitRecordKey: speedLimitRecordKey(source), releaseMode: "手动解除", releaseStatus: "解除中", releaseResult: "待处理", releasedBy: creator,
         operationSource: "手动操作", beforeState: source.status === "限速中" || source.limitResult === "成功" ? "已限速" : source.beforeState || "--",
         inputMode: options.inputMode || "manual", remark, createdAt: time, updatedAt: time
@@ -23780,6 +23817,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       const draft = {
         strategyName: row?.strategyName || "",
         usageEnabled: Boolean(row?.usageEnabled),
+        restoreNextMonth: speedLimitRestoreNextMonth(row),
         usageTiers: Array.from({ length: Math.max(1, row?.usageTiers?.length || 1) }, (_, index) => Object.fromEntries(["monthlyMb", "monthlySpeed"].map((key) => [key, String(row?.usageTiers?.[index]?.[key] ?? "")])))
       };
       return draft;
@@ -23788,7 +23826,8 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     function filteredSpeedLimitRows() {
       const query = speedLimitState.appliedValues;
       return speedLimitRows.filter((row) => (!query.strategyName || row.strategyName.toLowerCase().includes(query.strategyName.toLowerCase()))
-        && (!query.usageEnabled || String(row.usageEnabled) === query.usageEnabled));
+        && (!query.usageEnabled || String(row.usageEnabled) === query.usageEnabled)
+        && (!query.restoreNextMonth || String(speedLimitRestoreNextMonth(row)) === query.restoreNextMonth));
     }
 
     function renderSpeedLimitSwitch(enabled, label, attributes) {
@@ -23805,6 +23844,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       document.getElementById("speedLimitTableBody").innerHTML = current.length ? current.map((row) => `<tr>${speedLimitColumns.map((column) => {
         if (column.key === "action") return `<td class="operation-col"><div class="speed-limit-row-actions"><button class="link-text" type="button" data-speed-limit-edit="${escapeHtml(row.id)}" aria-label="编辑限速策略${escapeHtml(row.strategyName)}">编辑</button><button class="danger-link" type="button" data-speed-limit-delete="${escapeHtml(row.id)}" aria-label="删除限速策略${escapeHtml(row.strategyName)}">删除</button></div></td>`;
         if (column.key === "usageEnabled") return `<td>${renderSpeedLimitSwitch(row[column.key], `${row.strategyName}的${column.label}`, `data-speed-limit-toggle="${column.key}" data-speed-limit-id="${escapeHtml(row.id)}"`)}</td>`;
+        if (column.key === "restoreNextMonth") return `<td>${speedLimitRestoreNextMonthLabels[String(speedLimitRestoreNextMonth(row))]}</td>`;
         return `<td>${escapeHtml(String(row[column.key] ?? "--"))}</td>`;
       }).join("")}</tr>`).join("") : `<tr><td class="speed-limit-empty" colspan="${speedLimitColumns.length}"><span role="status">${Object.values(state.appliedValues).some(Boolean) ? "暂无匹配的限速策略，请调整查询条件" : "暂无限速策略，请点击“限速策略新增”创建"}</span></td></tr>`;
       document.getElementById("speedLimitPager").innerHTML = `<span role="status" aria-live="polite">共 ${rows.length} 条</span><button class="page-btn" type="button" aria-label="上一页" data-speed-limit-page="${state.page - 1}" ${state.page === 1 ? "disabled" : ""}>‹</button><span class="page-btn active scientific-calculation-current-page" aria-current="page">${state.page}</span><button class="page-btn" type="button" aria-label="下一页" data-speed-limit-page="${state.page + 1}" ${state.page === pageCount ? "disabled" : ""}>›</button>`;
@@ -23924,9 +23964,10 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       const values = speedLimitCreateState.values;
       document.getElementById("speedLimitCreateForm").innerHTML = `<section class="speed-limit-base" aria-label="策略基础信息">
         <div class="speed-limit-base-field"><label class="speed-limit-field-label" for="speedLimitStrategyName"><span class="required" aria-hidden="true">*</span>策略名称</label><div class="speed-limit-name-control"><input class="batch-select" id="speedLimitStrategyName" data-speed-limit-field="strategyName" value="${escapeHtml(values.strategyName)}" type="text" maxlength="50" placeholder="请输入策略名称" autocomplete="off" aria-required="true" aria-describedby="speedLimitStrategyNameError speedLimitNameCount" /><span class="speed-limit-name-count" id="speedLimitNameCount">${values.strategyName.length}/50</span></div><div class="modal-field-error" id="speedLimitStrategyNameError" aria-live="polite"></div></div>
+        <div class="speed-limit-base-field"><span class="speed-limit-field-label" id="speedLimitRestoreNextMonthLabel"><span class="required" aria-hidden="true">*</span>次月恢复</span><div class="radio-group" id="speedLimitRestoreNextMonthGroup" role="radiogroup" aria-labelledby="speedLimitRestoreNextMonthLabel" aria-describedby="speedLimitRestoreNextMonthError" aria-required="true" tabindex="-1">${renderSpeedLimitRestoreRadios("speedLimitRestoreNextMonth", values.restoreNextMonth)}</div><div class="modal-field-error" id="speedLimitRestoreNextMonthError" aria-live="polite"></div></div>
       </section>
       <section class="speed-limit-section" aria-labelledby="speedLimitUsageTitle"><div class="speed-limit-section-head"><div><div class="speed-limit-section-title"><h3 id="speedLimitUsageTitle">月用量限速</h3><span class="speed-limit-section-tag" id="speedLimitUsageCount" role="status" aria-live="polite"></span></div></div>${renderSpeedLimitSwitch(values.usageEnabled, "月用量限速", 'id="speedLimitUsageToggle" data-speed-limit-section="usageEnabled" aria-controls="speedLimitUsageFields"')}</div>
-        <fieldset class="speed-limit-config-fields" id="speedLimitUsageFields" aria-labelledby="speedLimitUsageTitle"><div class="speed-limit-config-scroll" tabindex="0" role="region" aria-label="月用量限速配置，可横向滚动"><table class="speed-limit-config-table" aria-label="月用量限速配置"><thead><tr><th scope="col">限速级别</th><th scope="col">月限速流量（MB）</th><th scope="col">月限速值</th><th scope="col" class="speed-limit-usage-action">操作</th></tr></thead><tbody id="speedLimitUsageRows"></tbody></table></div><button class="btn secondary speed-limit-add-usage" id="speedLimitAddUsageBtn" type="button">＋ 添加层级</button></fieldset><p class="speed-limit-section-note" id="speedLimitUsageNote"></p>
+        <fieldset class="speed-limit-config-fields" id="speedLimitUsageFields" aria-labelledby="speedLimitUsageTitle"><div class="speed-limit-config-scroll" tabindex="0" role="region" aria-label="月用量限速配置，可横向滚动"><table class="speed-limit-config-table" aria-label="月用量限速配置"><thead><tr><th scope="col">限速等级</th><th scope="col">月限速流量（MB）</th><th scope="col">月限速值</th><th scope="col" class="speed-limit-usage-action">操作</th></tr></thead><tbody id="speedLimitUsageRows"></tbody></table></div><button class="btn secondary speed-limit-add-usage" id="speedLimitAddUsageBtn" type="button">＋ 添加层级</button></fieldset><p class="speed-limit-section-note" id="speedLimitUsageNote"></p>
       </section>`;
       renderSpeedLimitUsageRows();
       syncSpeedLimitFormSections();
@@ -23939,6 +23980,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         if (input.dataset.speedLimitField) values[input.dataset.speedLimitField] = input.value;
         else if (input.dataset.speedLimitUsageKey) values.usageTiers[Number(input.dataset.speedLimitUsageIndex)][input.dataset.speedLimitUsageKey] = input.value;
       });
+      values.restoreNextMonth = readSpeedLimitRestoreRadios("speedLimitRestoreNextMonth");
     }
 
     function syncSpeedLimitFormSections() {
@@ -23955,6 +23997,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     function validateSpeedLimitDraft(values, editId = "") {
       const errors = {};
       const name = values.strategyName.trim();
+      if (typeof values.restoreNextMonth !== "boolean") errors.speedLimitRestoreNextMonthGroup = "请选择次月是否恢复";
       if (!name) errors.speedLimitStrategyName = "请输入策略名称";
       else if (name.length > 50) errors.speedLimitStrategyName = "策略名称最多50个字符";
       else if (speedLimitRows.some((row) => row.id !== editId && row.strategyName === name)) errors.speedLimitStrategyName = "已存在同名限速策略";
@@ -23982,6 +24025,10 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         const output = document.getElementById(`${input.id}Error`);
         if (output) output.textContent = message;
       });
+      const message = speedLimitCreateState.errors.speedLimitRestoreNextMonthGroup || "";
+      form.querySelector("#speedLimitRestoreNextMonthGroup").setAttribute("aria-invalid", String(Boolean(message)));
+      form.querySelectorAll('[name="speedLimitRestoreNextMonth"]').forEach(input => input.setAttribute("aria-invalid", String(Boolean(message))));
+      document.getElementById("speedLimitRestoreNextMonthError").textContent = message;
     }
 
     function openSpeedLimitCreateModal(id = "", pendingKey = "") {
@@ -23991,6 +24038,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       const state = speedLimitCreateState;
       state.editId = id;
       state.values = row ? newSpeedLimitDraft(row) : state.draft ? JSON.parse(JSON.stringify(state.draft)) : newSpeedLimitDraft();
+      if (state.values.restoreNextMonth === undefined) state.values.restoreNextMonth = true;
       if (pendingKey === "usageEnabled") state.values[pendingKey] = true;
       state.errors = {};
       document.getElementById("speedLimitCreateTitle").textContent = id ? "限速策略编辑" : "限速策略新增";
@@ -24028,6 +24076,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         const payload = {
           strategyName: values.strategyName.trim(),
           usageEnabled: values.usageEnabled,
+          restoreNextMonth: values.restoreNextMonth,
           usageTiers: values.usageTiers.map(tier => Object.fromEntries(["monthlyMb", "monthlySpeed"].map(key => [key, String(tier[key]).trim() && Number.isFinite(Number(tier[key])) ? Number(tier[key]) : null]))),
           updatedAt: time
         };
@@ -24197,6 +24246,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         collectSpeedLimitForm();
         const input = event.target;
         delete speedLimitCreateState.errors[input.id];
+        if (input.name === "speedLimitRestoreNextMonth") delete speedLimitCreateState.errors.speedLimitRestoreNextMonthGroup;
         if (input.dataset.speedLimitUsageKey) {
           const next = validateSpeedLimitDraft(speedLimitCreateState.values, speedLimitCreateState.editId);
           Object.keys(speedLimitCreateState.errors).forEach(key => { if (!next[key]) delete speedLimitCreateState.errors[key]; });
@@ -29395,8 +29445,10 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
           { label: "操作类型", description: "限速、解除限速在同一列表展示。" },
           { label: "操作来源", description: "区分手动操作、策略限速和系统恢复；手动解除策略限速显示手动操作。" },
           { label: "限速策略", description: "原限速策略的名称快照，无关联策略显示--。" },
-          { label: "限速级别", description: "展示该次限速策略触发的级别，优先使用历史策略快照；缺失级别时，仅按关联策略中唯一匹配的限速值确定级别。手动限速或无分级的历史策略显示--。" },
+          { label: "限速等级", description: "展示该次限速策略触发的级别，优先使用历史策略快照；缺失级别时，仅按关联策略中唯一匹配的限速值确定级别。手动限速或无分级的历史策略显示--。" },
           { label: "限速值", description: "展示该次策略执行时的限速值，沿用策略速率单位；解除操作沿用原限速记录的策略级别及限速值，手动操作展示其实际限速值。" },
+          { label: "限速开始时间", description: "限速记录展示限速生效的开始时间；解除限速记录显示--。" },
+          { label: "限速结束时间", description: "限速记录展示限速生效的结束时间；解除限速记录显示--。" },
           { label: "操作前状态", description: "本次操作开始前的已限速或未限速快照，历史快照缺失显示--。" },
           { label: "操作后状态", description: "本次操作后的已限速或未限速状态；执行中和失败不预先标记目标状态。" },
           { label: "操作结果", description: "执行中、成功、失败；结果与当前操作对应。" },
@@ -29405,7 +29457,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
           { label: "失败原因", description: "失败操作的具体原因，其他结果显示--。" },
           { label: "操作备注", description: "各次操作独立保留多行备注，未填写显示--。" }
         ].map(field => docField(normalizeDocFieldId(field.label), field.label, field.description)),
-        functions: ["限速操作记录使用同一列表，通过操作类型字段区分，统一按操作时间倒序展示并分页。", "设置限速：选择限速值及生效日期，备注选填；提交后生成手动限速批次和卡片详情，初始为处理中，并按开始日期计入统计。", "解除限速：已限速时可通过确认弹窗提交单卡解除申请，备注选填；生成解除批次、详情记录，并计入操作日期的每日统计。"],
+        functions: ["限速操作记录使用同一列表，通过操作类型字段区分，统一按操作时间倒序展示并分页。", "设置限速：选择限速值、生效日期及次月恢复（默认恢复），备注选填；提交后生成手动限速批次和卡片详情，初始为处理中，并按开始日期计入统计。", "解除限速：已限速时可通过确认弹窗提交单卡解除申请，备注选填；生成解除批次、详情记录，并计入操作日期的每日统计。"],
         businessRules: ["限速状态与当前关联策略独立展示。", "解除仅允许当前已限速且存在可解除记录的SIM卡；已有解除中请求不可重复提交。", "解除申请只新增执行中记录，未返回成功结果前不将SIM卡标记为未限速，也不增加解除成功数。","每次操作保留独立记录及触发策略的级别、限速值快照，策略编辑或删除不会改写已有快照。", "解除仅关联该卡最近一条未解除的限速中或待限速记录；已在解除中的请求不可重复提交，解除失败可重试。", "批量解除中存在无可解除记录的ICCID时，提示调整号码并阻止整批提交。", "提交解除后生成解除中/待处理记录，原限速状态等待处理结果，不提前标记已解除。", "切换卡片时按ICCID加载对应记录，无记录时展示空状态。"],
         interactions: ["解除确认默认聚焦取消，取消、关闭或Esc均不生成记录；信息变化后须重新确认，提交后统一列表回到第一页。","详情Tab支持方向键、Home、End及键盘焦点；离开合并记录列表再返回时保留分页，切换ICCID后回到第一页。", "当前卡的限速或解除记录变化后，合并列表同步刷新；保留各次操作的批次、状态、结果、操作人及备注。"]
       },
@@ -29483,9 +29535,9 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       },
       speedLimitPage: {
         page: { title: "限速管理", purpose: "通过限速策略、限速统计报告、限速操作记录、限速操作详情四个一级页签维护配置、查询批次、卡片详情及按日、按周期统计；详情页在同一列表展示限速与解除限速，通过操作类型区分。" },
-        queries: ["限速策略：策略名称、月用量限速状态", "限速操作记录：批次号、操作类型、操作来源、操作状态", "限速操作详情：批次号、ICCID、操作类型、操作来源、限速等级、操作状态、记录日期", "限速统计报告：统计方式（按日统计、周期统计）、开始日期、结束日期；支持最近一周、最近一个月、最近三个月、最近半年、最近一年、上月、本月及自定义区间"],
-        fields: [...docFieldsFrom(speedLimitColumns, { id: "自动生成的唯一策略标识。", strategyName: "策略名称，以纯文本展示。", usageEnabled: "开启/停用月用量限速。", createdBy: "策略操作人。", createdAt: "首次创建时间。", updatedAt: "最近保存配置或切换状态的时间。", action: "编辑策略配置，或通过强提示确认后删除策略。" }), ...docFieldsFrom(speedLimitBatchColumns, { batchNo: "每次批量操作生成唯一批次号；点击进入对应限速或解除限速详情，并按该批次查询。", operation: "区分限速与解除限速。", source: "区分系统执行与手动提交，手动解除策略限速仍属于手动来源。", operationStatus: "有未完成卡片为处理中；全部结束后按成功、失败数量显示成功、失败或部分成功。", total: "本批次实际操作的ICCID去重数。", success: "本批次处理成功的卡片数。", failed: "本批次处理失败的卡片数。", pending: "尚未返回处理结果的卡片数，总数等于成功数加失败数加处理中数。", remark: "本次操作填写的备注，支持多行长文本。", completedAt: "本批次全部卡片处理结束的最晚完成时间；处理中、空批次或历史完成时间缺失显示--，不使用后续解除的更新时间。" }), ...docFieldsFrom(speedLimitRecordColumns, { batchNo: "该操作所属批次，支持查询和导出。", iccid: "完整展示并以文本导出，避免号码精度丢失。", operation: "区分限速与解除限速，两类数据合并展示并可筛选。", operationSource: "按当前操作展示手动操作、策略限速或系统恢复；手动解除策略限速仍显示手动操作。", strategyName: "仅限速操作展示策略名称；解除操作显示--。", speed: "限速操作展示该次执行的限速值；解除操作显示--。", type: "限速操作展示原记录等级；解除操作显示--。", completedAt: "本次操作完成时刻；执行中或历史完成时刻缺失显示--，不挪用后续解除的更新时间。", result: "限速取限速处理结果，解除取本次解除处理结果。", failureReason: "失败操作单独展示失败原因；其余显示--。", operationBy: "限速发起人或本次解除操作人。", startTime: "原限速计划开始时间，也是限速记录的日期查询依据。", endTime: "原限速计划结束时间。", createdAt: "本次操作创建时间；解除记录以此日期作为查询依据。", remark: "当前操作独立保存的备注。" }), ...docFieldsFrom(speedLimitReportColumns, { date: "按日统计展示日期并倒序排列；周期统计展示完整的起止日期区间。", limitTotal: "按日及周期统计均可点击进入限速操作详情，带入限速操作类型及该行单日或完整周期；周期总数为区间内每日限速总数之和。", releaseTotal: "按日及周期统计均可点击进入限速操作详情，带入解除限速操作类型及该行单日或完整周期；周期总数为区间内每日解除总数之和。", limitRate: "限速成功数÷限速SIM卡总数，保留两位小数；总数为0时显示--。", releaseRate: "解除限速成功数÷解除限速SIM卡总数，保留两位小数；总数为0时显示--。" })],
-        functions: ["限速操作记录：按批次展示系统或手动操作的卡片数量、成功、失败、处理中及备注；点击批次号进入统一详情并带入批次号与操作类型查询，支持搜索、重置、分页和导出。", "限速统计报告：支持按日统计和周期统计，支持7个快捷日期范围及自定义起止日期；统计方式、日期区间、搜索、重置在同一查询栏展示；按日展示每日数据，周期累加所选区间内的每日总数并展示一行合计，导出与当前统计方式和已提交日期保持一致。", "限速SIM卡总数：按日或周期统计均可点击进入限速操作详情，带入限速操作类型及该行日期区间查询。", "解除限速SIM卡总数：按日或周期统计均可点击进入限速操作详情，带入解除限速操作类型及该行日期区间查询。", "统一详情导出：按当前已提交查询条件导出全部匹配的限速及解除记录，包含列表16个字段，ICCID以文本保留。", "限速策略新增：配置策略名称及多级月用量限速。", "列表开关：确认后切换对应限速状态。", "操作列编辑：编辑已有配置。", "操作列删除：展示策略名称及不可恢复提示，确认后删除策略及配置。"],
+        queries: ["限速策略：策略名称、月用量限速状态、次月恢复", "限速操作记录：批次号、操作类型、操作来源、操作状态", "限速操作详情：批次号、ICCID、操作类型、操作来源、限速等级、次月恢复、操作状态、记录日期", "限速统计报告：统计方式（按日统计、周期统计）、开始日期、结束日期；支持最近一周、最近一个月、最近三个月、最近半年、最近一年、上月、本月及自定义区间"],
+        fields: [...docFieldsFrom(speedLimitColumns, { id: "自动生成的唯一策略标识。", strategyName: "策略名称，以纯文本展示。", usageEnabled: "开启/停用月用量限速。", restoreNextMonth: "次月是否恢复，默认恢复，支持筛选。", createdBy: "策略操作人。", createdAt: "首次创建时间。", updatedAt: "最近保存配置或切换状态的时间。", action: "编辑策略配置，或通过强提示确认后删除策略。" }), ...docFieldsFrom(speedLimitBatchColumns, { batchNo: "每次批量操作生成唯一批次号；点击进入对应限速或解除限速详情，并按该批次查询。", operation: "区分限速与解除限速。", source: "区分系统执行与手动提交，手动解除策略限速仍属于手动来源。", operationStatus: "有未完成卡片为处理中；全部结束后按成功、失败数量显示成功、失败或部分成功。", total: "本批次实际操作的ICCID去重数。", success: "本批次处理成功的卡片数。", failed: "本批次处理失败的卡片数。", pending: "尚未返回处理结果的卡片数，总数等于成功数加失败数加处理中数。", remark: "本次操作填写的备注，支持多行长文本。", completedAt: "本批次全部卡片处理结束的最晚完成时间；处理中、空批次或历史完成时间缺失显示--，不使用后续解除的更新时间。" }), ...docFieldsFrom(speedLimitRecordColumns, { batchNo: "该操作所属批次，支持查询和导出。", iccid: "完整展示并以文本导出，避免号码精度丢失。", operation: "区分限速与解除限速，两类数据合并展示并可筛选。", operationSource: "按当前操作展示手动操作、策略限速或系统恢复；手动解除策略限速仍显示手动操作。", strategyName: "仅限速操作展示策略名称；解除操作显示--。", speed: "限速操作展示该次执行的限速值；解除操作显示--。", type: "限速操作展示原记录等级；解除操作显示--。", restoreNextMonth: "本次限速保存的次月恢复设置，恢复或不恢复；解除记录保留原限速设置，支持筛选和导出。", completedAt: "本次操作完成时刻；执行中或历史完成时刻缺失显示--，不挪用后续解除的更新时间。", result: "限速取限速处理结果，解除取本次解除处理结果。", failureReason: "失败操作单独展示失败原因；其余显示--。", operationBy: "限速发起人或本次解除操作人。", startTime: "原限速计划开始时间，也是限速记录的日期查询依据。", endTime: "原限速计划结束时间。", createdAt: "本次操作创建时间；解除记录以此日期作为查询依据。", remark: "当前操作独立保存的备注。" }), ...docFieldsFrom(speedLimitReportColumns, { date: "按日统计展示日期并倒序排列；周期统计展示完整的起止日期区间。", limitTotal: "按日及周期统计均可点击进入限速操作详情，带入限速操作类型及该行单日或完整周期；周期总数为区间内每日限速总数之和。", releaseTotal: "按日及周期统计均可点击进入限速操作详情，带入解除限速操作类型及该行单日或完整周期；周期总数为区间内每日解除总数之和。", limitRate: "限速成功数÷限速SIM卡总数，保留两位小数；总数为0时显示--。", releaseRate: "解除限速成功数÷解除限速SIM卡总数，保留两位小数；总数为0时显示--。" })],
+        functions: ["限速操作记录：按批次展示系统或手动操作的卡片数量、成功、失败、处理中及备注；点击批次号进入统一详情并带入批次号与操作类型查询，支持搜索、重置、分页和导出。", "限速统计报告：支持按日统计和周期统计，支持7个快捷日期范围及自定义起止日期；统计方式、日期区间、搜索、重置在同一查询栏展示；按日展示每日数据，周期累加所选区间内的每日总数并展示一行合计，导出与当前统计方式和已提交日期保持一致。", "限速SIM卡总数：按日或周期统计均可点击进入限速操作详情，带入限速操作类型及该行日期区间查询。", "解除限速SIM卡总数：按日或周期统计均可点击进入限速操作详情，带入解除限速操作类型及该行日期区间查询。", "统一详情导出：按当前已提交查询条件导出全部匹配的限速及解除记录，包含列表17个字段，ICCID以文本保留。", "限速策略新增：配置策略名称、次月恢复（默认恢复）及多级月用量限速。", "列表开关：确认后切换对应限速状态。", "操作列编辑：编辑已有配置。", "操作列删除：展示策略名称及不可恢复提示，确认后删除策略及配置。"],
         businessRules: ["策略名称不可重复，新增和编辑均校验同名策略。", "用量限速初始为一级，支持添加或删除层级，至少保留一级，层级数量不限；开启时，已配置层级的月流量阈值与限速值均必填，流量单位 MB。", "月流量阈值按已配置层级递增；限速值支持 1Kb/s、64Kb/s、128kb/s、256Kb/s、512Kb/s、1Mb/s、3Mb/s、5Mb/s。", "限速策略仅支持月用量限速；历史记录保留原始限速类型及快照。", "月用量限速开关只控制是否生效，停用时仍可编辑、增删及保存配置。", "未完成配置的策略开启限速前须先补充参数。", "一次手动提交生成一个唯一批次号，号码去重后关联该批次；未创建新卡片操作时不生成空批次。", "批次成功、失败、处理中数量按关联卡片的实际处理结果汇总；创建请求不预先标记成功。完成时间仅在本批次全部卡片均已处理结束且完成时间齐全时显示最晚完成时间，处理中或历史完成时间缺失显示--。", "批次操作来源独立于原限速策略来源，系统和手动操作分别记录。", "限速记录为独立历史快照，策略编辑、删除或状态切换不改写已有记录。", "操作来源为手动操作、策略限速、系统恢复，按当前操作来源识别；限速等级仅提供月一级限速、月二级限速、月三级限速；历史月等级按统一文案展示，其他旧等级显示--，不改写原始快照。限速日期按开始时间日期筛选，首尾日期均包含，支持同一天。", "限速记录和解除限速记录合并在同一列表，保留独立操作快照；解除类型仅收录已发起的解除操作，不将未解除或无需解除的限速记录重复生成为解除操作，创建待限速请求不新增解除记录。", "统一记录日期对限速按开始日期筛选，对解除按解除记录创建日期筛选，包含首尾日期；两类数据共用查询条件及分页；记录日期支持跨月、跨年区间，以承接统计报告完整周期。解除操作的限速策略名称、限速值、限速等级在列表与导出中均显示--，原始历史数据仍独立保留。完成时间仅展示当前操作的完成时刻，执行中显示--。", "记录页使用示例数据，未连接运营商限速接口；导出当前统一查询的全部记录，ICCID按文本保留。", "限速统计报告初始使用每日汇总示例数据；手动创建限速后，按开始日期将新增ICCID计入限速SIM卡总数。待处理记录不计入成功或失败数，成功数与失败数之和不大于总数；成功率保留两位小数，总数为0时显示--。", "报告日期筛选包含首尾日期，支持同一天及跨月、跨年自定义范围；按日统计默认展示全部日报，周期统计首次切换或重置时默认最近一周。周期总数按每日总数累加，不跨日期去重；成功率按周期成功总数除以周期总数计算，总数为0时显示--。清空周期日期后须重新选择再搜索；导出当前已提交查询条件下的全部报告，周期统计导出一行合计。"],
         interactions: ["一级页签保留限速策略、限速统计报告、限速操作记录、限速操作详情。详情页不再使用二级页签，同一列表按操作类型区分。", "点击批次号后带入批次号和操作类型，清空旧筛选及日期、回到第一页；统计报告总数跳转带入对应操作类型及已提交查询的单日或完整周期区间，包含首尾日期；清空批次号和其他旧条件、回到第一页，返回报告保留原统计方式和查询。", "离开统一详情再返回保留已提交查询条件和分页；返回批次或统计报告保留各自原查询。一级页签支持左右方向键、Home、End。", "查询支持组合条件、单项清空、重置及按当前全部匹配结果导出；批次页每页20条，页码居中、窄屏可换行，上一页、当前页、下一页保持一组。筛选后回到第一页，数据减少时自动调整到有效页，翻页后聚焦当前页码。", "新增或编辑保存后返回列表并保留查询条件。", "取消新增保留当前草稿，再次打开可继续填写。", "删除确认默认聚焦取消；取消、关闭或按Esc均不删除。确认删除后保留筛选条件并自动调整分页。"]
       },
@@ -30075,6 +30127,9 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
     function renderSimDetailSpeedLimitErrors() {
       const { errors } = simDetailSpeedLimitState;
+      document.getElementById("simDetailSpeedLimitRestoreNextMonthError").textContent = errors.restoreNextMonth || "";
+      document.getElementById("simDetailSpeedLimitRestoreNextMonthGroup").setAttribute("aria-invalid", String(Boolean(errors.restoreNextMonth)));
+      document.querySelectorAll('[name="simDetailSpeedLimitRestoreNextMonth"]').forEach(input => input.setAttribute("aria-invalid", String(Boolean(errors.restoreNextMonth))));
       document.getElementById("simDetailSpeedLimitRateError").textContent = errors.rate || "";
       document.getElementById("simDetailSpeedLimitDatesError").textContent = errors.dates || "";
       document.getElementById("simDetailSpeedLimitSubmitError").textContent = errors.submit || "";
@@ -30087,11 +30142,12 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       const iccid = simDetailSpeedState.iccid;
       if (!writableRows.some(row => row.iccid === iccid)) { showToast("SIM卡信息不存在，请重新选择。", "error"); return; }
       const state = simDetailSpeedLimitState;
-      if (state.iccid !== iccid) Object.assign(state, { values: { rate: "", remark: "" }, draftStart: "", draftEnd: "", dateRangeViewMonth: "" });
+      if (state.iccid !== iccid) Object.assign(state, { values: { rate: "", restoreNextMonth: true, remark: "" }, draftStart: "", draftEnd: "", dateRangeViewMonth: "" });
       Object.assign(state, { iccid, errors: {}, dateRangeOpen: false, dateRangeError: "" });
       document.getElementById("simDetailSpeedLimitCard").textContent = `ICCID：${iccid}`;
       document.getElementById("simDetailSpeedLimitRate").value = state.values.rate || "";
       document.getElementById("simDetailSpeedLimitRemark").value = state.values.remark || "";
+      syncSpeedLimitRestoreRadios("simDetailSpeedLimitRestoreNextMonth", state.values.restoreNextMonth ?? true);
       renderSpeedLimitDateRange("detailLimit"); renderSimDetailSpeedLimitErrors();
       openAdminPrototypeModal("simDetailSpeedLimitModal", state, "simDetailSpeedLimitRate", "simDetailSpeedLimitBtn");
     }
@@ -30100,6 +30156,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       const state = simDetailSpeedLimitState;
       if (state.submitting || !document.getElementById("simDetailSpeedLimitModal").classList.contains("open")) return;
       state.values.rate = document.getElementById("simDetailSpeedLimitRate").value;
+      state.values.restoreNextMonth = readSpeedLimitRestoreRadios("simDetailSpeedLimitRestoreNextMonth");
       state.values.remark = document.getElementById("simDetailSpeedLimitRemark").value;
       closeSpeedLimitDateRange("detailLimit"); closeAdminPrototypeModal("simDetailSpeedLimitModal", state);
     }
@@ -30108,23 +30165,26 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       const state = simDetailSpeedLimitState;
       if (state.submitting || !document.getElementById("simDetailSpeedLimitModal").classList.contains("open")) return;
       state.values.rate = document.getElementById("simDetailSpeedLimitRate").value;
+      state.values.restoreNextMonth = readSpeedLimitRestoreRadios("simDetailSpeedLimitRestoreNextMonth");
       state.values.remark = document.getElementById("simDetailSpeedLimitRemark").value;
       state.errors = {};
       if (!speedLimitRates.includes(Number(state.values.rate))) state.errors.rate = "请选择限速值";
+      if (typeof state.values.restoreNextMonth !== "boolean") state.errors.restoreNextMonth = "请选择次月是否恢复";
       const { dateStart, dateEnd } = state.values;
       const validDate = value => /^\d{4}-\d{2}-\d{2}$/.test(value || "") && dateRangeToValue(parseDateRangeValue(value)) === value;
       if (!validDate(dateStart) || !validDate(dateEnd)) state.errors.dates = "请选择完整的开始日期和结束日期";
       else if (dateStart > dateEnd) state.errors.dates = "结束日期不能早于开始日期";
       if (state.iccid !== simDetailSpeedState.iccid || !writableRows.some(row => row.iccid === state.iccid)) state.errors.submit = "SIM卡信息已变化，请关闭弹窗后重新设置。";
       renderSimDetailSpeedLimitErrors();
-      if (Object.keys(state.errors).length) { document.getElementById(state.errors.rate ? "simDetailSpeedLimitRate" : state.errors.dates ? "simDetailSpeedLimitDateRangeTrigger" : "simDetailSpeedLimitSubmitError").focus(); return; }
+      if (Object.keys(state.errors).length) { document.getElementById(state.errors.rate ? "simDetailSpeedLimitRate" : state.errors.restoreNextMonth ? "simDetailSpeedLimitRestoreNextMonthGroup" : state.errors.dates ? "simDetailSpeedLimitDateRangeTrigger" : "simDetailSpeedLimitSubmitError").focus(); return; }
       const button = document.getElementById("confirmSimDetailSpeedLimitBtn");
       state.submitting = true; button.disabled = true; button.setAttribute("aria-busy", "true");
       try {
         const { batch } = createSimSpeedLimitBatch([state.iccid], { ...state.values, inputMode: "detail" });
         simDetailSpeedState.page = 1;
         renderSpeedLimitRecordTable(); renderSpeedLimitReportTable(); refreshSimDetailSpeedHistory();
-        state.submitting = false; state.values = { rate: "", remark: "" };
+        state.submitting = false; state.values = { rate: "", restoreNextMonth: true, remark: "" };
+        syncSpeedLimitRestoreRadios("simDetailSpeedLimitRestoreNextMonth", true);
         document.getElementById("simDetailSpeedLimitRate").value = ""; document.getElementById("simDetailSpeedLimitRemark").value = "";
         state.returnFocus = null; state.returnFocusId = "simDetailSpeedOverview";
         closeSimDetailSpeedLimit();
@@ -30139,6 +30199,8 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       if (state.bound) return;
       state.bound = true;
       document.getElementById("simDetailSpeedLimitRate").innerHTML = `<option value="" disabled hidden selected>请选择限速值</option>${speedLimitRates.map(rate => `<option value="${rate}">${speedLimitRateLabels[rate]}</option>`).join("")}`;
+      document.getElementById("simDetailSpeedLimitRestoreNextMonthGroup").innerHTML = renderSpeedLimitRestoreRadios("simDetailSpeedLimitRestoreNextMonth", true);
+      document.getElementById("simDetailSpeedLimitRestoreNextMonthGroup").addEventListener("change", () => { state.values.restoreNextMonth = readSpeedLimitRestoreRadios("simDetailSpeedLimitRestoreNextMonth"); delete state.errors.restoreNextMonth; delete state.errors.submit; renderSimDetailSpeedLimitErrors(); });
       document.getElementById("closeSimDetailSpeedLimitBtn").addEventListener("click", closeSimDetailSpeedLimit);
       document.getElementById("cancelSimDetailSpeedLimitBtn").addEventListener("click", closeSimDetailSpeedLimit);
       document.getElementById("simDetailSpeedLimitForm").addEventListener("submit", event => { event.preventDefault(); confirmSimDetailSpeedLimit(); });
@@ -30216,8 +30278,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       { key: "operationType", label: "操作类型" },
       { key: "operationSource", label: "操作来源" },
       { key: "strategyName", label: "限速策略" },
-      { key: "strategyLevel", label: "限速级别" },
+      { key: "strategyLevel", label: "限速等级" },
       { key: "speed", label: "限速值" },
+      { key: "restoreNextMonth", label: "次月恢复" },
+      { key: "startTime", label: "限速开始时间" },
+      { key: "endTime", label: "限速结束时间" },
       { key: "beforeState", label: "操作前状态" },
       { key: "afterState", label: "操作后状态" },
       { key: "operationResult", label: "操作结果" },
@@ -30270,6 +30335,8 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       const completedAt = !terminal ? "--" : row.completedAt || ((release || (!linkedRelease && row.status !== "已解除")) ? row.updatedAt : "") || "--";
       const failureReason = operationResult === "失败" ? String(row.failureReason || rawResult.replace(/^失败[：:]?\s*/, "")).trim() || "--" : "--";
       return { ...row, ...simDetailSpeedStrategyFields(row, source), operation, operationType: release ? "解除限速" : "限速", operationSource,
+        restoreNextMonth: speedLimitRestoreNextMonth(row, source),
+        startTime: release ? "--" : row.startTime || "--", endTime: release ? "--" : row.endTime || "--",
         beforeState, afterState, operationResult, completedAt, failureReason,
         operationBy: release ? row.releasedBy : row.createdBy };
     }
