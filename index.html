@@ -72,7 +72,7 @@
       gap: 14px;
       font-size: 27px;
       line-height: 1;
-      font-weight: 700;
+      font-weight: 400;
       letter-spacing: 0;
     }
 
@@ -395,7 +395,7 @@
       border-radius: 0;
       background: transparent;
       color: rgba(255, 255, 255, 0.96);
-      font-weight: 500;
+      font-weight: 400;
     }
 
     .user-icon {
@@ -1974,7 +1974,6 @@
 
     .content.writable-mode .business-tabs,
     .content.chip-mode .business-tabs,
-    .content.ab-mode .business-tabs,
     .content.sim-mode .business-tabs,
     .content.risk-mode .business-tabs,
     .content.refund-mode .business-tabs,
@@ -2868,716 +2867,6 @@
       font-weight: 700;
     }
 
-    .ab-page {
-      gap: 14px;
-    }
-
-    .ab-overview-grid {
-      display: grid;
-      grid-template-columns: repeat(6, minmax(150px, 1fr));
-      gap: 12px;
-    }
-
-    .ab-stat-card {
-      min-height: 86px;
-      padding: 15px 16px;
-      background: #fff;
-      border: 1px solid #e6ebf2;
-      border-radius: 8px;
-      box-shadow: var(--shadow);
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .ab-stat-icon {
-      width: 38px;
-      height: 38px;
-      border-radius: 10px;
-      display: grid;
-      place-items: center;
-      color: #1687e8;
-      background: #eef6ff;
-      flex: 0 0 auto;
-    }
-
-    .ab-stat-icon svg {
-      width: 20px;
-      height: 20px;
-    }
-
-    .ab-stat-title {
-      color: #667182;
-      font-size: 12px;
-      line-height: 18px;
-      white-space: nowrap;
-    }
-
-    .ab-stat-value {
-      margin-top: 4px;
-      color: #1f2937;
-      font-size: 24px;
-      line-height: 30px;
-      font-weight: 700;
-    }
-
-    .ab-analysis-grid {
-      display: grid;
-      grid-template-columns: minmax(220px, 1fr) minmax(220px, 0.9fr) minmax(220px, 1fr);
-      gap: 12px;
-      padding: 14px 16px;
-      background: #fff;
-    }
-
-    .ab-analysis-card {
-      min-height: 132px;
-      padding: 16px;
-      border: 1px solid #e6ebf2;
-      border-radius: 8px;
-      background: #fbfcfe;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 12px;
-    }
-
-    .ab-analysis-card.highlight {
-      border-color: #7bb9f5;
-      background: linear-gradient(135deg, #1687e8 0%, #2f91f1 100%);
-      color: #fff;
-      box-shadow: 0 10px 22px rgba(22, 135, 232, 0.2);
-    }
-
-    .ab-analysis-title {
-      color: #344054;
-      font-size: 15px;
-      font-weight: 600;
-    }
-
-    .ab-analysis-card.highlight .ab-analysis-title {
-      color: rgba(255, 255, 255, 0.9);
-    }
-
-    .ab-analysis-metrics {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
-    }
-
-    .ab-analysis-metric span {
-      display: block;
-      color: #667182;
-      font-size: 12px;
-      line-height: 18px;
-    }
-
-    .ab-analysis-metric strong {
-      display: block;
-      margin-top: 3px;
-      color: #1f2937;
-      font-size: 20px;
-      line-height: 26px;
-      font-weight: 700;
-    }
-
-    .ab-analysis-card.highlight .ab-analysis-metric span,
-    .ab-winner-label {
-      color: rgba(255, 255, 255, 0.78);
-    }
-
-    .ab-analysis-card.highlight .ab-analysis-metric strong,
-    .ab-winner-page,
-    .ab-winner-lift {
-      color: #fff;
-    }
-
-    .ab-winner-page {
-      font-size: 22px;
-      line-height: 28px;
-      font-weight: 700;
-    }
-
-    .ab-winner-lift {
-      margin-top: 8px;
-      font-size: 28px;
-      line-height: 34px;
-      font-weight: 700;
-    }
-
-    .ab-section-title {
-      margin: 0;
-      padding: 14px 16px;
-      border-bottom: 1px solid #edf1f5;
-      color: #253041;
-      font-size: 15px;
-      line-height: 22px;
-      font-weight: 600;
-    }
-
-    .ab-sort-btn {
-      border: 0;
-      padding: 0;
-      background: transparent;
-      color: inherit;
-      font: inherit;
-      font-weight: 500;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    .ab-sort-btn::after {
-      content: "↕";
-      color: #9aa4b2;
-      font-size: 12px;
-    }
-
-    .ab-sort-btn.active::after {
-      content: attr(data-sort-mark);
-      color: #1687e8;
-    }
-
-    .ab-package-table {
-      min-width: 1120px;
-    }
-
-    .ab-detail-table {
-      min-width: 1480px;
-    }
-
-    .ab-detail-table .operation-col {
-      width: 100px;
-      min-width: 100px;
-    }
-
-    .ab-dashboard-page {
-      padding: 0;
-      background: linear-gradient(135deg, #f7fbff 0%, #eef6ff 45%, #f8fbff 100%);
-    }
-
-    .ab-dashboard-shell {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      padding: 18px 18px 14px;
-      color: #17233d;
-    }
-
-    .ab-dashboard-header {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .ab-dashboard-header h1 {
-      margin: 0;
-      color: #14213d;
-      font-size: 20px;
-      line-height: 28px;
-      font-weight: 700;
-    }
-
-    .ab-toolbar {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      flex-wrap: wrap;
-    }
-
-    .ab-toolbar-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .ab-toolbar-label {
-      color: #23324b;
-      font-size: 13px;
-      font-weight: 600;
-      white-space: nowrap;
-    }
-
-    .ab-date-field {
-      width: 224px;
-      min-width: 224px;
-    }
-
-    .ab-date-field .date-range-control {
-      height: 34px;
-      min-height: 34px;
-      background: rgba(255, 255, 255, 0.96);
-      box-shadow: 0 4px 12px rgba(32, 85, 145, 0.08);
-    }
-
-    .ab-toolbar-actions {
-      margin-left: auto;
-      display: inline-flex;
-      gap: 10px;
-    }
-
-    .ab-refresh-btn::before {
-      content: "⟳";
-      margin-right: 6px;
-      font-size: 14px;
-    }
-
-    .ab-export-btn {
-      background: #3f7cff;
-      border-color: #3f7cff;
-    }
-
-    .ab-export-btn::before {
-      content: "⇩";
-      margin-right: 6px;
-      font-size: 14px;
-    }
-
-    .ab-dashboard-card,
-    .ab-kpi-card {
-      background: rgba(255, 255, 255, 0.96);
-      border: 1px solid rgba(221, 231, 245, 0.9);
-      border-radius: 8px;
-      box-shadow: 0 10px 24px rgba(54, 101, 168, 0.08);
-    }
-
-    .ab-dot {
-      width: 11px;
-      height: 11px;
-      border-radius: 999px;
-      display: inline-block;
-    }
-
-    .ab-dot.a {
-      background: #4f7dff;
-    }
-
-    .ab-dot.b {
-      background: #20b889;
-    }
-
-    .ab-dot.compare {
-      background: linear-gradient(135deg, #ffeded, #eef6ff);
-    }
-
-    .ab-kpi-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 10px;
-    }
-
-    .ab-kpi-card {
-      min-height: 148px;
-      padding: 18px 20px 16px;
-      min-width: 0;
-      overflow: hidden;
-    }
-
-    .ab-kpi-title {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      color: #15233d;
-      font-size: 15px;
-      font-weight: 700;
-    }
-
-    .ab-kpi-icon {
-      width: 26px;
-      height: 26px;
-      border-radius: 7px;
-      display: inline-grid;
-      place-items: center;
-      color: #fff;
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .ab-kpi-icon.scan {
-      background: #4d7cff;
-    }
-
-    .ab-kpi-icon.click {
-      background: #17bf6b;
-    }
-
-    .ab-kpi-icon.pay {
-      background: #9156f6;
-    }
-
-    .ab-kpi-icon.money {
-      background: #ff980f;
-    }
-
-    .ab-help {
-      width: 14px;
-      height: 14px;
-      border: 1px solid #9aa9bc;
-      border-radius: 50%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      color: #7b8798;
-      font-size: 10px;
-      font-weight: 700;
-    }
-
-    .ab-kpi-matrix {
-      margin-top: 14px;
-      display: grid;
-      grid-template-columns: 62px repeat(var(--metric-cols), minmax(0, 1fr));
-      font-size: 13px;
-    }
-
-    .ab-kpi-matrix > span {
-      min-width: 0;
-      height: 27px;
-      padding: 0 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-bottom: 1px solid #edf2f8;
-      color: #17233d;
-      font-weight: 700;
-      white-space: nowrap;
-    }
-
-    .ab-kpi-label {
-      justify-content: flex-start !important;
-      font-weight: 600;
-    }
-
-    .ab-kpi-head {
-      color: #73829a;
-      font-size: 12px;
-      font-weight: 600;
-    }
-
-    .ab-kpi-compare {
-      border-bottom: 0;
-      background: linear-gradient(90deg, rgba(255, 241, 241, 0.7), rgba(243, 248, 255, 0.9));
-    }
-
-    .ab-page-a-text {
-      color: #3f72ff !important;
-    }
-
-    .ab-page-b-text {
-      color: #0bb875 !important;
-    }
-
-    .ab-positive {
-      color: #ff2f4d !important;
-    }
-
-    .ab-negative {
-      color: #089a82 !important;
-    }
-
-    .ab-dashboard-card {
-      padding: 16px;
-    }
-
-    .ab-dashboard-card h2 {
-      margin: 0 0 14px;
-      color: #14213d;
-      font-size: 16px;
-      line-height: 22px;
-      font-weight: 700;
-    }
-
-    .ab-funnel-compare {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 150px minmax(0, 1fr);
-      gap: 18px;
-      align-items: stretch;
-      min-height: 270px;
-    }
-
-    .ab-funnel-side {
-      position: relative;
-      display: grid;
-      grid-template-columns: 126px minmax(260px, 1fr) 78px;
-      align-items: center;
-      gap: 14px;
-      min-height: 250px;
-    }
-
-    .ab-funnel-side-title {
-      position: absolute;
-      top: 0;
-      left: 48%;
-      transform: translateX(-50%);
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      color: #20324e;
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .ab-funnel-labels,
-    .ab-funnel-rates {
-      display: grid;
-      grid-template-rows: repeat(3, 1fr);
-      gap: 14px;
-      padding-top: 30px;
-    }
-
-    .ab-step-label {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: #20324e;
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .ab-step-no {
-      width: 20px;
-      height: 20px;
-      border-radius: 6px;
-      display: inline-grid;
-      place-items: center;
-      color: #fff;
-      font-weight: 800;
-      font-size: 12px;
-    }
-
-    .ab-step-no.scan {
-      background: #4f7dff;
-    }
-
-    .ab-step-no.click {
-      background: #21a79b;
-    }
-
-    .ab-step-no.pay {
-      background: #8c5cf6;
-    }
-
-    .ab-funnel-stack {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 7px;
-      padding-top: 26px;
-      min-width: 250px;
-    }
-
-    .ab-funnel-bar {
-      height: 61px;
-      clip-path: polygon(8% 0, 92% 0, 80% 100%, 20% 100%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
-    }
-
-    .ab-funnel-bar.scan {
-      background: linear-gradient(135deg, #3e74ff, #4f83ff);
-    }
-
-    .ab-funnel-bar.click {
-      width: 72%;
-      align-self: center;
-      background: linear-gradient(135deg, #20b889, #23887e);
-    }
-
-    .ab-funnel-bar.pay {
-      width: 44%;
-      align-self: center;
-      background: linear-gradient(135deg, #3e74ff, #b144f5);
-    }
-
-    .ab-funnel-value {
-      font-size: 18px;
-      line-height: 22px;
-      font-weight: 800;
-    }
-
-    .ab-funnel-percent {
-      margin-top: 2px;
-      font-size: 12px;
-      font-weight: 700;
-    }
-
-    .ab-funnel-arrow {
-      align-self: center;
-      color: #26a991;
-      font-size: 24px;
-      line-height: 12px;
-      transform: translateY(-2px);
-    }
-
-    .ab-rate-block {
-      color: #6f7d91;
-      font-size: 12px;
-      font-weight: 700;
-      text-align: left;
-    }
-
-    .ab-rate-block strong {
-      display: block;
-      margin-top: 3px;
-      color: #099a7e;
-      font-size: 14px;
-    }
-
-    .ab-rate-block.overall strong {
-      color: #2576ff;
-      font-size: 18px;
-    }
-
-    .ab-funnel-diff {
-      align-self: center;
-      min-height: 246px;
-      padding: 18px 14px;
-      border-radius: 8px;
-      background: linear-gradient(180deg, #eef5ff 0%, #f6f9fd 100%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-around;
-      color: #52627a;
-      font-size: 12px;
-      font-weight: 700;
-      text-align: center;
-    }
-
-    .ab-funnel-diff-title {
-      color: #23324b;
-      font-size: 14px;
-      font-weight: 800;
-    }
-
-    .ab-funnel-diff .diff-value {
-      color: #ff304f;
-      font-size: 13px;
-      font-weight: 800;
-    }
-
-    .ab-conversion-table {
-      min-width: 1100px;
-    }
-
-    .ab-conversion-table th,
-    .ab-conversion-table td {
-      text-align: center;
-      white-space: nowrap;
-    }
-
-    .ab-conversion-table th:first-child,
-    .ab-conversion-table td:first-child,
-    .ab-conversion-table th:nth-child(2),
-    .ab-conversion-table td:nth-child(2) {
-      text-align: left;
-    }
-
-    .ab-table-step {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-weight: 700;
-    }
-
-    .ab-table-step .ab-step-no {
-      flex: 0 0 auto;
-    }
-
-    .ab-mini-arrow {
-      color: #21a79b;
-      font-weight: 800;
-      line-height: 10px;
-    }
-
-    .ab-chart-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-    }
-
-    .ab-chart-legend {
-      display: flex;
-      justify-content: center;
-      gap: 18px;
-      flex-wrap: wrap;
-      color: #5a6980;
-      font-size: 12px;
-      font-weight: 600;
-      margin: -2px 0 8px;
-    }
-
-    .ab-legend-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .ab-legend-line,
-    .ab-legend-dot {
-      width: 20px;
-      height: 3px;
-      border-radius: 999px;
-      display: inline-block;
-    }
-
-    .ab-legend-dot {
-      width: 9px;
-      height: 9px;
-    }
-
-    .ab-chart-wrap {
-      min-height: 210px;
-      overflow: hidden;
-    }
-
-    .ab-chart-wrap svg {
-      width: 100%;
-      height: 220px;
-      display: block;
-    }
-
-    .ab-chart-axis {
-      stroke: #d8e2ef;
-      stroke-width: 1;
-    }
-
-    .ab-chart-gridline {
-      stroke: #e9eff7;
-      stroke-width: 1;
-    }
-
-    .ab-chart-label {
-      fill: #5f6f86;
-      font-size: 11px;
-      font-weight: 600;
-    }
-
-    .ab-dashboard-note {
-      margin-top: -2px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: #57708f;
-      font-size: 12px;
-      line-height: 18px;
-    }
-
-    .ab-note-icon {
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      border: 1px solid #2f7cff;
-      color: #2f7cff;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      flex: 0 0 auto;
-    }
-
     .drawer-mask {
       position: fixed;
       inset: 0;
@@ -3664,19 +2953,6 @@
       font-size: 14px;
       line-height: 20px;
       word-break: break-all;
-    }
-
-    @media (max-width: 1280px) {
-      .ab-overview-grid {
-        grid-template-columns: repeat(3, minmax(150px, 1fr));
-      }
-    }
-
-    @media (max-width: 900px) {
-      .ab-overview-grid,
-      .ab-analysis-grid {
-        grid-template-columns: 1fr;
-      }
     }
 
     @media (max-width: 900px) {
@@ -8079,105 +7355,12 @@
     #speedLimitPage .speed-limit-report-table th:nth-child(3),
     #speedLimitPage .speed-limit-report-table td:nth-child(3) { min-width: 0; }
 
-    #speedLimitPage .speed-limit-table { min-width: 1180px; }
-    #speedLimitPage .speed-limit-table .operation-col { min-width: 128px; width: 128px; }
-    #speedLimitPage .speed-limit-row-actions { display: inline-flex; align-items: center; gap: 20px; white-space: nowrap; }
-    #speedLimitPage .speed-limit-row-actions button { min-height: 32px; }
-    #speedLimitPage .speed-limit-table th:first-child,
-    #speedLimitPage .speed-limit-table td:first-child { min-width: 180px; }
-    #speedLimitPage .speed-limit-table th:nth-child(2),
-    #speedLimitPage .speed-limit-table td:nth-child(2) { min-width: 200px; }
-    #speedLimitPage .speed-limit-table th:nth-child(3),
-    #speedLimitPage .speed-limit-table td:nth-child(3) { min-width: 180px; }
     #speedLimitPage select.control { cursor: pointer; padding-right: 54px; }
     #speedLimitPage select.control:has(option:checked[value=""]) { color: #b8c0cc; }
     #speedLimitPage select.control option { color: var(--ink); }
     #speedLimitPage .speed-limit-empty { padding: 44px 16px; text-align: center; color: var(--muted); }
-    .speed-limit-state-button { display: inline-flex; align-items: center; justify-content: flex-start; gap: 9px; min-height: 34px; padding: 3px 0; border: 0; background: transparent; color: var(--muted); white-space: nowrap; }
-    .speed-limit-state-button[aria-checked="true"] { color: var(--blue-strong); }
-    .speed-limit-state-button .scientific-calculation-status-switch { flex: 0 0 auto; pointer-events: none; }
-    .speed-limit-state-button:hover { color: var(--blue-strong); }
-    .speed-limit-state-button:disabled { opacity: .55; cursor: not-allowed; }
-    #speedLimitPage button:focus-visible,
-    #speedLimitCreateModal button:focus-visible,
-    #speedLimitDeleteConfirmModal button:focus-visible,
-    #speedLimitStatusConfirmModal button:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
-    #speedLimitCreateModal > .speed-limit-modal { width: min(1040px, calc(100vw - 36px)); max-height: calc(100vh - 36px); max-height: calc(100dvh - 36px); }
-    #speedLimitCreateModal .modal-head { padding: 18px 24px; }
-    #speedLimitCreateModal .modal-head h2 { font-size: 20px; }
-    #speedLimitCreateModal .modal-body { padding: 22px 24px; background: #f6f8fb; }
-    #speedLimitCreateModal .modal-foot { gap: 10px; padding: 14px 24px; }
-    #speedLimitCreateModal .modal-foot .btn { min-width: 88px; height: 36px; }
-    #speedLimitCreateModal .speed-limit-form { display: grid; gap: 18px; }
-    #speedLimitCreateModal .speed-limit-base { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; padding: 20px; border: 1px solid var(--line-soft); border-radius: 8px; background: #fff; }
-    #speedLimitCreateModal .speed-limit-field-label { display: flex; align-items: center; gap: 4px; margin-bottom: 8px; font-size: 13px; font-weight: 500; color: var(--ink); }
-    #speedLimitCreateModal .speed-limit-base-field { min-width: 0; }
-    #speedLimitCreateModal .speed-limit-name-control { position: relative; }
-    #speedLimitCreateModal .speed-limit-name-control input { padding-right: 64px; }
-    #speedLimitCreateModal .speed-limit-name-count { position: absolute; right: 12px; top: 10px; color: var(--subtle); font-size: 12px; pointer-events: none; }
-    #speedLimitCreateModal .batch-select { width: 100%; height: 38px; padding: 0 11px; font: inherit; font-size: 13px; border-color: #dce3ec; border-radius: 5px; }
-    #speedLimitCreateModal select.batch-select { padding-right: 26px; cursor: pointer; }
-    #speedLimitCreateModal select.batch-select:has(option:checked[value=""]) { color: var(--subtle); }
-    #speedLimitCreateModal select.batch-select option { color: var(--ink); }
-    #speedLimitCreateModal .batch-select::placeholder { color: var(--subtle); opacity: 1; }
-    #speedLimitCreateModal .batch-select:focus { border-color: var(--blue); box-shadow: 0 0 0 2px rgba(47,145,241,.12); }
-    #speedLimitCreateModal [aria-invalid="true"] { border-color: var(--red); }
-    #speedLimitCreateModal .speed-limit-section { min-width: 0; border: 1px solid var(--line-soft); border-radius: 8px; background: #fff; overflow: hidden; }
-    #speedLimitCreateModal .speed-limit-section-head { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 18px 20px; border-bottom: 1px solid var(--line-soft); }
-    #speedLimitCreateModal .speed-limit-section-title { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }
-    #speedLimitCreateModal .speed-limit-section-title h3 { margin: 0; color: var(--ink); font-size: 16px; font-weight: 600; }
-    #speedLimitCreateModal .speed-limit-section-tag { padding: 2px 8px; border-radius: 4px; background: var(--blue-soft); color: var(--blue-strong); font-size: 11px; line-height: 18px; font-weight: 500; white-space: nowrap; }
-    #speedLimitCreateModal .speed-limit-section-description { margin: 6px 0 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
-    #speedLimitCreateModal .speed-limit-section-head .speed-limit-state-button { flex-shrink: 0; min-width: 92px; justify-content: flex-end; font-size: 13px; }
-    #speedLimitCreateModal .speed-limit-config-fields { min-width: 0; margin: 0; padding: 18px 20px; border: 0; }
-    #speedLimitCreateModal .speed-limit-config-scroll { overflow-x: auto; }
-    #speedLimitCreateModal .speed-limit-config-table { width: 100%; min-width: 600px; table-layout: fixed; border-spacing: 0; border-collapse: separate; font-size: 13px; }
-    #speedLimitCreateModal .speed-limit-config-table th,
-    #speedLimitCreateModal .speed-limit-config-table td { position: static; min-width: 0; padding: 8px; border: 0; background: #fff; text-align: left; white-space: normal; }
-    #speedLimitCreateModal .speed-limit-config-table thead th { height: 32px; background: #f4f7fb; color: #68758b; text-align: center; font-size: 12px; font-weight: 500; }
-    #speedLimitCreateModal .speed-limit-config-table thead tr:first-child th { padding-top: 12px; }
-    #speedLimitCreateModal .speed-limit-config-table thead tr:last-child th { padding-bottom: 12px; }
-    #speedLimitCreateModal .speed-limit-config-table th:first-child { width: 94px; }
-    #speedLimitCreateModal .speed-limit-config-table .speed-limit-usage-action { width: 64px; text-align: center; }
-    #speedLimitCreateModal .speed-limit-config-table tbody th { text-align: center; color: #455269; font-size: 13px; font-weight: 500; }
-    #speedLimitCreateModal .speed-limit-config-table tbody td,
-    #speedLimitCreateModal .speed-limit-config-table tbody th { height: 64px; border-bottom: 1px solid #edf0f5; vertical-align: top; padding-top: 12px; padding-bottom: 12px; }
-    #speedLimitCreateModal .speed-limit-config-table tbody th { padding-top: 21px; }
-    #speedLimitCreateModal .speed-limit-config-table tbody tr:last-child td,
-    #speedLimitCreateModal .speed-limit-config-table tbody tr:last-child th { border-bottom: 0; }
-    #speedLimitCreateModal .speed-limit-section-note { margin: 0 20px 16px; padding: 9px 12px; border-radius: 5px; background: #f6f9fd; color: #7c899d; font-size: 12px; line-height: 1.6; }
-    #speedLimitCreateModal .speed-limit-usage-delete { display: inline-flex; align-items: center; justify-content: center; align-self: center; width: 34px; height: 34px; padding: 7px; border: 0; border-radius: 4px; background: transparent; color: var(--red); cursor: pointer; }
-    #speedLimitCreateModal .speed-limit-usage-delete .scientific-calculation-ui-icon { display: block; width: 20px; height: 20px; pointer-events: none; }
-    #speedLimitCreateModal .speed-limit-usage-delete:hover:not(:disabled) { background: #fff0f1; color: #cc2e34; }
-    #speedLimitCreateModal .speed-limit-usage-delete:active:not(:disabled) { background: #ffe1e5; }
-    #speedLimitCreateModal .speed-limit-usage-delete:disabled { color: #acb5c3; cursor: not-allowed; }
-    #speedLimitCreateModal .speed-limit-add-usage { margin-top: 14px; padding: 0 14px; border-color: #b6d9fc; color: var(--blue-strong); }
-    #speedLimitCreateModal .speed-limit-add-usage:hover:not(:disabled) { color: var(--blue-strong); border-color: var(--blue); background: var(--blue-soft); }
-    #speedLimitCreateModal .modal-field-error { margin-top: 4px; font-size: 12px; line-height: 1.5; }
-
-    #speedLimitStatusConfirmModal > .modal { width: min(460px,100%); }
-    #speedLimitStatusConfirmMessage { overflow-wrap: anywhere; line-height: 1.8; }
-    #speedLimitDeleteConfirmModal > .modal { width: min(480px,100%); }
-    #speedLimitDeleteConfirmModal p { overflow-wrap: anywhere; line-height: 1.8; }
-    #speedLimitDeleteMessage { margin: 0 0 8px; color: var(--ink); font-size: 16px; font-weight: 600; }
-    #speedLimitDeleteWarning { margin: 0; padding: 12px 14px; border: 1px solid #ffd8dc; border-radius: 5px; background: #fff5f5; color: #bc2636; font-size: 13px; }
-    #confirmSpeedLimitDeleteBtn { min-width: 88px; background: var(--red); border-color: var(--red); }
-    #confirmSpeedLimitDeleteBtn:hover:not(:disabled) { background: #cc2e34; border-color: #cc2e34; }
-    #confirmSpeedLimitDeleteBtn:disabled { opacity: .55; cursor: not-allowed; }
-    @media (max-width: 760px) {
-      #speedLimitCreateModal { padding: 12px; }
-      #speedLimitCreateModal > .speed-limit-modal { width: calc(100vw - 24px); max-height: calc(100vh - 24px); max-height: calc(100dvh - 24px); }
-      #speedLimitCreateModal .modal-head,
-      #speedLimitCreateModal .modal-foot { padding: 14px 16px; }
-      #speedLimitCreateModal .modal-body { padding: 16px; }
-      #speedLimitCreateModal .speed-limit-base { grid-template-columns: minmax(0,1fr); gap: 16px; padding: 16px; }
-      #speedLimitCreateModal .speed-limit-section-head { padding: 16px; align-items: flex-start; gap: 10px; }
-      #speedLimitCreateModal .speed-limit-config-fields { padding: 12px; }
-      #speedLimitCreateModal .speed-limit-section-note { margin-right: 12px; margin-left: 12px; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      #speedLimitPage *, #speedLimitCreateModal *, #speedLimitStatusConfirmModal *, #speedLimitDeleteConfirmModal * { transition: none !important; animation: none !important; }
-    }
+    #speedLimitPage button:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+    @media (prefers-reduced-motion: reduce) { #speedLimitPage * { transition: none !important; animation: none !important; } }
 
     #simInboundPage .header-tip-icon:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
     #simInboundPage select.control { padding-right: 54px; cursor: pointer; }
@@ -8515,6 +7698,79 @@
 .wc-page :is([data-wcr-table],#wc-channel-list,#wc-template-list,[data-wc-record-grid]){display:flex;flex:1 1 auto;flex-direction:column;min-width:0;min-height:360px}
 .wc-page .query-panel{flex:0 0 auto}
 
+.wc-speed-tier-scroll{max-width:100%;overflow:auto;margin-bottom:12px}
+.wc-speed-tier-table{width:100%;min-width:620px;border-collapse:separate;border-spacing:0;font:inherit}
+.wc-speed-tier-table th,.wc-speed-tier-table td{padding:10px;text-align:left;border-bottom:1px solid var(--line-soft);vertical-align:top}
+.wc-speed-tier-table th{background:#fbfcfe;font-weight:500;white-space:nowrap}
+.wc-speed-tier-table .control{width:100%;min-width:130px}.wc-speed-tier-table button{min-width:32px;min-height:34px}
+.wc-speed-tier-table .scientific-calculation-ui-icon{width:18px;height:18px}
+/* Rule editor: a scoped SaaS configuration workspace. Shared application tokens remain canonical. */
+#rcRuleFormPage{background:#f5f7fa}
+#rcRuleFormPage .wc-rule-form{width:100%;max-width:1240px;margin:0 auto;padding:24px;min-width:0;font-size:13px}
+#rcRuleFormPage .wc-rule-editor-body{display:block;min-width:0}
+#rcRuleFormPage .wc-editor-sections{min-width:0;display:flex;flex-direction:column;gap:20px}
+#rcRuleFormPage .wc-editor-sections>.wc-form-section{min-width:0;padding:0;border:1px solid var(--line-soft);border-radius:var(--radius);background:#fff;scroll-margin-top:64px;overflow:visible}
+#rcRuleFormPage .wc-editor-sections>.wc-form-section:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+#rcRuleFormPage .wc-editor-section-head{display:flex;align-items:center;gap:12px;padding:20px 24px;border-bottom:1px solid #edf1f5}
+#rcRuleFormPage .wc-editor-section-icon{display:grid;place-items:center;flex:0 0 32px;width:32px;height:32px;color:var(--blue-strong);border:1px solid #e2ecf8;border-radius:7px;background:#f4f8fe}
+#rcRuleFormPage .wc-editor-section-icon svg{width:18px;height:18px}
+#rcRuleFormPage .wc-editor-section-head h3{margin:0;font-size:15px;font-weight:600;line-height:1.7;color:var(--ink)}
+#rcRuleFormPage .wc-editor-section-content{min-width:0;padding:22px 24px}
+#rcRuleFormPage .wc-field{display:grid;grid-template-columns:minmax(0,1fr);align-items:start;gap:7px;margin:0 0 20px;line-height:1.7;font-size:13px}
+#rcRuleFormPage .wc-field:last-child{margin-bottom:0}
+#rcRuleFormPage .wc-field>.wc-field-label{padding:0;font-weight:500;font-size:13px;color:#455266;line-height:1.6}
+#rcRuleFormPage .wc-field>.wc-field-label:empty{display:none}
+#rcRuleFormPage .wc-field-value{min-width:0}
+#rcRuleFormPage .wc-monitor-scope-config{min-width:0}
+#rcRuleFormPage .wc-monitor-condition-config{margin-top:4px;padding-top:22px;border-top:1px solid var(--line-soft)}
+#rcRuleFormPage .wc-editor-section-base>.wc-editor-section-content,#rcRuleFormPage .wc-monitor-scope-config{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:20px;align-items:start}
+#rcRuleFormPage .wc-editor-section-base [data-wcr-field="rule-remark"],#rcRuleFormPage .wc-monitor-scope-config>.wc-field:is([data-wcr-field="scope-mode"],[data-wcr-field="scope-entry"],[data-wcr-field="scope-manual"],[data-wcr-field="scope-file"]){grid-column:1/-1}
+#rcRuleFormPage .control{height:38px;min-height:38px;padding:0 12px;border-color:#dce2eb;border-radius:6px;background:#fff;font-size:13px;line-height:normal;box-shadow:none}
+#rcRuleFormPage .control:hover:not(:disabled){border-color:#bdc9da}
+#rcRuleFormPage .control:focus{outline:0;border-color:var(--blue);box-shadow:0 0 0 3px rgba(47,145,241,.1)}
+#rcRuleFormPage .control:disabled{background:#f5f7fa;color:#7c8798;cursor:not-allowed}
+#rcRuleFormPage textarea.control{min-height:96px;height:auto;padding:10px 12px;line-height:1.8;resize:none}
+#rcRuleFormPage .wc-rule-type-note{margin-top:8px;font-size:12px;line-height:1.75}
+#rcRuleFormPage .wc-radio-line{gap:8px 10px}
+#rcRuleFormPage .wc-radio-line label{min-height:36px;padding:7px 11px;border:1px solid #e1e6ee;border-radius:6px;white-space:normal;line-height:1.6;background:#fff;color:#526176;font-size:13px;transition:border-color .12s,background .12s}
+#rcRuleFormPage .wc-radio-line label:hover{border-color:#a9caee;background:#f8fbff}
+#rcRuleFormPage .wc-radio-line label:has(input:checked){color:var(--blue-strong);background:var(--blue-soft);border-color:#a7cef5}
+#rcRuleFormPage .wc-radio-line label:focus-within{outline:2px solid var(--blue);outline-offset:2px}
+#rcRuleFormPage .wc-radio-line input{margin:0;width:14px;height:14px;flex:0 0 auto;accent-color:var(--blue)}
+#rcRuleFormPage .wc-inline-config{gap:10px 12px}
+#rcRuleFormPage .wc-inline-config .control{flex:0 1 150px;width:150px}
+#rcRuleFormPage [data-wcr-field="scope-file"]>.wc-field-value{padding:16px;border:1px dashed #c9d4e3;border-radius:6px;background:#fafbfd}
+#rcRuleFormPage .wc-threshold-row{gap:8px 10px;min-width:0;margin:0 0 12px;padding:12px;border:1px solid var(--line-soft);border-radius:6px;background:#fafbfd}
+#rcRuleFormPage .wc-threshold-row .control{flex:0 1 144px;width:144px}
+#rcRuleFormPage .wc-setting-card{margin:18px 0 0;padding:20px;border:1px solid var(--line-soft);border-radius:6px;background:#fafbfd}
+#rcRuleFormPage .wc-setting-card>h4{font-size:13px;font-weight:500;margin-bottom:20px}
+#rcRuleFormPage .wc-method{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:16px 0 0;padding:18px;border:1px solid var(--line-soft);border-radius:6px;background:#fff}
+#rcRuleFormPage .wc-method>h4{grid-column:1/-1;margin:0;font-size:13px;font-weight:500;color:#455266}
+#rcRuleFormPage .wc-method>.wc-field{margin:0}
+#rcRuleFormPage .wc-method>.wc-field[data-wcr-field$="-preview"]{grid-column:1/-1}
+#rcRuleFormPage .wc-preview{margin:0;max-height:220px;overflow:auto;padding:12px 14px;border-radius:6px;background:#f7f9fc;font-size:12px;line-height:1.8}
+#rcRuleFormPage .wc-recipients{margin-top:10px}
+#rcRuleFormPage .wc-tag{padding:4px 8px;font-size:12px;line-height:20px;border-radius:4px}
+#rcRuleFormPage .wc-rule-error{margin:6px 0 0;font-size:12px;line-height:1.7}
+#rcRuleFormPage .wc-rule-form>[data-wcr-form-error]:not([hidden]){margin:0 0 20px;padding:12px 16px;border:1px solid #ffd6dc;background:#fff4f5;border-radius:6px}
+#rcRuleFormPage .wc-field.wc-invalid .control,#rcRuleFormPage .control[aria-invalid="true"]{border-color:var(--red)}
+#rcRuleFormPage .wc-speed-tier-table th{font-size:12px;font-weight:500;background:#f7f9fc}
+#rcRuleFormPage .wc-speed-tier-table th,#rcRuleFormPage .wc-speed-tier-table td{padding:12px 10px}
+#rcRuleFormPage .wc-speed-tier-table{min-width:590px;border:1px solid var(--line-soft);border-radius:6px}
+#rcRuleFormPage .wc-speed-tier-table th:first-child{width:112px}
+#rcRuleFormPage .wc-speed-tier-table th:last-child{width:58px}
+#rcRuleFormPage .wc-speed-tier-scroll{margin:14px 0 16px}
+#rcRuleFormPage .wc-rule-footer{position:sticky;bottom:0;z-index:8;display:flex;align-items:center;justify-content:flex-end;gap:20px;min-height:76px;margin-top:24px;padding:16px 22px;border:1px solid var(--line-soft);border-radius:var(--radius);background:rgba(255,255,255,.98);box-shadow:0 -3px 14px rgba(31,41,55,.025)}
+#rcRuleFormPage .wc-editor-footer-actions{display:flex;align-items:center;gap:10px;flex:0 0 auto}
+#rcRuleFormPage .wc-rule-footer .btn{height:36px;min-width:96px;border-radius:6px;font-size:13px}
+@media(max-width:720px){#rcRuleFormPage .wc-rule-form{padding:16px!important}#rcRuleFormPage .wc-editor-sections{gap:16px}#rcRuleFormPage .wc-editor-section-head{padding:16px}#rcRuleFormPage .wc-editor-section-content{padding:18px 16px}#rcRuleFormPage .wc-editor-section-base>.wc-editor-section-content,#rcRuleFormPage .wc-monitor-scope-config,#rcRuleFormPage .wc-method{grid-template-columns:minmax(0,1fr)}#rcRuleFormPage .wc-setting-card{padding:14px}#rcRuleFormPage .wc-method{padding:14px}#rcRuleFormPage .wc-rule-footer{margin-top:16px;padding:14px;gap:10px}#rcRuleFormPage .wc-rule-footer .btn{min-width:84px}}
+@media(prefers-reduced-motion:reduce){#rcRuleFormPage *{scroll-behavior:auto!important;transition:none!important}}
+
+/* Rule content uses the shared tooltip and the table's existing horizontal scroller. */
+#rcRulePage .wc-table :is(th,td):nth-child(4){width:300px}
+#rcRulePage .wc-rule-content{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;text-overflow:ellipsis;white-space:normal;width:100%;max-height:3.2em;margin:0;color:inherit;line-height:1.6;cursor:help}
+#rcRulePage .wc-rule-content:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:2px}
+.wc-tooltip-portal{white-space:pre-wrap;overflow-wrap:anywhere;overscroll-behavior:contain}
 </style>
 </head>
 <body>
@@ -8525,9 +7781,7 @@
         <span>儿童手表运营平台</span>
       </div>
       <div class="top-actions">
-        <svg class="more-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M12 5.2h.01M12 12h.01M12 18.8h.01" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/>
-        </svg>
+        <div id="wcTopbarMessages" class="wc-topbar-messages"></div>
         <div class="user">
           <svg class="user-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM4 21a8 8 0 0 1 16 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
@@ -8661,15 +7915,6 @@
       <div class="sub-menu collapsed" id="taskSubMenu" aria-label="任务管理二级菜单">
         <button class="sub-item" id="batchTaskSubItem" type="button" data-page="batchTaskPage">批量任务</button>
       </div>
-      <button class="nav-item" id="abTestStatsNavItem" type="button" data-page="abTestStatsPage">
-        <svg class="nav-icon" viewBox="0 0 15 14" fill="none" aria-hidden="true">
-          <rect x="2.1" y="1.6" width="10.8" height="10.8" rx="2" />
-          <line x1="4.6" y1="9.5" x2="4.6" y2="11" />
-          <line x1="7.5" y1="6.9" x2="7.5" y2="11" />
-          <line x1="10.4" y1="4.2" x2="10.4" y2="11" />
-        </svg>
-        <span class="nav-label">AB测试套餐购买统计</span>
-      </button>
     </aside>
 
     <main class="main">
@@ -8834,37 +8079,10 @@
 
         <div class="page-view" id="speedLimitPage">
           <div class="chip-page-tabs" id="speedLimitTabs" role="tablist" aria-label="限速管理页签">
-            <button class="chip-page-tab active" id="speedLimitStrategiesTab" type="button" role="tab" aria-selected="true" aria-controls="speedLimitStrategiesPanel" tabindex="0" data-speed-limit-tab="strategies">限速策略</button>
             <button class="chip-page-tab" id="speedLimitReportTab" type="button" role="tab" aria-selected="false" aria-controls="speedLimitReportPanel" tabindex="-1" data-speed-limit-tab="report">限速统计报告</button>
             <button class="chip-page-tab" id="speedLimitBatchesTab" type="button" role="tab" aria-selected="false" aria-controls="speedLimitBatchPanel" tabindex="-1" data-speed-limit-tab="batches">限速操作记录</button>
             <button class="chip-page-tab" id="speedLimitDetailsTab" type="button" role="tab" aria-selected="false" aria-controls="speedLimitDetailsPanel" tabindex="-1" data-speed-limit-tab="details">限速操作详情</button>
           </div>
-          <section class="admin-tab-panel active" id="speedLimitStrategiesPanel" role="tabpanel" aria-labelledby="speedLimitStrategiesTab">
-            <section class="panel query-panel" aria-label="限速管理查询区域">
-              <div class="filter-wrap" id="speedLimitFilterWrap">
-                <div class="field clearable-query" data-key="strategyName">
-                  <input class="control" id="speedLimitFilterName" type="text" placeholder="策略名称" aria-label="策略名称" autocomplete="off" />
-                  <button class="query-clear" type="button" aria-label="清空策略名称">×</button>
-                </div>
-                <div class="field clearable-query" data-key="usageEnabled">
-                  <select class="control" id="speedLimitFilterUsage" aria-label="月用量限速状态"><option value="" disabled hidden selected>月用量限速状态</option><option value="true">开启</option><option value="false">停用</option></select>
-                  <button class="query-clear" type="button" aria-label="清空月用量限速状态">×</button>
-                </div>
-                <div class="field clearable-query" data-key="restoreNextMonth">
-                  <select class="control" id="speedLimitFilterRestoreNextMonth" aria-label="次月恢复"><option value="" disabled hidden selected>次月恢复</option><option value="true">恢复</option><option value="false">不恢复</option></select>
-                  <button class="query-clear" type="button" aria-label="清空次月恢复">×</button>
-                </div>
-                <div class="form-actions"><button class="btn search-btn" id="speedLimitSearchBtn" type="button">搜索</button><button class="btn secondary" id="speedLimitResetBtn" type="button">重置</button></div>
-              </div>
-            </section>
-            <div class="batch-actions" aria-label="限速管理操作"><button class="btn" id="speedLimitCreateBtn" type="button">限速策略新增</button></div>
-            <section class="panel table-panel" aria-label="限速策略列表">
-              <div class="table-scroll" tabindex="0" aria-label="限速策略列表滚动区域">
-                <table class="speed-limit-table" aria-label="限速策略列表"><thead><tr id="speedLimitTableHeader"></tr></thead><tbody id="speedLimitTableBody"></tbody></table>
-              </div>
-              <div class="pager" id="speedLimitPager" aria-label="限速策略分页"></div>
-            </section>
-          </section>
           <section class="admin-tab-panel" id="speedLimitBatchPanel" role="tabpanel" aria-labelledby="speedLimitBatchesTab" hidden>
             <section class="panel query-panel" aria-label="限速操作记录查询区域">
               <div class="filter-wrap" id="speedLimitBatchFilterWrap">
@@ -8975,59 +8193,6 @@
               <h2>用户套餐详情</h2>
             </div>
             <div class="risk-create-body risk-detail-body" id="userPackageDetailBody"></div>
-          </section>
-        </div>
-
-        <div class="page-view ab-page ab-dashboard-page" id="abTestStatsPage">
-          <section class="ab-dashboard-shell" aria-label="H5套餐购买漏斗数据看板">
-            <header class="ab-dashboard-header">
-              <h1>H5套餐购买漏斗数据看板</h1>
-              <div class="ab-toolbar">
-                <div class="ab-toolbar-item">
-                  <span class="ab-toolbar-label">统计时间</span>
-                  <div class="field writable-date-range ab-date-field" id="abFunnelDateRangeField"></div>
-                </div>
-                <div class="ab-toolbar-actions">
-                  <button class="btn secondary ab-refresh-btn" id="abRefreshBtn" type="button">刷新数据</button>
-                  <button class="btn ab-export-btn" id="abExportBtn" type="button">导出数据</button>
-                </div>
-              </div>
-            </header>
-
-            <section class="ab-kpi-grid" id="abKpiCards" aria-label="漏斗核心指标"></section>
-
-            <section class="ab-dashboard-card ab-funnel-card" aria-label="漏斗分析对比">
-              <h2>漏斗分析对比（去重用户数）</h2>
-              <div class="ab-funnel-compare" id="abFunnelCompare"></div>
-            </section>
-
-            <section class="ab-dashboard-card ab-conversion-card" aria-label="转化率与流失率对比">
-              <h2>转化率与流失率对比</h2>
-              <div class="table-scroll">
-                <table class="ab-conversion-table">
-                  <thead id="abConversionTableHead"></thead>
-                  <tbody id="abConversionTableBody"></tbody>
-                </table>
-              </div>
-            </section>
-
-            <section class="ab-chart-grid" aria-label="漏斗趋势对比">
-              <div class="ab-dashboard-card">
-                <h2>漏斗趋势对比（按日）</h2>
-                <div class="ab-chart-legend" id="abLeakTrendLegend"></div>
-                <div class="ab-chart-wrap" id="abLeakTrendChart"></div>
-              </div>
-              <div class="ab-dashboard-card">
-                <h2>各步骤转化率趋势对比（按日）</h2>
-                <div class="ab-chart-legend" id="abStepTrendLegend"></div>
-                <div class="ab-chart-wrap" id="abStepTrendChart"></div>
-              </div>
-            </section>
-
-            <div class="ab-dashboard-note">
-              <span class="ab-note-icon">i</span>
-              <span><strong>说明：</strong>去重用户数（UV）通过IP地址去重统计；转化率=下一步骤用户数/当前步骤用户数，流失率=1-转化率</span>
-            </div>
           </section>
         </div>
 
@@ -10054,30 +9219,6 @@
     </div>
   </div>
 
-  <div class="modal-mask" id="speedLimitCreateModal" role="dialog" aria-modal="true" aria-labelledby="speedLimitCreateTitle">
-    <div class="modal scrollable-form-modal speed-limit-modal">
-      <div class="modal-head"><h2 id="speedLimitCreateTitle">限速策略新增</h2><button class="close" id="closeSpeedLimitCreateBtn" type="button" aria-label="关闭限速策略弹窗">×</button></div>
-      <div class="modal-body"><form class="speed-limit-form" id="speedLimitCreateForm" novalidate></form></div>
-      <div class="modal-foot"><button class="btn secondary" id="cancelSpeedLimitCreateBtn" type="button">取消</button><button class="btn" id="confirmSpeedLimitCreateBtn" type="submit" form="speedLimitCreateForm">新增</button></div>
-    </div>
-  </div>
-
-  <div class="modal-mask" id="speedLimitDeleteConfirmModal" role="alertdialog" aria-modal="true" aria-labelledby="speedLimitDeleteTitle" aria-describedby="speedLimitDeleteMessage speedLimitDeleteWarning">
-    <div class="modal scrollable-form-modal">
-      <div class="modal-head"><h2 id="speedLimitDeleteTitle">删除限速策略</h2><button class="close" id="closeSpeedLimitDeleteBtn" type="button" aria-label="关闭删除限速策略确认">×</button></div>
-      <div class="modal-body"><p id="speedLimitDeleteMessage"></p><p id="speedLimitDeleteWarning">删除后，该策略及其月用量限速配置将被移除，且无法恢复。请谨慎操作。</p></div>
-      <div class="modal-foot"><button class="btn secondary" id="cancelSpeedLimitDeleteBtn" type="button">取消</button><button class="btn" id="confirmSpeedLimitDeleteBtn" type="button">确认删除</button></div>
-    </div>
-  </div>
-
-  <div class="modal-mask" id="speedLimitStatusConfirmModal" role="alertdialog" aria-modal="true" aria-labelledby="speedLimitStatusConfirmTitle" aria-describedby="speedLimitStatusConfirmMessage">
-    <div class="modal scrollable-form-modal">
-      <div class="modal-head"><h2 id="speedLimitStatusConfirmTitle">限速状态切换确认</h2><button class="close" id="closeSpeedLimitStatusConfirmBtn" type="button" aria-label="关闭限速状态切换确认">×</button></div>
-      <div class="modal-body"><div id="speedLimitStatusConfirmMessage"></div></div>
-      <div class="modal-foot"><button class="btn secondary" id="cancelSpeedLimitStatusConfirmBtn" type="button">取消</button><button class="btn" id="confirmSpeedLimitStatusBtn" type="button">确认</button></div>
-    </div>
-  </div>
-
   <div class="modal-mask" id="exchangeReshipCreateModal" role="dialog" aria-modal="true" aria-labelledby="exchangeReshipCreateTitle">
     <div class="modal exchange-reship-modal">
       <div class="modal-head">
@@ -10230,16 +9371,6 @@
         <div class="smart-refund-preview-name" id="smartRefundScreenshotPreviewName"></div>
       </div>
     </div>
-  </div>
-
-  <div class="drawer-mask" id="abPurchaseDrawer" aria-hidden="true">
-    <aside class="detail-drawer" role="dialog" aria-modal="true" aria-labelledby="abPurchaseDrawerTitle">
-      <div class="drawer-head">
-        <h2 id="abPurchaseDrawerTitle">购买详情</h2>
-        <button class="close" id="closeAbPurchaseDrawer" type="button" aria-label="关闭">×</button>
-      </div>
-      <div class="drawer-body" id="abPurchaseDrawerBody"></div>
-    </aside>
   </div>
 
   <div class="modal-mask" id="simDetailSpeedLimitModal" role="dialog" aria-modal="true" aria-labelledby="simDetailSpeedLimitTitle" aria-describedby="simDetailSpeedLimitCard">
@@ -13255,21 +12386,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       document.querySelectorAll(`input[name="${name}"]`).forEach(input => { input.checked = String(value) === input.value; });
     }
 
-    const speedLimitColumns = [
-      { key: "id", label: "策略ID" },
-      { key: "strategyName", label: "策略名称" },
-      { key: "usageEnabled", label: "月用量限速状态" },
-      { key: "restoreNextMonth", label: "次月恢复" },
-      { key: "createdBy", label: "操作人" },
-      { key: "createdAt", label: "创建时间" },
-      { key: "updatedAt", label: "更新时间" },
-      { key: "action", label: "操作" }
-    ];
-    const speedLimitFilterFields = [
-      { key: "strategyName", id: "speedLimitFilterName" },
-      { key: "usageEnabled", id: "speedLimitFilterUsage" },
-      { key: "restoreNextMonth", id: "speedLimitFilterRestoreNextMonth" }
-    ];
     const speedLimitRows = [
       { id: "SL202610140001", strategyName: "儿童手表日常限速策略", usageEnabled: true, createdBy: "张楠", createdAt: "2026-10-14 09:00:00", updatedAt: "2026-10-14 09:00:00" },
       { id: "SL202610140002", strategyName: "月度用量分级限速", usageEnabled: true, createdBy: "lifan", createdAt: "2026-10-14 09:10:00", updatedAt: "2026-10-14 09:10:00" },
@@ -13282,10 +12398,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         { monthlyMb: 30720, monthlySpeed: 256 }
       ]
     }));
-    const speedLimitState = { activeTab: "strategies", appliedValues: {}, page: 1, pageSize: 20 };
-    const speedLimitCreateState = { editId: "", values: null, errors: {}, submitting: false, draft: null, returnFocus: null, previousBodyOverflow: "", previousBackgroundInert: false };
-    const speedLimitDeleteState = { id: "", snapshot: "", submitting: false, returnFocus: null, previousBodyOverflow: "", previousBackgroundInert: false };
-    const speedLimitStatusState = { id: "", key: "", previous: false, next: false, submitting: false, returnFocus: null, previousBodyOverflow: "", previousBackgroundInert: false };
+    const speedLimitState = { activeTab: "report", appliedValues: {}, page: 1, pageSize: 20 };
 
 
     const speedLimitOperationSources = ["手动操作", "策略限速", "系统恢复"];
@@ -14009,71 +13122,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         operationTime: "2026-05-22 11:06:45"
       }
     ];
-
-    const abFunnelSteps = [
-      { key: "scan", no: "1", label: "扫码进入H5", icon: "scan" },
-      { key: "click", no: "2", label: "点击商品卡片", icon: "click" },
-      { key: "pay", no: "3", label: "支付成功", icon: "pay" }
-    ];
-    const abDashboardPages = {
-      A: {
-        code: "A",
-        name: "页面A",
-        version: "版本一",
-        dotClass: "a",
-        metrics: {
-          scan: { pv: 32568, uv: 26857 },
-          click: { pv: 15689, uv: 12542 },
-          pay: { pv: 6382, uv: 5124 },
-          money: { amount: 482569, unit: 75.62 }
-        }
-      },
-      B: {
-        code: "B",
-        name: "页面B",
-        version: "版本二",
-        dotClass: "b",
-        metrics: {
-          scan: { pv: 28341, uv: 23154 },
-          click: { pv: 13267, uv: 10321 },
-          pay: { pv: 4857, uv: 3801 },
-          money: { amount: 367890.5, unit: 75.84 }
-        }
-      }
-    };
-    const abKpiCards = [
-      { key: "scan", title: "扫码进入H5访问", icon: "scan", columns: ["访问量（PV）", "去重用户数（UV）"], fields: ["pv", "uv"] },
-      { key: "click", title: "点击商品卡片", icon: "click", columns: ["点击次数（PV）", "用户数（UV）"], fields: ["pv", "uv"] },
-      { key: "pay", title: "支付成功", icon: "pay", columns: ["支付次数（PV）", "用户数（UV）"], fields: ["pv", "uv"] },
-      { key: "money", title: "支付金额（元）", icon: "money", columns: ["支付金额", "客单价"], fields: ["amount", "unit"] }
-    ];
-    const abTrendRows = [
-      { day: "06-01", aUv: 26857, bUv: 23154, aOverall: 19.08, bOverall: 16.42, a12: 58, b12: 49, a23: 24, b23: 13 },
-      { day: "06-02", aUv: 29800, bUv: 26100, aOverall: 20.2, bOverall: 18.1, a12: 57, b12: 52, a23: 22, b23: 12 },
-      { day: "06-03", aUv: 28600, bUv: 24900, aOverall: 19.4, bOverall: 16.8, a12: 55, b12: 43, a23: 17, b23: 10 },
-      { day: "06-04", aUv: 29200, bUv: 27200, aOverall: 20.1, bOverall: 18.5, a12: 55, b12: 45, a23: 16, b23: 11 },
-      { day: "06-05", aUv: 30100, bUv: 26600, aOverall: 20.7, bOverall: 17.9, a12: 56, b12: 48, a23: 20, b23: 12 },
-      { day: "06-06", aUv: 27100, bUv: 23800, aOverall: 19.6, bOverall: 17.2, a12: 51, b12: 45, a23: 18, b23: 11 },
-      { day: "06-07", aUv: 25400, bUv: 22400, aOverall: 18.6, bOverall: 15.9, a12: 50, b12: 43, a23: 17, b23: 10 },
-      { day: "06-08", aUv: 27900, bUv: 24600, aOverall: 19.7, bOverall: 16.8, a12: 52, b12: 42, a23: 18, b23: 11 },
-      { day: "06-09", aUv: 26600, bUv: 22100, aOverall: 19.1, bOverall: 16.1, a12: 50, b12: 39, a23: 20, b23: 12 },
-      { day: "06-10", aUv: 27200, bUv: 23600, aOverall: 18.8, bOverall: 16.2, a12: 48, b12: 41, a23: 21, b23: 11 },
-      { day: "06-11", aUv: 28100, bUv: 24200, aOverall: 19.3, bOverall: 16.6, a12: 48, b12: 40, a23: 17, b23: 10 },
-      { day: "06-12", aUv: 26900, bUv: 22600, aOverall: 18.5, bOverall: 15.8, a12: 48, b12: 39, a23: 16, b23: 10 },
-      { day: "06-13", aUv: 25800, bUv: 21700, aOverall: 17.9, bOverall: 15.2, a12: 46, b12: 38, a23: 15, b23: 9 },
-      { day: "06-14", aUv: 24100, bUv: 20500, aOverall: 17.2, bOverall: 14.7, a12: 43, b12: 36, a23: 14, b23: 8 }
-    ];
-    const abState = {
-      values: {
-        purchaseStart: "2025-06-01",
-        purchaseEnd: "2025-06-14"
-      },
-      selectedPages: { A: true, B: true },
-      purchaseDateRangeOpen: false,
-      draftPurchaseStart: "",
-      draftPurchaseEnd: "",
-      purchaseDateRangeError: ""
-    };
 
     const chipState = {
       expanded: false,
@@ -15393,8 +14441,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     const writableChangeRecordFilterWrap = document.getElementById("writableChangeRecordFilterWrap");
     const manageDisableRecordFilterWrap = document.getElementById("manageDisableRecordFilterWrap");
     const manageDisableDetailFilterWrap = document.getElementById("manageDisableDetailFilterWrap");
-    const abOverviewCards = document.getElementById("abOverviewCards");
-    const abAnalysisCards = document.getElementById("abAnalysisCards");
     const toast = document.getElementById("toast");
 
     function iconChevron() {
@@ -16863,7 +15909,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
             <button class="user-package-select-clear is-hidden" type="button" data-user-package-clear="userPackageSpeedLimitStrategy" aria-label="清空限速策略">×</button>
           </div>
           <div class="modal-field-error" id="userPackageSpeedLimitStrategyError" aria-live="polite"></div>
-          <div class="user-package-strategy-hint" id="userPackageSpeedLimitStrategyHint">${empty ? "暂无已开启的限速策略，请先在限速管理页新增或开启策略。" : ""}</div>
+          <div class="user-package-strategy-hint" id="userPackageSpeedLimitStrategyHint">${empty ? "暂无已开启的限速策略，请先在规则中心创建或开启限速策略规则。" : ""}</div>
         </div>
       </div>`;
     }
@@ -19716,424 +18762,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       showToast("预警配置已保存", "success");
     }
 
-    function abSelectedPageKeys() {
-      return ["A", "B"].filter((key) => abState.selectedPages[key]);
-    }
-
-    function abFormatNumber(value) {
-      return Number(value || 0).toLocaleString("en-US");
-    }
-
-    function abFormatMoney(value) {
-      return `￥ ${Number(value || 0).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-    }
-
-    function abFormatPercent(value, digits = 2) {
-      return `${Number(value || 0).toFixed(digits)}%`;
-    }
-
-    function abSignedPercent(value, digits = 2) {
-      const number = Number(value || 0);
-      return `${number >= 0 ? "+" : ""}${number.toFixed(digits)}%`;
-    }
-
-    function abMetric(pageKey, stepKey, field) {
-      return abDashboardPages[pageKey].metrics[stepKey][field];
-    }
-
-    function abCompareRate(stepKey, field) {
-      const a = abMetric("A", stepKey, field);
-      const b = abMetric("B", stepKey, field);
-      if (!b) return 0;
-      return ((a - b) / b) * 100;
-    }
-
-    function abStepConversion(pageKey, stepKey) {
-      const page = abDashboardPages[pageKey];
-      if (stepKey === "scan") return 100;
-      if (stepKey === "click") return (page.metrics.click.uv / page.metrics.scan.uv) * 100;
-      return (page.metrics.pay.uv / page.metrics.scan.uv) * 100;
-    }
-
-    function abStepLoss(pageKey, stepKey) {
-      if (stepKey === "scan") return null;
-      return 100 - abStepConversion(pageKey, stepKey);
-    }
-
-    function abTransitionRate(pageKey, fromStep, toStep) {
-      const from = abDashboardPages[pageKey].metrics[fromStep].uv;
-      const to = abDashboardPages[pageKey].metrics[toStep].uv;
-      return from ? (to / from) * 100 : 0;
-    }
-
-    function renderAbFunnelDateRange() {
-      const field = document.getElementById("abFunnelDateRangeField");
-      if (!field) return;
-      field.innerHTML = renderDateRangeField({
-        idPrefix: "abPurchase",
-        label: "统计时间",
-        isOpen: abState.purchaseDateRangeOpen,
-        start: abState.values.purchaseStart || "",
-        end: abState.values.purchaseEnd || "",
-        draftStart: abState.draftPurchaseStart,
-        draftEnd: abState.draftPurchaseEnd,
-        error: abState.purchaseDateRangeError,
-        viewMonth: abState.purchaseDateRangeViewMonth
-      });
-      bindDateRangeField({
-        idPrefix: "abPurchase",
-        label: "统计时间",
-        state: abState,
-        filterWrap: field,
-        render: () => {
-          renderAbFunnelDateRange();
-          renderAbLeakTrendChart();
-          renderAbStepTrendChart();
-        },
-        openKey: "purchaseDateRangeOpen",
-        valueStartKey: "purchaseStart",
-        valueEndKey: "purchaseEnd",
-        draftStartKey: "draftPurchaseStart",
-        draftEndKey: "draftPurchaseEnd",
-        errorKey: "purchaseDateRangeError",
-        viewKey: "purchaseDateRangeViewMonth"
-      });
-    }
-
-    function closeAbPurchaseDateRange() {
-      if (!abState.purchaseDateRangeOpen) return;
-      abState.purchaseDateRangeOpen = false;
-      abState.purchaseDateRangeError = "";
-      renderAbFunnelDateRange();
-    }
-
-    function renderAbKpiCards() {
-      const container = document.getElementById("abKpiCards");
-      if (!container) return;
-      const selected = abSelectedPageKeys();
-      container.innerHTML = abKpiCards.map((card) => `
-        <article class="ab-kpi-card">
-          <div class="ab-kpi-title">
-            <span class="ab-kpi-icon ${card.icon}">${card.icon === "money" ? "¥" : card.icon === "pay" ? "▣" : card.icon === "click" ? "▢" : "⌗"}</span>
-            <span>${card.title}</span>
-            <span class="ab-help">?</span>
-          </div>
-          <div class="ab-kpi-matrix" style="--metric-cols: ${card.columns.length}">
-            <span></span>
-            ${card.columns.map((column) => `<span class="ab-kpi-head">${column}</span>`).join("")}
-            ${["A", "B"].filter((pageKey) => selected.includes(pageKey)).map((pageKey) => {
-              const page = abDashboardPages[pageKey];
-              return `
-                <span class="ab-kpi-label ${pageKey === "A" ? "ab-page-a-text" : "ab-page-b-text"}">${page.name}</span>
-                ${card.fields.map((field) => {
-                  const value = page.metrics[card.key][field];
-                  const display = card.key === "money"
-                    ? field === "amount" ? abFormatMoney(value) : `￥ ${Number(value).toFixed(2)}`
-                    : abFormatNumber(value);
-                  return `<span>${display}</span>`;
-                }).join("")}
-              `;
-            }).join("")}
-            <span class="ab-kpi-label ab-kpi-compare">对比</span>
-            ${card.fields.map((field) => {
-              const enabled = selected.includes("A") && selected.includes("B");
-              const value = enabled ? abCompareRate(card.key, field) : 0;
-              return `<span class="ab-kpi-compare ${enabled && value < 0 ? "ab-negative" : "ab-positive"}">${enabled ? abSignedPercent(value) : "-"}</span>`;
-            }).join("")}
-          </div>
-        </article>
-      `).join("");
-    }
-
-    function renderAbFunnelSide(pageKey) {
-      if (!abState.selectedPages[pageKey]) {
-        return `<div class="ab-funnel-side"><div class="empty-cell" style="grid-column:1/-1;text-align:center;color:#8a97aa;">${abDashboardPages[pageKey].name} 已隐藏</div></div>`;
-      }
-      const page = abDashboardPages[pageKey];
-      const clickRate = abTransitionRate(pageKey, "scan", "click");
-      const payRate = abTransitionRate(pageKey, "click", "pay");
-      const overallRate = abTransitionRate(pageKey, "scan", "pay");
-      return `
-        <div class="ab-funnel-side">
-          <div class="ab-funnel-side-title"><span class="ab-dot ${page.dotClass}"></span>${page.name}（${page.version}）</div>
-          <div class="ab-funnel-labels">
-            ${abFunnelSteps.map((step) => `
-              <div class="ab-step-label"><span class="ab-step-no ${step.icon}">${step.no}</span>${step.label}</div>
-            `).join("")}
-          </div>
-          <div class="ab-funnel-stack">
-            ${abFunnelSteps.map((step, index) => `
-              <div class="ab-funnel-bar ${step.icon}">
-                <span class="ab-funnel-value">${abFormatNumber(page.metrics[step.key].uv)}</span>
-                <span class="ab-funnel-percent">(${index === 0 ? "100%" : abFormatPercent(abStepConversion(pageKey, step.key), 2)})</span>
-              </div>
-              ${index < 2 ? '<div class="ab-funnel-arrow">↓</div>' : ""}
-            `).join("")}
-          </div>
-          <div class="ab-funnel-rates">
-            <div class="ab-rate-block">转化率<strong>${abFormatPercent(clickRate, 2)}</strong></div>
-            <div class="ab-rate-block">转化率<strong>${abFormatPercent(payRate, 2)}</strong></div>
-            <div class="ab-rate-block overall">整体转化率<strong>${abFormatPercent(overallRate, 2)}</strong></div>
-          </div>
-        </div>
-      `;
-    }
-
-    function renderAbFunnelCompare() {
-      const container = document.getElementById("abFunnelCompare");
-      if (!container) return;
-      container.innerHTML = `
-        ${renderAbFunnelSide("A")}
-        <div class="ab-funnel-diff">
-          <div class="ab-funnel-diff-title">对比</div>
-          <div>转化率差值（A - B）<br><span class="diff-value">+5.86%</span></div>
-          <div><span class="diff-value">+6.04%</span></div>
-          <div><span class="diff-value">+7.33%</span></div>
-        </div>
-        ${renderAbFunnelSide("B")}
-      `;
-    }
-
-    function renderAbConversionTable() {
-      const head = document.getElementById("abConversionTableHead");
-      const body = document.getElementById("abConversionTableBody");
-      if (!head || !body) return;
-      head.innerHTML = `
-        <tr>
-          <th rowspan="2">步骤</th>
-          <th rowspan="2"></th>
-          <th colspan="3"><span class="ab-dot a"></span> 页面A（版本一）</th>
-          <th colspan="3"><span class="ab-dot b"></span> 页面B（版本二）</th>
-          <th colspan="2">对比（A - B）</th>
-        </tr>
-        <tr>
-          <th>用户数（UV）</th><th>转化率</th><th>流失率</th>
-          <th>用户数（UV）</th><th>转化率</th><th>流失率</th>
-          <th>转化率差值</th><th>流失率差值</th>
-        </tr>
-      `;
-      body.innerHTML = abFunnelSteps.map((step) => {
-        const aUv = abMetric("A", step.key, "uv");
-        const bUv = abMetric("B", step.key, "uv");
-        const aConversion = abStepConversion("A", step.key);
-        const bConversion = abStepConversion("B", step.key);
-        const aLoss = abStepLoss("A", step.key);
-        const bLoss = abStepLoss("B", step.key);
-        const conversionDiff = aConversion - bConversion;
-        const lossDiff = aLoss === null || bLoss === null ? null : aLoss - bLoss;
-        return `
-          <tr>
-            <td><span class="ab-table-step"><span class="ab-step-no ${step.icon}">${step.no}</span>${step.label}</span></td>
-            <td></td>
-            <td>${abFormatNumber(aUv)}</td>
-            <td>${abFormatPercent(aConversion, 2)}<div class="ab-mini-arrow">↕</div></td>
-            <td>${aLoss === null ? "-" : `<span class="ab-positive">${abFormatPercent(aLoss, 2)}</span>`}</td>
-            <td>${abFormatNumber(bUv)}</td>
-            <td>${abFormatPercent(bConversion, 2)}<div class="ab-mini-arrow">↕</div></td>
-            <td>${bLoss === null ? "-" : `<span class="ab-positive">${abFormatPercent(bLoss, 2)}</span>`}</td>
-            <td>${step.key === "scan" ? "-" : `<span class="${conversionDiff >= 0 ? "ab-positive" : "ab-negative"}">${abSignedPercent(conversionDiff, 2)}</span>`}</td>
-            <td>${lossDiff === null ? "-" : `<span class="${lossDiff >= 0 ? "ab-positive" : "ab-negative"}">${abSignedPercent(lossDiff, 2)}</span>`}</td>
-          </tr>
-        `;
-      }).join("");
-    }
-
-    function abPolyline(points) {
-      return points.map((point) => `${point.x},${point.y}`).join(" ");
-    }
-
-    function abScalePoint(value, min, max, top, bottom) {
-      if (max === min) return bottom;
-      return bottom - ((value - min) / (max - min)) * (bottom - top);
-    }
-
-    function abDateAxisLabel(date) {
-      return `${padDateRangePart(date.getMonth() + 1)}-${padDateRangePart(date.getDate())}`;
-    }
-
-    function abDayDiff(start, end) {
-      return Math.round((end - start) / (24 * 60 * 60 * 1000));
-    }
-
-    function abTrendRowsForRange() {
-      const fallbackStart = parseDateRangeValue("2025-06-01");
-      const start = parseDateRangeValue(abState.values.purchaseStart) || fallbackStart;
-      const end = parseDateRangeValue(abState.values.purchaseEnd) || parseDateRangeValue("2025-06-14");
-      if (!start || !end || start > end) return abTrendRows;
-      const totalDays = abDayDiff(start, end) + 1;
-      return Array.from({ length: totalDays }, (_, index) => {
-        const current = shiftDateRange(start, index);
-        const offset = abDayDiff(fallbackStart, current);
-        const baseIndex = ((offset % abTrendRows.length) + abTrendRows.length) % abTrendRows.length;
-        return {
-          ...abTrendRows[baseIndex],
-          day: abDateAxisLabel(current)
-        };
-      });
-    }
-
-    function abAxisLabelVisible(index, total) {
-      if (total <= 8) return true;
-      const step = Math.ceil(total / 8);
-      return index === 0 || index === total - 1 || index % step === 0;
-    }
-
-    function renderAbLineChart(containerId, series, options = {}) {
-      const container = document.getElementById(containerId);
-      if (!container) return;
-      const rows = options.rows || abTrendRowsForRange();
-      const width = 620;
-      const height = 220;
-      const pad = { left: 44, right: 30, top: 22, bottom: 34 };
-      const values = series.flatMap((item) => item.values);
-      const min = options.min ?? Math.min(...values);
-      const max = options.max ?? Math.max(...values);
-      const xStep = rows.length > 1 ? (width - pad.left - pad.right) / (rows.length - 1) : 0;
-      const xPosition = (index) => rows.length > 1 ? pad.left + index * xStep : pad.left + (width - pad.left - pad.right) / 2;
-      const gridValues = options.gridValues || [0, 20, 40, 60, 80];
-      container.innerHTML = `
-        <svg viewBox="0 0 ${width} ${height}" role="img" aria-label="${options.label || "趋势图"}">
-          ${gridValues.map((value) => {
-            const y = abScalePoint(value, min, max, pad.top, height - pad.bottom);
-            return `<line class="ab-chart-gridline" x1="${pad.left}" y1="${y}" x2="${width - pad.right}" y2="${y}"></line><text class="ab-chart-label" x="10" y="${y + 4}">${value}${options.unit || ""}</text>`;
-          }).join("")}
-          <line class="ab-chart-axis" x1="${pad.left}" y1="${height - pad.bottom}" x2="${width - pad.right}" y2="${height - pad.bottom}"></line>
-          ${rows.map((row, index) => {
-            const x = xPosition(index);
-            return abAxisLabelVisible(index, rows.length) ? `<text class="ab-chart-label" text-anchor="middle" x="${x}" y="${height - 10}">${row.day}</text>` : "";
-          }).join("")}
-          ${series.map((item) => {
-            const points = item.values.map((value, index) => ({
-              x: xPosition(index),
-              y: abScalePoint(value, min, max, pad.top, height - pad.bottom)
-            }));
-            return `
-              <polyline points="${abPolyline(points)}" fill="none" stroke="${item.color}" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"></polyline>
-              ${points.map((point) => `<circle cx="${point.x}" cy="${point.y}" r="3.2" fill="#fff" stroke="${item.color}" stroke-width="2"></circle>`).join("")}
-            `;
-          }).join("")}
-        </svg>
-      `;
-    }
-
-    function renderAbLeakTrendChart() {
-      const legend = document.getElementById("abLeakTrendLegend");
-      if (legend) {
-        legend.innerHTML = `
-          <span class="ab-legend-item"><span class="ab-legend-dot" style="background:#4f7dff"></span>页面A 访问用户（UV）</span>
-          <span class="ab-legend-item"><span class="ab-legend-dot" style="background:#20b889"></span>页面B 访问用户（UV）</span>
-          <span class="ab-legend-item"><input type="checkbox" checked disabled /> 显示整体转化率</span>
-        `;
-      }
-      const container = document.getElementById("abLeakTrendChart");
-      if (!container) return;
-      const rows = abTrendRowsForRange();
-      const width = 620;
-      const height = 220;
-      const pad = { left: 44, right: 34, top: 22, bottom: 34 };
-      const maxUv = 40000;
-      const xStep = (width - pad.left - pad.right) / Math.max(rows.length, 1);
-      const barWidth = Math.max(1.5, Math.min(6, xStep * 0.28));
-      const barGap = Math.max(1, Math.min(2, xStep * 0.08));
-      const rateXStep = rows.length > 1 ? (width - pad.left - pad.right) / (rows.length - 1) : 0;
-      const rateXPosition = (index) => rows.length > 1 ? pad.left + index * rateXStep : pad.left + (width - pad.left - pad.right) / 2;
-      const rateSeries = [
-        { key: "aOverall", color: "#4f7dff" },
-        { key: "bOverall", color: "#20b889" }
-      ];
-      container.innerHTML = `
-        <svg viewBox="0 0 ${width} ${height}" role="img" aria-label="漏斗趋势对比">
-          ${[0, 10000, 20000, 30000, 40000].map((value) => {
-            const y = abScalePoint(value, 0, maxUv, pad.top, height - pad.bottom);
-            return `<line class="ab-chart-gridline" x1="${pad.left}" y1="${y}" x2="${width - pad.right}" y2="${y}"></line><text class="ab-chart-label" x="8" y="${y + 4}">${value / 1000}K</text>`;
-          }).join("")}
-          ${[0, 10, 20, 30].map((value) => {
-            const y = abScalePoint(value, 0, 30, pad.top, height - pad.bottom);
-            return `<text class="ab-chart-label" text-anchor="end" x="${width - 2}" y="${y + 4}">${value}%</text>`;
-          }).join("")}
-          <line class="ab-chart-axis" x1="${pad.left}" y1="${height - pad.bottom}" x2="${width - pad.right}" y2="${height - pad.bottom}"></line>
-          ${rows.map((row, index) => {
-            const x = pad.left + index * xStep + xStep / 2;
-            const aHeight = ((height - pad.bottom - pad.top) * row.aUv) / maxUv;
-            const bHeight = ((height - pad.bottom - pad.top) * row.bUv) / maxUv;
-            return `
-              <rect x="${x - barWidth - barGap}" y="${height - pad.bottom - aHeight}" width="${barWidth}" height="${aHeight}" rx="2" fill="#4f7dff" opacity="0.72"></rect>
-              <rect x="${x + barGap}" y="${height - pad.bottom - bHeight}" width="${barWidth}" height="${bHeight}" rx="2" fill="#20b889" opacity="0.72"></rect>
-              ${abAxisLabelVisible(index, rows.length) ? `<text class="ab-chart-label" text-anchor="middle" x="${x}" y="${height - 10}">${row.day}</text>` : ""}
-            `;
-          }).join("")}
-          ${rateSeries.map((series) => {
-            const points = rows.map((row, index) => ({
-              x: rateXPosition(index),
-              y: abScalePoint(row[series.key], 0, 30, pad.top, height - pad.bottom)
-            }));
-            return `
-              <polyline points="${abPolyline(points)}" fill="none" stroke="${series.color}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"></polyline>
-              ${points.map((point) => `<circle cx="${point.x}" cy="${point.y}" r="3" fill="#fff" stroke="${series.color}" stroke-width="1.8"></circle>`).join("")}
-            `;
-          }).join("")}
-        </svg>
-      `;
-    }
-
-    function renderAbStepTrendChart() {
-      const legend = document.getElementById("abStepTrendLegend");
-      if (legend) {
-        legend.innerHTML = `
-          <span class="ab-legend-item"><span class="ab-legend-line" style="background:#4f7dff"></span>页面A 1→2 转化率</span>
-          <span class="ab-legend-item"><span class="ab-legend-line" style="background:#20b889"></span>页面B 1→2 转化率</span>
-          <span class="ab-legend-item"><span class="ab-legend-line" style="background:#9656ff"></span>页面A 2→3 转化率</span>
-          <span class="ab-legend-item"><span class="ab-legend-line" style="background:#f59f00"></span>页面B 2→3 转化率</span>
-        `;
-      }
-      const rows = abTrendRowsForRange();
-      renderAbLineChart("abStepTrendChart", [
-        { label: "页面A 1→2", color: "#4f7dff", values: rows.map((row) => row.a12) },
-        { label: "页面B 1→2", color: "#20b889", values: rows.map((row) => row.b12) },
-        { label: "页面A 2→3", color: "#9656ff", values: rows.map((row) => row.a23) },
-        { label: "页面B 2→3", color: "#f59f00", values: rows.map((row) => row.b23) }
-      ], { min: 0, max: 80, unit: "%", gridValues: [0, 20, 40, 60, 80], label: "各步骤转化率趋势对比", rows });
-    }
-
-    function renderAbTestStatsPage() {
-      renderAbFunnelDateRange();
-      renderAbKpiCards();
-      renderAbFunnelCompare();
-      renderAbConversionTable();
-      renderAbLeakTrendChart();
-      renderAbStepTrendChart();
-    }
-
-    function searchAbStats() {
-      const rangeError = validateManualDateRange(abState.values.purchaseStart, abState.values.purchaseEnd, "统计时间");
-      if (rangeError) {
-        showToast(rangeError, "error");
-        return;
-      }
-      renderAbTestStatsPage();
-      showToast("H5套餐购买漏斗数据已刷新", "success");
-    }
-
-    function resetAbStats() {
-      abState.values.purchaseStart = "2025-06-01";
-      abState.values.purchaseEnd = "2025-06-14";
-      abState.selectedPages = { A: true, B: true };
-      abState.purchaseDateRangeOpen = false;
-      abState.draftPurchaseStart = "";
-      abState.draftPurchaseEnd = "";
-      abState.purchaseDateRangeError = "";
-      abState.purchaseDateRangeViewMonth = "";
-      renderAbTestStatsPage();
-      showToast("漏斗数据看板已恢复默认筛选", "info");
-    }
-
-    function closeAbPurchaseDrawer() {
-      const drawer = document.getElementById("abPurchaseDrawer");
-      if (!drawer) return;
-      drawer.classList.remove("open");
-      drawer.setAttribute("aria-hidden", "true");
-    }
-
     function renderWriteApplyFilters() {
       writeApplyFilterWrap.innerHTML = "";
       writeApplyFields.forEach((field) => {
@@ -22929,12 +21557,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       syncSpeedLimitTabPanels("speedLimitTabs", "speedLimitTab", speedLimitState.activeTab);
       if (speedLimitState.activeTab === "details") renderSpeedLimitRecordTable();
       else if (speedLimitState.activeTab === "batches") renderSpeedLimitBatchTable();
-      else if (speedLimitState.activeTab === "report") renderSpeedLimitReportTable();
-      else renderSpeedLimitTable();
+      else renderSpeedLimitReportTable();
     }
 
     function switchSpeedLimitTab(value) {
-      if (!["strategies", "batches", "details", "report"].includes(value)) return;
+      if (!["batches", "details", "report"].includes(value)) return;
       Object.keys(speedLimitDateConfigs).forEach(key => closeSpeedLimitDateRange(key));
       speedLimitState.activeTab = value;
       renderSpeedLimitTabs();
@@ -23813,62 +22440,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       renderSimManualSpeedErrors();
     }
 
-    function newSpeedLimitDraft(row = null) {
-      const draft = {
-        strategyName: row?.strategyName || "",
-        usageEnabled: Boolean(row?.usageEnabled),
-        restoreNextMonth: speedLimitRestoreNextMonth(row),
-        usageTiers: Array.from({ length: Math.max(1, row?.usageTiers?.length || 1) }, (_, index) => Object.fromEntries(["monthlyMb", "monthlySpeed"].map((key) => [key, String(row?.usageTiers?.[index]?.[key] ?? "")])))
-      };
-      return draft;
-    }
 
-    function filteredSpeedLimitRows() {
-      const query = speedLimitState.appliedValues;
-      return speedLimitRows.filter((row) => (!query.strategyName || row.strategyName.toLowerCase().includes(query.strategyName.toLowerCase()))
-        && (!query.usageEnabled || String(row.usageEnabled) === query.usageEnabled)
-        && (!query.restoreNextMonth || String(speedLimitRestoreNextMonth(row)) === query.restoreNextMonth));
-    }
 
-    function renderSpeedLimitSwitch(enabled, label, attributes) {
-      return `<button class="speed-limit-state-button" type="button" role="switch" aria-checked="${enabled}" aria-label="${escapeHtml(label)}" ${attributes}><span class="scientific-calculation-status-switch ${enabled ? "is-on" : ""}" aria-hidden="true"></span><span>${enabled ? "开启" : "停用"}</span></button>`;
-    }
 
-    function renderSpeedLimitTable() {
-      const rows = filteredSpeedLimitRows();
-      const state = speedLimitState;
-      const pageCount = Math.max(1, Math.ceil(rows.length / state.pageSize));
-      state.page = Math.min(Math.max(1, state.page), pageCount);
-      const current = rows.slice((state.page - 1) * state.pageSize, state.page * state.pageSize);
-      document.getElementById("speedLimitTableHeader").innerHTML = speedLimitColumns.map((column) => `<th scope="col" ${column.key === "action" ? 'class="operation-col"' : ""}>${escapeHtml(column.label)}</th>`).join("");
-      document.getElementById("speedLimitTableBody").innerHTML = current.length ? current.map((row) => `<tr>${speedLimitColumns.map((column) => {
-        if (column.key === "action") return `<td class="operation-col"><div class="speed-limit-row-actions"><button class="link-text" type="button" data-speed-limit-edit="${escapeHtml(row.id)}" aria-label="编辑限速策略${escapeHtml(row.strategyName)}">编辑</button><button class="danger-link" type="button" data-speed-limit-delete="${escapeHtml(row.id)}" aria-label="删除限速策略${escapeHtml(row.strategyName)}">删除</button></div></td>`;
-        if (column.key === "usageEnabled") return `<td>${renderSpeedLimitSwitch(row[column.key], `${row.strategyName}的${column.label}`, `data-speed-limit-toggle="${column.key}" data-speed-limit-id="${escapeHtml(row.id)}"`)}</td>`;
-        if (column.key === "restoreNextMonth") return `<td>${speedLimitRestoreNextMonthLabels[String(speedLimitRestoreNextMonth(row))]}</td>`;
-        return `<td>${escapeHtml(String(row[column.key] ?? "--"))}</td>`;
-      }).join("")}</tr>`).join("") : `<tr><td class="speed-limit-empty" colspan="${speedLimitColumns.length}"><span role="status">${Object.values(state.appliedValues).some(Boolean) ? "暂无匹配的限速策略，请调整查询条件" : "暂无限速策略，请点击“限速策略新增”创建"}</span></td></tr>`;
-      document.getElementById("speedLimitPager").innerHTML = `<span role="status" aria-live="polite">共 ${rows.length} 条</span><button class="page-btn" type="button" aria-label="上一页" data-speed-limit-page="${state.page - 1}" ${state.page === 1 ? "disabled" : ""}>‹</button><span class="page-btn active scientific-calculation-current-page" aria-current="page">${state.page}</span><button class="page-btn" type="button" aria-label="下一页" data-speed-limit-page="${state.page + 1}" ${state.page === pageCount ? "disabled" : ""}>›</button>`;
-    }
 
-    function searchSpeedLimit() {
-      speedLimitState.appliedValues = Object.fromEntries(speedLimitFilterFields.map((field) => {
-        const control = document.getElementById(field.id);
-        control.value = control.value.trim();
-        syncQueryClearControl(field.id);
-        return [field.key, control.value];
-      }));
-      speedLimitState.page = 1;
-      renderSpeedLimitTable();
-      showToast("限速策略查询完成", "success");
-    }
 
-    function resetSpeedLimitFilters() {
-      speedLimitFilterFields.forEach((field) => { document.getElementById(field.id).value = ""; syncQueryClearControl(field.id); });
-      speedLimitState.appliedValues = {};
-      speedLimitState.page = 1;
-      renderSpeedLimitTable();
-      showToast("限速查询条件已清空", "info");
-    }
 
     function openAdminPrototypeModal(id, state, focusId, returnFocusId) {
       const modal = document.getElementById(id);
@@ -23910,89 +22486,15 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       modal.addEventListener("click", event => { event.stopPropagation(); if (event.target === modal) close(); });
     }
 
-    function openSpeedLimitOverlay(id, state, focusId) {
-      openAdminPrototypeModal(id, state, focusId, "speedLimitCreateBtn");
-    }
-
-    function closeSpeedLimitOverlay(id, state) {
-      if (state.submitting) return;
-      closeAdminPrototypeModal(id, state);
-    }
-
-    function renderSpeedLimitControl(id, value, label, type, attributes = "") {
-      const state = speedLimitCreateState;
-      const error = state.errors[id] || "";
-      const common = `class="batch-select" id="${id}" ${attributes} aria-label="${escapeHtml(label)}" aria-required="${Boolean(state.values.usageEnabled)}" aria-invalid="${Boolean(error)}" aria-describedby="${id}Error"`;
-      const control = type === "speed"
-        ? `<select ${common}><option value="" disabled hidden ${value ? "" : "selected"}>请选择限速值</option>${speedLimitRates.map((rate) => `<option value="${rate}" ${String(value) === String(rate) ? "selected" : ""}>${speedLimitRateLabels[rate]}</option>`).join("")}</select>`
-        : `<input ${common} type="number" min="0.01" step="0.01" inputmode="decimal" placeholder="请输入流量" value="${escapeHtml(String(value))}" />`;
-      return `${control}<div class="modal-field-error" id="${id}Error" aria-live="polite">${escapeHtml(error)}</div>`;
-    }
-
-    function renderSpeedLimitUsageRows() {
-      const values = speedLimitCreateState.values;
-      document.getElementById("speedLimitUsageRows").innerHTML = values.usageTiers.map((tier, index) => `<tr><th scope="row">第${index + 1}级限速</th>${["monthlyMb", "monthlySpeed"].map((key) => {
-        const id = `speedLimitUsage${index}${key[0].toUpperCase()}${key.slice(1)}`;
-        const label = `第${index + 1}级月${key.endsWith("Mb") ? "限速流量（MB）" : "限速值"}`;
-        return `<td>${renderSpeedLimitControl(id, tier[key], label, key.endsWith("Mb") ? "number" : "speed", `data-speed-limit-usage-index="${index}" data-speed-limit-usage-key="${key}"`)}</td>`;
-      }).join("")}<td class="speed-limit-usage-action"><button class="speed-limit-usage-delete" type="button" data-speed-limit-remove-usage="${index}" aria-label="删除第${index + 1}级限速" ${values.usageTiers.length === 1 ? 'disabled title="至少保留一级限速"' : `title="删除第${index + 1}级限速"`}>${renderScientificCalculationUiIcon(values.usageTiers.length === 1 ? "trashDisabled" : "trash")}</button></td></tr>`).join("");
-      document.getElementById("speedLimitUsageCount").textContent = `当前 ${values.usageTiers.length} 级`;
-    }
-
-    function addSpeedLimitUsageTier() {
-      const state = speedLimitCreateState;
-      if (!state.values || state.submitting) return;
-      collectSpeedLimitForm();
-      state.values.usageTiers.push({ monthlyMb: "", monthlySpeed: "" });
-      renderSpeedLimitUsageRows();
-      const input = document.getElementById(`speedLimitUsage${state.values.usageTiers.length - 1}MonthlyMb`);
-      input.focus(); input.scrollIntoView({ block: "nearest" });
-    }
-
-    function removeSpeedLimitUsageTier(index) {
-      const state = speedLimitCreateState;
-      if (!state.values || state.submitting || state.values.usageTiers.length <= 1 || !Number.isInteger(index) || index < 0 || index >= state.values.usageTiers.length) return;
-      collectSpeedLimitForm();
-      state.values.usageTiers.splice(index, 1);
-      Object.keys(state.errors).filter(key => key.startsWith("speedLimitUsage")).forEach(key => { delete state.errors[key]; });
-      renderSpeedLimitUsageRows();
-      document.getElementById(`speedLimitUsage${Math.min(index, state.values.usageTiers.length - 1)}MonthlyMb`).focus();
-    }
 
 
-    function renderSpeedLimitCreateForm() {
-      const values = speedLimitCreateState.values;
-      document.getElementById("speedLimitCreateForm").innerHTML = `<section class="speed-limit-base" aria-label="策略基础信息">
-        <div class="speed-limit-base-field"><label class="speed-limit-field-label" for="speedLimitStrategyName"><span class="required" aria-hidden="true">*</span>策略名称</label><div class="speed-limit-name-control"><input class="batch-select" id="speedLimitStrategyName" data-speed-limit-field="strategyName" value="${escapeHtml(values.strategyName)}" type="text" maxlength="50" placeholder="请输入策略名称" autocomplete="off" aria-required="true" aria-describedby="speedLimitStrategyNameError speedLimitNameCount" /><span class="speed-limit-name-count" id="speedLimitNameCount">${values.strategyName.length}/50</span></div><div class="modal-field-error" id="speedLimitStrategyNameError" aria-live="polite"></div></div>
-        <div class="speed-limit-base-field"><span class="speed-limit-field-label" id="speedLimitRestoreNextMonthLabel"><span class="required" aria-hidden="true">*</span>次月恢复</span><div class="radio-group" id="speedLimitRestoreNextMonthGroup" role="radiogroup" aria-labelledby="speedLimitRestoreNextMonthLabel" aria-describedby="speedLimitRestoreNextMonthError" aria-required="true" tabindex="-1">${renderSpeedLimitRestoreRadios("speedLimitRestoreNextMonth", values.restoreNextMonth)}</div><div class="modal-field-error" id="speedLimitRestoreNextMonthError" aria-live="polite"></div></div>
-      </section>
-      <section class="speed-limit-section" aria-labelledby="speedLimitUsageTitle"><div class="speed-limit-section-head"><div><div class="speed-limit-section-title"><h3 id="speedLimitUsageTitle">月用量限速</h3><span class="speed-limit-section-tag" id="speedLimitUsageCount" role="status" aria-live="polite"></span></div></div>${renderSpeedLimitSwitch(values.usageEnabled, "月用量限速", 'id="speedLimitUsageToggle" data-speed-limit-section="usageEnabled" aria-controls="speedLimitUsageFields"')}</div>
-        <fieldset class="speed-limit-config-fields" id="speedLimitUsageFields" aria-labelledby="speedLimitUsageTitle"><div class="speed-limit-config-scroll" tabindex="0" role="region" aria-label="月用量限速配置，可横向滚动"><table class="speed-limit-config-table" aria-label="月用量限速配置"><thead><tr><th scope="col">限速等级</th><th scope="col">月限速流量（MB）</th><th scope="col">月限速值</th><th scope="col" class="speed-limit-usage-action">操作</th></tr></thead><tbody id="speedLimitUsageRows"></tbody></table></div><button class="btn secondary speed-limit-add-usage" id="speedLimitAddUsageBtn" type="button">＋ 添加层级</button></fieldset><p class="speed-limit-section-note" id="speedLimitUsageNote"></p>
-      </section>`;
-      renderSpeedLimitUsageRows();
-      syncSpeedLimitFormSections();
-    }
 
-    function collectSpeedLimitForm() {
-      const values = speedLimitCreateState.values;
-      if (!values) return;
-      document.getElementById("speedLimitCreateForm").querySelectorAll("[data-speed-limit-field], [data-speed-limit-usage-key]").forEach((input) => {
-        if (input.dataset.speedLimitField) values[input.dataset.speedLimitField] = input.value;
-        else if (input.dataset.speedLimitUsageKey) values.usageTiers[Number(input.dataset.speedLimitUsageIndex)][input.dataset.speedLimitUsageKey] = input.value;
-      });
-      values.restoreNextMonth = readSpeedLimitRestoreRadios("speedLimitRestoreNextMonth");
-    }
 
-    function syncSpeedLimitFormSections() {
-      const enabled = speedLimitCreateState.values.usageEnabled;
-      const button = document.getElementById("speedLimitUsageToggle");
-      button.setAttribute("aria-checked", String(enabled));
-      button.innerHTML = `<span class="scientific-calculation-status-switch ${enabled ? "is-on" : ""}" aria-hidden="true"></span><span>${enabled ? "开启" : "停用"}</span>`;
-      document.getElementById("speedLimitUsageFields").querySelectorAll("input, select").forEach(input => input.setAttribute("aria-required", String(enabled)));
-      document.getElementById("speedLimitUsageNote").textContent = enabled
-        ? "月流量阈值按已配置层级递增，流量单位为 MB。"
-        : "当前月用量限速已停用，仍可编辑配置；开启后生效。";
-    }
+
+
+
+
+
 
     function validateSpeedLimitDraft(values, editId = "") {
       const errors = {};
@@ -24017,270 +22519,20 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       return errors;
     }
 
-    function showSpeedLimitFormErrors() {
-      const form = document.getElementById("speedLimitCreateForm");
-      form.querySelectorAll("input, select").forEach((input) => {
-        const message = speedLimitCreateState.errors[input.id] || "";
-        input.setAttribute("aria-invalid", String(Boolean(message)));
-        const output = document.getElementById(`${input.id}Error`);
-        if (output) output.textContent = message;
-      });
-      const message = speedLimitCreateState.errors.speedLimitRestoreNextMonthGroup || "";
-      form.querySelector("#speedLimitRestoreNextMonthGroup").setAttribute("aria-invalid", String(Boolean(message)));
-      form.querySelectorAll('[name="speedLimitRestoreNextMonth"]').forEach(input => input.setAttribute("aria-invalid", String(Boolean(message))));
-      document.getElementById("speedLimitRestoreNextMonthError").textContent = message;
-    }
 
-    function openSpeedLimitCreateModal(id = "", pendingKey = "") {
-      if (document.getElementById("speedLimitCreateModal").classList.contains("open")) return;
-      const row = id ? speedLimitRows.find((item) => item.id === id) : null;
-      if (id && !row) return showToast("未找到限速策略", "error");
-      const state = speedLimitCreateState;
-      state.editId = id;
-      state.values = row ? newSpeedLimitDraft(row) : state.draft ? JSON.parse(JSON.stringify(state.draft)) : newSpeedLimitDraft();
-      if (state.values.restoreNextMonth === undefined) state.values.restoreNextMonth = true;
-      if (pendingKey === "usageEnabled") state.values[pendingKey] = true;
-      state.errors = {};
-      document.getElementById("speedLimitCreateTitle").textContent = id ? "限速策略编辑" : "限速策略新增";
-      document.getElementById("confirmSpeedLimitCreateBtn").textContent = id ? "保存" : "新增";
-      renderSpeedLimitCreateForm();
-      openSpeedLimitOverlay("speedLimitCreateModal", state, "speedLimitStrategyName");
-    }
 
-    function closeSpeedLimitCreateModal() {
-      const state = speedLimitCreateState;
-      if (state.submitting || !document.getElementById("speedLimitCreateModal").classList.contains("open")) return;
-      collectSpeedLimitForm();
-      if (!state.editId) state.draft = JSON.parse(JSON.stringify(state.values));
-      closeSpeedLimitOverlay("speedLimitCreateModal", state);
-    }
 
-    function confirmSpeedLimitCreate() {
-      const state = speedLimitCreateState;
-      if (state.submitting || !document.getElementById("speedLimitCreateModal").classList.contains("open")) return;
-      collectSpeedLimitForm();
-      state.errors = validateSpeedLimitDraft(state.values, state.editId);
-      showSpeedLimitFormErrors();
-      const firstError = Object.keys(state.errors)[0];
-      if (firstError) {
-        const input = document.getElementById(firstError);
-        input?.focus(); input?.scrollIntoView({ block: "nearest" });
-        return;
-      }
-      state.submitting = true;
-      const button = document.getElementById("confirmSpeedLimitCreateBtn");
-      button.disabled = true; button.setAttribute("aria-busy", "true");
-      try {
-        const values = state.values;
-        const time = currentDateTimeText();
-        const payload = {
-          strategyName: values.strategyName.trim(),
-          usageEnabled: values.usageEnabled,
-          restoreNextMonth: values.restoreNextMonth,
-          usageTiers: values.usageTiers.map(tier => Object.fromEntries(["monthlyMb", "monthlySpeed"].map(key => [key, String(tier[key]).trim() && Number.isFinite(Number(tier[key])) ? Number(tier[key]) : null]))),
-          updatedAt: time
-        };
-        let row;
-        if (state.editId) {
-          row = speedLimitRows.find(item => item.id === state.editId);
-          if (!row) { showToast("策略已不存在，请重新打开", "error"); return; }
-          Object.assign(row, payload);
-        } else {
-          const prefix = `SL${time.slice(0, 10).replace(/-/g, "")}`;
-          let number = 1;
-          while (speedLimitRows.some(item => item.id === `${prefix}${String(number).padStart(4, "0")}`)) number++;
-          row = { id: `${prefix}${String(number).padStart(4, "0")}`, ...payload, createdBy: currentOperatorName(), createdAt: time };
-          speedLimitRows.unshift(row);
-        }
-        const editing = Boolean(state.editId);
-        state.submitting = false;
-        if (!editing) state.draft = null;
-        speedLimitState.page = 1;
-        renderSpeedLimitTable();
-        closeSpeedLimitOverlay("speedLimitCreateModal", state);
-        showToast(`${editing ? "限速策略已保存" : "限速策略新增成功"}${filteredSpeedLimitRows().includes(row) ? "" : "，当前查询条件下未展示"}`, "success");
-      } finally {
-        state.submitting = false; button.disabled = false; button.setAttribute("aria-busy", "false");
-      }
-    }
 
-    function requestSpeedLimitDelete(id) {
-      if (["speedLimitCreateModal", "speedLimitStatusConfirmModal", "speedLimitDeleteConfirmModal"].some(modalId => document.getElementById(modalId).classList.contains("open"))) return;
-      const row = speedLimitRows.find(item => item.id === id);
-      if (!row) return showToast("该限速策略已不存在", "info");
-      Object.assign(speedLimitDeleteState, { id, snapshot: JSON.stringify(row) });
-      document.getElementById("speedLimitDeleteMessage").textContent = `确定删除限速策略「${row.strategyName}」？`;
-      openSpeedLimitOverlay("speedLimitDeleteConfirmModal", speedLimitDeleteState, "cancelSpeedLimitDeleteBtn");
-      const trigger = Array.from(document.getElementById("speedLimitTableBody").querySelectorAll("[data-speed-limit-delete]")).find(button => button.dataset.speedLimitDelete === id);
-      if (trigger) speedLimitDeleteState.returnFocus = trigger;
-    }
 
-    function closeSpeedLimitDeleteConfirm() {
-      const state = speedLimitDeleteState;
-      if (state.submitting || !document.getElementById("speedLimitDeleteConfirmModal").classList.contains("open")) return;
-      const trigger = Array.from(document.getElementById("speedLimitTableBody").querySelectorAll("[data-speed-limit-delete]")).find(button => button.dataset.speedLimitDelete === state.id);
-      if (trigger) state.returnFocus = trigger;
-      closeSpeedLimitOverlay("speedLimitDeleteConfirmModal", state);
-      state.id = ""; state.snapshot = "";
-    }
 
-    function confirmSpeedLimitDelete() {
-      const state = speedLimitDeleteState;
-      if (state.submitting || !state.id || !document.getElementById("speedLimitDeleteConfirmModal").classList.contains("open")) return;
-      const index = speedLimitRows.findIndex(row => row.id === state.id);
-      if (index < 0 || JSON.stringify(speedLimitRows[index]) !== state.snapshot) {
-        renderSpeedLimitTable(); closeSpeedLimitDeleteConfirm();
-        showToast(index < 0 ? "该限速策略已不存在" : "策略已变化，请重新确认删除", "info");
-        return;
-      }
-      const buttons = Array.from(document.getElementById("speedLimitTableBody").querySelectorAll("[data-speed-limit-delete]"));
-      const visibleIndex = Math.max(0, buttons.findIndex(button => button.dataset.speedLimitDelete === state.id));
-      const button = document.getElementById("confirmSpeedLimitDeleteBtn");
-      state.submitting = true; button.disabled = true; button.setAttribute("aria-busy", "true");
-      try {
-        speedLimitRows.splice(index, 1);
-        renderSpeedLimitTable();
-        const remaining = Array.from(document.getElementById("speedLimitTableBody").querySelectorAll("[data-speed-limit-delete]"));
-        state.returnFocus = remaining[Math.min(visibleIndex, remaining.length - 1)] || document.getElementById("speedLimitCreateBtn");
-        state.submitting = false;
-        closeSpeedLimitDeleteConfirm();
-        showToast("限速策略已删除", "success");
-      } finally {
-        state.submitting = false; button.disabled = false; button.setAttribute("aria-busy", "false");
-      }
-    }
 
-    function requestSpeedLimitStatusChange(id, key) {
-      if (key !== "usageEnabled" || document.getElementById("speedLimitStatusConfirmModal").classList.contains("open")) return;
-      const row = speedLimitRows.find(item => item.id === id);
-      if (!row) return;
-      if (!row[key]) {
-        const candidate = newSpeedLimitDraft(row);
-        candidate.usageEnabled = true;
-        if (Object.keys(validateSpeedLimitDraft(candidate, id)).length) {
-          openSpeedLimitCreateModal(id, key);
-          showToast(`请先完善月用量限速配置，保存后开启`, "info");
-          return;
-        }
-      }
-      Object.assign(speedLimitStatusState, { id, key, previous: row[key], next: !row[key] });
-      const label = "月用量限速";
-      const action = row[key] ? "停用" : "开启";
-      document.getElementById("speedLimitStatusConfirmTitle").textContent = `确认${action}${label}`;
-      document.getElementById("speedLimitStatusConfirmMessage").textContent = `确定${action}「${row.strategyName}」策略的${label}？`;
-      document.getElementById("confirmSpeedLimitStatusBtn").textContent = action;
-      openSpeedLimitOverlay("speedLimitStatusConfirmModal", speedLimitStatusState, "cancelSpeedLimitStatusConfirmBtn");
-    }
 
-    function closeSpeedLimitStatusConfirm() {
-      if (speedLimitStatusState.submitting || !document.getElementById("speedLimitStatusConfirmModal").classList.contains("open")) return;
-      const state = speedLimitStatusState;
-      const target = Array.from(document.getElementById("speedLimitTableBody").querySelectorAll("[data-speed-limit-toggle]"))
-        .find(button => button.dataset.speedLimitId === state.id && button.dataset.speedLimitToggle === state.key);
-      if (target) state.returnFocus = target;
-      closeSpeedLimitOverlay("speedLimitStatusConfirmModal", speedLimitStatusState);
-      speedLimitStatusState.id = ""; speedLimitStatusState.key = "";
-    }
 
-    function confirmSpeedLimitStatusChange() {
-      const state = speedLimitStatusState;
-      if (state.submitting || !state.id || !document.getElementById("speedLimitStatusConfirmModal").classList.contains("open")) return;
-      const row = speedLimitRows.find(item => item.id === state.id);
-      if (!row || row[state.key] !== state.previous) {
-        closeSpeedLimitStatusConfirm(); showToast("策略状态已变化，请重新确认", "info"); return;
-      }
-      if (state.next) {
-        const candidate = newSpeedLimitDraft(row);
-        candidate.usageEnabled = true;
-        if (Object.keys(validateSpeedLimitDraft(candidate, row.id)).length) {
-          const key = state.key;
-          closeSpeedLimitStatusConfirm(); openSpeedLimitCreateModal(row.id, key);
-          showToast("限速参数已变化，请完善配置后保存", "info"); return;
-        }
-      }
-      row[state.key] = state.next; row.updatedAt = currentDateTimeText();
-      const label = "月用量限速";
-      const action = state.next ? "开启" : "停用";
-      renderSpeedLimitTable();
-      closeSpeedLimitStatusConfirm();
-      showToast(`${label}已${action}`, "success");
-    }
 
-    function bindSpeedLimitOverlayKeyboard(id, close) {
-      bindAdminPrototypeModalKeyboard(id, close);
-    }
 
     function bindSpeedLimitEvents() {
       bindAdminTabList("speedLimitTabs", tab => switchSpeedLimitTab(tab.dataset.speedLimitTab));
-      bindSpeedLimitBatchEvents();
-      bindSpeedLimitRecordEvents();
-      bindSpeedLimitReportEvents();
-      renderSpeedLimitTabs();
-      speedLimitFilterFields.forEach((field) => {
-        const input = document.getElementById(field.id);
-        bindQueryClearControl(field.id);
-        if (input.tagName === "INPUT") input.addEventListener("keydown", event => {
-          if (event.key === "Enter" && !event.isComposing && event.keyCode !== 229) { event.preventDefault(); searchSpeedLimit(); }
-        });
-        input.closest(".clearable-query").querySelector(".query-clear").addEventListener("click", () => { delete speedLimitState.appliedValues[field.key]; speedLimitState.page = 1; renderSpeedLimitTable(); });
-      });
-      document.getElementById("speedLimitSearchBtn").addEventListener("click", searchSpeedLimit);
-      document.getElementById("speedLimitResetBtn").addEventListener("click", resetSpeedLimitFilters);
-      document.getElementById("speedLimitCreateBtn").addEventListener("click", () => openSpeedLimitCreateModal());
-      document.getElementById("speedLimitTableBody").addEventListener("click", event => {
-        const edit = event.target.closest("[data-speed-limit-edit]");
-        const toggle = event.target.closest("[data-speed-limit-toggle]");
-        const remove = event.target.closest("[data-speed-limit-delete]");
-        if (edit) openSpeedLimitCreateModal(edit.dataset.speedLimitEdit);
-        else if (remove) requestSpeedLimitDelete(remove.dataset.speedLimitDelete);
-        else if (toggle) requestSpeedLimitStatusChange(toggle.dataset.speedLimitId, toggle.dataset.speedLimitToggle);
-      });
-      document.getElementById("speedLimitPager").addEventListener("click", event => {
-        const button = event.target.closest("[data-speed-limit-page]");
-        if (!button || button.disabled) return;
-        speedLimitState.page = Number(button.dataset.speedLimitPage); renderSpeedLimitTable();
-      });
-      const form = document.getElementById("speedLimitCreateForm");
-      form.addEventListener("submit", event => { event.preventDefault(); confirmSpeedLimitCreate(); });
-      const update = event => {
-        collectSpeedLimitForm();
-        const input = event.target;
-        delete speedLimitCreateState.errors[input.id];
-        if (input.name === "speedLimitRestoreNextMonth") delete speedLimitCreateState.errors.speedLimitRestoreNextMonthGroup;
-        if (input.dataset.speedLimitUsageKey) {
-          const next = validateSpeedLimitDraft(speedLimitCreateState.values, speedLimitCreateState.editId);
-          Object.keys(speedLimitCreateState.errors).forEach(key => { if (!next[key]) delete speedLimitCreateState.errors[key]; });
-        }
-        showSpeedLimitFormErrors();
-        document.getElementById("speedLimitNameCount").textContent = `${speedLimitCreateState.values.strategyName.length}/50`;
-      };
-      form.addEventListener("input", update); form.addEventListener("change", update);
-      form.addEventListener("click", event => {
-        const section = event.target.closest("[data-speed-limit-section]");
-        if (section) {
-          collectSpeedLimitForm();
-          const key = section.dataset.speedLimitSection;
-          if (key !== "usageEnabled") return;
-          speedLimitCreateState.values[key] = !speedLimitCreateState.values[key];
-          Object.keys(speedLimitCreateState.errors).filter(id => id.startsWith("speedLimitUsage")).forEach(id => { delete speedLimitCreateState.errors[id]; });
-          syncSpeedLimitFormSections(); showSpeedLimitFormErrors();
-          return;
-        }
-        if (event.target.closest("#speedLimitAddUsageBtn")) return addSpeedLimitUsageTier();
-        const removeUsage = event.target.closest("[data-speed-limit-remove-usage]");
-        if (removeUsage && !removeUsage.disabled) return removeSpeedLimitUsageTier(Number(removeUsage.dataset.speedLimitRemoveUsage));
-      });
-      document.getElementById("closeSpeedLimitCreateBtn").addEventListener("click", closeSpeedLimitCreateModal);
-      document.getElementById("cancelSpeedLimitCreateBtn").addEventListener("click", closeSpeedLimitCreateModal);
-      document.getElementById("closeSpeedLimitStatusConfirmBtn").addEventListener("click", closeSpeedLimitStatusConfirm);
-      document.getElementById("cancelSpeedLimitStatusConfirmBtn").addEventListener("click", closeSpeedLimitStatusConfirm);
-      document.getElementById("confirmSpeedLimitStatusBtn").addEventListener("click", confirmSpeedLimitStatusChange);
-      bindSpeedLimitOverlayKeyboard("speedLimitCreateModal", closeSpeedLimitCreateModal);
-      bindSpeedLimitOverlayKeyboard("speedLimitStatusConfirmModal", closeSpeedLimitStatusConfirm);
-      document.getElementById("closeSpeedLimitDeleteBtn").addEventListener("click", closeSpeedLimitDeleteConfirm);
-      document.getElementById("cancelSpeedLimitDeleteBtn").addEventListener("click", closeSpeedLimitDeleteConfirm);
-      document.getElementById("confirmSpeedLimitDeleteBtn").addEventListener("click", confirmSpeedLimitDelete);
-      bindSpeedLimitOverlayKeyboard("speedLimitDeleteConfirmModal", closeSpeedLimitDeleteConfirm);
+      bindSpeedLimitBatchEvents(); bindSpeedLimitRecordEvents(); bindSpeedLimitReportEvents(); renderSpeedLimitTabs();
     }
 
 
@@ -29264,7 +27516,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       document.getElementById("afterSaleNavItem").classList.remove("active");
       document.getElementById("logNavItem").classList.remove("active");
       document.getElementById("taskNavItem").classList.remove("active");
-      document.getElementById("abTestStatsNavItem").classList.toggle("active", pageId === "abTestStatsPage");
       document.getElementById("simCardSubItem").classList.toggle("active", pageId === "simCardPage");
       document.getElementById("simInboundSubItem").classList.toggle("active", pageId === "simInboundPage");
       document.getElementById("smartDiagnosisSubItem").classList.toggle("active", pageId === "smartDiagnosisPage");
@@ -29364,7 +27615,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       chipBatchDetailPage: "ESIM芯片操作详情",
       simDetailPage: "SIM卡详情",
       esimChipDetailPage: "ESIM芯片详情",
-      abTestStatsPage: "AB测试套餐购买统计",
       riskStrategyPage: "风险防控策略",
       riskStrategyCreatePage: "风险防控策略新增",
       riskStrategyDetailPage: "风险防控策略详情",
@@ -29534,12 +27784,12 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         interactions: ["点击运营管理下的“流量监控”进入该页面。", "统计时间使用日期范围选择器。"]
       },
       speedLimitPage: {
-        page: { title: "限速管理", purpose: "通过限速策略、限速统计报告、限速操作记录、限速操作详情四个一级页签维护配置、查询批次、卡片详情及按日、按周期统计；详情页在同一列表展示限速与解除限速，通过操作类型区分。" },
-        queries: ["限速策略：策略名称、月用量限速状态、次月恢复", "限速操作记录：批次号、操作类型、操作来源、操作状态", "限速操作详情：批次号、ICCID、操作类型、操作来源、限速等级、次月恢复、操作状态、记录日期", "限速统计报告：统计方式（按日统计、周期统计）、开始日期、结束日期；支持最近一周、最近一个月、最近三个月、最近半年、最近一年、上月、本月及自定义区间"],
-        fields: [...docFieldsFrom(speedLimitColumns, { id: "自动生成的唯一策略标识。", strategyName: "策略名称，以纯文本展示。", usageEnabled: "开启/停用月用量限速。", restoreNextMonth: "次月是否恢复，默认恢复，支持筛选。", createdBy: "策略操作人。", createdAt: "首次创建时间。", updatedAt: "最近保存配置或切换状态的时间。", action: "编辑策略配置，或通过强提示确认后删除策略。" }), ...docFieldsFrom(speedLimitBatchColumns, { batchNo: "每次批量操作生成唯一批次号；点击进入对应限速或解除限速详情，并按该批次查询。", operation: "区分限速与解除限速。", source: "区分系统执行与手动提交，手动解除策略限速仍属于手动来源。", operationStatus: "有未完成卡片为处理中；全部结束后按成功、失败数量显示成功、失败或部分成功。", total: "本批次实际操作的ICCID去重数。", success: "本批次处理成功的卡片数。", failed: "本批次处理失败的卡片数。", pending: "尚未返回处理结果的卡片数，总数等于成功数加失败数加处理中数。", remark: "本次操作填写的备注，支持多行长文本。", completedAt: "本批次全部卡片处理结束的最晚完成时间；处理中、空批次或历史完成时间缺失显示--，不使用后续解除的更新时间。" }), ...docFieldsFrom(speedLimitRecordColumns, { batchNo: "该操作所属批次，支持查询和导出。", iccid: "完整展示并以文本导出，避免号码精度丢失。", operation: "区分限速与解除限速，两类数据合并展示并可筛选。", operationSource: "按当前操作展示手动操作、策略限速或系统恢复；手动解除策略限速仍显示手动操作。", strategyName: "仅限速操作展示策略名称；解除操作显示--。", speed: "限速操作展示该次执行的限速值；解除操作显示--。", type: "限速操作展示原记录等级；解除操作显示--。", restoreNextMonth: "本次限速保存的次月恢复设置，恢复或不恢复；解除记录保留原限速设置，支持筛选和导出。", completedAt: "本次操作完成时刻；执行中或历史完成时刻缺失显示--，不挪用后续解除的更新时间。", result: "限速取限速处理结果，解除取本次解除处理结果。", failureReason: "失败操作单独展示失败原因；其余显示--。", operationBy: "限速发起人或本次解除操作人。", startTime: "原限速计划开始时间，也是限速记录的日期查询依据。", endTime: "原限速计划结束时间。", createdAt: "本次操作创建时间；解除记录以此日期作为查询依据。", remark: "当前操作独立保存的备注。" }), ...docFieldsFrom(speedLimitReportColumns, { date: "按日统计展示日期并倒序排列；周期统计展示完整的起止日期区间。", limitTotal: "按日及周期统计均可点击进入限速操作详情，带入限速操作类型及该行单日或完整周期；周期总数为区间内每日限速总数之和。", releaseTotal: "按日及周期统计均可点击进入限速操作详情，带入解除限速操作类型及该行单日或完整周期；周期总数为区间内每日解除总数之和。", limitRate: "限速成功数÷限速SIM卡总数，保留两位小数；总数为0时显示--。", releaseRate: "解除限速成功数÷解除限速SIM卡总数，保留两位小数；总数为0时显示--。" })],
-        functions: ["限速操作记录：按批次展示系统或手动操作的卡片数量、成功、失败、处理中及备注；点击批次号进入统一详情并带入批次号与操作类型查询，支持搜索、重置、分页和导出。", "限速统计报告：支持按日统计和周期统计，支持7个快捷日期范围及自定义起止日期；统计方式、日期区间、搜索、重置在同一查询栏展示；按日展示每日数据，周期累加所选区间内的每日总数并展示一行合计，导出与当前统计方式和已提交日期保持一致。", "限速SIM卡总数：按日或周期统计均可点击进入限速操作详情，带入限速操作类型及该行日期区间查询。", "解除限速SIM卡总数：按日或周期统计均可点击进入限速操作详情，带入解除限速操作类型及该行日期区间查询。", "统一详情导出：按当前已提交查询条件导出全部匹配的限速及解除记录，包含列表17个字段，ICCID以文本保留。", "限速策略新增：配置策略名称、次月恢复（默认恢复）及多级月用量限速。", "列表开关：确认后切换对应限速状态。", "操作列编辑：编辑已有配置。", "操作列删除：展示策略名称及不可恢复提示，确认后删除策略及配置。"],
+        page: { title: "限速管理", purpose: "通过限速统计报告、限速操作记录、限速操作详情三个一级页签查询批次、卡片详情及按日、按周期统计；限速策略统一在规则中心创建和维护；详情页在同一列表展示限速与解除限速，通过操作类型区分。" },
+        queries: ["限速操作记录：批次号、操作类型、操作来源、操作状态", "限速操作详情：批次号、ICCID、操作类型、操作来源、限速等级、次月恢复、操作状态、记录日期", "限速统计报告：统计方式（按日统计、周期统计）、开始日期、结束日期；支持最近一周、最近一个月、最近三个月、最近半年、最近一年、上月、本月及自定义区间"],
+        fields: [...docFieldsFrom(speedLimitBatchColumns, { batchNo: "每次批量操作生成唯一批次号；点击进入对应限速或解除限速详情，并按该批次查询。", operation: "区分限速与解除限速。", source: "区分系统执行与手动提交，手动解除策略限速仍属于手动来源。", operationStatus: "有未完成卡片为处理中；全部结束后按成功、失败数量显示成功、失败或部分成功。", total: "本批次实际操作的ICCID去重数。", success: "本批次处理成功的卡片数。", failed: "本批次处理失败的卡片数。", pending: "尚未返回处理结果的卡片数，总数等于成功数加失败数加处理中数。", remark: "本次操作填写的备注，支持多行长文本。", completedAt: "本批次全部卡片处理结束的最晚完成时间；处理中、空批次或历史完成时间缺失显示--，不使用后续解除的更新时间。" }), ...docFieldsFrom(speedLimitRecordColumns, { batchNo: "该操作所属批次，支持查询和导出。", iccid: "完整展示并以文本导出，避免号码精度丢失。", operation: "区分限速与解除限速，两类数据合并展示并可筛选。", operationSource: "按当前操作展示手动操作、策略限速或系统恢复；手动解除策略限速仍显示手动操作。", strategyName: "仅限速操作展示策略名称；解除操作显示--。", speed: "限速操作展示该次执行的限速值；解除操作显示--。", type: "限速操作展示原记录等级；解除操作显示--。", restoreNextMonth: "本次限速保存的次月恢复设置，恢复或不恢复；解除记录保留原限速设置，支持筛选和导出。", completedAt: "本次操作完成时刻；执行中或历史完成时刻缺失显示--，不挪用后续解除的更新时间。", result: "限速取限速处理结果，解除取本次解除处理结果。", failureReason: "失败操作单独展示失败原因；其余显示--。", operationBy: "限速发起人或本次解除操作人。", startTime: "原限速计划开始时间，也是限速记录的日期查询依据。", endTime: "原限速计划结束时间。", createdAt: "本次操作创建时间；解除记录以此日期作为查询依据。", remark: "当前操作独立保存的备注。" }), ...docFieldsFrom(speedLimitReportColumns, { date: "按日统计展示日期并倒序排列；周期统计展示完整的起止日期区间。", limitTotal: "按日及周期统计均可点击进入限速操作详情，带入限速操作类型及该行单日或完整周期；周期总数为区间内每日限速总数之和。", releaseTotal: "按日及周期统计均可点击进入限速操作详情，带入解除限速操作类型及该行单日或完整周期；周期总数为区间内每日解除总数之和。", limitRate: "限速成功数÷限速SIM卡总数，保留两位小数；总数为0时显示--。", releaseRate: "解除限速成功数÷解除限速SIM卡总数，保留两位小数；总数为0时显示--。" })],
+        functions: ["限速操作记录：按批次展示系统或手动操作的卡片数量、成功、失败、处理中及备注；点击批次号进入统一详情并带入批次号与操作类型查询，支持搜索、重置、分页和导出。", "限速统计报告：支持按日统计和周期统计，支持7个快捷日期范围及自定义起止日期；统计方式、日期区间、搜索、重置在同一查询栏展示；按日展示每日数据，周期累加所选区间内的每日总数并展示一行合计，导出与当前统计方式和已提交日期保持一致。", "限速SIM卡总数：按日或周期统计均可点击进入限速操作详情，带入限速操作类型及该行日期区间查询。", "解除限速SIM卡总数：按日或周期统计均可点击进入限速操作详情，带入解除限速操作类型及该行日期区间查询。", "统一详情导出：按当前已提交查询条件导出全部匹配的限速及解除记录，包含列表17个字段，ICCID以文本保留。"],
         businessRules: ["策略名称不可重复，新增和编辑均校验同名策略。", "用量限速初始为一级，支持添加或删除层级，至少保留一级，层级数量不限；开启时，已配置层级的月流量阈值与限速值均必填，流量单位 MB。", "月流量阈值按已配置层级递增；限速值支持 1Kb/s、64Kb/s、128kb/s、256Kb/s、512Kb/s、1Mb/s、3Mb/s、5Mb/s。", "限速策略仅支持月用量限速；历史记录保留原始限速类型及快照。", "月用量限速开关只控制是否生效，停用时仍可编辑、增删及保存配置。", "未完成配置的策略开启限速前须先补充参数。", "一次手动提交生成一个唯一批次号，号码去重后关联该批次；未创建新卡片操作时不生成空批次。", "批次成功、失败、处理中数量按关联卡片的实际处理结果汇总；创建请求不预先标记成功。完成时间仅在本批次全部卡片均已处理结束且完成时间齐全时显示最晚完成时间，处理中或历史完成时间缺失显示--。", "批次操作来源独立于原限速策略来源，系统和手动操作分别记录。", "限速记录为独立历史快照，策略编辑、删除或状态切换不改写已有记录。", "操作来源为手动操作、策略限速、系统恢复，按当前操作来源识别；限速等级仅提供月一级限速、月二级限速、月三级限速；历史月等级按统一文案展示，其他旧等级显示--，不改写原始快照。限速日期按开始时间日期筛选，首尾日期均包含，支持同一天。", "限速记录和解除限速记录合并在同一列表，保留独立操作快照；解除类型仅收录已发起的解除操作，不将未解除或无需解除的限速记录重复生成为解除操作，创建待限速请求不新增解除记录。", "统一记录日期对限速按开始日期筛选，对解除按解除记录创建日期筛选，包含首尾日期；两类数据共用查询条件及分页；记录日期支持跨月、跨年区间，以承接统计报告完整周期。解除操作的限速策略名称、限速值、限速等级在列表与导出中均显示--，原始历史数据仍独立保留。完成时间仅展示当前操作的完成时刻，执行中显示--。", "记录页使用示例数据，未连接运营商限速接口；导出当前统一查询的全部记录，ICCID按文本保留。", "限速统计报告初始使用每日汇总示例数据；手动创建限速后，按开始日期将新增ICCID计入限速SIM卡总数。待处理记录不计入成功或失败数，成功数与失败数之和不大于总数；成功率保留两位小数，总数为0时显示--。", "报告日期筛选包含首尾日期，支持同一天及跨月、跨年自定义范围；按日统计默认展示全部日报，周期统计首次切换或重置时默认最近一周。周期总数按每日总数累加，不跨日期去重；成功率按周期成功总数除以周期总数计算，总数为0时显示--。清空周期日期后须重新选择再搜索；导出当前已提交查询条件下的全部报告，周期统计导出一行合计。"],
-        interactions: ["一级页签保留限速策略、限速统计报告、限速操作记录、限速操作详情。详情页不再使用二级页签，同一列表按操作类型区分。", "点击批次号后带入批次号和操作类型，清空旧筛选及日期、回到第一页；统计报告总数跳转带入对应操作类型及已提交查询的单日或完整周期区间，包含首尾日期；清空批次号和其他旧条件、回到第一页，返回报告保留原统计方式和查询。", "离开统一详情再返回保留已提交查询条件和分页；返回批次或统计报告保留各自原查询。一级页签支持左右方向键、Home、End。", "查询支持组合条件、单项清空、重置及按当前全部匹配结果导出；批次页每页20条，页码居中、窄屏可换行，上一页、当前页、下一页保持一组。筛选后回到第一页，数据减少时自动调整到有效页，翻页后聚焦当前页码。", "新增或编辑保存后返回列表并保留查询条件。", "取消新增保留当前草稿，再次打开可继续填写。", "删除确认默认聚焦取消；取消、关闭或按Esc均不删除。确认删除后保留筛选条件并自动调整分页。"]
+        interactions: ["一级页签仅保留限速统计报告、限速操作记录、限速操作详情，默认打开限速统计报告。详情页不再使用二级页签，同一列表按操作类型区分。", "点击批次号后带入批次号和操作类型，清空旧筛选及日期、回到第一页；统计报告总数跳转带入对应操作类型及已提交查询的单日或完整周期区间，包含首尾日期；清空批次号和其他旧条件、回到第一页，返回报告保留原统计方式和查询。", "离开统一详情再返回保留已提交查询条件和分页；返回批次或统计报告保留各自原查询。一级页签支持左右方向键、Home、End。", "查询支持组合条件、单项清空、重置及按当前全部匹配结果导出；批次页每页20条，页码居中、窄屏可换行，上一页、当前页、下一页保持一组。筛选后回到第一页，数据减少时自动调整到有效页，翻页后聚焦当前页码。", "限速策略的新增、编辑及启停统一通过规则中心维护；原策略ID和历史记录保留。"]
       },
       userPackagePage: {
         page: { title: "用户套餐管理", purpose: "用于维护用户套餐、价格、流量、语音和上下架状态。" },
@@ -29553,7 +27803,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
           action: "编辑套餐。"
         }),
         functions: ["用户套餐新增：打开新增弹窗。", "编辑：打开与新增字段一致的编辑弹窗。", "点击套餐名称：进入套餐详情页。"],
-        businessRules: ["非语音加油包、非流量加油包套餐新增及编辑时必选限速策略，字段位于充值策略下方；加油包不展示或保留该绑定。", "限速策略选项取限速管理中已开启的策略，提交时重新检查有效性；不可用的历史绑定展示原ID并要求重新选择。", "列表在充值策略后显示绑定的限速策略，详情同步展示。", "固定流量时流量值和流量用量科学计算策略为必填。", "除语音加油包、流量加油包外，套餐须绑定语音用量科学计算策略，字段位于语音分钟数下方。", "仅可绑定对应类型的已启用科学计算策略；编辑时无效绑定须重新选择。科学计算管理菜单及页面已移除，现有策略数据与套餐绑定保留。", "不同套餐类型显示字段不同，具体以弹窗当前展示为准。"],
+        businessRules: ["非语音加油包、非流量加油包套餐新增及编辑时必选限速策略，字段位于充值策略下方；加油包不展示或保留该绑定。", "限速策略选项取规则中心中已开启的限速策略规则，提交时重新检查有效性；不可用的历史绑定展示原ID并要求重新选择。", "列表在充值策略后显示绑定的限速策略，详情同步展示。", "固定流量时流量值和流量用量科学计算策略为必填。", "除语音加油包、流量加油包外，套餐须绑定语音用量科学计算策略，字段位于语音分钟数下方。", "仅可绑定对应类型的已启用科学计算策略；编辑时无效绑定须重新选择。科学计算管理菜单及页面已移除，现有策略数据与套餐绑定保留。", "不同套餐类型显示字段不同，具体以弹窗当前展示为准。"],
         interactions: ["弹窗下拉框可清空恢复初始状态。", "详情页按左右结构展示字段和值。"]
       },
       userPackageDetailPage: {
@@ -29898,7 +28148,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       document.getElementById("pageContent").classList.toggle("package-mode", pageId === "userPackagePage");
       document.getElementById("pageContent").classList.toggle("chip-mode", pageId === "esimChipGroupPage" || pageId === "esimChipPage" || pageId === "esimChipSnPage" || pageId === "esimWriteApplyPage" || pageId === "esimOrderPage" || pageId === "writableResourcePoolPage");
       document.getElementById("pageContent").classList.toggle("writable-mode", pageId === "writablePage");
-      document.getElementById("pageContent").classList.toggle("ab-mode", pageId === "abTestStatsPage");
       document.getElementById("pageContent").classList.toggle("risk-mode", pageId === "riskStrategyPage" || pageId === "riskStrategyCreatePage" || pageId === "riskStrategyDetailPage" || pageId === "riskTriggerLogPage" || pageId === "riskStopChangeRecordPage");
       document.getElementById("pageContent").classList.toggle("refund-mode", pageId === "refundWorkOrderPage" || pageId === "complaintManagePage" || pageId === "exchangeReshipPage");
       document.getElementById("pageContent").classList.toggle("log-mode", pageId === "accountOperationLogPage" || pageId === "smartDiagnosisLogPage");
@@ -29939,7 +28188,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         renderChipSnTable();
         renderChipSnPager();
       }
-      if (pageId === "abTestStatsPage") renderAbTestStatsPage();
       if (pageId === "riskStrategyPage") {
         renderRiskStrategyFilters();
         renderRiskStrategyTable();
@@ -31007,7 +29255,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       closeCardActivationMonitorMenus();
       closeTrafficMonitorDateRange();
       closeChipLogMenus();
-      closeAbPurchaseDateRange();
       closeMenus();
       closeRecycleDateRange();
       closeWritableMenus();
@@ -31220,14 +29467,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     document.getElementById("confirmResourcePoolWarningBtn").addEventListener("click", confirmResourcePoolWarning);
     document.getElementById("resourcePoolWarningModal").addEventListener("click", (event) => {
       if (event.target.id === "resourcePoolWarningModal") closeResourcePoolWarningModal();
-    });
-    document.getElementById("abRefreshBtn").addEventListener("click", searchAbStats);
-    document.getElementById("abExportBtn").addEventListener("click", () => {
-      showToast("H5套餐购买漏斗数据已导出", "success");
-    });
-    document.getElementById("closeAbPurchaseDrawer").addEventListener("click", closeAbPurchaseDrawer);
-    document.getElementById("abPurchaseDrawer").addEventListener("click", (event) => {
-      if (event.target.id === "abPurchaseDrawer") closeAbPurchaseDrawer();
     });
     document.getElementById("warningRecipientSearch").addEventListener("click", (event) => {
       event.stopPropagation();
@@ -31777,14 +30016,13 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     renderSimInboundTable();
     bindSpeedLimitEvents();
     bindSimManualSpeedEvents();
-    renderSpeedLimitTable();
+    renderSpeedLimitTabs();
     renderCardActivationMonitorFilters();
     renderCardActivationMonitorTable();
     renderCardActivationMonitorPager();
     renderUserPackageFilters();
     renderUserPackageTable();
     renderUserPackagePager();
-    renderAbTestStatsPage();
     renderChipGroupFilters();
     renderChipGroupTable();
     renderChipGroupPager();
@@ -31872,14 +30110,35 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     return `<div class="panel table-panel wc-table-panel"><div class="table-scroll" tabindex="0" aria-label="列表，可横向滚动"><table class="wc-table" style="min-width:${Number(minWidth)}px"><thead><tr>${columns.map(c=>`<th scope="col">${C.esc(c.label)}</th>`).join('')}</tr></thead><tbody>${pageRows.length?pageRows.map(row=>`<tr data-wc-row="${C.esc(row.id||'')}" class="${row._highlight?'wc-highlight':''}">${columns.map(c=>`<td>${c.render?c.render(row[c.key],row):C.esc(row[c.key]??'--')}</td>`).join('')}</tr>`).join(''):`<tr><td colspan="${columns.length}" class="wc-empty" role="status">暂无匹配记录</td></tr>`}</tbody></table></div><div class="pager wc-pager"><span role="status">共 ${rows.length} 条</span><span>${state.pageSize}条/页</span><button type="button" class="page-btn" data-wc-page="${state.page-1}" aria-label="上一页" ${state.page===1?'disabled':''}>‹</button><span class="page-btn active" aria-current="page">${state.page}</span><span>/ ${pages}</span><button type="button" class="page-btn" data-wc-page="${state.page+1}" aria-label="下一页" ${state.page===pages?'disabled':''}>›</button></div></div>`;
   };
   C.bindPager=(host,state,render)=>host.querySelectorAll('[data-wc-page]').forEach(button=>button.addEventListener('click',()=>{if(button.disabled)return;const p=Number(button.dataset.wcPage);if(Number.isInteger(p)&&p>0){state.page=p;render();host.querySelector('[aria-current="page"]')?.focus();}}));
-  const tooltip=document.createElement('div');tooltip.className='wc-tooltip-portal';tooltip.setAttribute('role','tooltip');tooltip.hidden=true;tooltip.textContent=C.monitorNote;document.body.appendChild(tooltip);
-  const hideTooltip=()=>{tooltip.hidden=true;};
-  const showTooltip=target=>{tooltip.hidden=false;const rect=target.getBoundingClientRect(),width=Math.min(440,innerWidth-24);tooltip.style.width=width+'px';tooltip.style.left=Math.max(12,Math.min(rect.left,innerWidth-width-12))+'px';tooltip.style.top=(innerHeight-rect.bottom>160?rect.bottom+8:Math.max(12,rect.top-tooltip.getBoundingClientRect().height-8))+'px';};
-  document.addEventListener('pointerover',event=>{const target=event.target.closest?.('.wc-tooltip');if(target)showTooltip(target);});
+  const tooltip=document.createElement('div');tooltip.id='wcSharedTooltip';tooltip.className='wc-tooltip-portal';tooltip.setAttribute('role','tooltip');tooltip.hidden=true;document.body.appendChild(tooltip);
+  let tooltipTarget=null,tooltipTimer=null;
+  const cancelTooltipHide=()=>{if(tooltipTimer!==null){clearTimeout(tooltipTimer);tooltipTimer=null;}};
+  const unlinkTooltip=()=>{if(!tooltipTarget)return;const ids=(tooltipTarget.getAttribute('aria-describedby')||'').split(/\s+/).filter(id=>id&&id!==tooltip.id);if(ids.length)tooltipTarget.setAttribute('aria-describedby',ids.join(' '));else tooltipTarget.removeAttribute('aria-describedby');};
+  const hideTooltip=()=>{cancelTooltipHide();tooltip.hidden=true;unlinkTooltip();tooltipTarget=null;};
+  const showTooltip=target=>{
+    cancelTooltipHide();if(tooltipTarget!==target)unlinkTooltip();tooltipTarget=target;
+    tooltip.textContent=target.dataset.wcTooltip||C.monitorNote;tooltip.scrollTop=0;tooltip.hidden=false;
+    const ids=(target.getAttribute('aria-describedby')||'').split(/\s+/).filter(Boolean);if(!ids.includes(tooltip.id))ids.push(tooltip.id);target.setAttribute('aria-describedby',ids.join(' '));
+    const rect=target.getBoundingClientRect(),vw=window.innerWidth||innerWidth,vh=window.innerHeight||innerHeight,width=Math.max(1,Math.min(target.dataset.wcTooltip?520:440,vw-24));
+    tooltip.style.width=width+'px';tooltip.style.left=Math.max(12,Math.min(rect.left,vw-width-12))+'px';
+    const below=vh-rect.bottom-12,above=rect.top-12,desired=Math.min(tooltip.scrollHeight||240,240),useBelow=below>=desired||below>=above;
+    const available=Math.max(1,Math.min(480,(useBelow?below:above)-8));tooltip.style.maxHeight=available+'px';
+    const height=Math.min(tooltip.scrollHeight||tooltip.getBoundingClientRect().height||available,available);
+    tooltip.style.top=Math.max(12,Math.min(useBelow?rect.bottom+8:rect.top-height-8,vh-height-12))+'px';
+  };
+  const deferTooltipHide=()=>{cancelTooltipHide();tooltipTimer=setTimeout(()=>{tooltipTimer=null;if(document.activeElement!==tooltipTarget)hideTooltip();},150);};
+  document.addEventListener('pointerover',event=>{const target=event.target.closest?.('.wc-tooltip');if(target)showTooltip(target);else if(tooltip.contains(event.target))cancelTooltipHide();});
+  document.addEventListener('pointerout',event=>{const target=event.target.closest?.('.wc-tooltip');if(target&&target!==tooltipTarget)return;if(target&&!target.contains(event.relatedTarget)&&!tooltip.contains(event.relatedTarget))deferTooltipHide();else if(tooltip.contains(event.target)&&!tooltip.contains(event.relatedTarget)&&!tooltipTarget?.contains(event.relatedTarget))deferTooltipHide();});
   document.addEventListener('focusin',event=>{if(event.target.matches?.('.wc-tooltip'))showTooltip(event.target);});
-  document.addEventListener('pointerout',event=>{if(event.target.matches?.('.wc-tooltip')&&event.target!==document.activeElement)hideTooltip();});
-  document.addEventListener('focusout',event=>{if(event.target.matches?.('.wc-tooltip'))hideTooltip();});
-  document.addEventListener('scroll',hideTooltip,true);window.addEventListener('resize',hideTooltip);
+  document.addEventListener('focusout',event=>{if(event.target===tooltipTarget)hideTooltip();});
+  document.addEventListener('pointerdown',event=>{if(!tooltip.contains(event.target)&&!tooltipTarget?.contains(event.target))hideTooltip();});
+  document.addEventListener('keydown',event=>{
+    if(tooltip.hidden)return;
+    if(event.key==='Escape'){event.preventDefault();hideTooltip();return;}
+    if(event.target===tooltipTarget&&tooltipTarget?.dataset.wcTooltip&&['ArrowDown','ArrowUp','PageDown','PageUp'].includes(event.key)){event.preventDefault();tooltip.scrollTop+=(event.key.startsWith('Page')?Math.max(80,tooltip.clientHeight-24):40)*(event.key.endsWith('Up')?-1:1);}
+  });
+  document.addEventListener('scroll',event=>{if(!tooltip.contains(event.target))hideTooltip();},true);window.addEventListener('resize',hideTooltip);
+  C.hideTooltip=hideTooltip;
   const ranges=new Map();
   C.range=(host,prefix,state)=>{
     const internal=state._dateUi||(state._dateUi={values:{},dateRangeOpen:false});
@@ -32031,7 +30290,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     });});
     if(!task.messages.some(m=>m.status==='发送中'))task.completedAt=C.now();C.store.notifications.unshift(task);trigger.notificationId=task.id;C.store.triggerDetails.filter(d=>d.triggerId===trigger.id).forEach(d=>d.notificationId=task.id);C.emit();return task;
   };
-  C.startSimulation=ruleId=>{const rule=C.store.rules.find(r=>r.id===ruleId);if(!rule)throw new Error('规则不存在');if(!rule.enabled)throw new Error('规则已关闭，本轮不执行');if(rule.effective.at>C.now())throw new Error('规则尚未达到生效时间');if(rule.monitor.mode==='interval')throw new Error('间隔提醒基准及跨间隔补发口径待确认，本原型不模拟自动间隔判定');const cards=C.store.cards.filter(card=>rule.scope.mode==='iccid'?rule.scope.iccids.includes(card.iccid):['merchant','group','supplier','operator'].every(key=>!rule.scope[key]||rule.scope[key]===card[key]));const batch={id:C.id('QUERY'),ruleId,ruleSnapshot:C.clone(rule),startedAt:C.now(),completedAt:'',status:'running',cards:C.clone(cards)};C.store.batches.unshift(batch);return batch;};
+  C.startSimulation=ruleId=>{const rule=C.store.rules.find(r=>r.id===ruleId);if(!rule)throw new Error('规则不存在');if(rule.type==='限速策略')throw new Error('限速策略由绑定套餐的月用量触发，不通过通知监测模拟执行');if(!rule.enabled)throw new Error('规则已关闭，本轮不执行');if(rule.effective.at>C.now())throw new Error('规则尚未达到生效时间');if(rule.monitor.mode==='interval')throw new Error('间隔提醒基准及跨间隔补发口径待确认，本原型不模拟自动间隔判定');const cards=C.store.cards.filter(card=>rule.scope.mode==='iccid'?rule.scope.iccids.includes(card.iccid):['merchant','group','supplier','operator'].every(key=>!rule.scope[key]||rule.scope[key]===card[key]));const batch={id:C.id('QUERY'),ruleId,ruleSnapshot:C.clone(rule),startedAt:C.now(),completedAt:'',status:'running',cards:C.clone(cards)};C.store.batches.unshift(batch);return batch;};
   C.finishSimulation=(batchId,outcome='pending')=>{const batch=C.store.batches.find(b=>b.id===batchId);if(!batch)throw new Error('模拟批次不存在');if(batch.status!=='running')throw new Error('本轮查询已经完成，请勿重复提交');const rule=batch.ruleSnapshot;const hits=batch.cards.filter(card=>rule.monitor.thresholds.some(value=>card.usageMB>=Number(value)));batch.status='completed';batch.completedAt=C.now();if(!hits.length)return null;const trigger={id:C.id('TRIGGER'),batchId:batch.id,ruleId:rule.id,ruleName:rule.name,ruleType:rule.type,ruleSnapshot:C.clone(rule),triggeredAt:C.now(),cardIds:hits.map(c=>c.iccid),notificationId:''};C.store.triggers.unshift(trigger);hits.forEach(card=>C.store.triggerDetails.push({id:C.id('HIT'),triggerId:trigger.id,ruleId:rule.id,ruleName:rule.name,ruleType:rule.type,triggeredAt:trigger.triggeredAt,msisdn:card.msisdn,iccid:card.iccid,merchant:card.merchant,supplier:card.supplier,operator:card.operator,usageMB:card.usageMB,condition:'单卡累计数据使用量达到 '+rule.monitor.thresholds.filter(v=>card.usageMB>=Number(v)).join(' / ')+' MB',action:rule.monitor.action==='closeData'?'通知并关闭流量数据服务':'仅通知',actionResult:'成功',notificationId:'',actionSnapshot:{simulated:true,requestedAction:rule.monitor.action,restoreNextMonth:rule.monitor.restoreNextMonth}}));return {trigger,notification:C.createNotification(rule,trigger,batch,outcome)};};
   // Explicit historical simulation samples; each task keeps independent immutable source snapshots.
   ['success','mixed','failure','pending'].forEach((outcome,index)=>{const rule=C.clone(C.store.rules[0]);const batch={id:'QUERY-DEMO-'+(index+1),ruleId:rule.id,ruleSnapshot:C.clone(rule),startedAt:`2026-10-${12+index} 01:50:00`,completedAt:`2026-10-${12+index} 02:05:00`,status:'completed',cards:C.clone(C.store.cards.slice(0,2))};C.store.batches.push(batch);const trigger={id:'TRIGGER-DEMO-'+(index+1),batchId:batch.id,ruleId:rule.id,ruleName:rule.name,ruleType:rule.type,ruleSnapshot:C.clone(rule),triggeredAt:`2026-10-${12+index} 02:04:00`,cardIds:batch.cards.map(c=>c.iccid),notificationId:''};C.store.triggers.push(trigger);batch.cards.forEach(card=>C.store.triggerDetails.push({id:C.id('HIT'),triggerId:trigger.id,ruleId:rule.id,ruleName:rule.name,ruleType:rule.type,triggeredAt:trigger.triggeredAt,msisdn:card.msisdn,iccid:card.iccid,merchant:card.merchant,supplier:card.supplier,operator:card.operator,usageMB:card.usageMB,condition:'单卡累计数据使用量达到 300 MB',action:'仅通知',actionResult:'成功',notificationId:''}));const task=C.createNotification(rule,trigger,batch,outcome);task.id='NOTICE-DEMO-'+(index+1);task.messages.forEach(message=>message.notificationId=task.id);trigger.notificationId=task.id;C.store.triggerDetails.filter(d=>d.triggerId===trigger.id).forEach(d=>d.notificationId=task.id);task.messages.forEach(m=>{if(m.status!=='发送中')m.sentAt=batch.completedAt;});task.completedAt=outcome==='pending'?'':batch.completedAt;});
@@ -32086,9 +30345,9 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     if(!titles[pageId])content.classList.remove('wc-mode');
     syncCenterSidebar(pageId);
   };
-  C.open=id=>{if(!pageLabelMap[id])return;if(activeCrumbPage==='rcRuleFormPage'&&id==='rcRulePage')openCrumbs=openCrumbs.filter(crumb=>crumb.pageId!=='rcRuleFormPage');switchBusinessPage(id);};
+  C.open=id=>{if(!pageLabelMap[id])return;C.hideTooltip();if(activeCrumbPage==='rcRuleFormPage'&&id==='rcRulePage')openCrumbs=openCrumbs.filter(crumb=>crumb.pageId!=='rcRuleFormPage');switchBusinessPage(id);};
   C.setFormTitle=title=>{pageLabelMap.rcRuleFormPage=title;const crumb=openCrumbs.find(c=>c.pageId==='rcRuleFormPage');if(crumb)crumb.label=title;renderCrumbs();};
-  const topbar=document.createElement('div');topbar.id='wcTopbarMessages';topbar.className='top-actions';document.querySelector('.topbar').appendChild(topbar);C.topbarHost=topbar;
+  const topbar=document.getElementById('wcTopbarMessages');C.topbarHost=topbar;
   C.pendingDecisions=['跨规则合并、重复事件去重与失败重试策略','间隔提醒基准、按月重置与跨间隔补发','指定通知时间已过、节假日和时区调度','模板未来版本绑定、附件来源及变量缺失处理','真实定时任务、流量查询、服务关闭/恢复和渠道发送接口'];
 })();
 
@@ -32097,21 +30356,66 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   const E=C.esc;
   const list={draft:{keyword:'',type:'',enabled:'',triggered:'',dateStart:'',dateEnd:''},applied:{},page:1,pageSize:20};
   let draft=null, original=null, formErrors={}, saving=false, fileBusy=false, fileToken=0, composing=false;
-  const typeOptions=[{id:'流量用量监测',name:'流量用量监测'}];
+  const typeOptions=[{id:'流量用量监测',name:'流量用量监测'},{id:'限速策略',name:'限速策略'}];
   const account=id=>C.store.accounts.find(x=>x.id===id);
   const byId=(rows,id)=>rows.find(x=>x.id===id);
   const textArea=(name,value,placeholder,extra='')=>`<textarea class="control" id="wc-${E(name)}" name="${E(name)}" rows="4" placeholder="${E(placeholder)}" ${extra}>${E(value||'')}</textarea>`;
   const button=(label,action,extra='',cls='secondary')=>`<button type="button" class="${action==='new'?'btn':action==='upload'?'file-btn':action==='remove-threshold'?'danger-link':action==='add-threshold'?'btn outline':'btn '+cls}" data-wcr-action="${E(action)}" ${extra}>${E(label)}</button>`;
   const errorMarkup=name=>formErrors[name]?`<span class="wc-rule-error" id="wc-rule-error-${E(name)}" role="alert" data-wcr-error="${E(name)}">${E(formErrors[name])}</span>`:'';
   const field=(label,html,name,required=true)=>`<div class="wc-field${formErrors[name]?' wc-invalid':''}" data-wcr-field="${E(name||'')}"><label class="wc-field-label" for="wc-${E(name||'')}">${required?'<span aria-hidden="true" class="required">*</span> ':''}${E(label)}</label><div class="wc-field-value">${html}${errorMarkup(name)}</div></div>`;
-  function radio(name,value,options){return `<div class="wc-radio-line" role="radiogroup" aria-label="${E(({"scope-mode":"监测范围","scope-entry":"录入方式","monitor-action":"跟进动作","monitor-restore":"次月是否恢复流量数据服务","effective-mode":"生效时间","notification-mode":"配置方式"})[name]||name)}">${options.map(o=>`<label><input type="radio" name="${E(name)}" value="${E(o.id)}" ${value===o.id?'checked':''}>${E(o.name)}</label>`).join('')}</div>`;}
+  function radio(name,value,options){return `<div class="wc-radio-line" role="radiogroup" aria-label="${E(({"scope-mode":"监测范围","scope-entry":"录入方式","monitor-action":"跟进动作","monitor-restore":"次月是否恢复流量数据服务","speed-restore":"次月恢复","effective-mode":"生效时间","notification-mode":"配置方式"})[name]||name)}">${options.map(o=>`<label><input type="radio" name="${E(name)}" value="${E(o.id)}" ${value===o.id?'checked':''}>${E(o.name)}</label>`).join('')}</div>`;}
   const section=(title,html)=>`<section class="wc-form-section"><h3>${E(title)}</h3>${html}</section>`;
   const plain=(label,value,raw=false)=>`<dt>${E(label)}</dt><dd>${raw?value:E(value===''||value===undefined||value===null?'--':value)}</dd>`;
   const dl=html=>`<dl class="wc-dl">${html}</dl>`;
   function defaultSetting(){return {timeMode:'immediate',time:'',methods:['email','inapp'],bindings:{email:{channelId:'',templateId:''},inapp:{channelId:'',templateId:''}}};}
+  const isSpeedRule=rule=>rule?.type==='限速策略';
+  const speedHistoryIds=new Map(speedLimitRecordRows.map(row=>[row,row.strategyId||speedLimitRows.find(policy=>policy.strategyName===row.strategyName)?.id||'']));
+  function syncSpeedPolicy(rule){
+    if(!isSpeedRule(rule))return;
+    const config=rule.speedLimit;
+    const values={strategyName:rule.name,usageEnabled:rule.enabled,restoreNextMonth:config.restoreNextMonth,usageTiers:C.clone(config.usageTiers),notification:C.clone(rule.notification),remark:rule.remark,updatedAt:rule.updatedAt,updatedBy:rule.operator};
+    const row=speedLimitRows.find(policy=>policy.id===rule.id);
+    if(row)Object.assign(row,values);else speedLimitRows.unshift({id:rule.id,...values,createdBy:rule.operator,createdAt:rule.createdAt});
+  }
+  function migrateSpeedRules(){
+    speedLimitRows.forEach(policy=>{
+      if(C.store.rules.some(rule=>rule.id===policy.id))return;
+      C.store.rules.push({id:policy.id,name:policy.strategyName,type:'限速策略',enabled:policy.usageEnabled,remark:policy.remark||'',
+        speedLimit:{restoreNextMonth:speedLimitRestoreNextMonth(policy),usageTiers:C.clone(policy.usageTiers)},
+        scope:{mode:'package',entry:'manual',iccids:[],manualText:''},monitor:{mode:'threshold',thresholds:policy.usageTiers.map(tier=>tier.monthlyMb),action:'speedLimit',restoreNextMonth:speedLimitRestoreNextMonth(policy)},
+        effective:{mode:'immediate',month:'',at:policy.createdAt},notification:policy.notification?C.clone(policy.notification):{mode:'unified',recipientIds:[],unified:defaultSetting(),individual:{}},createdAt:policy.createdAt,updatedAt:policy.updatedAt,operator:policy.updatedBy||policy.createdBy});
+    });
+  }
+  function speedRuleErrors(rule){
+    const config=rule.speedLimit||{restoreNextMonth:true,usageTiers:[]};
+    const legacy=validateSpeedLimitDraft({strategyName:rule.name||'',usageEnabled:rule.enabled,restoreNextMonth:config.restoreNextMonth,usageTiers:config.usageTiers||[]},rule.id||'');
+    const errors={};Object.entries(legacy).forEach(([key,message])=>{
+      const match=key.match(/^speedLimitUsage(\d+)(MonthlyMb|MonthlySpeed)$/);
+      const mapped=key==='speedLimitStrategyName'?'rule-name':key==='speedLimitRestoreNextMonthGroup'?'speed-restore':match?`speed-tier-${match[1]}-${match[2]==='MonthlyMb'?'monthlyMb':'monthlySpeed'}`:'speed-tiers';errors[mapped]=message.replaceAll('策略名称','规则名称');
+    });
+    if(C.store.rules.some(item=>item.id!==rule.id&&item.name===String(rule.name||'').trim()))errors['rule-name']='已存在同名规则，请修改规则名称。';
+    return errors;
+  }
+  function speedMarkup(){
+    const config=draft.speedLimit;
+    const rows=config.usageTiers.map((tier,index)=>`<tr><th scope="row">第${index+1}级限速</th>${['monthlyMb','monthlySpeed'].map(key=>{
+      const name=`speed-tier-${index}-${key}`;
+      const control=key==='monthlyMb'?C.input(name,tier[key]??'','type="number" min="0.01" step="0.01" placeholder="请输入月流量" aria-label="第'+(index+1)+'级月限速流量（MB）"'):C.select(name,String(tier[key]??''),speedLimitRates.map(rate=>({id:String(rate),name:speedLimitRateLabels[rate]})),'请选择限速值');
+      return `<td><div data-wcr-field="${name}">${control}${errorMarkup(name)}</div></td>`;
+    }).join('')}<td><button type="button" class="danger-link" data-wcr-action="remove-speed-tier" data-index="${index}" aria-label="删除第${index+1}级限速" title="${config.usageTiers.length===1?'至少保留一级限速':'删除本级限速'}" ${config.usageTiers.length===1?'disabled':''}>${renderScientificCalculationUiIcon(config.usageTiers.length===1?'trashDisabled':'trash')}</button></td></tr>`).join('');
+    return field('次月恢复',radio('speed-restore',config.restoreNextMonth?'yes':'no',[{id:'yes',name:'恢复'},{id:'no',name:'不恢复'}]),'speed-restore')+
+      `<p class="wc-note">按套餐绑定的此规则执行月用量限速，流量单位为 MB。当前共 ${config.usageTiers.length} 级，至少保留一级。</p><div class="wc-speed-tier-scroll" tabindex="0" role="region" aria-label="月用量限速等级配置，可横向滚动"><table class="wc-speed-tier-table"><thead><tr><th scope="col">限速等级</th><th scope="col">月限速流量（MB）</th><th scope="col">限速值</th><th scope="col">操作</th></tr></thead><tbody>${rows}</tbody></table></div><div class="wc-inline-config">${button('＋ 添加等级','add-speed-tier')}</div>`;
+  }
+  function speedDetailMarkup(rule){
+    const config=rule.speedLimit;
+    return section('基础信息',dl(plain('规则类型',rule.type)+plain('规则ID',rule.id)+plain('规则名称',rule.name)+plain('生效状态',rule.enabled?'开启':'关闭')+plain('创建时间',rule.createdAt)+plain('更新时间',rule.updatedAt)+plain('操作人',rule.operator)+plain('备注',rule.remark)))+
+      section('规则配置',dl(plain('次月恢复',config.restoreNextMonth?'恢复':'不恢复'))+`<div class="wc-speed-tier-scroll"><table class="wc-speed-tier-table"><thead><tr><th>限速等级</th><th>月限速流量（MB）</th><th>限速值</th></tr></thead><tbody>${config.usageTiers.map((tier,index)=>`<tr><td>第${index+1}级限速</td><td>${E(tier.monthlyMb??'--')}</td><td>${E(speedLimitRateLabels[tier.monthlySpeed]||'--')}</td></tr>`).join('')}</tbody></table></div>`)+notificationDetailMarkup(rule.notification);
+  }
+  migrateSpeedRules();
+
   function newRule(){
     fileToken++; fileBusy=false; original=null; formErrors={};
-    draft={id:'',name:'',type:'流量用量监测',enabled:true,remark:'',scope:{mode:'iccid',entry:'file',iccids:[],fileName:'',manualText:'',merchant:'',group:'',supplier:'',operator:''},monitor:{mode:'threshold',thresholds:[''],interval:'',action:'notify',restoreNextMonth:true},effective:{mode:'immediate',month:'',at:''},notification:{mode:'unified',recipientIds:[],unified:defaultSetting(),individual:{}},createdAt:'',updatedAt:'',operator:''};
+    draft={id:'',name:'',type:'流量用量监测',enabled:true,remark:'',speedLimit:{restoreNextMonth:true,usageTiers:[{monthlyMb:'',monthlySpeed:''}]},scope:{mode:'iccid',entry:'file',iccids:[],fileName:'',manualText:'',merchant:'',group:'',supplier:'',operator:''},monitor:{mode:'threshold',thresholds:[''],interval:'',action:'notify',restoreNextMonth:true},effective:{mode:'immediate',month:'',at:''},notification:{mode:'unified',recipientIds:[],unified:defaultSetting(),individual:{}},createdAt:'',updatedAt:'',operator:''};
     C.setFormTitle?.(original?'规则编辑':'规则新增'); C.open('rcRuleFormPage'); return draft;
   }
   function editRule(id){
@@ -32123,14 +30427,57 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     draft.notification.unified=draft.notification.unified||defaultSetting();
     C.setFormTitle?.(original?'规则编辑':'规则新增'); C.open('rcRuleFormPage'); return draft;
   }
-  function triggerInfo(rule){const rows=C.store.triggers.filter(t=>t.ruleId===rule.id);return {triggered:rows.length>0,last:rows.map(t=>t.triggeredAt).sort().at(-1)||''};}
+  function triggerInfo(rule){const rows=isSpeedRule(rule)?speedLimitRecordRows.filter(row=>row.category==='策略限速'&&(row.strategyId||speedHistoryIds.get(row))===rule.id).map(row=>({triggeredAt:row.createdAt})):C.store.triggers.filter(t=>t.ruleId===rule.id);return {triggered:rows.length>0,last:rows.map(t=>t.triggeredAt).sort().at(-1)||''};}
   function filteredRules(){const f=list.applied;return C.store.rules.filter(r=>{const t=triggerInfo(r);return (!f.keyword||`${r.id} ${r.name}`.toLowerCase().includes(f.keyword.toLowerCase()))&&(!f.type||r.type===f.type)&&(f.enabled===''||f.enabled===undefined||r.enabled===(f.enabled==='true'))&&(!f.triggered||t.triggered===(f.triggered==='true'))&&(!(f.dateStart||f.dateEnd)||(t.last&&C.inRange(t.last,f)));});}
+  function ruleContent(rule){
+    const lines=[],speed=isSpeedRule(rule);let summary='';
+    const value=v=>v===null||v===undefined||v===''?'未配置':String(v);
+    if(speed){
+      const config=rule.speedLimit||{},tiers=config.usageTiers||[];
+      lines.push('月用量限速');
+      tiers.forEach((tier,index)=>lines.push(`第${index+1}级限速：月用量达到 ${value(tier.monthlyMb)} MB，限速值 ${speedLimitRateLabels[tier.monthlySpeed]||'未配置'}`));
+      if(!tiers.length)lines.push('限速等级：未配置');
+      lines.push('次月恢复：'+(config.restoreNextMonth===false?'不恢复':'恢复'));
+      summary=tiers.length?`月用量达到 ${value(tiers[0].monthlyMb)} MB，限速值 ${speedLimitRateLabels[tiers[0].monthlySpeed]||'未配置'}；共 ${tiers.length} 级；次月${config.restoreNextMonth===false?'不恢复':'恢复'}`:'尚未配置限速等级';
+    }else{
+      const scope=rule.scope||{},monitor=rule.monitor||{},action=monitor.action==='closeData'?'通知并关闭流量数据服务':'仅通知';
+      if(scope.mode==='range'){
+        lines.push('监测范围：指定范围');
+        ['merchant','group','supplier','operator'].forEach((key,index)=>lines.push(['商户','卡组','供应商','运营商'][index]+'：'+(scope[key]||'全部')));
+      }else{
+        const iccids=scope.iccids||[];
+        lines.push('监测范围：指定ICCID','录入方式：'+(scope.entry==='manual'?'手动录入':'文件导入'));
+        if(scope.entry!=='manual'&&scope.fileName)lines.push('文件名称：'+scope.fileName);
+        lines.push(`ICCID（${iccids.length}个）：`+(iccids.length?'\n'+iccids.join('\n'):'未配置'));
+      }
+      if(monitor.mode==='interval'){
+        lines.push('提醒方式：间隔提醒',`数据使用每增加 ${value(monitor.interval)} MB，通知一次`);
+        summary=`每增加 ${value(monitor.interval)} MB 通知一次；${action}`;
+      }else{
+        const thresholds=monitor.thresholds||[];
+        lines.push('提醒方式：阈值提醒');
+        thresholds.forEach((threshold,index)=>lines.push(`第${index+1}次提醒：单卡累计数据使用量达到 ${value(threshold)} MB`));
+        if(!thresholds.length)lines.push('提醒阈值：未配置');
+        summary=`阈值提醒：${thresholds.length?thresholds.map(value).join(' / ')+' MB':'未配置'}；${action}`;
+      }
+      lines.push('跟进动作：'+action);
+      if(monitor.action==='closeData')lines.push('次月是否恢复流量数据服务：'+(monitor.restoreNextMonth===false?'不恢复':'恢复'));
+      summary+='；'+(scope.mode==='range'?'指定范围':'指定ICCID');
+    }
+    return {summary,full:lines.join('\n')};
+  }
+  function ruleContentMarkup(rule){
+    const content=ruleContent(rule),characters=Array.from(content.summary),preview=characters.length>90?characters.slice(0,90).join('')+'…':content.summary;
+    return `<span class="wc-tooltip wc-rule-content" tabindex="0" data-wc-tooltip="${E(content.full)}" aria-label="${E('规则内容：'+content.full)}">${E(preview)}</span>`;
+  }
+
   function renderList(host){
+    C.hideTooltip();
     const q=list.draft;
     host.innerHTML=`<div class="query-panel"><form class="filter-wrap" data-wcr-query novalidate>${C.field('规则ID / 规则名称',C.input('ruleKeyword',q.keyword,'placeholder="请输入规则ID或规则名称"'))}${C.field('规则类型',C.select('ruleQueryType',q.type,[{id:'',name:'全部'},...typeOptions],''))}${C.field('生效状态',C.select('ruleEnabled',q.enabled,[{id:'',name:'全部'},{id:'true',name:'开启'},{id:'false',name:'关闭'}],''))}${C.field('触发状态',C.select('ruleTriggered',q.triggered,[{id:'',name:'全部'},{id:'true',name:'已触发'},{id:'false',name:'未触发'}],''))}<div class="field writable-date-range" data-wcr-range></div><div class="form-actions"><button type="submit" class="btn search-btn">搜索</button>${button('重置','reset')}</div></form></div><div class="wc-actions">${button('规则新增','new','','search-btn')}</div><div data-wcr-table></div>`;
     C.range(host.querySelector('[data-wcr-range]'),'wcRuleRecent',q,()=>{});
-    const cols=[{key:'id',label:'规则ID'},{key:'name',label:'规则名称'},{key:'type',label:'规则类型',render:v=>`${E(v)} ${C.typeHint()}`},{key:'enabled',label:'生效状态',render:(v,r)=>`<button type="button" class="wc-switch${v?' is-on':''}" role="switch" aria-checked="${!!v}" aria-label="${E((v?'关闭':'开启')+r.name)}" data-wcr-action="toggle" data-id="${E(r.id)}"><span class="scientific-calculation-status-switch${v?' is-on':''}" aria-hidden="true"></span><span>${v?'开启':'关闭'}</span></button>`},{key:'triggered',label:'触发状态',render:(v,r)=>{const t=triggerInfo(r);return `<span class="${t.triggered?'wc-danger':'wc-success'}">${t.triggered?'已触发':'未触发'}</span>`;}},{key:'effective',label:'生效时间',render:(v,r)=>E(r.effective.at||'--')},{key:'last',label:'最近触发时间',render:(v,r)=>E(triggerInfo(r).last||'--')},{key:'createdAt',label:'创建时间'},{key:'updatedAt',label:'更新时间'},{key:'operator',label:'操作人'},{key:'actions',label:'操作',render:(v,r)=>`<button type="button" class="link-btn" data-wcr-action="edit" data-id="${E(r.id)}">编辑</button> <button type="button" class="link-btn" data-wcr-action="view" data-id="${E(r.id)}">查看</button>`}];
-    host.querySelector('[data-wcr-table]').innerHTML=C.grid(filteredRules(),cols,list,1960);
+    const cols=[{key:'id',label:'规则ID'},{key:'name',label:'规则名称'},{key:'type',label:'规则类型',render:v=>`${E(v)} ${v==='流量用量监测'?C.typeHint():''}`},{key:'ruleContent',label:'规则内容',render:(value,rule)=>ruleContentMarkup(rule)},{key:'enabled',label:'生效状态',render:(v,r)=>`<button type="button" class="wc-switch${v?' is-on':''}" role="switch" aria-checked="${!!v}" aria-label="${E((v?'关闭':'开启')+r.name)}" data-wcr-action="toggle" data-id="${E(r.id)}"><span class="scientific-calculation-status-switch${v?' is-on':''}" aria-hidden="true"></span><span>${v?'开启':'关闭'}</span></button>`},{key:'triggered',label:'触发状态',render:(v,r)=>{const t=triggerInfo(r);return `<span class="${t.triggered?'wc-danger':'wc-success'}">${t.triggered?'已触发':'未触发'}</span>`;}},{key:'effective',label:'生效时间',render:(v,r)=>E(r.effective.at||'--')},{key:'last',label:'最近触发时间',render:(v,r)=>E(triggerInfo(r).last||'--')},{key:'createdAt',label:'创建时间'},{key:'updatedAt',label:'更新时间'},{key:'operator',label:'操作人'},{key:'actions',label:'操作',render:(v,r)=>`<button type="button" class="link-btn" data-wcr-action="edit" data-id="${E(r.id)}">编辑</button> <button type="button" class="link-btn" data-wcr-action="view" data-id="${E(r.id)}">查看</button>`}];
+    host.querySelector('[data-wcr-table]').innerHTML=C.grid(filteredRules(),cols,list,2260);
     C.bindPager(host,list,()=>renderList(host));
     host.querySelector('[data-wcr-query]').addEventListener('input',()=>readQuery(host));
     host.querySelector('[data-wcr-query]').addEventListener('change',()=>readQuery(host));
@@ -32140,7 +30487,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     C.adaptQueryUI(host);
   }
   function readQuery(host){const f=host.querySelector('[data-wcr-query]');list.draft.keyword=f.elements.ruleKeyword.value.trim();list.draft.type=f.elements.ruleQueryType.value;list.draft.enabled=f.elements.ruleEnabled.value;list.draft.triggered=f.elements.ruleTriggered.value;}
-  function toggleRule(id){const row=byId(C.store.rules,id);if(!row)return;const enabled=!row.enabled;C.confirm(enabled?'开启规则':'关闭规则',`确定${enabled?'开启':'关闭'}“${row.name}”规则？${enabled?'开启后将在达到生效时间后参与模拟监测。':'关闭后将不再参与后续模拟监测，已有记录保留。'}`,()=>{const current=byId(C.store.rules,id);if(!current)throw new Error('规则已不存在，请刷新列表。');const previous={enabled:current.enabled,updatedAt:current.updatedAt,operator:current.operator};try{current.enabled=enabled;current.updatedAt=C.now();current.operator=account(C.store.currentAccountId)?.name||C.store.currentAccountId;C.emit();C.render('rcRulePage');C.toast(`已${enabled?'开启':'关闭'}规则（原型配置）。`);}catch(error){Object.assign(current,previous);throw error;}},enabled?'开启':'关闭');}
+  function toggleRule(id){const row=byId(C.store.rules,id);if(!row)return;const enabled=!row.enabled;if(enabled&&isSpeedRule(row)){const problems=validateRule({...row,enabled:true});if(Object.keys(problems).length){C.toast('请先编辑并补全限速与通知配置，再开启此规则。','error');editRule(id);return;}}C.confirm(enabled?'开启规则':'关闭规则',`确定${enabled?'开启':'关闭'}“${row.name}”规则？${enabled?'开启后将按规则配置生效。':'关闭后不再执行此规则，已有记录保留。'}`,()=>{const current=byId(C.store.rules,id);if(!current)throw new Error('规则已不存在，请刷新列表。');const previous={enabled:current.enabled,updatedAt:current.updatedAt,operator:current.operator};try{current.enabled=enabled;current.updatedAt=C.now();current.operator=account(C.store.currentAccountId)?.name||C.store.currentAccountId;if(isSpeedRule(current))syncSpeedPolicy(current);C.emit();C.render('rcRulePage');C.toast(`已${enabled?'开启':'关闭'}规则（原型配置）。`);}catch(error){Object.assign(current,previous);if(isSpeedRule(current))syncSpeedPolicy(current);throw error;}},enabled?'开启':'关闭');}
   function ensureSetting(setting){setting.methods=setting.methods||[];setting.bindings=setting.bindings||{};setting.methods.forEach(m=>{setting.bindings[m]=setting.bindings[m]||{channelId:'',templateId:''};});return setting;}
   function settingFor(key){if(key==='unified')return ensureSetting(draft.notification.unified);draft.notification.individual[key]=draft.notification.individual[key]||defaultSetting();return ensureSetting(draft.notification.individual[key]);}
   function settingMarkup(key){
@@ -32180,19 +30527,45 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   }
   function ordinal(n){return ['','一','二','三','四','五','六','七','八','九','十'][n]||String(n);}
   function recipientsMarkup(){const ids=draft.notification.recipientIds;return `<div class="wc-inline-config">${button('选择通知对象','recipients')}<span>已选择 ${ids.length} 个通知对象</span></div><div class="wc-recipients">${ids.map(id=>{const a=account(id);return `<span class="wc-tag">${E(a?`${a.name}（${a.account}）`:id)} <button type="button" data-wcr-action="remove-recipient" data-id="${E(id)}" aria-label="移除${E(a?.name||id)}">×</button></span>`;}).join('')}</div>`;}
+  function notificationMarkup(){const n=draft.notification;return section('通知配置',field('通知对象',recipientsMarkup(),'recipients')+field('配置方式',radio('notification-mode',n.mode,[{id:'unified',name:'所有通知对象统一配置'},{id:'individual',name:'按通知对象分别配置'}]),'notification-mode')+(n.mode==='unified'?settingMarkup('unified'):n.recipientIds.map(settingMarkup).join('')));}
+  const editorSectionInfo={
+    '基础信息':{key:'base',icon:'<path d="M4 7h16M4 17h16M8 4v6m8 4v6"/>'},
+    monitor:{key:'monitor',icon:'<path d="M3 12h4l3-7 4 14 3-7h4"/>'},
+    speed:{key:'speed',icon:'<path d="M4 18a9 9 0 1 1 16 0M12 13l5-5M5 18h14"/><circle cx="12" cy="13" r="1"/>'},
+    '生效时间':{key:'effective',icon:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>'},
+    '通知配置':{key:'notification',icon:'<path d="M18 8a6 6 0 0 0-12 0c0 7-2 7-2 9h16c0-2-2-2-2-9M10 21h4"/>'}
+  };
+  const editorIcon=info=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${info.icon}</svg>`;
+  function enhanceRuleEditor(host){
+    host.querySelectorAll('.wc-editor-sections>.wc-form-section').forEach(section=>{
+      const heading=section.querySelector(':scope>h3'),title=heading.textContent,info=editorSectionInfo[title==='规则配置'?(isSpeedRule(draft)?'speed':'monitor'):title];
+      section.id='wcRuleSection-'+info.key;section.dataset.editorSection=info.key;section.tabIndex=-1;section.classList.add('wc-editor-section-'+info.key);
+      heading.id=section.id+'Title';section.setAttribute('aria-labelledby',heading.id);
+      const body=document.createElement('div');body.className='wc-editor-section-content';
+      Array.from(section.childNodes).filter(node=>node!==heading).forEach(node=>body.appendChild(node));
+      const header=document.createElement('header');header.className='wc-editor-section-head';
+      header.innerHTML=`<span class="wc-editor-section-icon">${editorIcon(info)}</span><div><h3 id="${heading.id}">${E(title)}</h3></div>`;
+      heading.remove();section.appendChild(header);section.appendChild(body);
+    });
+  }
+
   function renderForm(host){
     if(!draft){newRule();return;}
     const focusBefore=document.activeElement,focusMemo=host.contains(focusBefore)?{id:focusBefore.id,name:focusBefore.name,value:focusBefore.value,action:focusBefore.dataset?.wcrAction}:null;
-    const n=draft.notification;
-    host.innerHTML=`<form class="wc-rule-form" data-wcr-form novalidate><div class="wc-rule-form-title"><h2>${original?'规则编辑':'规则新增'}</h2>${original?`<span class="wc-note">规则ID：${E(original.id)}</span>`:''}</div><div class="wc-rule-error" role="alert" data-wcr-form-error ${formErrors._form?'':'hidden'}>${E(formErrors._form||'')}</div>${section('基础信息',field('规则类型',`${C.select('rule-type',draft.type,typeOptions)}<div class="wc-note wc-rule-type-note"><span aria-hidden="true">ⓘ</span> ${E(C.monitorNote)}</div>`,'rule-type')+field('规则名称',C.input('rule-name',draft.name,'placeholder="请输入规则名称"'),'rule-name')+field('备注',textArea('rule-remark',draft.remark,'请输入备注'),'rule-remark',false))}${section('监测范围',scopeMarkup())}${section('监测规则',monitorMarkup())}${section('生效时间',field('生效时间',radio('effective-mode',draft.effective.mode,[{id:'immediate',name:'立即生效'},{id:'month',name:'指定日期生效'}]),'effective-mode')+(draft.effective.mode==='month'?field('生效年月',`<div class="wc-inline-config">${C.input('effective-month',draft.effective.month,'type="month" aria-label="生效年月"')}${button('清空','clear-month')}</div><span class="wc-note">所选月份的1日00:00生效</span>`,'effective-month'):''))}${section('通知配置',field('通知对象',recipientsMarkup(),'recipients')+field('配置方式',radio('notification-mode',n.mode,[{id:'unified',name:'所有通知对象统一配置'},{id:'individual',name:'按通知对象分别配置'}]),'notification-mode')+(n.mode==='unified'?settingMarkup('unified'):n.recipientIds.map(settingMarkup).join('')))}<div class="wc-rule-footer">${button('取消','cancel')}<button type="submit" class="btn" ${saving||(fileBusy&&draft.scope.mode==='iccid'&&draft.scope.entry==='file')?'disabled':''}>${saving?'正在保存…':'保存规则'}</button></div></form>`;
-    const form=host.querySelector('[data-wcr-form]');
+    if(isSpeedRule(draft)&&!draft.speedLimit)draft.speedLimit={restoreNextMonth:true,usageTiers:[{monthlyMb:"",monthlySpeed:""}]};
+    const configuration=(isSpeedRule(draft)?section("规则配置",speedMarkup()):section('规则配置','<div class="wc-monitor-scope-config">'+scopeMarkup()+'</div><div class="wc-monitor-condition-config">'+monitorMarkup()+'</div>')+section('生效时间',field('生效时间',radio('effective-mode',draft.effective.mode,[{id:'immediate',name:'立即生效'},{id:'month',name:'指定日期生效'}]),'effective-mode')+(draft.effective.mode==='month'?field('生效年月',`<div class="wc-inline-config">${C.input('effective-month',draft.effective.month,'type="month" aria-label="生效年月"')}${button('清空','clear-month')}</div><span class="wc-note">所选月份的1日00:00生效</span>`,'effective-month'):'')))+notificationMarkup();
+    host.innerHTML=`<form class="wc-rule-form" data-wcr-form novalidate><div class="wc-rule-error" role="alert" data-wcr-form-error ${Object.keys(formErrors).length?'':'hidden'}>${E(formErrors._form||(Object.keys(formErrors).length?'有 '+Object.keys(formErrors).length+' 项配置需要完善，请检查下方标记的字段。':''))}</div><div class="wc-rule-editor-body"><div class="wc-editor-sections">${section('基础信息',field('规则类型',`${C.select('rule-type',draft.type,typeOptions,'请选择规则类型',original?'disabled':'')}${draft.type==='流量用量监测'?'<div class="wc-note wc-rule-type-note"><span aria-hidden="true">ⓘ</span> '+E(C.monitorNote)+'</div>':''}`,'rule-type')+field('规则名称',C.input('rule-name',draft.name,'placeholder="请输入规则名称"'),'rule-name')+field('备注',textArea('rule-remark',draft.remark,'请输入备注'),'rule-remark',false))}${configuration}</div></div><div class="wc-rule-footer"><div class="wc-editor-footer-actions">${button('取消','cancel')}<button type="submit" class="btn" ${saving||(fileBusy&&draft.scope.mode==='iccid'&&draft.scope.entry==='file')?'disabled':''}>${saving?'正在保存…':'保存规则'}</button></div></div></form>`;
+    enhanceRuleEditor(host);
+    const form=host.querySelector('[data-wcr-form]');if(original)form.elements.namedItem('rule-type').disabled=true;
     form.querySelectorAll('[data-wcr-error]').forEach(error=>{const control=error.closest('[data-wcr-field]')?.querySelector('input:not([hidden]),select,textarea,button:not([disabled])');if(control){control.setAttribute('aria-invalid','true');control.setAttribute('aria-describedby',error.id);}});
     form.addEventListener('compositionstart',()=>{composing=true;});form.addEventListener('compositionend',()=>{composing=false;});
     form.addEventListener('input',()=>{syncDraft(form);});
-    form.addEventListener('change',e=>{const name=e.target.name;if(name==='scope-file'){readFile(e.target.files?.[0]);return;}syncDraft(form);if(name==='scope-manual')return;if(name==='monitor-mode'||name==='monitor-action'||name==='scope-mode'||name==='scope-entry'||name==='effective-mode'||name==='notification-mode'||/-timeMode$|-methods$|-template$|-channel$/.test(name))renderForm(host);});
+    form.addEventListener('change',e=>{const name=e.target.name;if(name==='scope-file'){readFile(e.target.files?.[0]);return;}syncDraft(form);if(name==='scope-manual')return;if(name==='rule-type'||name==='monitor-mode'||name==='monitor-action'||name==='scope-mode'||name==='scope-entry'||name==='effective-mode'||name==='notification-mode'||/-timeMode$|-methods$|-template$|-channel$/.test(name))renderForm(host);});
     form.addEventListener('submit',e=>{e.preventDefault();if(e.isComposing||composing)return;syncDraft(form);saveRule();});
     host.onclick=e=>{const b=e.target.closest('[data-wcr-action]');if(!b)return;const action=b.dataset.wcrAction;syncDraft(form);
       if(action==='cancel'){fileToken++;fileBusy=false;draft=null;original=null;C.open('rcRulePage');}
+      else if(action==='add-speed-tier'){draft.speedLimit.usageTiers.push({monthlyMb:'',monthlySpeed:''});formErrors={};renderForm(host);host.querySelector('[name="speed-tier-'+(draft.speedLimit.usageTiers.length-1)+'-monthlyMb"]')?.focus();}
+      else if(action==='remove-speed-tier'&&draft.speedLimit.usageTiers.length>1){const index=Number(b.dataset.index);draft.speedLimit.usageTiers.splice(index,1);formErrors={};renderForm(host);host.querySelector('[name="speed-tier-'+Math.min(index,draft.speedLimit.usageTiers.length-1)+'-monthlyMb"]')?.focus();}
       else if(action==='add-threshold'){draft.monitor.thresholds.push('');renderForm(host);host.querySelector(`[name="monitor-threshold-${draft.monitor.thresholds.length-1}"]`)?.focus();}
       else if(action==='remove-threshold'&&draft.monitor.thresholds.length>1){const index=Number(b.dataset.index);draft.monitor.thresholds.splice(index,1);formErrors={};renderForm(host);host.querySelector(`[name="monitor-threshold-${Math.min(index,draft.monitor.thresholds.length-1)}"]`)?.focus();}
       else if(action==='remove-recipient'){const id=b.dataset.id;draft.notification.recipientIds=draft.notification.recipientIds.filter(x=>x!==id);delete draft.notification.individual[id];renderForm(host);host.querySelector('[data-wcr-action="recipients"]')?.focus();}
@@ -32203,14 +30576,25 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     };
     if(focusMemo){const target=(focusMemo.id&&host.querySelector('[id="'+focusMemo.id+'"]'))||Array.from(host.querySelectorAll('[name]')).find(e=>e.name===focusMemo.name&&(e.type!=='radio'&&e.type!=='checkbox'||e.value===focusMemo.value))||(focusMemo.action&&Array.from(host.querySelectorAll('[data-wcr-action]')).find(e=>e.dataset.wcrAction===focusMemo.action));target?.focus();}
   }
+  function syncNotificationDraft(form){
+    const value=name=>{const e=form.elements.namedItem(name);return e?e.value:undefined;};
+    const set=(name,obj,key)=>{const v=value(name);if(v!==undefined)obj[key]=v;};
+    set('notification-mode',draft.notification,'mode');
+    form.querySelectorAll('[data-wcr-setting]').forEach(card=>{const key=card.dataset.wcrSetting,s=settingFor(key),p=`notify-${key}`;const mode=value(`${p}-timeMode`);if(mode!==undefined)s.timeMode=mode;const hh=value(`${p}-hour`),mm=value(`${p}-minute`);if(hh!==undefined||mm!==undefined)s.time=`${hh||''}:${mm||''}`;s.methods=Array.from(card.querySelectorAll(`input[name="${p}-methods"]:checked`)).map(x=>x.value);s.methods.forEach(m=>{s.bindings[m]=s.bindings[m]||{channelId:'',templateId:''};set(`${p}-${m}-channel`,s.bindings[m],'channelId');set(`${p}-${m}-template`,s.bindings[m],'templateId');});});
+  }
   function syncDraft(form){if(!draft)return;const el=name=>form.elements.namedItem(name);const value=name=>{const e=el(name);return e?e.value:undefined;};
     const set=(name,obj,key)=>{const v=value(name);if(v!==undefined)obj[key]=v;};
     set('rule-type',draft,'type');set('rule-name',draft,'name');set('rule-remark',draft,'remark');
+    syncNotificationDraft(form);
+    if(isSpeedRule(draft)){
+      if(!draft.speedLimit)draft.speedLimit={restoreNextMonth:true,usageTiers:[{monthlyMb:'',monthlySpeed:''}]};
+      const restore=value('speed-restore');if(restore!==undefined)draft.speedLimit.restoreNextMonth=restore==='yes';
+      draft.speedLimit.usageTiers.forEach((tier,index)=>['monthlyMb','monthlySpeed'].forEach(key=>{const next=value('speed-tier-'+index+'-'+key);if(next!==undefined)tier[key]=next;}));return;
+    }
     set('scope-mode',draft.scope,'mode');set('scope-entry',draft.scope,'entry');set('scope-manual',draft.scope,'manualText');
     ['merchant','group','supplier','operator'].forEach(k=>set(`scope-${k}`,draft.scope,k));
     set('monitor-mode',draft.monitor,'mode');set('monitor-action',draft.monitor,'action');if(value('monitor-restore')!==undefined)draft.monitor.restoreNextMonth=value('monitor-restore')==='yes';
-    draft.monitor.thresholds=draft.monitor.thresholds.map((v,i)=>value(`monitor-threshold-${i}`)??v);set('monitor-interval',draft.monitor,'interval');set('effective-mode',draft.effective,'mode');set('effective-month',draft.effective,'month');set('notification-mode',draft.notification,'mode');
-    form.querySelectorAll('[data-wcr-setting]').forEach(card=>{const key=card.dataset.wcrSetting,s=settingFor(key),p=`notify-${key}`;const mode=value(`${p}-timeMode`);if(mode!==undefined)s.timeMode=mode;const hh=value(`${p}-hour`),mm=value(`${p}-minute`);if(hh!==undefined||mm!==undefined)s.time=`${hh||''}:${mm||''}`;s.methods=Array.from(card.querySelectorAll(`input[name="${p}-methods"]:checked`)).map(x=>x.value);s.methods.forEach(m=>{s.bindings[m]=s.bindings[m]||{channelId:'',templateId:''};set(`${p}-${m}-channel`,s.bindings[m],'channelId');set(`${p}-${m}-template`,s.bindings[m],'templateId');});});
+    draft.monitor.thresholds=draft.monitor.thresholds.map((v,i)=>value(`monitor-threshold-${i}`)??v);set('monitor-interval',draft.monitor,'interval');set('effective-mode',draft.effective,'mode');set('effective-month',draft.effective,'month');
     if(draft.scope.mode==='iccid'&&draft.scope.entry==='manual'){const p=C.parseIccids(draft.scope.manualText||'');const summary=form.querySelector('[data-wcr-parse-summary]');if(summary)summary.textContent=parseSummary(p);const invalid=form.querySelector('[data-wcr-parse-invalid]');if(invalid){invalid.hidden=!p.invalid.length;invalid.textContent=p.invalid.length?'无效项：'+p.invalid.join('、'):'';}}
   }
   async function readFile(file){if(!file||!draft)return;const current=draft,token=++fileToken;fileBusy=true;formErrors['scope-file']='';C.render('rcRuleFormPage');try{const parsed=await C.parseFile(file);if(token!==fileToken||draft!==current)return;draft.scope.iccids=parsed.valid;draft.scope.fileName=parsed.fileName||file.name;draft.scope.fileInvalid=parsed.invalid;draft.scope.duplicates=parsed.duplicates;if(!parsed.valid.length)formErrors['scope-file']='文件未识别到有效ICCID，请检查内容或下载模板重试。';}catch(error){if(token!==fileToken||draft!==current)return;draft.scope.fileName='';draft.scope.iccids=[];draft.scope.fileInvalid=[];formErrors['scope-file']=error.message||'文件解析失败，请检查文件格式后重试。';}finally{if(token===fileToken&&draft===current){fileBusy=false;C.render('rcRuleFormPage');}}}
@@ -32225,7 +30609,13 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     }
     modal=C.modal({title:'选择通知对象',html:'',width:1280,saveText:'确认选择',onSave:()=>{const retained=Array.from(selected).filter(id=>!!account(id));draft.notification.recipientIds=retained;Object.keys(draft.notification.individual).forEach(id=>{if(!retained.includes(id))delete draft.notification.individual[id];});retained.forEach(id=>{if(!draft.notification.individual[id])draft.notification.individual[id]=defaultSetting();});delete formErrors.recipients;modal.close();C.render('rcRuleFormPage');}});render();return modal;
   }
+  function validateNotification(rule,errors={}){
+    const n=rule.notification;if(!n.recipientIds.length)errors.recipients='请至少选择一个通知对象。';else if(n.recipientIds.some(id=>!account(id)))errors.recipients='部分通知对象已不存在，请重新选择。';if(!['unified','individual'].includes(n.mode))errors['notification-mode']='请选择配置方式。';
+    function validateSetting(key,setting){const s=setting||{},p=`notify-${key}`;if(!['immediate','specified'].includes(s.timeMode)||s.timeMode==='specified'&&!/^([01]\d|2[0-3]):[0-5]\d$/.test(s.time||''))errors[`${p}-time`]='请选择有效的通知时、分。';if(!s.methods?.length)errors[`${p}-methods`]='请至少选择一种通知方式。';(s.methods||[]).forEach(m=>{const bind=s.bindings?.[m]||{};if(!C.types.some(t=>t.id===m))errors[`${p}-methods`]='存在无效通知方式，请重新选择。';if(!C.store.channels.some(ch=>ch.id===bind.channelId&&ch.type===m&&ch.enabled))errors[`${p}-${m}-channel`]='请选择同类型且已启用的通知渠道。';if(!C.store.templates.some(t=>t.id===bind.templateId&&t.type===m&&(m!=='sms'||t.channelId===bind.channelId)))errors[`${p}-${m}-template`]=m==='sms'?'请选择当前短信渠道下的通知模板。':'请选择同类型的通知模板。';});}
+    if(n.mode==='unified')validateSetting('unified',n.unified);else if(n.mode==='individual')n.recipientIds.forEach(id=>validateSetting(id,n.individual[id]));return errors;
+  }
   function validateRule(rule){
+    if(isSpeedRule(rule))return validateNotification(rule,speedRuleErrors(rule));
     const errors={};if(!typeOptions.some(t=>t.id===rule.type))errors['rule-type']='请选择规则类型。';if(!String(rule.name||'').trim())errors['rule-name']='请输入规则名称。';
     if(!['iccid','range'].includes(rule.scope.mode))errors['scope-mode']='请选择监测范围。';
     if(rule.scope.mode==='iccid'){
@@ -32241,26 +30631,32 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     }else if(rule.monitor.mode==='interval'&&(String(rule.monitor.interval??'').trim()===''||!Number.isFinite(Number(rule.monitor.interval))||Number(rule.monitor.interval)<=0))errors['monitor-interval']='请输入大于0的有效间隔，避免零间隔重复通知。';
     if(!['immediate','month'].includes(rule.effective.mode))errors['effective-mode']='请选择生效时间。';
     if(rule.effective.mode==='month'&&!/^[1-9]\d{3}-(0[1-9]|1[0-2])$/.test(rule.effective.month||''))errors['effective-month']='请选择有效年月。';
-    const n=rule.notification;if(!n.recipientIds.length)errors.recipients='请至少选择一个通知对象。';else if(n.recipientIds.some(id=>!account(id)))errors.recipients='部分通知对象已不存在，请重新选择。';if(!['unified','individual'].includes(n.mode))errors['notification-mode']='请选择配置方式。';
-    function validateSetting(key,setting){const s=setting||{},p=`notify-${key}`;if(!['immediate','specified'].includes(s.timeMode)||s.timeMode==='specified'&&!/^([01]\d|2[0-3]):[0-5]\d$/.test(s.time||''))errors[`${p}-time`]='请选择有效的通知时、分。';if(!s.methods?.length)errors[`${p}-methods`]='请至少选择一种通知方式。';(s.methods||[]).forEach(m=>{const bind=s.bindings?.[m]||{};if(!C.types.some(t=>t.id===m))errors[`${p}-methods`]='存在无效通知方式，请重新选择。';if(!C.store.channels.some(ch=>ch.id===bind.channelId&&ch.type===m&&ch.enabled))errors[`${p}-${m}-channel`]='请选择同类型且已启用的通知渠道。';if(!C.store.templates.some(t=>t.id===bind.templateId&&t.type===m&&(m!=='sms'||t.channelId===bind.channelId)))errors[`${p}-${m}-template`]=m==='sms'?'请选择当前短信渠道下的通知模板。':'请选择同类型的通知模板。';});}
-    if(n.mode==='unified')validateSetting('unified',n.unified);else if(n.mode==='individual')n.recipientIds.forEach(id=>validateSetting(id,n.individual[id]));return errors;
+    return validateNotification(rule,errors);
   }
   function focusError(){const host=document.getElementById('rcRuleFormPage');const key=Object.keys(formErrors)[0];const row=Array.from(host?.querySelectorAll('[data-wcr-field]')||[]).find(e=>e.dataset.wcrField===key);const target=row?.querySelector('input:not([hidden]),select,textarea,button:not([disabled])')||host?.querySelector('[data-wcr-form-error]');if(target){if(!target.hasAttribute('tabindex')&&!target.matches('input,select,textarea,button'))target.setAttribute('tabindex','-1');target.focus();row?.scrollIntoView({block:'center'});}}
   function cleanSetting(s){const setting=C.clone(s);setting.methods=Array.from(new Set(setting.methods));setting.bindings=Object.fromEntries(setting.methods.map(m=>[m,{channelId:setting.bindings[m].channelId,templateId:setting.bindings[m].templateId}]));if(setting.timeMode==='immediate')setting.time='';return setting;}
-  function normalizedRule(rule){const out=C.clone(rule);out.name=out.name.trim();if(out.scope.mode==='iccid'){if(out.scope.entry==='manual'){out.scope.iccids=C.parseIccids(out.scope.manualText||'').valid;out.scope.fileName='';delete out.scope.fileInvalid;delete out.scope.duplicates;}else out.scope.manualText='';['merchant','group','supplier','operator'].forEach(k=>{out.scope[k]='';});}else{out.scope.iccids=[];out.scope.fileName='';out.scope.manualText='';delete out.scope.fileInvalid;delete out.scope.duplicates;}
+  function normalizedNotification(notification){const n=C.clone(notification);
+    if(n.mode==='unified'){n.unified=cleanSetting(n.unified);n.individual={};}else{n.individual=Object.fromEntries(n.recipientIds.map(id=>[id,cleanSetting(n.individual[id])]));n.unified=null;}
+    return n;
+  }
+  function normalizedRule(rule){const out=C.clone(rule);out.name=out.name.trim();if(isSpeedRule(out)){
+      out.speedLimit={restoreNextMonth:out.speedLimit.restoreNextMonth,usageTiers:out.speedLimit.usageTiers.map(tier=>Object.fromEntries(['monthlyMb','monthlySpeed'].map(key=>[key,String(tier[key]??'').trim()&&Number.isFinite(Number(tier[key]))?Number(tier[key]):null])))};
+      out.scope={mode:'package',entry:'manual',iccids:[],manualText:''};out.monitor={mode:'threshold',action:'speedLimit',thresholds:out.speedLimit.usageTiers.map(tier=>tier.monthlyMb),restoreNextMonth:out.speedLimit.restoreNextMonth};out.effective={mode:'immediate',month:'',at:out.effective.at||''};out.notification=normalizedNotification(out.notification);return out;
+    }delete out.speedLimit;if(out.scope.mode==='iccid'){if(out.scope.entry==='manual'){out.scope.iccids=C.parseIccids(out.scope.manualText||'').valid;out.scope.fileName='';delete out.scope.fileInvalid;delete out.scope.duplicates;}else out.scope.manualText='';['merchant','group','supplier','operator'].forEach(k=>{out.scope[k]='';});}else{out.scope.iccids=[];out.scope.fileName='';out.scope.manualText='';delete out.scope.fileInvalid;delete out.scope.duplicates;}
     if(out.monitor.mode==='threshold'){out.monitor.thresholds=out.monitor.thresholds.map(Number);out.monitor.interval=null;if(out.monitor.action==='notify')out.monitor.restoreNextMonth=true;}else{out.monitor.thresholds=[];out.monitor.interval=Number(out.monitor.interval);out.monitor.action='notify';out.monitor.restoreNextMonth=true;}
-    if(out.notification.mode==='unified'){out.notification.unified=cleanSetting(out.notification.unified);out.notification.individual={};}else{out.notification.individual=Object.fromEntries(out.notification.recipientIds.map(id=>[id,cleanSetting(out.notification.individual[id])]));out.notification.unified=null;}
+    out.notification=normalizedNotification(out.notification);
     return out;
   }
   async function saveRule(){if(!draft||saving)return false;formErrors=validateRule(draft);if(Object.keys(formErrors).length){C.render('rcRuleFormPage');focusError();return false;}
-    saving=true;C.render('rcRuleFormPage');try{const out=normalizedRule(draft),stamp=C.now();if(original){const index=C.store.rules.findIndex(r=>r.id===original.id);if(index<0)throw new Error('该规则已不存在，请返回规则列表后重试。');out.id=original.id;out.createdAt=original.createdAt;out.enabled=C.store.rules[index].enabled;out.effective.at=out.effective.mode==='month'?`${out.effective.month}-01 00:00:00`:original.effective.mode==='immediate'?original.effective.at:stamp;out.updatedAt=stamp;out.operator=account(C.store.currentAccountId)?.name||C.store.currentAccountId;C.store.rules[index]=out;}else{out.id=C.id('RULE');out.createdAt=stamp;out.updatedAt=stamp;out.operator=account(C.store.currentAccountId)?.name||C.store.currentAccountId;out.effective.at=out.effective.mode==='month'?`${out.effective.month}-01 00:00:00`:stamp;C.store.rules.unshift(out);}if(out.effective.mode==='immediate')out.effective.month='';draft=null;original=null;fileToken++;C.emit();C.open('rcRulePage');C.toast('规则已保存到原型数据。');return out;}catch(error){formErrors._form=error.message||'保存失败，请稍后重试。';return false;}finally{saving=false;if(draft){C.render('rcRuleFormPage');focusError();}}}
+    saving=true;C.render('rcRuleFormPage');try{const out=normalizedRule(draft),stamp=C.now();if(original){const index=C.store.rules.findIndex(r=>r.id===original.id);if(index<0)throw new Error('该规则已不存在，请返回规则列表后重试。');out.id=original.id;out.createdAt=original.createdAt;out.enabled=C.store.rules[index].enabled;out.effective.at=out.effective.mode==='month'?`${out.effective.month}-01 00:00:00`:original.effective.mode==='immediate'?original.effective.at:stamp;out.updatedAt=stamp;out.operator=account(C.store.currentAccountId)?.name||C.store.currentAccountId;C.store.rules[index]=out;}else{out.id=C.id('RULE');out.createdAt=stamp;out.updatedAt=stamp;out.operator=account(C.store.currentAccountId)?.name||C.store.currentAccountId;out.effective.at=out.effective.mode==='month'?`${out.effective.month}-01 00:00:00`:stamp;C.store.rules.unshift(out);}if(out.effective.mode==='immediate')out.effective.month='';if(isSpeedRule(out))syncSpeedPolicy(out);draft=null;original=null;fileToken++;C.emit();C.open('rcRulePage');C.toast('规则已保存到原型数据。');return out;}catch(error){formErrors._form=error.message||'保存失败，请稍后重试。';return false;}finally{saving=false;if(draft){C.render('rcRuleFormPage');focusError();}}}
   function settingDetail(s){if(!s)return dl(plain('通知配置','--'));const typeName=id=>C.types.find(t=>t.id===id)?.name||id;return dl(plain('通知时间',s.timeMode==='specified'?`指定通知时间 ${s.time||'--'}`:'规则触发后立即通知')+plain('通知方式',(s.methods||[]).map(typeName).join('、')||'--'))+(s.methods||[]).map(m=>{const b=s.bindings?.[m]||{},ch=byId(C.store.channels,b.channelId),t=byId(C.store.templates,b.templateId);return `<section class="wc-method"><h4>通知方式：${E(typeName(m))}</h4>${dl(plain('通知渠道',b.channelId?`${ch?.name||'渠道已不存在'}（${b.channelId}）`:'--')+plain('通知模板',b.templateId?`${t?.name||'模板已不存在'}（${b.templateId}）`:'--')+plain('模板内容预览',t?`${t.title||''}\n${t.body||''}`:'--'))}</section>`;}).join('');}
-  function detailMarkup(r){const t=triggerInfo(r),s=r.scope,m=r.monitor,n=r.notification;let scope=plain('监测范围',s.mode==='range'?'指定范围':'指定ICCID');if(s.mode==='range')scope+=['merchant','group','supplier','operator'].map((k,i)=>plain(['商户','卡组','供应商','运营商'][i],s[k]||'全部')).join('');else scope+=plain('录入方式',s.entry==='manual'?'手动录入':'文件导入')+(s.entry==='file'?plain('已上传文件',s.fileName||'--'):'')+plain('ICCID',s.iccids?.join('\n')||'--');let monitor=plain('提醒方式',m.mode==='threshold'?'阈值提醒':'间隔提醒');if(m.mode==='threshold'){monitor+=plain('提醒阈值',m.thresholds.map((v,i)=>`第${ordinal(i+1)}次通知提醒：单卡累计数据使用量达到 ${v} MB`).join('\n'))+plain('跟进动作',m.action==='closeData'?'通知并关闭流量数据服务':'仅通知');if(m.action==='closeData')monitor+=plain('次月是否恢复流量数据服务',m.restoreNextMonth?'次月恢复流量数据服务':'不恢复');}else monitor+=plain('间隔提醒',`数据使用每增加 ${m.interval} MB，下发一次提醒，直到不再触发。`);
-    return section('基础信息',dl(plain('规则类型',`${E(r.type)} ${C.typeHint()}`,true)+plain('规则名称',r.name)+plain('规则ID',r.id)+plain('生效状态',r.enabled?'开启':'关闭')+plain('触发状态',`<span class="${t.triggered?'wc-danger':'wc-success'}">${t.triggered?'已触发':'未触发'}</span>`,true)+plain('创建时间',r.createdAt)+plain('更新时间',r.updatedAt)+plain('操作人',r.operator)+plain('备注',r.remark)))+section('监测范围',dl(scope))+section('监测规则',dl(monitor))+section('生效时间',dl(plain('生效模式',r.effective.mode==='month'?'指定日期生效':'立即生效')+plain('生效时间',r.effective.at)))+section('通知配置',dl(plain('通知对象',n.recipientIds.map(id=>{const a=account(id);return a?`${a.name}（${a.account}）`:id;}).join('\n'))+plain('配置方式',n.mode==='individual'?'按通知对象分别配置':'所有通知对象统一配置'))+(n.mode==='unified'?settingDetail(n.unified):n.recipientIds.map(id=>`<section class="wc-setting-card"><h4>通知对象：${E(account(id)?.name||id)}（${E(account(id)?.account||'--')}）</h4>${settingDetail(n.individual[id])}</section>`).join('')));
+  function notificationDetailMarkup(n){return section('通知配置',dl(plain('通知对象',n.recipientIds.map(id=>{const a=account(id);return a?`${a.name}（${a.account}）`:id;}).join('\n'))+plain('配置方式',n.mode==='individual'?'按通知对象分别配置':'所有通知对象统一配置'))+(n.mode==='unified'?settingDetail(n.unified):n.recipientIds.map(id=>`<section class="wc-setting-card"><h4>通知对象：${E(account(id)?.name||id)}（${E(account(id)?.account||'--')}）</h4>${settingDetail(n.individual[id])}</section>`).join('')));}
+  function detailMarkup(r){if(isSpeedRule(r))return speedDetailMarkup(r);const t=triggerInfo(r),s=r.scope,m=r.monitor,n=r.notification;let scope=plain('监测范围',s.mode==='range'?'指定范围':'指定ICCID');if(s.mode==='range')scope+=['merchant','group','supplier','operator'].map((k,i)=>plain(['商户','卡组','供应商','运营商'][i],s[k]||'全部')).join('');else scope+=plain('录入方式',s.entry==='manual'?'手动录入':'文件导入')+(s.entry==='file'?plain('已上传文件',s.fileName||'--'):'')+plain('ICCID',s.iccids?.join('\n')||'--');let monitor=plain('提醒方式',m.mode==='threshold'?'阈值提醒':'间隔提醒');if(m.mode==='threshold'){monitor+=plain('提醒阈值',m.thresholds.map((v,i)=>`第${ordinal(i+1)}次通知提醒：单卡累计数据使用量达到 ${v} MB`).join('\n'))+plain('跟进动作',m.action==='closeData'?'通知并关闭流量数据服务':'仅通知');if(m.action==='closeData')monitor+=plain('次月是否恢复流量数据服务',m.restoreNextMonth?'次月恢复流量数据服务':'不恢复');}else monitor+=plain('间隔提醒',`数据使用每增加 ${m.interval} MB，下发一次提醒，直到不再触发。`);
+    return section('基础信息',dl(plain('规则类型',`${E(r.type)} ${C.typeHint()}`,true)+plain('规则名称',r.name)+plain('规则ID',r.id)+plain('生效状态',r.enabled?'开启':'关闭')+plain('触发状态',`<span class="${t.triggered?'wc-danger':'wc-success'}">${t.triggered?'已触发':'未触发'}</span>`,true)+plain('创建时间',r.createdAt)+plain('更新时间',r.updatedAt)+plain('操作人',r.operator)+plain('备注',r.remark)))+section('监测范围',dl(scope))+section('规则配置',dl(monitor))+section('生效时间',dl(plain('生效模式',r.effective.mode==='month'?'指定日期生效':'立即生效')+plain('生效时间',r.effective.at)))+notificationDetailMarkup(n);
   }
   function viewRule(id){const row=byId(C.store.rules,id);if(!row){C.toast('规则不存在。','error');return null;}return C.drawer('规则详情',detailMarkup(row));}
   C.register('rcRulePage',renderList);C.register('rcRuleFormPage',renderForm);
-  C.rulesModule={newRule,editRule,validateRule,saveRule,normalizedRule,viewRule,detailMarkup,toggleRule,triggerInfo,filteredRules,openRecipients,readFile,getDraft:()=>draft,getOriginal:()=>original,getErrors:()=>C.clone(formErrors),list,defaultSetting};
+  C.rulesModule={ruleContent,newRule,editRule,validateRule,saveRule,normalizedRule,viewRule,detailMarkup,toggleRule,triggerInfo,filteredRules,openRecipients,readFile,getDraft:()=>draft,getOriginal:()=>original,getErrors:()=>C.clone(formErrors),list,defaultSetting};
 })(window.WatchCenters);
 
 (function(C){
@@ -32599,7 +30995,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     const focusRole=active&&host.contains(active)?active.getAttribute('data-wc-message-focus'):'';
     host.classList.add('wc-topbar-messages');
     host.innerHTML='<button class="wc-message-toggle '+(unread.length?'wc-message-has-unread':'')+'" type="button" data-wc-message-toggle data-wc-message-focus="toggle" aria-expanded="'+topbarOpen+'" aria-controls="wcNotificationMessagePanel" aria-label="消息通知'+(unread.length?'，'+unread.length+'条未查看':'，暂无未查看消息')+'">'+bell+(unread.length?'<span class="wc-message-badge" aria-hidden="true">'+(unread.length>99?'99+':unread.length)+'</span>':'')+'</button>'+
-      (unread.length?'<span class="wc-message-hint" role="status">您有'+unread.length+'条待处理的消息，请尽快查看～</span>':'')+
       (topbarOpen?'<section class="wc-message-panel" id="wcNotificationMessagePanel" data-wc-message-panel role="region" aria-label="消息列表"><div class="wc-message-panel-heading"><strong>消息通知</strong><button type="button" class="wc-text-button" data-wc-message-read-all data-wc-message-focus="readall" '+(!unread.length?'disabled':'')+'>全部已读</button></div><p class="wc-message-reading-note">已读仅表示已查看，发送结果独立记录。</p><div class="wc-message-list">'+(mine.length?mine.map(task=>{
         const counts=summary(task),isUnread=C.isUnread(task);
         return '<button type="button" class="wc-message-item '+(isUnread?'is-unread':'')+'" data-wc-message-id="'+esc(task.id)+'" data-wc-message-focus="'+esc(task.id)+'"><span class="wc-message-item-title">'+esc('规则通知：'+snapshotRuleName(task))+'</span><span class="wc-message-item-time">'+esc(text(task.triggeredAt))+'</span><span class="wc-message-item-summary">'+esc('共'+counts.total+'条通知消息，'+counts.status)+'</span><span class="wc-message-item-read">'+(isUnread?'未查看':'已查看')+'</span></button>';
@@ -32627,12 +31022,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     .wc-notification-record-id{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;}.wc-notification-record-id:focus{outline:2px solid var(--blue,#1687e8);outline-offset:4px;}
     .wc-notification-unread{display:inline-flex;padding:1px 6px;border:1px solid #bfdbfe;border-radius:3px;color:#1687e8;background:#eff6ff;font-size:11px;line-height:18px;}
     .wc-notification-records tr.wc-notification-unread-row>td{background:#f7fbff;}.wc-notification-records tr.wc-highlight>td{background:#eaf4ff;box-shadow:inset 0 1px #bfdbfe,inset 0 -1px #bfdbfe;}
-    .wc-topbar-messages{display:flex;align-items:center;gap:8px;position:relative;min-width:34px;height:100%;font-size:12px;color:inherit;}
+    .wc-topbar-messages{display:flex;flex:0 0 34px;align-items:center;position:relative;width:34px;height:34px;font-size:12px;color:inherit;}
     .wc-message-toggle{position:relative;width:34px;height:34px;border:0;border-radius:4px;background:transparent;color:inherit;display:grid;place-items:center;padding:6px;cursor:pointer;}
     .wc-message-toggle:hover,.wc-message-toggle[aria-expanded="true"]{background:rgba(255,255,255,.15);}.wc-message-bell-icon{display:block;width:22px;height:22px;}
     .wc-message-has-unread .wc-message-bell-icon{animation:wc-message-bell 1.8s ease-in-out infinite;transform-origin:50% 15%;}
     .wc-message-badge{position:absolute;right:-6px;top:0;min-width:17px;height:17px;padding:0 4px;border-radius:9px;background:#f04452;color:white;font-size:10px;line-height:17px;text-align:center;}
-    .wc-message-hint{font-size:12px;line-height:18px;white-space:normal;max-width:245px;}
     .wc-message-panel{position:fixed;z-index:80;display:flex;flex-direction:column;background:#fff;color:#253247;border:1px solid #e2e8f0;border-radius:6px;box-shadow:0 10px 35px rgba(15,23,42,.16);overflow:hidden;font-size:13px;white-space:normal;}
     .wc-message-panel-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;border-bottom:1px solid #edf0f5;flex:0 0 auto;}.wc-message-panel-heading strong{font-size:14px;}
     .wc-message-reading-note{padding:8px 16px;margin:0;color:#7a8799;font-size:12px;line-height:18px;flex:0 0 auto;}.wc-message-list{overflow:auto;min-height:0;max-height:430px;}
@@ -32642,8 +31036,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     .wc-topbar-messages button:focus-visible{outline:2px solid #94c5ff;outline-offset:2px;}.wc-message-item:focus-visible{outline-offset:-3px;}
     @keyframes wc-message-bell{0%,40%,100%{transform:rotate(0)}8%{transform:rotate(-13deg)}16%{transform:rotate(11deg)}24%{transform:rotate(-8deg)}32%{transform:rotate(5deg)}}
     @media(prefers-reduced-motion:reduce){.wc-message-has-unread .wc-message-bell-icon{animation:none;}}
-    @media(max-width:900px){.wc-message-hint{max-width:180px;font-size:11px;line-height:15px;}}
-    @media(max-width:640px){.wc-message-hint{max-width:130px;font-size:10px;line-height:14px;}.wc-topbar-messages{gap:4px;}}
   `;
   document.head.appendChild(style);
   C.refreshMessages=refreshMessages;
