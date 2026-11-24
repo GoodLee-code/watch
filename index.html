@@ -22,6 +22,12 @@
       --shadow: 0 8px 24px rgba(31, 41, 55, 0.06);
       --radius: 8px;
       --control-h: 34px;
+      --table-text: #171717;
+      --table-header-bg: #F5F5F5;
+      --table-body-bg: #FFFFFF;
+      --table-border: 1px solid #EBEBEB;
+      --dialog-radius: 6px;
+      --flowchart-preview-radius: 8px;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
     }
 
@@ -3077,12 +3083,22 @@
     }
 
     table {
+      --table-line-height: 1.7;
       width: 100%;
       min-width: 1680px;
       border-collapse: separate;
       border-spacing: 0;
-      background: #fff;
-      font-size: 14px;
+      border-top: var(--table-border);
+      border-left: var(--table-border);
+      background: var(--table-body-bg);
+      color: var(--table-text);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+      font-size: 13px;
+      line-height: var(--table-line-height);
+    }
+
+    table[data-density="compact"] {
+      --table-line-height: 1.6;
     }
 
     .writable-table {
@@ -4005,7 +4021,6 @@
       white-space: nowrap;
       word-break: keep-all;
       vertical-align: top;
-      line-height: 1.55;
     }
 
     .risk-selected-merchant-table th:nth-child(4),
@@ -4198,48 +4213,28 @@
     th,
     td {
       padding: 0 9px;
-      border-right: 1px solid #edf1f5;
-      border-bottom: 1px solid #edf1f5;
+      border-right: var(--table-border);
+      border-bottom: var(--table-border);
+      background: var(--table-body-bg);
+      color: var(--table-text);
+      font: inherit;
+      line-height: var(--table-line-height);
+      font-weight: 400;
       text-align: left;
-      font-size: 14px;
       white-space: nowrap;
     }
 
     th {
       height: 38px;
-      background: #fbfcfe;
-      color: #4b5563;
-      font-weight: 500;
+    }
+
+    thead th {
+      background: var(--table-header-bg);
+      font-weight: 700;
     }
 
     td {
       height: 42px;
-      color: rgb(96, 98, 102);
-    }
-
-    th:last-child,
-    td:last-child {
-      border-right: 0;
-    }
-
-    thead th {
-      border-top: 1px solid #edf1f5;
-    }
-
-    thead th:first-child {
-      border-left: 1px solid #edf1f5;
-    }
-
-    thead th:last-child {
-      border-right: 1px solid #edf1f5;
-    }
-
-    tbody td:first-child {
-      border-left: 1px solid #edf1f5;
-    }
-
-    tbody td:last-child {
-      border-right: 1px solid #edf1f5;
     }
 
     tbody tr:hover td,
@@ -4261,9 +4256,9 @@
       box-shadow: 8px 0 14px -14px rgba(31, 41, 55, 0.5);
     }
 
-    th.select-col {
+    thead th.select-col {
       z-index: 7;
-      background: #fbfcfe;
+      background: var(--table-header-bg);
     }
 
     .sticky-col {
@@ -4276,9 +4271,9 @@
       box-shadow: 8px 0 14px -12px rgba(31, 41, 55, 0.5);
     }
 
-    th.sticky-col {
+    thead th.sticky-col {
       z-index: 6;
-      background: #fbfcfe;
+      background: var(--table-header-bg);
     }
 
     .recycle-table .sticky-col {
@@ -4295,9 +4290,9 @@
       box-shadow: -8px 0 14px -12px rgba(31, 41, 55, 0.5);
     }
 
-    th.operation-col {
+    thead th.operation-col {
       z-index: 6;
-      background: #fbfcfe;
+      background: var(--table-header-bg);
     }
 
     .refund-work-order-table .operation-col {
@@ -5316,43 +5311,23 @@
       border-collapse: separate;
       border-spacing: 0;
       table-layout: fixed;
-      border: 0;
     }
 
     .sim-detail-table th,
     .sim-detail-table td {
       height: 42px;
       padding: 0 10px;
-      border-right: 1px solid #e8edf4;
-      border-bottom: 1px solid #e8edf4;
-      font-size: 12px;
       text-align: left;
       vertical-align: middle;
     }
 
     .sim-detail-table th {
       width: 112px;
-      color: #8a94a3;
-      background: #f1f5fb;
-      font-weight: 500;
     }
 
     .sim-detail-table td {
       width: 160px;
-      color: #5f6876;
-      background: #fff;
-      line-height: 1.45;
       word-break: break-word;
-    }
-
-    .sim-detail-table .sim-platform-group-label {
-      vertical-align: middle;
-      color: #596273;
-      font-weight: 600;
-    }
-
-    .sim-detail-table .sim-platform-status-label {
-      color: #667182;
     }
 
     .sim-platform-status-content {
@@ -5502,16 +5477,6 @@
       }
     }
 
-    .sim-detail-table tr:last-child th,
-    .sim-detail-table tr:last-child td {
-      border-bottom: 0;
-    }
-
-    .sim-detail-table th:last-child,
-    .sim-detail-table td:last-child {
-      border-right: 0;
-    }
-
     .sim-detail-status-ok {
       color: #0f9f4f;
       font-weight: 600;
@@ -5586,7 +5551,6 @@
       border-collapse: separate;
       border-spacing: 0;
       table-layout: fixed;
-      border: 0;
       overflow: visible;
     }
 
@@ -5604,30 +5568,9 @@
     .sim-status-table td {
       height: 22px;
       padding: 0 10px;
-      border-right: 1px solid #dbe3ee;
-      border-bottom: 1px solid #dbe3ee;
-      background: #fff;
-      color: #273142;
-      font-size: 13px;
       text-align: left;
       vertical-align: middle;
       overflow: visible;
-    }
-
-    .sim-status-table th {
-      text-align: left;
-      font-weight: 600;
-      background: #fff;
-    }
-
-    .sim-status-table tr:last-child th,
-    .sim-status-table tr:last-child td {
-      border-bottom: 0;
-    }
-
-    .sim-status-table th:last-child,
-    .sim-status-table td:last-child {
-      border-right: 0;
     }
 
     .sim-status-main-cell {
@@ -6022,9 +5965,13 @@
     .modal {
       width: min(720px, 100%);
       background: #fff;
-      border-radius: 8px;
+      border-radius: var(--dialog-radius);
       box-shadow: 0 28px 70px rgba(15, 23, 42, 0.24);
       overflow: hidden;
+    }
+
+    .modal[data-modal-variant="flowchart-preview"] {
+      border-radius: var(--flowchart-preview-radius);
     }
 
     .modal-head,
@@ -7278,7 +7225,7 @@
     #speedLimitPage .speed-limit-history-table td { width: 140px; white-space: nowrap; }
     #speedLimitPage .speed-limit-history-table th:first-child,
     #speedLimitPage .speed-limit-history-table td:first-child { position: sticky; left: 0; z-index: 2; width: 230px; background: var(--panel); box-shadow: 1px 0 0 var(--line-soft); font-variant-numeric: tabular-nums; }
-    #speedLimitPage .speed-limit-history-table th:first-child { z-index: 4; background: #f8fafc; }
+    #speedLimitPage .speed-limit-history-table th:first-child { z-index: 4; background: var(--table-header-bg); }
     #speedLimitPage .speed-limit-history-table td.speed-limit-empty { position: static; white-space: normal; }
     #speedLimitPage .speed-limit-history-table th:nth-child(6),
     #speedLimitPage .speed-limit-history-table td:nth-child(6) { width: 220px; white-space: normal; overflow-wrap: anywhere; }
@@ -7346,7 +7293,7 @@
     #speedLimitPage .speed-limit-report-table th,
     #speedLimitPage .speed-limit-report-table td { width: 180px; text-align: center; font-variant-numeric: tabular-nums; }
     #speedLimitPage .speed-limit-report-table .link-text { min-width: 44px; min-height: 32px; }
-    #speedLimitPage .speed-limit-report-table th { white-space: normal; line-height: 1.5; }
+    #speedLimitPage .speed-limit-report-table th { white-space: normal; }
     #speedLimitPage .speed-limit-report-table th:first-child,
     #speedLimitPage .speed-limit-report-table td:first-child { min-width: 140px; width: 140px; white-space: nowrap; }
     #speedLimitPage .speed-limit-report-table th:nth-child(2),
@@ -7357,7 +7304,7 @@
     #speedLimitPage select.control { cursor: pointer; padding-right: 54px; }
     #speedLimitPage select.control:has(option:checked[value=""]) { color: #b8c0cc; }
     #speedLimitPage select.control option { color: var(--ink); }
-    #speedLimitPage .speed-limit-empty { padding: 44px 16px; text-align: center; color: var(--muted); }
+    #speedLimitPage .speed-limit-empty { padding: 44px 16px; text-align: center; }
     #speedLimitPage button:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
     @media (prefers-reduced-motion: reduce) { #speedLimitPage * { transition: none !important; animation: none !important; } }
 
@@ -7395,8 +7342,8 @@
     #simInboundPage .sim-inbound-table th:nth-child(13),
     #simInboundPage .sim-inbound-table td:nth-child(13) { width: 180px; }
     #simInboundPage .sim-inbound-table .operation-col { position: sticky; right: 0; width: 100px; min-width: 100px; background: #fff; }
-    #simInboundPage .sim-inbound-table th.operation-col { z-index: 5; background: #f8fafc; }
-    #simInboundPage .sim-inbound-empty { padding: 44px 16px; text-align: center; color: var(--muted); }
+    #simInboundPage .sim-inbound-table th.operation-col { z-index: 5; background: var(--table-header-bg); }
+    #simInboundPage .sim-inbound-empty { padding: 44px 16px; text-align: center; }
     #simInboundPage .sim-inbound-table .link-text { min-height: 32px; }
     .sim-inbound-status { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; white-space: nowrap; }
     .sim-inbound-status::before { width: 6px; height: 6px; border-radius: 50%; background: currentColor; content: ""; }
@@ -7531,7 +7478,7 @@
     :is(#simDetailSpeedHistoryPager, #speedLimitBatchPager) button.page-btn:not(:disabled):hover { color: var(--blue); border-color: var(--blue); }
     :is(#simDetailSpeedHistoryPager, #speedLimitBatchPager) button.page-btn:disabled { color: var(--subtle); cursor: not-allowed; }
     :is(#simDetailSpeedHistoryPager, #speedLimitBatchPager) .page-btn:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
-    #simDetailPage .sim-detail-speed-history .table-scroll { min-width: 0; max-width: 100%; overflow: auto; border-top: 1px solid var(--line-soft); }
+    #simDetailPage .sim-detail-speed-history .table-scroll { min-width: 0; max-width: 100%; overflow: auto; }
     #simDetailPage .sim-detail-speed-history .table-scroll:focus-visible { outline: 2px solid var(--blue); outline-offset: -2px; }
     #simDetailPage .sim-detail-speed-table { min-width: 2850px; table-layout: fixed; }
     #simDetailPage .sim-detail-speed-table :is(th, td) { width: 140px; white-space: nowrap; }
@@ -7540,17 +7487,17 @@
     #simDetailPage .sim-detail-speed-table :is(th, td):is(:nth-child(15), :last-child) { width: 260px; white-space: normal; overflow-wrap: anywhere; }
     #simDetailPage .sim-detail-speed-table :is(th, td):is(:nth-child(8), :nth-child(9), :nth-child(13)) { width: 190px; font-variant-numeric: tabular-nums; }
     #simDetailPage .sim-detail-speed-table :is(th, td):first-child { width: 250px; font-variant-numeric: tabular-nums; }
-    #simDetailPage .sim-detail-speed-table td.sim-detail-speed-empty { white-space: normal; text-align: center; padding: 48px 20px; color: var(--muted); }
+    #simDetailPage .sim-detail-speed-table td.sim-detail-speed-empty { white-space: normal; text-align: center; padding: 48px 20px; }
     #simDetailUnavailablePanel { padding: 48px 20px; text-align: center; color: var(--muted); }
     #simManualSpeedModal #simManualSpeedRemark { min-height: 96px; line-height: 1.6; }
-    #simDetailPage .sim-detail-speed-table td.sim-detail-speed-remark { white-space: pre-wrap; overflow-wrap: anywhere; line-height: 1.6; }
+    #simDetailPage .sim-detail-speed-table td.sim-detail-speed-remark { white-space: pre-wrap; overflow-wrap: anywhere; }
     #speedLimitBatchFilterWrap > .form-actions { grid-column: auto; }
     #speedLimitPage .speed-limit-batch-table { min-width: 1960px; table-layout: fixed; }
     #speedLimitPage .speed-limit-batch-table :is(th, td) { width: 140px; white-space: nowrap; }
     #speedLimitPage .speed-limit-batch-table :is(th, td):first-child { position: sticky; left: 0; width: 250px; z-index: 2; background: var(--panel); box-shadow: 1px 0 0 var(--line-soft); font-variant-numeric: tabular-nums; }
-    #speedLimitPage .speed-limit-batch-table th:first-child { z-index: 4; background: #f8fafc; }
+    #speedLimitPage .speed-limit-batch-table th:first-child { z-index: 4; background: var(--table-header-bg); }
     #speedLimitPage .speed-limit-batch-table :is(th, td):is(:nth-child(5), :nth-child(6), :nth-child(7), :nth-child(8)) { width: 110px; font-variant-numeric: tabular-nums; }
-    #speedLimitPage .speed-limit-batch-table :is(th, td):nth-child(10) { width: 280px; white-space: pre-wrap; overflow-wrap: anywhere; line-height: 1.6; }
+    #speedLimitPage .speed-limit-batch-table :is(th, td):nth-child(10) { width: 280px; white-space: pre-wrap; overflow-wrap: anywhere; }
     #speedLimitPage .speed-limit-batch-table :is(th, td):is(:nth-child(11), :nth-child(12)) { width: 190px; font-variant-numeric: tabular-nums; }
     #speedLimitPage .speed-limit-batch-table td.speed-limit-empty { position: static; white-space: normal; }
     @media (max-width: 720px) { #speedLimitPage .speed-limit-batch-table :is(th, td):first-child { position: static; } }
@@ -7582,10 +7529,8 @@
 .wc-page .wc-table-panel{margin:0;min-width:0;min-height:360px;flex:1 1 auto;border:0!important;border-radius:0;box-shadow:none}
 .wc-table-panel > .table-scroll{margin:12px 12px 0!important;width:calc(100% - 24px)!important;min-width:0;overflow:auto}
 .wc-table{width:100%;border-collapse:separate;border-spacing:0;table-layout:fixed}
-.wc-table th,.wc-table td{padding:6px 9px;vertical-align:middle;text-align:left;border-bottom:1px solid #edf1f5;font-size:14px;line-height:1.5;overflow-wrap:anywhere;white-space:normal}
-.wc-table th{height:38px;background:#fbfcfe;color:#4b5563;font-weight:500;white-space:normal}
-.wc-table td{height:42px;color:rgb(96,98,102)}
-.wc-table .wc-empty{text-align:center;height:180px;color:var(--muted)}
+.wc-table th,.wc-table td{padding:6px 9px;vertical-align:middle;overflow-wrap:anywhere;white-space:normal}
+.wc-table .wc-empty{text-align:center;height:180px}
 .wc-page .wc-table :is(.link-text,.link-btn,.danger-link,.wc-text-button),.wc-modal-mask .wc-table :is(.link-text,.link-btn,.danger-link,.wc-text-button){font:inherit;font-weight:500}
 .wc-table button.link-text,.wc-table button.danger-link{margin-right:12px}
 .wc-pager{padding:12px 16px;min-width:0;display:flex;flex:0 0 auto;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:8px}
@@ -7644,7 +7589,7 @@
 .wc-threshold-row .control,.wc-inline-config .control{width:170px;flex:0 1 170px}
 .wc-threshold-row > span{white-space:normal}
 .wc-modal-mask{z-index:300}
-.wc-modal{width:min(var(--wc-modal-width,720px),100%);max-height:calc(100dvh - 36px);display:flex;flex-direction:column;background:#fff;border-radius:8px;overflow:hidden}
+.wc-modal{width:min(var(--wc-modal-width,720px),100%);max-height:calc(100dvh - 36px);display:flex;flex-direction:column;background:#fff;overflow:hidden}
 .wc-modal-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;border-bottom:1px solid var(--line-soft);flex:0 0 auto}
 .wc-modal-head h2{font-size:17px;color:var(--ink);margin:0}
 .wc-modal-body{padding:18px;overflow:auto;min-height:0;overscroll-behavior:contain}
@@ -7698,9 +7643,8 @@
 .wc-page .query-panel{flex:0 0 auto}
 
 .wc-speed-tier-scroll{max-width:100%;overflow:auto;margin-bottom:12px}
-.wc-speed-tier-table{width:100%;min-width:620px;border-collapse:separate;border-spacing:0;font:inherit}
-.wc-speed-tier-table th,.wc-speed-tier-table td{padding:10px;text-align:left;border-bottom:1px solid var(--line-soft);vertical-align:top}
-.wc-speed-tier-table th{background:#fbfcfe;font-weight:500;white-space:nowrap}
+.wc-speed-tier-table{min-width:620px}
+.wc-speed-tier-table th,.wc-speed-tier-table td{padding:10px;vertical-align:top}
 .wc-speed-tier-table .control{width:100%;min-width:130px}.wc-speed-tier-table button{min-width:32px;min-height:34px}
 .wc-speed-tier-table .scientific-calculation-ui-icon{width:18px;height:18px}
 /* Rule editor: a scoped SaaS configuration workspace. Shared application tokens remain canonical. */
@@ -7753,9 +7697,8 @@
 #rcRuleFormPage .wc-rule-error{margin:6px 0 0;font-size:12px;line-height:1.7}
 #rcRuleFormPage .wc-rule-form>[data-wcr-form-error]:not([hidden]){margin:0 0 20px;padding:12px 16px;border:1px solid #ffd6dc;background:#fff4f5;border-radius:6px}
 #rcRuleFormPage .wc-field.wc-invalid .control,#rcRuleFormPage .control[aria-invalid="true"]{border-color:var(--red)}
-#rcRuleFormPage .wc-speed-tier-table th{font-size:12px;font-weight:500;background:#f7f9fc}
 #rcRuleFormPage .wc-speed-tier-table th,#rcRuleFormPage .wc-speed-tier-table td{padding:12px 10px}
-#rcRuleFormPage .wc-speed-tier-table{min-width:590px;border:1px solid var(--line-soft);border-radius:6px}
+#rcRuleFormPage .wc-speed-tier-table{min-width:590px;border-radius:6px}
 #rcRuleFormPage .wc-speed-tier-table th:first-child{width:112px}
 #rcRuleFormPage .wc-speed-tier-table th:last-child{width:58px}
 #rcRuleFormPage .wc-speed-tier-scroll{margin:14px 0 16px}
@@ -12402,7 +12345,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
     const speedLimitOperationSources = ["手动操作", "策略限速", "系统恢复"];
     const speedLimitRecordLevels = ["月一级限速", "月二级限速", "月三级限速"];
-    const speedLimitRecordStatuses = ["限速中", "待限速", "限速失败", "解除中", "已解除", "解除失败"];
+    const speedLimitRecordStatuses = ["限速中", "待限速", "处理中", "限速失败", "解除中", "已解除", "解除失败", "已取消"];
     const speedLimitRecordColumns = [
       { key: "iccid", label: "ICCID", exportAsText: true },
       { key: "batchNo", label: "批次号" },
@@ -12432,6 +12375,30 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       { key: "status", id: "speedLimitRecordFilterStatus", label: "操作状态", options: speedLimitRecordStatuses }
     ];
     const speedLimitRecordRows = [
+      {
+        "iccid": "8986044219231000841",
+        "operator": "中国移动",
+        "strategyName": "--",
+        "category": "手动限速",
+        "operationSource": "手动操作",
+        "speed": 128,
+        "restoreNextMonth": true,
+        "type": "--",
+        "startTime": "2026-11-25 00:00:00",
+        "endTime": "2026-11-25 23:59:59",
+        "status": "待限速",
+        "limitResult": "待执行",
+        "beforeState": "未限速",
+        "afterState": "已限速",
+        "releaseStatus": "未解除",
+        "releaseResult": "--",
+        "releasedBy": "--",
+        "createdBy": "lifan",
+        "remark": "预约次日限速，可在开始前取消任务",
+        "createdAt": "2026-11-24 09:00:00",
+        "updatedAt": "2026-11-24 09:00:00",
+        "batchNo": "SL202611240900000012"
+      },
       { iccid: "8986044219231002841", operator: "中国移动", strategyName: "儿童手表日常限速策略", category: "策略限速", speed: 128, type: "日一级", startTime: "2026-10-15 09:10:00", endTime: "2026-10-15 23:59:59", status: "限速中", limitResult: "成功", createdBy: "系统", releaseStatus: "未解除", releaseResult: "--", releasedBy: "--", remark: "日用量达到 1024 MB，按一级限速执行", createdAt: "2026-10-15 09:10:00", updatedAt: "2026-10-15 09:10:08", batchNo: "SL202610150700000001" },
       { iccid: "8986044219231002842", operator: "中国移动", strategyName: "上课时段限速策略", category: "策略限速", speed: 256, type: "时间段限速", startTime: "2026-10-15 08:00:00", endTime: "2026-10-15 12:00:00", status: "限速中", limitResult: "成功", createdBy: "系统", releaseStatus: "未解除", releaseResult: "--", releasedBy: "--", remark: "每日上课时段限制网速", createdAt: "2026-10-15 08:00:00", updatedAt: "2026-10-15 08:00:05", batchNo: "SL202610150700000001" },
       { iccid: "8986064219231002843", operator: "中国联通", strategyName: "月度用量分级限速", category: "策略限速", speed: 512, type: "月二级", startTime: "2026-10-15 07:35:00", endTime: "2026-10-31 23:59:59", status: "限速中", limitResult: "成功", createdBy: "系统", releaseStatus: "解除失败", releaseResult: "失败：运营商接口超时", releasedBy: "张楠", remark: "月用量达到 20480 MB，解除失败后仍保持限速", createdAt: "2026-10-15 07:35:00", updatedAt: "2026-10-15 09:05:20", batchNo: "SL202610150700000001" },
@@ -12573,11 +12540,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
     const speedLimitBatchOperationLabels = { limit: "限速", release: "解除限速" };
     const speedLimitBatchSourceLabels = { system: "系统", manual: "手动" };
-    const speedLimitBatchStatuses = ["成功", "失败", "部分成功", "处理中"];
+    const speedLimitBatchStatuses = ["成功", "失败", "部分成功", "处理中", "已取消"];
     const speedLimitBatchColumns = [
       { key: "batchNo", label: "批次号" }, { key: "operation", label: "操作类型" }, { key: "source", label: "操作来源" },
       { key: "operationStatus", label: "操作状态" }, { key: "total", label: "操作卡片数" }, { key: "success", label: "成功数" }, { key: "failed", label: "失败数" }, { key: "pending", label: "处理中数" },
-      { key: "createdBy", label: "操作人" }, { key: "remark", label: "备注" }, { key: "createdAt", label: "创建时间" }, { key: "completedAt", label: "完成时间" }
+      { key: "createdBy", label: "操作人" }, { key: "remark", label: "备注" }, { key: "createdAt", label: "创建时间" }, { key: "completedAt", label: "完成时间" }, { key: "cancelled", label: "已取消数" }
     ];
     const speedLimitBatchFilterFields = [
       { key: "batchNo", id: "speedLimitBatchFilterNo" },
@@ -12588,6 +12555,15 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     const speedLimitBatchState = { values: {}, appliedValues: {}, page: 1, pageSize: 20, exporting: false, sequence: 0 };
 
     const speedLimitBatchRows = [
+      {
+        "batchNo": "SL202611240900000012",
+        "operation": "limit",
+        "source": "manual",
+        "createdBy": "lifan",
+        "remark": "预约次日限速，可在开始前取消任务",
+        "createdAt": "2026-11-24 09:00:00",
+        "updatedAt": "2026-11-24 09:00:00"
+      },
       {
         "batchNo": "SR202610150905200007",
         "operation": "release",
@@ -12709,7 +12685,8 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       { date: "2026-10-12", limitCardCount: 1300, releaseCardCount: 1220, limitTotal: 1420, limitSuccess: 1406, limitFailed: 14, releaseTotal: 1310, releaseSuccess: 1297, releaseFailed: 13 },
       { date: "2026-10-11", limitCardCount: 0, releaseCardCount: 0, limitTotal: 0, limitSuccess: 0, limitFailed: 0, releaseTotal: 0, releaseSuccess: 0, releaseFailed: 0 },
       { date: "2026-10-10", limitCardCount: 1000, releaseCardCount: 920, limitTotal: 1064, limitSuccess: 1053, limitFailed: 11, releaseTotal: 980, releaseSuccess: 972, releaseFailed: 8 },
-      { date: "2026-10-09", limitCardCount: 1160, releaseCardCount: 1080, limitTotal: 1250, limitSuccess: 1235, limitFailed: 15, releaseTotal: 1140, releaseSuccess: 1129, releaseFailed: 11 }
+      { date: "2026-10-09", limitCardCount: 1160, releaseCardCount: 1080, limitTotal: 1250, limitSuccess: 1235, limitFailed: 15, releaseTotal: 1140, releaseSuccess: 1129, releaseFailed: 11 },
+      { date: "2026-11-25", limitCardCount: 1, releaseCardCount: 0, limitTotal: 1, limitSuccess: 0, limitFailed: 0, releaseTotal: 0, releaseSuccess: 0, releaseFailed: 0 }
     ].map((row, index) => ({ ...row,
       limitCardIccids: createSpeedLimitReportSampleIccids(row.limitCardCount, index * 40, speedLimitRecordRows.filter(item => item.startTime.slice(0, 10) === row.date).map(item => item.iccid)),
       releaseCardIccids: createSpeedLimitReportSampleIccids(row.releaseCardCount, index * 40 + 20, speedLimitReleaseRows.filter(item => item.createdAt.slice(0, 10) === row.date).map(item => item.iccid))
@@ -12766,7 +12743,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
     const ESIM_CHIP_AGENT_TIP = "芯片划拨时，所选商户对应的一级商户为被划拨芯片的代理商。";
     const ESIM_CHIP_LATEST_ALLOCATE_BATCH_TIP = "展示最近一次划拨操作的批次号";
-    const ESIM_CHIP_INVENTORY_STATUS_TIP = "库存效期从SIMCloud系统入库ESIM芯片的时间起计算270天。当前时间早于库存效期时间为“未过期”；达到或超过库存效期时间为“已过期”。已过期的芯片不支持发起写卡动作。SIMCloud入库时间缺失或无效时显示“-”，不使用本页导入时间代替计算。";
+    const ESIM_CHIP_INVENTORY_STATUS_TIP = "库存到期时间从 SIMCloud 系统入库 ESIM 芯片的时间起计算 270 天。当前时间早于库存到期时间时，库存状态为“未过期”。当前时间达到或超过库存到期时间时，库存状态为“已过期”。距离库存到期时间不足一个月的，库存状态为“临期”。已过期的芯片不支持写卡。SIMCloud 系统返回的库存到期时间为空时显示“-”。";
     const ESIM_CHIP_AGENT_OPTIONS = ["华东物联商户", "车载设备商户", "北区能源商户", "渠道直营商户"];
 
     const chipFields = [
@@ -13355,7 +13332,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       { key: "msisdn", label: "MSISDN" },
       { key: "imei", label: "IMEI" },
       { key: "cardStatus", label: "卡状态" },
-      { key: "speedLimitStatus", label: "限速状态" },
       {
         key: "riskControlStatus",
         label: "风险防控触发状态",
@@ -15375,7 +15351,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
             }).join("")}
           </tr>
         `).join("")
-        : `<tr><td colspan="${smartRefundOrderColumns.length}" style="text-align:center;color:#6b7280;">暂无订单数据</td></tr>`;
+        : `<tr><td colspan="${smartRefundOrderColumns.length}" style="text-align:center;">暂无订单数据</td></tr>`;
       pager.innerHTML = `
         <span>共 ${rows.length} 条</span>
         <button class="page-btn" type="button">‹</button>
@@ -15722,7 +15698,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
               ${userPackageTableColumns.map((column) => `<td class="${column.fixedRight ? "operation-col" : column.key === "speedLimitStrategyId" ? "user-package-speed-strategy-cell" : ""}">${renderUserPackageValue(row[column.key], column, row, index)}</td>`).join("")}
             </tr>
           `).join("")
-        : `<tr><td colspan="${userPackageTableColumns.length}" style="text-align:center;color:#6b7280;">暂无数据</td></tr>`;
+        : `<tr><td colspan="${userPackageTableColumns.length}" style="text-align:center;">暂无数据</td></tr>`;
 
       body.querySelectorAll("[data-package-toggle]").forEach((button) => {
         button.addEventListener("click", () => {
@@ -16498,7 +16474,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
               `).join("")}
             </tr>
           `).join("")
-        : `<tr><td colspan="${chipGroupTableColumns.length}" style="text-align:center;color:#6b7280;">暂无数据</td></tr>`;
+        : `<tr><td colspan="${chipGroupTableColumns.length}" style="text-align:center;">暂无数据</td></tr>`;
 
       body.querySelectorAll(".chip-group-manage-btn").forEach((button) => {
         button.addEventListener("click", () => {
@@ -16718,7 +16694,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
               `).join("")}
             </tr>
           `).join("")
-        : `<tr><td colspan="${resourcePoolTableColumns.length}" style="text-align:center;color:#6b7280;">暂无数据</td></tr>`;
+        : `<tr><td colspan="${resourcePoolTableColumns.length}" style="text-align:center;">暂无数据</td></tr>`;
 
       body.querySelectorAll(".resource-pool-edit-btn").forEach((button) => {
         button.addEventListener("click", () => showToast(`资源池「${button.dataset.pool}」编辑待接入`, "info"));
@@ -17056,7 +17032,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
               `).join("")}
             </tr>
           `).join("")
-        : `<tr><td colspan="${riskStrategyTableColumns.length}" style="text-align:center;color:#6b7280;">暂无数据</td></tr>`;
+        : `<tr><td colspan="${riskStrategyTableColumns.length}" style="text-align:center;">暂无数据</td></tr>`;
 
       body.querySelectorAll(".risk-strategy-edit-btn").forEach((button) => {
         button.addEventListener("click", () => openRiskStrategyEditPage(button.dataset.strategyKey));
@@ -17394,7 +17370,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
               ${riskLogTableColumns.map((column) => `<td>${renderRiskLogValue(row[column.key], column, row)}</td>`).join("")}
             </tr>
           `).join("")
-        : `<tr><td colspan="${riskLogTableColumns.length}" style="text-align:center;color:#6b7280;">暂无数据</td></tr>`;
+        : `<tr><td colspan="${riskLogTableColumns.length}" style="text-align:center;">暂无数据</td></tr>`;
     }
 
     function renderRiskLogPager() {
@@ -17616,7 +17592,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
               ${riskStopChangeRecordColumns.map((column) => `<td class="${column.fixedRight ? "operation-col" : ""}">${renderRiskStopChangeRecordValue(row[column.key], column, row)}</td>`).join("")}
             </tr>
           `).join("")
-        : `<tr><td colspan="${riskStopChangeRecordColumns.length}" style="text-align:center;color:#6b7280;">暂无数据</td></tr>`;
+        : `<tr><td colspan="${riskStopChangeRecordColumns.length}" style="text-align:center;">暂无数据</td></tr>`;
       body.querySelectorAll(".risk-stop-change-total-link").forEach((button) => {
         button.addEventListener("click", () => openRiskStopChangeDetailPage(button.dataset.batch));
       });
@@ -17752,7 +17728,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
               ${riskStopChangeDetailColumns.map((column) => `<td>${renderRiskStopChangeDetailValue(row[column.key], column, row)}</td>`).join("")}
             </tr>
           `).join("")
-        : `<tr><td colspan="${riskStopChangeDetailColumns.length}" style="text-align:center;color:#6b7280;">暂无数据</td></tr>`;
+        : `<tr><td colspan="${riskStopChangeDetailColumns.length}" style="text-align:center;">暂无数据</td></tr>`;
     }
 
     function renderRiskStopChangeDetailPager() {
@@ -18953,7 +18929,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
               `).join("")}
             </tr>
           `).join("")
-        : `<tr><td colspan="${writeApplyTableColumns.length}" style="text-align:center;color:#6b7280;">暂无数据</td></tr>`;
+        : `<tr><td colspan="${writeApplyTableColumns.length}" style="text-align:center;">暂无数据</td></tr>`;
 
       body.querySelectorAll(".write-apply-action-btn").forEach((button) => {
         button.addEventListener("click", () => showToast(`EID ${button.dataset.eid} 写卡申请已提交`, "success"));
@@ -19177,7 +19153,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
               ${orderTableColumns.map((column) => `<td>${renderOrderValue(row[column.key], column, index)}</td>`).join("")}
             </tr>
           `).join("")
-        : `<tr><td colspan="${orderTableColumns.length}" style="text-align:center;color:#6b7280;">暂无数据</td></tr>`;
+        : `<tr><td colspan="${orderTableColumns.length}" style="text-align:center;">暂无数据</td></tr>`;
     }
 
     function renderOrderPager() {
@@ -19491,7 +19467,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
               ${refundWorkOrderTableColumns.map((column) => `<td class="${column.fixedRight ? "operation-col" : ""}">${renderRefundWorkOrderValue(row[column.key], column, row, index)}</td>`).join("")}
             </tr>
           `).join("")
-        : `<tr><td colspan="${refundWorkOrderTableColumns.length}" style="text-align:center;color:#6b7280;">暂无数据</td></tr>`;
+        : `<tr><td colspan="${refundWorkOrderTableColumns.length}" style="text-align:center;">暂无数据</td></tr>`;
       body.querySelectorAll(".refund-screenshot-btn").forEach((button) => {
         button.addEventListener("click", () => showToast(`查看支付截图：${button.dataset.screenshot}`, "info"));
       });
@@ -20146,7 +20122,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       document.getElementById("exchangeReshipTableHeader").innerHTML = exchangeReshipTableColumns.map((column) => `<th class="${columnClass(column)}" scope="col">${escapeHtml(column.label)}</th>`).join("");
       document.getElementById("exchangeReshipTableBody").innerHTML = visibleRows.length
         ? visibleRows.map((row, index) => `<tr>${exchangeReshipTableColumns.map((column) => `<td class="${columnClass(column)}">${renderExchangeReshipValue(row, column, offset + index)}</td>`).join("")}</tr>`).join("")
-        : `<tr><td colspan="${exchangeReshipTableColumns.length}" style="text-align:center;color:#6b7280;">暂无数据</td></tr>`;
+        : `<tr><td colspan="${exchangeReshipTableColumns.length}" style="text-align:center;">暂无数据</td></tr>`;
       renderExchangeReshipPager(records.length);
     }
 
@@ -20383,7 +20359,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
               ${complaintManageTableColumns.map((column) => `<td class="${column.fixedRight ? "operation-col" : ""}">${renderComplaintManageValue(row[column.key], column, row)}</td>`).join("")}
             </tr>
           `).join("")
-        : `<tr><td colspan="${complaintManageTableColumns.length}" style="text-align:center;color:#6b7280;">暂无数据</td></tr>`;
+        : `<tr><td colspan="${complaintManageTableColumns.length}" style="text-align:center;">暂无数据</td></tr>`;
       body.querySelectorAll(".complaint-image-thumb").forEach((button) => {
         button.addEventListener("click", () => openSmartRefundScreenshotPreview(button.dataset.complaintImage, {
           title: "投诉截图预览",
@@ -20668,7 +20644,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
               ${accountOperationLogColumns.map((column) => `<td>${renderAccountOperationLogValue(row[column.key], column, row, index)}</td>`).join("")}
             </tr>
           `).join("")
-        : `<tr><td colspan="${accountOperationLogColumns.length}" style="text-align:center;color:#6b7280;">暂无数据</td></tr>`;
+        : `<tr><td colspan="${accountOperationLogColumns.length}" style="text-align:center;">暂无数据</td></tr>`;
     }
 
     function renderAccountOperationLogPager() {
@@ -20924,7 +20900,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
               ${smartDiagnosisLogColumns.map((column) => `<td>${renderSmartDiagnosisLogValue(row[column.key], column)}</td>`).join("")}
             </tr>
           `).join("")
-        : `<tr><td colspan="${smartDiagnosisLogColumns.length}" style="text-align:center;color:#6b7280;">暂无数据</td></tr>`;
+        : `<tr><td colspan="${smartDiagnosisLogColumns.length}" style="text-align:center;">暂无数据</td></tr>`;
     }
 
     function renderSmartDiagnosisLogPager() {
@@ -21084,7 +21060,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
               ${batchTaskColumns.map((column) => `<td class="${column.fixedRight ? "operation-col" : ""}">${renderBatchTaskValue(row[column.key], column, row, index)}</td>`).join("")}
             </tr>
           `).join("")
-        : `<tr><td colspan="${batchTaskColumns.length}" style="text-align:center;color:#6b7280;">暂无数据</td></tr>`;
+        : `<tr><td colspan="${batchTaskColumns.length}" style="text-align:center;">暂无数据</td></tr>`;
       body.querySelectorAll(".batch-task-download-btn").forEach((button) => {
         button.addEventListener("click", () => {
           showToast(`${button.dataset.taskId} 任务结果已下载`, "success");
@@ -21357,7 +21333,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
               ${cardActivationMonitorColumns.map((column) => `<td class="${column.fixedRight ? "operation-col" : ""}">${renderCardActivationMonitorValue(row[column.key], column, row, index)}</td>`).join("")}
             </tr>
           `).join("")
-        : `<tr><td colspan="${cardActivationMonitorColumns.length}" style="text-align:center;color:#6b7280;">暂无数据</td></tr>`;
+        : `<tr><td colspan="${cardActivationMonitorColumns.length}" style="text-align:center;">暂无数据</td></tr>`;
 
       body.querySelectorAll(".card-activation-edit-btn").forEach((button) => {
         button.addEventListener("click", () => showToast(`卡激活数据监控「${button.dataset.taskName}」编辑流程待接入`, "info"));
@@ -21544,7 +21520,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
               ${trafficMonitorColumns.map((column) => `<td>${renderTrafficMonitorValue(row[column.key], column)}</td>`).join("")}
             </tr>
           `).join("")
-        : `<tr><td colspan="${trafficMonitorColumns.length}" style="text-align:center;color:#6b7280;">暂无数据</td></tr>`;
+        : `<tr><td colspan="${trafficMonitorColumns.length}" style="text-align:center;">暂无数据</td></tr>`;
     }
 
     function renderTrafficMonitorPager() {
@@ -21612,12 +21588,13 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       const success = rows.filter(row => row[resultKey] === "成功").length;
       const failed = rows.filter(row => String(row[resultKey] || "").startsWith("失败")).length;
       const updatedAt = members.reduce((latest, row) => row.updatedAt > latest ? row.updatedAt : latest, batch.updatedAt);
-      const pending = rows.length - success - failed;
+      const cancelled = rows.filter(row => row[resultKey] === "已取消").length;
+      const pending = rows.length - success - failed - cancelled;
       const completionTimes = rows.map(row => simDetailSpeedOperationRow(row, batch.operation).completedAt);
       const completedAt = rows.length && !pending && completionTimes.every(value => value && value !== "--")
         ? completionTimes.reduce((latest, value) => value > latest ? value : latest, "") : "--";
-      const operationStatus = pending || !rows.length ? "处理中" : success === rows.length ? "成功" : failed === rows.length ? "失败" : "部分成功";
-      return { ...batch, total: rows.length, success, failed, pending, operationStatus, updatedAt, completedAt };
+      const operationStatus = pending || !rows.length ? "处理中" : success === rows.length ? "成功" : failed === rows.length ? "失败" : cancelled === rows.length ? "已取消" : "部分成功";
+      return { ...batch, total: rows.length, success, failed, pending, cancelled, operationStatus, updatedAt, completedAt };
     }
 
     function speedLimitBatchTriggerRecords(row) {
@@ -21717,7 +21694,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       const state = speedLimitBatchState, rows = filteredSpeedLimitBatchRows(), pageCount = Math.max(1, Math.ceil(rows.length / state.pageSize));
       state.page = Math.min(Number.isInteger(state.page) && state.page > 0 ? state.page : 1, pageCount);
       document.getElementById("speedLimitBatchTableHeader").innerHTML = speedLimitBatchColumns.map(column => `<th scope="col">${escapeHtml(column.label)}</th>`).join("");
-      document.getElementById("speedLimitBatchTableBody").innerHTML = rows.length ? rows.slice((state.page - 1) * state.pageSize, state.page * state.pageSize).map(row => `<tr>${speedLimitBatchColumns.map(column => `<td${column.key === "remark" ? ' class="speed-limit-batch-remark"' : ["total", "success", "failed", "pending"].includes(column.key) ? ' class="speed-limit-batch-count"' : ""}>${renderSpeedLimitBatchCell(row, column)}</td>`).join("")}</tr>`).join("")
+      document.getElementById("speedLimitBatchTableBody").innerHTML = rows.length ? rows.slice((state.page - 1) * state.pageSize, state.page * state.pageSize).map(row => `<tr>${speedLimitBatchColumns.map(column => `<td${column.key === "remark" ? ' class="speed-limit-batch-remark"' : ["total", "success", "failed", "pending", "cancelled"].includes(column.key) ? ' class="speed-limit-batch-count"' : ""}>${renderSpeedLimitBatchCell(row, column)}</td>`).join("")}</tr>`).join("")
         : `<tr><td class="speed-limit-empty" colspan="${speedLimitBatchColumns.length}"><span role="status">${Object.values(state.appliedValues).some(Boolean) ? "暂无匹配的批次记录，请调整查询条件" : "暂无限速操作记录"}</span></td></tr>`;
       document.getElementById("speedLimitBatchPager").innerHTML = `<span role="status" aria-live="polite">共 ${rows.length} 条</span><span>${state.pageSize}条/页</span><nav class="speed-limit-batch-pager-controls" aria-label="限速操作记录页码"><button class="page-btn" type="button" data-speed-limit-batch-page="${state.page - 1}" aria-label="上一页" ${state.page === 1 ? "disabled" : ""}>‹</button><span class="page-btn active" aria-current="page" aria-label="第${state.page}页，共${pageCount}页" tabindex="-1">${state.page}</span><button class="page-btn" type="button" data-speed-limit-batch-page="${state.page + 1}" aria-label="下一页" ${state.page === pageCount ? "disabled" : ""}>›</button></nav>`;
     }
@@ -21824,8 +21801,8 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         return { ...row, operation, operationSource: record.operationSource, restoreNextMonth: record.restoreNextMonth,
           strategyName: release ? "--" : row.strategyName || "--", speed: release ? null : record.speed, type: release ? "--" : speedLimitRecordLevel(row),
           startTime: row.startTime || source?.startTime || "--", endTime: row.endTime || source?.endTime || "--",
-          status: (release ? row.releaseStatus : row.status) || "--",
-          result: (release ? row.releaseResult : row.limitResult) || "--",
+          status: !release && record.canCancel ? "待限速" : !release && row.status === "待限速" && row.limitResult !== "已取消" ? "处理中" : (release ? row.releaseStatus : row.status) || "--",
+          result: record.canCancel ? "待执行" : (release ? row.releaseResult : row.limitResult) || "--",
           operationBy: record.operationBy || "--", failureReason: record.failureReason, completedAt: record.completedAt,
           historyDate: (release ? row.createdAt : row.startTime) || ""
         };
@@ -22332,7 +22309,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       const requested = Array.from(new Set(iccids));
       if (!requested.length || requested.some(iccid => !/^\d{18,22}$/.test(iccid))) throw new Error("请输入有效的ICCID。");
       const startTime = `${dateStart} 00:00:00`, endTime = `${dateEnd} 23:59:59`;
-      const existing = new Set(speedLimitRecordRows.filter(row => row.category === "手动限速" && row.startTime === startTime && row.endTime === endTime && row.speed === speed).map(row => row.iccid));
+      const existing = new Set(speedLimitRecordRows.filter(row => row.category === "手动限速" && row.limitResult !== "已取消" && row.startTime === startTime && row.endTime === endTime && row.speed === speed).map(row => row.iccid));
       const fresh = requested.filter(iccid => !existing.has(iccid));
       if (!fresh.length) throw new Error("已创建相同生效日期和限速值的手动限速记录，请勿重复提交。");
       const time = currentDateTimeText(), creator = currentOperatorName(), remark = String(options.remark || "").trim() || "--";
@@ -23337,7 +23314,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
               ${columns.map((column) => `<td>${renderChipOperationValue(row[column.key], column, row)}</td>`).join("")}
             </tr>
           `).join("")
-        : `<tr><td colspan="${columns.length}" style="text-align:center;color:#6b7280;">暂无数据</td></tr>`;
+        : `<tr><td colspan="${columns.length}" style="text-align:center;">暂无数据</td></tr>`;
       body.querySelectorAll(".chip-operation-batch-link").forEach((button) => {
         button.addEventListener("click", () => openChipOperationDetailPage(button.dataset.batch, button.dataset.operationType));
       });
@@ -23499,7 +23476,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
               `).join("")}
             </tr>
           `).join("")
-        : `<tr><td colspan="${chipTableColumns.length}" style="text-align:center;color:#6b7280;">暂无数据</td></tr>`;
+        : `<tr><td colspan="${chipTableColumns.length}" style="text-align:center;">暂无数据</td></tr>`;
       body.querySelectorAll(".chip-refresh-btn").forEach((button) => {
         button.addEventListener("click", () => {
           showToast(`已刷新 EID ${button.dataset.eid} 的芯片状态`, "success");
@@ -23708,7 +23685,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
               `).join("")}
             </tr>
           `).join("")
-        : `<tr><td colspan="${chipSnTableColumns.length}" style="text-align:center;color:#6b7280;">暂无数据</td></tr>`;
+        : `<tr><td colspan="${chipSnTableColumns.length}" style="text-align:center;">暂无数据</td></tr>`;
       body.querySelectorAll(".chip-sn-delete-btn").forEach((button) => {
         button.addEventListener("click", () => {
           openDeleteConfirmModal(`确定删除设备SN号 ${button.dataset.sn} 吗？`, () => {
@@ -23813,7 +23790,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
               }).join("")}
             </tr>
           `).join("")
-        : `<tr><td colspan="${chipDetectionColumns.length}" style="text-align:center;color:#6b7280;">暂无数据</td></tr>`;
+        : `<tr><td colspan="${chipDetectionColumns.length}" style="text-align:center;">暂无数据</td></tr>`;
     }
 
     function closeChipDetectionModal() {
@@ -23958,7 +23935,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
                         }).join("")}
                       </tr>
                     `).join("")
-                  : `<tr><td colspan="${chipLogColumns.length}" style="text-align:center;color:#6b7280;">暂无数据</td></tr>`}
+                  : `<tr><td colspan="${chipLogColumns.length}" style="text-align:center;">暂无数据</td></tr>`}
               </tbody>
             </table>
           </div>
@@ -24472,7 +24449,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       if (column.key === "action") {
         return `<button class="link-text sim-card-activate-btn" type="button" data-iccid="${escapeHtml(row.iccid)}">激活</button>`;
       }
-      if (column.key === "speedLimitStatus") return simDetailCurrentSpeedInfo(row.iccid).status;
       if (column.key === "riskControlStatus") return renderSimRiskControlStatusCell(row);
       if (column.key === "riskStopStatus") return renderSimRiskStopStatusCell(row);
       return renderWritableValue(value, column, row);
@@ -24564,7 +24540,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
               `).join("")}
             </tr>
           `).join("")
-        : `<tr><td colspan="${visibleColumns.length}" style="text-align:center;color:#6b7280;">暂无数据</td></tr>`;
+        : `<tr><td colspan="${visibleColumns.length}" style="text-align:center;">暂无数据</td></tr>`;
 
       body.querySelectorAll(".sim-card-activate-btn").forEach((button) => {
         button.addEventListener("click", () => handleSimCardActivate(button.dataset.iccid));
@@ -24955,7 +24931,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
               ${manageDisableRecordColumns.map((column) => `<td>${renderManageDisableRecordValue(row[column.key], column, row)}</td>`).join("")}
             </tr>
           `).join("")
-        : `<tr><td colspan="${manageDisableRecordColumns.length}" style="text-align:center;color:#6b7280;">暂无数据</td></tr>`;
+        : `<tr><td colspan="${manageDisableRecordColumns.length}" style="text-align:center;">暂无数据</td></tr>`;
       body.querySelectorAll(".manage-disable-batch-link").forEach((button) => {
         button.addEventListener("click", () => openManageDisableDetailPage(button.dataset.batch));
       });
@@ -25183,7 +25159,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
               ${chipBatchDetailTableColumns.map((column) => `<td>${renderWritableValue(row[column.key], column, row)}</td>`).join("")}
             </tr>
           `).join("")
-        : `<tr><td colspan="${chipBatchDetailTableColumns.length}" style="text-align:center;color:#6b7280;">暂无数据</td></tr>`;
+        : `<tr><td colspan="${chipBatchDetailTableColumns.length}" style="text-align:center;">暂无数据</td></tr>`;
       body.querySelectorAll(".copy-eid-btn[data-copy-iccid]").forEach((button) => {
         button.addEventListener("click", (event) => {
           event.stopPropagation();
@@ -25396,7 +25372,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
               `).join("")}
             </tr>
           `).join("")
-        : `<tr><td colspan="${writableTableColumns.length}" style="text-align:center;color:#6b7280;">暂无数据</td></tr>`;
+        : `<tr><td colspan="${writableTableColumns.length}" style="text-align:center;">暂无数据</td></tr>`;
       body.querySelectorAll(".writable-remove-btn").forEach((button) => {
         button.addEventListener("click", () => openWritableRemoveModal(button.dataset.iccid));
       });
@@ -25764,7 +25740,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
               `).join("")}
             </tr>
           `).join("")
-        : `<tr><td colspan="${writableTableColumns.length}" style="text-align:center;color:#6b7280;">暂无数据</td></tr>`;
+        : `<tr><td colspan="${writableTableColumns.length}" style="text-align:center;">暂无数据</td></tr>`;
       body.querySelectorAll(".writable-remove-btn").forEach((button) => {
         button.addEventListener("click", () => openWritableRemoveModal(button.dataset.iccid));
       });
@@ -26041,7 +26017,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
               `).join("")}
             </tr>
           `).join("")
-        : `<tr><td colspan="${writableTableColumns.length}" style="text-align:center;color:#6b7280;">暂无数据</td></tr>`;
+        : `<tr><td colspan="${writableTableColumns.length}" style="text-align:center;">暂无数据</td></tr>`;
       body.querySelectorAll(".writable-remove-btn").forEach((button) => {
         button.addEventListener("click", () => openWritableRemoveModal(button.dataset.iccid));
       });
@@ -27800,7 +27776,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
           iccid: "SIM 卡 ICCID，支持进入 SIM 卡详情。",
           msisdn: "SIM 卡号码。",
           imei: "绑定或关联设备的 IMEI。",
-          speedLimitStatus: "SIM卡当前限速状态，取值为已限速或未限速，展示在卡状态后。",
           cardStatus: "SIM 卡当前运营商侧状态。",
           realNameStatus: "实名认证处理状态。",
           riskControlStatus: "风险防控是否已触发，当前规则来源以页面提示为准。",
@@ -27826,8 +27801,8 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
           { label: "限速开始时间", description: "限速记录展示限速生效的开始时间；解除限速记录显示--。" },
           { label: "限速结束时间", description: "限速记录展示限速生效的结束时间；解除限速记录显示--。" },
           { label: "操作前状态", description: "本次操作开始前的已限速或未限速快照，历史快照缺失显示--。" },
-          { label: "操作后状态", description: "本次操作后的已限速或未限速状态；执行中和失败不预先标记目标状态。" },
-          { label: "操作结果", description: "执行中、成功、失败；结果与当前操作对应。" },
+          { label: "操作后状态", description: "尚未达到限速开始时间的待限速任务，操作后状态显示已限速，操作结果显示待执行，并支持取消限速任务；取消后操作结果显示已取消。" },
+          { label: "操作结果", description: "待执行、执行中、成功、失败、已取消；未到开始时间且未执行的任务显示待执行，已经执行中的任务继续显示执行中。" },
           { label: "操作时间", description: "对应操作记录的创建时间。" },
           { label: "操作人", description: "限速发起人或本次解除操作人。" },
           { label: "失败原因", description: "失败操作的具体原因，其他结果显示--。" },
@@ -27912,7 +27887,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       speedLimitPage: {
         page: { title: "限速管理", purpose: "通过限速统计报告、限速操作记录、限速操作详情三个一级页签查询批次、卡片详情及按日、按周期统计；限速策略统一在规则中心创建和维护；详情页在同一列表展示限速与解除限速，通过操作类型区分。" },
         queries: ["限速操作记录：批次号（支持关联触发记录ID）、操作类型、操作来源、操作状态", "限速操作详情：批次号（支持关联触发记录ID）、ICCID、操作类型、操作来源、限速等级、次月恢复、操作状态、记录日期", "限速统计报告：统计方式（按日统计、周期统计）、开始日期、结束日期；支持最近一周、最近一个月、最近三个月、最近半年、最近一年、上月、本月及自定义区间"],
-        fields: [...docFieldsFrom(speedLimitBatchColumns, { batchNo: "每次批量操作保留唯一处理批次号；规则中心限速规则触发的批次展示关联触发记录ID，点击进入该触发记录的触发明细；每行只展示一个编号；同一处理批次触发多条规则时，按触发记录拆分行并分别统计，未关联触发记录的操作单独按原批次号展示。其他批次点击进入限速操作详情。查询同时支持原处理批次号与关联触发记录ID。", operation: "区分限速与解除限速。", source: "区分系统执行与手动提交，手动解除策略限速仍属于手动来源。", operationStatus: "有未完成卡片为处理中；全部结束后按成功、失败数量显示成功、失败或部分成功。", total: "本批次实际操作的ICCID去重数。", success: "本批次处理成功的卡片数。", failed: "本批次处理失败的卡片数。", pending: "尚未返回处理结果的卡片数，总数等于成功数加失败数加处理中数。", remark: "本次操作填写的备注，支持多行长文本。", completedAt: "本批次全部卡片处理结束的最晚完成时间；处理中、空批次或历史完成时间缺失显示--，不使用后续解除的更新时间。" }), ...docFieldsFrom(speedLimitRecordColumns, { batchNo: "该操作所属批次；规则限速展示本条操作对应的触发记录ID并支持跳转触发明细，其他操作保留原批次号；查询同时支持原处理批次号及触发记录ID，导出与列表展示一致。", iccid: "完整展示并以文本导出，避免号码精度丢失。", operation: "区分限速与解除限速，两类数据合并展示并可筛选。", operationSource: "按当前操作展示手动操作、策略限速或系统恢复；手动解除策略限速仍显示手动操作。", strategyName: "仅限速操作展示策略名称；解除操作显示--。", speed: "限速操作展示该次执行的限速值；解除操作显示--。", type: "限速操作展示原记录等级；解除操作显示--。", restoreNextMonth: "本次限速保存的次月恢复设置，恢复或不恢复；解除记录保留原限速设置，支持筛选和导出。", completedAt: "本次操作完成时刻；执行中或历史完成时刻缺失显示--，不挪用后续解除的更新时间。", result: "限速取限速处理结果，解除取本次解除处理结果。", failureReason: "失败操作单独展示失败原因；其余显示--。", operationBy: "限速发起人或本次解除操作人。", startTime: "原限速计划开始时间，也是限速记录的日期查询依据。", endTime: "原限速计划结束时间。", createdAt: "本次操作创建时间；解除记录以此日期作为查询依据。", remark: "当前操作独立保存的备注。" }), ...docFieldsFrom(speedLimitReportColumns, { limitCardCount: "所选单日或周期内发起限速的ICCID去重数量，同一卡多次操作只计一张；包含处理中、成功和失败操作。", releaseCardCount: "所选单日或周期内发起解除限速的ICCID去重数量，同一卡多次操作只计一张；包含处理中、成功和失败操作。", date: "按日统计展示日期并倒序排列；周期统计展示完整的起止日期区间。", limitTotal: "按日及周期统计均可点击进入限速操作详情，带入限速操作类型及该行单日或完整周期；周期总数为区间内每日限速总数之和。", releaseTotal: "按日及周期统计均可点击进入限速操作详情，带入解除限速操作类型及该行单日或完整周期；周期总数为区间内每日解除总数之和。", limitRate: "SIM卡限速成功次数÷（SIM卡限速成功次数+SIM卡限速失败次数），保留两位小数；成功次数与失败次数之和为0时显示--。", releaseRate: "SIM卡解除限速成功次数÷解除限速SIM卡总次数，保留两位小数；总次数为0时显示--。" })],
+        fields: [...docFieldsFrom(speedLimitBatchColumns, { batchNo: "每次批量操作保留唯一处理批次号；规则中心限速规则触发的批次展示关联触发记录ID，点击进入该触发记录的触发明细；每行只展示一个编号；同一处理批次触发多条规则时，按触发记录拆分行并分别统计，未关联触发记录的操作单独按原批次号展示。其他批次点击进入限速操作详情。查询同时支持原处理批次号与关联触发记录ID。", operation: "区分限速与解除限速。", source: "区分系统执行与手动提交，手动解除策略限速仍属于手动来源。", operationStatus: "有未完成卡片为处理中；全部结束后按成功、失败数量显示成功、失败或部分成功。", total: "本批次实际操作的ICCID去重数。", success: "本批次处理成功的卡片数。", failed: "本批次处理失败的卡片数。", pending: "尚未返回处理结果的卡片数，总数等于成功数加失败数加处理中数加已取消数；取消不计入成功、失败或处理中。", remark: "本次操作填写的备注，支持多行长文本。", completedAt: "本批次全部卡片处理结束的最晚完成时间；处理中、空批次或历史完成时间缺失显示--，不使用后续解除的更新时间。" }), ...docFieldsFrom(speedLimitRecordColumns, { batchNo: "该操作所属批次；规则限速展示本条操作对应的触发记录ID并支持跳转触发明细，其他操作保留原批次号；查询同时支持原处理批次号及触发记录ID，导出与列表展示一致。", iccid: "完整展示并以文本导出，避免号码精度丢失。", operation: "区分限速与解除限速，两类数据合并展示并可筛选。", operationSource: "按当前操作展示手动操作、策略限速或系统恢复；手动解除策略限速仍显示手动操作。", strategyName: "仅限速操作展示策略名称；解除操作显示--。", speed: "限速操作展示该次执行的限速值；解除操作显示--。", type: "限速操作展示原记录等级；解除操作显示--。", restoreNextMonth: "本次限速保存的次月恢复设置，恢复或不恢复；解除记录保留原限速设置，支持筛选和导出。", completedAt: "本次操作完成时刻；执行中或历史完成时刻缺失显示--，不挪用后续解除的更新时间。", result: "限速取限速处理结果，解除取本次解除处理结果。", failureReason: "失败操作单独展示失败原因；其余显示--。", operationBy: "限速发起人或本次解除操作人。", startTime: "原限速计划开始时间，也是限速记录的日期查询依据。", endTime: "原限速计划结束时间。", createdAt: "本次操作创建时间；解除记录以此日期作为查询依据。", remark: "当前操作独立保存的备注。" }), ...docFieldsFrom(speedLimitReportColumns, { limitCardCount: "所选单日或周期内发起限速的ICCID去重数量，同一卡多次操作只计一张；包含处理中、成功和失败操作。", releaseCardCount: "所选单日或周期内发起解除限速的ICCID去重数量，同一卡多次操作只计一张；包含处理中、成功和失败操作。", date: "按日统计展示日期并倒序排列；周期统计展示完整的起止日期区间。", limitTotal: "按日及周期统计均可点击进入限速操作详情，带入限速操作类型及该行单日或完整周期；周期总数为区间内每日限速总数之和。", releaseTotal: "按日及周期统计均可点击进入限速操作详情，带入解除限速操作类型及该行单日或完整周期；周期总数为区间内每日解除总数之和。", limitRate: "SIM卡限速成功次数÷（SIM卡限速成功次数+SIM卡限速失败次数），保留两位小数；成功次数与失败次数之和为0时显示--。", releaseRate: "SIM卡解除限速成功次数÷解除限速SIM卡总次数，保留两位小数；总次数为0时显示--。" })],
         functions: ["限速操作记录：按批次展示系统或手动操作的卡片数量、成功、失败、处理中及备注；规则限速批次展示触发记录ID并跳转触发明细；其他批次点击批次号进入限速操作详情并带入批次号与操作类型查询，支持搜索、重置、分页和导出。", "限速统计报告：支持按日统计和周期统计，支持7个快捷日期范围及自定义起止日期；统计方式、日期区间、搜索、重置在同一查询栏展示；按日展示每日数据，周期累加所选区间内的每日总数并展示一行合计，导出与当前统计方式和已提交日期保持一致。", "限速SIM卡总次数：按日或周期统计均可点击进入限速操作详情，带入限速操作类型及该行日期区间查询。", "解除限速SIM卡总次数：按日或周期统计均可点击进入限速操作详情，带入解除限速操作类型及该行日期区间查询。", "统一详情导出：按当前已提交查询条件导出全部匹配的限速及解除记录，包含列表17个字段，ICCID以文本保留。"],
         businessRules: ["策略名称不可重复，新增和编辑均校验同名策略。", "用量限速初始为一级，支持添加或删除层级，至少保留一级，最多支持三级；开启时，已配置层级的月流量阈值与限速值均必填，流量单位 MB。", "月流量阈值按已配置层级递增；限速值支持 1Kb/s、64Kb/s、128kb/s、256Kb/s、512Kb/s、1Mb/s、3Mb/s、5Mb/s。", "限速策略仅支持月用量限速；历史记录保留原始限速类型及快照。", "月用量限速开关只控制是否生效，停用时仍可编辑、增删及保存配置。", "未完成配置的策略开启限速前须先补充参数。", "一次手动提交生成一个唯一批次号，号码去重后关联该批次；未创建新卡片操作时不生成空批次。", "批次成功、失败、处理中数量按关联卡片的实际处理结果汇总；创建请求不预先标记成功。完成时间仅在本批次全部卡片均已处理结束且完成时间齐全时显示最晚完成时间，处理中或历史完成时间缺失显示--。", "批次操作来源独立于原限速策略来源，系统和手动操作分别记录。", "限速记录为独立历史快照，策略编辑、删除或状态切换不改写已有记录。", "操作来源为手动操作、策略限速、系统恢复，按当前操作来源识别；限速等级仅提供月一级限速、月二级限速、月三级限速；历史月等级按统一文案展示，其他旧等级显示--，不改写原始快照。限速日期按开始时间日期筛选，首尾日期均包含，支持同一天。", "限速记录和解除限速记录合并在同一列表，保留独立操作快照；解除类型仅收录已发起的解除操作，不将未解除或无需解除的限速记录重复生成为解除操作，创建待限速请求不新增解除记录。", "统一记录日期对限速按开始日期筛选，对解除按解除记录创建日期筛选，包含首尾日期；两类数据共用查询条件及分页；记录日期支持跨月、跨年区间，以承接统计报告完整周期。解除操作的限速策略名称、限速值、限速等级在列表与导出中均显示--，原始历史数据仍独立保留。完成时间仅展示当前操作的完成时刻，执行中显示--。", "记录页使用示例数据，未连接运营商限速接口；导出当前统一查询的全部记录，ICCID按文本保留。", "限速统计报告初始使用每日汇总示例数据；手动创建限速后，按开始日期将新增ICCID计入限速SIM卡总次数。待处理记录不计入成功或失败次数，成功次数与失败次数之和不大于总次数；SIM卡限速成功率为成功次数÷（成功次数+失败次数），解除SIM卡限速成功率为成功次数÷总次数；成功率保留两位小数，各自分母为0时显示--。", "报告日期筛选包含首尾日期，支持同一天及跨月、跨年自定义范围；按日统计默认展示全部日报，周期统计首次切换或重置时默认最近一周。限速SIM卡数量和解除限速SIM卡数量分别按所选单日或完整周期内的ICCID去重；两类操作的总次数按每日次数累加，同一卡多次操作分别计次；SIM卡限速成功率按周期成功次数÷（周期成功次数+周期失败次数）计算，解除SIM卡限速成功率按周期成功次数÷周期总次数计算，各自分母为0时显示--。清空周期日期后须重新选择再搜索；导出当前已提交查询条件下的全部报告，周期统计导出一行合计。"],
         interactions: ["一级页签仅保留限速统计报告、限速操作记录、限速操作详情，默认打开限速统计报告。详情页不再使用二级页签，同一列表按操作类型区分。", "规则限速批次的触发记录ID链接跳转对应触发明细，清空旧筛选并回到第一页；其他批次点击批次号后带入批次号和操作类型，清空旧筛选及日期、回到第一页；统计报告总数跳转带入对应操作类型及已提交查询的单日或完整周期区间，包含首尾日期；清空批次号和其他旧条件、回到第一页，返回报告保留原统计方式和查询。", "离开统一详情再返回保留已提交查询条件和分页；返回批次或统计报告保留各自原查询。一级页签支持左右方向键、Home、End。", "查询支持组合条件、单项清空、重置及按当前全部匹配结果导出；批次页每页20条，页码居中、窄屏可换行，上一页、当前页、下一页保持一组。筛选后回到第一页，数据减少时自动调整到有效页，翻页后聚焦当前页码。", "限速策略的新增、编辑及启停统一通过规则中心维护；原策略ID和历史记录保留。"]
@@ -28663,7 +28638,8 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       { key: "createdAt", label: "操作时间" },
       { key: "operationBy", label: "操作人" },
       { key: "failureReason", label: "失败原因" },
-      { key: "remark", label: "操作备注" }
+      { key: "remark", label: "操作备注" },
+      { key: "action", label: "操作" }
     ];
 
     function simDetailSpeedStrategyFields(row, source = null) {
@@ -28688,12 +28664,42 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     }
 
 
+    function isSpeedLimitTaskPending(row, now = currentDateTimeText()) {
+      const result = String(row.limitResult || row.operationResult || "");
+      return ["待处理", "待执行"].includes(result)
+        && /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/.test(row.startTime || "")
+        && row.startTime > now
+        && !["已取消", "已解除", "限速中", "限速失败", "执行中", "处理中"].includes(row.status)
+        && !["解除中", "已解除"].includes(row.releaseStatus)
+        && !speedLimitReleaseRows.some(release => release.limitRecordKey === speedLimitRecordKey(row));
+    }
+
+    function cancelSimSpeedLimitTask(key) {
+      const row = speedLimitRecordRows.find(item => item.iccid === simDetailSpeedState.iccid && speedLimitRecordKey(item) === key);
+      const time = currentDateTimeText();
+      if (!row || !isSpeedLimitTaskPending(row, time)) {
+        refreshSimDetailSpeedHistory();
+        showToast("任务状态已变化，仅未到限速开始时间的待限速任务可取消", "error");
+        return;
+      }
+      Object.assign(row, {
+        status: "已取消", limitResult: "已取消", afterState: row.beforeState || "--",
+        cancelledAt: time, cancelledBy: currentOperatorName(), completedAt: time, updatedAt: time
+      });
+      renderSpeedLimitRecordTable();
+      renderSpeedLimitBatchTable();
+      refreshSimDetailSpeedHistory();
+      document.getElementById("simDetailSpeedOverview")?.focus();
+      showToast("限速任务已取消", "success");
+    }
+
     function simDetailSpeedOperationRow(row, operation) {
       const release = operation === "release";
       const rawResult = String((release ? row.releaseResult : row.limitResult) || row.operationResult || "");
-      const operationResult = rawResult === "成功" ? "成功" : rawResult.startsWith("失败") ? "失败"
+      const pendingLimit = !release && isSpeedLimitTaskPending(row);
+      const operationResult = pendingLimit ? "待执行" : rawResult === "已取消" ? "已取消" : rawResult === "成功" ? "成功" : rawResult.startsWith("失败") ? "失败"
         : ["待处理", "处理中", "执行中", "待执行"].includes(rawResult) ? "执行中" : "--";
-      const terminal = ["成功", "失败"].includes(operationResult);
+      const terminal = ["成功", "失败", "已取消"].includes(operationResult);
       const source = release && row.limitRecordKey ? speedLimitRecordRows.find(item => speedLimitRecordKey(item) === row.limitRecordKey) : null;
       const batch = speedLimitBatchRows.find(item => item.batchNo === row.batchNo);
       let operationSource = speedLimitOperationSources.includes(row.operationSource) ? row.operationSource : "--";
@@ -28703,7 +28709,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         else operationSource = row.category === "手动限速" || batch?.source === "manual" ? "手动操作" : row.category === "策略限速" ? "策略限速" : "--";
       }
       const beforeState = ["已限速", "未限速"].includes(row.beforeState) ? row.beforeState : source?.limitResult === "成功" ? "已限速" : "--";
-      const afterState = ["已限速", "未限速"].includes(row.afterState) ? row.afterState
+      const afterState = pendingLimit ? "已限速" : ["已限速", "未限速"].includes(row.afterState) ? row.afterState
         : operationResult === "成功" ? (release ? "未限速" : "已限速") : beforeState;
       const linkedRelease = !release && speedLimitReleaseRows.some(item => item.limitRecordKey === speedLimitRecordKey(row));
       const completedAt = !terminal ? "--" : row.completedAt || ((release || (!linkedRelease && row.status !== "已解除")) ? row.updatedAt : "") || "--";
@@ -28712,6 +28718,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         restoreNextMonth: speedLimitRestoreNextMonth(row, source),
         startTime: release ? "--" : row.startTime || "--", endTime: release ? "--" : row.endTime || "--",
         beforeState, afterState, operationResult, completedAt, failureReason,
+        canCancel: pendingLimit, recordKey: speedLimitRecordKey(row),
         operationBy: release ? row.releasedBy : row.createdBy };
     }
 
@@ -28739,9 +28746,14 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       state.page = Math.min(Math.max(1, state.page), pageCount);
       header.innerHTML = columns.map(column => `<th scope="col">${escapeHtml(column.label)}</th>`).join("");
       body.innerHTML = rows.length ? rows.slice((state.page - 1) * state.pageSize, state.page * state.pageSize).map(row => `<tr>${columns.map(column => {
+        if (column.key === "action") {
+          return row.canCancel
+            ? `<td><button class="link-text" type="button" data-cancel-speed-task="${escapeHtml(row.recordKey)}">取消限速任务</button></td>`
+            : '<td>--</td>';
+        }
         const text = speedLimitRecordCellText(row, column);
         if (["beforeState", "afterState", "operationResult"].includes(column.key) && text !== "--") {
-          const tone = text === "失败" ? "is-negative" : ["成功", "未限速"].includes(text) ? "is-positive" : "is-warning";
+          const tone = text === "失败" ? "is-negative" : text === "已取消" ? "" : ["成功", "未限速"].includes(text) ? "is-positive" : "is-warning";
           return `<td>${renderSmartDiagnosisTextStatus(text, tone)}</td>`;
         }
         if (column.key === "remark") return `<td class="sim-detail-speed-remark">${escapeHtml(text || "--")}</td>`;
@@ -28784,6 +28796,10 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         bindAdminTabList("simDetailTabs", button => switchSimDetailTab(button.dataset.simDetailTab));
         simDetailSpeedState.tabsBound = true;
       }
+      document.getElementById("simDetailSpeedHistoryBody").addEventListener("click", event => {
+        const button = event.target.closest("[data-cancel-speed-task]");
+        if (button && !button.disabled) cancelSimSpeedLimitTask(button.dataset.cancelSpeedTask);
+      });
       document.getElementById("simDetailSpeedHistoryPager").addEventListener("click", event => {
         const button = event.target.closest("[data-sim-speed-page]");
         if (!button || button.disabled) return;
@@ -28959,7 +28975,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       ];
       return `
         <div class="sim-status-overview" aria-label="SIM卡状态概览">
-          <table class="sim-status-table">
+          <table class="sim-status-table" data-density="compact">
             <colgroup>
               <col class="sim-status-label-col">
               <col class="sim-status-value-col">
